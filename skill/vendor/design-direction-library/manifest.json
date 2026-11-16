@@ -3,11 +3,11 @@
   "bundle": "design-direction-library",
   "source": {
     "repository": "https://github.com/alchaincyf/huashu-design",
-    "revision": "9b01ee8751679724dd43d855a532944aaa2c2b59",
-    "gitTree": "90bc6a8d9ed7a419b4b8436b24d635ba3a53ce08",
-    "committedAt": "2026-10-31T02:50:57+09:00",
+    "revision": "e8d1148a80d5a281d4247cffe320add3df017928",
+    "gitTree": "9de0a36dd88011b4ff18e1b96627c82c845dca6d",
+    "committedAt": "2026-11-09T14:15:18-10:00",
     "license": "MIT",
-    "reviewedAt": "2026-11-04",
+    "reviewedAt": "2026-11-16",
     "scope": [
       "**"
     ]
@@ -21,9 +21,9 @@
   ],
   "snapshot": {
     "root": "upstream",
-    "fileCount": 195,
-    "byteCount": 1681706,
-    "treeSha256": "ce60b19a7016ab62ec204c8a6c66c8a5684cd18ce1ee5239491e4f1c202824f5",
+    "fileCount": 200,
+    "byteCount": 1729930,
+    "treeSha256": "afb87b15aee6825b831f0ed3730b743319fb1094bd61d214d99b94d2510587fc",
     "executableFiles": [
       "scripts/add-music.sh",
       "scripts/cloud/tts-doubao.mjs",
@@ -96,9 +96,9 @@
       {
         "path": "assets/director-notes-samples/launch-film-30s-sample.md",
         "mode": "100644",
-        "oid": "f45b546a56453d8c35ac6b27ac94725722b885f2",
-        "size": 80207,
-        "sha256": "92929cba00fee525a70cbe3cd3f6e7b4d2ca7afb9a91a707721cfce9b34b92cd"
+        "oid": "3dfbae68f8ed37e40f9d893e63d09e0e3f740531",
+        "size": 80208,
+        "sha256": "e7c480a3ab9611540d13b8d85729cdaa7f611cf414e69b3231686aa7b124232f"
       },
       {
         "path": "assets/ios_frame.jsx",
@@ -124,16 +124,16 @@
       {
         "path": "assets/personal-asset-index.example.json",
         "mode": "100644",
-        "oid": "dd4b0d6e64e1fdea2213e1f75804637e3885d4fc",
-        "size": 1826,
-        "sha256": "b35ca20aa41f6a52ad7248969a25eadaf607d3379f79fd1f4cb841fca423886c"
+        "oid": "0bbb7cb6bf972234d123d30da5a354156f7f2e8c",
+        "size": 1822,
+        "sha256": "682b94dd142874ac31c69c27afb8a831a160d3345a73f7701b503ca9332e394d"
       },
       {
         "path": "assets/showcases/INDEX.md",
         "mode": "100644",
-        "oid": "5a89e42ccf9379b1a98db40a0439eeadc8e6f192",
-        "size": 5538,
-        "sha256": "576c8c1c6ca508e074337a9bcc001615c72ab7bf13611421ff2b13007fd970f9"
+        "oid": "9ce5c01cfaaeeb1faceb71891a292b61764ef5da",
+        "size": 5548,
+        "sha256": "b8ee044ccf6aa37d74deda48007cac662161796745b229db86adffcce34320f5"
       },
       {
         "path": "assets/style-specimens/app/01-hardware-panel.html",
@@ -789,16 +789,16 @@
       {
         "path": "README.en.md",
         "mode": "100644",
-        "oid": "ec064235faa80c29b8c4d55480dfb05ba444466e",
-        "size": 29948,
-        "sha256": "66908c76b256431a18a0300d1ba0d4accfe37910f6a1bdd5bdfb72599f6f874c"
+        "oid": "a083c4918f5c0475714fade59683b229f34507b7",
+        "size": 34717,
+        "sha256": "5943fd451c690a220c5d2c56612a62b75787659f7a39e4c88c6bd6baf9c36348"
       },
       {
         "path": "README.md",
         "mode": "100644",
-        "oid": "2e00918d256635162362d56b2325ea8df4cce581",
-        "size": 30113,
-        "sha256": "5931dcd0ee6aec5b4cfe27fe970ba1887e438a45f5da0a55d55f9c56f7687c67"
+        "oid": "d84d4733756d81a200d82fc437ea4a4adfc24664",
+        "size": 31849,
+        "sha256": "791096fa9762a69b2f1403ffc0209c111f6ca2c8d05d0cb919113153aee9e47b"
       },
       {
         "path": "references/about-author.md",
@@ -817,16 +817,16 @@
       {
         "path": "references/animation-best-practices.md",
         "mode": "100644",
-        "oid": "49f3e0c04403d5b7fdcafdfcf579766d0ab7a7c7",
-        "size": 22500,
-        "sha256": "5b135596a6b8da215e30747b68c706fda3f760f3f17204f94edb8e625f898d93"
+        "oid": "1c9dbd82658c31a046816ae4535a9cb618525fc6",
+        "size": 22605,
+        "sha256": "98ce6e679b4fad129c2071b4f504b6a871b64ac2659fe86e123739963a885b10"
       },
       {
         "path": "references/animation-pitfalls.md",
         "mode": "100644",
-        "oid": "e669ccbae05af0507ccb0a35ca4901e956718ae7",
+        "oid": "7d4b7bd74d7f8d5ce310832f140dd63bb9a0a640",
         "size": 30806,
-        "sha256": "7a1a6a6f9e545ebfde4921899c8f05a5477c6f31125e0656724a32de18ccd604"
+        "sha256": "8301b78606a655d4beea801ef5b4afeaa91715d805bb68fed7d2dea41e6b61fd"
       },
       {
         "path": "references/animations.md",
@@ -845,9 +845,9 @@
       {
         "path": "references/apple-gallery-showcase.md",
         "mode": "100644",
-        "oid": "63346e819343afaf2a975e1860e460924673a874",
+        "oid": "255e3b40547eba0aedf1a36b183003ad8ce5e411",
         "size": 11568,
-        "sha256": "ac969d1a9a1b29bd84a00c0a787f7bee97cb70051ecda4e966c7656c67de312d"
+        "sha256": "70ad435f372717e57a4d8607274d75830607c4e389fd702a33f12f052b5a11b5"
       },
       {
         "path": "references/audio-design-rules.md",
@@ -859,9 +859,9 @@
       {
         "path": "references/brand-asset-protocol.md",
         "mode": "100644",
-        "oid": "f17e9e7e889270b009294ec4aa89e7535577bcd1",
+        "oid": "fedcda0e0133d6234dee8400bd6a6bdaf4c139a9",
         "size": 15424,
-        "sha256": "932c64e46fc60e3aff076fde5c98e7609c4365b7c1e84dd593994471c354cb4a"
+        "sha256": "b5a405a43af6f73222567b7259a139d7476aea7e29aaf1cc220a7003b3391924"
       },
       {
         "path": "references/camera-language.md",
@@ -873,51 +873,51 @@
       {
         "path": "references/cinematic-patterns.md",
         "mode": "100644",
-        "oid": "b8b1dc9e6a43a53545895385edf8876887eacf7b",
-        "size": 11086,
-        "sha256": "1266cb4feb14e44997b6abcc33091991565402ec6a7b22698628b31a4da472b8"
+        "oid": "1216110a7d741b309d80b9ff44182f1ee25ed840",
+        "size": 11115,
+        "sha256": "3b6f3a846b71f4ce8194286de615972797ded033b5a925ecda8a8f0c25753d15"
       },
       {
         "path": "references/content-guidelines.md",
         "mode": "100644",
-        "oid": "c1fa2f871924bb5fa612daa58d31901f7ab7160b",
-        "size": 11791,
-        "sha256": "d9e1f08740bc6a1327b9bedaafad37b9791a1640a3b13b686b53f4a9483414e2"
+        "oid": "b077592b29f61c689825b667e8387be84abdad11",
+        "size": 12328,
+        "sha256": "babc668d856940cf3e78fcf67d247a446aabddcbc7242b5570b0e2eff17ad9e1"
       },
       {
         "path": "references/critique-guide.md",
         "mode": "100644",
-        "oid": "8eb55ce9eea9bcf089c828ff5b9d021cd850da50",
-        "size": 9022,
-        "sha256": "3636ed8422bb88a11bc3e1db00b252b707f20cf83f6ec900077abb020ff7a8ce"
+        "oid": "25b2c761686b922904d99a3f397c6103448c2f03",
+        "size": 9091,
+        "sha256": "44b800eb73b31c5ef5235fbd07977c722ab7c95e610e47f5673a7008554bea69"
       },
       {
         "path": "references/design-context.md",
         "mode": "100644",
-        "oid": "12adeb06d8834e0c9ba934a62b95330c39d33cd2",
-        "size": 6704,
-        "sha256": "93a7e6be5f6cb29076d3651747d5033701362ddd03283b1ddf11b105757430b6"
+        "oid": "7cff7106f41fc05e52f1d782901587cbcc16dac3",
+        "size": 6737,
+        "sha256": "a95c61bf84373a56a3ced3a8662a31033e4347231d0306a212f38d78c4eaab8f"
       },
       {
         "path": "references/design-styles.md",
         "mode": "100644",
-        "oid": "51da30ae5fed96cc0e206aed7b0d64ededc3f526",
-        "size": 108231,
-        "sha256": "8a6c6003ea3217fe20889d758894a537b84cea1eb5a064284fd3814b1220ac80"
+        "oid": "c9f3e8d4a1b8611c2ff1d36328352aef53e505cc",
+        "size": 108285,
+        "sha256": "3bfa148ed909f59dd79a653d1b7c5a4964f45e4ee1801413f07453f1e5189f17"
       },
       {
         "path": "references/directions.md",
         "mode": "100644",
-        "oid": "ee1025f96cd3af4f7af055c1368d103d0b1d230a",
-        "size": 12686,
-        "sha256": "9d4410ab3da9ffa636943292a09c61cd85a7cd9c7421989974bde67db992b583"
+        "oid": "00bece80187d8ff6a6efcd5db63a3f5ac36194b9",
+        "size": 13636,
+        "sha256": "e781c05b6b3684bf3f2edeadbd28a35b8cc5502a0d45b23cfe24653bb42e667d"
       },
       {
         "path": "references/editable-pptx.md",
         "mode": "100644",
-        "oid": "7c3dfbfb73c575d7d52c3206b2b619380056874d",
-        "size": 18570,
-        "sha256": "cc76f248d3f22f6c2b42b9b02acc95a1b278f2e57bfcc22120d6fa0b09a285ad"
+        "oid": "db8f21d61c39e338e3d0bdb9f1881b5c5c7fd522",
+        "size": 18660,
+        "sha256": "8f109b991c29e4a417317e5179f94a1cf5d1992c5f63fdc4e0d5d94caccf0434"
       },
       {
         "path": "references/evolution.md",
@@ -943,9 +943,9 @@
       {
         "path": "references/hero-animation-case-study.md",
         "mode": "100644",
-        "oid": "24abb0f7401a0a9de628c80d835681727707c996",
-        "size": 11570,
-        "sha256": "631fdd9de016da9fc012fde754b1b81f02c2fbf60b69836aeb62d1fbfcfd8d44"
+        "oid": "8bde5aedf3d0d16e4475151c194f4df72e8c6994",
+        "size": 11620,
+        "sha256": "87f279242e7d9e9d015461fb71409dd9459d239d2dc2cd7071449dccbe0d09ef"
       },
       {
         "path": "references/hyperframes-backend.md",
@@ -964,9 +964,9 @@
       {
         "path": "references/materials.md",
         "mode": "100644",
-        "oid": "8ddd904734d4f18645b12145106a4886655f42f1",
-        "size": 5679,
-        "sha256": "3ed5df12fcd628bfc145f70b251c2f0837bfd6b196c3a7930a6039f8c7405bf8"
+        "oid": "6778ac60a3c642f97b99d7c6d4967143a27aa014",
+        "size": 5577,
+        "sha256": "293f0cdc0aea80ce393ad47867e82c681953abea4449b84069039201a3ae1099"
       },
       {
         "path": "references/modules/deck.md",
@@ -992,9 +992,9 @@
       {
         "path": "references/modules/web.md",
         "mode": "100644",
-        "oid": "960e5c7095b034ce2fa4fe9990ed4cdb6eb15cc7",
-        "size": 2467,
-        "sha256": "73733f02f6fa3c19ed56e1949f4f0c5511a09a5f45a98c8298a1222ddc9c3591"
+        "oid": "25c6f2a2697b6ce56dcd2fc23a4647898396d47c",
+        "size": 3407,
+        "sha256": "e5211fc219a7d270403b688690db3703256b6c774fc759cd85c8f1766d52440a"
       },
       {
         "path": "references/modules/xiaohongshu.md",
@@ -1006,9 +1006,16 @@
       {
         "path": "references/multi-perspective-parallel-case-study.md",
         "mode": "100644",
-        "oid": "2271954c38b9f8935da76c4af753d32e178b0f2a",
-        "size": 11093,
-        "sha256": "e1f80cc2e3e12d04405f897f3da49b371dbc7782c5ba23152a956c2780e738da"
+        "oid": "cf8953f01b16e08174461e6fc43ce09e328c9084",
+        "size": 11153,
+        "sha256": "ed56f66dcc39965f0eb61c874d44002568d692dd55f00d5c516b5b1e82878062"
+      },
+      {
+        "path": "references/polish-loop.md",
+        "mode": "100644",
+        "oid": "b4849872639e51b3f1549151e64099e7c6a35a3a",
+        "size": 4253,
+        "sha256": "1698335e745ae08c4cc52d4e80e0f1eaf3812ebd60d9102c0f052d4cacf48f13"
       },
       {
         "path": "references/pptx-from-rendered-html.md",
@@ -1034,23 +1041,30 @@
       {
         "path": "references/sfx-library.md",
         "mode": "100644",
-        "oid": "50b23696160b98bf051d5986e83a0cbb7a3e8a28",
+        "oid": "6a2f17afb87142f2a5e5cd148da5489f66ea78f0",
         "size": 9762,
-        "sha256": "43e5e00a23e72b78b1872fbf88c38f829a2d3feb5cc5dc49260cdeb98f1958f9"
+        "sha256": "7286934e551121a41a739a6e0794d267d673f9d6832434683eb5851d552d9e0e"
       },
       {
         "path": "references/slide-decks.md",
         "mode": "100644",
-        "oid": "c0c5d9b993e3cdd2dbb294f054619f293e4e98af",
-        "size": 36181,
-        "sha256": "f7c67305f9f169c6ce86bb35ddf5fd0b95bd543822f7aa0e27f0f66bbd95ac05"
+        "oid": "b63c54f6c32d38d56a5db5979ae812bf9557ae78",
+        "size": 36193,
+        "sha256": "e279295d8b135aed36df02cc8c4afc99b844b96d3ea2514a278e4601232da502"
+      },
+      {
+        "path": "references/steady-track.md",
+        "mode": "100644",
+        "oid": "3a189560bcb8d3b362a1cddfc33213d1238b45e6",
+        "size": 7085,
+        "sha256": "75eb01c56071d0f4686c45db6a5bc3a4171b7a489576349b08df1949af3448b6"
       },
       {
         "path": "references/storyboard-basics.md",
         "mode": "100644",
-        "oid": "56a5f03b13e46f233605c7c16de7f5a06d633edf",
-        "size": 23987,
-        "sha256": "b8775952ae96bbe3e99f080520896fa9d853d324733c771da5f45da865b6f884"
+        "oid": "4a812e1fcc87a856302bcbee534e2988c69b88e0",
+        "size": 24025,
+        "sha256": "c855bdcce7b3ec6ba6b69d820ee762a78575b4284c7db9dc8e141efae4bc1574"
       },
       {
         "path": "references/tweaks-system.md",
@@ -1062,9 +1076,9 @@
       {
         "path": "references/typography.md",
         "mode": "100644",
-        "oid": "476e0bc3254a7add1328a9d571e3d94d570e90d3",
+        "oid": "faa867f82929658b925b847596d07371de695117",
         "size": 18751,
-        "sha256": "4aae63d6bc39a0f67a05398b11bc381b7190f51bb7cd83f1a933f2e7551984cb"
+        "sha256": "c43c4a98861c137b7272d5886ab5c1afa0c4c1fbbb3b0d28dd6a4dc152f52dbd"
       },
       {
         "path": "references/ui-demo-animation.md",
@@ -1076,30 +1090,30 @@
       {
         "path": "references/verification.md",
         "mode": "100644",
-        "oid": "377e0eadcfdf2e57a02b79825f47ef80c57ef4dc",
-        "size": 6998,
-        "sha256": "2481be020d5253efebcc6dd1a3bea80db25c1d03ce92d5a0347124c7407b366c"
+        "oid": "b22b5e82abf47b9b0d837b0ed4d45a9b39d3c00a",
+        "size": 7261,
+        "sha256": "a4b367da117aa63cc41160971e07b90e33156cd40ead0be5da93c30003542052"
       },
       {
         "path": "references/video-export.md",
         "mode": "100644",
-        "oid": "5e2717dbb214a6c153fcb91c7861f28538dc363a",
-        "size": 11527,
-        "sha256": "7ed97faa22b49f407c61a482eddb3b30a7463c3e5e491e5a4b2bcb48ad7929f6"
+        "oid": "2cf6bba370cb88e0f911a61983f5fbd08ab313e9",
+        "size": 11592,
+        "sha256": "9ea35fd5d448641adeb6a51b07522f12e6c79674ad88de204b23a8bbd9f55d26"
       },
       {
         "path": "references/voiceover-pipeline.md",
         "mode": "100644",
-        "oid": "c11c9978199428f8dc96d87ec2c7f784c908ab56",
-        "size": 20121,
-        "sha256": "c8e992779eb3de74b7c46c195a46dd716ee922def7ea5f9e19beef814834e756"
+        "oid": "8ecf9d1341d35741858350cc2e3e060b741059d5",
+        "size": 20263,
+        "sha256": "c46f34626223b4c3a028d3102f9ba9746cbc502d25d30ddbfcd058df2db72347"
       },
       {
         "path": "references/workflow.md",
         "mode": "100644",
-        "oid": "b437756ce839891f98b05642babe93f8da2e3882",
-        "size": 10921,
-        "sha256": "b10d3e6702deffef717fbfc10851e9517fa274d4179967f60fc6ca0c0203648e"
+        "oid": "28ccd5cf62c146da4f6bc472939050fad17400a5",
+        "size": 11857,
+        "sha256": "265f528b77c9f72fc6b584d92965546523312630264b80260611a861f1f69f86"
       },
       {
         "path": "scripts/add-music.sh",
@@ -1146,9 +1160,9 @@
       {
         "path": "scripts/design_lint.py",
         "mode": "100644",
-        "oid": "6c0516928d8219edb15e4b4e547ce3ce08b7502c",
-        "size": 28487,
-        "sha256": "9146951a55d17781ae635ebef8d2c36d795f46587e55505d1883a45c8b1bedd1"
+        "oid": "156455d26a238330284c8d394d23ce2720546a79",
+        "size": 28799,
+        "sha256": "7dbe86ef62cbd5d67ecc7f6f5168be650049533ef9b11df6f537919e1f71b35f"
       },
       {
         "path": "scripts/design-gate-hook.sh",
@@ -1160,9 +1174,9 @@
       {
         "path": "scripts/export_deck_pdf.mjs",
         "mode": "100644",
-        "oid": "af4fbb2e94b6727172f805e59ee09ad331ef65dc",
-        "size": 3209,
-        "sha256": "323f3d5963e8b9245d468f051d4b676e67d9b97cc73b62d98239a13c65d8cc31"
+        "oid": "976afe96691562e22a410bd33e0942add9c803db",
+        "size": 3383,
+        "sha256": "78baf0f6c2779ec3f3d23a92ecae8039148b06c38bdaaf2e65ac70fc22ee0eef"
       },
       {
         "path": "scripts/export_deck_pptx.mjs",
@@ -1174,9 +1188,9 @@
       {
         "path": "scripts/export_deck_stage_pdf.mjs",
         "mode": "100644",
-        "oid": "a5526b8080e5634540bc5a9b99a171a0706dece6",
-        "size": 4781,
-        "sha256": "d024a6b5fa84c1d25caf4c1acf47ca24a5c9e8c7ed3c45befa9fabac82765b04"
+        "oid": "6dbac7975a96a3b32aa5e582b7aeb3e1c1e75ecd",
+        "size": 4955,
+        "sha256": "567fdb3f7d63b7511ddf917963c2d23efe01d85d3944997fedfed5f0f66794b5"
       },
       {
         "path": "scripts/fetch_images.py",
@@ -1188,16 +1202,16 @@
       {
         "path": "scripts/gen_deck_thumbs.mjs",
         "mode": "100644",
-        "oid": "4ef73d0387704118eb9bdbe154598e7474bda3e2",
-        "size": 3037,
-        "sha256": "7a6ec5c4351e36aaeeec66f5488a3ef12574bb994b3f81c4b35fd33144066e33"
+        "oid": "1b3b7453312b2944156b4a4f8ef239e1dac71a1f",
+        "size": 3509,
+        "sha256": "e48e5a38cceacdce66f2527fa9627e30d7e61a10a1fc54cf0b4cafb7e767f197"
       },
       {
         "path": "scripts/html2pptx.js",
         "mode": "100644",
-        "oid": "f794cf17c2eab52eaa63d2fc526588ab12e1d00a",
-        "size": 34510,
-        "sha256": "79bd2df2c0aed3548ba78d88f7bf2906c2fbdef6bcf9dce8ee4a83013c6563ac"
+        "oid": "330ba18766303efd0d9c9e26f6d965ab328f8e1b",
+        "size": 34728,
+        "sha256": "ffc5b3b46fb6039bf5f0588ced2ec78670f5f16c10b8696beb5bff086955d384"
       },
       {
         "path": "scripts/learn.py",
@@ -1209,9 +1223,9 @@
       {
         "path": "scripts/mix-voiceover.sh",
         "mode": "100755",
-        "oid": "ab1da5de64d2e78adf45821147f6eb8c02e7b37b",
-        "size": 4461,
-        "sha256": "cae4cfdfabbf918a6bd9fa7a2cac63e463903b348461360a19ca163d98b960ed"
+        "oid": "ac03350345df7ddf076ac1a1107441407655634a",
+        "size": 5358,
+        "sha256": "5db3b020db6b542899a10b4838a028a849cad3fd81484ce9f0a7ffa35e29aee6"
       },
       {
         "path": "scripts/narrate-pipeline.mjs",
@@ -1221,11 +1235,18 @@
         "sha256": "5b387544314c9f6374de7399a23b6692b77333e53a8fb4e2d892e2ae6e836a14"
       },
       {
+        "path": "scripts/polish.py",
+        "mode": "100644",
+        "oid": "4426882e84f3fbe066a144d90e5cb5f33fe28d87",
+        "size": 13757,
+        "sha256": "a844334757224538d6088c7cf17d6a18041cbc4dda02d3ad0d3ba7f91e4ccc7d"
+      },
+      {
         "path": "scripts/pptx_from_rendered.py",
         "mode": "100644",
-        "oid": "1e04de08b17d558146826df80e64e192a94f9c59",
-        "size": 29623,
-        "sha256": "9c81eac40cafcbd0c213267a0c37419c7fe16811a4da9aa7e3b9bc707aa50315"
+        "oid": "5babc5cca9f1e19d3b358422f32680f6d297f16d",
+        "size": 29656,
+        "sha256": "8e0ebb7b7e02ba25f7e849559b5af913b2e6f6985993c6b3f6794afae0da30b3"
       },
       {
         "path": "scripts/ref_board.py",
@@ -1258,9 +1279,9 @@
       {
         "path": "scripts/sfx-cues.sh",
         "mode": "100755",
-        "oid": "7fc71d58cfced9e5832330bd1525d10c5f209c94",
-        "size": 1628,
-        "sha256": "842cda4237dd88d84b4de634bf23507ec01aacb621ce5f6ac17e2a1c60857244"
+        "oid": "838dd8c37413d81da658affebf2f0626d56a9abd",
+        "size": 1643,
+        "sha256": "d7211d4978a48c7b9b9d854b2243c006013eb90c8dded83a8763cd195d2a35d3"
       },
       {
         "path": "scripts/tests/fixtures/lint_broken.html",
@@ -1347,11 +1368,25 @@
         "sha256": "220d4ddf35fabe9d720dd999017733563bcaf0fd5d93ab5325243cfc9c2e4f41"
       },
       {
+        "path": "scripts/tests/test_polish.py",
+        "mode": "100644",
+        "oid": "6e22d71bfdf4ff7c09791932f9688d73834fd4d0",
+        "size": 4698,
+        "sha256": "38d06b24f79904680606c599027d933ddbc6caabe0627dbf83394901c7b7d261"
+      },
+      {
         "path": "scripts/tests/test_pptx_from_rendered.py",
         "mode": "100644",
         "oid": "fd8850bc2cf5ca97927b112f875630d3105202d5",
         "size": 4099,
         "sha256": "d915b6083b377010315ab8dfa00418e9cf26ce1c7912219cb44d7429ec020d73"
+      },
+      {
+        "path": "scripts/tests/test_pptx_svg_index.py",
+        "mode": "100644",
+        "oid": "dc0d9c1952ecb2dd7379cc580c5c8316b7b10d0c",
+        "size": 1674,
+        "sha256": "70fbc511a72aa1a6abf7bf7efd5e69d02a0e40868a9e1c4f818b94f87f6fd79e"
       },
       {
         "path": "scripts/tests/test_xhs_render.py",
@@ -1384,16 +1419,16 @@
       {
         "path": "SECURITY.md",
         "mode": "100644",
-        "oid": "63bdc478d1f579b9a455127c26894101a60cf122",
-        "size": 7396,
-        "sha256": "ff44af3fb26a8411bf94bd4d0704bc6aa2c205256f7c636bf7a2ce28e5ca4bdb"
+        "oid": "0861e393016390b1330bec859834d14a6f8d9402",
+        "size": 7387,
+        "sha256": "963f799c2f9fcaf544c6672c1e86dd6bf533b6bb40e9d4bfc23330f2c058c908"
       },
       {
         "path": "SKILL.md",
         "mode": "100644",
-        "oid": "23f09262546164b63c04fbca36b04d77a9fc1618",
-        "size": 15699,
-        "sha256": "095ffe5c156e0f299233f7bed44080ce0654c191b9a97ca580c5d798cf45eaf8"
+        "oid": "4b0f71c58de871f5f63563e77784cbee93f9fe6a",
+        "size": 19387,
+        "sha256": "a8d4e5e89ce17696fbaff477f8f864a1fd91f1b38665425b484c1e8f83e20584"
       },
       {
         "path": "test-prompts.json",
@@ -1406,24 +1441,24 @@
   },
   "fetched": {
     "root": "fetched",
-    "fileCount": 244,
-    "byteCount": 41738191,
-    "treeSha256": "d569e575d65729e9c18cecbb6bea60c02558138b41d966756373ad87780a9821",
+    "fileCount": 245,
+    "byteCount": 41720969,
+    "treeSha256": "a4720ca4170a8ce016286609e01cb39723f36de2da9188b0e1fa0e3b514a95b2",
     "executableFiles": [],
     "objects": [
       {
         "path": ".env.example",
         "mode": "100644",
-        "oid": "7208e80bb0ff6131eaa96bf0c00c67877ba57114",
-        "size": 463,
-        "sha256": "ee04a1e71a37d698b68cda506eba579c47d7559b345ae90a350e890130cfafb4"
+        "oid": "6f93ce035b1edc323f97b1eeb2d253ce476ad302",
+        "size": 840,
+        "sha256": "b735f44760cb7b03bf8fa435f6974af53e4b85d62631388d509e3b59208c1c97"
       },
       {
         "path": ".gitignore",
         "mode": "100644",
-        "oid": "0aabc32f42f162dbec312c778ddfaf424b5960bc",
-        "size": 844,
-        "sha256": "c263d044826b41803d8fe9f04ec74b6d43dfed469fa1a5cd51131cffa157292e"
+        "oid": "fff98f8497905f3c58cb02369906ab72579aedaa",
+        "size": 757,
+        "sha256": "ea1daaf715f1b11cb0c61cf36c54f496b1abc89de3a110d8bec7bcbed514d19f"
       },
       {
         "path": "assets/bgm-ad.mp3",
@@ -2938,6 +2973,13 @@
         "sha256": "c4e49e9ffe7f00b93414117c608362a826ac6970ecd13cdbe56f4c19907beb7e"
       },
       {
+        "path": "cordis.patch.yml",
+        "mode": "100644",
+        "oid": "ba72480ebc8f70e377b35b336b42338c32a3dcfe",
+        "size": 554,
+        "sha256": "eab3865657409014dc5e16ab8258201668b8807424479b179ce0d4a8c84172ee"
+      },
+      {
         "path": "demos/c1-ios-prototype-en.html",
         "mode": "100644",
         "oid": "df3a605ac96cf881f016e821e0f67b4fd07486f2",
@@ -3101,16 +3143,16 @@
       {
         "path": "package-lock.json",
         "mode": "100644",
-        "oid": "f72209ec95bc5ed12900d891eaf5dba7f497c35c",
-        "size": 28566,
-        "sha256": "0c334005bfe0da4ad5fa1ea805a1d99d3290f636add29faa861c841ddaac6a69"
+        "oid": "1c53cae7094c5fe51a51d7b2ed7f4ecb861ffa07",
+        "size": 9742,
+        "sha256": "aad7b61d8a0230e329d4f0d3c31b0cecac04a2bd369911002965f79a86b19a73"
       },
       {
         "path": "package.json",
         "mode": "100644",
-        "oid": "baadd4585c57c4aab62be54b0b37bdd7c4746a6b",
-        "size": 133,
-        "sha256": "144b28fbf3911f2969589bbddb3208bb02e98bfb33988723d33d3a724ad3b7d5"
+        "oid": "a0264d4393629172f7346042051c091ceed730ae",
+        "size": 891,
+        "sha256": "08ab79572e738532bec501a31241c854ad1810f001b6ae14e50d1bcd76f1a294"
       },
       {
         "path": "scripts/tests/fixtures/assets/logo.png",

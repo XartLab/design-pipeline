@@ -2,9 +2,9 @@
   "schema": "design-pipeline.iart-motion-skills-source.v1",
   "index": {
     "repository": "https://github.com/iart-ai/motion-skills",
-    "revision": "238dfc55aac123d4649be39adfe58c43193ca349",
+    "revision": "9b9ce041932da787cc856d4cdf23afb6cd13d4bf",
     "license": "MIT",
-    "reviewedAt": "2026-11-04"
+    "reviewedAt": "2026-11-16"
   },
   "excluded": [
     {
@@ -16,21 +16,21 @@
     {
       "id": "motion-skills",
       "repository": "https://github.com/iart-ai/motion-skills",
-      "revision": "238dfc55aac123d4649be39adfe58c43193ca349",
-      "gitTree": "0a4f498f554dd88330eab1ecb5605b66704e13e0",
-      "committedAt": "2026-10-25T22:18:32+08:00",
+      "revision": "9b9ce041932da787cc856d4cdf23afb6cd13d4bf",
+      "gitTree": "95b0c640e73965da9d21fe37fad7014218f0c3cb",
+      "committedAt": "2026-11-13T07:03:23-08:00",
       "license": "MIT",
       "family": "index",
       "activationDefault": "reference",
       "skillCount": 0,
-      "fileCount": 9
+      "fileCount": 10
     },
     {
       "id": "web-animation-skills",
       "repository": "https://github.com/iart-ai/web-animation-skills",
-      "revision": "b6dba3eb759726845a44163ff0bad70dd9e7fbb6",
-      "gitTree": "b3716d4c1f9da41c60f17c8018f5f9ff41baf284",
-      "committedAt": "2026-06-22T21:24:23+08:00",
+      "revision": "ed3a045192679b24d32090ee7a983871311ababd",
+      "gitTree": "5d61b1cc29f167112bfee5e2300325858c2d475c",
+      "committedAt": "2026-11-11T12:14:56-04:00",
       "license": "MIT",
       "family": "web-motion",
       "activationDefault": "automatic",
@@ -40,9 +40,9 @@
     {
       "id": "webgl-animation-skills",
       "repository": "https://github.com/iart-ai/webgl-animation-skills",
-      "revision": "50697d659fbf70152f48f9f8aadf1efe78bbdde1",
-      "gitTree": "be55aec884d7c76562ddaf59ee368c48c70acd84",
-      "committedAt": "2026-06-22T21:24:25+08:00",
+      "revision": "0041933813688c357804f7b13dcb85095c5a3210",
+      "gitTree": "d4665c7c8be3abc036f5db7e5f94cb8f34c91b20",
+      "committedAt": "2026-11-11T12:15:52-04:00",
       "license": "MIT",
       "family": "webgl",
       "activationDefault": "automatic",
@@ -52,9 +52,9 @@
     {
       "id": "motion-design-skills",
       "repository": "https://github.com/iart-ai/motion-design-skills",
-      "revision": "3c129f769d90a1328c209c386492333c9ac62312",
-      "gitTree": "82fc32426d562a5adddf503e2a58bdd8d11288a5",
-      "committedAt": "2026-06-22T21:24:16+08:00",
+      "revision": "b85e50c4cef5ff17aa2187a10d49d2dae9226c74",
+      "gitTree": "b44110ae320cb2cacdc2b874b2664677499041ae",
+      "committedAt": "2026-11-11T12:15:07-04:00",
       "license": "MIT",
       "family": "motion-design",
       "activationDefault": "automatic",
@@ -64,9 +64,9 @@
     {
       "id": "kinetic-typography-skills",
       "repository": "https://github.com/iart-ai/kinetic-typography-skills",
-      "revision": "fccc94bd325d824235ee9e715e65abde57b6513a",
-      "gitTree": "6fb27cc6ff3df15e127b9c69e01a1dd9f7dea159",
-      "committedAt": "2026-06-22T21:24:10+08:00",
+      "revision": "2b79c81230c6647a344844f9ed53b6fa07f3f1f9",
+      "gitTree": "fa8e141dc9cddb6e0555ef3614e23fbc0bff8b30",
+      "committedAt": "2026-11-11T12:15:17-04:00",
       "license": "MIT",
       "family": "web-motion",
       "activationDefault": "automatic",
@@ -76,9 +76,9 @@
     {
       "id": "data-animation-skills",
       "repository": "https://github.com/iart-ai/data-animation-skills",
-      "revision": "8ce2709c3992490251e8a991535b1945f01c6865",
-      "gitTree": "c29a617cb7b2b152a16337b1c9f892fb713e5db5",
-      "committedAt": "2026-06-22T21:24:02+08:00",
+      "revision": "6570c0c4fbc9daa8d7ac1f1163a890352344206b",
+      "gitTree": "bf38d15cf0aa5ec5a4e37ad89348a0dfa9fff58b",
+      "committedAt": "2026-11-11T12:14:03-04:00",
       "license": "MIT",
       "family": "motion-graphics",
       "activationDefault": "explicit",
@@ -88,9 +88,9 @@
     {
       "id": "tiktok-video-skills",
       "repository": "https://github.com/iart-ai/tiktok-video-skills",
-      "revision": "2a775336b5a638cbf8a61dbd785f9a1b649be016",
-      "gitTree": "61aae28da0a8adaaff22ad0bef62f3c2c5de6e05",
-      "committedAt": "2026-06-22T21:24:22+08:00",
+      "revision": "88e7152fc2710fa16852d013959cfd988a8adc8b",
+      "gitTree": "5595204a256cad2e887fd72c48c11e6d1d8cf672",
+      "committedAt": "2026-11-11T12:12:54-04:00",
       "license": "MIT",
       "family": "motion-graphics",
       "activationDefault": "explicit",
@@ -100,9 +100,9 @@
     {
       "id": "text-message-video-skills",
       "repository": "https://github.com/iart-ai/text-message-video-skills",
-      "revision": "3a800e1e9b9635fa196a07b0143c80f7e9648558",
-      "gitTree": "da64f7b71887bfe3c88ac36f95444dc331d9e800",
-      "committedAt": "2026-06-22T21:24:20+08:00",
+      "revision": "10ae6bb32e89519c904b8f7950479ff655f839aa",
+      "gitTree": "ef0fcdcc50dcb3a65ef78379edd63b8a77e79626",
+      "committedAt": "2026-11-11T12:13:11-04:00",
       "license": "MIT",
       "family": "motion-graphics",
       "activationDefault": "explicit",
@@ -112,9 +112,9 @@
     {
       "id": "youtube-video-skills",
       "repository": "https://github.com/iart-ai/youtube-video-skills",
-      "revision": "f3df381d65abe5078f5ed410bbc3ed72e7cb92bd",
-      "gitTree": "d20eeb9c6022206b94073b98cb7799ee90ea7918",
-      "committedAt": "2026-06-22T21:24:27+08:00",
+      "revision": "7838388571a3a6301bf5633e91941f9dfed0abfd",
+      "gitTree": "385c75534e19fbdc74cab36653871123fa021afe",
+      "committedAt": "2026-11-11T12:13:29-04:00",
       "license": "MIT",
       "family": "motion-graphics",
       "activationDefault": "explicit",
@@ -124,9 +124,9 @@
     {
       "id": "ecommerce-video-skills",
       "repository": "https://github.com/iart-ai/ecommerce-video-skills",
-      "revision": "2bd0dd19c9b2df5230f5d8f7453861b9681e49b4",
-      "gitTree": "4964058fd2886d1d3529ba5cb9b8123dadfa3cef",
-      "committedAt": "2026-06-22T21:24:04+08:00",
+      "revision": "a430fbbb7660783c421ad0a145bcc1c98d6f0b7b",
+      "gitTree": "c598d22b8b9d8727d317ce8ae4f63168ebdc342e",
+      "committedAt": "2026-11-11T12:13:42-04:00",
       "license": "MIT",
       "family": "motion-graphics",
       "activationDefault": "explicit",
@@ -136,9 +136,9 @@
     {
       "id": "ad-video-skills",
       "repository": "https://github.com/iart-ai/ad-video-skills",
-      "revision": "0de0f2a1c1f42a98103fc0ec436509276428372c",
-      "gitTree": "553d0cb2bc1132ab389c46713ecb2fac3e8a5b90",
-      "committedAt": "2026-06-22T21:23:58+08:00",
+      "revision": "cc8071678f4225ee7bdccc4506f2468722bb3515",
+      "gitTree": "d3860d8f1eea5ab662ca0161214f8d1535c75a4c",
+      "committedAt": "2026-11-11T12:13:51-04:00",
       "license": "MIT",
       "family": "motion-graphics",
       "activationDefault": "explicit",
@@ -148,9 +148,9 @@
     {
       "id": "explainer-video-skills",
       "repository": "https://github.com/iart-ai/explainer-video-skills",
-      "revision": "3e2d411b725d9a72939cf8e5eb81579e751373e7",
-      "gitTree": "4bd354428641721d0dc5ad27d074895752323ec0",
-      "committedAt": "2026-06-22T21:24:06+08:00",
+      "revision": "3c13a1bc360c08503f24f9c9a99fda6d3d35de56",
+      "gitTree": "06b49e435104d1bb905a22375d0cbfcaaccbed76",
+      "committedAt": "2026-11-11T12:14:11-04:00",
       "license": "MIT",
       "family": "motion-graphics",
       "activationDefault": "explicit",
@@ -160,9 +160,9 @@
     {
       "id": "map-animation-skills",
       "repository": "https://github.com/iart-ai/map-animation-skills",
-      "revision": "390ca98bbcf2ea88a430a69c0dcbf423e43d075d",
-      "gitTree": "4f6d546945e8c53be9a0904ab35270994a299b3c",
-      "committedAt": "2026-06-22T21:24:14+08:00",
+      "revision": "c8ef8463f5a4a8aa35ff0c6c17f42e52bbf588a5",
+      "gitTree": "a56326efa2f3f9cfe26777848f3ab72bb954d58e",
+      "committedAt": "2026-11-11T12:14:37-04:00",
       "license": "MIT",
       "family": "motion-graphics",
       "activationDefault": "explicit",
@@ -172,9 +172,9 @@
     {
       "id": "freelance-motion-skills",
       "repository": "https://github.com/iart-ai/freelance-motion-skills",
-      "revision": "d85c2b484693d0387333c778d9c95230fa1856ce",
-      "gitTree": "ca87cc8f6a7d8db8d29b2bbd9d315f674b9da6c7",
-      "committedAt": "2026-06-22T21:24:08+08:00",
+      "revision": "9f294eb6df73cde7e2dea235f42275df11a16466",
+      "gitTree": "035c02080452d6c26ffe2c14684d7e77dc137d46",
+      "committedAt": "2026-11-11T12:15:31-04:00",
       "license": "MIT",
       "family": "ops",
       "activationDefault": "explicit",
@@ -184,9 +184,9 @@
     {
       "id": "manim-skills",
       "repository": "https://github.com/iart-ai/manim-skills",
-      "revision": "a15833c44de5108a3ee68f178a1fca126aa7c6d8",
-      "gitTree": "91c6408abe2eff68733d3ec365e32a72f83f5317",
-      "committedAt": "2026-06-22T21:24:12+08:00",
+      "revision": "3e989cb044f6a6fed8c07b06dddade6e3463d7ac",
+      "gitTree": "446d550017153e93a876a0cb170d93284c23298f",
+      "committedAt": "2026-11-11T12:16:02-04:00",
       "license": "MIT",
       "family": "motion-graphics",
       "activationDefault": "explicit",
@@ -196,9 +196,9 @@
   ],
   "snapshot": {
     "root": "upstream",
-    "fileCount": 342,
-    "byteCount": 69878141,
-    "treeSha256": "2e4158ca0e38077098956c16eece1f3ea180f6f528b35b1a7d3cef83bf58904f",
+    "fileCount": 343,
+    "byteCount": 71384414,
+    "treeSha256": "e1201855e4a1b7e10380affeef07688912c3beada026704ce70e532b092fd5b4",
     "executableFiles": [
       "ad-video-skills/scripts/contact-sheet.sh",
       "ad-video-skills/scripts/probe-mp4.sh",
@@ -268,8 +268,8 @@
       {
         "path": "ad-video-skills/README.md",
         "mode": "100644",
-        "oid": "7053881d56db4d97d71ca4938871c3e2806862c9",
-        "size": 4625
+        "oid": "0104830b55ae563bbdbd8e8b11886b786f19e755",
+        "size": 5860
       },
       {
         "path": "ad-video-skills/scripts/contact-sheet.sh",
@@ -394,8 +394,8 @@
       {
         "path": "data-animation-skills/README.md",
         "mode": "100644",
-        "oid": "596da74e0f758985ac9a4cbc0431246dcd72d214",
-        "size": 4762
+        "oid": "824b2e9f96b7dfd6e802c72227ec83eefe9ea4a2",
+        "size": 6015
       },
       {
         "path": "data-animation-skills/scripts/contact-sheet.sh",
@@ -520,8 +520,8 @@
       {
         "path": "ecommerce-video-skills/README.md",
         "mode": "100644",
-        "oid": "dc13efb30d07023cdcca65a0817eec7d0a018306",
-        "size": 4800
+        "oid": "0d114044fc116910ee3f36717fea52f3e9f9f791",
+        "size": 6070
       },
       {
         "path": "ecommerce-video-skills/scripts/contact-sheet.sh",
@@ -658,8 +658,8 @@
       {
         "path": "explainer-video-skills/README.md",
         "mode": "100644",
-        "oid": "cfb5640c8f9c7acc74d91f55a2878a33dda1d1c0",
-        "size": 5039
+        "oid": "6b853f376a1a37cc61cb874511e09bcf24b8580e",
+        "size": 6292
       },
       {
         "path": "explainer-video-skills/scripts/contact-sheet.sh",
@@ -826,8 +826,8 @@
       {
         "path": "freelance-motion-skills/README.md",
         "mode": "100644",
-        "oid": "fda8fbb5c25c73dee0cf065d65b8acb847d85971",
-        "size": 5448
+        "oid": "9e4d9a2e9d6c6c04dc6c33de172da17525133a95",
+        "size": 6716
       },
       {
         "path": "freelance-motion-skills/scripts/contact-sheet.sh",
@@ -1042,8 +1042,8 @@
       {
         "path": "kinetic-typography-skills/README.md",
         "mode": "100644",
-        "oid": "3c4a8f2cf098800451ce9fc26fe4bdc7ee03d71c",
-        "size": 4431
+        "oid": "29ba41fabbfd2631c9dfb22d3231e94f12db6c14",
+        "size": 5731
       },
       {
         "path": "kinetic-typography-skills/scripts/contact-sheet.sh",
@@ -1120,8 +1120,8 @@
       {
         "path": "manim-skills/README.md",
         "mode": "100644",
-        "oid": "5e7223d666d238065b08a0a2b17e0318e33e56a6",
-        "size": 4511
+        "oid": "be1f70f87685c1a1dc6bf7d93777ba8648ee5dd6",
+        "size": 5758
       },
       {
         "path": "manim-skills/scripts/contact-sheet.sh",
@@ -1210,8 +1210,8 @@
       {
         "path": "map-animation-skills/README.md",
         "mode": "100644",
-        "oid": "b5a98bab29a27e1a3293d0d5ae924a87cafe60d9",
-        "size": 4614
+        "oid": "2076df291560e2784be1e5ef24bbcd45b1adfe21",
+        "size": 5883
       },
       {
         "path": "map-animation-skills/scripts/contact-sheet.sh",
@@ -1294,8 +1294,8 @@
       {
         "path": "motion-design-skills/README.md",
         "mode": "100644",
-        "oid": "3920e74ec59ff36d5ce9ba64f71c8915b3e1b8f9",
-        "size": 5499
+        "oid": "006b7f64881cf78c0a224424a06a8f9047c678cb",
+        "size": 6761
       },
       {
         "path": "motion-design-skills/scripts/contact-sheet.sh",
@@ -1556,6 +1556,12 @@
         "size": 12995
       },
       {
+        "path": "motion-skills/iart-showcase.gif",
+        "mode": "100644",
+        "oid": "5dd86185a314d46eb0dd8b9f443280e11ff7dda6",
+        "size": 1486631
+      },
+      {
         "path": "motion-skills/LICENSE",
         "mode": "100644",
         "oid": "a61b911146037f2ef312f67e9b45de6c99b7f870",
@@ -1564,8 +1570,8 @@
       {
         "path": "motion-skills/README.md",
         "mode": "100644",
-        "oid": "b90b4cd33849477623ef59f21fd34db6b2832b67",
-        "size": 5827
+        "oid": "3c2554af383b23c66625b81b9b3ad3c2d153d4db",
+        "size": 7748
       },
       {
         "path": "motion-skills/showcase.gif",
@@ -1630,8 +1636,8 @@
       {
         "path": "text-message-video-skills/README.md",
         "mode": "100644",
-        "oid": "4dbb828276f728080cbb60d19d988055ce01cfcc",
-        "size": 4542
+        "oid": "dc3afbdc95417e9fa6f3777b5e6aead6f60afc3c",
+        "size": 5847
       },
       {
         "path": "text-message-video-skills/scripts/contact-sheet.sh",
@@ -1714,8 +1720,8 @@
       {
         "path": "tiktok-video-skills/README.md",
         "mode": "100644",
-        "oid": "497e38b893d9a9235977d575d0125f39e1c4c3d9",
-        "size": 5005
+        "oid": "a429ce7c39729cb96ae87d5c07d0cbf78124a87d",
+        "size": 6265
       },
       {
         "path": "tiktok-video-skills/scripts/contact-sheet.sh",
@@ -1852,8 +1858,8 @@
       {
         "path": "web-animation-skills/README.md",
         "mode": "100644",
-        "oid": "90bd1872c3406a6ba6a641c7ffc72715665f882a",
-        "size": 5568
+        "oid": "0f7725c4d929044ca05ca93b4b0747fae2e85c26",
+        "size": 6822
       },
       {
         "path": "web-animation-skills/scripts/contact-sheet.sh",
@@ -2104,8 +2110,8 @@
       {
         "path": "webgl-animation-skills/README.md",
         "mode": "100644",
-        "oid": "b58867c8c1b7cb88b4d441ed2180646a9792cc97",
-        "size": 4730
+        "oid": "598bd65238686c50392933bff19b3c8ad73c1ab7",
+        "size": 6013
       },
       {
         "path": "webgl-animation-skills/scripts/contact-sheet.sh",
@@ -2224,8 +2230,8 @@
       {
         "path": "youtube-video-skills/README.md",
         "mode": "100644",
-        "oid": "725cf2f385ce0e64b3d007843ffbf4df7960b771",
-        "size": 4527
+        "oid": "1027bb266d62f1f055b33d47ea3b75e567cd1c0d",
+        "size": 5789
       },
       {
         "path": "youtube-video-skills/scripts/contact-sheet.sh",

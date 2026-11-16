@@ -3,11 +3,11 @@
   "name": "playwright-cli",
   "source": {
     "repository": "https://github.com/microsoft/playwright-cli",
-    "revision": "db2a0fad3a768319a16e3a2bb8078cf62e690b07",
-    "gitTree": "de743b8ce92d494d70f7eb51664571a48d72cadb",
-    "committedAt": "2026-11-03T09:14:04-08:00",
+    "revision": "b21724888b8100b05ef8dee3a92f2bb03bf4dcde",
+    "gitTree": "a6bc3cf715c87968f1388aa95e260178b6317538",
+    "committedAt": "2026-11-11T09:10:41-08:00",
     "license": "Apache-2.0",
-    "reviewedAt": "2026-11-04",
+    "reviewedAt": "2026-11-16",
     "scope": [
       "skills/playwright-cli/**",
       "LICENSE",
@@ -26,8 +26,8 @@
   "snapshot": {
     "root": "upstream",
     "fileCount": 13,
-    "byteCount": 107353,
-    "treeSha256": "b09d73b7064556c4db737afa8b126bf7b47cf215f4dc9c48c346851fb7b53e29",
+    "byteCount": 107652,
+    "treeSha256": "ff209240e8bdb86497f45e233a388697e96705bee9a99dafb077d8076ad3aa02",
     "executableFiles": [],
     "objects": [
       {
@@ -40,9 +40,9 @@
       {
         "path": "README.md",
         "mode": "100644",
-        "oid": "ed86206ae4176692b9f17c10b53f668fff2b84d5",
-        "size": 26504,
-        "sha256": "0ebce0d1585577c7fd370f6e5f47133500f5d2f0871a4201519d11706f803746"
+        "oid": "04b674f08c24689838377d6240a378feb459028a",
+        "size": 26748,
+        "sha256": "16e0492acdac439e94e6483e32080c8374dc5aa1619b849dfa07f4668daf22b0"
       },
       {
         "path": "skills/playwright-cli/references/element-attributes.md",
@@ -75,9 +75,9 @@
       {
         "path": "skills/playwright-cli/references/running-code.md",
         "mode": "100644",
-        "oid": "5bf7e8cfb52112da2ecd9600631fa8365fbb90f1",
-        "size": 5913,
-        "sha256": "3029569ed6ddaeffc0b87badde967efdc2973b1677f078830098146eb3b78ebe"
+        "oid": "565eefdb584a6e904ceb86701fd789977840a6d4",
+        "size": 5968,
+        "sha256": "eac97e0b77e723f8b1d7b64f276f92efa72f74453f45a805352d27ea1853a495"
       },
       {
         "path": "skills/playwright-cli/references/session-management.md",

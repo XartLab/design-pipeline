@@ -314,7 +314,7 @@ file is vendored or copied. Their rules follow
 `scripts/verify_reduced_motion.mjs` (render twice, content lost under reduce, motion still running)
 and `scripts/verify_states.mjs` (contrast per interaction state; MIT) for motion and states.
 Revisions read: hallmark `4f6a46c6dc325d40ab268c93e25c7b96676ebccd`, impeccable
-`b4bff1626c344067788c2679f048a20057c7cc5a`, ux-ui-agent-skills
+`d41d9860b0094dcb68030657da63461212835aaa`, ux-ui-agent-skills
 `def84a70fadc3490d80901295a4f1951fdb2cc69`. Changes from them: the state pass forces pseudo-classes
 through the DevTools protocol instead of focusing one element at a time, only text a state changes
 is measured again, the browser's `outline-style: auto` ring counts as an indicator, and reduced

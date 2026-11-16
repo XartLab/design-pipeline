@@ -3,11 +3,11 @@
   "name": "shadcn",
   "source": {
     "repository": "https://github.com/shadcn-ui/ui",
-    "revision": "4aaea19d9cff3e0908e12a8c1d504b8c5ec34610",
-    "gitTree": "8a97d119a36489d039c9aa3fe9a63d6de1c9e7b3",
-    "committedAt": "2026-11-02T11:02:07+04:00",
+    "revision": "e62c9435fff729a175f38983dee73b2cb4f6a069",
+    "gitTree": "ccbbd6a19bf45140b4062868cc2ed9a635150d67",
+    "committedAt": "2026-11-13T14:57:41+04:00",
     "license": "MIT",
-    "reviewedAt": "2026-11-04",
+    "reviewedAt": "2026-11-16",
     "scope": [
       "skills/shadcn/**",
       "LICENSE.md"

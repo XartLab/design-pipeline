@@ -7,12 +7,12 @@
       "id": "animate-ui",
       "kind": "adapted-reference",
       "repo": "https://github.com/imskyleen/animate-ui",
-      "revision": "22a9236ae107328f8564edb7e3299375da3247af",
-      "reviewedAt": "2026-11-12",
+      "revision": "9873c628afdcdb030e74dc2930774a2aa473bd39",
+      "reviewedAt": "2026-11-16",
       "documents": [
         "skill/references/animate-ui.md"
       ],
-      "committedAt": "2026-11-09T10:02:56+01:00"
+      "committedAt": "2026-11-15T18:10:13+01:00"
     },
     {
       "id": "animejs",
@@ -54,9 +54,9 @@
       "id": "anthropic-skills",
       "kind": "catalog-reference",
       "repo": "https://github.com/anthropics/skills",
-      "revision": "ca45fc496a3436251f191354091d557da31c15b5",
-      "reviewedAt": "2026-11-03",
-      "committedAt": "2026-10-28T12:20:38-07:00"
+      "revision": "1780c5e5a552fd4d1c9d6a7b0cab26b0c2bef064",
+      "reviewedAt": "2026-11-16",
+      "committedAt": "2026-11-14T07:16:42-08:00"
     },
     {
       "id": "arknights-printer",
@@ -165,17 +165,17 @@
       "id": "design-direction-library",
       "kind": "fetched-on-demand",
       "repo": "https://github.com/alchaincyf/huashu-design",
-      "revision": "9b01ee8751679724dd43d855a532944aaa2c2b59",
-      "reviewedAt": "2026-11-04",
+      "revision": "e8d1148a80d5a281d4247cffe320add3df017928",
+      "reviewedAt": "2026-11-16",
       "bundle": "design-direction-library",
       "importer": [
         "scripts/import-design-direction-library.cjs",
         "--source",
         "{source}"
       ],
-      "committedAt": "2026-10-31T02:50:57+09:00",
-      "treeSha256": "ce60b19a7016ab62ec204c8a6c66c8a5684cd18ce1ee5239491e4f1c202824f5",
-      "fetchedTreeSha256": "d569e575d65729e9c18cecbb6bea60c02558138b41d966756373ad87780a9821"
+      "committedAt": "2026-11-09T14:15:18-10:00",
+      "treeSha256": "afb87b15aee6825b831f0ed3730b743319fb1094bd61d214d99b94d2510587fc",
+      "fetchedTreeSha256": "a4720ca4170a8ce016286609e01cb39723f36de2da9188b0e1fa0e3b514a95b2"
     },
     {
       "id": "design-md",
@@ -196,8 +196,8 @@
       "id": "emil-design-eng",
       "kind": "vendored",
       "repo": "https://github.com/emilkowalski/skills",
-      "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
-      "reviewedAt": "2026-11-04",
+      "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
+      "reviewedAt": "2026-11-16",
       "bundle": "emil-design-eng",
       "importer": [
         "scripts/import-ui-craft-sources.cjs",
@@ -206,15 +206,15 @@
         "--source",
         "{source}"
       ],
-      "committedAt": "2026-11-02T10:21:52+01:00",
-      "treeSha256": "6a117e5bda9e135fb4b68b407fc49dbac2705a1fd52cac5445e2004932c5d258"
+      "committedAt": "2026-11-15T13:42:50+01:00",
+      "treeSha256": "995d1bcbd460b91fc56e9674e401dab0201384a294791d5d09c1006a99f48623"
     },
     {
       "id": "emilkowalski-animation-review",
       "kind": "adapted-reference",
       "repo": "https://github.com/emilkowalski/skills",
-      "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
-      "reviewedAt": "2026-11-04",
+      "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
+      "reviewedAt": "2026-11-16",
       "documents": [
         "skill/references/animation-opportunity-and-review.md",
         "skill/references/motion-vocabulary.md"
@@ -223,7 +223,7 @@
         "emilkowalski-animation-review",
         "motion-review-skill-contracts"
       ],
-      "committedAt": "2026-11-02T10:21:52+01:00"
+      "committedAt": "2026-11-15T13:42:50+01:00"
     },
     {
       "id": "ff-tracking",
@@ -246,8 +246,8 @@
       "id": "fixing-accessibility",
       "kind": "vendored",
       "repo": "https://github.com/ibelick/ui-skills",
-      "revision": "73fb128d046d1f0d74c2909cd26eb616e3415567",
-      "reviewedAt": "2026-11-04",
+      "revision": "65cc0edb4f64fe8bfe7e9c59466074de25bece76",
+      "reviewedAt": "2026-11-16",
       "bundle": "fixing-accessibility",
       "importer": [
         "scripts/import-ui-craft-sources.cjs",
@@ -256,7 +256,7 @@
         "--source",
         "{source}"
       ],
-      "committedAt": "2026-11-03T07:54:32+01:00",
+      "committedAt": "2026-11-14T09:35:11+01:00",
       "treeSha256": "bc4375b2fce2417ccf354e00b08cc7365e7bd11cd3ce6b5d501ff82a7d15fcd4"
     },
     {
@@ -275,39 +275,39 @@
       "id": "frog",
       "kind": "catalog-reference",
       "repo": "https://github.com/wevm/frog",
-      "revision": "cbe18b192b59a8770466ee9f193b17294778c8a9",
-      "reviewedAt": "2026-11-04",
-      "committedAt": "2026-10-31T13:05:32-04:00"
+      "revision": "ec05812cf8b7090dcfd2827c630bf85aea44d734",
+      "reviewedAt": "2026-11-16",
+      "committedAt": "2026-11-09T12:57:59-05:00"
     },
     {
       "id": "gepa",
       "kind": "vendored",
       "repo": "https://github.com/gepa-ai/gepa",
-      "revision": "8c7b697a71977980afc7537dac0881e784eef99f",
-      "reviewedAt": "2026-11-04",
+      "revision": "ce5b0d6e3d6af6c6dbec6de2c54536bbb961d309",
+      "reviewedAt": "2026-11-16",
       "bundle": "gepa",
       "importer": [
         "scripts/import-gepa.cjs",
         "--source",
         "{source}"
       ],
-      "committedAt": "2026-10-31T12:40:38-07:00",
-      "treeSha256": "6d549f5cbb4eac9ed00ae5fa618d0e51a8cc617b930313d05f71b4b019fc1e78"
+      "committedAt": "2026-11-09T01:07:36-08:00",
+      "treeSha256": "f73e24bca27d820714bbe34ed1f3942cdfd40ba1d4cb0fd8873bcf68e0d1702f"
     },
     {
       "id": "good-css",
       "kind": "vendored",
       "repo": "https://github.com/vojtaholik/good-css",
-      "revision": "a6804e75b5ee946d6b007ac20734f958d7938bca",
-      "reviewedAt": "2026-11-04",
+      "revision": "35e0e8c673854ca34d8e1879038e44834c855dfb",
+      "reviewedAt": "2026-11-16",
       "bundle": "good-css",
       "importer": [
         "scripts/import-good-css.cjs",
         "--source",
         "{source}"
       ],
-      "committedAt": "2026-11-03T19:56:34+01:00",
-      "treeSha256": "bfe7189dd6f562e34e24e34b6869b95ca507ea1a8da38ccca938821b4571c430",
+      "committedAt": "2026-11-05T10:11:04+01:00",
+      "treeSha256": "c31628f811e7c8e1868c6c15078212857f6a33dc25a8614c6fdf0fabf62d1efd",
       "profiles": [
         "good-css"
       ]
@@ -455,8 +455,8 @@
       "id": "hyperframes-maintenance",
       "kind": "npm",
       "package": "hyperframes",
-      "version": "0.9.15",
-      "reviewedAt": "2026-11-05",
+      "version": "0.9.56",
+      "reviewedAt": "2026-11-16",
       "note": "The golden-case workspace and browser:install use this copy; the version scaffolded into target projects is the hyperframes entry.",
       "sites": [
         {
@@ -473,9 +473,9 @@
       "id": "iart-ad-video-skills",
       "kind": "fetched-on-demand",
       "repo": "https://github.com/iart-ai/ad-video-skills",
-      "revision": "0de0f2a1c1f42a98103fc0ec436509276428372c",
-      "committedAt": "2026-06-22T21:23:58+08:00",
-      "reviewedAt": "2026-11-04",
+      "revision": "cc8071678f4225ee7bdccc4506f2468722bb3515",
+      "committedAt": "2026-11-11T12:13:51-04:00",
+      "reviewedAt": "2026-11-16",
       "bundle": "iart-motion-skills",
       "importer": [
         "scripts/import-iart-motion-skills.cjs",
@@ -483,15 +483,15 @@
         "{sourceRoot}"
       ],
       "notice": "manifest",
-      "treeSha256": "2e4158ca0e38077098956c16eece1f3ea180f6f528b35b1a7d3cef83bf58904f"
+      "treeSha256": "e1201855e4a1b7e10380affeef07688912c3beada026704ce70e532b092fd5b4"
     },
     {
       "id": "iart-data-animation-skills",
       "kind": "fetched-on-demand",
       "repo": "https://github.com/iart-ai/data-animation-skills",
-      "revision": "8ce2709c3992490251e8a991535b1945f01c6865",
-      "committedAt": "2026-06-22T21:24:02+08:00",
-      "reviewedAt": "2026-11-04",
+      "revision": "6570c0c4fbc9daa8d7ac1f1163a890352344206b",
+      "committedAt": "2026-11-11T12:14:03-04:00",
+      "reviewedAt": "2026-11-16",
       "bundle": "iart-motion-skills",
       "importer": [
         "scripts/import-iart-motion-skills.cjs",
@@ -499,15 +499,15 @@
         "{sourceRoot}"
       ],
       "notice": "manifest",
-      "treeSha256": "2e4158ca0e38077098956c16eece1f3ea180f6f528b35b1a7d3cef83bf58904f"
+      "treeSha256": "e1201855e4a1b7e10380affeef07688912c3beada026704ce70e532b092fd5b4"
     },
     {
       "id": "iart-ecommerce-video-skills",
       "kind": "fetched-on-demand",
       "repo": "https://github.com/iart-ai/ecommerce-video-skills",
-      "revision": "2bd0dd19c9b2df5230f5d8f7453861b9681e49b4",
-      "committedAt": "2026-06-22T21:24:04+08:00",
-      "reviewedAt": "2026-11-04",
+      "revision": "a430fbbb7660783c421ad0a145bcc1c98d6f0b7b",
+      "committedAt": "2026-11-11T12:13:42-04:00",
+      "reviewedAt": "2026-11-16",
       "bundle": "iart-motion-skills",
       "importer": [
         "scripts/import-iart-motion-skills.cjs",
@@ -515,15 +515,15 @@
         "{sourceRoot}"
       ],
       "notice": "manifest",
-      "treeSha256": "2e4158ca0e38077098956c16eece1f3ea180f6f528b35b1a7d3cef83bf58904f"
+      "treeSha256": "e1201855e4a1b7e10380affeef07688912c3beada026704ce70e532b092fd5b4"
     },
     {
       "id": "iart-explainer-video-skills",
       "kind": "fetched-on-demand",
       "repo": "https://github.com/iart-ai/explainer-video-skills",
-      "revision": "3e2d411b725d9a72939cf8e5eb81579e751373e7",
-      "committedAt": "2026-06-22T21:24:06+08:00",
-      "reviewedAt": "2026-11-04",
+      "revision": "3c13a1bc360c08503f24f9c9a99fda6d3d35de56",
+      "committedAt": "2026-11-11T12:14:11-04:00",
+      "reviewedAt": "2026-11-16",
       "bundle": "iart-motion-skills",
       "importer": [
         "scripts/import-iart-motion-skills.cjs",
@@ -531,15 +531,15 @@
         "{sourceRoot}"
       ],
       "notice": "manifest",
-      "treeSha256": "2e4158ca0e38077098956c16eece1f3ea180f6f528b35b1a7d3cef83bf58904f"
+      "treeSha256": "e1201855e4a1b7e10380affeef07688912c3beada026704ce70e532b092fd5b4"
     },
     {
       "id": "iart-freelance-motion-skills",
       "kind": "fetched-on-demand",
       "repo": "https://github.com/iart-ai/freelance-motion-skills",
-      "revision": "d85c2b484693d0387333c778d9c95230fa1856ce",
-      "committedAt": "2026-06-22T21:24:08+08:00",
-      "reviewedAt": "2026-11-04",
+      "revision": "9f294eb6df73cde7e2dea235f42275df11a16466",
+      "committedAt": "2026-11-11T12:15:31-04:00",
+      "reviewedAt": "2026-11-16",
       "bundle": "iart-motion-skills",
       "importer": [
         "scripts/import-iart-motion-skills.cjs",
@@ -547,7 +547,7 @@
         "{sourceRoot}"
       ],
       "notice": "manifest",
-      "treeSha256": "2e4158ca0e38077098956c16eece1f3ea180f6f528b35b1a7d3cef83bf58904f"
+      "treeSha256": "e1201855e4a1b7e10380affeef07688912c3beada026704ce70e532b092fd5b4"
     },
     {
       "id": "iart-generative-illustration-skills",
@@ -569,9 +569,9 @@
       "id": "iart-kinetic-typography-skills",
       "kind": "fetched-on-demand",
       "repo": "https://github.com/iart-ai/kinetic-typography-skills",
-      "revision": "fccc94bd325d824235ee9e715e65abde57b6513a",
-      "committedAt": "2026-06-22T21:24:10+08:00",
-      "reviewedAt": "2026-11-04",
+      "revision": "2b79c81230c6647a344844f9ed53b6fa07f3f1f9",
+      "committedAt": "2026-11-11T12:15:17-04:00",
+      "reviewedAt": "2026-11-16",
       "bundle": "iart-motion-skills",
       "importer": [
         "scripts/import-iart-motion-skills.cjs",
@@ -579,15 +579,15 @@
         "{sourceRoot}"
       ],
       "notice": "manifest",
-      "treeSha256": "2e4158ca0e38077098956c16eece1f3ea180f6f528b35b1a7d3cef83bf58904f"
+      "treeSha256": "e1201855e4a1b7e10380affeef07688912c3beada026704ce70e532b092fd5b4"
     },
     {
       "id": "iart-manim-skills",
       "kind": "fetched-on-demand",
       "repo": "https://github.com/iart-ai/manim-skills",
-      "revision": "a15833c44de5108a3ee68f178a1fca126aa7c6d8",
-      "committedAt": "2026-06-22T21:24:12+08:00",
-      "reviewedAt": "2026-11-04",
+      "revision": "3e989cb044f6a6fed8c07b06dddade6e3463d7ac",
+      "committedAt": "2026-11-11T12:16:02-04:00",
+      "reviewedAt": "2026-11-16",
       "bundle": "iart-motion-skills",
       "importer": [
         "scripts/import-iart-motion-skills.cjs",
@@ -595,15 +595,15 @@
         "{sourceRoot}"
       ],
       "notice": "manifest",
-      "treeSha256": "2e4158ca0e38077098956c16eece1f3ea180f6f528b35b1a7d3cef83bf58904f"
+      "treeSha256": "e1201855e4a1b7e10380affeef07688912c3beada026704ce70e532b092fd5b4"
     },
     {
       "id": "iart-map-animation-skills",
       "kind": "fetched-on-demand",
       "repo": "https://github.com/iart-ai/map-animation-skills",
-      "revision": "390ca98bbcf2ea88a430a69c0dcbf423e43d075d",
-      "committedAt": "2026-06-22T21:24:14+08:00",
-      "reviewedAt": "2026-11-04",
+      "revision": "c8ef8463f5a4a8aa35ff0c6c17f42e52bbf588a5",
+      "committedAt": "2026-11-11T12:14:37-04:00",
+      "reviewedAt": "2026-11-16",
       "bundle": "iart-motion-skills",
       "importer": [
         "scripts/import-iart-motion-skills.cjs",
@@ -611,15 +611,15 @@
         "{sourceRoot}"
       ],
       "notice": "manifest",
-      "treeSha256": "2e4158ca0e38077098956c16eece1f3ea180f6f528b35b1a7d3cef83bf58904f"
+      "treeSha256": "e1201855e4a1b7e10380affeef07688912c3beada026704ce70e532b092fd5b4"
     },
     {
       "id": "iart-motion-design-skills",
       "kind": "fetched-on-demand",
       "repo": "https://github.com/iart-ai/motion-design-skills",
-      "revision": "3c129f769d90a1328c209c386492333c9ac62312",
-      "committedAt": "2026-06-22T21:24:16+08:00",
-      "reviewedAt": "2026-11-04",
+      "revision": "b85e50c4cef5ff17aa2187a10d49d2dae9226c74",
+      "committedAt": "2026-11-11T12:15:07-04:00",
+      "reviewedAt": "2026-11-16",
       "bundle": "iart-motion-skills",
       "importer": [
         "scripts/import-iart-motion-skills.cjs",
@@ -627,30 +627,30 @@
         "{sourceRoot}"
       ],
       "notice": "manifest",
-      "treeSha256": "2e4158ca0e38077098956c16eece1f3ea180f6f528b35b1a7d3cef83bf58904f"
+      "treeSha256": "e1201855e4a1b7e10380affeef07688912c3beada026704ce70e532b092fd5b4"
     },
     {
       "id": "iart-motion-skills",
       "kind": "fetched-on-demand",
       "repo": "https://github.com/iart-ai/motion-skills",
-      "revision": "238dfc55aac123d4649be39adfe58c43193ca349",
-      "committedAt": "2026-10-25T22:18:32+08:00",
-      "reviewedAt": "2026-11-04",
+      "revision": "9b9ce041932da787cc856d4cdf23afb6cd13d4bf",
+      "committedAt": "2026-11-13T07:03:23-08:00",
+      "reviewedAt": "2026-11-16",
       "bundle": "iart-motion-skills",
       "importer": [
         "scripts/import-iart-motion-skills.cjs",
         "--source-root",
         "{sourceRoot}"
       ],
-      "treeSha256": "2e4158ca0e38077098956c16eece1f3ea180f6f528b35b1a7d3cef83bf58904f"
+      "treeSha256": "e1201855e4a1b7e10380affeef07688912c3beada026704ce70e532b092fd5b4"
     },
     {
       "id": "iart-text-message-video-skills",
       "kind": "fetched-on-demand",
       "repo": "https://github.com/iart-ai/text-message-video-skills",
-      "revision": "3a800e1e9b9635fa196a07b0143c80f7e9648558",
-      "committedAt": "2026-06-22T21:24:20+08:00",
-      "reviewedAt": "2026-11-04",
+      "revision": "10ae6bb32e89519c904b8f7950479ff655f839aa",
+      "committedAt": "2026-11-11T12:13:11-04:00",
+      "reviewedAt": "2026-11-16",
       "bundle": "iart-motion-skills",
       "importer": [
         "scripts/import-iart-motion-skills.cjs",
@@ -658,15 +658,15 @@
         "{sourceRoot}"
       ],
       "notice": "manifest",
-      "treeSha256": "2e4158ca0e38077098956c16eece1f3ea180f6f528b35b1a7d3cef83bf58904f"
+      "treeSha256": "e1201855e4a1b7e10380affeef07688912c3beada026704ce70e532b092fd5b4"
     },
     {
       "id": "iart-tiktok-video-skills",
       "kind": "fetched-on-demand",
       "repo": "https://github.com/iart-ai/tiktok-video-skills",
-      "revision": "2a775336b5a638cbf8a61dbd785f9a1b649be016",
-      "committedAt": "2026-06-22T21:24:22+08:00",
-      "reviewedAt": "2026-11-04",
+      "revision": "88e7152fc2710fa16852d013959cfd988a8adc8b",
+      "committedAt": "2026-11-11T12:12:54-04:00",
+      "reviewedAt": "2026-11-16",
       "bundle": "iart-motion-skills",
       "importer": [
         "scripts/import-iart-motion-skills.cjs",
@@ -674,15 +674,15 @@
         "{sourceRoot}"
       ],
       "notice": "manifest",
-      "treeSha256": "2e4158ca0e38077098956c16eece1f3ea180f6f528b35b1a7d3cef83bf58904f"
+      "treeSha256": "e1201855e4a1b7e10380affeef07688912c3beada026704ce70e532b092fd5b4"
     },
     {
       "id": "iart-web-animation-skills",
       "kind": "fetched-on-demand",
       "repo": "https://github.com/iart-ai/web-animation-skills",
-      "revision": "b6dba3eb759726845a44163ff0bad70dd9e7fbb6",
-      "committedAt": "2026-06-22T21:24:23+08:00",
-      "reviewedAt": "2026-11-04",
+      "revision": "ed3a045192679b24d32090ee7a983871311ababd",
+      "committedAt": "2026-11-11T12:14:56-04:00",
+      "reviewedAt": "2026-11-16",
       "bundle": "iart-motion-skills",
       "importer": [
         "scripts/import-iart-motion-skills.cjs",
@@ -690,15 +690,15 @@
         "{sourceRoot}"
       ],
       "notice": "manifest",
-      "treeSha256": "2e4158ca0e38077098956c16eece1f3ea180f6f528b35b1a7d3cef83bf58904f"
+      "treeSha256": "e1201855e4a1b7e10380affeef07688912c3beada026704ce70e532b092fd5b4"
     },
     {
       "id": "iart-webgl-animation-skills",
       "kind": "fetched-on-demand",
       "repo": "https://github.com/iart-ai/webgl-animation-skills",
-      "revision": "50697d659fbf70152f48f9f8aadf1efe78bbdde1",
-      "committedAt": "2026-06-22T21:24:25+08:00",
-      "reviewedAt": "2026-11-04",
+      "revision": "0041933813688c357804f7b13dcb85095c5a3210",
+      "committedAt": "2026-11-11T12:15:52-04:00",
+      "reviewedAt": "2026-11-16",
       "bundle": "iart-motion-skills",
       "importer": [
         "scripts/import-iart-motion-skills.cjs",
@@ -706,15 +706,15 @@
         "{sourceRoot}"
       ],
       "notice": "manifest",
-      "treeSha256": "2e4158ca0e38077098956c16eece1f3ea180f6f528b35b1a7d3cef83bf58904f"
+      "treeSha256": "e1201855e4a1b7e10380affeef07688912c3beada026704ce70e532b092fd5b4"
     },
     {
       "id": "iart-youtube-video-skills",
       "kind": "fetched-on-demand",
       "repo": "https://github.com/iart-ai/youtube-video-skills",
-      "revision": "f3df381d65abe5078f5ed410bbc3ed72e7cb92bd",
-      "committedAt": "2026-06-22T21:24:27+08:00",
-      "reviewedAt": "2026-11-04",
+      "revision": "7838388571a3a6301bf5633e91941f9dfed0abfd",
+      "committedAt": "2026-11-11T12:13:29-04:00",
+      "reviewedAt": "2026-11-16",
       "bundle": "iart-motion-skills",
       "importer": [
         "scripts/import-iart-motion-skills.cjs",
@@ -722,26 +722,26 @@
         "{sourceRoot}"
       ],
       "notice": "manifest",
-      "treeSha256": "2e4158ca0e38077098956c16eece1f3ea180f6f528b35b1a7d3cef83bf58904f"
+      "treeSha256": "e1201855e4a1b7e10380affeef07688912c3beada026704ce70e532b092fd5b4"
     },
     {
       "id": "ibelick-ui-skills-rules",
       "kind": "adapted-reference",
       "repo": "https://github.com/ibelick/ui-skills",
-      "revision": "73fb128d046d1f0d74c2909cd26eb616e3415567",
-      "reviewedAt": "2026-11-11",
+      "revision": "65cc0edb4f64fe8bfe7e9c59466074de25bece76",
+      "reviewedAt": "2026-11-16",
       "documents": [
         "skill/references/ibelick-ui-skills.md"
       ],
-      "committedAt": "2026-11-03T07:54:32+01:00"
+      "committedAt": "2026-11-14T09:35:11+01:00"
     },
     {
       "id": "impeccable",
       "kind": "catalog-reference",
       "repo": "https://github.com/pbakaus/impeccable",
-      "revision": "b4bff1626c344067788c2679f048a20057c7cc5a",
-      "reviewedAt": "2026-11-12",
-      "committedAt": "2026-11-11T11:28:26-08:00",
+      "revision": "d41d9860b0094dcb68030657da63461212835aaa",
+      "reviewedAt": "2026-11-16",
+      "committedAt": "2026-11-16T00:41:50+00:00",
       "profiles": [
         "impeccable-skill-v4"
       ]
@@ -796,24 +796,24 @@
       "id": "mattpocock-skills",
       "kind": "catalog-reference",
       "repo": "https://github.com/mattpocock/skills",
-      "revision": "4ae2317ddb22b046e26455e4f9c9b3aaaf62212d",
-      "reviewedAt": "2026-11-04",
-      "committedAt": "2026-10-31T14:23:30+00:00"
+      "revision": "5863806dd4e15c63174bee4e7515a4256792ecfa",
+      "reviewedAt": "2026-11-16",
+      "committedAt": "2026-11-12T08:42:38+00:00"
     },
     {
       "id": "mengto-skills",
       "kind": "fetched-on-demand",
       "repo": "https://github.com/MengTo/skills",
-      "revision": "1de14e21b2ba8937c0f7f6ddca581cf7cd9d94af",
-      "reviewedAt": "2026-11-04",
+      "revision": "3cc93458c4949c39a04e938ea7892a1d6d3d40bf",
+      "reviewedAt": "2026-11-16",
       "bundle": "mengto-skills",
       "importer": [
         "scripts/import-mengto-skills.cjs",
         "--source",
         "{source}"
       ],
-      "committedAt": "2026-11-03T14:26:41+08:00",
-      "treeSha256": "086de3eb7cece47628c80571a7f7184b0d6eab19a20ba8227196823e19cd01d5",
+      "committedAt": "2026-11-14T17:17:36+08:00",
+      "treeSha256": "0370811f828b237ff1f1a73ae426157d401b534059ed9e883dacd426f67e96b2",
       "derive": [
         "scripts/project-mengto-catalog.cjs"
       ]
@@ -822,42 +822,42 @@
       "id": "millionco-react-doctor",
       "kind": "adapted-reference",
       "repo": "https://github.com/millionco/react-doctor",
-      "revision": "9791c32f61fb1477a4f8dd596ff80184ad26b2e3",
-      "reviewedAt": "2026-11-04",
+      "revision": "661cb187fbfe4e992acc89f76933e4f51244639f",
+      "reviewedAt": "2026-11-16",
       "documents": [
         "skill/references/react-doctor.md"
       ],
-      "committedAt": "2026-11-01T18:39:39-08:00"
+      "committedAt": "2026-11-14T07:07:38-08:00"
     },
     {
       "id": "motion",
       "kind": "catalog-reference",
       "repo": "https://github.com/motiondivision/motion",
-      "revision": "7415b6cd14dfdb35d91dfc5b9758994444cc228b",
-      "reviewedAt": "2026-11-04",
-      "committedAt": "2026-10-30T11:22:53+01:00"
+      "revision": "f95ab9418d9524b906c8681994b95d15cb03d5fc",
+      "reviewedAt": "2026-11-16",
+      "committedAt": "2026-11-13T15:40:04+01:00"
     },
     {
       "id": "motion-web-reference-skill",
       "kind": "adapted-reference",
       "repo": "https://github.com/feitangyuan/motion-web",
-      "revision": "5f4e40f1253e11e28850d08dce28b9b7e4320115",
-      "reviewedAt": "2026-11-04",
+      "revision": "536ef6551530ff0c6b091e2b7786d3ecc21f26fa",
+      "reviewedAt": "2026-11-16",
       "documents": [
         "skill/references/reference-skill-motion-web.md"
       ],
-      "committedAt": "2026-09-15T06:11:33-07:00"
+      "committedAt": "2026-11-04T19:55:03-08:00"
     },
     {
       "id": "onetake-reference-skill",
       "kind": "adapted-reference",
       "repo": "https://github.com/feitangyuan/onetake",
-      "revision": "013a61ac8d98883c73733f59c06e49e9ba444f14",
-      "reviewedAt": "2026-11-04",
+      "revision": "abb6d17279cdc749e27e99aa534a062d8fd01ced",
+      "reviewedAt": "2026-11-16",
       "documents": [
         "skill/references/reference-skill-onetake.md"
       ],
-      "committedAt": "2026-10-21T11:56:36-06:00"
+      "committedAt": "2026-11-04T19:52:15-08:00"
     },
     {
       "id": "open-design",
@@ -903,8 +903,8 @@
       "id": "openspec",
       "kind": "npm",
       "package": "@fission-ai/openspec",
-      "version": "1.16.0",
-      "reviewedAt": "2026-11-04",
+      "version": "2.0.0",
+      "reviewedAt": "2026-11-16",
       "sites": [
         {
           "file": "package.json",
@@ -954,9 +954,9 @@
       "id": "pixijs-skills",
       "kind": "catalog-reference",
       "repo": "https://github.com/pixijs/pixijs-skills",
-      "revision": "83760c6f53462ca9cecd68055041f5a8c94758ce",
-      "reviewedAt": "2026-11-04",
-      "committedAt": "2026-10-01T21:48:49+00:00",
+      "revision": "93784384269b1d8677fb2ae166c81d750cba4281",
+      "reviewedAt": "2026-11-16",
+      "committedAt": "2026-11-12T19:06:30+00:00",
       "profiles": [
         "pixijs-skills-v8"
       ]
@@ -965,8 +965,8 @@
       "id": "playwright",
       "kind": "npm",
       "package": "playwright",
-      "version": "1.64.1",
-      "reviewedAt": "2026-11-04",
+      "version": "1.65.1",
+      "reviewedAt": "2026-11-16",
       "sites": [
         {
           "file": "tools/browser-automation/package.json",
@@ -978,8 +978,8 @@
       "id": "playwright-cli",
       "kind": "vendored",
       "repo": "https://github.com/microsoft/playwright-cli",
-      "revision": "db2a0fad3a768319a16e3a2bb8078cf62e690b07",
-      "reviewedAt": "2026-11-04",
+      "revision": "b21724888b8100b05ef8dee3a92f2bb03bf4dcde",
+      "reviewedAt": "2026-11-16",
       "bundle": "playwright-cli",
       "importer": [
         "scripts/import-ui-craft-sources.cjs",
@@ -988,8 +988,8 @@
         "--source",
         "{source}"
       ],
-      "committedAt": "2026-11-03T09:14:04-08:00",
-      "treeSha256": "b09d73b7064556c4db737afa8b126bf7b47cf215f4dc9c48c346851fb7b53e29"
+      "committedAt": "2026-11-11T09:10:41-08:00",
+      "treeSha256": "ff209240e8bdb86497f45e233a388697e96705bee9a99dafb077d8076ad3aa02"
     },
     {
       "id": "pngjs",
@@ -1042,17 +1042,17 @@
       "id": "react-bits",
       "kind": "catalog-reference",
       "repo": "https://github.com/DavidHDev/react-bits",
-      "revision": "4dc7b5b7772e1217c8fb8d2a7aa074302180e5b4",
-      "reviewedAt": "2026-11-04",
-      "committedAt": "2026-10-31T09:02:37+09:00"
+      "revision": "e8e0277a4e80540b38eb9e975dbd4c2b413905e5",
+      "reviewedAt": "2026-11-16",
+      "committedAt": "2026-11-16T12:34:34+02:00"
     },
     {
       "id": "reflex-xy",
       "kind": "release",
-      "version": "0.0.8",
-      "reviewedAt": "2026-11-04",
+      "version": "0.0.9",
+      "reviewedAt": "2026-11-16",
       "repo": "https://github.com/reflex-dev/xy",
-      "revision": "6483032a7947e1f44ced1a560ac08f1025637529",
+      "revision": "877dd79b0b5dfb24534b25d742c44e2eeb1988fc",
       "tag": "v{version}",
       "sites": [
         {
@@ -1064,14 +1064,14 @@
           "pattern": "\"https://github.com/reflex-dev/xy\",\"revision\":\"{revision}\",\"reviewedVersion\":\"{version}\""
         }
       ],
-      "committedAt": "2026-10-13T11:41:40-07:00"
+      "committedAt": "2026-11-06T00:07:35+05:00"
     },
     {
       "id": "shadcn",
       "kind": "vendored",
       "repo": "https://github.com/shadcn-ui/ui",
-      "revision": "4aaea19d9cff3e0908e12a8c1d504b8c5ec34610",
-      "reviewedAt": "2026-11-04",
+      "revision": "e62c9435fff729a175f38983dee73b2cb4f6a069",
+      "reviewedAt": "2026-11-16",
       "bundle": "shadcn",
       "importer": [
         "scripts/import-ui-craft-sources.cjs",
@@ -1080,7 +1080,7 @@
         "--source",
         "{source}"
       ],
-      "committedAt": "2026-11-02T11:02:07+04:00",
+      "committedAt": "2026-11-13T14:57:41+04:00",
       "treeSha256": "b95ba26ff8d9f25a347176a8949d45ab1beb8bb71a11b553cd0a06b9d101f63e"
     },
     {
@@ -1154,17 +1154,17 @@
       "id": "transitions-dev",
       "kind": "catalog-reference",
       "repo": "https://github.com/Jakubantalik/transitions.dev",
-      "revision": "e3aefb554d8fd2cb3e91e773e82a0f2d5a4f82a0",
-      "reviewedAt": "2026-11-04",
-      "committedAt": "2026-10-29T11:48:25+01:00"
+      "revision": "738de6da39c042fd71ae10c8d819b42630880a29",
+      "reviewedAt": "2026-11-16",
+      "committedAt": "2026-11-15T23:12:50+01:00"
     },
     {
       "id": "ui-ux-pro-max",
       "kind": "catalog-reference",
       "repo": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
-      "revision": "713eef51b04efc98d6fa565323b495f7c9c89fd4",
-      "reviewedAt": "2026-11-04",
-      "committedAt": "2026-11-02T23:10:22+07:00",
+      "revision": "e59ff376a41f7ca47b7541ad5c116495cbade3ee",
+      "reviewedAt": "2026-11-16",
+      "committedAt": "2026-11-16T05:10:03+01:00",
       "profiles": [
         "ui-ux-pro-max"
       ]
@@ -1198,8 +1198,8 @@
       "id": "web-scaffold-postcss",
       "kind": "npm",
       "package": "postcss",
-      "version": "8.5.32",
-      "reviewedAt": "2026-11-10",
+      "version": "8.5.33",
+      "reviewedAt": "2026-11-16",
       "note": "web scaffold writes this version into the package.json of scaffolded web projects.",
       "sites": [
         {
@@ -1240,8 +1240,8 @@
       "id": "web-scaffold-sass",
       "kind": "npm",
       "package": "sass",
-      "version": "1.108.1",
-      "reviewedAt": "2026-11-10",
+      "version": "1.108.2",
+      "reviewedAt": "2026-11-16",
       "note": "web scaffold writes this version into the package.json of scaffolded web projects.",
       "sites": [
         {
@@ -1254,8 +1254,8 @@
       "id": "web-scaffold-solid-js",
       "kind": "npm",
       "package": "solid-js",
-      "version": "1.9.18",
-      "reviewedAt": "2026-11-10",
+      "version": "1.9.19",
+      "reviewedAt": "2026-11-16",
       "note": "web scaffold writes this version into the package.json of scaffolded web projects.",
       "sites": [
         {
@@ -1324,8 +1324,8 @@
       "id": "web-scaffold-vite",
       "kind": "npm",
       "package": "vite",
-      "version": "8.3.7",
-      "reviewedAt": "2026-11-10",
+      "version": "8.3.8",
+      "reviewedAt": "2026-11-16",
       "note": "web scaffold writes this version into the package.json of scaffolded web projects.",
       "sites": [
         {
@@ -1338,8 +1338,8 @@
       "id": "web-scaffold-vite-plugin-solid",
       "kind": "npm",
       "package": "vite-plugin-solid",
-      "version": "2.11.15",
-      "reviewedAt": "2026-11-10",
+      "version": "2.11.16",
+      "reviewedAt": "2026-11-16",
       "note": "web scaffold writes this version into the package.json of scaffolded web projects.",
       "sites": [
         {
@@ -1366,8 +1366,8 @@
       "id": "web-scaffold-vitejs-plugin-vue",
       "kind": "npm",
       "package": "@vitejs/plugin-vue",
-      "version": "6.0.10",
-      "reviewedAt": "2026-11-10",
+      "version": "6.0.11",
+      "reviewedAt": "2026-11-16",
       "note": "web scaffold writes this version into the package.json of scaffolded web projects.",
       "sites": [
         {

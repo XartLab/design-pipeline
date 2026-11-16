@@ -46,7 +46,7 @@ Optional external sub-skills can provide deeper task-specific detail:
 | Existing v7 code | `pixijs-migration-v8` before implementation |
 
 If installed, the [PixiJS skill suite at reviewed revision
-`83760c6`](https://github.com/pixijs/pixijs-skills/tree/83760c6f53462ca9cecd68055041f5a8c94758ce)
+`83760c6`](https://github.com/pixijs/pixijs-skills/tree/93784384269b1d8677fb2ae166c81d750cba4281)
 is an optional supplement. Load only the specialized guidance needed for the task and confirm
 APIs against the target project's installed PixiJS version.
 
@@ -190,6 +190,6 @@ non-blocking warning: use official documentation for the missing surface and rec
 `qa.md`.
 
 Reviewed external skill-suite source: `pixijs/pixijs-skills` commit
-`83760c6f53462ca9cecd68055041f5a8c94758ce` (PixiJS v8.22.0 sync, 2026-10-01). The skill suite is
+`93784384269b1d8677fb2ae166c81d750cba4281` (PixiJS v8.22.0 sync, 2026-10-01). The skill suite is
 MIT licensed and optional; this route internalizes the project-relevant decisions and points to
 the upstream suite only for additional version-specific API detail.

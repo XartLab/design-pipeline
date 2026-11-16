@@ -398,7 +398,7 @@
         "id": "pixijs-skills-v8",
         "kind": "github",
         "url": "https://github.com/pixijs/pixijs-skills",
-        "reviewedRevision": "83760c6f53462ca9cecd68055041f5a8c94758ce",
+        "reviewedRevision": "93784384269b1d8677fb2ae166c81d750cba4281",
         "reviewedMarkers": [
           "v8-router-and-doc-fallback",
           "application-lifecycle",
@@ -407,7 +407,7 @@
           "ticker-lifecycle",
           "worker-ssr-csp"
         ],
-        "reviewedAt": "2026-11-04T00:00:00.000Z",
+        "reviewedAt": "2026-11-16T00:00:00.000Z",
         "freshnessDays": 30
       },
       "fallback": "Use references/pixijs-rendering.md for bundled scene and renderer guidance, then version-matched official docs for remaining APIs; record stale or partial companion coverage in qa.md.",
@@ -570,7 +570,7 @@
         "id": "impeccable-skill-v4",
         "kind": "github",
         "url": "https://github.com/pbakaus/impeccable",
-        "reviewedRevision": "b4bff1626c344067788c2679f048a20057c7cc5a",
+        "reviewedRevision": "d41d9860b0094dcb68030657da63461212835aaa",
         "reviewedMarkers": [
           "surface-modes",
           "refinement-semantics",
@@ -578,7 +578,7 @@
           "command-routing",
           "drift-boundary"
         ],
-        "reviewedAt": "2026-11-12T00:00:00.000Z",
+        "reviewedAt": "2026-11-16T00:00:00.000Z",
         "freshnessDays": 30
       },
       "fallback": "Use references/impeccable-contract.md and the built-in brief, anti-slop, state, browser, and bounded verification gates.",
@@ -658,8 +658,8 @@
         "id": "motion-review-skill-contracts",
         "kind": "installed-skill",
         "url": "https://github.com/emilkowalski/skills",
-        "reviewedRevision": "f1090bec277140d02ed202440185ad9d02ac1490",
-        "reviewedContentHash": "936fccfc37aa3a13bd49e4a5b56e937bfbc92013edfcc89fa8cb61294e1adf1c",
+        "reviewedRevision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
+        "reviewedContentHash": "515a9b768394c7152291063ebb81621d8a34ff7af073dab33b63f98cc9a28888",
         "contentHashScope": "ordered UTF-8 sourceFiles with path-and-newline separators",
         "sourceFiles": [
           "skills/improve-animations/SKILL.md",
@@ -672,7 +672,7 @@
           "motion-review-standards",
           "motion-findings"
         ],
-        "reviewedAt": "2026-11-04T00:00:00.000Z",
+        "reviewedAt": "2026-11-16T00:00:00.000Z",
         "freshnessDays": 30,
         "license": "MIT",
         "useBoundary": "installed companion evidence only; no automatic upstream upgrade"
@@ -781,13 +781,13 @@
       "skill": "design-pipeline",
       "level": "enhancement",
       "sourceId": "emilkowalski/skills",
-      "source": "https://github.com/emilkowalski/skills/tree/f1090bec277140d02ed202440185ad9d02ac1490",
+      "source": "https://github.com/emilkowalski/skills/tree/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
       "sourceMeta": {
         "id": "emilkowalski-animation-review",
         "kind": "github",
-        "url": "https://github.com/emilkowalski/skills/tree/f1090bec277140d02ed202440185ad9d02ac1490",
-        "reviewedRevision": "f1090bec277140d02ed202440185ad9d02ac1490",
-        "reviewedContentHash": "936fccfc37aa3a13bd49e4a5b56e937bfbc92013edfcc89fa8cb61294e1adf1c",
+        "url": "https://github.com/emilkowalski/skills/tree/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
+        "reviewedRevision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
+        "reviewedContentHash": "515a9b768394c7152291063ebb81621d8a34ff7af073dab33b63f98cc9a28888",
         "contentHashScope": "ordered UTF-8 sourceFiles with path-and-newline separators",
         "sourceFiles": [
           "skills/improve-animations/SKILL.md",
@@ -795,7 +795,7 @@
           "skills/animation-vocabulary/SKILL.md",
           "skills/review-animations/SKILL.md"
         ],
-        "reviewedAt": "2026-11-04T00:00:00.000Z",
+        "reviewedAt": "2026-11-16T00:00:00.000Z",
         "freshnessDays": 365,
         "license": "MIT",
         "useBoundary": "reference-only; no upstream install, copy, or execution"
@@ -825,8 +825,8 @@
         "id": "ui-ux-pro-max",
         "kind": "github",
         "url": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
-        "reviewedRevision": "713eef51b04efc98d6fa565323b495f7c9c89fd4",
-        "reviewedAt": "2026-11-04T00:00:00.000Z",
+        "reviewedRevision": "e59ff376a41f7ca47b7541ad5c116495cbade3ee",
+        "reviewedAt": "2026-11-16T00:00:00.000Z",
         "freshnessDays": 30,
         "license": "MIT",
         "useBoundary": "installed companion evidence only; no automatic upstream upgrade"
@@ -1115,15 +1115,15 @@
       "skill": "design-pipeline",
       "level": "enhancement",
       "sourceId": "vojtaholik/good-css",
-      "source": "https://github.com/vojtaholik/good-css/tree/a6804e75b5ee946d6b007ac20734f958d7938bca",
+      "source": "https://github.com/vojtaholik/good-css/tree/35e0e8c673854ca34d8e1879038e44834c855dfb",
       "sourceMeta": {
         "id": "good-css",
         "kind": "github",
-        "url": "https://github.com/vojtaholik/good-css/tree/a6804e75b5ee946d6b007ac20734f958d7938bca",
-        "reviewedRevision": "a6804e75b5ee946d6b007ac20734f958d7938bca",
-        "reviewedContentHash": "bfe7189dd6f562e34e24e34b6869b95ca507ea1a8da38ccca938821b4571c430",
+        "url": "https://github.com/vojtaholik/good-css/tree/35e0e8c673854ca34d8e1879038e44834c855dfb",
+        "reviewedRevision": "35e0e8c673854ca34d8e1879038e44834c855dfb",
+        "reviewedContentHash": "c31628f811e7c8e1868c6c15078212857f6a33dc25a8614c6fdf0fabf62d1efd",
         "contentHashScope": "complete Git tree: sorted POSIX path, NUL, SHA-256 blob hash, newline",
-        "reviewedAt": "2026-11-04T00:00:00.000Z",
+        "reviewedAt": "2026-11-16T00:00:00.000Z",
         "freshnessDays": 365,
         "license": "MIT; bundled Inter and Geist Mono fonts SIL-OFL-1.1",
         "useBoundary": "built-in source reference and maintained local specimen adaptation; no upstream install or deployment"

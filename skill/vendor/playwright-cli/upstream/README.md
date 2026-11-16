@@ -15,7 +15,7 @@ This package provides CLI interface into Playwright. If you are using **coding a
 - **Token-efficient**. Does not force page data into LLM.
 
 ### Requirements
-- Node.js 18 or newer
+- Node.js 20 or newer
 - Claude Code, GitHub Copilot, or any other coding agent.
 
 ## Getting Started
@@ -26,6 +26,9 @@ This package provides CLI interface into Playwright. If you are using **coding a
 npm install -g @playwright/cli@latest
 playwright-cli --help
 ```
+
+Argument parsing and startup errors exit with code 1 and print an error message. With
+`--json`, these errors are written to stdout as `{ "isError": true, "error": "..." }`.
 
 ### Installing skills
 
@@ -78,8 +81,8 @@ Playwright CLI keeps the browser profile in memory by default. Your cookies and 
 are preserved between CLI calls within the session, but lost when the browser closes. Use
 `--persistent` to save the profile to disk for persistence across browser restarts.
 
-You can use different instances of the browser for different projects with sessions. Pass `-s=` to
-the invocation to talk to a specific browser.
+You can use different instances of the browser for different projects with sessions. Pass `-s=name`,
+`-s name` or `--session name` to the invocation to talk to a specific browser.
 
 ```bash
 playwright-cli open https://playwright.dev
@@ -419,7 +422,7 @@ playwright-cli kill-all                 # forcefully kill all browser processes
 
 ### Local installation
 
-If global `playwright-cli` command is not available, try a local version via `npx playwright cli`:
+If global `playwright-cli` command is not available, try a local version via `npx playwright cli`. It needs Playwright 1.59 or newer:
 
 ```bash
 npx --no-install playwright --version

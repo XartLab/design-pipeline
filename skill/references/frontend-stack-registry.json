@@ -29,7 +29,7 @@
   "shadcn": {
     "sourceId": "shadcn-ui/ui",
     "source": "https://github.com/shadcn-ui/ui",
-    "revision": "4aaea19d9cff3e0908e12a8c1d504b8c5ec34610",
+    "revision": "e62c9435fff729a175f38983dee73b2cb4f6a069",
     "bases": ["radix", "base", "aria"],
     "styles": ["nova", "vega", "maia", "lyra", "mira", "luma", "sera", "rhea"],
     "baseColors": ["neutral", "stone", "zinc", "gray", "mauve", "olive", "mist", "taupe"],
@@ -82,8 +82,8 @@
     { "id": "design-pipeline/website-cloning", "capabilities": ["website-cloning"], "activation": "keyword", "keywords": ["clone", "cloning", "rebuild", "replicate", "复刻", "克隆", "仿站", "1:1"], "mode": "project-owned", "status": "ready", "source": "bundled" },
     { "id": "hi5jeff/deepclonewebsite", "capabilities": ["website-cloning", "reverse-engineering"], "activation": "keyword", "keywords": ["clone", "cloning", "rebuild", "reverse engineer", "复刻", "克隆", "逆向"], "mode": "governed-candidate", "status": "review", "sourceId": "hi5jeff/deepclonewebsite", "source": "https://github.com/hi5jeff/deepclonewebsite", "revision": "ab180fbe14a0f86c478bf033b375b1d40fabe6b1", "license": "MIT", "requirements": ["Node.js 20+", "Chrome or Edge", "interactive login", "OpenAI-compatible API credential"], "fallback": "design-pipeline/website-cloning" },
     { "id": "design-pipeline/feedback-loop", "capabilities": ["friction-logging"], "activation": "always", "mode": "project-owned", "status": "ready", "source": "bundled" },
-    { "id": "wevm/frog", "capabilities": ["friction-logging", "github-issue-sync"], "activation": "capability", "mode": "governed-candidate", "status": "review", "sourceId": "wevm/frog", "source": "https://github.com/wevm/frog", "revision": "cbe18b192b59a8770466ee9f193b17294778c8a9", "license": "MIT", "requirements": ["Node.js 22+", "explicit GitHub repository and workflow permission"], "fallback": "design-pipeline/feedback-loop" },
-    { "id": "MengTo/skills", "capabilities": ["design-workflow", "interaction-extraction", "visual-style", "verification"], "activation": "always", "mode": "bundled-index", "status": "ready", "sourceId": "mengto/skills", "source": "https://github.com/MengTo/skills", "revision": "1de14e21b2ba8937c0f7f6ddca581cf7cd9d94af", "license": "MIT", "catalog": "mengto-skills-catalog.json" },
+    { "id": "wevm/frog", "capabilities": ["friction-logging", "github-issue-sync"], "activation": "capability", "mode": "governed-candidate", "status": "review", "sourceId": "wevm/frog", "source": "https://github.com/wevm/frog", "revision": "ec05812cf8b7090dcfd2827c630bf85aea44d734", "license": "MIT", "requirements": ["Node.js 22+", "explicit GitHub repository and workflow permission"], "fallback": "design-pipeline/feedback-loop" },
+    { "id": "MengTo/skills", "capabilities": ["design-workflow", "interaction-extraction", "visual-style", "verification"], "activation": "always", "mode": "bundled-index", "status": "ready", "sourceId": "mengto/skills", "source": "https://github.com/MengTo/skills", "revision": "3cc93458c4949c39a04e938ea7892a1d6d3d40bf", "license": "MIT", "catalog": "mengto-skills-catalog.json" },
     {
       "id": "SmoothUI/components",
       "capabilities": ["animated-ui", "component-source", "motion-design"],
@@ -131,7 +131,7 @@
       "repository": "https://github.com/imskyleen/animate-ui",
       "reviewedAt": "2026-11-12",
       "license": "MIT + Commons Clause",
-      "licenseUrl": "https://github.com/imskyleen/animate-ui/blob/22a9236ae107328f8564edb7e3299375da3247af/LICENSE.md",
+      "licenseUrl": "https://github.com/imskyleen/animate-ui/blob/9873c628afdcdb030e74dc2930774a2aa473bd39/LICENSE.md",
       "interfaces": ["npm-package", "component-catalog", "shadcn-registry", "cli-codemod"],
       "requirements": ["Select a named primitive or registry item and verify React 19 or Vue 3.5, Motion and the base library the component already uses", "Respect the Commons Clause; do not redistribute the components themselves"],
       "constraints": ["Do not auto-install packages or run the upstream CLI during routing", "Run the upstream CLI with --dry-run first and apply it only on the approved route"],
