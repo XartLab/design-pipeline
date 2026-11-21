@@ -484,6 +484,14 @@ node skill/scripts/evaluate-anti-slop.cjs \
   --json
 ```
 
+### UI 交付与验收绑定
+
+ui 交付用可重复的 `--file <path>` 声明受审文件（必须在项目内，且是文件不是目录），并记录每个文件
+的 sha256；owner 的 `decide --stage review --verdict accept` 绑定这些哈希。受审文件在验收后被修改
+或删除时，`next` 回到最终 review 并列出变化的文件，不再返回 `done`；文件未变时照常 `done`。不带
+`--file` 的 ui 交付会被拒绝（`INPUT_MISSING`）。film、edit、web 的验收绑定与 replicate 模式的
+extraction 绑定不变。
+
 ### 统一 CLI
 
 `designer-pipeline.cjs` 是稳定生命周期门面：

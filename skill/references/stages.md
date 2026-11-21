@@ -259,6 +259,10 @@ probe at its actual `index.html` and rerun.
 `decide --stage deliver` refuses unfinished prerequisites. Film/edit delivery names an existing
 contained file, and standard delivery binds that file and the current check snapshot. A changed
 delivery returns to its delivery action; changed checked inputs return to checks and review first.
+A ui delivery names the files under review with repeatable `--file <path>`, resolved inside the
+project as files rather than directories, and records each file's hash; the owner's final acceptance
+binds those hashes, so a reviewed file changed or deleted after the acceptance returns `next` to the
+review with the changed paths named, never to `done`. A ui delivery without `--file` is refused.
 Quick workflows may record delivery after their applicable stages finish. Web component sources,
 the description and section reviews default to the agent: `next` returns them as `selfCheck` runs
 unless the owner kept them with `--keep` at intake. Every deliverable and

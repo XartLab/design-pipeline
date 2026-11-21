@@ -4,6 +4,10 @@ All notable changes to Design Pipeline are documented here.
 
 ## [Unreleased]
 
+### Changed
+
+- **BREAKING** A ui delivery names the files under review with repeatable `--file <path>` and records each file's sha256, and the owner's final acceptance binds those hashes (change `ui-review-binds-delivered-files`, #182). Until now a ui acceptance bound only the sentence passed to `decide --stage deliver --answer`, so a page replaced after the owner accepted it still reported `done`. Now a reviewed file changed, replaced or deleted after the acceptance returns `next` to the final review with the changed paths named, and only the owner's new acceptance completes the workflow; unchanged files still end in `done`. `decide --stage deliver` for ui without `--file` is refused with `INPUT_MISSING`, and a ui state recorded before this change (a delivery with no file hashes) returns to its work stage to name its files. Film, edit and web acceptance bindings, and the replicate-mode extraction binding, are unchanged.
+
 ## [0.15.0-beta.1] - 2026-11-14
 
 ### Added

@@ -41,16 +41,24 @@ const directions = require("./workflows/directions.cjs");
 const { recordDelivery } = require("./appearance-ledger-core.cjs");
 const SUB_WORKFLOWS = { film: require("./workflows/film.cjs"), edit: require("./workflows/edit.cjs"), web: require("./workflows/web.cjs") };
 
+// The files a ui delivery names: index.html when the project has one, else a placeholder the agent
+// replaces with the file it delivered. Other deliverables name their output in --answer.
+function deliveryFileArgs(state, root) {
+  if (state.deliverable !== "ui") return "";
+  return fs.existsSync(path.join(root, "index.html")) ? " --file index.html" : " --file <the delivered file>";
+}
+
 function codeStages(state) {
   const { tier, mode } = state;
   const work = {
     id: "work",
-    // A replicated ui delivery is bound to the extraction it was built from.
-    finished: (state) => Boolean(state.decisions?.delivered) && (mode !== "replicate" || state.decisions.deliveredExtraction === extractionDigest(state)),
-    action: (_state, root) => ({
+    // A ui delivery counts only while the files it named still hold the bytes the delivery recorded;
+    // a replicated one is also bound to the extraction it was built from.
+    finished: (state, root) => deliveryRecorded(state, root) && (mode !== "replicate" || state.decisions.deliveredExtraction === extractionDigest(state)),
+    action: (state, root) => ({
       type: "run",
-      instruction: `${tier === "full" ? "Open an OpenSpec change under openspec/changes/<id>/ and follow references/pipeline-reference.md" : `Follow references/pipeline-reference.md at the ${tier} tier (no OpenSpec; at standard create DESIGN.md/MOTION.md if missing, and for ui and web deliverables the design-system package per references/design-system-package.md; a replicate run already has them from its confirmed extraction, which the build follows)`}${mode === "replicate" ? "; reproduce the reference and its invariants" : ""}. In tasks.md isolate one visual goal per task: source/reference region or applicable scene node, goal and invariants, inputs, literal modification scope, outputs, runtime/comparison checks and failure return step. For references, start a bounded graybox for structure and occlusion; once it exists, read the complete results of reference check, reconstruction check and applicable scene check. If required prerequisite stages are not ready, repair their findings before material, polish or motion that depends on them; follow the stage-specific permissions in references/reconstruction-spec.md, including optical work when graybox is ready but geometry is blocked. Verify the rendered surface; file delivery and engineering checks do not grant visual acceptance. When verified, run the command to record the delivery (replace <evidence>).`,
-      command: `${cliCommand()} decide --root ${shellPath(path.resolve(root))} --project-root ${shellPath(path.resolve(root))} --stage deliver --answer <evidence>`,
+      instruction: `${tier === "full" ? "Open an OpenSpec change under openspec/changes/<id>/ and follow references/pipeline-reference.md" : `Follow references/pipeline-reference.md at the ${tier} tier (no OpenSpec; at standard create DESIGN.md/MOTION.md if missing, and for ui and web deliverables the design-system package per references/design-system-package.md; a replicate run already has them from its confirmed extraction, which the build follows)`}${mode === "replicate" ? "; reproduce the reference and its invariants" : ""}. In tasks.md isolate one visual goal per task: source/reference region or applicable scene node, goal and invariants, inputs, literal modification scope, outputs, runtime/comparison checks and failure return step. For references, start a bounded graybox for structure and occlusion; once it exists, read the complete results of reference check, reconstruction check and applicable scene check. If required prerequisite stages are not ready, repair their findings before material, polish or motion that depends on them; follow the stage-specific permissions in references/reconstruction-spec.md, including optical work when graybox is ready but geometry is blocked. Verify the rendered surface; file delivery and engineering checks do not grant visual acceptance. When verified, run the command to record the delivery (replace <evidence>).${state.deliverable === "ui" ? " Name the files under review with --file, one per file (replace <the delivered file> with each path); the owner's acceptance binds their bytes." : ""}`,
+      command: `${cliCommand()} decide --root ${shellPath(path.resolve(root))} --project-root ${shellPath(path.resolve(root))} --stage deliver --answer <evidence>${deliveryFileArgs(state, root)}`,
       ...(mode === "replicate" ? { guide: "references/pipeline-reference.md" } : {}),
       why: tier === "full" ? "Full tier keeps OpenSpec lineage." : "Lighter tiers skip specification ceremony but keep the gates.",
     }),
@@ -188,7 +196,7 @@ function askSubject(state, root, stageId, action) {
   return {
     files,
     page: state.deliverable === "web" && (stageId === "review" || stageId === "build" && action.section) ? SUB_WORKFLOWS.web.pageDigest(root) : null,
-    review: stageId === "review" ? reviewInputHashes(state) : null,
+    review: stageId === "review" ? reviewInputHashes(state, root) : null,
     sample: stageId === "sample" && SUB_WORKFLOWS.film.sampleBinding ? SUB_WORKFLOWS.film.sampleBinding(root) : null,
   };
 }
@@ -253,9 +261,9 @@ function nextAction(root, { deferral = true } = {}) {
   return { type: "done", stage: "done", deliverable: state.deliverable, tier: state.tier, completed: done, ...SUB_WORKFLOWS[state.deliverable]?.doneFields?.(state, root), evidence: { delivered: state.decisions.delivered || null, gates: state.gates, drafts: state.decisions.drafts || [] }, diligence: roles.statementStatus(root, state, deliveryCurrent(state, root)), line: `${state.deliverable}/${state.tier}: done` };
 }
 
-// A delivery recorded for a deliverable with a deliver stage must still match what was reviewed; ui
-// records its delivery evidence in its work stage, and its review binds that evidence.
-const deliveryCurrent = (state, root) => state.deliverable === "ui" ? Boolean(state.decisions?.delivered) : deliveryRecorded(state, root);
+// A delivery recorded for a deliverable with a deliver stage must still match what was reviewed; a ui
+// delivery is recorded in its work stage and binds the files it named, so it goes stale with them.
+const deliveryCurrent = (state, root) => deliveryRecorded(state, root);
 
 // Returned decide commands carry the role the delegation map gives their checkpoint: agent where the
 // agent (or the art director) decides, owner otherwise. Only a command whose checkpoint has no entry
@@ -457,7 +465,7 @@ function decide(root, options = {}) {
       if (/<[^<>]*>/.test(options.answer)) fail("workflow", "--answer still holds the placeholder. Fix: replace it with the owner's own words from the conversation");
     }
     const next = nextAction(root, ANSWERING);
-    const rejectCurrent = options.verdict === "reject" && ["deliver", "done"].includes(next.stage) && REVIEW.finished(state);
+    const rejectCurrent = options.verdict === "reject" && ["deliver", "done"].includes(next.stage) && REVIEW.finished(state, root);
     if (!stagesFor(state).some(item => item.id === "review") || next.stage !== "review" && !rejectCurrent) {
       fail("workflow", `Cannot record review while ${next.stage} is unfinished. Fix: follow next.`, { code: "WORKFLOW_NOT_READY" });
     }
@@ -465,7 +473,7 @@ function decide(root, options = {}) {
     const componentDecision = componentDecisionDigest(state);
     // The final review is the owner's: a web verdict keeps the numbered screenshots they judged.
     const captures = state.deliverable === "web" && role.by === "owner" ? SUB_WORKFLOWS.web.reviewedCaptures(root) : null;
-    state.decisions.drafts = [...(state.decisions.drafts || []), { verdict: options.verdict, reason: options.answer || null, at: new Date().toISOString(), inputHashes: structuredClone(reviewInputHashes(state)), ...(componentDecision ? { componentDecision } : {}), ...(captures ? { captures } : {}) }];
+    state.decisions.drafts = [...(state.decisions.drafts || []), { verdict: options.verdict, reason: options.answer || null, at: new Date().toISOString(), inputHashes: structuredClone(reviewInputHashes(state, root)), ...(componentDecision ? { componentDecision } : {}), ...(captures ? { captures } : {}) }];
     if (state.deliverable === "ui" && options.verdict === "accept") writeLedger(state, root);
     if (options.verdict === "reject") {
       rules.addRule(state, options.answer, `draft ${state.decisions.drafts.length}`, cited.length ? { ...rules.RESULT, refs: cited } : rules.RESULT);
@@ -483,9 +491,20 @@ function decide(root, options = {}) {
       if (!fs.statSync(file).isFile()) fail("workflow", "delivery output must be a file, not a directory");
       state.decisions.deliveredSha256 = "sha256:" + sha256(fs.readFileSync(file));
     }
+    // ui acceptance binds bytes, not the delivery sentence: the owner reviews the files it names.
+    if (state.deliverable === "ui") {
+      const files = Array.isArray(options.files) ? [...options.files].sort() : [];
+      if (!files.length) fail("workflow", "ui delivery names the files under review with --file <path>; the owner's acceptance binds their hashes", { code: "INPUT_MISSING" });
+      if (files.length > 200) fail("workflow", `ui delivery names at most 200 files with --file, not ${files.length}`);
+      state.decisions.deliveredFiles = Object.fromEntries(files.map((rel) => {
+        const file = resolveInside(root, rel, "reviewed file (--file)", { scope: "workflow", mustExist: true });
+        if (!fs.statSync(file).isFile()) fail("workflow", `ui delivery names a file, not a directory: ${rel}`, { code: "INPUT_MISSING" });
+        return [path.relative(root, file).split(path.sep).join("/"), "sha256:" + sha256(fs.readFileSync(file))];
+      }));
+    }
     state.decisions.delivered = options.answer || true;
     if (state.deliverable === "ui" && state.mode === "replicate") state.decisions.deliveredExtraction = extractionDigest(state);
-    if (state.deliverable !== "ui") state.decisions.deliveryInputHashes = structuredClone(reviewInputHashes(state));
+    state.decisions.deliveryInputHashes = structuredClone(reviewInputHashes(state, root));
     if (["ui", "web"].includes(state.deliverable)) writeLedger(state, root);
   }
   // An explicit taste statement about the directions is a rule, scoped as the owner said it.

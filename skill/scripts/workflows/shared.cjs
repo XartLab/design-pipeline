@@ -106,17 +106,39 @@ function extractionDigest(state) {
 // deliverable → 它的检查 gate。review 绑定与 invalidateCheckedEvidence 都读这一张表，新 gate 只登记一处。
 const CHECKED_GATES = { film: "film", edit: "edit", web: "interaction" };
 
+// A reviewed ui file's bytes now. A file that is gone, outside the project or no longer a file reads
+// `missing`, so it differs from the hash the delivery recorded instead of throwing.
+function deliveredFileHash(root, rel) {
+  try {
+    const file = resolveInside(root, rel, "reviewed file", { scope: "workflow", mustExist: true });
+    return fs.statSync(file).isFile() ? "sha256:" + sha256(fs.readFileSync(file)) : "missing";
+  } catch { return "missing"; }
+}
+
 // What a final review binds: the checked outputs, or for ui (which has no checking gate of its own)
-// the delivery evidence its work stage recorded.
-function reviewInputHashes(state) {
-  if (state.deliverable === "ui") return state.decisions?.delivered ? { delivered: "sha256:" + sha256(String(state.decisions.delivered)), ...(extractionDigest(state) ? { extraction: extractionDigest(state) } : {}) } : null;
+// the files its delivery named, read as they are now. A delivery with no named files binds nothing.
+function reviewInputHashes(state, root) {
+  if (state.deliverable === "ui") {
+    const files = Object.keys(state.decisions?.deliveredFiles || {});
+    if (!files.length) return null;
+    return { files: Object.fromEntries(files.map(rel => [rel, deliveredFileHash(root, rel)])), ...(extractionDigest(state) ? { extraction: extractionDigest(state) } : {}) };
+  }
   const gate = CHECKED_GATES[state.deliverable];
   return state.gates?.[gate]?.inputHashes || null;
 }
 
+// The reviewed files whose bytes changed since the delivery recorded them (a missing file counts).
+function changedDeliveredFiles(state, root) {
+  const recorded = state.decisions?.deliveredFiles || {};
+  return Object.keys(recorded).filter(rel => deliveredFileHash(root, rel) !== recorded[rel]);
+}
+
 function deliveryRecorded(state, root) {
-  if (!state.decisions?.delivered || !state.decisions.deliveryInputHashes
-      || canonicalJson(state.decisions.deliveryInputHashes) !== canonicalJson(reviewInputHashes(state))) return false;
+  if (!state.decisions?.delivered || !state.decisions.deliveryInputHashes) return false;
+  // A ui delivery records the files it named and its review binds their bytes, so the delivery stays
+  // recorded when a page changes: `next` returns to the review, not to the work stage.
+  if (state.deliverable === "ui") return true;
+  if (canonicalJson(state.decisions.deliveryInputHashes) !== canonicalJson(reviewInputHashes(state, root))) return false;
   if (state.deliverable === "web") return true;
   try {
     const file = resolveInside(root, state.decisions.delivered, "delivery file", { scope: "workflow", mustExist: true });
@@ -131,6 +153,7 @@ function invalidateCheckedEvidence(state) {
   delete state.decisions.deliveryInputHashes;
   delete state.decisions.deliveredSha256;
   delete state.decisions.deliveredExtraction;
+  delete state.decisions.deliveredFiles;
 }
 
 const INTAKE = {
@@ -197,19 +220,23 @@ function componentDecisionDigest(state) {
 
 const REVIEW = {
   id: "review",
-  finished: (state) => {
+  finished: (state, root) => {
     const draft = state.decisions?.drafts?.at(-1);
     return draft?.verdict === "accept" && Boolean(draft.inputHashes)
-      && canonicalJson(draft.inputHashes) === canonicalJson(reviewInputHashes(state))
+      && canonicalJson(draft.inputHashes) === canonicalJson(reviewInputHashes(state, root))
       && (draft.componentDecision ?? null) === componentDecisionDigest(state);
   },
   action: (state, root) => {
     if (state.deliverable === "ui") {
       const rejected = (state.decisions?.drafts || []).length ? `; ${state.decisions.drafts.length} earlier result(s) were rejected and their reasons are rules` : "";
-      return { type: "ask", question: `Look at the delivered interface (${state.decisions.delivered}) in a real browser. Accept it as it is, or reject it with one sentence on what is wrong?`, recommended: "Accept only when it looks and feels the way you want; passing checks show it works, not that it looks right.", record: `${cliCommand()} decide --root ${shellPath(path.resolve(root))} --project-root ${shellPath(path.resolve(root))} --stage review --verdict accept|reject [--answer "<reason>"]`, why: `The owner's final acceptance: visual quality is not something a passing check can accept on the owner's behalf${rejected}.` };
+      // The owner accepted an earlier version of these files: say so and name what moved.
+      const latest = state.decisions?.drafts?.at(-1);
+      const changed = changedDeliveredFiles(state, root);
+      const first = latest?.verdict === "accept" && changed.length ? `The owner accepted an earlier version at ${latest.at}; these reviewed files changed: ${changed.join(", ")}. Show them the current interface and ask again:` : undefined;
+      return { type: "ask", ...(first ? { first } : {}), question: `Look at the delivered interface (${state.decisions.delivered}) in a real browser. Accept it as it is, or reject it with one sentence on what is wrong?`, recommended: "Accept only when it looks and feels the way you want; passing checks show it works, not that it looks right.", record: `${cliCommand()} decide --root ${shellPath(path.resolve(root))} --project-root ${shellPath(path.resolve(root))} --stage review --verdict accept|reject [--answer "<reason>"]`, why: `The owner's final acceptance: visual quality is not something a passing check can accept on the owner's behalf${rejected}.` };
     }
     const web = state.deliverable === "web";
-    const outputs = Object.keys(reviewInputHashes(state) || {}).filter(file => (web ? /\.html?$/i : /\.mp4$/i).test(file));
+    const outputs = Object.keys(reviewInputHashes(state, root) || {}).filter(file => (web ? /\.html?$/i : /\.mp4$/i).test(file));
     const show = [...outputs, "evidence/contact-sheet.png", ...(web ? ["evidence/interaction.json"] : [])].flatMap(rel => {
       try {
         const file = resolveInside(root, rel, "review file", { scope: "workflow", mustExist: true });
@@ -223,9 +250,11 @@ const REVIEW = {
       const latest = state.decisions?.drafts?.at(-1);
       return {
         type: "ask",
-        ...(latest?.verdict === "accept" ? { first: canonicalJson(latest.inputHashes ?? null) === canonicalJson(reviewInputHashes(state) ?? null)
-          ? `The component decision changed since the owner accepted this page at ${latest.at}; show them the page with the new decision and ask again:`
-          : `The owner accepted an earlier version of the page at ${latest.at}; show them the current page and ask again:` } : {}),
+        ...(latest?.verdict === "accept" ? {
+          first: canonicalJson(latest.inputHashes ?? null) === canonicalJson(reviewInputHashes(state, root) ?? null)
+            ? `The component decision changed since the owner accepted this page at ${latest.at}; show them the page with the new decision and ask again:`
+            : `The owner accepted an earlier version of the page at ${latest.at}; show them the current page and ask again:`
+        } : {}),
         question: "Inspect the checked page and its key interactions. Accept it, or tell me what is wrong?",
         show,
         recommended: "Inspect the checked page and its key interactions before accepting.",
@@ -251,4 +280,4 @@ function meaningful(answer, minimum, what, flag = "--answer", { cjkWeight = 0.5,
 const statement = (answer, what, flag) => meaningful(answer, 6, what, flag);
 const reason = (answer, what, flag) => meaningful(answer, 2, what, flag, { cjkWeight: 1, unit: "each CJK character counts as one" });
 
-module.exports = { cliCommand, CONCEPTS, INTAKE, REVIEW, TOKEN_SOURCES, componentDecisionDigest, deliveryRecorded, exists, shellPath, gatePassed, gateStatus, extractionDigest, invalidateCheckedEvidence, reason, reference, reviewInputHashes, statement };
+module.exports = { cliCommand, CONCEPTS, INTAKE, REVIEW, TOKEN_SOURCES, changedDeliveredFiles, componentDecisionDigest, deliveryRecorded, exists, shellPath, gatePassed, gateStatus, extractionDigest, invalidateCheckedEvidence, reason, reference, reviewInputHashes, statement };
