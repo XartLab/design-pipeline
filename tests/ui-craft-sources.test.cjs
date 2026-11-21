@@ -1,8 +1,5 @@
 "use strict";
 
-// GNU tar reads a drive letter as a remote host; --force-local keeps Windows paths local.
-const tarLocal = process.platform === "win32" ? ["--force-local"] : [];
-
 const assert = require("node:assert/strict");
 const crypto = require("node:crypto");
 const fs = require("node:fs");
@@ -284,12 +281,13 @@ function packageArchive() {
     PACKAGE_VERSION: "0.0.0-dev", RELEASE_MODE: "0", GITHUB_REF_NAME: "", SOURCE_DATE_EPOCH: "1791504000",
   });
   assert.equal(built.status, 0, built.stderr || built.stdout);
-  const archive = path.join(root, "design-pipeline-skill.tgz");
-  const listed = run("tar", [...tarLocal, "-tzf", "design-pipeline-skill.tgz"], root);
+  // The archive is addressed by its relative name from the working directory, so GNU tar and
+  // bsdtar both read it as a local file; no GNU-only option and no drive-letter host parsing.
+  const listed = run("tar", ["-tzf", "design-pipeline-skill.tgz"], root);
   assert.equal(listed.status, 0, listed.stderr);
   packaged.entries = new Set(listed.stdout.split(/\r?\n/).filter(Boolean));
   const members = [...Object.keys(REVIEWED).map(name => `design-pipeline/vendor/${name}/`), ...GUIDES.map(guide => `design-pipeline/${guide}`)];
-  const extracted = run("tar", [...tarLocal, "-xzf", "design-pipeline-skill.tgz", ...members], root);
+  const extracted = run("tar", ["-xzf", "design-pipeline-skill.tgz", ...members], root);
   assert.equal(extracted.status, 0, extracted.stderr);
   return packaged;
 }
