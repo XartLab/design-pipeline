@@ -188,6 +188,7 @@
     "template-style-pack.test.cjs",
     "template-game-packs.test.cjs",
     "template-street-tape.test.cjs",
+    "template-devlog-terminal.test.cjs",
     "template-celestial-voyage.test.cjs",
     "template-megastructure-ink.test.cjs",
     "template-lattice-dossier.test.cjs",

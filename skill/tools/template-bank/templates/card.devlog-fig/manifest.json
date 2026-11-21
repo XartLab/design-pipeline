@@ -1,0 +1,84 @@
+{
+  "schema": "design-pipeline.template-bank-template.v1",
+  "id": "card.devlog-fig",
+  "family": "card",
+  "style": "devlog-terminal",
+  "title": "Figure frame: a picture slot above a hairline caption box with a mono FIG label and a caption",
+  "use": "A figure in an article: a screenshot, diagram or chart in media with its FIG A label and caption. label_w sets the label cell, frame toggles the outer hairline.",
+  "canvas": {
+    "width": 960,
+    "height": 600
+  },
+  "sizes": [
+    "960x600",
+    "1920x1200"
+  ],
+  "aspect": "8:5",
+  "accent": {
+    "roles": [
+      "clay"
+    ],
+    "maxShare": 0.02
+  },
+  "params": {
+    "guides": {
+      "type": "boolean",
+      "default": false,
+      "class": "decoration",
+      "note": "draw layout guides"
+    },
+    "label_w": {
+      "default": 120,
+      "min": 104,
+      "max": 144,
+      "class": "proportion",
+      "note": "width of the FIG label cell, units at 960"
+    },
+    "frame": {
+      "type": "boolean",
+      "default": true,
+      "class": "decoration",
+      "note": "hairline frame around the figure and caption"
+    }
+  },
+  "slots": {
+    "media": {
+      "kind": "image",
+      "ground": "ground",
+      "note": "the figure (960 x 520, on the ground colour)"
+    },
+    "label": {
+      "kind": "text",
+      "default": "FIG A",
+      "maxChars": 8,
+      "font": "mono"
+    },
+    "caption": {
+      "kind": "text",
+      "default": "Failure rate per hundred runs before and after pinning the clock; the dashed line is the old retry budget.",
+      "maxChars": 110,
+      "lines": 2,
+      "font": "sans"
+    }
+  },
+  "relations": [
+    "Caption row 80 units high at the bottom under a hairline; the label sits in its own cell divided by a vertical hairline.",
+    "Caption sans 15.75 secondary grey, at most two lines; the figure sits on the ground colour."
+  ],
+  "decoration": [
+    "Hairline frame and rules: drawn."
+  ],
+  "provenance": {
+    "corpus": "benchlog case: our own original developer blog in the devlog-terminal grammar (post index, article with rail and header, figure frame, closing dot field), original copy and our own pixel glyphs",
+    "experiment": "styles/devlog-terminal/style.json provenance (a public developer blog the owner named, read and measured privately in Chrome; never shipped)",
+    "accessed": "2026-11-21",
+    "method": "The figure caption box of the article re-laid at 960 x 600.",
+    "sampleIds": [
+      "benchlog/fig"
+    ],
+    "measured": [
+      "Reference: a hairline-bordered row with a mono FIG label and a caption sans 15.75 px #87867F."
+    ],
+    "summary": "benchlog figure frame"
+  }
+}

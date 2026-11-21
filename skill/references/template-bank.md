@@ -26,6 +26,7 @@ grammar + check rules; its templates are the parameterised layouts of that gramm
 | `acid-print-hud` | 1 (combat HUD) | One acid ink on black slabs, giant chamfered numerals with a misregistered plate, the scene as a cold halftone |
 | `cyanotype-specimen` | 2 (card frame in four rarities, pack opening) | Cyanotype specimen sheets: one Prussian blue, hand-brushed fields, white-line specimens, rarity by process not colour |
 | `street-tape` | 6 (site top bar, section title block, vertical pager, cut container with carousel, sticker CTA, first screen as layers) | Japanese street-fashion city game site: light grey, one acid yellow-green, black fine stripes, rounded slabs with one 49-degree cut, a film strip, numbered three-line section titles |
+| `devlog-terminal` | 5 (post index, article with rail, article header, figure frame, dot-matrix field) | Developer technical-writing blog with a terminal grammar: near-black ground, warm off-white ink, mono chrome (hotkey nav, tabs, dates, section heads) over a neutral grotesque, hairline rows, one inverted button, one clay accent only as pixel-glyph tiles; the mascot is an image slot |
 | `frontier-survey` | 5 (left rail, section opener, crew dossier, album screen, version timeline) | Industrial sci-fi frontier game site: a white page with a fixed left rail, one signal yellow as tall columns and side bands, four-layer section titles, hatched ghost lettering, contours and data marks (objects come from image slots) |
 | `lattice-dossier` | 5 (top frame, rail pager, section heading with ghost word, bulletin screen, four columns) | Industrial dossier-terminal game site: near-black ground, a 172-unit lattice with both diagonals, three frame hairlines (y 152, y 900, x 1683), one signal cyan for state only, a rail numeral cut to its top 55% |
 | `celestial-voyage` | 4 (site top bar with hanging logo and cream tab, gilt news ticket, news section, character section with faction orbit) | Star-voyage fantasy RPG site: deep navy star field, gold only as hairlines and the current state, a heavy CJK serif title over a hairline italic Latin ghost, gilt-rimmed rounded cards, faction medallions on an arc centred off-screen |
@@ -33,7 +34,7 @@ grammar + check rules; its templates are the parameterised layouts of that gramm
 | `atomic-age` | 10 (magazine cover, travel poster, linen book, ad panel, field-guide label, flight-plan page, checklist page, orbit plate, credential, solar print) | Mid-century Space-Age retro-futurism: cream paper with one vermilion against teal, mustard and charcoal, condensed two-ink mastheads, starbursts, orbits and flat rocket glyphs; and mission documents in typewriter mono with a minute-tick time ladder, edition tables, holes and stamps. Marks are slots |
 | `megastructure-ink` | 5 (shaft key visual with scale marker, top bar with depths, monitor label plate, descent HUD frame, switchboard terminal) | Endless-megastructure manga and anime grammar: black and cold grey with one cold cyan light, structure as an abstract ink line system (perspective shaft, screentone, ribs, cables), a person stated only by a scale marker, white hairline HUD frames, monitors with scanlines, the pack's own rail script |
 
-The six game packs come from owner-approved cases, `street-tape` from a reference board the owner supplied and `frontier-survey` from a reference site captured for the owner, `lattice-dossier` from a live official site captured and measured privately, `celestial-voyage` from a public reference site the owner named `megastructure-ink` from reference images of a manga and anime lineage the owner named, `crisis-command` from reference frames measured privately and `atomic-age` from an owner-supplied mood board (all kept private, measured, never shipped), each with an original site built on it (each pack's `provenance` names the case, its lineage and
+The six game packs come from owner-approved cases, `street-tape` from a reference board the owner supplied and `frontier-survey` from a reference site captured for the owner, `lattice-dossier` from a live official site captured and measured privately, `celestial-voyage` from a public reference site the owner named `megastructure-ink` from reference images of a manga and anime lineage the owner named, `crisis-command` from reference frames measured privately, `atomic-age` from an owner-supplied mood board and `devlog-terminal` from a public developer blog the owner named (all kept private, measured, never shipped), each with an original site built on it (each pack's `provenance` names the case, its lineage and
 the rule *borrow grammar, never assets*); `examples` in each pack lists the case screens that stayed example
 renders because their structure was a one-off.
 
@@ -331,6 +332,16 @@ as `lettering-fallback`, because the style changed: Source Han Sans / Serif or N
   the size cannot rely on it). Pass `--font-dir` with Anton for the board's look. `side=right`
   mirrors the slabs and the title edge; `kv.tape-cut-carousel --param control=dots` swaps the thumb track
   for dots. Pictures go in `media`; characters come from an image-generation task sheet (#311).
+
+- **devlog-terminal**: mono roles (`mono`, `monom`) hold Latin chrome; a slot given CJK copy is set whole in
+  the sans role of the same weight (`data-font-role` says which), never glyph by glyph. Clay (`#D97757`) is
+  only the square pixel-glyph tiles (`glyph`, `glyph_offset` pick the 9 x 9 glyphs: bug, check, flask, chart,
+  prompt, bolt) and never text or a wide fill; dim (`#5E5D59`) is 2.8:1 on the ground, so it is for dots,
+  unfilled blocks and outlines, never text. `ui.devlog-index --param rows=6..8` sets the row count (indexed
+  `row_date_N` / `row_title_N` / `row_time_N`), `ui.devlog-article --param progress=0..100` fills the ASCII bar
+  (the percent is derived) and `current` bolds a TREE item, `banner.devlog-dotfield --param seed=N` is
+  deterministic and keeps a clear disc for the mascot. The mascot is the owner's own art in the `mascot`
+  slot; never draw the reference blog's.
 
 - **frontier-survey**: wide Latin slots (`title_latin`, `mark_latin`, `band_latin`) take Latin caps and
   digits (Michroma is about 1.0 em a capital and is named, not bundled; without it the Latin falls back to

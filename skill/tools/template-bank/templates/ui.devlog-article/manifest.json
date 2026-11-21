@@ -1,0 +1,227 @@
+{
+  "schema": "design-pipeline.template-bank-template.v1",
+  "id": "ui.devlog-article",
+  "family": "ui",
+  "style": "devlog-terminal",
+  "title": "Article page: hotkey nav, a left rail with title, TREE, an ASCII progress bar, read time and SHARE, and a reading column with a mono section head, prose and a list with bold lead terms",
+  "use": "One article of a developer blog at 1440 x 900. progress sets the bar and the percent, current the bold TREE item, tree_items how many TREE rows show.",
+  "canvas": {
+    "width": 1440,
+    "height": 900
+  },
+  "sizes": [
+    "1440x900",
+    "2880x1800"
+  ],
+  "aspect": "8:5",
+  "accent": {
+    "roles": [
+      "clay"
+    ],
+    "maxShare": 0.02
+  },
+  "params": {
+    "guides": {
+      "type": "boolean",
+      "default": false,
+      "class": "decoration",
+      "note": "draw layout guides"
+    },
+    "progress": {
+      "type": "integer",
+      "default": 42,
+      "min": 0,
+      "max": 100,
+      "class": "proportion",
+      "note": "reading progress in percent"
+    },
+    "current": {
+      "type": "integer",
+      "default": 2,
+      "min": 1,
+      "max": 7,
+      "class": "decoration",
+      "note": "current TREE item (bold, ink)"
+    },
+    "tree_items": {
+      "type": "integer",
+      "default": 7,
+      "min": 3,
+      "max": 7,
+      "class": "rhythm",
+      "note": "number of TREE rows"
+    }
+  },
+  "slots": {
+    "mascot": {
+      "kind": "image",
+      "ground": "ground",
+      "note": "the site's mascot, small (36 x 36); your own art"
+    },
+    "nav_1": {
+      "kind": "text",
+      "default": "[H] HOME",
+      "maxChars": 12,
+      "font": "mono",
+      "note": "bracketed hotkey"
+    },
+    "nav_2": {
+      "kind": "text",
+      "default": "[M] MODS",
+      "maxChars": 12,
+      "font": "mono",
+      "note": "bracketed hotkey"
+    },
+    "nav_3": {
+      "kind": "text",
+      "default": "[D] DOCS",
+      "maxChars": 12,
+      "font": "mono",
+      "note": "bracketed hotkey"
+    },
+    "nav_4": {
+      "kind": "text",
+      "default": "[T] TERMINAL",
+      "maxChars": 14,
+      "font": "mono",
+      "note": "bracketed hotkey"
+    },
+    "cta": {
+      "kind": "text",
+      "default": "GET STARTED",
+      "maxChars": 14,
+      "font": "monom",
+      "note": "the inverted button"
+    },
+    "rail_title": {
+      "kind": "text",
+      "default": "Teaching a test harness to explain its own failures",
+      "maxChars": 64,
+      "lines": 3,
+      "font": "title",
+      "title": true
+    },
+    "tree_label": {
+      "kind": "text",
+      "default": "TREE",
+      "maxChars": 8,
+      "font": "mono"
+    },
+    "tree_{i}": {
+      "kind": "text",
+      "default": [
+        "Next steps",
+        "Overview",
+        "Pin the clock",
+        "Name the order",
+        "Reading a trace",
+        "Verdict lines",
+        "What broke"
+      ],
+      "maxChars": 22,
+      "font": "mono",
+      "note": "TREE item; nesting is fixed (1 and 4 flat, 2, 3, 5, 6 nested)"
+    },
+    "percent": {
+      "kind": "text",
+      "default": "42%",
+      "maxChars": 4,
+      "font": "mono",
+      "derived": true
+    },
+    "read_time": {
+      "kind": "text",
+      "default": "10 MIN READ",
+      "maxChars": 14,
+      "font": "mono"
+    },
+    "share_label": {
+      "kind": "text",
+      "default": "SHARE",
+      "maxChars": 8,
+      "font": "mono"
+    },
+    "share_{i}": {
+      "kind": "text",
+      "default": [
+        "EMAIL",
+        "COPY LINK",
+        "POST"
+      ],
+      "maxChars": 14,
+      "font": "mono"
+    },
+    "sec_title": {
+      "kind": "text",
+      "default": "WHY FAILURES NEED A STORY",
+      "maxChars": 34,
+      "font": "monom",
+      "note": "section head, uppercase"
+    },
+    "para_1": {
+      "kind": "text",
+      "default": "A flaky test is rarely random. It is usually a promise the code never made: that two jobs finish in a fixed order, that a clock only moves forward, that a port is free. We stopped retrying failures and started asking what each one had assumed.",
+      "maxChars": 300,
+      "lines": 5,
+      "font": "sans"
+    },
+    "item_lead_{i}": {
+      "kind": "text",
+      "default": [
+        "Log the seed",
+        "Pin the clock",
+        "Name the order"
+      ],
+      "maxChars": 20,
+      "font": "sans",
+      "note": "bold ink lead term"
+    },
+    "item_rest_{i}": {
+      "kind": "text",
+      "default": [
+        "on the first line of the report.",
+        "so every run starts at the same second.",
+        "when two steps must happen in sequence."
+      ],
+      "maxChars": 48,
+      "font": "sans"
+    },
+    "sub_title": {
+      "kind": "text",
+      "default": "Reading the trace",
+      "maxChars": 30,
+      "font": "monom",
+      "note": "sub-section head, not uppercase"
+    },
+    "para_2": {
+      "kind": "text",
+      "default": "Each trace now ends with a one-line verdict written for a person, not a parser. If the verdict is wrong, that is a bug we can reproduce, and the fix lands next to the test that found it.",
+      "maxChars": 260,
+      "lines": 4,
+      "font": "sans"
+    }
+  },
+  "relations": [
+    "Rail 48-352 with a hairline at x 384; body column 602-1222 (620 wide, inside the measured 540-640).",
+    "TREE rows 26 units apart, a branch corner before each, nesting 20 units; the current item is bold ink, the rest secondary grey.",
+    "Progress bar of 20 blocks, filled blocks body grey, the rest dim; the percent follows the bar.",
+    "Section head mono 15.75 uppercase; prose sans 18 / 1.6 body grey; list lead terms bold ink."
+  ],
+  "decoration": [
+    "Hairlines, branch corners, progress blocks and list bullets: drawn."
+  ],
+  "provenance": {
+    "corpus": "benchlog case: our own original developer blog in the devlog-terminal grammar (post index, article with rail and header, figure frame, closing dot field), original copy and our own pixel glyphs",
+    "experiment": "styles/devlog-terminal/style.json provenance (a public developer blog the owner named, read and measured privately in Chrome; never shipped)",
+    "accessed": "2026-11-21",
+    "method": "The blog's article view at 1440 x 900: sticky rail with TREE and progress, 620-wide reading column.",
+    "sampleIds": [
+      "benchlog/article"
+    ],
+    "measured": [
+      "Reference: body sans 18 px / 1.6 #B0AEA5 in a 540-640 px column; section heads mono 15.75 px w500 uppercase; sub-sections mono not uppercase.",
+      "Rail: title, TREE with branch corners and nesting (current item bold), ASCII progress bar with percent, read time, SHARE list."
+    ],
+    "summary": "benchlog article"
+  }
+}

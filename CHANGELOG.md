@@ -4,6 +4,10 @@ All notable changes to Design Pipeline are documented here.
 
 ## [Unreleased]
 
+### Added
+
+- Style pack `devlog-terminal` (change `devlog-terminal-style-pack`): the grammar of a developer technical-writing blog that speaks in terminal conventions, read and measured privately in Chrome on a public blog the owner named (2026-11-21; the capture stays private, nothing from it is shipped, no organisation or product is named, the mascot is an empty image slot). Near-black ground `#141413`, warm ink `#FAF9F5` with body, secondary and dim greys and 9% hairlines, monospace chrome (bracketed hotkey nav, filter tabs, dates, labels, section heads) over a neutral grotesque for titles and prose, one inverted square button, and one clay accent `#D97757` only as filled square tiles carrying our own 9 x 9 pixel glyphs. Five templates: `ui.devlog-index` (6-8 rows as `rows`), `ui.devlog-article` (left rail with TREE, ASCII progress `progress`, a 620-wide reading column), `ui.devlog-article-header`, `card.devlog-fig` (FIG label caption box) and `banner.devlog-dotfield` (seeded dot field `seed` around a mascot slot). Mono slots given CJK copy move whole to the sans role; fonts (JetBrains Mono, IBM Plex Mono, Geist Mono, Inter, Geist, Noto Sans SC) are open substitutes, named not bundled. Every default render passes the static check at each size and for 50 seeds, and the browser check.
+
 ## [0.15.0-beta.1] - 2026-11-14
 
 ### Added

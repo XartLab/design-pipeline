@@ -1,0 +1,257 @@
+{
+  "schema": "design-pipeline.template-bank-template.v1",
+  "id": "ui.devlog-index",
+  "family": "ui",
+  "style": "devlog-terminal",
+  "title": "Post index: hotkey nav, brand column, filter tabs, a featured row with a clay pixel tile and 6-8 hairline rows with icon, date, title and read time",
+  "use": "The front page of a developer blog or changelog: the list of posts. rows sets how many rows show (6-8); each row's date, title and read time are slots. The mascot slot stays empty or holds your own art.",
+  "canvas": {
+    "width": 1440,
+    "height": 900
+  },
+  "sizes": [
+    "1440x900",
+    "2880x1800"
+  ],
+  "aspect": "8:5",
+  "accent": {
+    "roles": [
+      "clay"
+    ],
+    "maxShare": 0.06
+  },
+  "params": {
+    "guides": {
+      "type": "boolean",
+      "default": false,
+      "class": "decoration",
+      "note": "draw layout guides"
+    },
+    "rows": {
+      "type": "integer",
+      "default": 7,
+      "min": 6,
+      "max": 8,
+      "class": "rhythm",
+      "note": "number of post rows"
+    },
+    "active": {
+      "type": "integer",
+      "default": 1,
+      "min": 1,
+      "max": 5,
+      "class": "decoration",
+      "note": "active filter tab"
+    },
+    "current": {
+      "type": "integer",
+      "default": 1,
+      "min": 1,
+      "max": 4,
+      "class": "decoration",
+      "note": "current hotkey in the nav"
+    },
+    "glyph": {
+      "type": "enum",
+      "values": [
+        "bug",
+        "check",
+        "flask",
+        "chart",
+        "prompt",
+        "bolt"
+      ],
+      "default": "flask",
+      "class": "decoration",
+      "note": "pixel glyph of the featured tile"
+    },
+    "glyph_offset": {
+      "type": "integer",
+      "default": 0,
+      "min": 0,
+      "max": 5,
+      "class": "decoration",
+      "note": "where the row icons start in the glyph list"
+    }
+  },
+  "slots": {
+    "mascot": {
+      "kind": "image",
+      "ground": "ground",
+      "note": "the site's mascot, small (36 x 36); your own art"
+    },
+    "nav_1": {
+      "kind": "text",
+      "default": "[H] HOME",
+      "maxChars": 12,
+      "font": "mono",
+      "note": "bracketed hotkey"
+    },
+    "nav_2": {
+      "kind": "text",
+      "default": "[M] MODS",
+      "maxChars": 12,
+      "font": "mono",
+      "note": "bracketed hotkey"
+    },
+    "nav_3": {
+      "kind": "text",
+      "default": "[D] DOCS",
+      "maxChars": 12,
+      "font": "mono",
+      "note": "bracketed hotkey"
+    },
+    "nav_4": {
+      "kind": "text",
+      "default": "[T] TERMINAL",
+      "maxChars": 14,
+      "font": "mono",
+      "note": "bracketed hotkey"
+    },
+    "cta": {
+      "kind": "text",
+      "default": "GET STARTED",
+      "maxChars": 14,
+      "font": "monom",
+      "note": "the inverted button"
+    },
+    "brand": {
+      "kind": "text",
+      "default": "benchlog",
+      "maxChars": 14,
+      "font": "mono",
+      "note": "site name, 31.5 units"
+    },
+    "tagline": {
+      "kind": "text",
+      "default": "Notes on building and shipping.",
+      "maxChars": 40,
+      "font": "sans"
+    },
+    "tab_{i}": {
+      "kind": "text",
+      "default": [
+        "NOTES",
+        "ALL",
+        "ENGINEERING",
+        "RESEARCH",
+        "PRODUCT"
+      ],
+      "maxChars": 14,
+      "font": "mono",
+      "note": "filter tab"
+    },
+    "search": {
+      "kind": "text",
+      "default": "[S] SEARCH",
+      "maxChars": 14,
+      "font": "mono"
+    },
+    "feature_tag": {
+      "kind": "text",
+      "default": "FEATURED",
+      "maxChars": 10,
+      "font": "monom"
+    },
+    "feature_cat": {
+      "kind": "text",
+      "default": "ENGINEERING",
+      "maxChars": 16,
+      "font": "mono"
+    },
+    "feature_title": {
+      "kind": "text",
+      "default": "Teaching a test harness to explain its own failures",
+      "maxChars": 64,
+      "lines": 2,
+      "font": "title",
+      "title": true
+    },
+    "feature_author": {
+      "kind": "text",
+      "default": "BY INES CALDER",
+      "maxChars": 28,
+      "font": "mono"
+    },
+    "row_date_{i}": {
+      "kind": "text",
+      "default": [
+        "2026.10.07",
+        "2026.11.18",
+        "2026.11.14",
+        "2026.11.09",
+        "2026.11.03",
+        "2026.10.28",
+        "2026.10.21",
+        "2026.10.15"
+      ],
+      "maxChars": 10,
+      "font": "mono",
+      "note": "date, digits and ."
+    },
+    "row_title_{i}": {
+      "kind": "text",
+      "default": [
+        "The case for boring queues",
+        "Why our flaky tests were really a scheduling bug",
+        "A field guide to reading a core dump at 3 a.m.",
+        "Shrinking a monorepo build from forty minutes to six",
+        "What a type checker taught us about our API",
+        "Notes on retries, backoff and the thundering herd",
+        "Designing a log format people actually grep",
+        "Rolling back a schema change without downtime"
+      ],
+      "maxChars": 56,
+      "font": "sans"
+    },
+    "row_time_{i}": {
+      "kind": "text",
+      "default": [
+        "4 MIN READ",
+        "8 MIN READ",
+        "12 MIN READ",
+        "9 MIN READ",
+        "6 MIN READ",
+        "11 MIN READ",
+        "5 MIN READ",
+        "10 MIN READ"
+      ],
+      "maxChars": 12,
+      "font": "mono"
+    },
+    "load_more": {
+      "kind": "text",
+      "default": "LOAD MORE",
+      "maxChars": 12,
+      "font": "mono"
+    },
+    "hint": {
+      "kind": "text",
+      "default": "Press R to load more",
+      "maxChars": 28,
+      "font": "mono"
+    }
+  },
+  "relations": [
+    "Nav 72 units high, hairline under it; brand column 48-392, hairline at x 392; main column 424-1392.",
+    "Rows 46 units apart from y 386, a hairline under each; icon tile 28 units, date at x 476, title at x 588, read time right-aligned at 1392.",
+    "Clay only on the featured tile (192) and the row tiles (28); the button is ink on ground with square corners."
+  ],
+  "decoration": [
+    "Hairlines, the mascot placeholder, LOAD MORE outline and pixel glyphs: drawn."
+  ],
+  "provenance": {
+    "corpus": "benchlog case: our own original developer blog in the devlog-terminal grammar (post index, article with rail and header, figure frame, closing dot field), original copy and our own pixel glyphs",
+    "experiment": "styles/devlog-terminal/style.json provenance (a public developer blog the owner named, read and measured privately in Chrome; never shipped)",
+    "accessed": "2026-11-21",
+    "method": "The blog's front page re-laid at 1440 x 900: hotkey nav, brand column, tabs, featured row, hairline rows, LOAD MORE with its hint.",
+    "sampleIds": [
+      "benchlog/index"
+    ],
+    "measured": [
+      "Reference: site name mono 31.5 px w400; tabs small mono caps, active ink; rows 24 px icon, mono date, sans title, read time right; featured tile large.",
+      "Palette read from computed styles: ground #141413, ink #FAF9F5, secondary #87867F, clay #D97757 on tiles only."
+    ],
+    "summary": "benchlog index"
+  }
+}

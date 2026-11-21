@@ -1,0 +1,103 @@
+{
+  "schema": "design-pipeline.template-bank-template.v1",
+  "id": "ui.devlog-article-header",
+  "family": "ui",
+  "style": "devlog-terminal",
+  "title": "Article header: a centred clay pixel tile, the title, a deck and three meta columns with mono labels",
+  "use": "The top of an article or a post card: tile icon, 36-unit title, deck, then AUTHOR / CATEGORY / PUBLISHED between two hairlines. glyph picks the tile's pixel glyph.",
+  "canvas": {
+    "width": 1440,
+    "height": 560
+  },
+  "sizes": [
+    "1440x560",
+    "2880x1120"
+  ],
+  "aspect": "18:7",
+  "accent": {
+    "roles": [
+      "clay"
+    ],
+    "maxShare": 0.02
+  },
+  "params": {
+    "guides": {
+      "type": "boolean",
+      "default": false,
+      "class": "decoration",
+      "note": "draw layout guides"
+    },
+    "glyph": {
+      "type": "enum",
+      "values": [
+        "bug",
+        "check",
+        "flask",
+        "chart",
+        "prompt",
+        "bolt"
+      ],
+      "default": "bug",
+      "class": "decoration",
+      "note": "pixel glyph of the tile"
+    }
+  },
+  "slots": {
+    "title": {
+      "kind": "text",
+      "default": "Why our flaky tests were really a scheduling bug",
+      "maxChars": 64,
+      "lines": 2,
+      "font": "title",
+      "title": true
+    },
+    "deck": {
+      "kind": "text",
+      "default": "We stopped retrying failures and started asking what each one assumed. Here is what the traces told us.",
+      "maxChars": 140,
+      "lines": 2,
+      "font": "sans"
+    },
+    "meta_label_{i}": {
+      "kind": "text",
+      "default": [
+        "PUBLISHED",
+        "AUTHOR",
+        "CATEGORY"
+      ],
+      "maxChars": 14,
+      "font": "mono"
+    },
+    "meta_{i}": {
+      "kind": "text",
+      "default": [
+        "2026.11.18",
+        "Ines Calder",
+        "Engineering"
+      ],
+      "maxChars": 22,
+      "font": "sans"
+    }
+  },
+  "relations": [
+    "Tile 80 units centred at y 64; title sans 36 / 1.2 w500 centred, two lines at most; deck sans 18 / 1.6 body grey.",
+    "Three 240-unit meta columns centred on the canvas between hairlines at y 392 and 484, separated by vertical hairlines; labels mono small caps, values sans 15.75."
+  ],
+  "decoration": [
+    "Hairlines and the pixel glyph: drawn."
+  ],
+  "provenance": {
+    "corpus": "benchlog case: our own original developer blog in the devlog-terminal grammar (post index, article with rail and header, figure frame, closing dot field), original copy and our own pixel glyphs",
+    "experiment": "styles/devlog-terminal/style.json provenance (a public developer blog the owner named, read and measured privately in Chrome; never shipped)",
+    "accessed": "2026-11-21",
+    "method": "The article header re-laid at 1440 x 560: centred tile, title 36/1.2, deck, three meta columns.",
+    "sampleIds": [
+      "benchlog/article-header"
+    ],
+    "measured": [
+      "Reference: article title sans 36 px / 1.2 w500; meta labels mono AUTHOR / CATEGORY / PUBLISHED.",
+      "Tile is the pack's own 9 x 9 glyph on clay; the reference's mascot-like pixel figure is not drawn."
+    ],
+    "summary": "benchlog article header"
+  }
+}

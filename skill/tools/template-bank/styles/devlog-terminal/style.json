@@ -1,0 +1,105 @@
+{
+  "schema": "design-pipeline.template-bank-style.v1",
+  "id": "devlog-terminal",
+  "title": "Devlog terminal: a developer technical-writing blog with a terminal grammar - near-black ground, warm off-white ink, monospace chrome, a neutral grotesque for prose, hairlines, one inverted button, one clay accent only as pixel-glyph tiles",
+  "summary": "Near-black ground (#141413) with warm off-white ink and three greys, monospace for everything that is chrome (bracketed hotkey nav, filter tabs, dates, labels, section heads), a neutral grotesque for titles and prose, hairlines instead of boxes, one inverted square button, and one clay accent (#D97757) that appears only as filled square tiles carrying a 1-bit pixel glyph, plus the mascot slot. Index, article with a TREE rail and an ASCII progress bar, a centred article header, a figure frame with a FIG caption and a dot-matrix field around a mascot.",
+  "provenance": {
+    "case": "benchlog: an original developer blog (a post index, an article with its rail and header, a figure frame and a closing dot field) built on the grammar, with original copy and our own 1-bit glyphs; the mascot is a sized image slot.",
+    "lineage": "A developer technical-writing blog that speaks in terminal conventions (2020s): hotkey nav in brackets, mono labels and dates, a grotesque for reading, hairline rows, a TREE rail with branch glyphs and an ASCII progress bar. Read and measured privately in Chrome on a public blog the owner named (2026-11-21); the capture stays private and is not shipped. Borrowed: the grammar and the measured proportions. Never borrowed: any name, logo, wordmark, the original proprietary faces, the site's pixel mascot or any picture.",
+    "borrow": "Borrow grammar, never assets. Every name, headline and glyph in the case and the templates is our own (benchlog, the post titles, the six pixel glyphs drawn in layouts-devlog.cjs); the mascot is an empty image slot the owner fills with their own art; type is open substitutes named through the font catalog.",
+    "rounds": "Built in one pass from the measurements below; template check (static, every size, 50 seeds, variants) and --browser on every default render are the first and final passes.",
+    "measured": [
+      "Ground #141413; ink #FAF9F5; body text #B0AEA5; secondary #87867F; dim #5E5D59 (dots, unfilled blocks and outlines, never text: 2.8:1 on the ground); hairlines rgba(250,249,245,.09), about #292927 on the ground.",
+      "Inverted button: #FAF9F5 fill, #141413 text, square corners. One accent, clay #D97757, only as filled square tiles carrying a 1-bit pixel glyph (article icons, the featured tile) and the mascot.",
+      "Type: index site name mono 31.5 px w400; article title sans 36 px / 1.2 w500; section heads mono 15.75 px w500 uppercase with slight tracking, sub-sections mono not uppercase; body sans 18 px / 1.6 #B0AEA5 in a 540-640 px column; captions sans 15.75 px #87867F; list items with a bold ink lead term.",
+      "Index: bracketed hotkeys in mono at the top (\"[H] HOME  [M] MODS  [D] DOCS  [T] TERMINAL\"), a small mascot slot top-left, one inverted button top-right; filter tabs in small mono caps, active ink and the rest grey; \"[S] SEARCH\" at the right; brand and a one-line tagline in a left column; post rows divided by hairlines (a 24 px icon, mono date, sans title, read time at the right); a featured row with a large clay tile, a white Featured tag and category, a big title and the author; LOAD MORE with a \"Press R to load more\" hint.",
+      "Article: centred header (clay tile, title, deck, three meta columns with mono labels AUTHOR / CATEGORY / PUBLISHED); a left sticky rail with the title, a TREE list with branch glyphs and nesting (the current item bold), an ASCII progress bar of blocks with a percent, \"10 MIN READ\" and a SHARE list; a figure caption box (a hairline row with a mono FIG label and the caption); footer link columns with mono small-caps labels, an underlined newsletter input with an arrow, and a dot-matrix field of grey dots of varying size with a mascot in the middle.",
+      "64 px: with the mascot slot empty, the near-black ground, mono chrome, hairline rows and one clay tile still read as this grammar and not as a generic dark blog (a terminal-green or purple-gradient dark page does not)."
+    ],
+    "accessed": "2026-11-21"
+  },
+  "palette": {
+    "ground": { "value": "#141413", "use": "the page ground, the button text and the pixels of a glyph tile" },
+    "ink": { "value": "#FAF9F5", "use": "titles, the current state, the inverted button's fill" },
+    "body": { "value": "#B0AEA5", "use": "prose, inactive nav, share links, filled progress blocks" },
+    "mute": { "value": "#87867F", "use": "secondary text: dates, read time, labels, captions, hints, inactive tabs" },
+    "dim": { "value": "#5E5D59", "use": "dots, unfilled blocks, bullets and the LOAD MORE outline; never text (2.8:1)" },
+    "hair": { "value": "#292927", "use": "hairlines (rgba(250,249,245,.09) over the ground)" },
+    "clay": { "value": "#D97757", "use": "the one accent: filled square tiles carrying a pixel glyph" }
+  },
+  "fonts": {
+    "roles": {
+      "mono": { "stack": ["JetBrains Mono", "IBM Plex Mono", "Geist Mono", "Noto Sans SC"], "generic": "monospace", "weight": 400, "use": "chrome: hotkey nav, filter tabs, dates, labels, read time, hints, the site name; Latin, digits and ASCII symbols only (CJK moves the whole line to sans)" },
+      "monom": { "stack": ["JetBrains Mono", "IBM Plex Mono", "Geist Mono", "Noto Sans SC"], "generic": "monospace", "weight": 500, "use": "section heads, the button label and the Featured tag" },
+      "sans": { "stack": ["Inter", "Geist", "Noto Sans SC"], "generic": "sans-serif", "weight": 400, "use": "prose, row titles, captions, meta values; mixed CJK and Latin copy" },
+      "title": { "stack": ["Inter", "Geist", "Noto Sans SC"], "generic": "sans-serif", "weight": 500, "use": "article and featured titles, the rail title" }
+    },
+    "faces": [
+      { "family": "JetBrains Mono", "weight": 400, "file": "JetBrainsMono[wght].ttf", "source": "https://github.com/google/fonts/tree/bbda7253fc363238b05d97515ca71f8ae49c4fa9/ofl/jetbrainsmono", "licence": "SIL OFL 1.1", "author": "The JetBrains Mono Project Authors" },
+      { "family": "IBM Plex Mono", "weight": 400, "file": "IBMPlexMono-Regular.ttf", "source": "https://github.com/google/fonts/tree/bbda7253fc363238b05d97515ca71f8ae49c4fa9/ofl/ibmplexmono", "licence": "SIL OFL 1.1", "author": "Bold Monday" },
+      { "family": "Geist Mono", "weight": 400, "file": "GeistMono[wght].ttf", "source": "https://github.com/google/fonts/tree/bbda7253fc363238b05d97515ca71f8ae49c4fa9/ofl/geistmono", "licence": "SIL OFL 1.1", "author": "The Geist Project Authors" },
+      { "family": "Inter", "weight": 400, "file": "Inter[opsz,wght].ttf", "source": "https://github.com/google/fonts/tree/bbda7253fc363238b05d97515ca71f8ae49c4fa9/ofl/inter", "licence": "SIL OFL 1.1", "author": "The Inter Project Authors" },
+      { "family": "Geist", "weight": 400, "file": "Geist[wght].ttf", "source": "https://github.com/google/fonts/tree/bbda7253fc363238b05d97515ca71f8ae49c4fa9/ofl/geist", "licence": "SIL OFL 1.1", "author": "The Geist Project Authors" },
+      { "family": "Noto Sans SC", "weight": 400, "file": "NotoSansSC[wght].ttf", "source": "https://github.com/google/fonts/tree/bbda7253fc363238b05d97515ca71f8ae49c4fa9/ofl/notosanssc", "licence": "SIL OFL 1.1", "author": "Google" }
+    ],
+    "resolve": "fonts query --text-file <all copy> --style gothic resolves Noto Sans SC for CJK (the only catalog family of the stacks); the mono and grotesque faces are open substitutes for the blog's proprietary ones and are named, not bundled. A mono slot given CJK copy is set whole in the sans role of the same weight, never glyph by glyph.",
+    "licence": "All roles use SIL OFL 1.1 fonts.",
+    "bundled": false,
+    "note": "Fonts are named, not bundled. --font-dir <dir> reads coverage and embeds the faces."
+  },
+  "layout": {
+    "grammar": [
+      "Near-black ground, warm off-white ink, three greys (body, secondary, dim) and hairlines at about 9% ink; no boxes, no shadows, no rounded corners: structure is rows, rules and square tiles.",
+      "Chrome is monospace, reading is grotesque: hotkey nav in brackets, filter tabs, dates, labels, read time, hints and section heads in mono (small caps with slight tracking for labels); titles and prose in sans (CJK falls to Noto Sans SC).",
+      "One inverted button (ink fill, ground text, square corners) at the top right; the current nav item is ink, the rest body grey; active filter tab ink, the rest secondary grey.",
+      "One accent, clay, only as a filled square tile carrying a 1-bit pixel glyph (the featured tile at 192, article icons at 28 units, the article header's tile at 80) and the mascot, which is an image slot; clay never fills a band, a button or text.",
+      "Index: a brand column (site name in mono 31.5, one-line tagline), a main column of filter tabs and a hairline list, the featured row on top; LOAD MORE and its keyboard hint close the list.",
+      "Article: a left sticky rail (title, a TREE list with branch glyphs and nesting with the current item bold, an ASCII progress bar of blocks with a percent, read time, SHARE) and a 540-640 unit reading column with a mono section head, prose and a list whose items start with a bold ink lead term.",
+      "A figure sits in a hairline frame above a caption box: a mono FIG label in its own cell, the caption in secondary grey beside it.",
+      "A dot-matrix field closes a page: grey dots of four sizes forming faint soft shapes, a clear disc in the middle for the mascot."
+    ]
+  },
+  "materials": {
+    "procedural": [
+      "1-bit pixel glyphs on a 9 x 9 grid (bug, checkbox, flask, chart, prompt, bolt) drawn as runs of squares on clay tiles (GLYPHS in layouts-devlog.cjs)",
+      "branch corners and nesting for TREE and SHARE, and the progress bar's blocks, drawn as paths and squares so no monospace face has to supply them",
+      "a seeded dot-matrix field: four dot sizes from soft blobs, a clear disc for the mascot (param seed)"
+    ],
+    "recipes": [
+      "The mascot is the owner's own: a small pixel or line figure on a transparent background, supplied through an image-generation task sheet (#311) or drawn by the owner; materials request writes the sheet. Do not copy the reference blog's mascot.",
+      "A figure picture in card.devlog-fig: screenshots or diagrams cropped to 12:11 with materials process; keep them on the ground colour so the hairline frame reads."
+    ],
+    "collage": [
+      "Pictures sit only in the figure frame, the mascot slot or the featured tile's neighbour; nothing is written over a picture."
+    ],
+    "sources": "Everything is drawn; pictures and the mascot are your own art in the image slots.",
+    "budget": { "inks": 1, "effectsMax": 0, "tiltedElements": 0 }
+  },
+  "motion": {
+    "fps": 60,
+    "grammar": [
+      "Keyboard first: hotkeys in brackets are real (H, M, D, T, S, R); pressing one highlights its nav item with a 120 ms ink change, nothing slides.",
+      "The progress bar fills block by block with scroll; the current TREE item follows the section in view and turns bold and ink.",
+      "Rows brighten from secondary grey to ink on hover; LOAD MORE appends rows with a 160 ms fade; the dot field breathes by 1 unit in size at most."
+    ],
+    "flashLimit": "No flashing and no cursor blink faster than 1 Hz."
+  },
+  "checks": {
+    "static": ["text-overflow", "text-length", "type-size", "contrast", "accent-budget"],
+    "browser": ["text-overlap", "off-canvas", "collage-cover", "contrast", "text-occluded", "glyph-coverage"],
+    "browserOnRender": true,
+    "guidance": [
+      "64 px distinctiveness (guidance): shrink each screen to 64 px tall beside a generic dark blog with the mascot slot empty; the near-black ground with warm ink, mono hairline rows and a single clay pixel tile should still read. A cool or green dark theme, rounded cards or a gradient reads as another pack.",
+      "Dim (#5E5D59) is 2.8:1 on the ground: dots, unfilled blocks, bullets and outlines only, never text; secondary text is #87867F (5.1:1).",
+      "Mono roles hold Latin chrome; CJK copy in a mono slot moves the whole line to the sans role (the layout does it), so never expect a CJK date or label to set in the mono face.",
+      "Never draw the reference blog's mascot, wordmark or glyph shapes: the mascot slot stays empty or holds the owner's own art, and the clay tile is the only place the accent appears."
+    ],
+    "note": "The browser check runs on every render (hairlines, the dot field and the tiles are measured in pixels)."
+  },
+  "examples": {
+    "note": "Renders of the case that stay examples (outside the repository, with the owner): the index, an article with its header and a figure, and the closing dot field.",
+    "renders": [
+      { "screen": "post index and article with rail", "file": "benchlog case, shots/ (owner's copy, not in the repository)", "why": "full pages with scripts and scroll state, not parametric layouts; their parts are the five templates" }
+    ]
+  }
+}
