@@ -1,0 +1,126 @@
+{
+  "schema": "design-pipeline.template-bank-template.v1",
+  "id": "cover.essay-hero",
+  "family": "cover",
+  "style": "institute-essay",
+  "title": "Essay hero: a two-line serif title left with a sans deck, two pill buttons and a meta line, a large seeded pixel burst of clay rounded squares right",
+  "use": "The opening of a research essay, report or long-form explainer; the burst is the picture, so no art is needed. seed and density change the burst.",
+  "canvas": {
+    "width": 1600,
+    "height": 900
+  },
+  "sizes": [
+    "1600x900",
+    "1920x1080"
+  ],
+  "aspect": "16:9",
+  "accent": {
+    "roles": [
+      "clay"
+    ],
+    "maxShare": 0.22
+  },
+  "params": {
+    "guides": {
+      "type": "boolean",
+      "default": false,
+      "class": "decoration",
+      "note": "draw layout guides"
+    },
+    "theme": {
+      "type": "enum",
+      "values": [
+        "light",
+        "dark"
+      ],
+      "default": "light",
+      "class": "decoration",
+      "note": "light (ivory #FAF9F5) or dark (#141413) ground"
+    },
+    "seed": {
+      "type": "integer",
+      "default": 7,
+      "min": 1,
+      "max": 9999,
+      "class": "rhythm",
+      "note": "seed of the burst's noise"
+    },
+    "density": {
+      "default": 0.55,
+      "min": 0.3,
+      "max": 0.8,
+      "class": "rhythm",
+      "note": "share of the burst kept (higher is denser)"
+    }
+  },
+  "slots": {
+    "brand": {
+      "kind": "text",
+      "default": "示例研究所 · 研究笔记",
+      "maxChars": 16,
+      "font": "sans"
+    },
+    "title_1": {
+      "kind": "text",
+      "default": "算力需求会走多远？",
+      "maxChars": 14,
+      "font": "serif",
+      "title": true,
+      "note": "title line 1; the width decides: about 9 CJK or 14 Latin characters"
+    },
+    "title_2": {
+      "kind": "text",
+      "default": "三种情景下的推演",
+      "maxChars": 14,
+      "font": "serif",
+      "title": true,
+      "note": "title line 2"
+    },
+    "deck": {
+      "kind": "text",
+      "default": "三种情景下的算力需求、供应链利润分配与估值含义。",
+      "maxChars": 50,
+      "lines": 2,
+      "font": "sans"
+    },
+    "cta_1": {
+      "kind": "text",
+      "default": "直接看结论 ↓",
+      "maxChars": 10,
+      "font": "sans"
+    },
+    "cta_2": {
+      "kind": "text",
+      "default": "三种情景 ↓",
+      "maxChars": 10,
+      "font": "sans"
+    },
+    "meta": {
+      "kind": "text",
+      "default": "研究报告 · v1.0 · 2026 年 11 月",
+      "maxChars": 32,
+      "font": "sans"
+    }
+  },
+  "relations": [
+    "H1 76 units / 1.13 serif weight 400 in two lines left; deck 20 sans #5E5D59 under it; two pills 48 high with a 1 unit hairline and a 12 unit gap; meta 15 sans.",
+    "The burst is a 15 x 15 grid in a 640-unit square, radius 7.5 cells, right of the title (centre x 1180); clay is the only colour and stays under 22% of the canvas for every seed."
+  ],
+  "decoration": [
+    "The burst's watercolour filter and the squares' opacity (0.78-1) are decoration."
+  ],
+  "provenance": {
+    "corpus": "research-report kit (examples/institute-essay-report-kit): our own original long-read page in the institute-essay grammar; all copy and numbers are placeholders",
+    "experiment": "styles/institute-essay/style.json provenance (two public reference pages measured privately in Chrome on 2026-11-21; never shipped)",
+    "accessed": "2026-11-21",
+    "method": "The reference pages' hero (serif title left, pixel burst right, two pill buttons) re-set on a 1600 x 900 canvas; sizes scaled from the measured 78 / 17 px.",
+    "sampleIds": [
+      "institute-essay/hero"
+    ],
+    "measured": [
+      "H1 78 px / 1.1 serif 400, deck 17 px sans #5E5D59, pill radius 99 with a 1 px hairline, burst of clay rounded squares to the right of the title.",
+      "Template: the burst passes the 22% accent budget for 50 seeds and density 0.3-0.8."
+    ],
+    "summary": "institute-essay hero"
+  }
+}

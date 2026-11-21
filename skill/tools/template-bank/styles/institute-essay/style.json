@@ -1,0 +1,111 @@
+{
+  "schema": "design-pipeline.template-bank-style.v1",
+  "id": "institute-essay",
+  "title": "Institute essay: an AI research institute's long-form explainer grammar - ivory page, one clay accent, a book serif against a neutral sans, figures on graph paper with watercolour bars and a sticky note",
+  "summary": "Ivory ground and near-black ink; a transitional book serif for display and body and a neutral grotesque for every label, caption and legend; a 640 px reading column that figures break out of to full width on 22-unit graph paper; one clay accent (the hero's pixel burst, footnote marks, the quote glyph); five data hues only inside figures, as watercolour-textured bars and tiles; a sticky note card riding on a figure; three parallel scenario cards; pill buttons; a big pull quote.",
+  "provenance": {
+    "case": "research-report kit: an original self-contained long-read page (a research report on three scenarios of an AI capex cycle, every figure, number and quote a labelled placeholder) in examples/institute-essay-report-kit, and five parametric parts of it as templates.",
+    "lineage": "AI research institute long-form explainer and research-essay pages. Two public reference pages the owner named, captured and measured privately in Chrome (computed styles, 2026-11-21); the captures stay private and are not shipped. Borrowed: the grammar and the measured numbers. Never borrowed: any name, logo, wordmark, picture, copy or the original proprietary typefaces.",
+    "borrow": "Borrow grammar, never assets. Every word, figure and number is our own placeholder; the faces are open (Source Serif 4, Inter, Noto Serif SC, Noto Sans SC), named and never bundled; the pixel burst is generated from a seed.",
+    "rounds": "One round: measured first, then the five templates and the kit page built on the numbers; template check --browser 0 findings on every default render.",
+    "measured": [
+      "Ground #FAF9F5, ink #141413, secondary text #5E5D59, faint #87867F, neutrals #BDBAAE and #E3E0D4, paper card #F5F4ED; the dark theme's ground is #141413.",
+      "Clay #D97757 on the hero's pixel burst, footnote references and the quote glyph. Data hues inside figures only: purple #918BD6, blue #6A9BCC, amber #F0AC54, green #217D5D, red #B0403A; the neutral data tile is #D6D3C6.",
+      "Type: display and body a transitional book serif, labels, captions, legends and subheads a neutral grotesque. H1 78 px / 1.1 weight 400 serif; deck 17 px sans #5E5D59; body serif 17 / 26 px; reading column 640 px; H3 sans 17 px bold; footnotes heading sans 13 px weight 500 #5E5D59; pull quote serif 36 / 45 px about 946 px wide with a large open-quote glyph; captions sans 13-17 px #5E5D59.",
+      "Devices: a grey drop cap about four lines tall; a bold sans lead-in sentence; 'Finding N: topic' in faint serif about 28 px above a one-sentence claim in ink serif about 28 px; figures full width on graph paper (22 px grid, very light lines) with a bold italic 'How to read this:' caption and a legend of 12 px squares; an asterisk footnote line; a sticky note card (paper #F5F4ED, 1 px hairline, radius 6, 340 px wide, bold sans title and serif text) riding on a figure's left; three parallel scenario cards; timeline rows (small sans date, bold sans title, serif sentence); superscript footnotes into an endnote list; italic credits with version and month; pill buttons (radius 99, 1 px hairline) for the hero's calls to action.",
+      "Hero picture: a seeded pixel burst of clay rounded squares with a watercolour and paper texture (SVG turbulence plus displacement), large, to the right of the title. Bars and tiles inside figures carry the same texture.",
+      "64 px: with the wordmark masked, an ivory page with a serif title, a clay burst and a graph-paper figure reads as the grammar and apart from every game pack in the bank."
+    ],
+    "accessed": "2026-11-21"
+  },
+  "palette": {
+    "ivory": { "value": "#FAF9F5", "use": "the page ground and the figure ground" },
+    "ink": { "value": "#141413", "use": "titles, claims, body, values" },
+    "mute": { "value": "#5E5D59", "use": "the deck, captions, legends, footnotes, small labels (6.3:1 on ivory)" },
+    "faint": { "value": "#87867F", "use": "large type only (the 'Finding N' label, drop cap): 3.5:1 on ivory passes the 3:1 of large type and fails 4.5:1 for small" },
+    "stone": { "value": "#BDBAAE", "use": "pill hairlines, chart guides and axes" },
+    "line": { "value": "#E3E0D4", "use": "card and band hairlines" },
+    "paper": { "value": "#F5F4ED", "use": "the sticky note and scenario cards" },
+    "grid": { "value": "#EBE8DC", "use": "graph-paper lines (22 units, 1 unit wide)" },
+    "clay": { "value": "#D97757", "use": "the one accent: the hero burst, footnote marks, the quote glyph (2.96:1 on ivory, so decoration or marks, not text)" },
+    "purple": { "value": "#918BD6", "use": "data hue, inside figures only (the mild scenario)" },
+    "blue": { "value": "#6A9BCC", "use": "data hue, inside figures only (the neutral scenario)" },
+    "amber": { "value": "#F0AC54", "use": "data hue, inside figures only (the aggressive scenario)" },
+    "green": { "value": "#217D5D", "use": "data hue, inside figures only" },
+    "red": { "value": "#B0403A", "use": "data hue, inside figures only" },
+    "tile": { "value": "#D6D3C6", "use": "the neutral data tile and bar tracks" },
+    "night": { "value": "#141413", "use": "the dark theme's ground (templates take theme=dark)" }
+  },
+  "fonts": {
+    "roles": {
+      "serif": { "stack": ["Source Serif 4", "Noto Serif SC"], "generic": "serif", "weight": 400, "use": "display, claims, quotes and body: a transitional book serif, weight 400; Noto Serif SC carries CJK" },
+      "sans": { "stack": ["Inter", "Noto Sans SC"], "generic": "sans-serif", "weight": 500, "use": "labels, captions, legends, values, pills, subheads (bold for lead-ins and H3); Noto Sans SC carries CJK" }
+    },
+    "faces": [
+      { "family": "Source Serif 4", "weight": 400, "file": "SourceSerif4[opsz,wght].ttf", "source": "https://github.com/google/fonts/tree/main/ofl/sourceserif4", "licence": "SIL OFL 1.1", "author": "The Source Project Authors" },
+      { "family": "Inter", "weight": 500, "file": "Inter[opsz,wght].ttf", "source": "https://github.com/google/fonts/tree/main/ofl/inter", "licence": "SIL OFL 1.1", "author": "The Inter Project Authors" },
+      { "family": "Noto Serif SC", "weight": 400, "file": "NotoSerifSC[wght].ttf", "source": "https://github.com/google/fonts/tree/main/ofl/notoserifsc", "licence": "SIL OFL 1.1", "author": "Google" },
+      { "family": "Noto Sans SC", "weight": 500, "file": "NotoSansSC[wght].ttf", "source": "https://github.com/google/fonts/tree/main/ofl/notosanssc", "licence": "SIL OFL 1.1", "author": "Google" }
+    ],
+    "resolve": "fonts query --style mincho (Noto Serif SC) and --style gothic (Noto Sans SC) cover CJK copy; Source Serif 4 and Inter are Latin faces, so a CJK string falls through to the stack's second family inside one role, the same family for the whole role.",
+    "licence": "All roles use SIL OFL 1.1 fonts. The original pages' own proprietary typefaces are not used and not named.",
+    "bundled": false,
+    "note": "Fonts are named, not bundled. --font-dir <dir> reads coverage and embeds the faces."
+  },
+  "layout": {
+    "grammar": [
+      "Ivory #FAF9F5 ground, near-black ink; one clay accent; the five data hues only inside figures; no gradient, no shadow beyond a 1 px hairline.",
+      "Serif for display and body, sans for every label: titles, claims, quotes and sentences are serif; deck, captions, legends, values, pills and subheads are sans (bold for lead-ins).",
+      "A 640 px reading column; figures break out to full width on 22-unit graph paper between two hairlines, with a centred bold figure title, a legend of 12-14 unit squares, an asterisk footnote line and a bold italic 'How to read this:' caption.",
+      "Findings: 'Finding N: topic' in faint serif above a one-sentence claim in ink serif; the figure follows.",
+      "A sticky note card (paper, 1 px hairline, radius 6, 340-360 wide, bold sans title over serif text) rides on a figure's left and never over the plot.",
+      "Three parallel scenario cards with a swatch row (data hue by level, neutral tile for the rest), bold sans title, sans subtitle and one serif sentence; timeline rows of date, title and sentence.",
+      "Hero: serif title (two lines) left, sans deck, two pill buttons, a meta line; a large seeded pixel burst of clay rounded squares right, with a watercolour and paper texture.",
+      "Pull quote: serif at about 2x body, a large clay open-quote glyph, a sans attribution; credits in italic with version and month."
+    ]
+  },
+  "materials": {
+    "procedural": [
+      "graph paper: a 22-unit pattern of 1-unit lines in #EBE8DC over the ivory ground",
+      "a watercolour filter (feTurbulence displacement plus a soft-light grain) on bars, tiles, swatches and the burst",
+      "the pixel burst: a 15 x 15 grid of rounded clay squares kept by a ray-and-noise score, seeded (cover.essay-hero --param seed --param density)",
+      "fan charts: seeded dashed polylines in the data hues"
+    ],
+    "recipes": [
+      "A paper grain for a whole page: materials generate --generator paper --seed 1, laid at 25-40% over the ivory ground (the templates use the in-SVG filter instead)."
+    ],
+    "collage": [
+      "No pictures: figures are drawn. Text never sits on a textured shape; values and labels sit beside bars on the paper."
+    ],
+    "sources": "Everything is drawn or generated from a seed.",
+    "budget": { "inks": 1, "effectsMax": 2, "tiltedElements": 0 }
+  },
+  "motion": {
+    "fps": 60,
+    "grammar": [
+      "Bars grow from the baseline to their width in 0.9 s with an ease-out when the figure scrolls to 30% in view; nothing else animates.",
+      "Hover on pills and table-of-contents links tints the ground to paper; links keep a 1 px underline offset 3.",
+      "prefers-reduced-motion removes the bar growth."
+    ],
+    "flashLimit": "No flashing; no autoplay."
+  },
+  "checks": {
+    "static": ["text-overflow", "text-length", "type-size", "contrast", "accent-budget"],
+    "browser": ["text-overlap", "off-canvas", "collage-cover", "contrast", "text-occluded", "glyph-coverage"],
+    "browserOnRender": true,
+    "guidance": [
+      "64 px distinctiveness (guidance): shrink the render to 64 px tall with the wordmark masked; the ivory ground, the serif title, the clay burst or the graph-paper figure should still read. A dark-led or grey-led page reads as another pack.",
+      "The faint grey #87867F is for large type only (3.5:1 on ivory); every small line (deck, caption, legend, footnote, meta) uses the secondary #5E5D59. Clay is 2.96:1 on ivory: decoration and marks, never running text.",
+      "Latin serif and sans faces have no CJK: keep each string in one role and let the stack's second family carry the CJK; do not mix a CJK clause into a bold italic lead-in.",
+      "Figures: no text on a watercolour shape; a value is derived from its parameter (card.essay-finding value_1..3), so a number and its bar cannot disagree.",
+      "A lead-in and its sentence are two units: leave at least 8 units between them (the template measures the lead-in's width)."
+    ],
+    "note": "The browser check runs on every render. Filters and patterns are not measured by the static check, so the shapes under them are plain rects."
+  },
+  "examples": {
+    "note": "The kit page is the example: one self-contained long-read with every device above.",
+    "renders": [
+      { "screen": "research report long-read (light and dark by system theme, 1440 and 390 wide)", "file": "examples/institute-essay-report-kit/index.html", "why": "a scrolling page with a table of contents, drop cap, bar growth on scroll, a fan chart and footnotes; its parts are the five templates" }
+    ]
+  }
+}

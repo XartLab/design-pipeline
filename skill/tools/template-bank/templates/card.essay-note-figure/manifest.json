@@ -1,0 +1,158 @@
+{
+  "schema": "design-pipeline.template-bank-template.v1",
+  "id": "card.essay-note-figure",
+  "family": "card",
+  "style": "institute-essay",
+  "title": "Note figure: a graph-paper fan chart (dashed seeded lines in three hues) with a sticky note card riding on its left and a legend",
+  "use": "A figure with one explanation that rides beside it: the note says why the lines do what they do. seed, spread and lines change the fan.",
+  "canvas": {
+    "width": 1600,
+    "height": 900
+  },
+  "sizes": [
+    "1600x900",
+    "1920x1080"
+  ],
+  "aspect": "16:9",
+  "accent": {
+    "roles": [
+      "clay"
+    ],
+    "maxShare": 0.02
+  },
+  "params": {
+    "guides": {
+      "type": "boolean",
+      "default": false,
+      "class": "decoration",
+      "note": "draw layout guides"
+    },
+    "theme": {
+      "type": "enum",
+      "values": [
+        "light",
+        "dark"
+      ],
+      "default": "light",
+      "class": "decoration",
+      "note": "light (ivory #FAF9F5) or dark (#141413) ground"
+    },
+    "seed": {
+      "type": "integer",
+      "default": 31,
+      "min": 1,
+      "max": 9999,
+      "class": "rhythm",
+      "note": "seed of the fan"
+    },
+    "spread": {
+      "default": 0.45,
+      "min": 0.15,
+      "max": 0.8,
+      "class": "rhythm",
+      "note": "how far the lines of one bundle spread"
+    },
+    "lines": {
+      "type": "integer",
+      "default": 14,
+      "min": 6,
+      "max": 24,
+      "class": "proportion",
+      "note": "lines per bundle"
+    }
+  },
+  "slots": {
+    "fig_title": {
+      "kind": "text",
+      "default": "三种情景下的算力需求路径，相对 2025 年",
+      "maxChars": 40,
+      "font": "sans"
+    },
+    "y_1": {
+      "kind": "text",
+      "derived": true,
+      "maxChars": 4,
+      "font": "sans",
+      "note": "the 1x guide"
+    },
+    "y_2": {
+      "kind": "text",
+      "derived": true,
+      "maxChars": 4,
+      "font": "sans",
+      "note": "the top guide, from the data"
+    },
+    "x_1": {
+      "kind": "text",
+      "default": "2025",
+      "maxChars": 6,
+      "font": "sans"
+    },
+    "x_2": {
+      "kind": "text",
+      "default": "2027",
+      "maxChars": 6,
+      "font": "sans"
+    },
+    "x_3": {
+      "kind": "text",
+      "default": "2030",
+      "maxChars": 6,
+      "font": "sans"
+    },
+    "legend_1": {
+      "kind": "text",
+      "default": "温和",
+      "maxChars": 6,
+      "font": "sans"
+    },
+    "legend_2": {
+      "kind": "text",
+      "default": "中性",
+      "maxChars": 6,
+      "font": "sans"
+    },
+    "legend_3": {
+      "kind": "text",
+      "default": "激进",
+      "maxChars": 6,
+      "font": "sans"
+    },
+    "note_title": {
+      "kind": "text",
+      "default": "为什么线会散开",
+      "maxChars": 14,
+      "font": "sans",
+      "note": "bold sans"
+    },
+    "note_text": {
+      "kind": "text",
+      "default": "早期需求主要由已签订单决定，几种情景差别不大；越往后，企业采用速度的不确定性越被放大。",
+      "maxChars": 60,
+      "lines": 4,
+      "font": "serif",
+      "note": "2-4 lines"
+    }
+  },
+  "relations": [
+    "The note is 360 units wide (the page's 340 at 1.06), paper #F5F4ED, 1 unit hairline, radius 6, 22 padding, bold sans title over serif text; it rides on the figure's left and ends before the plot starts (x 520).",
+    "Fan lines: three bundles, dashed 7 on 4 at 50% opacity in purple, blue and amber; guides at 1x and the top tick; the top tick is derived from the data."
+  ],
+  "decoration": [
+    "Graph paper, the dashed fan lines and the guides are decoration."
+  ],
+  "provenance": {
+    "corpus": "research-report kit (examples/institute-essay-report-kit): our own original long-read page in the institute-essay grammar; all copy and numbers are placeholders",
+    "experiment": "styles/institute-essay/style.json provenance (two public reference pages measured privately in Chrome on 2026-11-21; never shipped)",
+    "accessed": "2026-11-21",
+    "method": "A figure with a sticky note from the reference pages' figures, with a fan chart of seeded dashed lines.",
+    "sampleIds": [
+      "institute-essay/note-figure"
+    ],
+    "measured": [
+      "Sticky note: paper #F5F4ED, 1 px hairline, radius 6, 340 px wide, bold sans title and serif text, riding on a figure's left.",
+      "Template: the fan passes the static check for 50 seeds."
+    ],
+    "summary": "institute-essay note figure"
+  }
+}
