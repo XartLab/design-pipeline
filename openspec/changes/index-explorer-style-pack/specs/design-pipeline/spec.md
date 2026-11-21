@@ -38,6 +38,11 @@ The `cover.index-hero`, `card.index-tilemap`, `card.index-ranking`, `card.index-
 - **WHEN** `card.index-stats` gets a negative `delta_N`
 - **THEN** its delta SHALL carry a down triangle and the coral mark, and a positive one an up triangle.
 
+#### Scenario: Colour convention
+
+- **WHEN** `cover.index-hero`, `card.index-tilemap`, `card.index-ranking`, `card.index-stats` or `card.index-trend` renders with `--param convention=cn`
+- **THEN** its four classes SHALL be reds from light to deep, a rising delta SHALL carry a red up triangle and a falling one a green down triangle, it SHALL pass the static check in both themes and the browser check, and the same template without the parameter (default `intl`) SHALL render exactly as before.
+
 #### Scenario: Copy that does not fit
 
 - **WHEN** `cover.index-hero` gets a title line of 30 characters
@@ -65,3 +70,17 @@ The kit's motion (tiles that fade and colour in, bars that grow, a line that dra
 
 - **WHEN** a CSV with the header `date,province,sector,value` is applied
 - **THEN** the page SHALL redraw the map, rankings, chart and table from it and mark its source as the owner's data; a CSV with another header SHALL show an error and change nothing.
+
+### Requirement: The kit follows the Chinese market colour convention and lets the reader switch it
+
+The kit SHALL default to 红涨绿跌 (red up, green down) and SHALL carry a segmented toggle (红涨绿跌 / 绿涨红跌) that recolours the map, legend, ranking bars, chart, table swatches and delta triangles without a reload, and remembers the choice in `localStorage` inside `try/catch`.
+
+#### Scenario: Toggle
+
+- **WHEN** the page loads without a stored choice, and then the reader picks 绿涨红跌
+- **THEN** the tiles SHALL be on the four reds and a rising triangle red; after the pick, the tiles SHALL be on the four greens and a rising triangle green, and a reload SHALL keep the green choice.
+
+#### Scenario: Browser check in both conventions
+
+- **WHEN** `template check examples/index-explorer-kit/index.html --browser` runs at 1440 and 390 wide, in either convention, light or dark
+- **THEN** it SHALL report no findings.

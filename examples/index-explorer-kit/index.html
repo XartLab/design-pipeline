@@ -7,11 +7,15 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,300;8..60,400;8..60,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+SC:wght@300;400;500&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
+<script>
+/* colour convention, set before first paint: 红涨绿跌 (cn, default: red up, green down) or 绿涨红跌 (intl); ?conv= overrides, the choice is remembered */
+(()=>{let c='cn';try{const q=new URLSearchParams(location.search).get('conv');const v=localStorage.getItem('idx-conv');c=q==='intl'||q==='cn'?q:v==='intl'||v==='cn'?v:'cn'}catch(e){}document.documentElement.dataset.conv=c})();
+</script>
 <style>
 /* VOICE: a public research data explorer for a trading project: plain labels, every number marked as sample data.
    IDEA: a map you can read in a glance (31 tiles, four classes), then the same numbers as a ranking, a trend and a table.
-   PICTURE: a tile grid of 31 regions on a four-step green scale; no geographic file. Everything is generated in the page.
-   COLOUR and TYPE: ivory ground, near-black ink, one green scale, pastel tiles, one coral mark. Serif display + numerals, sans labels, mono ranks and values.
+   PICTURE: a tile grid of 31 regions on a four-step scale (reds by default, 红涨绿跌; greens on the toggle); no geographic file. Everything is generated in the page.
+   COLOUR and TYPE: ivory ground, near-black ink, one four-step scale (cn red / intl green), pastel tiles, one accent mark (the fall colour). Serif display + numerals, sans labels, mono ranks and values.
    LAYOUT: hero, then a sticky numbered column beside the sections; cards 1px hairline radius 16, panels radius 8. */
 :root{color-scheme:light dark;
 --bg:light-dark(#faf9f5,#141413);--ink:light-dark(#141413,#f0eee6);--mute:light-dark(#5e5d59,#a8a69c);--hair:light-dark(#d1cfc5,#34332f);
@@ -19,6 +23,8 @@
 --s1:#bee5d8;--s2:#89d1b9;--s3:#59b295;--s4:#388f76;--blue:#6a9bcc;--coral:#e6796d;--tip:#3d3d3a;--tileink:#141413;
 --serif:"Source Serif 4","Noto Serif SC",Georgia,serif;--sans:Inter,"Noto Sans SC",system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace}
 :root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+/* 红涨绿跌: the heat scale runs in reds, a rise is red and a fall (the coral role) is green; the deepest red holds 4.8:1 with the dark tile ink */
+:root[data-conv=cn]{--s1:#f6d4cc;--s2:#ee9e8c;--s3:#e07a63;--s4:#d75a44;--coral:#388f76}
 *{box-sizing:border-box;min-width:0}
 html{scroll-behavior:smooth;scroll-padding-top:16px}
 body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.65 var(--sans);overflow-x:clip}
@@ -30,8 +36,12 @@ button{cursor:pointer}
 .pad{padding-inline:max(5vw,16px)}
 
 /* top bar */
-.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px max(5vw,16px);font:500 14px var(--sans);border-bottom:1px solid var(--hair)}
-.top b{font-weight:600}.top span{color:var(--mute);font-size:13px}
+.top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 16px;padding:14px max(5vw,16px);font:500 14px var(--sans);border-bottom:1px solid var(--hair)}
+.top b{font-weight:600}.top>span{color:var(--mute);font-size:13px}
+.top .tr{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px}
+.seg{display:inline-flex;border:1px solid var(--cardline);border-radius:99px;padding:2px;background:var(--card)}
+.seg button{border:0;background:transparent;min-height:28px;padding:0 12px;border-radius:99px;font:500 13px var(--sans);color:var(--mute)}
+.seg button[aria-pressed=true]{background:var(--ink);color:var(--bg)}
 
 /* hero */
 .hero{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);align-items:center;gap:clamp(20px,4vw,56px);padding:clamp(28px,5vw,64px) max(5vw,16px) clamp(24px,4vw,48px)}
@@ -56,6 +66,8 @@ h1 em{display:block;font-style:normal;font-weight:300}
 .stat .d i{display:inline-block;width:0;height:0;border:6px solid transparent;margin-right:6px;vertical-align:-2px}
 .stat .d i.up{border-bottom:10px solid var(--s4);border-top:0}.stat .d i.dn{border-top:10px solid var(--coral);border-bottom:0}
 .stat svg{display:block;width:100%;height:44px;margin-top:10px}
+.sp .a{fill:var(--s1);opacity:.45}.sp .l{fill:none;stroke:var(--s4)}.sp circle{fill:var(--coral)}
+:root[data-conv=cn] .sp.up circle{fill:var(--s4)}:root[data-conv=cn] .sp.dn .l{stroke:var(--coral)}:root[data-conv=cn] .sp.dn .a{fill:var(--coral);opacity:.2}
 
 /* shell: sticky numbered column + sections */
 .shell{display:grid;grid-template-columns:240px minmax(0,1fr);gap:clamp(24px,4vw,56px);padding:40px max(5vw,16px) 0}
@@ -206,7 +218,7 @@ footer{border-top:1px solid var(--hair);margin-top:24px;padding:26px max(5vw,16p
 </style>
 </head>
 <body>
-<header class="top" data-chk="top"><b>市场热点指数</b><span>示例数据 · 页面内随机生成</span></header>
+<header class="top"><b data-chk="top-name">市场热点指数</b><div class="tr"><span data-chk="top-note">示例数据 · 页面内随机生成</span><div class="seg" role="group" aria-label="涨跌配色"><button type="button" data-conv="cn" data-chk="conv-cn" aria-pressed="true">红涨绿跌</button><button type="button" data-conv="intl" data-chk="conv-intl" aria-pressed="false">绿涨红跌</button></div></div></header>
 
 <section class="hero" id="top">
   <div>
@@ -253,7 +265,7 @@ footer{border-top:1px solid var(--hair);margin-top:24px;padding:26px max(5vw,16p
           <ul id="legend"></ul>
         </div>
         <div class="mapwrap" id="mapwrap">
-          <div class="map" id="map-grid" data-chk="tiles" role="group" aria-label="省级单位热点指数瓦片地图"></div>
+          <div class="map" id="map-grid" role="group" aria-label="省级单位热点指数瓦片地图"></div>
           <p class="hint" data-chk="hint">指针悬停或点按省份查看明细；方向键在方块间切换</p>
           <div class="tip" id="tip" role="tooltip" hidden></div>
         </div>
@@ -427,6 +439,15 @@ function countTo(el, target, fmt) {
 const reveal = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); reveal.unobserve(e.target); } }), { threshold: 0.3 });
 function watch(el) { if (RM) el.classList.add('in'); else { el.classList.remove('in'); reveal.observe(el); } }
 
+/* ---- colour convention: every colour is a CSS variable, so the switch recolours the map, legend, ranking bars, chart, table and stat triangles at once ---- */
+const convBtns = [...document.querySelectorAll('.seg button')];
+function setConv(c, save) {
+  document.documentElement.dataset.conv = c; convBtns.forEach((b) => b.setAttribute('aria-pressed', b.dataset.conv === c));
+  if (save) { try { localStorage.setItem('idx-conv', c); } catch (e) { /* private mode: the choice lasts for this visit */ } }
+}
+convBtns.forEach((b) => { b.onclick = () => setConv(b.dataset.conv, true); });
+setConv(document.documentElement.dataset.conv, false);
+
 /* ---- filters ---- */
 function fillSelect(sel, opts, val) { sel.innerHTML = opts.map(([v, t]) => `<option value="${v}">${t}</option>`).join(''); sel.value = val; }
 function buildFilters() {
@@ -450,7 +471,8 @@ function spark(a) {
   const f = a.filter(Number.isFinite); if (f.length < 2) return '';
   const lo = Math.min(...f), hi = Math.max(...f), n = a.length; const X = (i) => (i / (n - 1)) * 120, Y = (v) => 40 - ((v - lo) / (hi - lo || 1)) * 34 - 3;
   const d = a.map((v, i) => `${i ? 'L' : 'M'}${X(i).toFixed(1)} ${Y(Number.isFinite(v) ? v : lo).toFixed(1)}`).join('');
-  return `<svg viewBox="0 0 120 44" preserveAspectRatio="none" aria-hidden="true"><path d="${d}L120 44L0 44Z" fill="var(--s1)" opacity=".45"/><path d="${d}" fill="none" stroke="var(--s4)" stroke-width="2" vector-effect="non-scaling-stroke"/><circle cx="${X(n - 1).toFixed(1)}" cy="${Y(a[n - 1]).toFixed(1)}" r="3.2" fill="var(--coral)"/></svg>`;
+  const dir = f[f.length - 1] >= f[0] ? 'up' : 'dn'; // under 红涨绿跌 the sparkline takes the direction's colour
+  return `<svg class="sp ${dir}" viewBox="0 0 120 44" preserveAspectRatio="none" aria-hidden="true"><path class="a" d="${d}L120 44L0 44Z"/><path class="l" d="${d}" stroke-width="2" vector-effect="non-scaling-stroke"/><circle cx="${X(n - 1).toFixed(1)}" cy="${Y(a[n - 1]).toFixed(1)}" r="3.2"/></svg>`;
 }
 function renderStats(V) {
   const n = V.n; const scope = V.ok.filter(inScope);
@@ -474,7 +496,7 @@ function idxPS_scope(s, n, off) { let t = 0, c = 0; PROV.forEach((_, p) => { if 
 /* ---- map ---- */
 const grid = $('#map-grid');
 PROV.forEach(([short, full, c, r], i) => {
-  const b = document.createElement('button'); b.type = 'button'; b.className = 'tile'; b.textContent = short; b.dataset.p = i;
+  const b = document.createElement('button'); b.type = 'button'; b.className = 'tile'; b.textContent = short; b.dataset.p = i; b.dataset.chk = 'tile'; /* one text unit per tile: the name is measured on its own tile, not across the gaps and empty cells */
   b.style.cssText = `--col:${c + 1};--row:${r + 1};--i:${i}`; grid.appendChild(b);
 });
 const tiles = [...grid.children];

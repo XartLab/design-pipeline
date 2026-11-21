@@ -81,4 +81,4 @@ async function checkRenders(found, jobs, dir) {
   return out;
 }
 
-module.exports = { locateBrowser, CI_SKIP, checkKit, checkRenders };
+module.exports = { locateBrowser, CI_SKIP, launch, checkKit, checkRenders };

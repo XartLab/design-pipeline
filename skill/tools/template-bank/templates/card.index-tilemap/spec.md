@@ -45,6 +45,7 @@ Samples: index-explorer/tilemap.
 | --- | --- | --- | --- | --- |
 | `guides` | decoration | true / false | false | draw layout guides |
 | `theme` | decoration | light / dark | light | light (ivory #FAF9F5) or dark (#141413) ground; tile names and the tooltip keep their fixed inks |
+| `convention` | decoration | intl / cn | intl | intl (default, the measured lineage): green heat scale, rising green, falling coral; cn (红涨绿跌, Chinese markets): red heat scale from light to deep, rising red, falling green; the tiles, the legend dots and the tooltip's class dot follow it |
 | `seed` | decoration | 1-9999 | 11 | seeds the 31 index values |
 | `focus` | decoration | 0-30 | 29 | the focus tile (0 = the top-right unit, counted row by row) |
 

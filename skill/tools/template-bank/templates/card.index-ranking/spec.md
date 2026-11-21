@@ -54,6 +54,7 @@ Samples: index-explorer/ranking.
 | --- | --- | --- | --- | --- |
 | `guides` | decoration | true / false | false | draw layout guides |
 | `theme` | decoration | light / dark | light | light (ivory #FAF9F5) or dark (#141413) ground; tile names and the tooltip keep their fixed inks |
+| `convention` | decoration | intl / cn | intl | intl (default, the measured lineage): green heat scale, rising green, falling coral; cn (红涨绿跌, Chinese markets): red heat scale from light to deep, rising red, falling green; the bars' four classes follow it |
 | `top` | proportion | 1.5-6 | 3.4 | the first row's value |
 | `spread` | proportion | 0.2-0.9 | 0.7 | how far the last row falls below the first |
 | `max` | proportion | 1-8 | 3.6 | the value at the end of a bar |

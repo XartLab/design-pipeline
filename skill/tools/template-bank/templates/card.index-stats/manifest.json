@@ -37,6 +37,16 @@
       "class": "decoration",
       "note": "light (ivory #FAF9F5) or dark (#141413) ground; tile names and the tooltip keep their fixed inks"
     },
+    "convention": {
+      "type": "enum",
+      "values": [
+        "intl",
+        "cn"
+      ],
+      "default": "intl",
+      "class": "decoration",
+      "note": "intl (default, the measured lineage): green heat scale, rising green, falling coral; cn (红涨绿跌, Chinese markets): red heat scale from light to deep, rising red, falling green; the delta triangles, the sparkline and its end dot follow it (red up, green down)"
+    },
     "value_1": {
       "default": 1.26,
       "min": 0.1,

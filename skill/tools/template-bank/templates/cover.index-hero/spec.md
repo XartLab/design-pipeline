@@ -35,6 +35,7 @@ Samples: index-explorer/hero.
 | --- | --- | --- | --- | --- |
 | `guides` | decoration | true / false | false | draw layout guides |
 | `theme` | decoration | light / dark | light | light (ivory #FAF9F5) or dark (#141413) ground; tile names and the tooltip keep their fixed inks |
+| `convention` | decoration | intl / cn | intl | intl (default, the measured lineage): green heat scale, rising green, falling coral; cn (红涨绿跌, Chinese markets): red heat scale from light to deep, rising red, falling green; the tile grid and the mark's dots follow it |
 | `seed` | decoration | 1-9999 | 7 | seeds the tile values, so the grid's colours |
 
 ## Decoration

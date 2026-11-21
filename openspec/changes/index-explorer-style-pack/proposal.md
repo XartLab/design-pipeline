@@ -37,6 +37,13 @@ with the theme; a figure whose axis labels are measured against bars).
   owner pastes their own CSV to drive the page. Every number is generated in the page from a seed and labelled
   as sample data. Motion (tiles fade and colour in, bars grow, the line draws, smooth filter transitions; all off
   under `prefers-reduced-motion`) with a README, referenced from the pack and `template-bank.md`.
+- **Colour convention for Chinese markets**: the kit is a Chinese market index, where red is up and green is down
+  (红涨绿跌). A palette parameter `--param convention=intl|cn` (default `intl`, the measured lineage) on the five
+  templates that carry heat or direction (hero, tilemap, ranking, stats, trend): `cn` runs the four classes in
+  reds from light to deep (`#F6D4CC #EE9E8C #E07A63 #D75A44`), rising red and falling green, and the stat tile's
+  sparkline and end dot take the direction's colour. The kit page defaults to `cn` and has a small segmented
+  toggle (红涨绿跌 / 绿涨红跌) that recolours the map, legend, ranking bars, chart, table swatches and triangles
+  live (CSS variables) and remembers the choice in `localStorage` inside `try/catch`.
 - No change to `template check`, its rules, schemas, gates or CLI flags.
 
 ## Capabilities

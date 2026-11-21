@@ -40,6 +40,25 @@
   classes more, so one ink works for all four classes and for both themes (the dark theme lightens the page, not
   the scale). Coral is for marks only (a falling delta, an end dot, the third series); a categorical tile uses
   `salmon` #E8877A, a step off the accent, so the treemap does not spend the 22% accent budget.
+- **红涨绿跌 is a palette switch, not a second pack**: the pack's lineage is a green scale, but the kit is for a
+  Chinese market where red is up and green is down, so the convention is a decoration enum `convention` (`intl`
+  default, so every existing render stays byte-identical; `cn`) on the five templates that carry heat or
+  direction. `cn` remaps the roles `s1`-`s4` to `#F6D4CC #EE9E8C #E07A63 #D75A44` and the accent role `coral`
+  to the green `#388F76`, the same way `theme=dark` remaps the neutrals, so layouts keep their role names and a
+  falling triangle (`coral`) is green while a rising one (`s4`) is red. The deepest red was tuned for the fixed
+  dark tile ink: `#B23A2B` (the first guess) is only 3.1:1 with `#141413`, `#D75A44` is 4.77:1, matching the
+  deepest green's 4.7:1, so one ink still serves every class and both themes. In `cn` the sparkline, its area
+  and its end dot follow the card's sign (an accent dot that is always the fall colour would call every rising
+  card green); in `intl` they stay as measured. The region detail has no heat scale and no direction, so it takes
+  no convention. In the kit every colour is already a CSS variable, so the toggle sets `data-conv` on the root and
+  the variables of five colours change: the map, legend, ranking bars, chart series, table swatches and
+  triangles recolour at once without a redraw. The choice is stored under `idx-conv` in `localStorage` inside
+  `try/catch` (private mode keeps it for the visit); `?conv=` overrides it, which is how the check and the
+  screenshot pick a convention.
+- **The kit's tiles are units**: the old single `data-chk` over the whole grid measured a tile name against the
+  gaps and empty cells around it, which failed in the dark theme (dark panel between tiles); each tile is now
+  its own unit measured on its own fill, which the faster check makes cheap. Both conventions pass at 1440 and
+  390, light and dark.
 - **Bar values are parameters, not slots**: ranking rows take `top`, `spread` and `max` and derive each bar and
   its value text from one number; stat deltas take their triangle from the sign of `delta_N`. A bar and its
   number cannot disagree.
@@ -82,6 +101,10 @@
   static check; the default renders pass `template check --browser`.
 - Kit: `template check examples/index-explorer-kit/index.html --browser` at 1440 (page height 5437) and 390
   (page height 7238) wide, no findings in either, about 25 s together.
+- Convention: `convention=cn` passes the static check at every size in both themes, for seeds 1 to 20 and every
+  focus tile, and the browser check on four renders; the kit passes `template check --browser` at 1440 and 390
+  wide in `cn` and `intl`, light and dark (eight runs, no findings); a browser test drives the toggle and reads
+  the computed colours of the tiles, legend, bars and triangles, and the stored choice after a reload.
 - Interaction, driven in Chrome at 1440: hover tooltip, tile select, region and sector filters, sort, show all,
   CSV demo applied, a malformed CSV refused; no console errors.
 

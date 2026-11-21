@@ -37,6 +37,16 @@
       "class": "decoration",
       "note": "light (ivory #FAF9F5) or dark (#141413) ground; tile names and the tooltip keep their fixed inks"
     },
+    "convention": {
+      "type": "enum",
+      "values": [
+        "intl",
+        "cn"
+      ],
+      "default": "intl",
+      "class": "decoration",
+      "note": "intl (default, the measured lineage): green heat scale, rising green, falling coral; cn (红涨绿跌, Chinese markets): red heat scale from light to deep, rising red, falling green; the bars' four classes follow it"
+    },
     "top": {
       "default": 3.4,
       "min": 1.5,

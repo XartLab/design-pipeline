@@ -13,6 +13,10 @@ const measure = require("./measure.cjs");
 
 // The dark theme: ground #141413, light ink, panels one step up. Tile ink and the tooltip stay fixed.
 const DARK = { ivory: "#141413", ink: "#F0EEE6", mute: "#A8A69C", hair: "#34332F", panel: "#1F1E1C", card: "#1F1E1C", cardline: "#3D3D3A", mist: "#3A4A45" };
+// convention=cn, for Chinese markets where red is up and green is down: the heat scale runs in reds from light
+// to deep (the deepest still holds 4.7:1 with the fixed dark tile ink), and the accent role coral, which marks a
+// fall, becomes the green. Roles keep their names, so every template reads the same palette.
+const CN = { s1: "#F6D4CC", s2: "#EE9E8C", s3: "#E07A63", s4: "#D75A44", coral: "#388F76" };
 const SCALE = ["s1", "s2", "s3", "s4"]; // emerging, lower middle, upper middle, leading
 const CATS = ["lime", "rose", "salmon", "blue", "sand", "olive", "peri", "mist"]; // pastel categorical tiles
 
@@ -60,6 +64,8 @@ function tbox(x, y, size, w, { lines = 1, lh = 1.3, anchor = "start" } = {}) {
 
 function begin(d) {
   if (d.p.theme === "dark") Object.assign(d.pal, DARK);
+  d.cn = d.p.convention === "cn";
+  if (d.cn) Object.assign(d.pal, CN);
   d.rect(0, 0, d.W, d.H, "ivory");
 }
 
@@ -267,7 +273,9 @@ const LAYOUTS = {
       for (let t = 0; t < n; t += 1) { v = Math.max(0.05, Math.min(0.95, v + (rnd() - 0.5 + (up ? 0.04 : -0.04)) * 0.22)); pts.push(v); }
       const X = (t) => sx + (t / (n - 1)) * sw; const Y = (u) => sy0 + sh - u * sh;
       const line = pts.map((u, t) => `${t ? "L" : "M"}${f1(X(t))} ${f1(Y(u))}`).join("");
-      d.raw(`<g data-deco="1"><path d="${line}L${f1(X(n - 1))} ${f1(sy0 + sh)}L${f1(X(0))} ${f1(sy0 + sh)}Z" fill="${d.pal.s1}" opacity=".45"/><path d="${line}" fill="none" stroke="${d.pal.s4}" stroke-width="${f1(3 * s)}" stroke-linejoin="round" stroke-linecap="round"/><rect x="${f1(sx)}" y="${f1(sy0 + sh)}" width="${f1(sw)}" height="1" fill="${d.pal.hair}"/><circle cx="${f1(X(n - 1))}" cy="${f1(Y(pts[n - 1]))}" r="${f1(6 * s)}" fill="${d.pal.coral}"/></g>`);
+      // cn: the sparkline takes the direction's colour (red up, green down), so no card reads as the opposite sign
+      const lineRole = d.cn ? role : "s4"; const areaRole = d.cn && !up ? "coral" : "s1"; const dotRole = d.cn ? role : "coral";
+      d.raw(`<g data-deco="1"><path d="${line}L${f1(X(n - 1))} ${f1(sy0 + sh)}L${f1(X(0))} ${f1(sy0 + sh)}Z" fill="${d.pal[areaRole]}" opacity="${areaRole === "coral" ? ".2" : ".45"}"/><path d="${line}" fill="none" stroke="${d.pal[lineRole]}" stroke-width="${f1(3 * s)}" stroke-linejoin="round" stroke-linecap="round"/><rect x="${f1(sx)}" y="${f1(sy0 + sh)}" width="${f1(sw)}" height="1" fill="${d.pal.hair}"/><circle cx="${f1(X(n - 1))}" cy="${f1(Y(pts[n - 1]))}" r="${f1(6 * s)}" fill="${d.pal[dotRole]}"/></g>`);
     });
     d.text("caption", L, 770 * s, 15 * s, { role: "mute", family: "sans", weight: 400, box: tbox(L, 770 * s, 15 * s, 1300 * s) });
   },

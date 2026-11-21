@@ -48,6 +48,7 @@ Samples: index-explorer/trend.
 | --- | --- | --- | --- | --- |
 | `guides` | decoration | true / false | false | draw layout guides |
 | `theme` | decoration | light / dark | light | light (ivory #FAF9F5) or dark (#141413) ground; tile names and the tooltip keep their fixed inks |
+| `convention` | decoration | intl / cn | intl | intl (default, the measured lineage): green heat scale, rising green, falling coral; cn (红涨绿跌, Chinese markets): red heat scale from light to deep, rising red, falling green; the main series takes the deep step (red in cn) and the accent series takes the fall colour (green in cn) |
 | `active` | decoration | 1-3 | 1 | the active tab (1-3) |
 | `seed` | decoration | 1-9999 | 3 | seeds the three series |
 | `volatility` | rhythm | 0.02-0.4 | 0.12 | the size of a day's move |

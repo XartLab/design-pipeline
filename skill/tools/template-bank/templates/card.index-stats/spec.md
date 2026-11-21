@@ -48,6 +48,7 @@ Samples: index-explorer/stats.
 | --- | --- | --- | --- | --- |
 | `guides` | decoration | true / false | false | draw layout guides |
 | `theme` | decoration | light / dark | light | light (ivory #FAF9F5) or dark (#141413) ground; tile names and the tooltip keep their fixed inks |
+| `convention` | decoration | intl / cn | intl | intl (default, the measured lineage): green heat scale, rising green, falling coral; cn (红涨绿跌, Chinese markets): red heat scale from light to deep, rising red, falling green; the delta triangles, the sparkline and its end dot follow it (red up, green down) |
 | `value_1` | proportion | 0.1-9 | 1.26 | tile 1's index value |
 | `value_2` | proportion | 0.1-9 | 2.31 | tile 2's index value |
 | `value_3` | proportion | 0.1-9 | 0.84 | tile 3's index value |

@@ -73,7 +73,8 @@
       "A stat tile is a white card (hairline, radius 16): a bold label, a serif numeral, a delta with a triangle and a note, a sparkline with a coral end dot.",
       "A region detail pairs a serif name over a hairline, a serif rank over a strip of one cell per region, a serif index over a bar with an expected mark, serif tabs and a six-row list, and a treemap of pastel tiles in a panel.",
       "Filters are small bold labels over a chosen value with a bottom rule and a chevron; tabs are serif 500, the active one in ink with a 2-unit underline.",
-      "A line chart sits on a panel: hairline gridlines, a dashed expected line, direct labels at the line ends, no legend box."
+      "A line chart sits on a panel: hairline gridlines, a dashed expected line, direct labels at the line ends, no legend box.",
+      "A colour convention is a palette parameter (--param convention=intl|cn, default intl, the measured lineage). intl: the green scale, rising green, falling coral. cn, for Chinese markets where red is up and green is down (红涨绿跌): the same four classes in reds from light to deep (#F6D4CC #EE9E8C #E07A63 #D75A44), rising red, falling green (#388F76 in the accent role). The roles keep their names (s1-s4, coral), so a template reads one palette either way; the stat tile's sparkline and end dot take the direction's colour in cn. The kit page defaults to cn and carries a segmented toggle (红涨绿跌 / 绿涨红跌) that recolours the map, legend, ranking bars, trend deltas and stat triangles live and remembers the choice."
     ]
   },
   "materials": {
@@ -112,7 +113,8 @@
       "Tile names stay in the fixed dark ink on every theme: the lightest tile (#BEE5D8) and the darkest (#388F76, 4.7:1 with ink) are both read in ink; never set light text on a tile.",
       "Latin serif, sans and mono faces have no CJK: keep each string in one role and let the stack's second family carry the CJK; a mono string with CJK goes to sans.",
       "A value is derived from its parameter (card.index-stats value_1..4 and delta_1..4, card.index-ranking top and spread), so a number and its bar cannot disagree; the tooltip's class and numbers come from the seeded tile data.",
-      "Coral is for marks (a falling triangle, an end dot, a series line), never running text; delta text is ink, the colour is the triangle."
+      "Coral is for marks (a falling triangle, an end dot, a series line), never running text; delta text is ink, the colour is the triangle.",
+      "Under convention=cn the deepest red (#D75A44) holds 4.8:1 with the fixed dark tile ink, like the deepest green; a lighter step is never darker than the one above it, and the same check runs on both conventions, light and dark (template check --browser, 0 findings)."
     ],
     "note": "The browser check runs on every render. Shapes are plain rects and circles, so the static check measures geometry and never a filter."
   },
