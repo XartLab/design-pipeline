@@ -37,3 +37,12 @@ The `ui.devlog-index`, `ui.devlog-article`, `ui.devlog-article-header`, `card.de
 
 - **WHEN** `banner.devlog-dotfield` renders twice with the same `seed`, then with another
 - **THEN** the first two SHALL be byte-identical, the third SHALL differ, and no dot SHALL lie inside the mascot disc.
+
+### Requirement: The HTML note kit is a self-contained example
+
+The repository SHALL ship `examples/devlog-terminal-note-kit/index.html`, one self-contained engineer's-note page on the pack's grammar with a README, and the page SHALL pass the browser half of `template check`. Its motion SHALL settle to a final state under `prefers-reduced-motion`.
+
+#### Scenario: Browser check
+
+- **WHEN** `template check examples/devlog-terminal-note-kit/index.html --browser` runs at 1440 and 390 wide, at the page's own height
+- **THEN** it SHALL report no findings.

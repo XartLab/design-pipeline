@@ -1,9 +1,11 @@
 "use strict";
 
 // The institute-essay style pack: the grammar of AI research institute long-form explainers and research
-// essays, measured on two public reference pages (kept private, never shipped). Five templates (hero with a
-// seeded pixel burst, finding with watercolour bars, figure with a sticky note, pull quote, scenario cards),
-// each rendered from parameters with original copy, and the HTML long-read kit that proves the grammar.
+// essays, measured on two public reference pages (kept private, never shipped). Six templates (hero with a
+// seeded pixel burst, finding with crayon bars, figure with a sticky note, pull quote, scenario cards, a flow
+// band of hand-drawn icons), each rendered from parameters with original copy, and the HTML long-read kit
+// that proves the grammar. The browser checks share their Chromes (tests/helpers/kit-browser-check.cjs): the
+// two kit widths run at once from the first test on, and the default renders share one Chrome.
 
 const assert = require("node:assert/strict");
 const fs = require("node:fs");
@@ -12,12 +14,13 @@ const path = require("node:path");
 const test = require("node:test");
 const { spawnSync } = require("node:child_process");
 const bank = require("../skill/tools/template-bank/bank.cjs");
+const { locateBrowser, CI_SKIP, checkKit, checkRenders } = require("./helpers/kit-browser-check.cjs");
 
 const REPO = path.join(__dirname, "..");
 const CLI = path.join(REPO, "skill", "scripts", "designer-pipeline.cjs");
 const KIT = path.join(REPO, "examples", "institute-essay-report-kit");
 const CATALOG = JSON.parse(fs.readFileSync(path.join(REPO, "skill", "references", "fonts", "catalog.json"), "utf8"));
-const IDS = ["card.essay-finding", "card.essay-note-figure", "card.essay-pullquote", "cover.essay-hero", "doc.essay-scenarios"];
+const IDS = ["card.essay-finding", "card.essay-flow", "card.essay-note-figure", "card.essay-pullquote", "cover.essay-hero", "doc.essay-scenarios"];
 
 const messages = (report) => JSON.stringify(report.findings.map((f) => `${f.rule}:${f.slot}: ${f.message}`));
 function cli(root, ...args) {
@@ -26,18 +29,15 @@ function cli(root, ...args) {
   try { payload = JSON.parse(child.stdout); } catch { payload = null; }
   return { status: child.status, payload, stderr: child.stderr };
 }
-const BROWSER = (() => {
-  try {
-    const puppeteerModule = process.env.DESIGN_PIPELINE_PUPPETEER_MODULE || path.dirname(require.resolve("puppeteer-core/package.json"));
-    const { resolveBrowser } = require("../skill/scripts/browser-locate.cjs");
-    return { puppeteerModule, chrome: resolveBrowser() };
-  } catch (error) {
-    return { skip: `browser unavailable: ${error.message}` };
-  }
-})();
-const CI_SKIP = process.env.GITHUB_ACTIONS === "true" && "text-occluded differs on the CI runner (#305)";
+const BROWSER = locateBrowser();
+const SKIP = BROWSER.skip || CI_SKIP;
+// The kit check is the slow part (a long page, a screenshot per text unit): start both widths as soon as the
+// first test runs, so they overlap the static tests, and let the kit test await the result.
+let kitRun = null;
+const kitChecks = () => (kitRun ||= checkKit(BROWSER, path.join(KIT, "index.html"), [1440, 390]));
 
 test("institute-essay names its case and lineage, borrows grammar not assets, names no organisation and resolves its fonts through the catalog", () => {
+  if (!SKIP) kitChecks().catch(() => {});
   const style = bank.loadStyle("institute-essay");
   assert.match(style.provenance.borrow, /^Borrow grammar, never assets\./);
   assert.match(style.provenance.lineage, /stay private and are not shipped/);
@@ -80,6 +80,8 @@ test("institute-essay templates pass the static check at every size and for 50 s
     ["card.essay-note-figure", { spread: 0.8, lines: 24 }, {}],
     ["card.essay-pullquote", {}, { quote: "The question is not whether spending keeps growing but whether cost per token falls faster than demand rises." }],
     ["doc.essay-scenarios", { level_1: 3, level_2: 1, level_3: 2 }, {}],
+    ["card.essay-flow", { count: 3, icon_start: 2 }, { label_1: "Sources", label_2: "Model", label_3: "Report" }],
+    ["card.essay-flow", { count: 4, icon_start: 4 }, {}],
   ];
   for (const [id, params, set] of variants) {
     const report = bank.check(bank.render(id, { params, set }).svg);
@@ -112,16 +114,47 @@ test("copy that does not fit fails with a fix", () => {
   assert.ok(note.findings.some((f) => f.slot === "note_text"), messages(note));
 });
 
-test("every institute-essay default render passes the browser check too, and the dark theme of two of them", { skip: BROWSER.skip || CI_SKIP, timeout: 1200000 }, (t) => {
+test("the burst is crayon: one fill filter with a wobbling edge and a streaked paper-tooth alpha, scaled with the size, and the flow card has no filter on text", () => {
+  for (const size of ["1600x900", "1920x1080"]) {
+    const svg = bank.render("cover.essay-hero", { size }).svg;
+    assert.match(svg, /<filter id="essay-crayon"[^>]*>(?=.*<feDisplacementMap)(?=.*operator="arithmetic")(?=.*<feComposite in="d" in2="m" operator="in"\/>)/, size);
+    assert.match(svg, /<g filter="url\(#essay-crayon\)">/, size);
+    assert.doesNotMatch(svg, /watercolour|soft-light/i, size);
+  }
+  // frequencies are per unit, so a 1.2x canvas divides them by 1.2 and the grain keeps its size
+  const freq = (svg) => Number(/baseFrequency="([\d.]+)" numOctaves="2" seed="7"/.exec(svg)[1]);
+  assert.ok(Math.abs(freq(bank.render("cover.essay-hero", { size: "1600x900" }).svg) / freq(bank.render("cover.essay-hero", { size: "1920x1080" }).svg) - 1.2) < 0.01);
+  const flow = bank.render("card.essay-flow").svg;
+  assert.match(flow, /<filter id="essay-line"/);
+  assert.doesNotMatch(flow, /<text[^>]*filter=/);
+  assert.doesNotMatch(flow, /id="essay-crayon"/, "the flow card draws no fill, so it carries no fill filter");
+});
+
+test("the flow card draws count icons joined by count - 1 clay arrows with one label each, and icon_start rotates the icons", () => {
+  const marks = (svg) => ({
+    icons: (svg.match(/<g transform="translate\([\d. ]+\) scale\([\d.]+\)"/g) || []).length,
+    arrows: (svg.match(/stroke="#D97757" stroke-width="[\d.]+" stroke-linecap="round" stroke-linejoin="round"\/>/g) || []).length,
+    labels: [...svg.matchAll(/data-slot="label_(\d)"/g)].map((m) => Number(m[1])),
+  });
+  for (const count of [3, 4, 5]) {
+    const found = marks(bank.render("card.essay-flow", { params: { count } }).svg);
+    assert.deepEqual(found, { icons: count, arrows: count - 1, labels: Array.from({ length: count }, (_, i) => i + 1) }, `count ${count}`);
+  }
+  const path0 = (svg) => /<path d="([^"]+)"\/><\/g>/.exec(svg)[1];
+  const a = bank.render("card.essay-flow", { params: { icon_start: 0 } }).svg;
+  assert.notEqual(path0(a), path0(bank.render("card.essay-flow", { params: { icon_start: 1 } }).svg));
+  assert.equal(path0(a), path0(bank.render("card.essay-flow", { params: { icon_start: 5 % 5 } }).svg));
+  assert.throws(() => bank.render("card.essay-flow", { params: { count: 6 } }), (error) => error.code === "OPTION_VALUE_INVALID");
+  assert.throws(() => bank.render("card.essay-flow", { params: { count: 3 }, set: { label_4: "x" } }), (error) => error.code === "OPTION_VALUE_INVALID" && /not drawn/.test(error.message));
+  const long = bank.check(bank.render("card.essay-flow", { set: { label_3: "这是一个长得放不下的节点标签文字" } }).svg);
+  assert.ok(long.findings.some((f) => f.slot === "label_3"), messages(long));
+});
+
+test("every institute-essay default render passes the browser check too, and the dark theme of three of them (one Chrome)", { skip: SKIP, timeout: 600000 }, async (t) => {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), "institute-essay-browser-"));
   t.after(() => fs.rmSync(root, { recursive: true, force: true }));
-  for (const id of IDS) {
-    for (const theme of id === "cover.essay-hero" || id === "card.essay-finding" ? ["light", "dark"] : ["light"]) {
-      const result = cli(root, "template", "render", id, "--param", `theme=${theme}`, "-o", `${id}-${theme}.svg`, "--chrome", BROWSER.chrome, "--puppeteer-module", BROWSER.puppeteerModule);
-      assert.equal(result.status, 0, `${id} ${theme}: ${JSON.stringify(result.payload?.check?.findings || result.payload?.error || result.stderr)}`);
-      assert.equal(result.payload.check.status, "passed", `${id} ${theme}`);
-    }
-  }
+  const jobs = IDS.map((id) => ({ id })).concat(["cover.essay-hero", "card.essay-finding", "card.essay-flow"].map((id) => ({ id, params: { theme: "dark" } })));
+  for (const result of await checkRenders(BROWSER, jobs, root)) assert.deepEqual(result.findings, [], result.name);
 });
 
 test("the HTML long-read kit is one self-contained page with a README, and names no organisation's marks", () => {
@@ -132,15 +165,14 @@ test("the HTML long-read kit is one self-contained page with a README, and names
   const links = [...html.matchAll(/<link\b[^>]*>/gi)].map((m) => m[0]);
   assert.ok(links.every((tag) => /fonts\.(googleapis|gstatic)\.com/.test(tag)), `only font links: ${links.join(" ")}`);
   assert.doesNotMatch(html, /anthropic|claude|openai|deepmind|gemini/i);
-  for (const token of ["--clay:#d97757", "#faf9f5", "#141413", "Source Serif 4", "Noto Serif SC", "grid", "feTurbulence"]) assert.ok(html.toLowerCase().includes(token.toLowerCase()), token);
+  for (const token of ["--clay:#d97757", "#faf9f5", "#141413", "Source Serif 4", "Noto Serif SC", "grid", "feTurbulence", "id=\"cl\"", "pathLength", "id=\"story\"", "prefers-reduced-motion"]) assert.ok(html.toLowerCase().includes(token.toLowerCase()), token);
   const style = bank.loadStyle("institute-essay");
   assert.ok(style.examples.renders.some((r) => r.file === "examples/institute-essay-report-kit/index.html"));
 });
 
-test("the kit page passes the browser half of template check at 1440 and 390 wide", { skip: BROWSER.skip || CI_SKIP, timeout: 1200000 }, () => {
-  for (const size of ["1440x6000", "390x6000"]) {
-    const result = cli(REPO, "template", "check", path.join(KIT, "index.html"), "--browser", "--size", size, "--chrome", BROWSER.chrome, "--puppeteer-module", BROWSER.puppeteerModule);
-    assert.equal(result.status, 0, `${size}: ${JSON.stringify(result.payload?.findings || result.payload?.error || result.stderr)}`);
-    assert.equal(result.payload.status, "passed", size);
+test("the kit page passes the browser half of template check at 1440 and 390 wide, motion settled", { skip: SKIP, timeout: 600000 }, async () => {
+  for (const result of await kitChecks()) {
+    assert.deepEqual(result.findings, [], `${result.width}x${result.height}`);
+    assert.equal(result.status, "passed", `${result.width}x${result.height}`);
   }
 });

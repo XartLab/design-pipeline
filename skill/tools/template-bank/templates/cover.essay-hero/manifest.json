@@ -107,7 +107,7 @@
     "The burst is a 15 x 15 grid in a 640-unit square, radius 7.5 cells, right of the title (centre x 1180); clay is the only colour and stays under 22% of the canvas for every seed."
   ],
   "decoration": [
-    "The burst's watercolour filter and the squares' opacity (0.78-1) are decoration."
+    "The burst's crayon filter and the squares' opacity (0.78-1) are decoration."
   ],
   "provenance": {
     "corpus": "research-report kit (examples/institute-essay-report-kit): our own original long-read page in the institute-essay grammar; all copy and numbers are placeholders",

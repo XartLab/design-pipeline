@@ -3,7 +3,10 @@
 // The devlog-terminal style pack: the grammar of a developer technical-writing blog that speaks in
 // terminal conventions, measured privately in Chrome and built here from our own copy and glyphs.
 // Five templates: the post index, the article with its rail, the article header, the figure frame
-// and the dot-matrix field. Each renders from parameters and passes both halves of the check.
+// and the dot-matrix field. Each renders from parameters and passes both halves of the check; the HTML note
+// kit proves the grammar on a whole page. The browser checks share their Chromes
+// (tests/helpers/kit-browser-check.cjs): the kit's two widths run at once from the first test on and the
+// default renders share one Chrome.
 
 const assert = require("node:assert/strict");
 const fs = require("node:fs");
@@ -14,8 +17,10 @@ const { spawnSync } = require("node:child_process");
 const bank = require("../skill/tools/template-bank/bank.cjs");
 const measure = require("../skill/tools/template-bank/measure.cjs");
 const { GLYPHS, GLYPH_NAMES } = require("../skill/tools/template-bank/layouts-devlog.cjs");
+const { locateBrowser, CI_SKIP, checkKit, checkRenders } = require("./helpers/kit-browser-check.cjs");
 
 const CLI = path.join(__dirname, "..", "skill", "scripts", "designer-pipeline.cjs");
+const KIT = path.join(__dirname, "..", "examples", "devlog-terminal-note-kit");
 const CATALOG = JSON.parse(fs.readFileSync(path.join(__dirname, "..", "skill", "references", "fonts", "catalog.json"), "utf8"));
 const IDS = ["banner.devlog-dotfield", "card.devlog-fig", "ui.devlog-article", "ui.devlog-article-header", "ui.devlog-index"];
 
@@ -26,18 +31,15 @@ function cli(root, ...args) {
   try { payload = JSON.parse(child.stdout); } catch { payload = null; }
   return { status: child.status, payload, stderr: child.stderr };
 }
-const BROWSER = (() => {
-  try {
-    const puppeteerModule = process.env.DESIGN_PIPELINE_PUPPETEER_MODULE || path.dirname(require.resolve("puppeteer-core/package.json"));
-    const { resolveBrowser } = require("../skill/scripts/browser-locate.cjs");
-    return { puppeteerModule, chrome: resolveBrowser() };
-  } catch (error) {
-    return { skip: `browser unavailable: ${error.message}` };
-  }
-})();
-const CI_SKIP = process.env.GITHUB_ACTIONS === "true" && "text-occluded differs on the CI runner (#305)";
+const BROWSER = locateBrowser();
+const SKIP = BROWSER.skip || CI_SKIP;
+// The kit check is the slow part (a screenshot per text unit): start both widths with the first test so
+// they overlap the static tests, and let the kit test await the result.
+let kitRun = null;
+const kitChecks = () => (kitRun ||= checkKit(BROWSER, path.join(KIT, "index.html"), [1440, 390]));
 
 test("devlog-terminal names its case and lineage, borrows grammar not assets, and resolves its fonts through the catalog", () => {
+  if (!SKIP) kitChecks().catch(() => {});
   const style = bank.loadStyle("devlog-terminal");
   assert.match(style.provenance.borrow, /^Borrow grammar, never assets\./);
   assert.match(style.provenance.lineage, /stays private and is not shipped/);
@@ -171,12 +173,29 @@ test("a list item reads as one run: the continuation starts about one space afte
   assert.equal(bank.check(bank.render("ui.devlog-article", { set: cjk }).svg).status, "passed");
 });
 
-test("every devlog-terminal default render passes the browser check too", { skip: BROWSER.skip || CI_SKIP, timeout: 1200000 }, (t) => {
+test("every devlog-terminal default render passes the browser check too (one Chrome)", { skip: SKIP, timeout: 600000 }, async (t) => {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), "devlog-browser-"));
   t.after(() => fs.rmSync(root, { recursive: true, force: true }));
-  for (const id of IDS) {
-    const result = cli(root, "template", "render", id, "-o", `${id}.svg`, "--chrome", BROWSER.chrome, "--puppeteer-module", BROWSER.puppeteerModule);
-    assert.equal(result.status, 0, `${id}: ${JSON.stringify(result.payload?.check?.findings || result.payload?.error || result.stderr)}`);
-    assert.equal(result.payload.check.status, "passed", id);
+  for (const result of await checkRenders(BROWSER, IDS.map((id) => ({ id })), root)) assert.deepEqual(result.findings, [], result.name);
+});
+
+test("the HTML note kit is one self-contained page with a README, carries its motion with a reduced-motion fallback, and names no organisation", () => {
+  const html = fs.readFileSync(path.join(KIT, "index.html"), "utf8");
+  const readme = fs.readFileSync(path.join(KIT, "README.md"), "utf8");
+  assert.match(readme, /devlog-terminal/);
+  assert.doesNotMatch(html, /<script[^>]+src=|<img\b|@import|url\((?!#)/i, "no external scripts, images or imports");
+  const links = [...html.matchAll(/<link\b[^>]*>/gi)].map((m) => m[0]);
+  assert.ok(links.every((tag) => /fonts\.(googleapis|gstatic)\.com/.test(tag)), `only font links: ${links.join(" ")}`);
+  assert.doesNotMatch(html, /anthropic|claude|openai|deepmind|gemini/i);
+  for (const token of ["--bg:#141413", "--ink:#faf9f5", "--clay:#d97757", "JetBrains Mono", "Noto Sans SC", "prefers-reduced-motion", "IntersectionObserver", "<canvas", "[H]"]) assert.ok(html.toLowerCase().includes(token.toLowerCase()), token);
+  const style = bank.loadStyle("devlog-terminal");
+  assert.ok(style.examples.renders.some((r) => r.file === "examples/devlog-terminal-note-kit/index.html"));
+  assert.ok(style.motion.grammar.some((line) => /types itself/.test(line)) && style.motion.grammar.some((line) => /prefers-reduced-motion/.test(line)));
+});
+
+test("the note kit passes the browser half of template check at 1440 and 390 wide, motion settled", { skip: SKIP, timeout: 600000 }, async () => {
+  for (const result of await kitChecks()) {
+    assert.deepEqual(result.findings, [], `${result.width}x${result.height}`);
+    assert.equal(result.status, "passed", `${result.width}x${result.height}`);
   }
 });

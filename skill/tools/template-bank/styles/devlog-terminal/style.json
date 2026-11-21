@@ -80,7 +80,10 @@
     "grammar": [
       "Keyboard first: hotkeys in brackets are real (H, M, D, T, S, R); pressing one highlights its nav item with a 120 ms ink change, nothing slides.",
       "The progress bar fills block by block with scroll; the current TREE item follows the section in view and turns bold and ink.",
-      "Rows brighten from secondary grey to ink on hover; LOAD MORE appends rows with a 160 ms fade; the dot field breathes by 1 unit in size at most."
+      "Rows brighten from secondary grey to ink on hover; LOAD MORE appends rows with a 160 ms fade; the dot field breathes by 1 unit in size at most.",
+      "The title types itself out character by character behind a clay block cursor that blinks at 1 Hz; the header tile wipes in from the top in 6 steps.",
+      "Chart blocks fill one by one when the figure scrolls into view (from dim grey to ink, 250 ms each); the dot field shimmers as a slow wave on a canvas that pauses when it is off screen; the mascot hops when clicked.",
+      "prefers-reduced-motion shows the final state: the title typed, the cursor still, blocks filled, the field and the mascot at rest."
     ],
     "flashLimit": "No flashing and no cursor blink faster than 1 Hz."
   },
@@ -97,8 +100,9 @@
     "note": "The browser check runs on every render (hairlines, the dot field and the tiles are measured in pixels)."
   },
   "examples": {
-    "note": "Renders of the case that stay examples (outside the repository, with the owner): the index, an article with its header and a figure, and the closing dot field.",
+    "note": "The kit page is the example in the repository: one self-contained engineer's note with every device above. The case's own renders stay with the owner: the index, an article with its header and a figure, and the closing dot field.",
     "renders": [
+      { "screen": "engineer's note page (dark by default, 1440 and 390 wide)", "file": "examples/devlog-terminal-note-kit/index.html", "why": "a scrolling page with the hotkey nav, header tile, TREE rail with ASCII progress, block chart, related rows and the dot field with the pixel mascot; its parts are the five templates; motion settles under prefers-reduced-motion" },
       { "screen": "post index and article with rail", "file": "benchlog case, shots/ (owner's copy, not in the repository)", "why": "full pages with scripts and scroll state, not parametric layouts; their parts are the five templates" }
     ]
   }

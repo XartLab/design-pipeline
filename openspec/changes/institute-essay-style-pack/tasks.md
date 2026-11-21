@@ -8,7 +8,8 @@
 ## 2. Pack and templates
 
 - [x] 2.1 `styles/institute-essay/style.json`: font roles through the catalog, measured palette and grammar, materials, motion, checks with the faint-grey guidance, provenance, examples.
-- [x] 2.2 `layouts-essay.cjs` and five template folders (manifest, default render, spec.md); `bank.cjs` registry.
+- [x] 2.2 `layouts-essay.cjs` and six template folders (manifest, default render, spec.md); `bank.cjs` registry.
+- [x] 2.3 Crayon texture: the crayon fill and crayon line filters replace the watercolour filter, five hand-drawn line icons, `card.essay-flow`.
 
 ## 3. Kit, docs and tests
 

@@ -1,12 +1,12 @@
 # card.essay-finding
 
-Finding card: a faint serif 'Finding N: topic' above a one-sentence claim, three watercolour bars on graph paper with derived values, a legend, an asterisk footnote and a bold italic 'How to read this' line.
+Finding card: a faint serif 'Finding N: topic' above a one-sentence claim, three crayon bars on graph paper with derived values, a legend, an asterisk footnote and a bold italic 'How to read this' line.
 
 Style: `institute-essay` (`styles/institute-essay/style.json`). A research finding with three scenarios or categories. value_1..3 and max are parameters: the value text and the bar come from the same number.
 
 ## Where it comes from
 
-A finding block and its full-width figure from the reference pages, set as one card; bars taken from the measured figure style (rounded 3, textured). Borrow grammar, never assets: the two reference pages are private and nothing from them is shipped; all copy is our own placeholder.
+A finding block and its full-width figure from the reference pages, set as one card; bars taken from the measured figure style (rounded 3, crayon-textured). Borrow grammar, never assets: the two reference pages are private and nothing from them is shipped; all copy is our own placeholder.
 
 Samples: institute-essay/finding.
 
@@ -52,6 +52,6 @@ Samples: institute-essay/finding.
 
 ## Decoration
 
-- Graph paper (22 units, 1 unit lines), the watercolour filter, the neutral track tiles and the baseline are decoration.
+- Graph paper (22 units, 1 unit lines), the crayon filter, the neutral track tiles and the baseline are decoration.
 
 Sizes: 1600x900, 1920x1080. A passing check is technical conformance only, not visual acceptance.

@@ -3,7 +3,7 @@
   "id": "card.essay-finding",
   "family": "card",
   "style": "institute-essay",
-  "title": "Finding card: a faint serif 'Finding N: topic' above a one-sentence claim, three watercolour bars on graph paper with derived values, a legend, an asterisk footnote and a bold italic 'How to read this' line",
+  "title": "Finding card: a faint serif 'Finding N: topic' above a one-sentence claim, three crayon bars on graph paper with derived values, a legend, an asterisk footnote and a bold italic 'How to read this' line",
   "use": "A research finding with three scenarios or categories. value_1..3 and max are parameters: the value text and the bar come from the same number.",
   "canvas": {
     "width": 1600,
@@ -171,13 +171,13 @@
     "Legend squares 14 units, footnote 14 sans centred, the how-to-read line in a 640-unit column (lead-in bold italic, 10 units before its sentence)."
   ],
   "decoration": [
-    "Graph paper (22 units, 1 unit lines), the watercolour filter, the neutral track tiles and the baseline are decoration."
+    "Graph paper (22 units, 1 unit lines), the crayon filter, the neutral track tiles and the baseline are decoration."
   ],
   "provenance": {
     "corpus": "research-report kit (examples/institute-essay-report-kit): our own original long-read page in the institute-essay grammar; all copy and numbers are placeholders",
     "experiment": "styles/institute-essay/style.json provenance (two public reference pages measured privately in Chrome on 2026-11-21; never shipped)",
     "accessed": "2026-11-21",
-    "method": "A finding block and its full-width figure from the reference pages, set as one card; bars taken from the measured figure style (rounded 3, textured).",
+    "method": "A finding block and its full-width figure from the reference pages, set as one card; bars taken from the measured figure style (rounded 3, crayon-textured).",
     "sampleIds": [
       "institute-essay/finding"
     ],

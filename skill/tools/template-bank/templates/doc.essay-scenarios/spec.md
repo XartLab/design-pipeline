@@ -48,6 +48,6 @@ Samples: institute-essay/scenarios.
 
 ## Decoration
 
-- The swatches' watercolour filter.
+- The swatches' crayon filter.
 
 Sizes: 1600x900, 1920x1080. A passing check is technical conformance only, not visual acceptance.

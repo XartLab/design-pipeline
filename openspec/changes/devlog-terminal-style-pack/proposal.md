@@ -26,11 +26,17 @@ text under contrast, a CJK date in a Latin-only mono face, a mascot copied from 
   `ui.devlog-article-header` (1440 x 560), `card.devlog-fig` (960 x 600) and `banner.devlog-dotfield`
   (1440 x 480, `seed`, `density`). The pixel glyphs on the clay tiles are the pack's own (`GLYPHS`);
   the mascot is an image slot the owner fills with their own art.
+- **HTML kit** `examples/devlog-terminal-note-kit/`: one self-contained engineer's note on the same grammar
+  (sticky rail with TREE and ASCII progress, 620 px column, block chart, related rows, dot field with the
+  owner's own pixel mascot) with a README, referenced from the pack and `template-bank.md`. Its motion: a
+  typewriter title behind a blinking clay block cursor (1 Hz), blocks filling one by one on view, a
+  shimmering dot field on a canvas that pauses off screen, a mascot that hops on click, a tile wipe-in; all
+  off under `prefers-reduced-motion`.
 - No change to `template check`, its rules, schemas, gates or CLI flags.
 
 ## Capabilities
 
-- `design-pipeline`: the template bank gains one style pack and five templates.
+- `design-pipeline`: the template bank gains one style pack and five templates; the examples gain one kit.
 
 ## Reuse
 
@@ -41,7 +47,8 @@ text under contrast, a CJK date in a Latin-only mono face, a mascot copied from 
 ## Impact
 
 - New: `tools/template-bank/layouts-devlog.cjs`, `styles/devlog-terminal/style.json`, five template
-  folders, `tests/template-devlog-terminal.test.cjs`.
+  folders, `tests/template-devlog-terminal.test.cjs`, `tests/helpers/kit-browser-check.cjs`,
+  `examples/devlog-terminal-note-kit/`.
 - Changed: `bank.cjs` (layout registry list), `references/template-bank.md`, `package-resources.json`,
   `scripts/test-manifest.json`, `CHANGELOG.md`; counts in `tests/template-bank.test.cjs` and
   `tests/template-style-pack.test.cjs`.

@@ -4,7 +4,7 @@
 // research institute's long-form explainer and research-essay pages, measured in Chrome on two public
 // reference pages the owner named (kept private, never shipped). An ivory page, one clay accent, a book
 // serif for display and body against a neutral grotesque for every label, figures on 22-unit graph paper
-// with watercolour-textured bars, a sticky note card riding on a figure, scenario cards, a big pull quote
+// with crayon-textured bars, a sticky note card riding on a figure, scenario cards, a big pull quote
 // and a seeded pixel burst as the hero picture. Geometry in a 1600-unit canvas scaled to the size.
 // Everything is drawn here; the faces are named (Source Serif 4, Inter, Noto), never bundled.
 
@@ -39,13 +39,40 @@ function begin(d) {
   d.rect(0, 0, d.W, d.H, "ivory");
 }
 
-// One watercolour filter for bars, tiles and the burst: a low-frequency displacement wobbles the edge, a
-// fine grain lifts the fill like paper (soft-light). The shapes under it are plain rects, so the static
-// check measures geometry and never the filter.
-function watercolour(d, s) {
-  if (d.essayWc) return;
-  d.essayWc = true;
-  d.def(`<filter id="essay-wc" x="-5%" y="-10%" width="110%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".035 .09" numOctaves="3" seed="4" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="${f1(4 * s)}" result="d"/><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="2" result="g"/><feColorMatrix in="g" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 -.9 .7" result="gw"/><feComposite in="gw" in2="d" operator="in" result="gt"/><feBlend in="gt" in2="d" mode="soft-light"/></filter>`);
+// The crayon fill for bars, tiles, swatches and the burst: a low-frequency displacement wobbles the edge
+// like a hand-pushed stick, a streak noise stretched along x (baseFrequency .025 .55) multiplied with a fine
+// paper-tooth noise becomes the alpha of the fill, so the colour breaks into waxy streaks with the paper
+// showing through. Frequencies are per unit, so they are divided by the scale and a size keeps the look. The
+// shapes under it are plain rects, so the static check measures geometry and never the filter.
+function crayon(d, s) {
+  if (d.essayCrayon) return;
+  d.essayCrayon = true;
+  const q = (v) => (v / s).toFixed(4).replace(/0+$/, "").replace(/\.$/, "");
+  d.def(`<filter id="essay-crayon" x="-6%" y="-12%" width="112%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="${q(0.04)}" numOctaves="2" seed="7" result="w"/><feDisplacementMap in="SourceGraphic" in2="w" scale="${f1(4 * s)}" xChannelSelector="R" yChannelSelector="G" result="d"/><feTurbulence type="fractalNoise" baseFrequency="${q(0.025)} ${q(0.55)}" numOctaves="2" seed="3" result="s"/><feTurbulence type="fractalNoise" baseFrequency="${q(1.1)}" numOctaves="1" seed="12" result="t"/><feComposite in="s" in2="t" operator="arithmetic" k2=".6" k3=".55" result="st"/><feColorMatrix in="st" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -2.6 0 0 0 2.05" result="m"/><feComposite in="d" in2="m" operator="in"/></filter>`);
+}
+
+// The crayon line for hand-drawn icons and arrows: a finer wobble and a paper-tooth mask over the stroke.
+function crayonLine(d, s) {
+  if (d.essayLine) return;
+  d.essayLine = true;
+  const q = (v) => (v / s).toFixed(4).replace(/0+$/, "").replace(/\.$/, "");
+  d.def(`<filter id="essay-line" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="${q(0.06)}" numOctaves="2" seed="2" result="w"/><feDisplacementMap in="SourceGraphic" in2="w" scale="${f1(3.2 * s)}" result="d"/><feTurbulence type="fractalNoise" baseFrequency="${q(0.9)}" numOctaves="1" seed="8" result="t"/><feColorMatrix in="t" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -2 0 0 0 1.75" result="m"/><feComposite in="d" in2="m" operator="in"/></filter>`);
+}
+
+// Hand-drawn line icons, each in a local box about (0, 0) about 84 units wide: strokes only, drawn through
+// the crayon line filter. hw is the half width, used to keep arrows clear of the icon.
+const ICONS = {
+  stack: { hw: 26, d: "M-26 -23a26 9 0 1 0 52 0a26 9 0 1 0 -52 0M-26 -23v38c0 5 12 9 26 9s26-4 26-9V-23M-26 -4c0 5 12 9 26 9s26-4 26-9" },
+  laptop: { hw: 42, d: "M-28 -25h56c3 0 4 1 4 4v34h-64V-21c0-3 1-4 4-4zM-42 17h84l-6 9h-72z" },
+  fork: { hw: 32, d: "M-32 1h22M-10 1c12 0 14-22 30-22h12M-10 1h42M-10 1c12 0 14 22 30 22h12" },
+  page: { hw: 24, d: "M-24 -28h34l14 14v42h-48zM10 -28v14h14M-14 -2h28M-14 8h28M-14 18h18" },
+  person: { hw: 28, d: "M-13 -14a13 13 0 1 0 26 0a13 13 0 1 0 -26 0M-27 28c0-16 11-27 27-27s27 11 27 27z" },
+};
+const ICON_NAMES = Object.keys(ICONS);
+
+// One icon at (cx, cy) scaled by k; stroke 3.2 local units. Decoration: the check never measures it.
+function icon(name, cx, cy, k, color) {
+  return `<g transform="translate(${f1(cx)} ${f1(cy)}) scale(${f1(k)})" fill="none" stroke="${color}" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="${ICONS[name].d}"/></g>`;
 }
 
 // Graph paper: an ivory ground the static check reads, a 22-unit grid pattern over it (patterns are hidden
@@ -89,7 +116,7 @@ const LAYOUTS = {
   // ---- hero: serif title left, pixel burst right: 1600 x 900 ----------------------------------------
   "cover.essay-hero"(d) {
     const { W, H, p } = d; const s = W / 1600;
-    begin(d); watercolour(d, s);
+    begin(d); crayon(d, s);
     const L = 96 * s; const colW = 740 * s;
     d.text("brand", L, 88 * s, 16 * s, { role: "ink", family: "sans", weight: 700, tracking: 30, box: tbox(L, 88 * s, 16 * s, 520 * s) });
     const ts = 76 * s;
@@ -112,14 +139,14 @@ const LAYOUTS = {
         squares += `<rect x="${f1(x0 + x * cs + pad)}" y="${f1(y0 + y * cs + pad)}" width="${f1(cs - 2 * pad)}" height="${f1(cs - 2 * pad)}" rx="${f1(cs * 0.12)}" fill="${d.pal.clay}" opacity="${o}" data-role="clay"/>`;
       }
     }
-    d.raw(`<g filter="url(#essay-wc)">${squares}</g>`);
+    d.raw(`<g filter="url(#essay-crayon)">${squares}</g>`);
     d.zone("copy", "safe", [0, 0, 840 * s, H], { slots: ["brand", "title_1", "title_2", "deck", "cta_1", "cta_2", "meta"] });
   },
 
-  // ---- finding: label, claim and three watercolour bars on graph paper: 1600 x 900 ------------------
+  // ---- finding: label, claim and three crayon bars on graph paper: 1600 x 900 ------------------
   "card.essay-finding"(d) {
     const { W, H, p } = d; const s = W / 1600;
-    begin(d); watercolour(d, s);
+    begin(d); crayon(d, s);
     const L = 120 * s;
     d.text("finding_label", L, 104 * s, 30 * s, { role: "faint", family: "serif", weight: 400, box: tbox(L, 104 * s, 30 * s, 1200 * s) });
     d.text("claim", L, 160 * s, 36 * s, { role: "ink", family: "serif", weight: 400, lineHeight: 1.25, box: tbox(L, 160 * s, 36 * s, 1260 * s, { lines: 2, lh: 1.25 }) });
@@ -134,7 +161,7 @@ const LAYOUTS = {
       track.push(`<rect x="${f1(tx)}" y="${f1(y)}" width="${f1(tl)}" height="${f1(bh)}" rx="${f1(3 * s)}" fill="${d.pal.tile}" opacity=".3" data-role="tile"/>`);
       bars.push(`<rect x="${f1(tx)}" y="${f1(y)}" width="${f1(w)}" height="${f1(bh)}" rx="${f1(3 * s)}" fill="${d.pal[DATA[k]]}" data-role="${DATA[k]}"/>`);
     });
-    d.raw(`<g filter="url(#essay-wc)">${track.join("")}${bars.join("")}</g>`);
+    d.raw(`<g filter="url(#essay-crayon)">${track.join("")}${bars.join("")}</g>`);
     d.raw(`<rect data-deco="1" x="${f1(tx - 1)}" y="${f1(y0 - 12 * s)}" width="1.5" height="${f1(2 * pitch + bh + 24 * s)}" fill="${d.pal.stone}"/>`);
     [1, 2, 3].forEach((i, k) => {
       const y = y0 + k * pitch; const base = y + bh / 2 + 7 * s;
@@ -153,7 +180,7 @@ const LAYOUTS = {
   // ---- graph-paper figure with a sticky note: 1600 x 900 ---------------------------------------------
   "card.essay-note-figure"(d) {
     const { W, H, p } = d; const s = W / 1600;
-    begin(d); watercolour(d, s);
+    begin(d);
     paper(d, 120 * s, 690 * s, s);
     d.text("fig_title", W / 2, 164 * s, 15 * s, { role: "ink", family: "sans", weight: 700, anchor: "middle", box: tbox(W / 2, 164 * s, 15 * s, 960 * s, { anchor: "middle" }) });
     // plot: dashed fan lines in three hues, one bundle per scenario, a faint guide at 1x and at the top
@@ -188,6 +215,30 @@ const LAYOUTS = {
     d.zone("note", "safe", [nx, ny, nw, nh], { slots: ["note_title", "note_text"] });
   },
 
+  // ---- flow: a paper band of hand-drawn icons joined by clay arrows, a label under each: 1600 x 900 ---
+  "card.essay-flow"(d) {
+    const { W, H, p } = d; const s = W / 1600;
+    begin(d); crayonLine(d, s);
+    const n = Math.round(p.count); const k = 1.8 * s;
+    const bx = 120 * s; const bw = 1360 * s; const bh = 240 * s; const by = 300 * s; const cy = by + bh / 2;
+    d.raw(`<rect x="${f1(bx)}" y="${f1(by)}" width="${f1(bw)}" height="${f1(bh)}" rx="${f1(bh / 2)}" fill="${d.pal.paper}" stroke="${d.pal.line}" stroke-width="1" data-role="paper"/>`);
+    const step = bw / n; const names = Array.from({ length: n }, (_, i) => ICON_NAMES[(Math.round(p.icon_start) + i) % ICON_NAMES.length]);
+    const cx = names.map((_, i) => bx + step * (i + 0.5));
+    const hw = names.map((name) => ICONS[name].hw * k);
+    d.raw(`<g data-deco="1" filter="url(#essay-line)">${names.map((name, i) => icon(name, cx[i], cy, k, d.pal.ink)).join("")}</g>`);
+    // arrows: a clay shaft with a two-stroke head, kept 18 units clear of both icons
+    const arrows = [];
+    for (let i = 0; i + 1 < n; i += 1) {
+      const x1 = cx[i] + hw[i] + 18 * s; const x2 = cx[i + 1] - hw[i + 1] - 18 * s;
+      if (x2 - x1 < 40 * s) continue;
+      arrows.push(`<path d="M${f1(x1)} ${f1(cy)}L${f1(x2)} ${f1(cy)}M${f1(x2 - 16 * s)} ${f1(cy - 11 * s)}L${f1(x2)} ${f1(cy)}L${f1(x2 - 16 * s)} ${f1(cy + 11 * s)}" fill="none" stroke="${d.pal.clay}" stroke-width="${f1(4.4 * s)}" stroke-linecap="round" stroke-linejoin="round"/>`);
+    }
+    d.raw(`<g data-deco="1" filter="url(#essay-line)">${arrows.join("")}</g>`);
+    const fs = 24 * s; const lw = Math.min(step - 24 * s, 340 * s); const ly = by + bh + 64 * s;
+    for (let i = 1; i <= n; i += 1) d.text(`label_${i}`, cx[i - 1], ly, fs, { role: "mute", family: "sans", weight: 400, anchor: "middle", box: tbox(cx[i - 1], ly, fs, lw, { anchor: "middle" }) });
+    d.zone("flow", "safe", [bx, by, bw, bh + 100 * s], { slots: Array.from({ length: n }, (_, i) => `label_${i + 1}`) });
+  },
+
   // ---- pull quote: 1600 x 900 -----------------------------------------------------------------------
   "card.essay-pullquote"(d) {
     const { W, H } = d; const s = W / 1600;
@@ -207,7 +258,7 @@ const LAYOUTS = {
   // ---- three scenario cards: 1600 x 900 -------------------------------------------------------------
   "doc.essay-scenarios"(d) {
     const { W, H, p } = d; const s = W / 1600;
-    begin(d); watercolour(d, s);
+    begin(d); crayon(d, s);
     const L = 116 * s; const cw = 440 * s; const gap = 24 * s; const cy = 300 * s; const ch = 350 * s; const pad = 28 * s;
     d.text("heading", L, 150 * s, 44 * s, { role: "ink", family: "serif", weight: 400, lineHeight: 1.2, box: tbox(L, 150 * s, 44 * s, 1368 * s, { lines: 1 }) });
     d.text("lede", L, 214 * s, 18 * s, { role: "mute", family: "sans", weight: 400, box: tbox(L, 214 * s, 18 * s, 1368 * s) });
@@ -221,7 +272,7 @@ const LAYOUTS = {
       d.text(`sub_${i}`, x + pad, cy + 148 * s, 16 * s, { role: "mute", family: "sans", weight: 400, box: tbox(x + pad, cy + 148 * s, 16 * s, inner) });
       d.text(`text_${i}`, x + pad, cy + 206 * s, 19 * s, { role: "ink", family: "serif", weight: 400, lineHeight: 1.5, box: tbox(x + pad, cy + 206 * s, 19 * s, inner, { lines: 5, lh: 1.5 }) });
     });
-    d.raw(`<g filter="url(#essay-wc)">${sw.join("")}</g>`);
+    d.raw(`<g filter="url(#essay-crayon)">${sw.join("")}</g>`);
     d.text("credits", L, 750 * s, 17 * s, { role: "mute", family: "serif", weight: 400, italic: true, box: tbox(L, 750 * s, 17 * s, 1368 * s) });
   },
 };

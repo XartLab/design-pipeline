@@ -41,6 +41,6 @@ Samples: institute-essay/hero.
 
 ## Decoration
 
-- The burst's watercolour filter and the squares' opacity (0.78-1) are decoration.
+- The burst's crayon filter and the squares' opacity (0.78-1) are decoration.
 
 Sizes: 1600x900, 1920x1080. A passing check is technical conformance only, not visual acceptance.

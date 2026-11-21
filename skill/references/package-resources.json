@@ -1440,6 +1440,8 @@
     "tools/template-bank/styles/institute-essay/style.json",
     "tools/template-bank/templates/card.essay-finding/manifest.json",
     "tools/template-bank/templates/card.essay-finding/template.svg",
+    "tools/template-bank/templates/card.essay-flow/manifest.json",
+    "tools/template-bank/templates/card.essay-flow/template.svg",
     "tools/template-bank/templates/card.essay-note-figure/manifest.json",
     "tools/template-bank/templates/card.essay-note-figure/template.svg",
     "tools/template-bank/templates/card.essay-pullquote/manifest.json",
