@@ -1,0 +1,190 @@
+{
+  "schema": "design-pipeline.template-bank-template.v1",
+  "id": "card.essay-finding",
+  "family": "card",
+  "style": "institute-essay",
+  "title": "Finding card: a faint serif 'Finding N: topic' above a one-sentence claim, three crayon bars on graph paper with derived values, a legend, an asterisk footnote and a bold italic 'How to read this' line",
+  "use": "A research finding with three scenarios or categories. value_1..3 and max are parameters: the value text and the bar come from the same number.",
+  "canvas": {
+    "width": 1600,
+    "height": 900
+  },
+  "sizes": [
+    "1600x900",
+    "1920x1080"
+  ],
+  "aspect": "16:9",
+  "accent": {
+    "roles": [
+      "clay"
+    ],
+    "maxShare": 0.02
+  },
+  "params": {
+    "guides": {
+      "type": "boolean",
+      "default": false,
+      "class": "decoration",
+      "note": "draw layout guides"
+    },
+    "theme": {
+      "type": "enum",
+      "values": [
+        "light",
+        "dark"
+      ],
+      "default": "light",
+      "class": "decoration",
+      "note": "light (ivory #FAF9F5) or dark (#141413) ground"
+    },
+    "value_1": {
+      "default": 12,
+      "min": 0,
+      "max": 300,
+      "class": "proportion",
+      "note": "first bar, percent"
+    },
+    "value_2": {
+      "default": 41,
+      "min": 0,
+      "max": 300,
+      "class": "proportion",
+      "note": "second bar, percent"
+    },
+    "value_3": {
+      "default": 118,
+      "min": 0,
+      "max": 300,
+      "class": "proportion",
+      "note": "third bar, percent"
+    },
+    "max": {
+      "default": 130,
+      "min": 20,
+      "max": 300,
+      "class": "proportion",
+      "note": "the value at the end of the track"
+    }
+  },
+  "slots": {
+    "finding_label": {
+      "kind": "text",
+      "default": "发现 1：资本开支规模",
+      "maxChars": 24,
+      "font": "serif",
+      "note": "faint serif, large type only"
+    },
+    "claim": {
+      "kind": "text",
+      "default": "每个情景下支出都会增长，但幅度相差一个数量级",
+      "maxChars": 40,
+      "lines": 2,
+      "font": "serif",
+      "title": true
+    },
+    "fig_title": {
+      "kind": "text",
+      "default": "2028 年全球 AI 资本开支，相对 2025 年的变化*",
+      "maxChars": 40,
+      "font": "sans"
+    },
+    "label_1": {
+      "kind": "text",
+      "default": "温和情景",
+      "maxChars": 8,
+      "font": "serif"
+    },
+    "label_2": {
+      "kind": "text",
+      "default": "中性情景",
+      "maxChars": 8,
+      "font": "serif"
+    },
+    "label_3": {
+      "kind": "text",
+      "default": "激进情景",
+      "maxChars": 8,
+      "font": "serif"
+    },
+    "value_1": {
+      "kind": "text",
+      "derived": true,
+      "maxChars": 8,
+      "font": "sans",
+      "note": "derived from --param value_1"
+    },
+    "value_2": {
+      "kind": "text",
+      "derived": true,
+      "maxChars": 8,
+      "font": "sans",
+      "note": "derived from --param value_2"
+    },
+    "value_3": {
+      "kind": "text",
+      "derived": true,
+      "maxChars": 8,
+      "font": "sans",
+      "note": "derived from --param value_3"
+    },
+    "legend_1": {
+      "kind": "text",
+      "default": "温和",
+      "maxChars": 6,
+      "font": "sans"
+    },
+    "legend_2": {
+      "kind": "text",
+      "default": "中性",
+      "maxChars": 6,
+      "font": "sans"
+    },
+    "legend_3": {
+      "kind": "text",
+      "default": "激进",
+      "maxChars": 6,
+      "font": "sans"
+    },
+    "footnote": {
+      "kind": "text",
+      "default": "*按 2025 年美元计价 · 示例数据，仅用于展示模板",
+      "maxChars": 48,
+      "font": "sans"
+    },
+    "howto_label": {
+      "kind": "text",
+      "default": "怎么读这张图：",
+      "maxChars": 12,
+      "font": "sans",
+      "note": "bold italic lead-in"
+    },
+    "howto": {
+      "kind": "text",
+      "default": "每根条的长度是相对 2025 年的增幅，右侧是增幅百分比。",
+      "maxChars": 34,
+      "font": "sans"
+    }
+  },
+  "relations": [
+    "'Finding N' 30 units faint serif (large type: 3.5:1); claim 36 serif ink; the figure on graph paper starts 100 units under the claim.",
+    "Bars 34 high on a 76 pitch, a 880-unit track from x 400; values to the right of the track, labels to the left, never text on a bar.",
+    "Legend squares 14 units, footnote 14 sans centred, the how-to-read line in a 640-unit column (lead-in bold italic, 10 units before its sentence)."
+  ],
+  "decoration": [
+    "Graph paper (22 units, 1 unit lines), the crayon filter, the neutral track tiles and the baseline are decoration."
+  ],
+  "provenance": {
+    "corpus": "research-report kit (examples/institute-essay-report-kit): our own original long-read page in the institute-essay grammar; all copy and numbers are placeholders",
+    "experiment": "styles/institute-essay/style.json provenance (two public reference pages measured privately in Chrome on 2026-11-21; never shipped)",
+    "accessed": "2026-11-21",
+    "method": "A finding block and its full-width figure from the reference pages, set as one card; bars taken from the measured figure style (rounded 3, crayon-textured).",
+    "sampleIds": [
+      "institute-essay/finding"
+    ],
+    "measured": [
+      "'Finding N: topic' faint serif about 28 px above a one-sentence claim in ink serif about 28 px; figure on 22 px graph paper with a bold italic 'How to read this:' caption.",
+      "Template: value and bar share one parameter; checked at both sizes, light and dark."
+    ],
+    "summary": "institute-essay finding"
+  }
+}

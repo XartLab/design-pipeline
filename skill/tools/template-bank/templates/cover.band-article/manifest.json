@@ -1,0 +1,108 @@
+{
+  "schema": "design-pipeline.template-bank-template.v1",
+  "id": "cover.band-article",
+  "family": "cover",
+  "style": "brand-band",
+  "title": "Article cover: a full-height square colour field with one picture beside a column with category, date, a bold title, a serif deck and a byline",
+  "use": "A news or essay cover; subject and field choose the picture.",
+  "canvas": {
+    "width": 1600,
+    "height": 900
+  },
+  "sizes": [
+    "1600x900",
+    "1920x1080"
+  ],
+  "aspect": "16:9",
+  "accent": {
+    "roles": [
+      "clay"
+    ],
+    "maxShare": 0.03
+  },
+  "params": {
+    "guides": {
+      "type": "boolean",
+      "default": false,
+      "class": "decoration",
+      "note": "draw layout guides"
+    },
+    "field": {
+      "type": "enum",
+      "values": [
+        "sage",
+        "blush",
+        "lilac",
+        "sky",
+        "sand"
+      ],
+      "class": "decoration",
+      "note": "the colour field behind the picture",
+      "default": "lilac"
+    },
+    "subject": {
+      "type": "integer",
+      "default": 2,
+      "min": 0,
+      "max": 7,
+      "class": "rhythm",
+      "note": "which picture: 0 hand-graph, 1 seedling, 2 book, 3 magnifier, 4 spark-hands, 5 path, 6 candles, 7 compass"
+    }
+  },
+  "slots": {
+    "category": {
+      "kind": "text",
+      "default": "方法",
+      "maxChars": 8,
+      "font": "sans"
+    },
+    "date": {
+      "kind": "text",
+      "default": "2026 年 11 月 21 日",
+      "maxChars": 18,
+      "font": "sans"
+    },
+    "title": {
+      "kind": "text",
+      "default": "回测不是证明，是一份可以被复查的记录",
+      "maxChars": 28,
+      "font": "sans",
+      "lines": 3,
+      "title": true
+    },
+    "deck": {
+      "kind": "text",
+      "default": "我们把一次回测需要的数据口径、参数和随机种子放在同一份配置里，让别人能复现，也能反驳。",
+      "maxChars": 60,
+      "font": "serif",
+      "lines": 3
+    },
+    "byline": {
+      "kind": "text",
+      "default": "研究组 · 示例文章，文案为占位",
+      "maxChars": 30,
+      "font": "sans"
+    }
+  },
+  "relations": [
+    "A 900 x 900 colour field at the left edge with the picture at 62% (about 560 units); the column starts at 980 and is 540 wide.",
+    "Category bold 14 with a date 14 regular after it; title bold sans 54 / 1.18 in up to three lines; deck serif 22 / 1.5 #3D3D3A in up to three lines; a hairline at 738 and the byline 15 #5E5D59 below."
+  ],
+  "decoration": [
+    "The field and its picture with their line filter, the hairline; the text slots are the only measured content."
+  ],
+  "provenance": {
+    "corpus": "product-site kit (examples/brand-band-site-kit): our own original one-page site in Chinese in the brand-band grammar; all copy is a placeholder",
+    "experiment": "styles/brand-band/style.json provenance (public pages measured privately in Chrome on 2026-11-21; never shipped); the pictures are our own code-drawn illustrations",
+    "accessed": "2026-11-21",
+    "method": "The measured news article (bold sans title 35.9 / 40.9, serif body, a figure with radius 4) and the careers H1 (bold 60.7 / 65.6) re-set as a cover: a field square for the figure, the title scaled to 54.",
+    "sampleIds": [
+      "brand-band/article"
+    ],
+    "measured": [
+      "Article H1 sans 700 35.9 / 40.9, body serif 17 / 26 in 720, lede serif 28 / 36; careers H1 sans 700 60.7 / 65.6, lede serif 22 / 31.9.",
+      "Template: three title lines of 10 characters fit; every subject passes."
+    ],
+    "summary": "brand-band article cover"
+  }
+}

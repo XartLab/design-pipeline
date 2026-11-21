@@ -1,0 +1,108 @@
+{
+  "schema": "design-pipeline.template-bank-template.v1",
+  "id": "banner.band-cta-row",
+  "family": "banner",
+  "style": "brand-band",
+  "title": "CTA row on an oat band: a centred serif heading, a lede, a row of four nav pills, an ink button and a ghost button, a note",
+  "use": "The call to action that closes a page, above the footer; pills are filters or entry points.",
+  "canvas": {
+    "width": 1600,
+    "height": 600
+  },
+  "sizes": [
+    "1600x600",
+    "1920x720"
+  ],
+  "aspect": "8:3",
+  "accent": {
+    "roles": [
+      "clay"
+    ],
+    "maxShare": 0.03
+  },
+  "params": {
+    "guides": {
+      "type": "boolean",
+      "default": false,
+      "class": "decoration",
+      "note": "draw layout guides"
+    }
+  },
+  "slots": {
+    "heading": {
+      "kind": "text",
+      "default": "从一份配置开始",
+      "maxChars": 20,
+      "font": "serif",
+      "title": true
+    },
+    "lede": {
+      "kind": "text",
+      "default": "读文档、跑一次示例回测，或者直接打开监控面板。",
+      "maxChars": 44,
+      "font": "sans"
+    },
+    "pill_1": {
+      "kind": "text",
+      "default": "研究",
+      "maxChars": 6,
+      "font": "sans"
+    },
+    "pill_2": {
+      "kind": "text",
+      "default": "回测",
+      "maxChars": 6,
+      "font": "sans"
+    },
+    "pill_3": {
+      "kind": "text",
+      "default": "实盘",
+      "maxChars": 6,
+      "font": "sans"
+    },
+    "pill_4": {
+      "kind": "text",
+      "default": "文档",
+      "maxChars": 6,
+      "font": "sans"
+    },
+    "cta_1": {
+      "kind": "text",
+      "default": "开始使用",
+      "maxChars": 8,
+      "font": "sans"
+    },
+    "cta_2": {
+      "kind": "text",
+      "default": "查看方法 →",
+      "maxChars": 8,
+      "font": "sans"
+    },
+    "note": {
+      "kind": "text",
+      "default": "示例站点，文案为占位。",
+      "maxChars": 40,
+      "font": "sans"
+    }
+  },
+  "relations": [
+    "An oat #F0EEE6 ground; the heading serif 52 centred at 150, the lede 19 at 206, a centred row of 34-unit nav pills at 262 with 8 gaps, an ink button and a flat grey one 52 high at 350 and a 14 note at 470."
+  ],
+  "decoration": [
+    "The oat ground; the text slots are the only measured content."
+  ],
+  "provenance": {
+    "corpus": "product-site kit (examples/brand-band-site-kit): our own original one-page site in Chinese in the brand-band grammar; all copy is a placeholder",
+    "experiment": "styles/brand-band/style.json provenance (public pages measured privately in Chrome on 2026-11-21; never shipped); the pictures are our own code-drawn illustrations",
+    "accessed": "2026-11-21",
+    "method": "The measured nav pills (13 px, 8 x 16, radius full, #F5F4ED, 1 px #E8E6DC), the ink 17 px button (12 x 24, radius 10) and the flat #E8E6DC button, set on the oat #F0EEE6 band.",
+    "sampleIds": [
+      "brand-band/cta-row"
+    ],
+    "measured": [
+      "Pills 28 high, buttons 36 high at 1x, scaled 1.2-1.4.",
+      "Template: four pills, two buttons and the note centre and fit."
+    ],
+    "summary": "brand-band CTA row"
+  }
+}

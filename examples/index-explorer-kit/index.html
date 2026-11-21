@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>市场热点指数（示例数据）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,300;8..60,400;8..60,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+SC:wght@300;400;500&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
+<script>
+/* colour convention, set before first paint: 红涨绿跌 (cn, default: red up, green down) or 绿涨红跌 (intl); ?conv= overrides, the choice is remembered */
+(()=>{let c='cn';try{const q=new URLSearchParams(location.search).get('conv');const v=localStorage.getItem('idx-conv');c=q==='intl'||q==='cn'?q:v==='intl'||v==='cn'?v:'cn'}catch(e){}document.documentElement.dataset.conv=c})();
+</script>
+<style>
+/* VOICE: a public research data explorer for a trading project: plain labels, every number marked as sample data.
+   IDEA: a map you can read in a glance (31 tiles, four classes), then the same numbers as a ranking, a trend and a table.
+   PICTURE: a tile grid of 31 regions on a four-step scale (reds by default, 红涨绿跌; greens on the toggle); no geographic file. Everything is generated in the page.
+   COLOUR and TYPE: ivory ground, near-black ink, one four-step scale (cn red / intl green), pastel tiles, one accent mark (the fall colour). Serif display + numerals, sans labels, mono ranks and values.
+   LAYOUT: hero, then a sticky numbered column beside the sections; cards 1px hairline radius 16, panels radius 8. */
+:root{color-scheme:light dark;
+--bg:light-dark(#faf9f5,#141413);--ink:light-dark(#141413,#f0eee6);--mute:light-dark(#5e5d59,#a8a69c);--hair:light-dark(#d1cfc5,#34332f);
+--panel:light-dark(#f5f4ed,#1f1e1c);--card:light-dark(#fff,#1f1e1c);--cardline:light-dark(#c9c4c4,#3d3d3a);--mist:light-dark(#d4dedb,#3a4a45);
+--s1:#bee5d8;--s2:#89d1b9;--s3:#59b295;--s4:#388f76;--blue:#6a9bcc;--coral:#e6796d;--tip:#3d3d3a;--tileink:#141413;
+--serif:"Source Serif 4","Noto Serif SC",Georgia,serif;--sans:Inter,"Noto Sans SC",system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+/* 红涨绿跌: the heat scale runs in reds, a rise is red and a fall (the coral role) is green; the deepest red holds 4.8:1 with the dark tile ink */
+:root[data-conv=cn]{--s1:#f6d4cc;--s2:#ee9e8c;--s3:#e07a63;--s4:#d75a44;--coral:#388f76}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;scroll-padding-top:16px}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.65 var(--sans);overflow-x:clip}
+a{color:inherit;text-decoration-thickness:1px;text-underline-offset:3px}
+button,select,input,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.mono{font-family:var(--mono)}
+.pad{padding-inline:max(5vw,16px)}
+
+/* top bar */
+.top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 16px;padding:14px max(5vw,16px);font:500 14px var(--sans);border-bottom:1px solid var(--hair)}
+.top b{font-weight:600}.top>span{color:var(--mute);font-size:13px}
+.top .tr{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px}
+.seg{display:inline-flex;border:1px solid var(--cardline);border-radius:99px;padding:2px;background:var(--card)}
+.seg button{border:0;background:transparent;min-height:28px;padding:0 12px;border-radius:99px;font:500 13px var(--sans);color:var(--mute)}
+.seg button[aria-pressed=true]{background:var(--ink);color:var(--bg)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);align-items:center;gap:clamp(20px,4vw,56px);padding:clamp(28px,5vw,64px) max(5vw,16px) clamp(24px,4vw,48px)}
+.mark{width:56px;height:56px;display:block;margin-bottom:clamp(20px,4vw,48px)}
+h1{font:400 clamp(40px,6.4vw,80px)/1.1 var(--serif);margin:0;letter-spacing:-.01em}
+h1 em{display:block;font-style:normal;font-weight:300}
+.meta{font:400 13px var(--mono);letter-spacing:.06em;color:var(--mute);margin:22px 0 14px}
+.deck{font:17px/1.6 var(--sans);color:var(--mute);margin:0 0 24px;max-width:34em}
+.cta{display:flex;flex-wrap:wrap;gap:10px}
+.pill{display:inline-flex;align-items:center;min-height:44px;padding:0 22px;border:1px solid var(--cardline);border-radius:99px;font:500 15px var(--sans);text-decoration:none;background:var(--bg)}
+.pill:hover{background:var(--panel)}
+.mini{display:grid;grid-template-columns:repeat(8,1fr);gap:6px;width:100%;max-width:560px;margin-inline:auto}
+.mini i{aspect-ratio:1;background:var(--c,var(--s1))}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;padding:8px max(5vw,16px) 0}
+.stat{background:var(--card);border:1px solid var(--cardline);border-radius:16px;padding:22px 22px 16px}
+.stat h3{font:600 15px var(--sans);margin:0}
+.stat .n{font:400 clamp(34px,3.6vw,52px)/1.15 var(--serif);margin:14px 0 4px;white-space:nowrap}
+.stat .d{font:400 14px var(--sans);color:var(--mute)}
+.stat .d b{font:400 14px var(--mono);color:var(--ink);margin-right:8px}
+.stat .d i{display:inline-block;width:0;height:0;border:6px solid transparent;margin-right:6px;vertical-align:-2px}
+.stat .d i.up{border-bottom:10px solid var(--s4);border-top:0}.stat .d i.dn{border-top:10px solid var(--coral);border-bottom:0}
+.stat svg{display:block;width:100%;height:44px;margin-top:10px}
+.sp .a{fill:var(--s1);opacity:.45}.sp .l{fill:none;stroke:var(--s4)}.sp circle{fill:var(--coral)}
+:root[data-conv=cn] .sp.up circle{fill:var(--s4)}:root[data-conv=cn] .sp.dn .l{stroke:var(--coral)}:root[data-conv=cn] .sp.dn .a{fill:var(--coral);opacity:.2}
+
+/* shell: sticky numbered column + sections */
+.shell{display:grid;grid-template-columns:240px minmax(0,1fr);gap:clamp(24px,4vw,56px);padding:40px max(5vw,16px) 0}
+.side{position:sticky;top:16px;align-self:start}
+.side h2{font:400 18px/1.4 var(--serif);margin:0}.side p{font:13px/1.5 var(--sans);color:var(--mute);margin:2px 0 14px}
+.side nav a{display:flex;gap:12px;padding:10px 0;border-top:1px solid var(--hair);font:13px/20px var(--sans);text-decoration:none;color:var(--mute)}
+.side nav a b{font:400 13px var(--mono);color:var(--mute)}
+.side nav a:hover,.side nav a[aria-current=true]{color:var(--ink)}
+.side nav a[aria-current=true] span{font-weight:600}
+.side .sn{margin-top:18px;padding:14px;border:1px solid var(--hair);border-radius:8px;background:var(--panel);font:13px/1.55 var(--sans);color:var(--mute)}
+.side .sn b{display:block;color:var(--ink);font-weight:600;margin-bottom:4px}
+section.sec{padding-bottom:56px}
+.sh{padding-top:8px;margin-bottom:22px}
+.sh h2{font:400 clamp(32px,4vw,48px)/1.2 var(--serif);margin:0 0 10px}
+.sh p{margin:0;font:16px/1.65 var(--sans);color:var(--mute);max-width:40em}
+
+/* filters */
+.filters{display:flex;flex-wrap:wrap;align-items:flex-end;gap:18px 28px;padding:18px 0;border-block:1px solid var(--hair);margin-bottom:28px}
+.f{position:relative;display:flex;flex-direction:column;gap:2px;min-width:140px}
+.f>span{font:600 12px/16px var(--sans);color:var(--mute)}
+.f select{appearance:none;-webkit-appearance:none;border:0;border-bottom:1px solid var(--cardline);border-radius:0;background:transparent;padding:6px 24px 6px 0;font:16px/24px var(--sans);width:100%}
+.f select option{background:var(--bg);color:var(--ink)}
+.f:has(select)::after{content:"";position:absolute;right:4px;bottom:15px;border:5px solid transparent;border-top:6px solid var(--ink);border-bottom:0;pointer-events:none}
+.f input{height:36px;border:1px solid var(--cardline);border-radius:8px;background:var(--card);padding:0 12px;font:14px var(--sans);min-width:200px}
+.f input::placeholder{color:var(--mute)}
+.lk{background:none;border:0;padding:0;font:inherit;text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+.filters .lk{font:14px var(--sans);color:var(--mute);padding:8px 0}
+
+/* map */
+.mapgrid{display:grid;grid-template-columns:minmax(0,290px) minmax(0,1fr);gap:20px;align-items:start}
+.lcard{background:var(--card);border:1px solid var(--cardline);border-radius:16px;padding:20px 22px}
+.lcard h3{font:600 15px var(--sans);margin:0 0 8px}.lcard p{font:14px/1.6 var(--sans);color:var(--mute);margin:0 0 14px}
+.lcard ul{list-style:none;margin:0;padding:0;display:grid;gap:8px;font:14px var(--sans)}
+.lcard li{display:flex;align-items:center;gap:10px}.lcard li i{width:14px;height:14px;border-radius:50%;flex:none}
+.mapwrap{position:relative;background:var(--panel);border-radius:8px;padding:clamp(14px,3vw,40px) clamp(14px,3vw,40px) 18px}
+.map{container-type:inline-size;display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:4px;max-width:600px;margin-inline:auto}
+.tile{grid-column:var(--col);grid-row:var(--row);aspect-ratio:1;border:0;border-radius:0;padding:0;background:var(--c,var(--s1));color:var(--tileink);font:500 clamp(14px,4.4cqw,28px)/1 var(--sans);transition:background-color .45s ease,opacity .45s ease;animation:tileIn .5s both;animation-delay:calc(var(--i)*18ms)}
+.tile.off{opacity:.28}
+.tile:hover,.tile.sel{outline:2px solid var(--ink);outline-offset:-1px;z-index:1}
+.hint{font:14px var(--sans);color:var(--mute);text-align:center;margin:16px 0 0}
+.tip{position:absolute;z-index:3;width:200px;padding:14px 16px;border-radius:8px;background:var(--tip);color:#faf9f5;box-shadow:0 8px 24px rgba(0,0,0,.25);pointer-events:none;font:12px/1.4 var(--sans);animation:fadeIn .12s both}
+.tip[hidden]{display:none}
+.tip h4{font:400 16px/20px var(--serif);margin:0 0 10px;padding-bottom:10px;border-bottom:1px solid #5e5d59}
+.tip .c{display:flex;align-items:center;gap:8px;margin-bottom:8px}.tip .c i{width:10px;height:10px;border-radius:50%}
+.tip div.r{display:flex;justify-content:space-between;gap:12px}.tip div.r b{font-weight:500}
+
+/* detail */
+.detail{margin-top:28px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,3vw,40px);border-top:1px solid var(--hair);padding-top:20px}
+.detail h3{font:400 clamp(34px,4vw,48px)/1.2 var(--serif);margin:0 0 18px}
+.big{display:flex;align-items:baseline;gap:6px;font:400 32px/1.2 var(--serif)}.big small{font:400 14px var(--sans);color:var(--mute);margin-left:8px}
+.row2{display:grid;grid-template-columns:minmax(110px,150px) minmax(0,1fr);align-items:center;gap:14px;margin-bottom:18px}
+.strip{display:grid;grid-template-columns:repeat(31,1fr);gap:1px;height:24px}
+.strip i{background:var(--mist);opacity:.9}.strip i.me{background:var(--blue);opacity:1}
+.bar{position:relative;height:24px;background:transparent}
+.bar b{position:absolute;inset:0 auto 0 0;width:100%;background:var(--mist);transform-origin:left;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.bar u{position:absolute;top:-6px;bottom:-6px;width:1px;background:var(--ink);text-decoration:none}
+.bar s{position:absolute;top:-22px;font:12px/16px var(--sans);text-decoration:none;white-space:nowrap}
+.tabs{display:flex;gap:26px;border-bottom:1px solid var(--hair);margin:6px 0 12px;position:relative}
+.tabs button{background:none;border:0;padding:4px 0 8px;font:500 18px/1.5 var(--serif);color:var(--mute);position:relative}
+.tabs button[aria-selected=true]{color:var(--ink);box-shadow:inset 0 -2px 0 var(--ink)}
+.ol{list-style:none;margin:0;padding:0}
+.ol li{display:grid;grid-template-columns:28px minmax(0,1fr) auto;align-items:center;gap:10px;min-height:36px;border-bottom:1px solid var(--hair);font:15px var(--sans)}
+.ol .n{font:500 14px var(--mono);color:var(--mute)}.ol .v{font:400 15px var(--mono)}
+.lt{font:15px var(--sans);color:var(--mute);margin:0 0 6px}
+
+/* ranking: four stacks per column (numbers, names, bars, values) so each stack is one flat-ground text block */
+.rank{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 56px}
+.rk{display:grid;grid-template-columns:34px minmax(0,1fr) 120px 62px}
+.rk>*{display:flex;flex-direction:column;margin:0;padding:0;list-style:none}
+.rk>*>*{height:48px;display:flex;align-items:center;border-bottom:1px solid var(--hair)}
+.rk .c1{font:500 14px var(--mono);color:var(--mute)}
+.rk .c2 button{background:none;border:0;text-align:left;padding:0;height:100%;width:100%;font:16px var(--sans)}
+.rk .c2 li[aria-current=true] button{font-weight:600;text-decoration:underline;text-underline-offset:4px}
+.rk .c3>*{border-bottom-color:var(--hair)}
+.inb{position:relative;height:18px;width:100%;border:1px solid var(--ink);background:var(--bg);overflow:hidden}
+.inb b{position:absolute;inset:0;background:var(--c);transform:scaleX(0);transform-origin:left;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.in .inb b{transform:scaleX(var(--w))}
+.rk .c4{font:400 15px var(--mono);align-items:flex-end}.rk .c4>*{justify-content:flex-end}
+.note{font:14px/1.6 var(--sans);color:var(--mute);margin:14px 0 0}
+
+/* chart */
+.ctl{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:10px 24px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 22px;font:14px var(--sans);margin:14px 0 10px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:8px;vertical-align:-1px}
+.chart{position:relative;height:clamp(240px,32vw,360px);background:var(--panel);border-radius:8px;touch-action:pan-y;cursor:crosshair}
+.chart svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.axes{position:absolute;inset:0;pointer-events:none}.axes span{position:absolute;font:13px/1 var(--sans);color:var(--mute);white-space:nowrap}
+.axes .y{transform:translate(-100%,-50%)}.axes .x{transform:translateX(-50%)}.axes .x.l{transform:none}.axes .x.r{transform:translateX(-100%)}
+.axes .e{color:var(--ink)}
+.ln{fill:none;stroke-linejoin:round;stroke-linecap:round}
+.cx{position:absolute;z-index:2;width:190px;padding:12px 14px;border-radius:8px;background:var(--tip);color:#faf9f5;box-shadow:0 8px 24px rgba(0,0,0,.25);pointer-events:none;font:12px/1.5 var(--sans)}
+.cx[hidden]{display:none}.cx b{display:block;font:400 14px var(--serif);margin-bottom:4px}.cx div{display:flex;justify-content:space-between;gap:10px}
+
+/* table */
+.tw{border-top:1px solid var(--hair)}
+table{width:100%;border-collapse:collapse;font:15px var(--sans)}
+th{font:600 13px/1.3 var(--sans);color:var(--mute);text-align:left;padding:12px 8px 10px 0;border-bottom:1px solid var(--cardline);white-space:nowrap}
+th button{background:none;border:0;padding:0;font:inherit;color:inherit;display:inline-flex;gap:6px;align-items:center}
+th[aria-sort] button{color:var(--ink)}
+th button::after{content:"";border:4px solid transparent;border-top:5px solid currentColor;border-bottom:0;opacity:.35}
+th[aria-sort=ascending] button::after{border-top:0;border-bottom:5px solid currentColor;opacity:1}
+th[aria-sort=descending] button::after{opacity:1}
+td{padding:9px 8px 9px 0;border-bottom:1px solid var(--hair);vertical-align:middle}
+td.n,th.n{text-align:right;padding-right:16px}td.n{font:400 14px var(--mono)}td.k{font:500 14px var(--mono);color:var(--mute)}
+td .lk{text-decoration:none;font-weight:500}td .lk:hover{text-decoration:underline}
+tr.me td{background:var(--panel)}
+.tb tr{animation:rowIn .25s both;animation-delay:calc(var(--r)*12ms)}
+.sw{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:8px;background:var(--c)}
+.chg{display:inline-flex;align-items:center;gap:6px}.chg i{width:0;height:0;border:5px solid transparent}.chg i.up{border-bottom:8px solid var(--s4);border-top:0}.chg i.dn{border-top:8px solid var(--coral);border-bottom:0}
+.more{margin-top:14px;display:flex;gap:16px;align-items:center;font:14px var(--sans);color:var(--mute)}
+.btn{min-height:40px;padding:0 18px;white-space:nowrap;border:1px solid var(--cardline);border-radius:99px;background:var(--bg);font:500 14px var(--sans)}.btn:hover{background:var(--panel)}
+
+/* how to read + methods */
+.col{max-width:640px}.col p{margin:0 0 1em;font:16px/1.75 var(--sans)}
+.col .ld{font-weight:600}
+.eq{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;padding:18px 20px;margin:6px 0 22px;border:1px solid var(--cardline);border-radius:16px;background:var(--card);font:500 16px var(--sans)}
+.eq b{font:400 22px var(--serif)}.eq em{font:400 14px var(--mono);font-style:normal;color:var(--mute)}
+.scale{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;max-width:520px;margin:6px 0 24px}
+.scale div{padding:14px 12px;font:500 14px/1.4 var(--sans);color:var(--tileink)}
+.scale small{display:block;font:400 12px var(--sans)}
+h3.fnh{font:600 13px var(--sans);color:var(--mute);margin:36px 0 10px;padding-top:20px;border-top:1px solid var(--hair)}
+ol.fns{margin:0;padding-left:1.4em;font:14px/1.7 var(--sans);color:var(--mute)}ol.fns li{margin-bottom:6px}
+sup a{font:500 11px var(--sans);text-decoration:none;color:var(--ink);padding:0 2px}
+details.csv{margin-top:28px;border:1px solid var(--cardline);border-radius:16px;background:var(--card);padding:0}
+details.csv summary{cursor:pointer;padding:16px 20px;font:600 15px var(--sans);list-style:none}
+details.csv summary::-webkit-details-marker{display:none}
+details.csv summary::before{content:"";display:inline-block;margin-right:10px;border:5px solid transparent;border-left:7px solid var(--ink);border-right:0;vertical-align:0}
+details.csv[open] summary::before{border-left-color:transparent;border-top:7px solid var(--ink);border-bottom:0;border-right:5px solid transparent;border-left:5px solid transparent}
+.csvb{padding:0 20px 20px;font:14px/1.65 var(--sans);color:var(--mute)}
+.csvb code{font:13px var(--mono);color:var(--ink);background:var(--panel);padding:1px 5px;border-radius:4px}
+.csvb textarea{width:100%;min-height:150px;margin:12px 0;padding:12px;border:1px solid var(--cardline);border-radius:8px;background:var(--bg);font:13px/1.6 var(--mono);resize:vertical}
+.csvb .bt{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.csvb input[type=file]{font:13px var(--sans);max-width:100%}
+.st{margin:10px 0 0;color:var(--ink)}
+footer{border-top:1px solid var(--hair);margin-top:24px;padding:26px max(5vw,16px) 40px;font:13px/1.7 var(--sans);color:var(--mute);display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 24px}
+
+@keyframes tileIn{from{opacity:0}}
+@keyframes fadeIn{from{opacity:0}}
+@keyframes rowIn{from{opacity:0;transform:translateY(4px)}}
+.reveal{opacity:1}
+@media(max-width:1100px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.rank{grid-template-columns:1fr}}
+@media(max-width:1000px){.shell{grid-template-columns:1fr;padding-top:24px}.side{position:static}.side nav{display:flex;flex-wrap:wrap;gap:0 18px}.side nav a{border-top:0;padding:6px 0}.side .sn{display:none}
+ .mapgrid{grid-template-columns:1fr}.hero{grid-template-columns:1fr}.mini{max-width:360px;margin:0}}
+@media(max-width:720px){.detail{grid-template-columns:1fr}.rk{grid-template-columns:30px minmax(0,1fr) 84px 54px}.col2,.hide-s{display:none}}
+@media(max-width:560px){.stats{grid-template-columns:1fr}.filters{gap:14px 18px}.f{min-width:calc(50% - 10px);flex:1}.f.search{min-width:100%}.f input{width:100%}.tip{width:170px}.row2{grid-template-columns:1fr}
+ table{font-size:14px}th,td{padding-right:6px}td.n,th.n{padding-right:8px}.tabs{gap:18px}.tabs button{font-size:16px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header class="top"><b data-chk="top-name">市场热点指数</b><div class="tr"><span data-chk="top-note">示例数据 · 页面内随机生成</span><div class="seg" role="group" aria-label="涨跌配色"><button type="button" data-conv="cn" data-chk="conv-cn" aria-pressed="true">红涨绿跌</button><button type="button" data-conv="intl" data-chk="conv-intl" aria-pressed="false">绿涨红跌</button></div></div></header>
+
+<section class="hero" id="top">
+  <div>
+    <svg class="mark" viewBox="0 0 56 56" aria-hidden="true"><g stroke="var(--cardline)"><path d="M0 .5h56M0 11.7h56M0 22.9h56M0 34.1h56M0 45.3h56M0 55.5h56M.5 0v56M11.7 0v56M22.9 0v56M34.1 0v56M45.3 0v56M55.5 0v56" fill="none"/></g><g fill="var(--s4)"><circle cx="6" cy="50" r="4.6"/><circle cx="18" cy="36" r="4.6"/><circle cx="31" cy="44" r="4.6"/><circle cx="42" cy="23" r="4.6"/><circle cx="51" cy="7" r="4.6"/></g></svg>
+    <h1 data-chk="h1">市场热点指数<em>看资金在关注哪里</em></h1>
+    <p class="meta" data-chk="meta">UPDATED 2026-11-21 · <span id="srcTag">SAMPLE DATA</span></p>
+    <p class="deck" data-chk="deck">按地区与板块，看关注度比按账户占比的预期高出多少。页面里所有数据都是随机生成的示例，也可以用你自己的 CSV 替换。</p>
+    <div class="cta" data-chk="cta"><a class="pill" href="#explore">探索数据</a><a class="pill" href="#read">怎么读</a></div>
+  </div>
+  <div class="mini" id="mini" aria-hidden="true"></div>
+</section>
+
+<div class="stats" id="stats" data-chk="stats"></div>
+
+<div class="shell" id="explore">
+  <aside class="side" data-chk="side">
+    <h2>市场热点指数</h2><p>看资金在关注哪里</p>
+    <nav aria-label="页面章节">
+      <a href="#map"><b>01</b><span>地区热度</span></a>
+      <a href="#rank"><b>02</b><span>板块排名</span></a>
+      <a href="#trend"><b>03</b><span>走势</span></a>
+      <a href="#table"><b>04</b><span>数据表</span></a>
+      <a href="#read"><b>05</b><span>如何阅读</span></a>
+      <a href="#method"><b>06</b><span>数据与方法</span></a>
+    </nav>
+    <div class="sn"><b>关于数据</b>所有数字由页面里的随机数生成，用来展示版式。想看自己的数据，到第 06 节粘贴 CSV。</div>
+  </aside>
+
+  <main>
+    <form class="filters" id="filters" data-chk="filters" onsubmit="return false">
+      <label class="f"><span>地区</span><select id="fRegion"></select></label>
+      <label class="f"><span>板块</span><select id="fSector"></select></label>
+      <label class="f"><span>周期</span><select id="fPeriod"></select></label>
+      <label class="f search"><span>搜索省份</span><input id="fQ" type="search" placeholder="例如：广东" autocomplete="off"></label>
+      <button type="button" class="lk" id="fReset">重置筛选</button>
+    </form>
+
+    <section class="sec" id="map">
+      <header class="sh" data-chk="sh1"><h2>地区热度</h2><p>每个方块是一个省级单位，颜色是它的热点指数在全部地区里的位次：指针悬停或点按方块，下方显示明细。</p></header>
+      <div class="mapgrid">
+        <div class="lcard" data-chk="legend">
+          <h3>热点指数</h3>
+          <p>看某地区对板块的关注比按账户占比的预期高（大于 1）还是低（小于 1）。</p>
+          <ul id="legend"></ul>
+        </div>
+        <div class="mapwrap" id="mapwrap">
+          <div class="map" id="map-grid" role="group" aria-label="省级单位热点指数瓦片地图"></div>
+          <p class="hint" data-chk="hint">指针悬停或点按省份查看明细；方向键在方块间切换</p>
+          <div class="tip" id="tip" role="tooltip" hidden></div>
+        </div>
+      </div>
+      <article class="detail" id="detail" data-chk="detail" aria-live="polite"></article>
+    </section>
+
+    <section class="sec" id="rank">
+      <header class="sh" data-chk="sh2"><h2>板块排名</h2><p id="rankLede"></p></header>
+      <div class="rank" id="rankList"></div>
+      <p class="note" data-chk="ranknote">条形的满格为最大值；点板块名把它设为全页的板块筛选。示例数据。</p>
+    </section>
+
+    <section class="sec" id="trend">
+      <header class="sh" data-chk="sh3"><h2>走势</h2><p id="trendLede"></p></header>
+      <div class="ctl">
+        <div class="tabs" role="tablist" id="chartTabs" data-chk="ctabs" aria-label="图表口径">
+          <button role="tab" aria-selected="true" data-k="day">日度指数</button>
+          <button role="tab" aria-selected="false" data-k="ma">7 日均线</button>
+          <button role="tab" aria-selected="false" data-k="cum">累计偏离</button>
+        </div>
+      </div>
+      <div class="legend" id="legendC" data-chk="clegend"></div>
+      <div class="chart" id="chart" tabindex="0" aria-label="走势图，左右方向键查看每日数值"><svg id="csvg" aria-hidden="true"></svg><div class="axes" id="axes" data-chk="axes"></div><div class="cx" id="cx" hidden></div></div>
+      <p class="note" id="chartNote" data-chk="chartnote"></p>
+    </section>
+
+    <section class="sec" id="table">
+      <header class="sh" data-chk="sh4"><h2>数据表</h2><p>点列名排序，点省份名把它设为上面的详情；表格随地区、板块、周期和搜索变化。</p></header>
+      <div class="tw" data-chk="tbl"><table><thead><tr id="thead"></tr></thead><tbody class="tb" id="tbody"></tbody></table></div>
+      <div class="more" data-chk="more"><button type="button" class="btn" id="more"></button><span id="count"></span></div>
+    </section>
+
+    <section class="sec" id="read">
+      <header class="sh" data-chk="sh5"><h2>如何阅读</h2></header>
+      <div class="col">
+        <p data-chk="read1"><span class="ld">怎么读这张图：</span>先看颜色，再看数字。颜色告诉你一个地区在全部地区里排第几档，数字告诉你它比预期高出多少。</p>
+        <div class="eq" data-chk="eq"><b>热点指数</b><em>=</em><span>该地区的关注占比</span><em>÷</em><span>该地区的账户占比</span></div>
+        <p data-chk="read2">指数大于 1，说明这个地区对所选板块的关注比它的账户规模“应得”的更多；小于 1 则相反。例如某省占全部账户的 4.0%，却占了该板块关注的 6.4%，它的指数是 1.6×。</p>
+        <div class="scale" data-chk="scale" aria-label="四档颜色">
+          <div style="background:var(--s4)">领先<small>前 25%</small></div><div style="background:var(--s3)">中上<small>50–75%</small></div><div style="background:var(--s2)">中下<small>25–50%</small></div><div style="background:var(--s1)">起步<small>后 25%</small></div>
+        </div>
+        <p data-chk="read3">颜色按位次分档，不按数值切：所以“领先”的永远是 8 个单位，哪怕全体都低于 1。看绝对水平要看数字和预期线。</p>
+      </div>
+    </section>
+
+    <section class="sec" id="method">
+      <header class="sh" data-chk="sh6"><h2>数据与方法</h2></header>
+      <div class="col">
+        <p data-chk="meth1">本页的 31 个单位、10 个板块和 90 个交易日的数字，全部由页面里的一个随机数种子生成，没有任何真实行情或账户数据；它们的用途只是展示版式和交互。</p>
+        <h3 class="fnh" data-chk="fnh">注释</h3>
+        <ol class="fns" data-chk="fns">
+          <li id="n1">热点指数 = 关注占比 ÷ 账户占比，1.0 为预期水平；“全部板块”取 10 个板块的平均。</li>
+          <li id="n2">周期取最近 N 个交易日的平均；数据不足时取全部。</li>
+          <li id="n3">颜色分档按位次：前 25%、50–75%、25–50%、后 25%；没有数据的单位不参与排位。</li>
+          <li id="n4">周变化为最近 7 日均值相对此前 7 日均值的变化。</li>
+          <li id="n5">累计偏离为周期内每日（指数 − 1）的累加，正值表示关注持续高于预期。</li>
+          <li id="n6">瓦片地图只表示“有哪些单位、大致相邻”，不表示面积和边界。</li>
+        </ol>
+      </div>
+      <details class="csv" id="csvBox"><summary data-chk="csvsum">用你自己的 CSV 驱动页面</summary></details>
+      <template id="csvTpl"><div class="csvb">
+          <p>第一行写表头 <code>date,province,sector,value</code>；<code>date</code> 为 <code>YYYY-MM-DD</code>，<code>province</code> 写省名或简称（如 广东 或 粤），<code>sector</code> 为任意板块名，<code>value</code> 为热点指数（1.0 为预期）。数据只在这个页面里处理，不会上传。</p>
+          <textarea id="csv" spellcheck="false" aria-label="CSV 内容" placeholder="date,province,sector,value&#10;2026-11-20,广东,半导体,1.82&#10;2026-11-21,广东,半导体,1.91"></textarea>
+          <div class="bt"><button type="button" class="btn" id="csvApply">应用 CSV</button><button type="button" class="btn" id="csvDemo">载入示例到文本框</button><button type="button" class="btn" id="csvReset">恢复示例数据</button><input type="file" id="csvFile" accept=".csv,text/csv" aria-label="选择 CSV 文件"></div>
+          <p class="st" id="csvSt" role="status"></p>
+        </div>
+      </template>
+    </section>
+  </main>
+</div>
+
+<footer data-chk="foot"><span>示例数据 · 仅用于展示版式，不构成任何投资建议</span><span>语法借自公开的研究数据页，不使用任何名称、标志、地图或字体文件</span></footer>
+
+<script>
+(() => {
+'use strict';
+const $ = (s, r = document) => r.querySelector(s);
+const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const fx = (v) => v == null ? '—' : v.toFixed(2) + '×';
+const fp = (v) => v == null ? '—' : v.toFixed(1) + '%';
+
+/* ---- the 31 units on an 8 x 8 grid: [short, full, col, row, region] ---- */
+const PROV = [
+  ['黑','黑龙江',7,0,'东北'],
+  ['蒙','内蒙古',4,1,'华北'],['京','北京',5,1,'华北'],['津','天津',6,1,'华北'],['吉','吉林',7,1,'东北'],
+  ['新','新疆',0,2,'西北'],['甘','甘肃',2,2,'西北'],['宁','宁夏',3,2,'西北'],['晋','山西',4,2,'华北'],['冀','河北',5,2,'华北'],['鲁','山东',6,2,'华东'],['辽','辽宁',7,2,'东北'],
+  ['藏','西藏',0,3,'西南'],['青','青海',1,3,'西北'],['陕','陕西',3,3,'西北'],['豫','河南',4,3,'华中'],['皖','安徽',5,3,'华东'],['苏','江苏',6,3,'华东'],['沪','上海',7,3,'华东'],
+  ['川','四川',2,4,'西南'],['渝','重庆',3,4,'西南'],['鄂','湖北',4,4,'华中'],['赣','江西',5,4,'华东'],['浙','浙江',6,4,'华东'],
+  ['滇','云南',2,5,'西南'],['黔','贵州',3,5,'西南'],['湘','湖南',4,5,'华中'],['闽','福建',5,5,'华东'],
+  ['桂','广西',3,6,'华南'],['粤','广东',4,6,'华南'],
+  ['琼','海南',4,7,'华南'],
+];
+const REGIONS = ['华北','东北','华东','华中','华南','西南','西北'];
+const SECT0 = ['半导体','新能源','人工智能','医药生物','消费电子','券商','白酒','军工','有色金属','银行'];
+const CLS = [
+  { name: '起步', range: '后 25%', c: 'var(--s1)' }, { name: '中下', range: '25–50%', c: 'var(--s2)' },
+  { name: '中上', range: '50–75%', c: 'var(--s3)' }, { name: '领先', range: '前 25%', c: 'var(--s4)' },
+];
+const CATC = ['var(--s4)', 'var(--blue)', 'var(--coral)'];
+
+/* ---- seeded sample data: index values per unit, sector and day (1.0 = as expected) ---- */
+function rng(seed) { let a = seed >>> 0; return () => { a = (a + 0x6d2b79f5) >>> 0; let t = a; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
+function sample() {
+  const r = rng(20261121); const gauss = () => Math.sqrt(-2 * Math.log(1 - r())) * Math.cos(2 * Math.PI * r());
+  const D = 90; const end = Date.UTC(2026, 10, 21); const dates = [];
+  for (let k = D - 1; k >= 0; k -= 1) dates.push(new Date(end - k * 86400000).toISOString().slice(0, 10));
+  const PB = { 京: .55, 沪: .55, 粤: .45, 浙: .4, 苏: .35, 鲁: .1, 川: .15, 鄂: .1, 闽: .1, 皖: .05 };
+  const AFF = { 半导体: { 沪: .9, 苏: .7, 京: .8, 粤: .6, 皖: .4, 川: .3, 陕: .3, 鄂: .3 }, 新能源: { 苏: .6, 粤: .6, 川: .5, 闽: .8, 青: .6, 皖: .4, 浙: .4, 蒙: .3 }, 人工智能: { 京: 1, 沪: .8, 粤: .7, 浙: .8, 皖: .4, 川: .3, 鄂: .3 }, 医药生物: { 沪: .6, 苏: .7, 京: .4, 鲁: .5, 川: .4, 浙: .4, 湘: .3 }, 消费电子: { 粤: .8, 苏: .4, 沪: .3, 川: .3, 渝: .4, 赣: .3 }, 券商: { 京: .5, 沪: .9, 粤: .7, 浙: .4, 苏: .3 }, 白酒: { 川: 1, 黔: 1, 苏: .4, 皖: .4, 鲁: .3, 豫: .2, 京: .2 }, 军工: { 陕: .8, 川: .5, 辽: .5, 京: .4, 黑: .4, 鄂: .3, 湘: .3 }, 有色金属: { 甘: .6, 青: .5, 滇: .5, 赣: .7, 湘: .5, 蒙: .6, 新: .5, 桂: .3 }, 银行: { 京: .4, 沪: .4, 苏: .3, 浙: .3, 粤: .3, 晋: .2, 渝: .3 } };
+  const WT = { 粤: 2.2, 苏: 1.7, 鲁: 1.6, 豫: 1.5, 浙: 1.5, 川: 1.4, 冀: 1.1, 湘: 1, 皖: 1, 鄂: 1, 京: 1.1, 沪: 1.2 };
+  const w = PROV.map(([s]) => (WT[s] || 0.5) * (0.85 + r() * 0.3)); const sw = w.reduce((a, b) => a + b, 0);
+  const phase = SECT0.map(() => r() * 6.28);
+  const v = PROV.map(([short]) => SECT0.map((s, si) => {
+    const base = Math.exp(-0.2 + (PB[short] || 0) + 0.9 * ((AFF[s] || {})[short] || 0) + 0.28 * gauss()); const drift = 0.5 * gauss();
+    const a = new Float32Array(D); let n = 0;
+    for (let t = 0; t < D; t += 1) {
+      const bump = (si === 1 ? 0.45 * Math.exp(-(((t - 86) / 6) ** 2)) : 0) + (si === 0 ? 0.35 * Math.exp(-(((t - 70) / 9) ** 2)) : 0) + (si === 6 ? -0.2 * Math.exp(-(((t - 30) / 10) ** 2)) : 0);
+      n = 0.82 * n + 0.07 * gauss();
+      a[t] = Math.max(0.12, Math.min(8, base * (1 + 0.22 * Math.sin((2 * Math.PI * t) / 45 + phase[si]) + bump + drift * (t / D - 0.5) * 0.5) * Math.exp(n)));
+    }
+    return a;
+  }));
+  return { dates, sectors: SECT0.slice(), w: w.map((x) => x / sw), v, source: 'sample', rows: 0 };
+}
+let DB = sample();
+
+/* ---- state ---- */
+const S = { region: 'all', sector: -1, period: 30, sel: 29, q: '', sort: { k: 'idx', dir: -1 }, chart: 'day', dtab: 0, all: false };
+const inScope = (p) => S.region === 'all' || PROV[p][4] === S.region;
+const win = () => Math.min(S.period, DB.dates.length);
+
+function mean(a, n, off = 0) { let t = 0, c = 0; for (let i = a.length - n - off; i < a.length - off; i += 1) { if (i >= 0 && Number.isFinite(a[i])) { t += a[i]; c += 1; } } return c ? t / c : null; }
+function idxPS(p, s, n, off = 0) {
+  const row = DB.v[p]; if (!row) return null;
+  if (s >= 0) return row[s] ? mean(row[s], n, off) : null;
+  let t = 0, c = 0; row.forEach((a) => { const m = a && mean(a, n, off); if (m != null) { t += m; c += 1; } });
+  return c ? t / c : null;
+}
+function view() {
+  const n = win(); const idx = PROV.map((_, p) => idxPS(p, S.sector, n));
+  const ok = idx.map((v, p) => (v == null ? -1 : p)).filter((p) => p >= 0).sort((a, b) => idx[b] - idx[a]);
+  const rank = new Array(31).fill(null), cls = new Array(31).fill(null);
+  ok.forEach((p, k) => { rank[p] = k + 1; const f = k / ok.length; cls[p] = f < 0.25 ? 3 : f < 0.5 ? 2 : f < 0.75 ? 1 : 0; });
+  const total = ok.reduce((t, p) => t + idx[p] * DB.w[p], 0);
+  const share = idx.map((v, p) => (v == null ? null : (v * DB.w[p] / total) * 100));
+  return { n, idx, rank, cls, share, ok };
+}
+function sectorValues(n) {
+  return DB.sectors.map((name, s) => {
+    let t = 0, c = 0; PROV.forEach((_, p) => { if (!inScope(p)) return; const m = idxPS(p, s, n); if (m != null) { t += m * DB.w[p]; c += DB.w[p]; } });
+    return { s, name, v: c ? t / c : null };
+  }).filter((x) => x.v != null).sort((a, b) => b.v - a.v);
+}
+function daily(s, region) {
+  const D = DB.dates.length; const out = new Array(D).fill(NaN);
+  for (let t = 0; t < D; t += 1) {
+    let sum = 0, wt = 0;
+    PROV.forEach((_, p) => { if (region !== 'all' && PROV[p][4] !== region) return; const row = DB.v[p]; if (!row) return; let x = 0, c = 0; (s >= 0 ? [row[s]] : row).forEach((a) => { if (a && Number.isFinite(a[t])) { x += a[t]; c += 1; } }); if (c) { sum += (x / c) * DB.w[p]; wt += DB.w[p]; } });
+    if (wt) out[t] = sum / wt;
+  }
+  return out;
+}
+
+/* ---- motion helpers ---- */
+function countTo(el, target, fmt) {
+  if (RM || target == null) { el.textContent = fmt(target); return; }
+  const t0 = performance.now(); const dur = 800;
+  const step = (now) => { const k = Math.min(1, (now - t0) / dur); el.textContent = fmt(target * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(step); };
+  requestAnimationFrame(step);
+}
+const reveal = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); reveal.unobserve(e.target); } }), { threshold: 0.3 });
+function watch(el) { if (RM) el.classList.add('in'); else { el.classList.remove('in'); reveal.observe(el); } }
+
+/* ---- colour convention: every colour is a CSS variable, so the switch recolours the map, legend, ranking bars, chart, table and stat triangles at once ---- */
+const convBtns = [...document.querySelectorAll('.seg button')];
+function setConv(c, save) {
+  document.documentElement.dataset.conv = c; convBtns.forEach((b) => b.setAttribute('aria-pressed', b.dataset.conv === c));
+  if (save) { try { localStorage.setItem('idx-conv', c); } catch (e) { /* private mode: the choice lasts for this visit */ } }
+}
+convBtns.forEach((b) => { b.onclick = () => setConv(b.dataset.conv, true); });
+setConv(document.documentElement.dataset.conv, false);
+
+/* ---- filters ---- */
+function fillSelect(sel, opts, val) { sel.innerHTML = opts.map(([v, t]) => `<option value="${v}">${t}</option>`).join(''); sel.value = val; }
+function buildFilters() {
+  fillSelect($('#fRegion'), [['all', '全部地区'], ...REGIONS.map((r) => [r, r])], S.region);
+  fillSelect($('#fSector'), [['-1', '全部板块'], ...DB.sectors.map((s, i) => [i, s])], String(S.sector));
+  const lens = [7, 30, 90].filter((d) => d <= DB.dates.length); if (!lens.length || lens[lens.length - 1] < DB.dates.length) lens.push(DB.dates.length);
+  if (!lens.includes(S.period)) S.period = lens[Math.min(1, lens.length - 1)];
+  fillSelect($('#fPeriod'), lens.map((d) => [d, `近 ${d} 日`]), String(S.period));
+}
+$('#fRegion').onchange = (e) => { S.region = e.target.value; render(); };
+$('#fSector').onchange = (e) => { S.sector = Number(e.target.value); render(); };
+$('#fPeriod').onchange = (e) => { S.period = Number(e.target.value); render(); };
+$('#fQ').oninput = (e) => { S.q = e.target.value.trim(); renderTable(); };
+$('#fReset').onclick = () => { Object.assign(S, { region: 'all', sector: -1, period: 30, q: '' }); $('#fQ').value = ''; buildFilters(); render(); };
+
+/* ---- legend ---- */
+$('#legend').innerHTML = [3, 2, 1, 0].map((c) => `<li><i style="background:${CLS[c].c}"></i>${CLS[c].name}（${CLS[c].range}）</li>`).join('');
+
+/* ---- stats ---- */
+function spark(a) {
+  const f = a.filter(Number.isFinite); if (f.length < 2) return '';
+  const lo = Math.min(...f), hi = Math.max(...f), n = a.length; const X = (i) => (i / (n - 1)) * 120, Y = (v) => 40 - ((v - lo) / (hi - lo || 1)) * 34 - 3;
+  const d = a.map((v, i) => `${i ? 'L' : 'M'}${X(i).toFixed(1)} ${Y(Number.isFinite(v) ? v : lo).toFixed(1)}`).join('');
+  const dir = f[f.length - 1] >= f[0] ? 'up' : 'dn'; // under 红涨绿跌 the sparkline takes the direction's colour
+  return `<svg class="sp ${dir}" viewBox="0 0 120 44" preserveAspectRatio="none" aria-hidden="true"><path class="a" d="${d}L120 44L0 44Z"/><path class="l" d="${d}" stroke-width="2" vector-effect="non-scaling-stroke"/><circle cx="${X(n - 1).toFixed(1)}" cy="${Y(a[n - 1]).toFixed(1)}" r="3.2"/></svg>`;
+}
+function renderStats(V) {
+  const n = V.n; const scope = V.ok.filter(inScope);
+  const top = scope.length ? scope.reduce((a, b) => (V.idx[b] > V.idx[a] ? b : a)) : null;
+  const sv = sectorValues(n); const best = sv[0];
+  const grow = sv.map((x) => { const a = idxPS_scope(x.s, 7, 0), b = idxPS_scope(x.s, 7, 7); return { name: x.name, s: x.s, g: a != null && b ? a / b - 1 : null }; }).filter((x) => x.g != null).sort((a, b) => b.g - a.g)[0];
+  const avg = scope.length ? scope.reduce((t, p) => t + V.idx[p] * DB.w[p], 0) / scope.reduce((t, p) => t + DB.w[p], 0) : null;
+  const L = Math.min(28, DB.dates.length); const tail = (a) => a.slice(a.length - L);
+  const cards = [
+    { h: '当前范围均值', v: avg, f: fx, note: '加权平均热点指数', s: tail(daily(S.sector, S.region)) },
+    { h: '最热地区', v: top == null ? null : V.idx[top], f: fx, name: top == null ? '' : PROV[top][1], note: '指数最高的单位', s: top == null ? [] : tail(Array.from(DB.v[top][S.sector >= 0 ? S.sector : 0] || [])) },
+    { h: '最热板块', v: best ? best.v : null, f: fx, name: best ? best.name : '', note: '范围内加权指数最高', s: best ? tail(daily(best.s, S.region)) : [] },
+    { h: '升温最快板块', v: grow ? grow.g * 100 : null, f: (x) => (x == null ? '—' : `${x >= 0 ? '+' : '−'}${Math.abs(x).toFixed(1)}%`), name: grow ? grow.name : '', note: '近 7 日对此前 7 日', s: grow ? tail(daily(grow.s, S.region)) : [], up: grow && grow.g >= 0 },
+  ];
+  const root = $('#stats');
+  root.innerHTML = cards.map((c, i) => `<div class="stat"><h3>${c.h}</h3><div class="n" data-i="${i}">${c.f(c.v)}</div><div class="d">${c.up === undefined ? '' : `<i class="${c.up ? 'up' : 'dn'}"></i>`}${c.name ? `<b>${c.name}</b>` : ''}${c.note}</div>${spark(c.s)}</div>`).join('');
+  root.querySelectorAll('.n').forEach((el, i) => countTo(el, cards[i].v, cards[i].f));
+}
+function idxPS_scope(s, n, off) { let t = 0, c = 0; PROV.forEach((_, p) => { if (!inScope(p)) return; const m = idxPS(p, s, n, off); if (m != null) { t += m * DB.w[p]; c += DB.w[p]; } }); return c ? t / c : null; }
+
+/* ---- map ---- */
+const grid = $('#map-grid');
+PROV.forEach(([short, full, c, r], i) => {
+  const b = document.createElement('button'); b.type = 'button'; b.className = 'tile'; b.textContent = short; b.dataset.p = i; b.dataset.chk = 'tile'; /* one text unit per tile: the name is measured on its own tile, not across the gaps and empty cells */
+  b.style.cssText = `--col:${c + 1};--row:${r + 1};--i:${i}`; grid.appendChild(b);
+});
+const tiles = [...grid.children];
+function renderMap(V) {
+  tiles.forEach((b, p) => {
+    const c = V.cls[p]; b.style.setProperty('--c', c == null ? 'var(--mist)' : CLS[c].c);
+    b.classList.toggle('off', !inScope(p)); b.classList.toggle('sel', p === S.sel);
+    b.setAttribute('aria-label', `${PROV[p][1]}，${V.idx[p] == null ? '无数据' : `热点指数 ${fx(V.idx[p])}，${CLS[c].name}`}`);
+    b.setAttribute('aria-pressed', p === S.sel);
+  });
+}
+const tip = $('#tip'), wrap = $('#mapwrap');
+function showTip(p, el) {
+  const V = view(); const c = V.cls[p];
+  tip.innerHTML = `<h4>${PROV[p][1]}</h4><div class="c"><i style="background:${c == null ? 'var(--mist)' : CLS[c].c}"></i>${c == null ? '无数据' : `${CLS[c].name}（${CLS[c].range}）`}</div><div class="r"><b>热点指数</b><span>${fx(V.idx[p])}</span></div><div class="r"><b>关注占比</b><span>${fp(V.share[p])}</span></div>`;
+  tip.hidden = false;
+  const a = el.getBoundingClientRect(), w = wrap.getBoundingClientRect();
+  let x = a.right - w.left + 8; if (x + tip.offsetWidth > w.width - 4) x = a.left - w.left - tip.offsetWidth - 8;
+  x = Math.max(4, Math.min(w.width - tip.offsetWidth - 4, x));
+  tip.style.left = `${x}px`; tip.style.top = `${Math.max(4, Math.min(w.height - tip.offsetHeight - 4, a.top - w.top))}px`;
+}
+const hideTip = () => { tip.hidden = true; };
+grid.addEventListener('pointerover', (e) => { const b = e.target.closest('.tile'); if (b && e.pointerType === 'mouse') showTip(Number(b.dataset.p), b); });
+grid.addEventListener('pointerout', (e) => { if (e.pointerType === 'mouse' && !grid.contains(e.relatedTarget)) hideTip(); });
+grid.addEventListener('focusin', (e) => { const b = e.target.closest('.tile'); if (b) showTip(Number(b.dataset.p), b); });
+grid.addEventListener('focusout', hideTip);
+grid.addEventListener('click', (e) => { const b = e.target.closest('.tile'); if (!b) return; S.sel = Number(b.dataset.p); render(); showTip(S.sel, b); });
+grid.addEventListener('keydown', (e) => {
+  const k = { ArrowLeft: [-1, 0], ArrowRight: [1, 0], ArrowUp: [0, -1], ArrowDown: [0, 1] }[e.key]; if (!k) return;
+  const cur = PROV[Number(e.target.dataset.p)]; let best = null, bd = 1e9;
+  PROV.forEach((q, i) => { const dx = q[2] - cur[2], dy = q[3] - cur[3]; if (dx * k[0] + dy * k[1] <= 0) return; const d = Math.abs(dx * k[1]) + Math.abs(dy * k[0]) + (dx * k[0] + dy * k[1]) * 0.3; if (d < bd) { bd = d; best = i; } });
+  if (best != null) { e.preventDefault(); tiles[best].focus(); }
+});
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') hideTip(); });
+
+/* ---- hero mini grid ---- */
+const mini = $('#mini');
+mini.innerHTML = Array.from({ length: 64 }, () => '<i style="visibility:hidden"></i>').join('');
+function renderMini(V) {
+  [...mini.children].forEach((el) => { el.style.visibility = 'hidden'; });
+  PROV.forEach(([, , c, r], p) => { const el = mini.children[r * 8 + c]; el.style.visibility = 'visible'; el.style.setProperty('--c', V.cls[p] == null ? 'var(--mist)' : CLS[V.cls[p]].c); el.style.animation = RM ? 'none' : `tileIn .5s both ${p * 18}ms`; });
+}
+
+/* ---- detail ---- */
+function detailLists(p, n) {
+  const row = DB.v[p]; if (!row) return [[], []];
+  const vals = DB.sectors.map((name, s) => ({ name, v: row[s] ? mean(row[s], n) : null, mk: sectorValues(n).find((x) => x.s === s) })).filter((x) => x.v != null);
+  const tot = vals.reduce((t, x) => t + x.v * 1, 0);
+  const hot = vals.map((x) => ({ name: x.name, t: `${((x.v / tot) * 100).toFixed(1)}%`, k: x.v })).sort((a, b) => b.k - a.k).slice(0, 6);
+  const all = DB.sectors.map((name, s) => { let t = 0, c = 0; PROV.forEach((_, q) => { const m = idxPS(q, s, n); if (m != null) { t += m; c += 1; } }); return { name, avg: c ? t / c : null, s }; });
+  const sp = vals.map((x, i) => { const s = DB.sectors.indexOf(x.name); const a = all[s].avg; return { name: x.name, k: a ? x.v / a : 0, t: a ? `${(x.v / a).toFixed(2)}×` : '—' }; }).sort((a, b) => b.k - a.k).slice(0, 6);
+  return [hot, sp];
+}
+function renderDetail(V) {
+  const p = S.sel; const el = $('#detail'); const n = V.n;
+  if (V.idx[p] == null) { el.innerHTML = `<div><h3>${PROV[p][1]}</h3><p class="lt">当前数据里没有这个地区。</p></div>`; return; }
+  const [hot, sp] = detailLists(p, n); const list = S.dtab ? sp : hot; const nOk = V.ok.length;
+  const idx = V.idx[p]; const w = Math.min(1, idx / 6);
+  el.innerHTML = `<div>
+    <h3>${PROV[p][1]}</h3>
+    <div class="row2"><div><div class="big">${V.rank[p]}<small>/ ${nOk}</small></div><small class="lt">热度排名</small></div><div class="strip" aria-hidden="true">${Array.from({ length: nOk }, (_, i) => `<i${i === V.rank[p] - 1 ? ' class="me"' : ''}></i>`).join('')}</div></div>
+    <div class="row2"><div><div class="big"><span class="cnt">${fx(idx)}</span></div><small class="lt">热点指数</small></div><div class="bar" aria-label="指数 ${fx(idx)}，预期 1.0×"><b style="transform:scaleX(${w})"></b><u style="left:${(1 / 6) * 100}%"></u><s style="left:calc(${(1 / 6) * 100}% + 6px)">预期 1.0</s></div></div>
+  </div><div>
+    <div class="tabs" role="tablist" id="dtabs"><button role="tab" aria-selected="${!S.dtab}" data-k="0">最热板块</button><button role="tab" aria-selected="${!!S.dtab}" data-k="1">最特别板块</button></div>
+    <p class="lt">${S.dtab ? `${PROV[p][1]}相对其他地区最突出的板块（相对全国均值的倍数）。` : `${PROV[p][1]}最常被关注的板块（占该地区关注的比例）。`}</p>
+    <ol class="ol">${list.map((x, i) => `<li><span class="n">${String(i + 1).padStart(2, '0')}</span><span>${x.name}</span><span class="v">${x.t}</span></li>`).join('')}</ol>
+  </div>`;
+  const bar = el.querySelector('.bar b'); if (!RM) { bar.style.transform = 'scaleX(0)'; requestAnimationFrame(() => requestAnimationFrame(() => { bar.style.transform = `scaleX(${w})`; })); }
+  el.querySelectorAll('#dtabs button').forEach((b) => { b.onclick = () => { S.dtab = Number(b.dataset.k); renderDetail(view()); }; });
+}
+
+/* ---- ranking ---- */
+function renderRank(V) {
+  const sv = sectorValues(V.n); const max = Math.max(1, ...sv.map((x) => x.v));
+  const scopeName = S.region === 'all' ? '全部地区' : S.region;
+  $('#rankLede').textContent = `${scopeName}，近 ${V.n} 日，${sv.length} 个板块的加权热点指数；1.0 为预期水平。`;
+  const cls = (i) => CLS[i < sv.length * 0.25 ? 3 : i < sv.length * 0.5 ? 2 : i < sv.length * 0.75 ? 1 : 0].c;
+  const half = Math.ceil(sv.length / 2); const order = sv.map((x, i) => [i, x]);
+  const col = (a) => `<div class="rk"><div class="c1" aria-hidden="true" data-chk="rn">${a.map(([i]) => `<span>${String(i + 1).padStart(2, '0')}</span>`).join('')}</div><ol class="c2" data-chk="rname">${a.map(([, x]) => `<li${x.s === S.sector ? ' aria-current="true"' : ''}><button type="button" class="nm" data-s="${x.s}" aria-label="${x.name} ${x.v.toFixed(2)}">${x.name}</button></li>`).join('')}</ol><div class="c3" aria-hidden="true">${a.map(([i, x]) => `<span><span class="inb"><b style="--w:${Math.min(1, x.v / max)};--c:${cls(i)}"></b></span></span>`).join('')}</div><div class="c4" aria-hidden="true" data-chk="rval">${a.map(([, x]) => `<span>${x.v.toFixed(2)}</span>`).join('')}</div></div>`;
+  const list = $('#rankList'); list.innerHTML = col(order.slice(0, half)) + col(order.slice(half));
+  list.querySelectorAll('.nm').forEach((b) => { b.onclick = () => { S.sector = S.sector === Number(b.dataset.s) ? -1 : Number(b.dataset.s); buildFilters(); render(); }; });
+  watch(list);
+}
+
+/* ---- chart ---- */
+function nice(lo, hi) {
+  const span = hi - lo || 1; const raw = span / 4; const mag = Math.pow(10, Math.floor(Math.log10(raw))); const step = [1, 2, 2.5, 5, 10].map((m) => m * mag).find((s) => s >= raw);
+  const a = Math.floor(lo / step) * step, b = Math.ceil(hi / step) * step; const out = []; for (let v = a; v <= b + 1e-9; v += step) out.push(+v.toFixed(6)); return out;
+}
+const md = (d) => `${Number(d.slice(5, 7))}月${Number(d.slice(8, 10))}日`;
+let chartState = null; let chartFirst = true;
+function chartSeries(V) {
+  const n = V.n; const t0 = DB.dates.length - n;
+  const lead = sectorValues(n).find((x) => x.s !== S.sector);
+  const defs = [
+    { name: S.sector >= 0 ? DB.sectors[S.sector] : '全部板块（均值）', a: daily(S.sector, S.region), c: 'var(--s4)', w: 3 },
+    { name: '全市场基准', a: daily(-1, S.region), c: 'var(--blue)', w: 2.4 },
+  ];
+  if (lead && S.sector >= 0) defs.push({ name: `对照：${lead.name}`, a: daily(lead.s, S.region), c: 'var(--coral)', w: 2.4 });
+  else if (lead) defs.push({ name: `最热：${lead.name}`, a: daily(lead.s, S.region), c: 'var(--coral)', w: 2.4 });
+  defs.forEach((d) => {
+    let a = d.a.slice(t0);
+    if (S.chart === 'ma') a = d.a.map((_, i) => { let t = 0, c = 0; for (let k = Math.max(0, i - 6); k <= i; k += 1) if (Number.isFinite(d.a[k])) { t += d.a[k]; c += 1; } return c ? t / c : NaN; }).slice(t0);
+    if (S.chart === 'cum') { let s = 0; a = a.map((v) => { if (Number.isFinite(v)) s += v - 1; return s; }); }
+    d.y = a;
+  });
+  return { defs, dates: DB.dates.slice(t0), ref: S.chart === 'cum' ? 0 : 1 };
+}
+function renderChart() {
+  const V = view(); const box = $('#chart'); const W = box.clientWidth, H = box.clientHeight; if (!W) return;
+  const { defs, dates, ref } = chartSeries(V); const n = dates.length;
+  const padL = 48, padR = 16, padT = 18, padB = 34; const all = defs.flatMap((d) => d.y.filter(Number.isFinite)).concat([ref]);
+  const ticks = nice(Math.min(...all), Math.max(...all)); const lo = ticks[0], hi = ticks[ticks.length - 1];
+  const X = (i) => padL + (n === 1 ? 0 : (i / (n - 1))) * (W - padL - padR); const Y = (v) => padT + (1 - (v - lo) / (hi - lo || 1)) * (H - padT - padB);
+  const dpath = (a) => { let s = '', pen = false; a.forEach((v, i) => { if (!Number.isFinite(v)) { pen = false; return; } s += `${pen ? 'L' : 'M'}${X(i).toFixed(1)} ${Y(v).toFixed(1)}`; pen = true; }); return s; };
+  const svg = $('#csvg'); svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+  svg.innerHTML = ticks.map((t) => `<path d="M${padL} ${Y(t).toFixed(1)}H${W - padR}" stroke="var(--hair)" stroke-width="1" fill="none"/>`).join('')
+    + `<path d="M${padL} ${Y(ref).toFixed(1)}H${W - padR}" stroke="var(--ink)" stroke-width="1.5" stroke-dasharray="6 5" fill="none"/>`
+    + defs.map((d, i) => `<path class="ln" data-i="${i}" d="${dpath(d.y)}" pathLength="1" stroke="${d.c}" stroke-width="${d.w}"/>`).join('')
+    + `<path id="cxl" d="" stroke="var(--ink)" stroke-width="1" fill="none" opacity=".5"/><g id="cxd"></g>`;
+  const dur = chartFirst ? 1.2 : 0.6;
+  if (!RM) svg.querySelectorAll('.ln').forEach((p) => { p.style.strokeDasharray = '1'; p.style.strokeDashoffset = '1'; p.getBoundingClientRect(); p.style.transition = `stroke-dashoffset ${dur}s cubic-bezier(.5,0,.2,1)`; requestAnimationFrame(() => { p.style.strokeDashoffset = '0'; }); });
+  chartFirst = false;
+  const fmt = (v) => (S.chart === 'cum' ? `${v >= 0 ? '+' : '−'}${Math.abs(v).toFixed(1)}` : `${v.toFixed(1)}×`);
+  const xs = [0, Math.round((n - 1) / 3), Math.round(((n - 1) * 2) / 3), n - 1];
+  $('#axes').innerHTML = ticks.map((t) => `<span class="y" style="left:${padL - 10}px;top:${Y(t)}px">${fmt(t)}</span>`).join('')
+    + xs.map((i, k) => `<span class="x${k === 0 ? ' l' : k === 3 ? ' r' : ''}" style="left:${X(i)}px;top:${H - padB + 12}px">${md(dates[i])}</span>`).join('')
+    + `<span class="e" style="right:${padR + 4}px;top:${Y(ref) - 17}px">${S.chart === 'cum' ? '预期 0' : '预期 1.0×'}</span>`;
+  $('#legendC').innerHTML = defs.map((d) => `<span><i style="background:${d.c}"></i>${d.name}</span>`).join('');
+  $('#trendLede').textContent = `${S.region === 'all' ? '全部地区' : S.region}，近 ${V.n} 日。把指针放到图上，或用左右方向键，查看每一天的数值。`;
+  $('#chartNote').textContent = S.chart === 'cum' ? '累计偏离：每日（指数 − 1）的累加，虚线为 0。示例数据。' : '虚线为预期水平 1.0×。示例数据。';
+  chartState = { defs, dates, X, Y, W, H, padL, padR, fmt, n };
+}
+function crosshair(i) {
+  const c = chartState; if (!c) return; const cx = $('#cx'); i = Math.max(0, Math.min(c.n - 1, i)); const x = c.X(i);
+  $('#cxl').setAttribute('d', `M${x} ${c.padL > 0 ? 8 : 0}V${c.H - 34}`);
+  $('#cxd').innerHTML = c.defs.map((d) => (Number.isFinite(d.y[i]) ? `<circle cx="${x}" cy="${c.Y(d.y[i])}" r="4" fill="${d.c}" stroke="var(--bg)" stroke-width="1.5"/>` : '')).join('');
+  cx.innerHTML = `<b>${c.dates[i]}</b>${c.defs.map((d) => `<div><span>${d.name}</span><span>${Number.isFinite(d.y[i]) ? c.fmt(d.y[i]) : '—'}</span></div>`).join('')}`;
+  cx.hidden = false; const left = x + 14 + cx.offsetWidth > c.W ? x - 14 - cx.offsetWidth : x + 14; cx.style.left = `${Math.max(4, left)}px`; cx.style.top = '14px';
+  chartState.at = i;
+}
+const chartEl = $('#chart');
+const idxAt = (e) => { const r = chartEl.getBoundingClientRect(); const c = chartState; return Math.round(((e.clientX - r.left - c.padL) / (c.W - c.padL - c.padR)) * (c.n - 1)); };
+chartEl.addEventListener('pointermove', (e) => { if (chartState) crosshair(idxAt(e)); });
+chartEl.addEventListener('pointerleave', () => { $('#cx').hidden = true; if (chartState) { $('#cxl').setAttribute('d', ''); $('#cxd').innerHTML = ''; } });
+chartEl.addEventListener('keydown', (e) => { if (!chartState) return; const d = { ArrowLeft: -1, ArrowRight: 1, Home: -1e9, End: 1e9 }[e.key]; if (d === undefined) return; e.preventDefault(); crosshair((chartState.at ?? chartState.n - 1) + d); });
+chartEl.addEventListener('blur', () => { $('#cx').hidden = true; });
+document.querySelectorAll('#chartTabs button').forEach((b) => { b.onclick = () => { S.chart = b.dataset.k; document.querySelectorAll('#chartTabs button').forEach((o) => o.setAttribute('aria-selected', o === b)); renderChart(); }; });
+new ResizeObserver(() => { if (chartState) renderChart(); }).observe(chartEl);
+
+/* ---- table ---- */
+const COLS = [
+  { k: 'rank', t: '位次', n: true }, { k: 'name', t: '省份' }, { k: 'region', t: '区域', cls: 'col2' }, { k: 'idx', t: '热点指数', n: true },
+  { k: 'chg', t: '周变化', n: true }, { k: 'hot', t: '最热板块', cls: 'col2' }, { k: 'share', t: '关注占比', n: true },
+];
+function renderTable(animate = true) {
+  const V = view(); const n = V.n;
+  const rows = PROV.map((pv, p) => {
+    if (!inScope(p) || V.idx[p] == null) return null; if (S.q && !(pv[1].includes(S.q) || pv[0] === S.q)) return null;
+    const a = idxPS(p, S.sector, 7), b = n >= 14 || DB.dates.length >= 14 ? idxPS(p, S.sector, 7, 7) : null;
+    let hot = '—', hv = -1; DB.sectors.forEach((s, si) => { const m = DB.v[p][si] ? mean(DB.v[p][si], n) : null; if (m != null && m > hv) { hv = m; hot = s; } });
+    return { p, rank: V.rank[p], name: pv[1], region: pv[4], idx: V.idx[p], chg: a != null && b ? a / b - 1 : null, hot, share: V.share[p], cls: V.cls[p] };
+  }).filter(Boolean);
+  const { k, dir } = S.sort; rows.sort((x, y) => { const a = x[k] ?? -1e9, b = y[k] ?? -1e9; return (typeof a === 'string' ? a.localeCompare(b, 'zh') : a - b) * (k === 'rank' || k === 'name' || k === 'region' || k === 'hot' ? -dir : dir) || x.rank - y.rank; });
+  $('#thead').innerHTML = COLS.map((c) => `<th scope="col" class="${c.n ? 'n ' : ''}${c.cls || ''}"${S.sort.k === c.k ? ` aria-sort="${S.sort.dir === -1 ? 'descending' : 'ascending'}"` : ''}><button type="button" data-k="${c.k}">${c.t}</button></th>`).join('');
+  document.querySelectorAll('#thead button').forEach((bt) => { bt.onclick = () => { S.sort = S.sort.k === bt.dataset.k ? { k: bt.dataset.k, dir: -S.sort.dir } : { k: bt.dataset.k, dir: -1 }; renderTable(); }; });
+  const shown = S.all ? rows : rows.slice(0, 12);
+  const tb = $('#tbody'); tb.innerHTML = shown.map((r, i) => `<tr style="--r:${i}"${r.p === S.sel ? ' class="me"' : ''}><td class="k n">${String(r.rank).padStart(2, '0')}</td><td><span class="sw" style="--c:${CLS[r.cls].c}"></span><button type="button" class="lk" data-p="${r.p}">${r.name}</button></td><td class="col2">${r.region}</td><td class="n">${r.idx.toFixed(2)}</td><td class="n">${r.chg == null ? '—' : `<span class="chg"><i class="${r.chg >= 0 ? 'up' : 'dn'}"></i>${r.chg >= 0 ? '+' : '−'}${Math.abs(r.chg * 100).toFixed(1)}%</span>`}</td><td class="col2">${r.hot}</td><td class="n">${fp(r.share)}</td></tr>`).join('') || '<tr><td colspan="7">没有符合条件的省份。</td></tr>';
+  tb.querySelectorAll('.lk').forEach((bt) => { bt.onclick = () => { S.sel = Number(bt.dataset.p); render(); }; });
+  if (!animate || RM) tb.querySelectorAll('tr').forEach((tr) => { tr.style.animation = 'none'; });
+  const more = $('#more'); more.hidden = rows.length <= 12; more.textContent = S.all ? '只显示前 12 个' : `显示全部 ${rows.length} 个`; more.onclick = () => { S.all = !S.all; renderTable(false); };
+  $('#count').textContent = `共 ${rows.length} 个单位 · 近 ${n} 日 · ${S.sector < 0 ? '全部板块' : DB.sectors[S.sector]}`;
+}
+
+/* ---- scrollspy on the numbered column ---- */
+const links = [...document.querySelectorAll('.side nav a')];
+const spy = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) links.forEach((a) => a.setAttribute('aria-current', a.getAttribute('href') === `#${e.target.id}`)); }), { rootMargin: '-20% 0px -70% 0px' });
+['map', 'rank', 'trend', 'table', 'read', 'method'].forEach((id) => spy.observe(document.getElementById(id)));
+
+/* ---- CSV: replace the sample with your own rows ---- */
+const status = (t) => { $('#csvSt').textContent = t; };
+function openCsv() { const box = $('#csvBox'); if (!box.open || $('#csv')) return; box.appendChild($('#csvTpl').content.cloneNode(true)); wireCsv(); }
+$('#csvBox').addEventListener('toggle', openCsv);
+function wireCsv() {
+function applyCsv(text) {
+  const lines = text.split(/\r?\n/).map((l) => l.trim()).filter(Boolean); if (!lines.length) return status('文本框是空的。');
+  const head = lines[0].split(',').map((x) => x.trim().toLowerCase());
+  const col = (name) => head.indexOf(name); const ci = { d: col('date'), p: col('province'), s: col('sector'), v: col('value') };
+  if (Object.values(ci).some((i) => i < 0)) return status('表头需要 date,province,sector,value 四列。');
+  const byName = new Map(); PROV.forEach(([s, f], i) => { byName.set(s, i); byName.set(f, i); byName.set(f.replace(/(省|市|自治区|壮族|回族|维吾尔|特别行政区)/g, ''), i); });
+  const dates = new Set(), sectors = new Set(), rows = []; let bad = 0, unknown = new Set();
+  lines.slice(1).forEach((l) => { const c = l.split(',').map((x) => x.trim()); const v = Number(c[ci.v]); const p = byName.get(c[ci.p]); if (!/^\d{4}-\d{2}-\d{2}$/.test(c[ci.d] || '') || !Number.isFinite(v) || v <= 0 || !c[ci.s]) { bad += 1; return; } if (p === undefined) { unknown.add(c[ci.p]); return; } dates.add(c[ci.d]); sectors.add(c[ci.s]); rows.push([c[ci.d], p, c[ci.s], v]); });
+  if (!rows.length) return status(`没有可用的行（无法解析 ${bad} 行${unknown.size ? `，不认识的省份：${[...unknown].slice(0, 5).join('、')}` : ''}）。`);
+  const ds = [...dates].sort(), ss = [...sectors], di = new Map(ds.map((d, i) => [d, i]));
+  const v = PROV.map(() => null);
+  rows.forEach(([d, p, s, x]) => { if (!v[p]) v[p] = ss.map(() => null); const si = ss.indexOf(s); if (!v[p][si]) v[p][si] = new Float32Array(ds.length).fill(NaN); v[p][si][di.get(d)] = x; });
+  DB = { dates: ds, sectors: ss, w: PROV.map(() => 1 / 31), v, source: 'csv', rows: rows.length };
+  S.sector = -1; S.period = Math.min(30, ds.length); buildFilters(); chartFirst = true; render();
+  $('#srcTag').textContent = 'YOUR CSV'; document.title = '市场热点指数（你的 CSV）';
+  status(`已应用：${rows.length} 行、${ss.length} 个板块、${ds.length} 天${bad ? `，跳过 ${bad} 行无法解析的行` : ''}${unknown.size ? `，不认识的省份：${[...unknown].slice(0, 5).join('、')}` : ''}。`);
+}
+$('#csvApply').onclick = () => applyCsv($('#csv').value);
+$('#csvDemo').onclick = () => { const out = ['date,province,sector,value']; const dts = DB.dates.slice(-6); ['广东', '北京', '四川', '江苏'].forEach((n) => { const p = PROV.findIndex((q) => q[1] === n); [0, 1, 6].forEach((s) => dts.forEach((d, i) => { const a = (DB.v[p] && DB.v[p][s]) || []; const x = a[DB.dates.length - dts.length + i]; if (x) out.push(`${d},${n},${SECT0[s]},${x.toFixed(2)}`); })); }); $('#csv').value = out.join('\n'); status(`已载入 ${out.length - 1} 行示例；改一改再点“应用 CSV”。`); };
+$('#csvReset').onclick = () => { DB = sample(); S.sector = -1; S.period = 30; buildFilters(); chartFirst = true; render(); $('#srcTag').textContent = 'SAMPLE DATA'; document.title = '市场热点指数（示例数据）'; status('已恢复为示例数据。'); };
+$('#csvFile').onchange = (e) => { const f = e.target.files[0]; if (!f) return; const r = new FileReader(); r.onload = () => { $('#csv').value = String(r.result); applyCsv(String(r.result)); }; r.readAsText(f); };
+}
+
+/* ---- render everything ---- */
+function render() {
+  const V = view(); renderStats(V); renderMap(V); renderMini(V); renderDetail(V); renderRank(V); renderChart(); renderTable();
+}
+buildFilters(); render();
+})();
+</script>
+</body>
+</html>

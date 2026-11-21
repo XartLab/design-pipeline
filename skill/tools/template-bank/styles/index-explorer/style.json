@@ -1,0 +1,127 @@
+{
+  "schema": "design-pipeline.template-bank-style.v1",
+  "id": "index-explorer",
+  "title": "Index explorer: a public research data explorer's grammar - ivory page, a four-step green scale on a tile-grid map, hairline ranking rows with inline bars, serif display numerals over mono values, white legend cards, a dark tooltip",
+  "summary": "Ivory ground and near-black ink; a serif for display names and numerals, a neutral sans for labels, a mono for ranks and values; one sequential green scale (four classes: emerging, lower middle, upper middle, leading) on a generic tile-grid map; pastel categorical tiles for a share breakdown; white legend and stat cards (1 hairline, radius 16) on a panel ground (radius 8); ranking rows ruled by a hairline with a mono number, a name, an inline bar and a mono value; underlined serif tabs; bottom-ruled select controls; a dark tooltip with a serif name; a rank strip and an index bar with an expected mark; a quiet line chart with a dashed expected line.",
+  "provenance": {
+    "case": "market-attention index explorer: an original self-contained data page (a 'market hotspot index' over 31 tile-grid regions and 10 sectors, every number generated in the page and labelled as sample data) in examples/index-explorer-kit, and six parametric parts of it as templates.",
+    "lineage": "AI-usage economic index data explorer: a public research data site with a map, occupation rankings and filters. Two public reference pages the owner named, captured and measured privately in Chrome (computed styles, 2026-11-21); the captures stay private and are not shipped. Borrowed: the grammar and the measured numbers. Never borrowed: any name, logo, wordmark, picture, map file, copy, data or the original proprietary typefaces.",
+    "borrow": "Borrow grammar, never assets. Every word, figure and number is our own placeholder; the faces are open (Source Serif 4, Inter, JetBrains Mono, Noto Serif SC, Noto Sans SC), named and never bundled; the map is a generic 31-unit tile grid drawn from a table, not a geographic file; the values come from a seed.",
+    "rounds": "One round: measured the data page and a report page first (tile map, legend cards, ranking rows, detail panel with a rank strip and index bar, tabs, filters, treemap, tooltip), then the six templates and the kit page on the numbers; template check --browser 0 findings on every default render and on the kit at 1440 and 390 wide.",
+    "measured": [
+      "Ground #FAF9F5, ink #141413, secondary #5E5D59, hairlines #D1CFC5 (row rules) and #C9C4C4 (card border); panel ground #F5F4ED radius 8; legend and stat cards white, 1 px border, radius 16, padding 12 and 24; tooltip #3D3D3A radius 8 padding 16, shadow 0 8 24 rgba(0,0,0,.25), serif 16 / 20 name in #FAF9F5 over a 1 px #5E5D59 rule, sans 12 rows.",
+      "Sequential scale, four classes by rank quartile (leading top 25%, upper middle 50-75%, lower middle 25-50%, emerging bottom 25%): #388F76, #59B295, #89D1B9, #BEE5D8; the tile-grid map is square tiles, 65 px on a 69 px pitch (4 px gap, radius 0), a sans 23 / 500 label in ink on every tile, a 2 px dark outline on hover; a hit rectangle per tile.",
+      "Type: display serif 400, hero 80 / 88 with the second line weight 300; section and region names serif 48 / 57.6; numerals serif 32 / 38.4; tabs serif 18 / 27.9 weight 500, the active one ink with a 2 px underline; ranking row 23 px high, 1 px bottom rule, mono 13 rank number #5E5D59, sans 14 name, mono 14 value; inline bar box 71 x 16 on the ground with a 1 px ink border and a green fill; labels, legends and captions sans 12-14; date label mono 13 uppercase.",
+      "Detail panel: a rank strip of one cell per region (10 x 24, 1 px gap, fill rgba(188,209,202,.75), the region's cell #6A9BCC), an index bar 24 high with an 'Expected: 1' mark and the value at its end; a most-frequent / most-distinctive pair of tabs over a ten-row list with a percentage in mono; a treemap of pastel tiles (#BEE5D8 #D787A3 #D9F2A4 #E6796D #7FA9D2 #E3DACC #9EAC8B #D4DEDB #B8C5FF) on 1 px gaps, each with a small corner mark.",
+      "Filters: a 36 px search field (white, 1 px rgba(25,25,25,.2), radius 8, placeholder sans 14), two bottom-ruled select controls 140 x 23 with a small bold label; a legend of three 12 px dots; job tiles drawn as a waffle of 20 px squares in three tones (#A1AF8E, #C9C4F5, #E3DACC); a fixed left column of numbered links (mono 01..06 over sans 13) with hairlines; a download link and a mail link at its foot.",
+      "Layout: a 260-313 wide left column, a card column, a wide map column; section rhythm 48 px above and 24 px below a section head; a report page keeps a 720 px column and 865 px figures with a sans 13 / 20 caption in #5E5D59.",
+      "64 px: with the wordmark masked, an ivory page, a serif title and a green tile grid with a white card beside it reads as the grammar and apart from every game and essay pack in the bank."
+    ],
+    "accessed": "2026-11-21"
+  },
+  "palette": {
+    "ivory": { "value": "#FAF9F5", "use": "the page ground, inline-bar boxes, pill fill" },
+    "ink": { "value": "#141413", "use": "titles, names, numerals, values, the active tab and its underline" },
+    "mute": { "value": "#5E5D59", "use": "ledes, captions, row numbers, inactive tabs, axis labels, small labels (6.3:1 on ivory)" },
+    "hair": { "value": "#D1CFC5", "use": "row rules, chart gridlines, strip separators" },
+    "panel": { "value": "#F5F4ED", "use": "the map, chart and treemap panels (radius 8)" },
+    "card": { "value": "#FFFFFF", "use": "legend and stat cards (radius 16)" },
+    "cardline": { "value": "#C9C4C4", "use": "card borders, pill hairlines, select rules" },
+    "s1": { "value": "#BEE5D8", "use": "scale class 1: emerging (bottom 25%)" },
+    "s2": { "value": "#89D1B9", "use": "scale class 2: lower middle" },
+    "s3": { "value": "#59B295", "use": "scale class 3: upper middle" },
+    "s4": { "value": "#388F76", "use": "scale class 4: leading (top 25%); the main series; ink on it is 4.7:1" },
+    "blue": { "value": "#6A9BCC", "use": "the selected region's cell, the second series" },
+    "coral": { "value": "#E6796D", "use": "the one accent: a falling delta, an end dot, the third series (marks, never text)" },
+    "lime": { "value": "#D9F2A4", "use": "categorical tile" },
+    "rose": { "value": "#D787A3", "use": "categorical tile" },
+    "sand": { "value": "#E3DACC", "use": "categorical tile, tasks that do not appear" },
+    "salmon": { "value": "#E8877A", "use": "categorical tile (a step off the accent coral, so the treemap does not spend the accent budget)" },
+    "olive": { "value": "#9EAC8B", "use": "categorical tile" },
+    "peri": { "value": "#B8C5FF", "use": "categorical tile" },
+    "mist": { "value": "#D4DEDB", "use": "categorical tile, the rank strip and the index bar" },
+    "tip": { "value": "#3D3D3A", "use": "the tooltip plate" },
+    "tiptext": { "value": "#FAF9F5", "use": "text on the tooltip" },
+    "tipline": { "value": "#5E5D59", "use": "the rule under the tooltip name" },
+    "tileink": { "value": "#141413", "use": "the label on a scale tile; fixed in the dark theme" },
+    "night": { "value": "#141413", "use": "the dark theme's ground (templates take theme=dark)" }
+  },
+  "fonts": {
+    "roles": {
+      "serif": { "stack": ["Source Serif 4", "Noto Serif SC"], "generic": "serif", "weight": 400, "use": "display names, titles, numerals and tabs: a transitional book serif, weight 400 (300 for a hero's second line); Noto Serif SC carries CJK" },
+      "sans": { "stack": ["Inter", "Noto Sans SC"], "generic": "sans-serif", "weight": 400, "use": "ledes, labels, legends, captions, tile names, list names, tooltip rows (bold 600 for card titles); Noto Sans SC carries CJK" },
+      "mono": { "stack": ["JetBrains Mono", "Noto Sans SC"], "generic": "monospace", "weight": 400, "use": "ranks, values, deltas and the date label: Latin, digits and ASCII symbols only; a CJK string goes to sans" }
+    },
+    "faces": [
+      { "family": "Source Serif 4", "weight": 400, "file": "SourceSerif4[opsz,wght].ttf", "source": "https://github.com/google/fonts/tree/main/ofl/sourceserif4", "licence": "SIL OFL 1.1", "author": "The Source Project Authors" },
+      { "family": "Inter", "weight": 400, "file": "Inter[opsz,wght].ttf", "source": "https://github.com/google/fonts/tree/main/ofl/inter", "licence": "SIL OFL 1.1", "author": "The Inter Project Authors" },
+      { "family": "JetBrains Mono", "weight": 400, "file": "JetBrainsMono[wght].ttf", "source": "https://github.com/google/fonts/tree/main/ofl/jetbrainsmono", "licence": "SIL OFL 1.1", "author": "The JetBrains Mono Project Authors" },
+      { "family": "Noto Serif SC", "weight": 400, "file": "NotoSerifSC[wght].ttf", "source": "https://github.com/google/fonts/tree/main/ofl/notoserifsc", "licence": "SIL OFL 1.1", "author": "Google" },
+      { "family": "Noto Sans SC", "weight": 400, "file": "NotoSansSC[wght].ttf", "source": "https://github.com/google/fonts/tree/main/ofl/notosanssc", "licence": "SIL OFL 1.1", "author": "Google" }
+    ],
+    "resolve": "fonts query --style mincho (Noto Serif SC) and --style gothic (Noto Sans SC) cover CJK copy; Source Serif 4, Inter and JetBrains Mono are Latin faces, so a CJK string falls through to the stack's second family inside one role, the same family for the whole role.",
+    "licence": "All roles use SIL OFL 1.1 fonts. The original pages' own proprietary typefaces are not used and not named.",
+    "bundled": false,
+    "note": "Fonts are named, not bundled. --font-dir <dir> reads coverage and embeds the faces."
+  },
+  "layout": {
+    "grammar": [
+      "Ivory #FAF9F5 ground, near-black ink; one coral accent for marks; the green scale and the pastel tiles only inside figures; no gradient, no shadow beyond the tooltip's.",
+      "Serif for display names, titles, numerals and tabs; sans for every label; mono for ranks, values, deltas and the date label (Latin only).",
+      "The map is a tile grid, never a geographic file: square tiles on a pitch with a 4-unit gap, one short name on each in ink, four classes by rank quartile on a green scale, a 2-unit ink outline on the focus tile, a pinned or following tooltip, a legend card beside it.",
+      "A ranking is rows ruled by a hairline: a mono number, a name, an inline bar (an ivory box with a 1-unit ink border and a green fill) and a mono value, in two columns of five.",
+      "A stat tile is a white card (hairline, radius 16): a bold label, a serif numeral, a delta with a triangle and a note, a sparkline with a coral end dot.",
+      "A region detail pairs a serif name over a hairline, a serif rank over a strip of one cell per region, a serif index over a bar with an expected mark, serif tabs and a six-row list, and a treemap of pastel tiles in a panel.",
+      "Filters are small bold labels over a chosen value with a bottom rule and a chevron; tabs are serif 500, the active one in ink with a 2-unit underline.",
+      "A line chart sits on a panel: hairline gridlines, a dashed expected line, direct labels at the line ends, no legend box.",
+      "A colour convention is a palette parameter (--param convention=intl|cn, default intl, the measured lineage). intl: the green scale, rising green, falling coral. cn, for Chinese markets where red is up and green is down (红涨绿跌): the same four classes in reds from light to deep (#F6D4CC #EE9E8C #E07A63 #D75A44), rising red, falling green (#388F76 in the accent role). The roles keep their names (s1-s4, coral), so a template reads one palette either way; the stat tile's sparkline and end dot take the direction's colour in cn. The kit page defaults to cn and carries a segmented toggle (红涨绿跌 / 绿涨红跌) that recolours the map, legend, ranking bars, trend deltas and stat triangles live and remembers the choice."
+    ]
+  },
+  "materials": {
+    "procedural": [
+      "the tile grid: 31 squares on an 8 x 8 grid, coloured by rank quartile from a four-step green scale (seeded values: cover.index-hero --param seed, card.index-tilemap --param seed --param focus)",
+      "sparklines and line series: seeded mean-reverting walks (card.index-stats, card.index-trend --param seed --param volatility)",
+      "a squarified treemap of seeded shares in pastel tiles (card.index-region)"
+    ],
+    "recipes": [
+      "A paper grain for a whole page: materials generate --generator paper --seed 1, laid at 15-25% over the ivory ground (the templates stay flat)."
+    ],
+    "collage": [
+      "No pictures: the map, bars and charts are drawn. Text never sits on a texture; tile names sit on flat tiles."
+    ],
+    "sources": "Everything is drawn or generated from a seed.",
+    "budget": { "inks": 1, "effectsMax": 1, "tiltedElements": 0 }
+  },
+  "motion": {
+    "fps": 60,
+    "grammar": [
+      "Tiles fade and colour in on load, staggered by a few milliseconds each (opacity 0 to 1, 18 ms apart); on a filter change each tile's fill transitions in 0.45 s.",
+      "Ranking bars grow from the left to their width in 0.8 s with an ease-out when their section scrolls to 30% in view; values count up with them.",
+      "A line series draws itself (stroke-dashoffset on pathLength 1) in 1.2 s on first view and redraws in 0.6 s when a filter changes; a crosshair follows the pointer.",
+      "Sorting a table re-orders its rows with a 0.25 s fade; the active tab's underline slides under the new tab.",
+      "A tooltip appears in 0.12 s and follows the pointer; the focus tile gets a 2-unit outline.",
+      "prefers-reduced-motion removes every one of these: the page loads in its final state."
+    ],
+    "flashLimit": "No flashing, no looping animation: every motion plays once per interaction."
+  },
+  "checks": {
+    "static": ["text-overflow", "text-length", "type-size", "contrast", "accent-budget"],
+    "browser": ["text-overlap", "off-canvas", "collage-cover", "contrast", "text-occluded", "glyph-coverage"],
+    "browserOnRender": true,
+    "guidance": [
+      "64 px distinctiveness (guidance): shrink the render to 64 px tall with the wordmark masked; the ivory ground, the serif title and the green tile grid or a white card with serif numerals should still read. A dark-led page reads as another pack.",
+      "Tile names stay in the fixed dark ink on every theme: the lightest tile (#BEE5D8) and the darkest (#388F76, 4.7:1 with ink) are both read in ink; never set light text on a tile.",
+      "Latin serif, sans and mono faces have no CJK: keep each string in one role and let the stack's second family carry the CJK; a mono string with CJK goes to sans.",
+      "A value is derived from its parameter (card.index-stats value_1..4 and delta_1..4, card.index-ranking top and spread), so a number and its bar cannot disagree; the tooltip's class and numbers come from the seeded tile data.",
+      "Coral is for marks (a falling triangle, an end dot, a series line), never running text; delta text is ink, the colour is the triangle.",
+      "Under convention=cn the deepest red (#D75A44) holds 4.8:1 with the fixed dark tile ink, like the deepest green; a lighter step is never darker than the one above it, and the same check runs on both conventions, light and dark (template check --browser, 0 findings)."
+    ],
+    "note": "The browser check runs on every render. Shapes are plain rects and circles, so the static check measures geometry and never a filter."
+  },
+  "examples": {
+    "note": "The kit page is the example: a self-contained data explorer with every device above.",
+    "renders": [
+      { "screen": "market hotspot index explorer (light and dark by system theme, 1440 and 390 wide)", "file": "examples/index-explorer-kit/index.html", "why": "filters, a tile-grid map with a tooltip, a sector ranking with inline bars, a time series, a sortable table, a CSV box; its parts are the six templates; motion settles under prefers-reduced-motion" }
+    ]
+  }
+}

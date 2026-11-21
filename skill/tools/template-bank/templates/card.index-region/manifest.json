@@ -1,0 +1,239 @@
+{
+  "schema": "design-pipeline.template-bank-template.v1",
+  "id": "card.index-region",
+  "family": "card",
+  "style": "index-explorer",
+  "title": "Region detail: a serif name over a hairline, a serif rank over a 31-cell strip, a serif index over a bar with an expected mark, tabs and a six-row list, and a treemap of pastel tiles",
+  "use": "The detail of one region (or one sector): rank among 31, index value and the breakdown of its attention. rank and index are parameters; the numerals, the strip, the bar and the shares (from seed) agree.",
+  "canvas": {
+    "width": 1600,
+    "height": 900
+  },
+  "sizes": [
+    "1600x900",
+    "1920x1080"
+  ],
+  "aspect": "16:9",
+  "accent": {
+    "roles": [
+      "coral"
+    ],
+    "maxShare": 0.03
+  },
+  "params": {
+    "guides": {
+      "type": "boolean",
+      "default": false,
+      "class": "decoration",
+      "note": "draw layout guides"
+    },
+    "theme": {
+      "type": "enum",
+      "values": [
+        "light",
+        "dark"
+      ],
+      "default": "light",
+      "class": "decoration",
+      "note": "light (ivory #FAF9F5) or dark (#141413) ground; tile names and the tooltip keep their fixed inks"
+    },
+    "rank": {
+      "type": "integer",
+      "default": 2,
+      "min": 1,
+      "max": 31,
+      "class": "proportion",
+      "note": "rank among 31"
+    },
+    "index": {
+      "default": 3.32,
+      "min": 0.1,
+      "max": 6,
+      "class": "proportion",
+      "note": "the index value, 1.0 = expected"
+    },
+    "seed": {
+      "default": 9,
+      "min": 1,
+      "max": 9999,
+      "class": "decoration",
+      "note": "seeds the six shares"
+    }
+  },
+  "slots": {
+    "name": {
+      "kind": "text",
+      "default": "广东",
+      "maxChars": 8,
+      "font": "serif",
+      "title": true
+    },
+    "rank_value": {
+      "kind": "text",
+      "derived": true,
+      "maxChars": 8,
+      "font": "serif",
+      "note": "derived from --param rank, N / 31"
+    },
+    "rank_label": {
+      "kind": "text",
+      "default": "热度排名",
+      "maxChars": 8,
+      "font": "sans"
+    },
+    "index_value": {
+      "kind": "text",
+      "derived": true,
+      "maxChars": 8,
+      "font": "serif",
+      "note": "derived from --param index, N.NN ×"
+    },
+    "index_label": {
+      "kind": "text",
+      "default": "热点指数",
+      "maxChars": 8,
+      "font": "sans"
+    },
+    "expected": {
+      "kind": "text",
+      "default": "预期 1.0",
+      "maxChars": 8,
+      "font": "sans"
+    },
+    "tab_1": {
+      "kind": "text",
+      "default": "最热板块",
+      "maxChars": 8,
+      "font": "serif"
+    },
+    "tab_2": {
+      "kind": "text",
+      "default": "最特别板块",
+      "maxChars": 8,
+      "font": "serif"
+    },
+    "list_title": {
+      "kind": "text",
+      "default": "广东最常被关注的板块。",
+      "maxChars": 20,
+      "font": "sans"
+    },
+    "item_1": {
+      "kind": "text",
+      "default": "半导体",
+      "maxChars": 8,
+      "font": "sans"
+    },
+    "item_2": {
+      "kind": "text",
+      "default": "新能源",
+      "maxChars": 8,
+      "font": "sans"
+    },
+    "item_3": {
+      "kind": "text",
+      "default": "人工智能",
+      "maxChars": 8,
+      "font": "sans"
+    },
+    "item_4": {
+      "kind": "text",
+      "default": "医药生物",
+      "maxChars": 8,
+      "font": "sans"
+    },
+    "item_5": {
+      "kind": "text",
+      "default": "消费电子",
+      "maxChars": 8,
+      "font": "sans"
+    },
+    "item_6": {
+      "kind": "text",
+      "default": "券商",
+      "maxChars": 8,
+      "font": "sans"
+    },
+    "pct_1": {
+      "kind": "text",
+      "derived": true,
+      "maxChars": 8,
+      "font": "mono",
+      "note": "derived from --param seed"
+    },
+    "pct_2": {
+      "kind": "text",
+      "derived": true,
+      "maxChars": 8,
+      "font": "mono",
+      "note": "derived from --param seed"
+    },
+    "pct_3": {
+      "kind": "text",
+      "derived": true,
+      "maxChars": 8,
+      "font": "mono",
+      "note": "derived from --param seed"
+    },
+    "pct_4": {
+      "kind": "text",
+      "derived": true,
+      "maxChars": 8,
+      "font": "mono",
+      "note": "derived from --param seed"
+    },
+    "pct_5": {
+      "kind": "text",
+      "derived": true,
+      "maxChars": 8,
+      "font": "mono",
+      "note": "derived from --param seed"
+    },
+    "pct_6": {
+      "kind": "text",
+      "derived": true,
+      "maxChars": 8,
+      "font": "mono",
+      "note": "derived from --param seed"
+    },
+    "tree_title": {
+      "kind": "text",
+      "default": "关注结构",
+      "maxChars": 8,
+      "font": "sans"
+    },
+    "tree_hint": {
+      "kind": "text",
+      "default": "面积为关注占比，颜色对应左侧列表",
+      "maxChars": 24,
+      "font": "sans"
+    },
+    "tree_note": {
+      "kind": "text",
+      "default": "关注占比之和因隐私过滤不到 100%。示例数据。",
+      "maxChars": 32,
+      "font": "sans"
+    }
+  },
+  "relations": [
+    "The left column is 704 wide: a serif 64 name over a hairline, a serif 52 numeral beside a 31-cell strip (14 x 36 cells on a 2 gap, the region's cell blue), an index bar 36 high scaled 0-6 with a 1.5 ink mark at 1.0, serif 22 tabs (the first underlined) and six 52-high rows.",
+    "The treemap fills a 576 x 610 area of the right panel, squarified, each tile 1 unit inset; its colours are the list's dots in the same order."
+  ],
+  "decoration": [
+    "The strip, bar, mark, dots, panel and treemap tiles are decoration; row numbers are real text."
+  ],
+  "provenance": {
+    "corpus": "market hotspot index explorer kit (examples/index-explorer-kit): our own original data page in the index-explorer grammar; every number is generated in the page and marked as sample data",
+    "experiment": "styles/index-explorer/style.json provenance (two public reference pages measured privately in Chrome on 2026-11-21; never shipped)",
+    "accessed": "2026-11-21",
+    "method": "The data page's state and country detail re-set: rank strip, index bar with its expected mark, tabs, ranked list, treemap.",
+    "sampleIds": [
+      "index-explorer/region"
+    ],
+    "measured": [
+      "Name serif 48 / 57.6; numerals serif 32 / 38.4; strip cells 10 x 24 on a 1 px gap in rgba(188,209,202,.75), the region's cell #6A9BCC; index bar 24 high; tabs serif 18 / 500 with a 2 px underline; ten ranked rows; a treemap of pastel tiles.",
+      "Template: every rank 1-31 and index 0.1-6 pass; the treemap never leaves its panel."
+    ],
+    "summary": "index-explorer region"
+  }
+}

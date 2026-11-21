@@ -1,0 +1,169 @@
+{
+  "schema": "design-pipeline.template-bank-template.v1",
+  "id": "card.circuits-features",
+  "family": "card",
+  "style": "circuits-paper",
+  "title": "Feature browser: a bordered panel with the feature id and name, monospace token strips highlighted in three oranges by activation, a ranked top-activations list with bars, an activation ramp legend and a numbered caption",
+  "use": "One feature in a paper's browser: dataset examples with their activating tokens and the ranked list of strongest activations; seed moves the peaks and rows (3-5) sets how many examples.",
+  "canvas": {
+    "width": 1600,
+    "height": 900
+  },
+  "sizes": [
+    "1600x900",
+    "1920x1080"
+  ],
+  "aspect": "16:9",
+  "accent": {
+    "roles": [
+      "hot_lo",
+      "hot_mid",
+      "hot_hi"
+    ],
+    "maxShare": 0.08
+  },
+  "params": {
+    "guides": {
+      "type": "boolean",
+      "default": false,
+      "class": "decoration",
+      "note": "draw layout guides"
+    },
+    "theme": {
+      "type": "enum",
+      "values": [
+        "light",
+        "dark"
+      ],
+      "default": "light",
+      "class": "decoration",
+      "note": "light (white #FFFFFF) or dark (#141414) ground"
+    },
+    "seed": {
+      "type": "integer",
+      "default": 17,
+      "min": 1,
+      "max": 9999,
+      "class": "rhythm",
+      "note": "seed of the activations"
+    },
+    "rows": {
+      "type": "integer",
+      "default": 4,
+      "min": 3,
+      "max": 5,
+      "class": "proportion",
+      "note": "number of dataset examples"
+    }
+  },
+  "slots": {
+    "feat_id": {
+      "kind": "text",
+      "default": "特征 #2417",
+      "maxChars": 10,
+      "font": "sans",
+      "note": "bold id"
+    },
+    "feat_name": {
+      "kind": "text",
+      "default": "利率下调之后的波动抬升",
+      "maxChars": 24,
+      "font": "sans"
+    },
+    "ex_label": {
+      "kind": "text",
+      "default": "数据集示例",
+      "maxChars": 10,
+      "font": "sans",
+      "note": "kicker over the strips"
+    },
+    "ex_{i}": {
+      "kind": "text",
+      "default": [
+        "利率 下行 空间 打开 估值 修复",
+        "央行 宣布 下调 政策 利率 债市 走强",
+        "降息 预期 升温 带动 指数 反弹",
+        "政策 利率 维持 不变 市场 观望",
+        "下调 准备金率 释放 流动性 资金 宽松"
+      ],
+      "maxChars": 26,
+      "font": "mono",
+      "note": "dataset example i: tokens separated by spaces, one tspan per token"
+    },
+    "top_label": {
+      "kind": "text",
+      "default": "最强激活",
+      "maxChars": 10,
+      "font": "sans",
+      "note": "kicker over the list"
+    },
+    "top_{i}": {
+      "kind": "text",
+      "default": [
+        "下行",
+        "下调",
+        "降息",
+        "利率",
+        "宽松"
+      ],
+      "maxChars": 8,
+      "font": "mono",
+      "note": "token of rank i"
+    },
+    "val_{i}": {
+      "kind": "text",
+      "derived": true,
+      "maxChars": 5,
+      "font": "sans",
+      "note": "activation of rank i, from the seed"
+    },
+    "legend_lo": {
+      "kind": "text",
+      "default": "弱激活",
+      "maxChars": 6,
+      "font": "sans"
+    },
+    "legend_hi": {
+      "kind": "text",
+      "default": "强激活",
+      "maxChars": 6,
+      "font": "sans"
+    },
+    "cap_label": {
+      "kind": "text",
+      "default": "图 3：",
+      "maxChars": 6,
+      "font": "sans",
+      "note": "bold caption lead-in"
+    },
+    "caption": {
+      "kind": "text",
+      "default": "特征 #2417 的数据集示例与最强激活词。示例数据：激活值由种子生成，不来自真实模型。",
+      "maxChars": 70,
+      "font": "sans",
+      "lines": 2,
+      "note": "2 lines"
+    }
+  },
+  "relations": [
+    "Panel 1408 x 650 units at (96, 96), radius 5; header 26-unit bold id and 22-unit name above a hairline; strips are 880 x 62 units in the beige with a stone outline, mono 24 units; a token highlight is a rect inset 7 units behind the token in hot_lo (below 0.66 of the peak), hot_mid or hot_hi, with black text.",
+    "The top-activations list sits right of the strips: mono 20-unit token, a bar on a beige track and the derived value (two decimals) at the right edge; ranks fall by about 0.11."
+  ],
+  "decoration": [
+    "Strip frames, highlights, bars and tracks are decoration for the text checks (the highlight is the text's ground and black text is 8:1 on every orange); tokens, values and labels are slots."
+  ],
+  "provenance": {
+    "corpus": "research-paper kit (examples/circuits-paper-kit): our own original interactive paper page in the circuits-paper grammar; all copy, features and numbers are labelled samples",
+    "experiment": "styles/circuits-paper/style.json provenance (three public reference pages measured privately in Chrome on 2026-11-21; never shipped)",
+    "accessed": "2026-11-21",
+    "method": "The reference attribution paper's feature visualisation (monospace tokens, orange highlights by activation) lifted into a panel with a ranked list.",
+    "sampleIds": [
+      "circuits-paper/features"
+    ],
+    "measured": [
+      "Feature visualisation: monospace tokens in a bordered box, highlight oranges #FFAE72 #FF8D47 #FF6927 by activation, black text.",
+      "Template: 3-5 rows x 50 seeds, light and dark pass."
+    ],
+    "summary": "circuits-paper features"
+  }
+}

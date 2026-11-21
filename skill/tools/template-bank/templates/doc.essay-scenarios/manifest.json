@@ -1,0 +1,166 @@
+{
+  "schema": "design-pipeline.template-bank-template.v1",
+  "id": "doc.essay-scenarios",
+  "family": "doc",
+  "style": "institute-essay",
+  "title": "Scenario cards: a serif heading, a sans lede and three parallel paper cards, each with a swatch row, a bold sans title, a sans subtitle and one serif sentence",
+  "use": "Three parallel scenarios, options or cases; level_1..3 set how many of each card's three swatches are in the hue.",
+  "canvas": {
+    "width": 1600,
+    "height": 900
+  },
+  "sizes": [
+    "1600x900",
+    "1920x1080"
+  ],
+  "aspect": "16:9",
+  "accent": {
+    "roles": [
+      "clay"
+    ],
+    "maxShare": 0.02
+  },
+  "params": {
+    "guides": {
+      "type": "boolean",
+      "default": false,
+      "class": "decoration",
+      "note": "draw layout guides"
+    },
+    "theme": {
+      "type": "enum",
+      "values": [
+        "light",
+        "dark"
+      ],
+      "default": "light",
+      "class": "decoration",
+      "note": "light (ivory #FAF9F5) or dark (#141413) ground"
+    },
+    "level_1": {
+      "type": "integer",
+      "default": 1,
+      "min": 1,
+      "max": 3,
+      "class": "proportion",
+      "note": "swatches in the hue, card 1"
+    },
+    "level_2": {
+      "type": "integer",
+      "default": 2,
+      "min": 1,
+      "max": 3,
+      "class": "proportion",
+      "note": "swatches in the hue, card 2"
+    },
+    "level_3": {
+      "type": "integer",
+      "default": 3,
+      "min": 1,
+      "max": 3,
+      "class": "proportion",
+      "note": "swatches in the hue, card 3"
+    }
+  },
+  "slots": {
+    "heading": {
+      "kind": "text",
+      "default": "可能的未来有很多，我们重点讨论三种",
+      "maxChars": 30,
+      "font": "serif",
+      "title": true
+    },
+    "lede": {
+      "kind": "text",
+      "default": "每个情景都用同一套参数生成，只改变推理需求增速和企业采用速度两项假设。",
+      "maxChars": 60,
+      "font": "sans"
+    },
+    "title_1": {
+      "kind": "text",
+      "default": "温和情景",
+      "maxChars": 10,
+      "font": "sans"
+    },
+    "sub_1": {
+      "kind": "text",
+      "default": "采用放缓，库存消化",
+      "maxChars": 18,
+      "font": "sans"
+    },
+    "text_1": {
+      "kind": "text",
+      "default": "推理成本下降快于需求增长，2027 年起订单回落，利润向下游应用转移。",
+      "maxChars": 70,
+      "lines": 5,
+      "font": "serif"
+    },
+    "title_2": {
+      "kind": "text",
+      "default": "中性情景",
+      "maxChars": 10,
+      "font": "sans"
+    },
+    "sub_2": {
+      "kind": "text",
+      "default": "高位平台期",
+      "maxChars": 18,
+      "font": "sans"
+    },
+    "text_2": {
+      "kind": "text",
+      "default": "训练投入趋稳，推理接棒，资本开支保持高位但同比增速降到个位数。",
+      "maxChars": 70,
+      "lines": 5,
+      "font": "serif"
+    },
+    "title_3": {
+      "kind": "text",
+      "default": "激进情景",
+      "maxChars": 10,
+      "font": "sans"
+    },
+    "sub_3": {
+      "kind": "text",
+      "default": "智能体大规模部署",
+      "maxChars": 18,
+      "font": "sans"
+    },
+    "text_3": {
+      "kind": "text",
+      "default": "企业把大量流程交给智能体，推理需求每年翻倍以上，电力成为主要瓶颈。",
+      "maxChars": 70,
+      "lines": 5,
+      "font": "serif"
+    },
+    "credits": {
+      "kind": "text",
+      "default": "撰写：研究组 · v1.0 · 2026 年 11 月 · 本页为模板示例，数据均为虚构",
+      "maxChars": 48,
+      "font": "serif",
+      "note": "italic credits with version and month"
+    }
+  },
+  "relations": [
+    "Three cards 440 x 350, 24 apart, paper #F5F4ED with a 1 unit hairline and radius 8; 28 padding.",
+    "Swatches 24 units, 4 apart: the data hue for the first `level` of three, the neutral tile #D6D3C6 for the rest; hue per card: purple, blue, amber.",
+    "Title 24 sans bold, subtitle 16 sans #5E5D59, sentence 19 serif / 1.5, up to five lines."
+  ],
+  "decoration": [
+    "The swatches' crayon filter."
+  ],
+  "provenance": {
+    "corpus": "research-report kit (examples/institute-essay-report-kit): our own original long-read page in the institute-essay grammar; all copy and numbers are placeholders",
+    "experiment": "styles/institute-essay/style.json provenance (two public reference pages measured privately in Chrome on 2026-11-21; never shipped)",
+    "accessed": "2026-11-21",
+    "method": "The reference pages' three parallel scenario cards set as a document page.",
+    "sampleIds": [
+      "institute-essay/scenarios"
+    ],
+    "measured": [
+      "Three parallel scenario cards with a swatch row, a bold sans title, a sans subtitle and a serif sentence; italic credits with version and month.",
+      "Template: every slot has a budget; light and dark pass."
+    ],
+    "summary": "institute-essay scenarios"
+  }
+}

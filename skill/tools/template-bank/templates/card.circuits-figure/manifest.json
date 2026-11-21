@@ -1,0 +1,148 @@
+{
+  "schema": "design-pipeline.template-bank-template.v1",
+  "id": "card.circuits-figure",
+  "family": "card",
+  "style": "circuits-paper",
+  "title": "Figure with a margin note: a bordered panel with a residual-stream schematic (blocks reading and writing through mauve arrows), token tiles, a numbered caption and a margin note with a thumbnail in the right gutter",
+  "use": "A schematic figure with its numbered caption and the aside that rides in the gutter; layers (1-3) sets how many blocks per stream and tokens (3-5) how many streams.",
+  "canvas": {
+    "width": 1600,
+    "height": 900
+  },
+  "sizes": [
+    "1600x900",
+    "1920x1080"
+  ],
+  "aspect": "16:9",
+  "accent": {
+    "roles": [
+      "maroon"
+    ],
+    "maxShare": 0.02
+  },
+  "params": {
+    "guides": {
+      "type": "boolean",
+      "default": false,
+      "class": "decoration",
+      "note": "draw layout guides"
+    },
+    "theme": {
+      "type": "enum",
+      "values": [
+        "light",
+        "dark"
+      ],
+      "default": "light",
+      "class": "decoration",
+      "note": "light (white #FFFFFF) or dark (#141414) ground"
+    },
+    "layers": {
+      "type": "integer",
+      "default": 2,
+      "min": 1,
+      "max": 3,
+      "class": "proportion",
+      "note": "blocks per residual stream"
+    },
+    "tokens": {
+      "type": "integer",
+      "default": 4,
+      "min": 3,
+      "max": 5,
+      "class": "proportion",
+      "note": "number of token streams"
+    }
+  },
+  "slots": {
+    "fig_title": {
+      "kind": "text",
+      "default": "残差流：每一层读入、写回",
+      "maxChars": 30,
+      "font": "sans",
+      "note": "bold figure title"
+    },
+    "stream_label": {
+      "kind": "text",
+      "default": "残差流",
+      "maxChars": 10,
+      "font": "sans",
+      "note": "label over the first stream"
+    },
+    "tok_{i}": {
+      "kind": "text",
+      "default": [
+        "收盘",
+        "开盘",
+        "放量",
+        "下跌",
+        "回升"
+      ],
+      "maxChars": 6,
+      "font": "mono",
+      "note": "token tile i"
+    },
+    "block_{i}": {
+      "kind": "text",
+      "default": [
+        "注意力",
+        "注意力",
+        "前馈"
+      ],
+      "maxChars": 4,
+      "font": "sans",
+      "note": "name of block i (bottom up) in the first stream"
+    },
+    "cap_label": {
+      "kind": "text",
+      "default": "图 2：",
+      "maxChars": 6,
+      "font": "sans",
+      "note": "bold caption lead-in"
+    },
+    "caption": {
+      "kind": "text",
+      "default": "每个位置有一条残差流；每层的注意力与前馈块从流里读入，把结果加回。示意图，非真实模型。",
+      "maxChars": 70,
+      "font": "sans",
+      "lines": 2,
+      "note": "2 lines"
+    },
+    "margin_label": {
+      "kind": "text",
+      "default": "读入与写回",
+      "maxChars": 14,
+      "font": "sans",
+      "note": "margin note title"
+    },
+    "margin_text": {
+      "kind": "text",
+      "default": "因为每层都只是把输出加回残差流，层与层之间可以直接通信；后面的层读到的是前面所有层写入之和。",
+      "maxChars": 80,
+      "font": "sans",
+      "lines": 5,
+      "note": "up to 5 lines"
+    }
+  },
+  "relations": [
+    "Panel 1004 x 560 units at (96, 120), white, 1 unit hairline in the rule grey, radius 5; the title is 17 units bold centred; streams are 10-unit tile bars at equal steps with beige blocks (stone 2-unit outline) reading and writing through mauve arrows; token tiles are 46 units tall in the tile beige with mono 20-unit text.",
+    "Caption: bold 17-unit lead-in, then the sentence in the 80% ink under the panel; the margin gutter starts at x 1180, 324 units wide: a 60 x 76 thumbnail, a bold 16-unit title, 17-unit text in the 60% ink over up to five lines."
+  ],
+  "decoration": [
+    "Streams, blocks, arrows and the thumbnail are decoration; token text, captions and notes are slots."
+  ],
+  "provenance": {
+    "corpus": "research-paper kit (examples/circuits-paper-kit): our own original interactive paper page in the circuits-paper grammar; all copy, features and numbers are labelled samples",
+    "experiment": "styles/circuits-paper/style.json provenance (three public reference pages measured privately in Chrome on 2026-11-21; never shipped)",
+    "accessed": "2026-11-21",
+    "method": "A bordered figure panel, a numbered caption with a bold lead-in and a gutter note with a thumbnail, with a residual-stream schematic drawn from parameters.",
+    "sampleIds": [
+      "circuits-paper/figure"
+    ],
+    "measured": [
+      "Figure: the 2021 paper's gutter thumbnail beside the text and the 13 px numbered captions; the schematic is our own.",
+      "Template: 1-3 layers x 3-5 tokens, 50 seeds, light and dark pass."
+    ],
+    "summary": "circuits-paper figure"
+  }
+}

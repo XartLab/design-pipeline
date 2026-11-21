@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>技术笔记模板</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* VOICE: an engineer's field note — plain, exact, a little dry; the terminal is the house voice.
+   IDEA: a blog that behaves like a terminal: hotkeys in brackets, a file tree for contents, ASCII progress.
+   PICTURE: clay pixel tiles with 1-bit glyphs, a crayon-grained block chart, a dot-matrix field with a pixel mascot.
+   COLOUR and TYPE: near-black #141413, ivory ink, grey body, one clay accent on tiles only. Mono for chrome, grotesque for reading.
+   LAYOUT: sticky left rail (tree, progress, share) + 620px reading column; header centred; footer field full width. */
+:root{color-scheme:dark;--bg:#141413;--ink:#faf9f5;--body:#b0aea5;--mute:#87867f;--dim:#5e5d59;--hair:rgba(250,249,245,.09);--panel:#1c1b19;--clay:#d97757;
+--mono:"JetBrains Mono","Noto Sans SC",ui-monospace,monospace;--sans:Inter,"Noto Sans SC",system-ui,sans-serif}
+:root[data-theme=light]{color-scheme:light;--bg:#faf9f5;--ink:#141413;--body:#3d3d3a;--mute:#5e5d59;--dim:#bdbaae;--hair:rgba(20,20,19,.1);--panel:#f0eee6}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--body);font:18px/1.6 var(--sans);overflow-x:clip}
+a{color:inherit;text-underline-offset:3px;text-decoration-color:var(--dim)}
+a:hover{text-decoration-color:var(--ink)}
+:focus-visible{outline:2px solid var(--clay);outline-offset:2px}
+html{scroll-padding-top:80px;scroll-behavior:smooth}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+.mono{font-family:var(--mono)}
+
+/* nav */
+.nav{display:flex;align-items:center;gap:clamp(14px,4vw,64px);padding:14px clamp(16px,2vw,30px);border-bottom:1px solid var(--hair);position:sticky;top:0;background:var(--bg);z-index:9}
+.nav .mascot{width:34px;height:28px;flex:none}
+.nav .keys{display:flex;gap:clamp(12px,5vw,110px);flex:1;overflow-x:auto;scrollbar-width:none}
+.nav a.k{font:15px var(--mono);color:var(--mute);text-decoration:none;white-space:nowrap;padding:8px 0}
+.nav a.k[aria-current],.nav a.k:hover{color:var(--ink)}
+.btn{font:14px var(--sans);background:var(--ink);color:var(--bg);border:0;padding:10px 16px;cursor:pointer;white-space:nowrap;text-decoration:none}
+
+/* header */
+.head{max-width:760px;margin:0 auto;padding:clamp(40px,7vw,88px) 20px 40px}
+.tile{width:64px;height:64px;background:var(--clay);display:grid;place-items:center;margin-bottom:22px}
+h1{font:500 clamp(28px,3.4vw,36px)/1.2 var(--sans);color:var(--ink);margin:0 0 14px;text-wrap:balance}
+.deck{color:var(--body);margin:0 0 30px;font-size:17px}
+.metas{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;font:13px var(--mono)}
+.metas dt{color:var(--mute);letter-spacing:.04em}.metas dd{margin:6px 0 0;color:var(--ink)}
+.metas dd::before{content:"└ ";color:var(--dim)}
+
+/* body grid */
+.wrap{display:grid;grid-template-columns:minmax(240px,1fr) minmax(0,620px) minmax(0,1fr);gap:clamp(24px,4vw,64px);padding:40px clamp(16px,2vw,30px) 0;border-top:1px solid var(--hair)}
+.rail{font:13px/1.9 var(--mono);color:var(--mute)}
+.rail .in{position:sticky;top:84px}
+.rail .t{font:500 16px/1.35 var(--sans);color:var(--ink);margin:0 0 26px}
+.rail h4{font:400 12px var(--mono);letter-spacing:.06em;margin:0 0 6px;color:var(--mute)}
+.tree{list-style:none;margin:0 0 26px;padding:0}
+.tree li a{text-decoration:none;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tree li a::before{content:"└ ";color:var(--dim)}
+.tree li.sub a{padding-left:2ch}
+.tree li a.on{color:var(--ink);font-weight:700}
+.prog{white-space:nowrap;color:var(--ink);margin-bottom:6px}.prog span{color:var(--mute)}
+.share button{all:unset;cursor:pointer;display:block;min-height:26px}.share button::before{content:"└ ";color:var(--dim)}.share button:hover{color:var(--ink)}
+
+main h2{font:500 15.75px/1.5 var(--mono);color:var(--ink);text-transform:uppercase;letter-spacing:.02em;margin:56px 0 18px}
+main h3{font:500 15.75px/1.5 var(--mono);color:var(--ink);margin:36px 0 12px}
+main p{margin:0 0 18px}
+main strong{color:var(--ink);font-weight:500}
+main ul{padding-left:1.1em;margin:0 0 18px}main li{margin-bottom:8px}main li::marker{color:var(--dim)}
+code{font:15px var(--mono);color:var(--ink);background:var(--panel);padding:1px 5px;overflow-wrap:anywhere}
+pre{background:var(--panel);border:1px solid var(--hair);padding:16px 18px;overflow-x:auto;font:14px/1.6 var(--mono);color:var(--ink);margin:0 0 18px;position:relative}
+pre code{background:none;padding:0;font-size:inherit}
+pre .c{color:var(--mute)}
+@media(max-width:640px){pre{white-space:pre-wrap;overflow-wrap:anywhere}}
+.copy{position:absolute;top:8px;right:8px;font:12px var(--mono);background:var(--bg);color:var(--mute);border:1px solid var(--hair);padding:4px 8px;cursor:pointer;min-height:28px}
+.copy:hover{color:var(--ink)}
+
+/* figure + caption box */
+figure{margin:28px 0}
+.fig{border:1px solid var(--hair);padding:22px 20px 16px;background:var(--bg)}
+.cap{display:grid;grid-template-columns:auto minmax(0,1fr);gap:18px;border:1px solid var(--hair);border-top:0;padding:12px 14px;font-size:15.75px;line-height:1.6;color:var(--mute)}
+.cap b{font:500 12px/2 var(--mono);color:var(--ink);letter-spacing:.06em;white-space:nowrap}
+.brow{display:grid;grid-template-columns:7.5em minmax(0,1fr) 4.5em;align-items:center;gap:12px;margin:10px 0;font:13px var(--mono)}
+.brow .lab{color:var(--body)}.brow .v{color:var(--ink);text-align:right;white-space:nowrap}
+.bar{height:18px;display:flex;gap:3px}
+.bar i{flex:0 0 auto;width:calc((100% - 57px)/20);height:100%;background:var(--dim);opacity:.45}
+.bar i.on{background:var(--ink);opacity:1;filter:url(#crayon)}
+.bar.hot i.on{background:var(--clay)}
+
+table{width:100%;border-collapse:collapse;font:14px var(--mono);margin:0 0 18px}
+th{font-weight:400;color:var(--mute);text-align:left;padding:8px 10px 8px 0;border-bottom:1px solid var(--hair)}
+td{padding:10px 10px 10px 0;border-bottom:1px solid var(--hair);color:var(--ink)}
+td.n,th.n{text-align:right;white-space:nowrap}
+.sample{font:12px var(--mono);color:var(--mute);margin-top:40px}
+
+/* post list (related) */
+.posts{border-top:1px solid var(--hair);margin-top:48px}
+.post{display:grid;grid-template-columns:28px 7.5em minmax(0,1fr) auto;gap:16px;align-items:center;padding:12px 0;border-bottom:1px solid var(--hair);text-decoration:none}
+.post:hover .tt{color:var(--clay)}
+.post .d{font:13px var(--mono);color:var(--mute);white-space:nowrap}.post .tt{color:var(--ink);font-size:16px}.post .r{font:13px var(--mono);color:var(--mute);white-space:nowrap}
+.mini{width:24px;height:24px;background:var(--clay);display:grid;place-items:center}
+.hint{font:13px var(--mono);color:var(--mute);margin:14px 0 0}
+kbd{font:12px var(--mono);border:1px solid var(--hair);padding:1px 6px;color:var(--ink)}
+
+/* footer + dot field */
+footer{margin-top:96px;border-top:1px solid var(--hair);padding:28px clamp(16px,2vw,30px) 0;display:grid;grid-template-columns:minmax(0,1.4fr) repeat(2,minmax(0,1fr)) minmax(0,1.6fr);gap:24px}
+footer h5{font:400 12px var(--mono);letter-spacing:.06em;color:var(--mute);margin:0 0 10px}
+footer a{display:block;color:var(--ink);text-decoration:none;font-size:16px;margin-bottom:6px}
+footer .brand{font:22px var(--mono);color:var(--ink)}
+.nl{display:flex;border-bottom:1px solid var(--dim);margin-top:10px}
+.nl input{flex:1;background:none;border:0;color:var(--ink);font:16px var(--sans);padding:10px 0;min-height:44px}
+.nl button{all:unset;cursor:pointer;color:var(--mute);padding:0 6px}
+.nlmsg{font:12px var(--mono);color:var(--mute);min-height:18px;margin-top:6px}
+.field{position:relative;height:360px;margin-top:40px}
+.field canvas{position:absolute;inset:0;width:100%;height:100%}
+.field svg{position:absolute;left:50%;top:50%;width:64px;height:56px;transform:translate(-50%,-50%);animation:bob 3s ease-in-out infinite}
+@keyframes bob{50%{transform:translate(-50%,calc(-50% - 6px))}}
+@media(prefers-reduced-motion:reduce){.field svg{animation:none}}
+
+
+/* motion */
+h1 .cur{display:inline-block;width:0;height:1em;position:relative;vertical-align:-.12em}
+h1 .cur::after{content:"";position:absolute;left:4px;top:0;width:.5em;height:1em;background:var(--clay);animation:blink 1s steps(1) infinite}
+h1 .ch{opacity:0}h1 .ch.on{opacity:1}
+@keyframes blink{50%{opacity:0}}
+.bar i.on{transition:opacity .25s,background-color .25s}
+.bars-wait .bar i.on{opacity:.12;background:var(--dim)}
+.tile{animation:tilein .6s steps(6) both}
+@keyframes tilein{from{clip-path:inset(0 0 100% 0)}to{clip-path:inset(0)}}
+.field svg{cursor:pointer}
+.field svg.hop{animation:hop .6s cubic-bezier(.3,1.6,.5,1)}
+@keyframes hop{40%{transform:translate(-50%,calc(-50% - 28px)) rotate(-8deg)}}
+.post .mini{transition:transform .2s steps(2)}.post:hover .mini{transform:rotate(90deg)}
+@media(prefers-reduced-motion:reduce){h1 .cur::after,.tile,.field svg.hop{animation:none}.bars-wait .bar i.on{opacity:1;background:var(--ink)}}
+@media(max-width:980px){.wrap{grid-template-columns:minmax(0,1fr)}.rail .in{position:static}.rail{border-bottom:1px solid var(--hair);padding-bottom:20px}.wrap>.spacer{display:none}}
+@media(max-width:640px){.metas{grid-template-columns:1fr}.post{grid-template-columns:24px minmax(0,1fr) auto}.post .d{display:none}footer{grid-template-columns:1fr 1fr}footer .wide{grid-column:1/-1}.brow{grid-template-columns:5.5em minmax(0,1fr) 4em}.nav .btn{display:none}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+ <defs>
+  <filter id="crayon" x="-5%" y="-10%" width="110%" height="120%">
+   <feTurbulence type="fractalNoise" baseFrequency=".06 .9" numOctaves="2" seed="5" result="s"/>
+   <feColorMatrix in="s" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -2.4 0 0 0 1.75" result="m"/>
+   <feTurbulence type="fractalNoise" baseFrequency=".05" numOctaves="2" seed="9" result="w"/>
+   <feDisplacementMap in="SourceGraphic" in2="w" scale="3" result="d"/>
+   <feComposite in="d" in2="m" operator="in"/>
+  </filter>
+  <symbol id="g-flask" viewBox="0 0 9 9"><path d="M3 0h3v1H5v2l1 1v1l1 1v1l1 1v1H1V7l1-1V5l1-1V3l1-1V1H3z" fill="#141413"/><path d="M3 6h3v1H3z" fill="#d97757"/></symbol>
+  <symbol id="g-check" viewBox="0 0 9 9"><path d="M1 1h7v7H1zM2 2v5h5V2z" fill="#141413"/><path d="M3 4h1v1h1V4h1V3h1v1H6v1H5v1H4V5H3z" fill="#141413"/></symbol>
+  <symbol id="g-bug" viewBox="0 0 9 9"><path d="M3 1h1v1h1V1h1v1H5v1h1v1h2v1H6v1h2v1H6v1H3V7H1V6h2V5H1V4h2V3h1V2H3z" fill="#141413"/></symbol>
+  <symbol id="g-chart" viewBox="0 0 9 9"><path d="M1 1h1v6h6v1H1z M3 5h1v1H3z M5 3h1v3H5z M7 2h1v4H7z" fill="#141413"/></symbol>
+  <symbol id="g-prompt" viewBox="0 0 9 9"><path d="M1 1h7v7H1zM2 2v5h5V2z M3 3h1v1h1v1H4v1H3V5h1V4H3z" fill="#141413"/></symbol>
+  <symbol id="whale" viewBox="0 0 16 14" shape-rendering="crispEdges">
+   <path fill="#6a9bcc" d="M3 4h8v1h2v1h1v1h1v3h-1v1h-2v1H4v-1H2v-1H1V7h1V5h1z"/>
+   <path fill="#d9e6f2" d="M4 9h7v1H5v1H4z"/>
+   <path fill="#141413" d="M11 7h1v1h-1z"/>
+   <path fill="#d97757" d="M12 9h1v1h-1z"/>
+   <path fill="#6a9bcc" d="M0 3h1v1h1v1H1V4H0zM2 2h1v2H2z"/>
+   <path fill="#faf9f5" d="M8 1h1v1H8zM10 0h1v2h-1zM9 2h1v1H9z"/>
+  </symbol>
+ </defs>
+</svg>
+
+<nav class="nav" aria-label="主导航">
+ <svg class="mascot" role="img" aria-label="像素吉祥物占位"><use href="#whale"/></svg>
+ <div class="keys">
+  <a class="k" href="#top" aria-current="page">[H] 首页</a><a class="k" href="#sec-1">[N] 笔记</a><a class="k" href="#sec-3">[D] 文档</a><a class="k" href="#posts">[L] 日志</a>
+ </div>
+ <a class="btn" href="#nl">订阅更新</a>
+</nav>
+
+<header class="head" id="top">
+ <div class="tile"><svg width="40" height="40" aria-hidden="true"><use href="#g-check"/></svg></div>
+ <h1 id="h1" aria-label="我们怎么让夜班工厂验证自己的工作">我们怎么让夜班工厂验证自己的工作</h1>
+ <p class="deck">端到端、属性和差分三种测试，加一条一分钟跑不完就算 bug 的规矩：让并行的 agent 用证据交差，而不是用一句“已完成”。</p>
+ <dl class="metas"><div><dt>作者</dt><dd>工程组</dd></div><div><dt>分类</dt><dd>工程</dd></div><div><dt>发布</dt><dd>2026.11.21</dd></div></dl>
+</header>
+
+<div class="wrap">
+ <aside class="rail" aria-label="目录">
+  <div class="in">
+   <p class="t">我们怎么让夜班工厂验证自己的工作</p>
+   <h4>TREE</h4>
+   <ul class="tree" id="tree"></ul>
+   <div class="prog" id="prog" aria-live="off">░░░░░░░░░░░░░░░░░░░░ 0%</div>
+   <h4 style="margin-top:14px">约 8 分钟读完</h4>
+   <h4 style="margin-top:26px">SHARE</h4>
+   <div class="share"><button type="button" id="cpurl">复制链接</button><button type="button" id="cpmd">复制正文</button><span id="cpmsg"></span></div>
+  </div>
+ </aside>
+
+ <main id="main">
+  <p>夜班工厂里，绝大多数代码由 agent 写。人工审查的注意力是单线程的，所以能并行多少个 agent，取决于它们能不能<strong>自己拿出证据</strong>证明做对了。</p>
+  <p>没有验证闭环，你只能同时盯一两个；有了它，可以放手几十个。下面是我们实际在用的三类测试，以及一条把慢检查当成缺陷的规矩。</p>
+
+  <h2 id="sec-1">不是所有测试都一样：值得投入的三种</h2>
+  <p>先避开两个坑：测试一不稳定，agent 就学会“再跑一次”而不是修代码；测试一慢，agent 就少跑，问题就攒到合并前才暴露。</p>
+
+  <h3 id="sec-1a">端到端测试</h3>
+  <p>单元测试能全绿而功能照样坏，因为 agent 和测试都没理解整件事。端到端测试让 agent 真的打开应用、点一遍、截图、读日志。</p>
+  <figure>
+   <div class="fig bars-wait" id="bars" role="img" aria-label="三种测试发现问题的比例"></div>
+   <figcaption class="cap"><b>FIG A</b><span>一周内各类检查拦下的问题数（每格 = 5 个）。示例数据，仅展示版式。</span></figcaption>
+  </figure>
+
+  <h3 id="sec-1b">属性测试：不能被打破的约束</h3>
+  <p>先写一句你认为永远成立的话，再让测试库生成成千上万个输入去推翻它。夜班里最常用的几条：</p>
+  <ul>
+   <li><strong>往返编码</strong>：序列化再反序列化，得到原值。</li>
+   <li><strong>不变量</strong>：任何时候账户余额都不能为负。</li>
+   <li><strong>幂等</strong>：同一个迁移跑两遍，结果和跑一遍一样。</li>
+  </ul>
+  <pre><button class="copy" type="button">复制</button><code><span class="c"># 每个工单完成前，agent 必须贴出这三行的输出</span>
+nightshift check --fast        <span class="c"># ≤ 60s，否则记为缺陷</span>
+nightshift check --property    <span class="c"># 1000 个随机输入</span>
+nightshift check --e2e --shot  <span class="c"># 截图附在 PR 上</span></code></pre>
+
+  <h3 id="sec-1c">差分测试：旧系统就是标准答案</h3>
+  <p>重写一个模块时，把同样的输入同时喂给新旧两套实现，任何不一致都是待解释的差异。旧系统不必完美，它只需要是你已经接受的行为。</p>
+
+  <h2 id="sec-2">一分钟跑不完就是 bug</h2>
+  <p>快检查是 agent 每次提交都会跑的东西。它一慢，整条流水线的节拍就跟着慢。我们把超时直接记成工单，和功能缺陷同等优先级。</p>
+  <table>
+   <thead><tr><th>检查</th><th class="n">中位耗时</th><th class="n">上限</th><th class="n">状态</th></tr></thead>
+   <tbody>
+    <tr><td>静态检查</td><td class="n">8 s</td><td class="n">60 s</td><td class="n">通过</td></tr>
+    <tr><td>属性测试</td><td class="n">41 s</td><td class="n">60 s</td><td class="n">通过</td></tr>
+    <tr><td>浏览器截图</td><td class="n">67 s</td><td class="n">60 s</td><td class="n" style="color:var(--clay)">超时</td></tr>
+   </tbody>
+  </table>
+
+  <h2 id="sec-3">好测试，好结果</h2>
+  <p>验证不是收尾工序，而是让并行成为可能的前提。把规则写进结构——脚本检查、生成的骨架、不变量——而不是写在提示词里求 agent 记住。</p>
+  <p class="sample">本页为模板示例，正文与数据均为虚构，用于展示版式。</p>
+
+  <section class="posts" id="posts" aria-label="相关笔记"></section>
+  <p class="hint">按 <kbd>J</kbd> / <kbd>K</kbd> 在章节间跳转，<kbd>R</kbd> 加载更多</p>
+ </main>
+ <div class="spacer"></div>
+</div>
+
+<footer id="nl">
+ <div><div class="brand">devlog</div><p style="font-size:14px;color:var(--mute);margin:8px 0 0">工程笔记、方法和取舍。</p></div>
+ <div><h5>RESOURCES</h5><a href="#sec-1">测试方法</a><a href="#sec-2">检查规矩</a><a href="#sec-3">工厂文档</a></div>
+ <div><h5>CONNECT</h5><a href="#top">仓库</a><a href="#top">讨论区</a></div>
+ <div class="wide"><h5>GET THE NEWSLETTER</h5><p style="margin:0;color:var(--ink);font-size:16px">每月一封，汇总新笔记。</p>
+  <form class="nl" id="nlf"><input id="em" type="email" aria-label="邮箱" placeholder="你的邮箱" autocomplete="email" required><button aria-label="提交">→</button></form>
+  <div class="nlmsg" id="nlmsg"></div></div>
+</footer>
+<div class="field" aria-hidden="true"><canvas id="dots"></canvas><svg><use href="#whale"/></svg></div>
+
+<script>
+{
+const $=s=>document.querySelector(s);
+/* bars: block chart */
+const B=[['端到端',14,true],['属性测试',9,false],['差分测试',6,false],['单元测试',3,false]];
+$('#bars').innerHTML=B.map(([k,n,hot])=>`<div class="brow"><span class="lab">${k}</span><div class="bar${hot?' hot':''}">${Array.from({length:20},(_,i)=>`<i class="${i<n?'on':''}"></i>`).join('')}</div><span class="v">${n*5} 个</span></div>`).join('');
+
+
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+/* typewriter title */
+{const h=$('#h1'),txt=h.textContent;const cur=document.createElement('i');cur.className='cur';cur.setAttribute('aria-hidden','true');
+ if(RM){h.append(cur)}else{
+  /* every character is in the layout from the start (only its opacity changes), so the title never reflows while it types */
+  h.textContent='';const cs=[...txt].map(c=>{const e=document.createElement('span');e.className='ch';e.setAttribute('aria-hidden','true');e.textContent=c;h.append(e);return e});h.append(cur);cs[0].before(cur);
+  let i=0;const tick=()=>{cs[i].classList.add('on');cs[i].after(cur);if(++i<cs.length)setTimeout(tick,45+Math.random()*50)};setTimeout(tick,350)}}
+/* bars fill block by block */
+{const bx=$('#bars');bx.querySelectorAll('.bar').forEach(bar=>bar.querySelectorAll('i.on').forEach((c,j)=>c.style.transitionDelay=(j*55)+'ms'));
+ const o=new IntersectionObserver(es=>{if(es[0].isIntersecting){bx.classList.remove('bars-wait');o.disconnect()}},{threshold:.4});o.observe(bx)}
+/* mascot hop */
+{const m=$('.field svg');m.addEventListener('click',()=>{m.classList.remove('hop');void m.offsetWidth;m.classList.add('hop')})}
+/* related posts */
+const P=[['bug','2026.11.18','为什么不稳定的测试其实是调度 bug','6 分钟'],['chart','2026.11.14','把单仓构建从四十分钟压到六分钟','9 分钟'],['flask','2026.11.09','合并机器人如何决定谁先进队列','7 分钟'],['prompt','2026.11.03','把提示词里的规则搬进脚本','5 分钟']];
+$('#posts').innerHTML=P.map(p=>`<a class="post" href="#top"><span class="mini"><svg width="16" height="16" aria-hidden="true"><use href="#g-${p[0]}"/></svg></span><span class="d">${p[1]}</span><span class="tt">${p[2]}</span><span class="r">${p[3]}</span></a>`).join('');
+
+/* tree + progress */
+const hs=[...document.querySelectorAll('main h2,main h3')];
+$('#tree').innerHTML=hs.map(h=>`<li class="${h.tagName==='H3'?'sub':''}"><a href="#${h.id}">${h.textContent}</a></li>`).join('');
+const links=[...document.querySelectorAll('#tree a')];
+const main=$('#main');
+const upd=()=>{
+ const r=main.getBoundingClientRect(),tot=r.height-innerHeight*.6;
+ const p=Math.max(0,Math.min(1,(-r.top+innerHeight*.3)/tot));const n=Math.round(p*20);
+ $('#prog').innerHTML=`${'▓'.repeat(n)}<span>${'░'.repeat(20-n)}</span> ${Math.round(p*100)}%`;
+ let cur=0;hs.forEach((h,i)=>{if(h.getBoundingClientRect().top<120)cur=i});
+ links.forEach((a,i)=>a.classList.toggle('on',i===cur));
+};
+addEventListener('scroll',upd,{passive:true});addEventListener('resize',upd);upd();
+
+/* keys */
+addEventListener('keydown',e=>{
+ if(e.target.closest('input,textarea')||e.metaKey||e.ctrlKey||e.altKey)return;
+ const k=e.key.toLowerCase();
+ let cur=hs.findIndex(h=>h.getBoundingClientRect().top>130);if(cur<0)cur=hs.length;
+ if(k==='j'&&hs[cur])hs[cur].scrollIntoView();
+ if(k==='k'){const t=hs[Math.max(0,cur-2)];t&&t.scrollIntoView()}
+ if(k==='h')scrollTo(0,0);
+ if(k==='r')$('#posts').scrollIntoView();
+});
+
+/* copy */
+const say=(el,t)=>{el.textContent=t;setTimeout(()=>el.textContent='',1800)};
+const cp=async(txt,btn)=>{try{await navigator.clipboard.writeText(txt);say(btn,'已复制')}catch(e){say(btn,'复制失败')}};
+document.querySelectorAll('.copy').forEach(b=>b.addEventListener('click',()=>{const t=b.textContent;cp(b.parentElement.querySelector('code').innerText,b);setTimeout(()=>b.textContent=t,1800)}));
+$('#cpurl').addEventListener('click',()=>cp(location.href,$('#cpmsg')));
+$('#cpmd').addEventListener('click',()=>cp(main.innerText,$('#cpmsg')));
+$('#nlf').addEventListener('submit',e=>{e.preventDefault();$('#nlmsg').textContent='这是模板示例，未真正提交。'});
+
+/* dot field: slow shimmer wave */
+const cv=$('#dots');let pts=[],W=0,H=0,g=null,col='#87867f';
+const build=()=>{W=cv.clientWidth;H=cv.clientHeight;const d=devicePixelRatio||1;cv.width=W*d;cv.height=H*d;g=cv.getContext('2d');g.setTransform(d,0,0,d,0,0);
+ let s=11;const rnd=()=>(s=(s*16807)%2147483647)/2147483647;
+ const blobs=Array.from({length:7},()=>({x:rnd()*W,y:rnd()*H,r:40+rnd()*90}));
+ col=getComputedStyle(document.documentElement).getPropertyValue('--mute').trim()||col;pts=[];
+ for(let y=6;y<H;y+=12)for(let x=6;x<W;x+=12){let v=0;for(const b of blobs){v=Math.max(v,1-Math.hypot(x-b.x,y-b.y)/b.r)}
+  if(Math.hypot(x-W/2,y-H/2)<70)continue;const r=v>0?1+v*2.2:(rnd()<.03?1:0);if(r)pts.push([x,y,r,v>0?.35+v*.5:.3])}};
+const paint=t=>{g.clearRect(0,0,W,H);g.fillStyle=col;for(const[x,y,r,a]of pts){const w=RM?1:.6+.4*Math.sin(t/900-x*.012-y*.02);g.globalAlpha=a*w;g.beginPath();g.arc(x,y,r*(RM?1:.85+.15*w),0,7);g.fill()}};
+let vis=false,last=0;const loop=t=>{if(!vis)return;if(t-last>40){paint(t);last=t}requestAnimationFrame(loop)};
+const draw=()=>{build();paint(performance.now())};
+new IntersectionObserver(es=>{vis=es[0].isIntersecting;if(vis&&!RM)requestAnimationFrame(loop)}).observe(cv);
+const ro=new ResizeObserver(draw);ro.observe(cv);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+{
+  "schema": "design-pipeline.template-bank-template.v1",
+  "id": "card.essay-flow",
+  "family": "card",
+  "style": "institute-essay",
+  "title": "Flow card: a rounded paper band with 3-5 hand-drawn crayon-line icons (data stack, laptop, fork, page, person) joined by clay arrows, a sans label under each",
+  "use": "A process or pipeline in one line (sources to model to scenarios to report); labels are slots, count sets how many nodes, icon_start picks which icon the row begins with.",
+  "canvas": {
+    "width": 1600,
+    "height": 900
+  },
+  "sizes": [
+    "1600x900",
+    "1920x1080"
+  ],
+  "aspect": "16:9",
+  "accent": {
+    "roles": [
+      "clay"
+    ],
+    "maxShare": 0.02
+  },
+  "params": {
+    "guides": {
+      "type": "boolean",
+      "default": false,
+      "class": "decoration",
+      "note": "draw layout guides"
+    },
+    "theme": {
+      "type": "enum",
+      "values": [
+        "light",
+        "dark"
+      ],
+      "default": "light",
+      "class": "decoration",
+      "note": "light (ivory #FAF9F5) or dark (#141413) ground"
+    },
+    "count": {
+      "type": "integer",
+      "default": 5,
+      "min": 3,
+      "max": 5,
+      "class": "proportion",
+      "note": "number of nodes in the flow"
+    },
+    "icon_start": {
+      "type": "integer",
+      "default": 0,
+      "min": 0,
+      "max": 4,
+      "class": "rhythm",
+      "note": "which icon the row starts with (stack, laptop, fork, page, person; the rest follow in that order)"
+    }
+  },
+  "slots": {
+    "label_{i}": {
+      "kind": "text",
+      "default": [
+        "读者",
+        "数据源",
+        "模型",
+        "三种情景",
+        "研报"
+      ],
+      "maxChars": 12,
+      "font": "sans",
+      "note": "label under node i"
+    }
+  },
+  "relations": [
+    "Band 1360 x 240 units, full radius, paper with a 1 unit hairline, centred about y 420; nodes at equal steps along the band (count 3-5), icons 1.8x their local 84-unit box with 3.2-unit crayon-line strokes in ink.",
+    "Arrows are clay, 4.4 units, a shaft and a two-stroke head, kept 18 units clear of both icons; labels are 24 units sans #5E5D59 centred under each node, 64 units below the band, never on the band."
+  ],
+  "decoration": [
+    "The paper band, the icons and the clay arrows (strokes through the crayon line filter, which the static check never measures); the label text is the only measured content."
+  ],
+  "provenance": {
+    "corpus": "research-report kit (examples/institute-essay-report-kit): our own original long-read page; its hand-drawn flow diagram, re-set as a card; all copy is a placeholder",
+    "experiment": "styles/institute-essay/style.json provenance (two public reference pages measured privately in Chrome on 2026-11-21; never shipped); the crayon texture is the owner's request to match the references' hand-made look",
+    "accessed": "2026-11-21",
+    "method": "The kit page's flow figure (figure.flow) lifted into a parametric template: a paper band, line icons drawn as strokes through an SVG turbulence mask, clay arrows, labels as slots.",
+    "sampleIds": [
+      "institute-essay/flow"
+    ],
+    "measured": [
+      "Kit figure: band 880 x 110 on a 920 viewBox, ink icons 3.2 stroke, clay arrows 2.4 stroke, labels sans 14 under the band (scaled 1.74x here).",
+      "Template: 3, 4 and 5 nodes and every icon offset pass the static check; light and dark pass."
+    ],
+    "summary": "institute-essay flow card"
+  }
+}

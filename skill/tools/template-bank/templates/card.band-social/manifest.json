@@ -1,0 +1,101 @@
+{
+  "schema": "design-pipeline.template-bank-template.v1",
+  "id": "card.band-social",
+  "family": "card",
+  "style": "brand-band",
+  "title": "Social card 1200 x 630: ivory left with a tracked wordmark, a three-line serif headline, a sans line and an ink tag; a colour field with one picture on the right",
+  "use": "An og:image or a share card; subject and field choose the picture.",
+  "canvas": {
+    "width": 1200,
+    "height": 630
+  },
+  "sizes": [
+    "1200x630",
+    "2400x1260"
+  ],
+  "aspect": "1200:630",
+  "accent": {
+    "roles": [
+      "clay"
+    ],
+    "maxShare": 0.03
+  },
+  "params": {
+    "guides": {
+      "type": "boolean",
+      "default": false,
+      "class": "decoration",
+      "note": "draw layout guides"
+    },
+    "field": {
+      "type": "enum",
+      "values": [
+        "sage",
+        "blush",
+        "lilac",
+        "sky",
+        "sand"
+      ],
+      "class": "decoration",
+      "note": "the colour field behind the picture",
+      "default": "blush"
+    },
+    "subject": {
+      "type": "integer",
+      "default": 6,
+      "min": 0,
+      "max": 7,
+      "class": "rhythm",
+      "note": "which picture: 0 hand-graph, 1 seedling, 2 book, 3 magnifier, 4 spark-hands, 5 path, 6 candles, 7 compass"
+    }
+  },
+  "slots": {
+    "brand": {
+      "kind": "text",
+      "default": "FIELDNOTE",
+      "maxChars": 12,
+      "font": "sans"
+    },
+    "title": {
+      "kind": "text",
+      "default": "策略的每一步都留下证据",
+      "maxChars": 24,
+      "font": "serif",
+      "lines": 3,
+      "title": true
+    },
+    "sub": {
+      "kind": "text",
+      "default": "研究、回测、实盘监控，一个工作台。",
+      "maxChars": 50,
+      "font": "sans",
+      "lines": 2
+    },
+    "tag": {
+      "kind": "text",
+      "default": "产品介绍",
+      "maxChars": 8,
+      "font": "sans"
+    }
+  },
+  "relations": [
+    "The left 640 units are ivory with a 64 inset: wordmark bold 18 tracked, headline serif 58 / 1.16 in up to three lines in 540 units, a 19 sans line, an ink tag 44 high; the right 560 units are a colour field with the picture at 400."
+  ],
+  "decoration": [
+    "The field and its picture with their line filter; the text slots are the only measured content."
+  ],
+  "provenance": {
+    "corpus": "product-site kit (examples/brand-band-site-kit): our own original one-page site in Chinese in the brand-band grammar; all copy is a placeholder",
+    "experiment": "styles/brand-band/style.json provenance (public pages measured privately in Chrome on 2026-11-21; never shipped); the pictures are our own code-drawn illustrations",
+    "accessed": "2026-11-21",
+    "method": "The measured hero statement and tile on a 1200 x 630 card: ivory half, a square-ish colour field half.",
+    "sampleIds": [
+      "brand-band/social"
+    ],
+    "measured": [
+      "Statement serif 47.8 / 59.7 scaled to 58; tile #BCD1CA beside text.",
+      "Template: 2400 x 1260 scales; every field passes."
+    ],
+    "summary": "brand-band social card"
+  }
+}

@@ -1,0 +1,122 @@
+{
+  "schema": "design-pipeline.template-bank-template.v1",
+  "id": "cover.index-hero",
+  "family": "cover",
+  "style": "index-explorer",
+  "title": "Hero: a serif title in two lines (the second at weight 300), a mono date label, a sans deck, two pill buttons and a seeded tile grid on the right",
+  "use": "The first screen of a data explorer or an index report; the grid is a decoration seeded by --param seed.",
+  "canvas": {
+    "width": 1600,
+    "height": 900
+  },
+  "sizes": [
+    "1600x900",
+    "1920x1080"
+  ],
+  "aspect": "16:9",
+  "accent": {
+    "roles": [
+      "coral"
+    ],
+    "maxShare": 0.03
+  },
+  "params": {
+    "guides": {
+      "type": "boolean",
+      "default": false,
+      "class": "decoration",
+      "note": "draw layout guides"
+    },
+    "theme": {
+      "type": "enum",
+      "values": [
+        "light",
+        "dark"
+      ],
+      "default": "light",
+      "class": "decoration",
+      "note": "light (ivory #FAF9F5) or dark (#141413) ground; tile names and the tooltip keep their fixed inks"
+    },
+    "convention": {
+      "type": "enum",
+      "values": [
+        "intl",
+        "cn"
+      ],
+      "default": "intl",
+      "class": "decoration",
+      "note": "intl (default, the measured lineage): green heat scale, rising green, falling coral; cn (红涨绿跌, Chinese markets): red heat scale from light to deep, rising red, falling green; the tile grid and the mark's dots follow it"
+    },
+    "seed": {
+      "default": 7,
+      "min": 1,
+      "max": 9999,
+      "class": "decoration",
+      "note": "seeds the tile values, so the grid's colours"
+    }
+  },
+  "slots": {
+    "title_1": {
+      "kind": "text",
+      "default": "市场热点指数",
+      "maxChars": 8,
+      "font": "serif",
+      "title": true
+    },
+    "title_2": {
+      "kind": "text",
+      "default": "看资金在关注哪里",
+      "maxChars": 9,
+      "font": "serif",
+      "title": true,
+      "note": "weight 300"
+    },
+    "meta": {
+      "kind": "text",
+      "default": "UPDATED 2026-11-21 · SAMPLE DATA",
+      "maxChars": 36,
+      "font": "mono",
+      "note": "Latin and digits only"
+    },
+    "deck": {
+      "kind": "text",
+      "default": "按地区与板块，看关注度比按成交占比的预期高出多少。示例数据，仅用于展示版式。",
+      "maxChars": 40,
+      "font": "sans",
+      "lines": 2
+    },
+    "cta_1": {
+      "kind": "text",
+      "default": "打开数据",
+      "maxChars": 6,
+      "font": "sans"
+    },
+    "cta_2": {
+      "kind": "text",
+      "default": "怎么读",
+      "maxChars": 6,
+      "font": "sans"
+    }
+  },
+  "relations": [
+    "Title 80 units serif, the second line weight 300, a 92 pitch (the page's 80 / 88); the mono label 14 uppercase-style with 4% tracking; deck 20 sans #5E5D59 in a 600-unit column.",
+    "The grid is 8 x 8 cells of 70 on a 76 pitch, right-aligned to 1504, centred vertically; copy keeps to the left 880 units."
+  ],
+  "decoration": [
+    "The tile grid, the graph-paper mark with four dots and its hairlines are decoration."
+  ],
+  "provenance": {
+    "corpus": "market hotspot index explorer kit (examples/index-explorer-kit): our own original data page in the index-explorer grammar; every number is generated in the page and marked as sample data",
+    "experiment": "styles/index-explorer/style.json provenance (two public reference pages measured privately in Chrome on 2026-11-21; never shipped)",
+    "accessed": "2026-11-21",
+    "method": "The data page's hero re-set: a two-line serif title over a mono date label with the page's tile-grid colours as the picture.",
+    "sampleIds": [
+      "index-explorer/hero"
+    ],
+    "measured": [
+      "Hero 80 / 88 serif, the second line weight 300; date label mono 13 uppercase #5E5D59; a small graph-paper mark with green dots above the title.",
+      "Template: seeded grid, light and dark pass."
+    ],
+    "summary": "index-explorer hero"
+  }
+}

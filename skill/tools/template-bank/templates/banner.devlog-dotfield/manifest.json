@@ -1,0 +1,87 @@
+{
+  "schema": "design-pipeline.template-bank-template.v1",
+  "id": "banner.devlog-dotfield",
+  "family": "banner",
+  "style": "devlog-terminal",
+  "title": "Dot-matrix field: grey dots of four sizes forming faint soft shapes around a clear disc with a mascot slot in the middle",
+  "use": "The closing band of a page or a footer backdrop. seed changes the shapes (same seed, same field), density how much of the grid is filled. The mascot slot is yours.",
+  "canvas": {
+    "width": 1440,
+    "height": 480
+  },
+  "sizes": [
+    "1440x480",
+    "2880x960"
+  ],
+  "aspect": "3:1",
+  "accent": {
+    "roles": [
+      "clay"
+    ],
+    "maxShare": 0.02
+  },
+  "params": {
+    "guides": {
+      "type": "boolean",
+      "default": false,
+      "class": "decoration",
+      "note": "draw layout guides"
+    },
+    "seed": {
+      "type": "integer",
+      "default": 7,
+      "min": 1,
+      "max": 999,
+      "class": "rhythm",
+      "note": "seed of the soft shapes"
+    },
+    "density": {
+      "default": 0.55,
+      "min": 0.35,
+      "max": 0.75,
+      "class": "proportion",
+      "note": "how much of the dot grid is filled"
+    }
+  },
+  "slots": {
+    "mascot": {
+      "kind": "image",
+      "ground": "ground",
+      "note": "the mascot (144 x 144, transparent); your own art"
+    },
+    "field_label": {
+      "kind": "text",
+      "default": "FIELD 007",
+      "maxChars": 12,
+      "font": "mono",
+      "derived": true,
+      "note": "derived from seed"
+    },
+    "hint": {
+      "kind": "text",
+      "default": "PRESS ANY KEY TO CONTINUE",
+      "maxChars": 30,
+      "font": "mono"
+    }
+  },
+  "relations": [
+    "24-unit dot grid, four dot radii (1.2-3.75 units); the two larger classes are lighter grey.",
+    "A clear disc of 118 units around the canvas centre holds the mascot slot; the bottom corners stay clear for the label and the hint."
+  ],
+  "decoration": [
+    "The whole dot field: drawn, deterministic for a seed."
+  ],
+  "provenance": {
+    "corpus": "benchlog case: our own original developer blog in the devlog-terminal grammar (post index, article with rail and header, figure frame, closing dot field), original copy and our own pixel glyphs",
+    "experiment": "styles/devlog-terminal/style.json provenance (a public developer blog the owner named, read and measured privately in Chrome; never shipped)",
+    "accessed": "2026-11-21",
+    "method": "The closing dot-matrix field of the blog re-built from soft blobs at 1440 x 480.",
+    "sampleIds": [
+      "benchlog/dotfield"
+    ],
+    "measured": [
+      "Reference: grey dots of varying size forming faint shapes with a mascot in the middle; here the shapes are seeded blobs."
+    ],
+    "summary": "benchlog dot field"
+  }
+}
