@@ -189,6 +189,7 @@
     "template-game-packs.test.cjs",
     "template-street-tape.test.cjs",
     "template-devlog-terminal.test.cjs",
+    "template-brand-band.test.cjs",
     "template-institute-essay.test.cjs",
     "template-celestial-voyage.test.cjs",
     "template-megastructure-ink.test.cjs",

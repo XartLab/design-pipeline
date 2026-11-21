@@ -1,0 +1,125 @@
+{
+  "schema": "design-pipeline.template-bank-template.v1",
+  "id": "banner.band-black-statement",
+  "family": "banner",
+  "style": "brand-band",
+  "title": "Near-black band: a small tracked label, a big ivory serif statement in up to three lines, an ivory button and a ghost button, a hairline footer row, an optional small field with a picture",
+  "use": "The statement band that closes an argument or opens a section; show_tile turns the small picture on or off.",
+  "canvas": {
+    "width": 1600,
+    "height": 900
+  },
+  "sizes": [
+    "1600x900",
+    "1920x1080"
+  ],
+  "aspect": "16:9",
+  "accent": {
+    "roles": [
+      "clay"
+    ],
+    "maxShare": 0.03
+  },
+  "params": {
+    "guides": {
+      "type": "boolean",
+      "default": false,
+      "class": "decoration",
+      "note": "draw layout guides"
+    },
+    "field": {
+      "type": "enum",
+      "values": [
+        "sage",
+        "blush",
+        "lilac",
+        "sky",
+        "sand"
+      ],
+      "class": "decoration",
+      "note": "the colour field behind the picture",
+      "default": "sand"
+    },
+    "subject": {
+      "type": "integer",
+      "default": 7,
+      "min": 0,
+      "max": 7,
+      "class": "rhythm",
+      "note": "which picture: 0 hand-graph, 1 seedling, 2 book, 3 magnifier, 4 spark-hands, 5 path, 6 candles, 7 compass"
+    },
+    "show_tile": {
+      "type": "boolean",
+      "default": true,
+      "class": "decoration",
+      "note": "draw the small colour field with a picture at the right"
+    }
+  },
+  "slots": {
+    "label": {
+      "kind": "text",
+      "default": "我们的做法",
+      "maxChars": 14,
+      "font": "sans"
+    },
+    "statement": {
+      "kind": "text",
+      "default": "好的策略不是一次回测里的漂亮曲线，而是任何人拿到同一份配置都能得到同一个结论。",
+      "maxChars": 40,
+      "font": "serif",
+      "lines": 3,
+      "title": true
+    },
+    "cta_1": {
+      "kind": "text",
+      "default": "阅读方法",
+      "maxChars": 8,
+      "font": "sans"
+    },
+    "cta_2": {
+      "kind": "text",
+      "default": "查看配置 →",
+      "maxChars": 8,
+      "font": "sans"
+    },
+    "foot_1": {
+      "kind": "text",
+      "default": "研究 · 回测 · 实盘",
+      "maxChars": 20,
+      "font": "sans"
+    },
+    "foot_2": {
+      "kind": "text",
+      "default": "示例站点",
+      "maxChars": 20,
+      "font": "sans"
+    },
+    "foot_3": {
+      "kind": "text",
+      "default": "2026 年 11 月",
+      "maxChars": 20,
+      "font": "sans"
+    }
+  },
+  "relations": [
+    "Ground #0D0C0B edge to edge; label 14 bold tracked #B0AEA5 at 150 units; statement 68 serif ivory, 1.22 line height, up to three lines in 960 units (1360 without the tile); an ivory 10 unit button and a #30302E ghost button 52 high at 620.",
+    "A 1 unit #30302E hairline at 758 and a footer row of three 14 #B0AEA5 labels; the optional field is 320 square at the right with its picture at 270."
+  ],
+  "decoration": [
+    "The ground, the hairline, the small field and its picture; the text slots are the only measured content."
+  ],
+  "provenance": {
+    "corpus": "product-site kit (examples/brand-band-site-kit): our own original one-page site in Chinese in the brand-band grammar; all copy is a placeholder",
+    "experiment": "styles/brand-band/style.json provenance (public pages measured privately in Chrome on 2026-11-21; never shipped); the pictures are our own code-drawn illustrations",
+    "accessed": "2026-11-21",
+    "method": "The measured near-black product hero (#0D0C0B) and the black footer (#141413) with its #B0AEA5 13 px links, merged into one statement band; the statement is the 47.8 px serif scaled up.",
+    "sampleIds": [
+      "brand-band/black-statement"
+    ],
+    "measured": [
+      "Hero ground rgb(13,12,11), nav pills on it #262624 / #3D3D3A / #FAF9F5; footer #141413 with #B0AEA5 13 px links.",
+      "Template: three lines of 14 characters each fit; ivory on #0D0C0B is 18:1, #B0AEA5 on it 8.4:1."
+    ],
+    "summary": "brand-band black statement"
+  }
+}

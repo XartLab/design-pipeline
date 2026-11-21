@@ -1,0 +1,140 @@
+{
+  "schema": "design-pipeline.template-bank-template.v1",
+  "id": "card.band-features",
+  "family": "card",
+  "style": "brand-band",
+  "title": "Feature cards: three paper cards, each a colour field with one picture, a bold title, one sentence and an arrow link, under a serif heading",
+  "use": "Three things a product does; field_start and subject_start rotate the fields and pictures.",
+  "canvas": {
+    "width": 1600,
+    "height": 900
+  },
+  "sizes": [
+    "1600x900",
+    "1920x1080"
+  ],
+  "aspect": "16:9",
+  "accent": {
+    "roles": [
+      "clay"
+    ],
+    "maxShare": 0.03
+  },
+  "params": {
+    "guides": {
+      "type": "boolean",
+      "default": false,
+      "class": "decoration",
+      "note": "draw layout guides"
+    },
+    "field_start": {
+      "type": "integer",
+      "default": 0,
+      "min": 0,
+      "max": 4,
+      "class": "rhythm",
+      "note": "field of the first card (sage, blush, lilac, sky, sand; the rest follow)"
+    },
+    "subject_start": {
+      "type": "integer",
+      "default": 1,
+      "min": 0,
+      "max": 7,
+      "class": "rhythm",
+      "note": "which picture: 0 hand-graph, 1 seedling, 2 book, 3 magnifier, 4 spark-hands, 5 path, 6 candles, 7 compass"
+    }
+  },
+  "slots": {
+    "heading": {
+      "kind": "text",
+      "default": "一个工作台，三件事",
+      "maxChars": 24,
+      "font": "serif",
+      "title": true
+    },
+    "lede": {
+      "kind": "text",
+      "default": "每一步都留下证据，换一个人也能重跑。",
+      "maxChars": 40,
+      "font": "sans"
+    },
+    "title_1": {
+      "kind": "text",
+      "default": "研究",
+      "maxChars": 12,
+      "font": "sans"
+    },
+    "title_2": {
+      "kind": "text",
+      "default": "回测",
+      "maxChars": 12,
+      "font": "sans"
+    },
+    "title_3": {
+      "kind": "text",
+      "default": "实盘监控",
+      "maxChars": 12,
+      "font": "sans"
+    },
+    "text_1": {
+      "kind": "text",
+      "default": "把假设、数据口径和因子写在同一处，改动有记录。",
+      "maxChars": 46,
+      "font": "sans",
+      "lines": 2
+    },
+    "text_2": {
+      "kind": "text",
+      "default": "同一份配置能重跑，结果带着参数和随机种子。",
+      "maxChars": 46,
+      "font": "sans",
+      "lines": 2
+    },
+    "text_3": {
+      "kind": "text",
+      "default": "持仓、延迟和风控状态在一个面板里。",
+      "maxChars": 46,
+      "font": "sans",
+      "lines": 2
+    },
+    "link_1": {
+      "kind": "text",
+      "default": "了解研究 →",
+      "maxChars": 10,
+      "font": "sans"
+    },
+    "link_2": {
+      "kind": "text",
+      "default": "了解回测 →",
+      "maxChars": 10,
+      "font": "sans"
+    },
+    "link_3": {
+      "kind": "text",
+      "default": "了解监控 →",
+      "maxChars": 10,
+      "font": "sans"
+    }
+  },
+  "relations": [
+    "Three cards 464 x 650 with a 24 gap and 80 inset, paper #F5F4ED, radius 16, padding 32; each has a 400-unit square field with its picture at 80%, a bold 24 title 56 units under it, a 16 sans body in two lines and a 16 medium link at the foot.",
+    "Fields cycle sage, blush, lilac, sky, sand from field_start; pictures run from subject_start; a flat accent never matches its field."
+  ],
+  "decoration": [
+    "The cards, the fields and the pictures with their line filter; the text slots are the only measured content."
+  ],
+  "provenance": {
+    "corpus": "product-site kit (examples/brand-band-site-kit): our own original one-page site in Chinese in the brand-band grammar; all copy is a placeholder",
+    "experiment": "styles/brand-band/style.json provenance (public pages measured privately in Chrome on 2026-11-21; never shipped); the pictures are our own code-drawn illustrations",
+    "accessed": "2026-11-21",
+    "method": "The measured card row (571 x 426, radius 16, padding 32, gap 24) with the oat band's colour-field tile pulled into each card; titles bold 22 scaled to 24.",
+    "sampleIds": [
+      "brand-band/features"
+    ],
+    "measured": [
+      "Cards #F5F4ED, radius 16, padding 32, title bold 22 / 27.5, body 15 / 22.5 #3D3D3A, tile #BCD1CA.",
+      "Template: every subject and field offset passes the static check."
+    ],
+    "summary": "brand-band feature cards"
+  }
+}
