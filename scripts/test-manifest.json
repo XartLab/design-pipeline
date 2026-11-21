@@ -192,6 +192,7 @@
     "template-brand-band.test.cjs",
     "template-circuits-paper.test.cjs",
     "template-institute-essay.test.cjs",
+    "template-index-explorer.test.cjs",
     "template-celestial-voyage.test.cjs",
     "template-megastructure-ink.test.cjs",
     "template-lattice-dossier.test.cjs",

@@ -1,0 +1,251 @@
+{
+  "schema": "design-pipeline.template-bank-template.v1",
+  "id": "card.index-stats",
+  "family": "card",
+  "style": "index-explorer",
+  "title": "Stat tiles: four white cards, each a bold label, a serif numeral, a delta with a triangle and a note, and a sparkline with a coral end dot",
+  "use": "A row of headline numbers. value_1..4 and delta_1..4 are parameters; the numeral and the delta text are derived from them and the triangle follows the sign.",
+  "canvas": {
+    "width": 1600,
+    "height": 900
+  },
+  "sizes": [
+    "1600x900",
+    "1920x1080"
+  ],
+  "aspect": "16:9",
+  "accent": {
+    "roles": [
+      "coral"
+    ],
+    "maxShare": 0.03
+  },
+  "params": {
+    "guides": {
+      "type": "boolean",
+      "default": false,
+      "class": "decoration",
+      "note": "draw layout guides"
+    },
+    "theme": {
+      "type": "enum",
+      "values": [
+        "light",
+        "dark"
+      ],
+      "default": "light",
+      "class": "decoration",
+      "note": "light (ivory #FAF9F5) or dark (#141413) ground; tile names and the tooltip keep their fixed inks"
+    },
+    "value_1": {
+      "default": 1.26,
+      "min": 0.1,
+      "max": 9,
+      "class": "proportion",
+      "note": "tile 1's index value"
+    },
+    "value_2": {
+      "default": 2.31,
+      "min": 0.1,
+      "max": 9,
+      "class": "proportion",
+      "note": "tile 2's index value"
+    },
+    "value_3": {
+      "default": 0.84,
+      "min": 0.1,
+      "max": 9,
+      "class": "proportion",
+      "note": "tile 3's index value"
+    },
+    "value_4": {
+      "default": 3.05,
+      "min": 0.1,
+      "max": 9,
+      "class": "proportion",
+      "note": "tile 4's index value"
+    },
+    "delta_1": {
+      "default": 3.2,
+      "min": -60,
+      "max": 60,
+      "class": "proportion",
+      "note": "tile 1's change, percent (a negative one draws a coral down triangle)"
+    },
+    "delta_2": {
+      "default": 12.8,
+      "min": -60,
+      "max": 60,
+      "class": "proportion",
+      "note": "tile 2's change, percent (a negative one draws a coral down triangle)"
+    },
+    "delta_3": {
+      "default": -6.4,
+      "min": -60,
+      "max": 60,
+      "class": "proportion",
+      "note": "tile 3's change, percent (a negative one draws a coral down triangle)"
+    },
+    "delta_4": {
+      "default": 1.1,
+      "min": -60,
+      "max": 60,
+      "class": "proportion",
+      "note": "tile 4's change, percent (a negative one draws a coral down triangle)"
+    },
+    "seed": {
+      "default": 21,
+      "min": 1,
+      "max": 9999,
+      "class": "decoration",
+      "note": "seeds the sparklines"
+    }
+  },
+  "slots": {
+    "title": {
+      "kind": "text",
+      "default": "今日市场热点概览",
+      "maxChars": 10,
+      "font": "serif",
+      "title": true
+    },
+    "lede": {
+      "kind": "text",
+      "default": "全市场与三个重点板块的热点指数，以及相对上周的变化。示例数据。",
+      "maxChars": 36,
+      "font": "sans",
+      "lines": 2
+    },
+    "label_1": {
+      "kind": "text",
+      "default": "全市场热点指数",
+      "maxChars": 10,
+      "font": "sans"
+    },
+    "label_2": {
+      "kind": "text",
+      "default": "半导体热度",
+      "maxChars": 10,
+      "font": "sans"
+    },
+    "label_3": {
+      "kind": "text",
+      "default": "新能源热度",
+      "maxChars": 10,
+      "font": "sans"
+    },
+    "label_4": {
+      "kind": "text",
+      "default": "地产链热度",
+      "maxChars": 10,
+      "font": "sans"
+    },
+    "value_1": {
+      "kind": "text",
+      "derived": true,
+      "maxChars": 8,
+      "font": "serif",
+      "note": "derived from --param value_N, N.NN×"
+    },
+    "value_2": {
+      "kind": "text",
+      "derived": true,
+      "maxChars": 8,
+      "font": "serif",
+      "note": "derived from --param value_N, N.NN×"
+    },
+    "value_3": {
+      "kind": "text",
+      "derived": true,
+      "maxChars": 8,
+      "font": "serif",
+      "note": "derived from --param value_N, N.NN×"
+    },
+    "value_4": {
+      "kind": "text",
+      "derived": true,
+      "maxChars": 8,
+      "font": "serif",
+      "note": "derived from --param value_N, N.NN×"
+    },
+    "delta_1": {
+      "kind": "text",
+      "derived": true,
+      "maxChars": 8,
+      "font": "mono",
+      "note": "derived from --param delta_N"
+    },
+    "delta_2": {
+      "kind": "text",
+      "derived": true,
+      "maxChars": 8,
+      "font": "mono",
+      "note": "derived from --param delta_N"
+    },
+    "delta_3": {
+      "kind": "text",
+      "derived": true,
+      "maxChars": 8,
+      "font": "mono",
+      "note": "derived from --param delta_N"
+    },
+    "delta_4": {
+      "kind": "text",
+      "derived": true,
+      "maxChars": 8,
+      "font": "mono",
+      "note": "derived from --param delta_N"
+    },
+    "note_1": {
+      "kind": "text",
+      "default": "较上周",
+      "maxChars": 6,
+      "font": "sans"
+    },
+    "note_2": {
+      "kind": "text",
+      "default": "较上周",
+      "maxChars": 6,
+      "font": "sans"
+    },
+    "note_3": {
+      "kind": "text",
+      "default": "较上周",
+      "maxChars": 6,
+      "font": "sans"
+    },
+    "note_4": {
+      "kind": "text",
+      "default": "较上周",
+      "maxChars": 6,
+      "font": "sans"
+    },
+    "caption": {
+      "kind": "text",
+      "default": "示例数据 · 折线为近 28 日走势 · 圆点为最新值",
+      "maxChars": 36,
+      "font": "sans"
+    }
+  },
+  "relations": [
+    "Cards 340 x 400, radius 16, white with a 1 hairline, on a 16 gap; a bold 17 label, a serif 76 numeral, a delta line (a 16-wide triangle, mono 20, a sans 16 note) and a 110-high sparkline.",
+    "The triangle is the scale green when the delta is not negative and coral when it is; the delta text is always ink."
+  ],
+  "decoration": [
+    "The cards, the triangles, the sparklines (line, area, baseline, end dot) are decoration."
+  ],
+  "provenance": {
+    "corpus": "market hotspot index explorer kit (examples/index-explorer-kit): our own original data page in the index-explorer grammar; every number is generated in the page and marked as sample data",
+    "experiment": "styles/index-explorer/style.json provenance (two public reference pages measured privately in Chrome on 2026-11-21; never shipped)",
+    "accessed": "2026-11-21",
+    "method": "The data page's side cards and detail numerals re-set as four stat tiles with sparklines.",
+    "sampleIds": [
+      "index-explorer/stats"
+    ],
+    "measured": [
+      "Card white, 1 px #C9C4C4, radius 16; bold sans 14 title; serif 32 / 38.4 numerals; mono values.",
+      "Template: numeral and delta come from parameters; checked at both sizes, light and dark."
+    ],
+    "summary": "index-explorer stats"
+  }
+}

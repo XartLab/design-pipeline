@@ -1,0 +1,201 @@
+{
+  "schema": "design-pipeline.template-bank-template.v1",
+  "id": "card.index-trend",
+  "family": "card",
+  "style": "index-explorer",
+  "title": "Trend: underlined serif tabs, three bottom-ruled filter controls and a line chart on a panel with a dashed expected line and direct labels at the line ends",
+  "use": "A time series with filters. --param active picks the underlined tab; seed and volatility shape three seeded series; the expected line is at 1.0.",
+  "canvas": {
+    "width": 1600,
+    "height": 900
+  },
+  "sizes": [
+    "1600x900",
+    "1920x1080"
+  ],
+  "aspect": "16:9",
+  "accent": {
+    "roles": [
+      "coral"
+    ],
+    "maxShare": 0.03
+  },
+  "params": {
+    "guides": {
+      "type": "boolean",
+      "default": false,
+      "class": "decoration",
+      "note": "draw layout guides"
+    },
+    "theme": {
+      "type": "enum",
+      "values": [
+        "light",
+        "dark"
+      ],
+      "default": "light",
+      "class": "decoration",
+      "note": "light (ivory #FAF9F5) or dark (#141413) ground; tile names and the tooltip keep their fixed inks"
+    },
+    "active": {
+      "type": "integer",
+      "default": 1,
+      "min": 1,
+      "max": 3,
+      "class": "decoration",
+      "note": "the active tab (1-3)"
+    },
+    "seed": {
+      "default": 3,
+      "min": 1,
+      "max": 9999,
+      "class": "decoration",
+      "note": "seeds the three series"
+    },
+    "volatility": {
+      "default": 0.12,
+      "min": 0.02,
+      "max": 0.4,
+      "class": "rhythm",
+      "note": "the size of a day's move"
+    }
+  },
+  "slots": {
+    "title": {
+      "kind": "text",
+      "default": "板块热度走势",
+      "maxChars": 10,
+      "font": "serif",
+      "title": true
+    },
+    "tab_1": {
+      "kind": "text",
+      "default": "热点指数",
+      "maxChars": 6,
+      "font": "serif"
+    },
+    "tab_2": {
+      "kind": "text",
+      "default": "关注占比",
+      "maxChars": 6,
+      "font": "serif"
+    },
+    "tab_3": {
+      "kind": "text",
+      "default": "异动次数",
+      "maxChars": 6,
+      "font": "serif"
+    },
+    "filter_label_1": {
+      "kind": "text",
+      "default": "地区",
+      "maxChars": 6,
+      "font": "sans"
+    },
+    "filter_label_2": {
+      "kind": "text",
+      "default": "板块",
+      "maxChars": 6,
+      "font": "sans"
+    },
+    "filter_label_3": {
+      "kind": "text",
+      "default": "周期",
+      "maxChars": 6,
+      "font": "sans"
+    },
+    "filter_value_1": {
+      "kind": "text",
+      "default": "全部地区",
+      "maxChars": 8,
+      "font": "sans"
+    },
+    "filter_value_2": {
+      "kind": "text",
+      "default": "三个重点板块",
+      "maxChars": 8,
+      "font": "sans"
+    },
+    "filter_value_3": {
+      "kind": "text",
+      "default": "近 60 日",
+      "maxChars": 8,
+      "font": "sans"
+    },
+    "series_1": {
+      "kind": "text",
+      "default": "半导体",
+      "maxChars": 6,
+      "font": "sans"
+    },
+    "series_2": {
+      "kind": "text",
+      "default": "新能源",
+      "maxChars": 6,
+      "font": "sans"
+    },
+    "series_3": {
+      "kind": "text",
+      "default": "地产链",
+      "maxChars": 6,
+      "font": "sans"
+    },
+    "expected": {
+      "kind": "text",
+      "default": "预期 1.0×",
+      "maxChars": 8,
+      "font": "sans"
+    },
+    "x_1": {
+      "kind": "text",
+      "default": "9 月 24 日",
+      "maxChars": 10,
+      "font": "sans"
+    },
+    "x_2": {
+      "kind": "text",
+      "default": "10 月 12 日",
+      "maxChars": 10,
+      "font": "sans"
+    },
+    "x_3": {
+      "kind": "text",
+      "default": "10 月 30 日",
+      "maxChars": 10,
+      "font": "sans"
+    },
+    "x_4": {
+      "kind": "text",
+      "default": "11 月 21 日",
+      "maxChars": 10,
+      "font": "sans"
+    },
+    "caption": {
+      "kind": "text",
+      "default": "示例数据 · 虚线为预期水平 1.0× · 每日收盘后更新",
+      "maxChars": 44,
+      "font": "sans"
+    }
+  },
+  "relations": [
+    "Tabs serif 24 / 500 on a 36 gap, the active one ink with a 2 underline, the others #5E5D59, a 1 hairline under the row; controls 300 wide on a 340 pitch (a bold 13 label, an 18 value, a rule and a chevron).",
+    "The panel is 1408 x 478, radius 8; the plot is 1100 x 370 with 1 hairline gridlines at every whole value; end labels are pushed 28 apart so none touch, the expected line is labelled the same way."
+  ],
+  "decoration": [
+    "The panel, gridlines, series lines, end dots, chevrons and underline are decoration; tick labels are real text."
+  ],
+  "provenance": {
+    "corpus": "market hotspot index explorer kit (examples/index-explorer-kit): our own original data page in the index-explorer grammar; every number is generated in the page and marked as sample data",
+    "experiment": "styles/index-explorer/style.json provenance (two public reference pages measured privately in Chrome on 2026-11-21; never shipped)",
+    "accessed": "2026-11-21",
+    "method": "The data page's tabs, filter row and country time view re-set as one trend card.",
+    "sampleIds": [
+      "index-explorer/trend"
+    ],
+    "measured": [
+      "Tabs serif 18 / 27.9 weight 500, the active one ink with a 2 px underline; selects 140 x 23 with a bottom rule; the 'Expected: 1' mark.",
+      "Template: labels never touch at any seed; checked at both sizes, light and dark."
+    ],
+    "summary": "index-explorer trend"
+  }
+}
