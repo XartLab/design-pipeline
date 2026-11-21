@@ -1,0 +1,119 @@
+{
+  "schema": "design-pipeline.template-bank-style.v1",
+  "id": "circuits-paper",
+  "title": "Circuits paper: an interactive interpretability research paper thread - white page, a plain grotesque, a byline grid, margin notes, numbered figures, token strips with activation highlights and node-link attribution graphs",
+  "summary": "White page and near-black ink in three steps (title, body 80%, secondary 60%); one plain grotesque for prose, headings and labels with a monospace for tokens; a wide byline grid (authors left, affiliation and date stacked right) between two hairlines; a 700-unit reading column with a sticky table of contents on its left and a margin gutter on its right; numbered figure captions with a bold lead-in; beige nodes with stone outlines, mauve and maroon weighted edges, beige token tiles; token strips whose highlights run through three oranges by activation; a footnote preview card.",
+  "provenance": {
+    "case": "research-paper kit: an original self-contained interactive paper page in Chinese (a short interpretability-style study of a small price-series transformer; every feature, number and result a labelled sample, no real experiment) in examples/circuits-paper-kit, and five parametric parts of it as templates.",
+    "lineage": "Interactive interpretability research paper thread: a Distill-lineage scientific article. Public reference pages the owner named (an index page, a long 2021 framework paper and a 2025 attribution-graph paper), captured and measured privately in Chrome (computed styles, 2026-11-21); the captures stay private and are not shipped. Borrowed: the grammar and the measured numbers. Never borrowed: any name, logo, wordmark, picture, figure, copy or proprietary typeface.",
+    "borrow": "Borrow grammar, never assets. Every word, figure, node and number is our own placeholder; the faces are open (IBM Plex Sans, Roboto Mono, STIX Two Text, Noto Sans SC, Noto Serif SC), named and never bundled; every diagram is drawn from a seed.",
+    "rounds": "One round: measured the three pages, built the five templates and the kit page on the numbers; every default render passes template check --browser and the kit passes at 1440 and 390 wide.",
+    "measured": [
+      "Reading column 704 px at a 1920 px viewport, starting at x 601; body 16.96 / 28.83 px (1.7) in the 80% ink; h1 50 / 55 px weight 700 black; h2 36 / 45 px weight 600; h3 26 / 36 px weight 700 in 60% ink; h4 16 px weight 600 uppercase; footnote and caption 12.8-13 px, footnote list 12.8 / 21.8 px in 50% ink.",
+      "Byline: a full-width container between two 1 px rules (10% black), 203 px tall; kickers 9.6 px uppercase in 50% ink, names 12.8 / 19.2 px; the authors take 570 px at the left of the column, affiliation and publication date stack in a 114 px column at its right (kicker 299, value, then the next kicker 70 px lower); a contribution-marker line (asterisk, dagger) closes it in 10 px.",
+      "Table of contents: a 516 px block in the left margin, a 1 px rule (10% black) on its right edge, items 13 / 19.5 px, top-level items weight 600 and nested items 400, a 26 px bold 60%-ink heading; on the newer paper a fixed select (13 px) pinned top left carries the section list.",
+      "Margin gutter: right of the column at x 1337 (32 px clear of the text), 113 px wide for a thumbnail figure with small orange-labelled text; wide figures break out to about 1043-1130 px and caption at 13 px in 80% ink with a bold lead-in 'Figure N:'. Below 1000 px the gutter falls inline; the media breakpoints in the style sheet are 600, 768, 1000, 1024, 1180 and 1200 px.",
+      "Footnotes: a superscript number in the text; hover opens a pale card (about 450 px wide, text 12-13 px) with the note and blue citation numbers; citations are small bracketed numbers; links are underlined 1 px at 40% ink; a note list (12.8 px, 50% ink) closes the page.",
+      "Figures: nodes are circles filled #F6F6F3 with a 2 px #B8B6AD outline, faint edges 0.5 px #B8B6AD, active nodes filled #633636 with edges #C46686 (0.5-3 px); a selected node takes a #9D8DE3 ring; error nodes are diamonds; token boxes are #E6E3D6 tiles with black monospace text 17 px; layer labels 14 px #262624; feature visualisations are monospace tokens in a bordered box with highlights running through three oranges (#FFAE72, #FF8D47, #FF6927) by activation.",
+      "Cards: contents tiles on the paper's top are 180 x 261 px, white, a 1 px #E5E5E5 border, radius 5, no shadow; the page ground is white (the thread's index uses #FAF9F5); links use #004276.",
+      "64 px: with the wordmark masked, a white page with a bold sans title over a byline grid, or a bordered panel of beige nodes with mauve edges and orange token highlights, reads as the grammar and apart from the editorial and game packs in the bank."
+    ],
+    "accessed": "2026-11-21"
+  },
+  "palette": {
+    "white": { "value": "#FFFFFF", "use": "the page ground and panels" },
+    "ink": { "value": "#000000", "use": "titles, headings, token text, strong values" },
+    "text": { "value": "#333333", "use": "body prose, captions, names (80% ink; 12.6:1 on white)" },
+    "mute": { "value": "#666666", "use": "kickers, margin notes, secondary lines (60% ink; 5.7:1 on white)" },
+    "faint": { "value": "#808080", "use": "large type and decoration only (50% ink; 3.9:1 on white passes the 3:1 of large type, not 4.5:1)" },
+    "rule": { "value": "#E5E5E5", "use": "hairlines, panel borders (the reference's 10% black)" },
+    "node": { "value": "#F6F6F3", "use": "node fill, token strip ground, hover cards, margin thumbnails" },
+    "stone": { "value": "#B8B6AD", "use": "node outlines, faint edges, strip borders" },
+    "tile": { "value": "#E6E3D6", "use": "token tiles and bar tracks" },
+    "mauve": { "value": "#C46686", "use": "edges and arrows, the margin note's kicker mark" },
+    "maroon": { "value": "#633636", "use": "active nodes and the strongest edges" },
+    "lavender": { "value": "#9D8DE3", "use": "the selected-node ring (interaction state)" },
+    "link": { "value": "#004276", "use": "links, citation numbers, footnote labels (9.7:1 on white)" },
+    "hot_lo": { "value": "#FFAE72", "use": "weak activation highlight" },
+    "hot_mid": { "value": "#FF8D47", "use": "middle activation highlight" },
+    "hot_hi": { "value": "#FF6927", "use": "strong activation highlight (black text on it is 8.3:1)" },
+    "onhot": { "value": "#000000", "use": "text on an activation highlight, in both themes" },
+    "night": { "value": "#141414", "use": "the dark theme's ground (templates take theme=dark)" }
+  },
+  "fonts": {
+    "roles": {
+      "sans": { "stack": ["IBM Plex Sans", "Noto Sans SC"], "generic": "sans-serif", "weight": 400, "use": "prose, headings (weight 600-700), captions, kickers, margin notes; Noto Sans SC carries CJK" },
+      "mono": { "stack": ["Roboto Mono", "Noto Sans SC"], "generic": "monospace", "weight": 400, "use": "tokens, feature ids, output labels; a CJK string moves whole to Noto Sans SC (one em per character)" },
+      "serif": { "stack": ["STIX Two Text", "Noto Serif SC"], "generic": "serif", "weight": 400, "use": "equations and variable names in the kit page (italic); no template sets it" }
+    },
+    "faces": [
+      { "family": "IBM Plex Sans", "weight": 400, "file": "IBMPlexSans[wdth,wght].ttf", "source": "https://github.com/google/fonts/tree/main/ofl/ibmplexsans", "licence": "SIL OFL 1.1", "author": "Bold Monday" },
+      { "family": "Roboto Mono", "weight": 400, "file": "RobotoMono[wght].ttf", "source": "https://github.com/google/fonts/tree/main/ofl/robotomono", "licence": "SIL OFL 1.1 / Apache 2.0", "author": "Christian Robertson" },
+      { "family": "STIX Two Text", "weight": 400, "file": "STIXTwoText[wght].ttf", "source": "https://github.com/google/fonts/tree/main/ofl/stixtwotext", "licence": "SIL OFL 1.1", "author": "The STIX Fonts Project Authors" },
+      { "family": "Noto Sans SC", "weight": 400, "file": "NotoSansSC[wght].ttf", "source": "https://github.com/google/fonts/tree/main/ofl/notosanssc", "licence": "SIL OFL 1.1", "author": "Google" },
+      { "family": "Noto Serif SC", "weight": 400, "file": "NotoSerifSC[wght].ttf", "source": "https://github.com/google/fonts/tree/main/ofl/notoserifsc", "licence": "SIL OFL 1.1", "author": "Google" }
+    ],
+    "resolve": "fonts query --style gothic (Noto Sans SC) and --style mincho (Noto Serif SC) cover CJK copy; IBM Plex Sans, Roboto Mono and STIX Two Text are Latin faces, so a CJK string falls through to the stack's second family inside one role, the same family for the whole role.",
+    "licence": "All roles use open fonts (SIL OFL 1.1; Roboto Mono also Apache 2.0). The reference pages' own typefaces are not used and not named.",
+    "bundled": false,
+    "note": "Fonts are named, not bundled. --font-dir <dir> reads coverage and embeds the faces."
+  },
+  "layout": {
+    "grammar": [
+      "White page, three steps of ink (title black, body 80%, secondary 60%), one rule grey; no gradient, no shadow beyond a 1 px hairline; colour appears only inside figures (nodes, edges, activation highlights) and in links.",
+      "One plain grotesque for everything with a monospace for tokens: the title is bold 700, section headings weight 600, kickers small and tracked in 60% ink, body about 17 px at 1.7.",
+      "Byline: a full-width band between two hairlines; authors (with asterisk and dagger markers) on the left, affiliation then publication date stacked in a narrow right column, each under a small tracked kicker, a one-line marker legend below; the abstract opens right under it.",
+      "A reading column of about 700 units with a sticky table of contents on its left (top-level items 600, nested 400, a hairline on its right edge) and a margin gutter on its right for notes and small thumbnails; below 1000 px the gutter falls inline and the contents collapse into a select or a list.",
+      "Figures: numbered captions with a bold 'Figure N:' lead-in under the figure; wide figures break out of the column; a figure is a bordered white panel, never tinted.",
+      "Nodes and edges: beige circles with a stone outline, mauve edges whose width follows their weight, maroon for the active nodes and the strongest edges, a lavender ring for the selected node, token tiles in beige under the graph, the output tile above.",
+      "Feature browser: a bordered strip of monospace tokens with highlights in three oranges by activation and black text on them; a ranked list of top activations with orange bars on beige tracks; a ramp legend.",
+      "Footnotes: a superscript in the text, a preview card on hover or focus (beige, hairline, radius 6, blue label), a note list at the end; citations as small bracketed numbers in blue."
+    ]
+  },
+  "materials": {
+    "procedural": [
+      "attribution graphs: nodes on a layers x tokens grid, edges as vertical cubic curves between active nodes (width 1.2 + 3.4 x weight, opacity by weight, the strongest in maroon), seeded (card.circuits-graph --param seed --param layers --param cols)",
+      "token strips: activations from a seed, one peak per example with softer neighbours, quantised to three hot roles (card.circuits-features --param seed --param rows)",
+      "residual-stream schematics: a tall tile bar per token with beige blocks reading and writing back through mauve arrows (card.circuits-figure --param layers --param tokens)"
+    ],
+    "recipes": [
+      "No texture: the page is clean. For a print look lay a paper grain at 10% over the white ground: materials generate --generator paper --seed 1."
+    ],
+    "collage": [
+      "No pictures: every figure is drawn. Text never sits on a coloured shape except a token on its activation highlight (black on the three oranges)."
+    ],
+    "sources": "Everything is drawn or generated from a seed.",
+    "budget": { "inks": 2, "effectsMax": 1, "tiltedElements": 0 }
+  },
+  "motion": {
+    "fps": 60,
+    "grammar": [
+      "Figures fade and rise 12 px as they scroll to 25% in view (0.6 s, ease-out); nothing loops.",
+      "Attribution edges draw themselves: each edge runs its dashoffset from 1 to 0 (pathLength 1) in 0.9 s, staggered by layer from the tokens up; nodes pop to full size as their edges arrive.",
+      "Activation bars grow from 0 to their value in 0.7 s and the highlights on a token strip fade in left to right (30 ms per token) when a feature is picked.",
+      "Hovering a node dims every other node and edge to 15% (0.15 s) and keeps its own edges; a slider that prunes edges fades the removed ones out instead of cutting them.",
+      "The table of contents marks the section in view with a maroon bar; footnote cards appear in 0.12 s.",
+      "prefers-reduced-motion removes every transition and draw-in: the page loads in its final state; hover and slider states still change at once."
+    ],
+    "flashLimit": "No flashing, no looping and no autoplay: every motion answers a scroll or a pointer."
+  },
+  "checks": {
+    "static": ["text-overflow", "text-length", "type-size", "contrast", "accent-budget"],
+    "browser": ["text-overlap", "off-canvas", "collage-cover", "contrast", "text-occluded", "glyph-coverage"],
+    "browserOnRender": true,
+    "guidance": [
+      "64 px distinctiveness (guidance): shrink the render to 64 px tall with the wordmark masked; a white page with a bold title over a byline grid, or beige nodes with mauve edges and orange highlights in a bordered panel, should still read. A tinted or dark-led page reads as another pack.",
+      "The faint grey #808080 is for large type and decoration only (3.9:1 on white); every small line (kicker, caption, margin note, legend) uses the secondary #666666. The three oranges carry black text only.",
+      "Latin sans and mono faces have no CJK: keep each string in one role and let the stack's second family carry the CJK; a token strip with CJK tokens is set whole in Noto Sans SC at one em per character, so its widths follow that advance.",
+      "Figures: a node-link diagram is decoration for the checks (data-deco) but its labels are not; put labels in tiles or beside nodes, never on an edge.",
+      "A byline is a grid, not a paragraph: authors, affiliation and date keep their own columns and kickers; do not merge them into one line."
+    ],
+    "note": "The browser check runs on every render. The static check measures the slot text; token rows are one slot with one tspan per token at its own x, highlights under them are plain rects."
+  },
+  "examples": {
+    "note": "The kit page is the example: one self-contained interactive paper with every device above.",
+    "renders": [
+      { "screen": "interactive research paper (light and dark by system theme, 1440 and 390 wide)", "file": "examples/circuits-paper-kit/index.html", "why": "a byline, contents, numbered sections, margin notes, a token-strip feature browser, a node-link attribution graph with hover and a pruning slider, a sparsity curve with a slider, equations, footnote and citation previews; its parts are the five templates; motion settles under prefers-reduced-motion" }
+    ]
+  }
+}

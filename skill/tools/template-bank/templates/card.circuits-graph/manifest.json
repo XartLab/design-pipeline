@@ -1,0 +1,171 @@
+{
+  "schema": "design-pipeline.template-bank-template.v1",
+  "id": "card.circuits-graph",
+  "family": "card",
+  "style": "circuits-paper",
+  "title": "Attribution graph: layered nodes over a token row with weighted mauve edges (the strongest in maroon), layer labels, token tiles, an output tile and a two-entry legend with a numbered caption",
+  "use": "The path from input tokens to an output through active features: layers (2-4) and cols (3-5) set the grid, seed the active nodes and edge weights.",
+  "canvas": {
+    "width": 1600,
+    "height": 900
+  },
+  "sizes": [
+    "1600x900",
+    "1920x1080"
+  ],
+  "aspect": "16:9",
+  "accent": {
+    "roles": [
+      "maroon",
+      "mauve"
+    ],
+    "maxShare": 0.05
+  },
+  "params": {
+    "guides": {
+      "type": "boolean",
+      "default": false,
+      "class": "decoration",
+      "note": "draw layout guides"
+    },
+    "theme": {
+      "type": "enum",
+      "values": [
+        "light",
+        "dark"
+      ],
+      "default": "light",
+      "class": "decoration",
+      "note": "light (white #FFFFFF) or dark (#141414) ground"
+    },
+    "seed": {
+      "type": "integer",
+      "default": 11,
+      "min": 1,
+      "max": 9999,
+      "class": "rhythm",
+      "note": "seed of the active nodes and weights"
+    },
+    "layers": {
+      "type": "integer",
+      "default": 3,
+      "min": 2,
+      "max": 4,
+      "class": "proportion",
+      "note": "feature layers"
+    },
+    "cols": {
+      "type": "integer",
+      "default": 4,
+      "min": 3,
+      "max": 5,
+      "class": "proportion",
+      "note": "token positions"
+    }
+  },
+  "slots": {
+    "fig_title": {
+      "kind": "text",
+      "default": "归因图：从输入词到输出的激活路径",
+      "maxChars": 24,
+      "font": "sans",
+      "note": "bold figure title"
+    },
+    "layer_{i}": {
+      "kind": "text",
+      "default": [
+        "第 4 层",
+        "第 1 层",
+        "第 2 层",
+        "第 3 层"
+      ],
+      "maxChars": 6,
+      "font": "sans",
+      "note": "label of layer i, bottom up"
+    },
+    "tok_{i}": {
+      "kind": "text",
+      "default": [
+        "加剧",
+        "利率",
+        "下调",
+        "之后",
+        "波动"
+      ],
+      "maxChars": 6,
+      "font": "mono",
+      "note": "token tile i"
+    },
+    "output": {
+      "kind": "text",
+      "default": "上升",
+      "maxChars": 4,
+      "font": "mono",
+      "note": "the predicted output"
+    },
+    "legend_title_1": {
+      "kind": "text",
+      "default": "重建误差",
+      "maxChars": 10,
+      "font": "sans"
+    },
+    "legend_text_1": {
+      "kind": "text",
+      "default": "特征没能解释的部分用菱形节点补回，使替代模型的输出和原模型一致。",
+      "maxChars": 44,
+      "font": "sans",
+      "lines": 4,
+      "note": "up to 4 lines"
+    },
+    "legend_title_2": {
+      "kind": "text",
+      "default": "归因边",
+      "maxChars": 10,
+      "font": "sans"
+    },
+    "legend_text_2": {
+      "kind": "text",
+      "default": "线越粗，上游特征对下游的因果贡献越大，最粗的边用深色标出。",
+      "maxChars": 44,
+      "font": "sans",
+      "lines": 4,
+      "note": "up to 4 lines"
+    },
+    "cap_label": {
+      "kind": "text",
+      "default": "图 4：",
+      "maxChars": 6,
+      "font": "sans",
+      "note": "bold caption lead-in"
+    },
+    "caption": {
+      "kind": "text",
+      "default": "对输入“利率 下调 之后 波动”追踪出的归因图（示意）。节点是特征，边是因果贡献；示例数据。",
+      "maxChars": 70,
+      "font": "sans",
+      "lines": 2,
+      "note": "2 lines"
+    }
+  },
+  "relations": [
+    "Graph area x 192-1056, y 168-656: layer rows evenly spaced bottom up, four 11-unit-radius nodes per token and layer at 36-unit steps, beige with a 2-unit stone outline when inactive and maroon when active; edges are vertical cubic curves between active nodes (width 1.2 + 3.4 x weight, opacity by weight), thin stone edges run from the tokens to the first layer, the output tile sits top right.",
+    "Legend at x 1180, 324 units wide: a maroon diamond with a bold title and up to four 16-unit lines, then a mauve line sample with its title and text; the caption sits at y 758."
+  ],
+  "decoration": [
+    "Nodes, edges and tiles are decoration (the shapes are plain geometry the static check measures for the accent budget); layer labels, tokens, output, legend and caption are slots."
+  ],
+  "provenance": {
+    "corpus": "research-paper kit (examples/circuits-paper-kit): our own original interactive paper page in the circuits-paper grammar; all copy, features and numbers are labelled samples",
+    "experiment": "styles/circuits-paper/style.json provenance (three public reference pages measured privately in Chrome on 2026-11-21; never shipped)",
+    "accessed": "2026-11-21",
+    "method": "The reference attribution-graph figure's grammar (beige and maroon nodes in layers over a token row, weighted mauve edges, a legend with a diamond and a line sample) drawn from a seed.",
+    "sampleIds": [
+      "circuits-paper/graph"
+    ],
+    "measured": [
+      "Attribution graph: circles filled #F6F6F3 with a 2 px #B8B6AD outline, active #633636, edges #C46686 0.5-3 px, token tiles #E6E3D6 with mono 17 px, error nodes as diamonds.",
+      "Template: 2-4 layers x 3-5 columns x 50 seeds, light and dark pass."
+    ],
+    "summary": "circuits-paper graph"
+  }
+}

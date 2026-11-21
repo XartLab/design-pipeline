@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>价格序列小模型里的特征：一份可解释性研究笔记（示例）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&family=STIX+Two+Text:ital@0;1&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js');if(matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('rm')</script>
+<style>
+/* VOICE: a plain scientific article: claims first, caveats kept, every number a labelled sample.
+   IDEA: an interactive interpretability paper: contents on the left, margin notes on the right, figures you can touch.
+   PICTURE: a token strip lit by feature activations, a node-link attribution graph, a sparsity curve.
+   COLOUR and TYPE: white page, three steps of ink; beige nodes, mauve and maroon edges, three oranges for activation; one grotesque plus a mono.
+   LAYOUT: 200 contents | 640 column | 240 margin gutter; wide figures take column and gutter; below 1100 the gutter falls inline. */
+:root{color-scheme:light dark;
+--bg:light-dark(#fff,#141414);--ink:light-dark(#000,#f5f5f5);--text:light-dark(#333,#d9d9d6);--mute:light-dark(#666,#a6a6a1);--faint:light-dark(#808080,#8c8c87);
+--rule:light-dark(#e5e5e5,#34342f);--node:light-dark(#f6f6f3,#1e1e1c);--stone:light-dark(#b8b6ad,#5c5b55);--tile:light-dark(#e6e3d6,#3a3934);
+--mauve:light-dark(#c46686,#d883a3);--maroon:light-dark(#633636,#d79a9a);--lav:light-dark(#9d8de3,#b3a6ee);--link:light-dark(#004276,#86bdeb);
+--h1:#ffae72;--h2:#ff8d47;--h3:#ff6927;
+--sans:"IBM Plex Sans","Noto Sans SC",system-ui,sans-serif;--mono:"Roboto Mono","Noto Sans SC",ui-monospace,monospace;--serif:"STIX Two Text","Noto Serif SC",Georgia,serif}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;scroll-padding-top:20px}
+.rm{scroll-behavior:auto}
+body{margin:0;background:var(--bg);color:var(--text);font:17px/1.7 var(--sans);overflow-x:clip}
+a{color:inherit;text-decoration:underline;text-decoration-color:color-mix(in srgb,currentColor 40%,transparent);text-underline-offset:3px;text-decoration-thickness:1px}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--lav);outline-offset:2px;border-radius:3px}
+
+/* top bar */
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px max(4vw,16px);border-bottom:1px solid var(--rule);font:500 15px var(--sans);color:var(--text)}
+.top .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.top svg{width:34px;height:28px;flex:none}
+.top .tag{font-size:13px;color:var(--mute)}
+.banner{margin:0;padding:10px max(4vw,16px);background:var(--node);border-bottom:1px solid var(--rule);font:13.5px/1.55 var(--sans);color:var(--mute)}
+.banner b{color:var(--ink);font-weight:600}
+
+/* title and byline */
+.grid3{display:grid;grid-template-columns:200px minmax(0,640px) minmax(0,240px);column-gap:40px;justify-content:center;padding-inline:max(3vw,16px)}
+.hd{padding-block:56px 36px}
+.hd>*{grid-column:2/4}
+h1{font:700 clamp(30px,4.2vw,52px)/1.18 var(--sans);color:var(--ink);margin:0 0 14px;text-wrap:balance}
+.deck{font:400 19px/1.6 var(--sans);color:var(--mute);margin:0}
+.byline{border-block:1px solid var(--rule);padding-block:22px}
+.byline .k{display:block;font:600 12px/1.4 var(--sans);letter-spacing:.14em;color:var(--mute);margin-bottom:6px}
+.byline .v{font:15px/1.7 var(--sans);color:var(--text)}
+.byline .au{grid-column:2}.byline .meta{grid-column:3}.byline .meta div+div{margin-top:14px}
+.byline sup{font-size:11px}
+.marks{grid-column:2/4;font:13px/1.6 var(--sans);color:var(--mute);margin:14px 0 0}
+
+/* layout */
+.wrap{display:grid;grid-template-columns:200px minmax(0,640px) minmax(0,240px);column-gap:40px;justify-content:center;padding:36px max(3vw,16px) 40px;align-items:start}
+.toc{grid-column:1;grid-row:1/span 40;position:sticky;top:22px;align-self:start;border-right:1px solid var(--rule);padding-right:20px;font:13.5px/1.5 var(--sans)}
+.toc h3{font:700 17px/1.3 var(--sans);color:var(--ink);margin:0 0 12px}
+.toc ol{list-style:none;margin:0;padding:0}
+.toc li{margin:0}.toc li.sub{padding-left:14px}
+.toc a{display:block;position:relative;padding:5px 0;text-decoration:none;color:var(--mute)}
+.toc li:not(.sub) a{font-weight:600;color:var(--text)}
+.toc a.on{color:var(--ink)}
+.toc a.on::before{content:"";position:absolute;left:-10px;top:7px;bottom:7px;width:3px;border-radius:2px;background:var(--maroon)}
+.toc a:hover{color:var(--ink)}
+.toc summary{cursor:pointer;font:700 17px var(--sans);color:var(--ink);list-style:none}
+.toc summary::-webkit-details-marker{display:none}
+.blk,.wide{grid-column:2/4}
+.blk{display:grid;grid-template-columns:minmax(0,640px) minmax(0,240px);column-gap:40px;align-items:start}
+.blk>.main{grid-column:1}
+.mn{grid-column:2;grid-row:1;font:14px/1.6 var(--sans);color:var(--mute);margin-top:.4em}
+.mn b{display:block;color:var(--ink);font-weight:600;font-size:14.5px;margin-bottom:4px}
+.mn .kk{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--mauve);margin-right:8px;vertical-align:1px}
+.mn svg{display:block;width:62px;height:auto;margin-bottom:10px}
+p{margin:0 0 1.1em}
+.main>p:last-child{margin-bottom:0}
+h2{font:600 clamp(25px,2.6vw,32px)/1.3 var(--sans);color:var(--text);margin:64px 0 18px;grid-column:2/4}
+h2 .no{display:block;font:600 12px/1.4 var(--sans);letter-spacing:.14em;color:var(--mute);margin-bottom:6px}
+h4{font:600 15px/1.4 var(--sans);color:var(--text);margin:28px 0 8px;letter-spacing:.04em}
+em.t{font-style:normal;font-weight:600;color:var(--ink)}
+sup.fn{font-size:11px;line-height:0;color:var(--link);cursor:pointer;font-weight:600;padding:0 2px}
+a.cite{color:var(--link);text-decoration:none;font-size:.85em;white-space:nowrap}
+a.cite:hover{text-decoration:underline}
+.eq{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin:20px 0;font:italic 20px/1.8 var(--serif);color:var(--ink);overflow-x:auto}
+.eq .m{flex:1;text-align:center}.eq .n{font:14px var(--sans);font-style:normal;color:var(--mute)}
+.eq i{font-style:italic}.eq .r{font-style:normal}.eq sub,.eq sup{font-size:.7em;line-height:0}
+ul.pt{margin:0 0 1.1em;padding-left:1.3em}ul.pt li{margin-bottom:.45em}
+
+/* figures */
+figure{margin:0}
+.fig{margin:36px 0 12px}
+.panel{background:var(--bg);border:1px solid var(--rule);border-radius:5px;padding:20px 22px}
+.ptitle{display:flex;flex-wrap:wrap;gap:4px 14px;align-items:baseline;margin:0 0 14px}
+.ptitle b{font:700 16px var(--sans);color:var(--ink)}.ptitle span{font:13px var(--sans);color:var(--mute)}
+figcaption{font:14px/1.6 var(--sans);color:var(--text);margin:12px 2px 0}
+figcaption b{font-weight:700;color:var(--ink);margin-right:6px}
+.rise{transition:opacity .6s ease,transform .6s ease}
+.js:not(.rm) .rise:not(.in){opacity:0;transform:translateY(12px)}
+
+/* fig 1: residual stream schematic */
+.rs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0}
+.rs svg{display:block;width:100%;height:auto}
+.rs .tk0{text-align:center;margin-top:6px}
+.tile{display:block;margin:0 8px;padding:6px 4px;border-radius:3px;background:var(--tile);color:var(--ink);font:500 15px/1.3 var(--mono);text-align:center}
+.rs .nm{font:13px var(--sans);color:var(--mute);text-align:center;margin:2px 0 8px}
+.rsd{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset .9s cubic-bezier(.5,0,.2,1)}
+.in .rsd,.rm .rsd{stroke-dashoffset:0}
+
+/* fig 2: feature browser */
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px}
+.tabs button{cursor:pointer;border:1px solid var(--stone);background:var(--bg);border-radius:99px;padding:6px 14px;font:500 14px/1.3 var(--sans);color:var(--text)}
+.tabs button:hover{background:var(--node)}
+.tabs button[aria-selected=true]{background:var(--node);border-color:var(--lav);box-shadow:0 0 0 2px color-mix(in srgb,var(--lav) 35%,transparent);color:var(--ink)}
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,250px);gap:24px}
+.strips{display:grid;gap:10px;align-content:start}
+.row{background:var(--node);border:1px solid var(--stone);border-radius:4px;padding:6px 8px;line-height:1}
+.tk{display:inline-block;margin:3px 1px;padding:6px 7px;border-radius:3px;font:20px/1.3 var(--mono);color:var(--ink);cursor:default;transition:background-color .35s ease,color .2s ease;outline-offset:0}
+.tk[data-lv="1"]{background:var(--h1);color:#000}.tk[data-lv="2"]{background:var(--h2);color:#000}.tk[data-lv="3"]{background:var(--h3);color:#000}
+.tk.cur{box-shadow:0 0 0 2px var(--lav)}
+.side h5{font:600 13px/1.4 var(--sans);letter-spacing:.1em;color:var(--mute);margin:0 0 10px}
+.side .who{font:500 20px/1.3 var(--mono);color:var(--ink);margin:0 0 12px}
+.side ul{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.side li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 10px;font:14px/1.4 var(--sans);color:var(--text)}
+.side li .bar{grid-column:1/-1;height:12px;border-radius:3px;background:var(--node);border:1px solid var(--stone);overflow:hidden}
+.side li .bar i{display:block;height:100%;width:0;background:var(--h2);transition:width .7s cubic-bezier(.2,.7,.2,1)}
+.side li b{font-weight:500}
+.ramp{display:flex;flex-wrap:wrap;gap:6px 18px;margin:16px 0 0;font:13px var(--sans);color:var(--mute);align-items:center}
+.ramp i{display:inline-block;width:30px;height:14px;border-radius:3px;margin-right:6px;vertical-align:-2px}
+
+/* fig 3: attribution graph */
+.gbody{display:grid;grid-template-columns:34px minmax(0,1fr);column-gap:6px}
+.gl{position:relative}
+.gl span{position:absolute;left:0;transform:translateY(-50%);font:13px/1 var(--sans);color:var(--mute);white-space:nowrap}
+.gsvg{display:block;width:100%;height:auto;overflow:visible}
+.gsvg .e{fill:none;stroke-linecap:round;transition:opacity .15s ease;stroke:var(--mauve)}
+.gsvg .e.s{stroke:var(--maroon)}
+.gsvg .e.draw{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset .9s cubic-bezier(.5,0,.2,1),opacity .15s ease}
+.in .gsvg .e.draw,.rm .gsvg .e.draw{stroke-dashoffset:0}
+.gsvg .base{fill:none;stroke:var(--stone);stroke-width:1;opacity:.7}
+.gsvg .n{cursor:pointer;transition:opacity .15s ease}
+.gsvg .n circle{fill:var(--node);stroke:var(--stone);stroke-width:2}
+.gsvg .n.a circle{fill:var(--maroon);stroke:var(--maroon)}
+.gsvg .n.sel circle{stroke:var(--lav);stroke-width:3.5}
+.gsvg .n:focus-visible{outline:none}.gsvg .n:focus-visible circle{stroke:var(--lav);stroke-width:3.5}
+.gsvg.focus .n:not(.on),.gsvg.focus .e:not(.on){opacity:.14}
+.gsvg .e.cut,.gsvg.focus .e.cut{opacity:0;pointer-events:none}
+.gtoks{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:6px}
+.gtoks .tile{margin:0 3px}
+.gcol{position:relative}.gout{position:absolute;white-space:nowrap;margin:0;padding:6px 16px;font-size:15px;transform:translate(-50%,-50%);z-index:1}
+.read{margin:14px 0 0;padding:10px 14px;background:var(--node);border:1px solid var(--rule);border-radius:4px;font:14px/1.6 var(--sans);color:var(--text);min-height:3.4em}
+.read b{color:var(--ink);font-weight:600}
+.ctl{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;margin:16px 0 0;font:14px var(--sans);color:var(--text)}
+.ctl label{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;flex:1 1 260px}
+.ctl input[type=range]{flex:1 1 160px;accent-color:var(--maroon);min-width:120px}
+.ctl output{font:500 14px var(--mono);color:var(--ink)}
+.leg{display:flex;flex-wrap:wrap;gap:6px 20px;margin:14px 0 0;font:13px var(--sans);color:var(--mute);align-items:center}
+.leg svg{width:22px;height:16px;vertical-align:-3px;margin-right:6px}
+
+/* fig 4: sparsity curve */
+.cv{position:relative}
+.cv svg{display:block;width:100%;height:auto;overflow:visible}
+.cv .ax{position:absolute;pointer-events:none}
+.cv .ax span{position:absolute;font:12px/1 var(--sans);color:var(--mute);white-space:nowrap}
+.cv .ax .e{transform:translate(-100%,-50%)}.cv .ax .m{transform:translateX(-50%)}
+.curve{stroke:var(--mauve);fill:none;stroke-width:2.5;stroke-linecap:round}
+.curve.draw{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1.2s cubic-bezier(.5,0,.2,1)}
+.in .curve.draw,.rm .curve.draw{stroke-dashoffset:0}
+.dot{fill:var(--maroon);stroke:var(--bg);stroke-width:3}
+.gridl{stroke:var(--rule);stroke-width:1}
+
+/* notes */
+ol.notes{margin:0;padding-left:1.4em;font:13.5px/1.7 var(--sans);color:var(--mute)}
+ol.notes li{margin-bottom:8px}
+h2.small{font:600 20px/1.3 var(--sans);margin-top:48px}
+.sample{font:13px/1.6 var(--sans);color:var(--mute)}
+.pop{position:absolute;z-index:20;width:min(380px,calc(100vw - 24px));background:var(--node);border:1px solid var(--rule);border-radius:6px;padding:12px 14px;font:13.5px/1.6 var(--sans);color:var(--text);box-shadow:0 6px 18px rgba(0,0,0,.08)}
+.pop b{color:var(--link);display:block;margin-bottom:4px;font-size:13px}
+footer{border-top:1px solid var(--rule);margin-top:48px;padding:26px max(4vw,16px);font:13px/1.6 var(--sans);color:var(--mute);display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+
+@media(max-width:1100px){
+ .wrap,.grid3{grid-template-columns:minmax(0,680px)}
+ .hd>*,.byline .au,.byline .meta,.marks,.blk,.wide,h2{grid-column:1}
+ .byline .meta{margin-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:14px}.byline .meta div+div{margin-top:0}
+ .toc{grid-column:1;grid-row:auto;position:static;border-right:0;border-bottom:1px solid var(--rule);padding:0 0 14px;margin-bottom:8px}
+ .blk{display:block}
+ .mn{margin:0 0 1.2em;padding:2px 0 2px 14px;border-left:2px solid var(--mauve)}
+ .mn svg{display:none}
+ .split{grid-template-columns:minmax(0,1fr)}
+}
+@media(max-width:600px){
+ body{font-size:16.5px}
+ .hd{padding-block:34px 26px}.deck{font-size:17px}
+ .panel{padding:14px 12px}
+ .tk{font-size:17px;padding:5px 5px}
+ .tile{font-size:13px;margin:0 2px}.rs .nm{font-size:12px}
+ .gbody{grid-template-columns:28px minmax(0,1fr)}
+ .gtoks{gap:2px}.gtoks .tile{margin:0 1px;padding:5px 2px}
+ .eq{font-size:17px}
+ .top .tag{display:none}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}.rsd,.gsvg .e.draw,.curve.draw{stroke-dashoffset:0!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header class="top">
+ <a class="brand" href="#top"><svg viewBox="0 0 34 28" aria-hidden="true"><path d="M6 20L16 6L28 18" fill="none" stroke="var(--mauve)" stroke-width="2" stroke-linecap="round"/><circle cx="6" cy="20" r="5" fill="var(--node)" stroke="var(--stone)" stroke-width="2"/><circle cx="16" cy="6" r="5" fill="var(--maroon)" stroke="var(--maroon)" stroke-width="2"/><circle cx="28" cy="18" r="5" fill="var(--node)" stroke="var(--stone)" stroke-width="2"/></svg>示例研究线索 · 可解释性</a>
+ <span class="tag">版式示例页</span>
+</header>
+<p class="banner"><b>这是一页版式示例。</b>页内所有特征、数字、曲线和结论都是虚构占位，用来演示论文的排版与交互图，不是任何真实实验的结果。</p>
+
+<section class="grid3 hd" id="top">
+ <h1><span style="display:block">价格序列小模型里的特征</span><span style="display:block">一份可解释性研究笔记</span></h1>
+ <p class="deck">一个两层 Transformer 的特征、归因图与稀疏性取舍（示例）</p>
+</section>
+<section class="grid3 byline" aria-label="作者与发布信息">
+ <div class="au" data-chk="byline-authors"><span class="k">作者</span><span class="v">示例作者甲<sup>*†</sup>、示例作者乙<sup>*</sup>、示例作者丙<sup>†</sup>、示例作者丁、示例作者戊、示例作者己、示例作者庚<sup>*</sup>、示例作者辛</span></div>
+ <div class="meta" data-chk="byline-meta"><div><span class="k">机构</span><span class="v">示例研究组 · 量化可解释性</span></div><div><span class="k">发布</span><span class="v">2026 年 11 月 21 日</span></div></div>
+ <p class="marks">* 核心贡献者　† 基础设施贡献者　作者与机构均为占位名称</p>
+</section>
+
+<div class="wrap">
+ <nav class="toc" aria-label="目录" data-chk="toc">
+  <details id="tocd" open><summary>目录</summary>
+  <ol>
+   <li><a href="#abs">摘要</a></li>
+   <li><a href="#s1">1 引言</a></li>
+   <li><a href="#s2">2 模型与方法</a></li>
+   <li class="sub"><a href="#eq1">稀疏自编码器</a></li>
+   <li><a href="#s3">3 特征浏览器</a></li>
+   <li><a href="#s4">4 归因图</a></li>
+   <li><a href="#s5">5 稀疏性的取舍</a></li>
+   <li><a href="#s6">6 局限与下一步</a></li>
+   <li><a href="#fns">脚注与参考文献</a></li>
+  </ol></details>
+ </nav>
+
+ <h2 id="abs"><span class="no">ABSTRACT</span>摘要</h2>
+ <div class="blk"><div class="main" data-chk="b1">
+  <p>我们在一个合成的价格序列任务上训练一个两层的小型 Transformer，用<em class="t">稀疏自编码器</em>把中间层的激活拆成少数几个同时亮起的特征，再对一条输入追踪<em class="t">归因图</em>，看特征之间如何接力、最终推出输出。本页的数据全部是示例，用来演示论文版式与交互图，不构成真实实验结果。</p>
+ </div></div>
+
+ <h2 id="s1"><span class="no">第 1 节</span>引言</h2>
+ <div class="blk"><div class="main" data-chk="b2">
+  <p>量化研究里的序列模型常被当成黑箱：它给出一个方向判断，却说不出依据。可解释性研究想做的是反过来，把模型内部的计算拆成人能读的部件，再检查这些部件是不是在做我们以为它在做的事。<sup class="fn" tabindex="0" data-n="1">1</sup></p>
+  <p>一个常见的做法是先在小模型上建立方法，再看它能不能推广。<a class="cite" href="#r1" data-r="1">[1]</a>把注意力计算拆成可以单独分析的回路，<a class="cite" href="#r2" data-r="2">[2]</a>则提出用稀疏字典学习从激活里分离特征。我们沿用同样的思路，只是把对象换成一个读价格序列的小模型。</p>
+ </div>
+ <aside class="mn"><svg viewBox="0 0 62 78" aria-hidden="true"><rect x="1" y="1" width="60" height="76" rx="4" fill="var(--node)" stroke="var(--stone)" stroke-width="2"/><rect x="22" y="10" width="5" height="58" rx="2.5" fill="var(--tile)"/><path d="M27 26H46M27 50H46" stroke="var(--mauve)" stroke-width="2" stroke-linecap="round"/></svg><b><span class="kk"></span>什么是特征</b>这里的特征指激活空间里的一个方向：当输入里出现某类模式时它亮起，否则几乎为零。一个特征不等于一个神经元。</aside>
+ </div>
+
+ <h2 id="s2"><span class="no">第 2 节</span>模型与方法</h2>
+ <div class="blk"><div class="main" data-chk="b3">
+  <p>模型有两层，每层是一个注意力块加一个前馈块。每个位置都有一条残差流：每个块从流里读入，把输出加回去（图 1）。因为只是相加，层与层之间可以直接通信，后面的块读到的是前面所有块写入的总和。</p>
+ </div>
+ <aside class="mn"><b><span class="kk"></span>示例设定</b>输入是 64 个时间步的离散化收益，词表 256，隐藏维度 128。这些设定只是示意。</aside>
+ </div>
+
+ <figure class="wide fig rise" id="fig1">
+  <div class="panel">
+   <p class="ptitle"><b>残差流：每一层读入、写回</b><span>示意图，非真实模型</span></p>
+   <div class="rs" data-chk="rs" aria-label="四个位置的残差流示意图，每条流上有注意力块和前馈块读入并写回">
+    <div><svg viewBox="0 0 150 250" aria-hidden="true"><rect x="22" y="14" width="10" height="226" rx="5" fill="var(--tile)"/><g fill="var(--node)" stroke="var(--stone)" stroke-width="2"><rect x="46" y="64" width="86" height="30" rx="5"/><rect x="46" y="154" width="86" height="30" rx="5"/></g><g fill="none" stroke="var(--mauve)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="rsd" pathLength="1" d="M32 79H44M39 74L44 79L39 84M89 64V42H34M41 37L34 42L41 47"/><path class="rsd" pathLength="1" d="M32 169H44M39 164L44 169L39 174M89 154V132H34M41 127L34 132L41 137"/></g></svg><span class="tile">开盘</span></div>
+    <div><svg viewBox="0 0 150 250" aria-hidden="true"><rect x="22" y="14" width="10" height="226" rx="5" fill="var(--tile)"/><g fill="var(--node)" stroke="var(--stone)" stroke-width="2"><rect x="46" y="64" width="86" height="30" rx="5"/><rect x="46" y="154" width="86" height="30" rx="5"/></g><g fill="none" stroke="var(--mauve)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="rsd" pathLength="1" d="M32 79H44M39 74L44 79L39 84M89 64V42H34M41 37L34 42L41 47"/><path class="rsd" pathLength="1" d="M32 169H44M39 164L44 169L39 174M89 154V132H34M41 127L34 132L41 137"/></g></svg><span class="tile">放量</span></div>
+    <div><svg viewBox="0 0 150 250" aria-hidden="true"><rect x="22" y="14" width="10" height="226" rx="5" fill="var(--tile)"/><g fill="var(--node)" stroke="var(--stone)" stroke-width="2"><rect x="46" y="64" width="86" height="30" rx="5"/><rect x="46" y="154" width="86" height="30" rx="5"/></g><g fill="none" stroke="var(--mauve)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="rsd" pathLength="1" d="M32 79H44M39 74L44 79L39 84M89 64V42H34M41 37L34 42L41 47"/><path class="rsd" pathLength="1" d="M32 169H44M39 164L44 169L39 174M89 154V132H34M41 127L34 132L41 137"/></g></svg><span class="tile">下跌</span></div>
+    <div><svg viewBox="0 0 150 250" aria-hidden="true"><rect x="22" y="14" width="10" height="226" rx="5" fill="var(--tile)"/><g fill="var(--node)" stroke="var(--stone)" stroke-width="2"><rect x="46" y="64" width="86" height="30" rx="5"/><rect x="46" y="154" width="86" height="30" rx="5"/></g><g fill="none" stroke="var(--mauve)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="rsd" pathLength="1" d="M32 79H44M39 74L44 79L39 84M89 64V42H34M41 37L34 42L41 47"/><path class="rsd" pathLength="1" d="M32 169H44M39 164L44 169L39 174M89 154V132H34M41 127L34 132L41 137"/></g></svg><span class="tile">回升</span></div>
+   </div>
+   <p class="ramp" style="margin-top:10px"><span>每条竖条是一个位置的残差流；上面的块是注意力，下面的是前馈；箭头表示读入与写回。</span></p>
+  </div>
+  <figcaption><b>图 1：</b>每个位置有一条残差流，每层的注意力与前馈块从流里读入，把结果加回。</figcaption>
+ </figure>
+
+ <div class="blk"><div class="main" data-chk="b4" id="eq1">
+  <p>为了读出中间层在算什么，我们在它的激活 <span class="eqi"><i>x</i></span> 上训练一个稀疏自编码器。编码器把激活映射成非负的特征激活：</p>
+  <div class="eq"><span class="m"><i>f</i>(<i>x</i>) = <span class="r">ReLU</span>( <i>W</i><sub>enc</sub> ( <i>x</i> − <i>b</i><sub>dec</sub> ) + <i>b</i><sub>enc</sub> )</span><span class="n">(1)</span></div>
+  <p>解码器用特征的加权和重建激活，训练目标是重建误差加上对特征激活的 L1 惩罚，惩罚的强度由系数 λ 控制：<sup class="fn" tabindex="0" data-n="2">2</sup></p>
+  <div class="eq"><span class="m"><i>L</i> = ‖ <i>x</i> − <i>x̂</i> ‖<sup>2</sup> + λ ‖ <i>f</i>(<i>x</i>) ‖<sub>1</sub></span><span class="n">(2)</span></div>
+  <p>λ 越大，同时亮起的特征越少，但重建越差。第 5 节把这个取舍画了出来。</p>
+ </div>
+ <aside class="mn"><b><span class="kk"></span>符号</b>x 是中间层的激活向量；f(x) 是特征激活，大多数分量为零；x̂ 是用特征重建出的激活。</aside>
+ </div>
+
+ <h2 id="s3"><span class="no">第 3 节</span>特征浏览器</h2>
+ <div class="blk"><div class="main" data-chk="b5">
+  <p>下面的浏览器列出三个特征的数据集示例。选一个特征，句子里的词会按激活强弱亮起三档橙色；把鼠标移到（或点按）任意一个词上，右侧会列出这个词在三个特征上的激活。</p>
+ </div>
+ <aside class="mn"><b><span class="kk"></span>怎么读</b>颜色越深，激活越强。没有颜色的词激活接近零，不代表模型没读到它。</aside>
+ </div>
+
+ <figure class="wide fig rise" id="fig2">
+  <div class="panel">
+   <p class="ptitle"><b>特征浏览器</b><span>示例数据：激活值为手写占位</span></p>
+   <div class="tabs" role="tablist" aria-label="选择特征" data-chk="tabs"></div>
+   <div class="split">
+    <div class="strips" id="strips" data-chk="strips"></div>
+    <div class="side" id="side" aria-live="polite" data-chk="side"></div>
+   </div>
+   <p class="ramp"><span><i style="background:var(--h1)"></i>弱激活</span><span><i style="background:var(--h2)"></i>中等</span><span><i style="background:var(--h3)"></i>强激活</span></p>
+  </div>
+  <figcaption><b>图 2：</b>三个特征的数据集示例。示例数据：激活值是手写的占位，不来自真实模型。</figcaption>
+ </figure>
+
+ <h2 id="s4"><span class="no">第 4 节</span>归因图</h2>
+ <div class="blk"><div class="main" data-chk="b6">
+  <p>特征本身只说明“这里有某种模式”。要回答模型为什么输出某个结果，还得看特征之间怎么接力。我们对一条输入追踪归因图：节点是在这条输入上亮起的特征，边是上游特征对下游特征的因果贡献，边越粗贡献越大。</p>
+  <p>下图里，把鼠标移到（或点按、用键盘聚焦）一个节点，只保留它的入边和出边；用滑块提高阈值，可以把弱边剪掉，看剩下的主干。<sup class="fn" tabindex="0" data-n="3">3</sup></p>
+ </div>
+ <aside class="mn"><b><span class="kk"></span>剪枝</b>真实的归因图往往有成千上万条边，读图之前要先按边权剪枝。剪多少是一个需要说明的选择。</aside>
+ </div>
+
+ <figure class="wide fig rise" id="fig3">
+  <div class="panel">
+   <p class="ptitle"><b>归因图：“利率 下调 之后 波动”</b><span>示例数据：节点与边权为手写占位</span></p>
+   <div style="position:relative">
+    <div class="gbody">
+     <div class="gl" id="gl" aria-hidden="true"></div>
+     <div class="gcol"><span class="tile gout" id="gout">上升</span><svg class="gsvg" id="gsvg" viewBox="0 0 560 330" role="group" aria-label="归因图：三层特征节点与加权边，可聚焦节点查看它的边"></svg></div>
+    </div>
+    <div class="gbody"><div></div><div class="gtoks" data-chk="gtoks"><span class="tile">利率</span><span class="tile">下调</span><span class="tile">之后</span><span class="tile">波动</span></div></div>
+   </div>
+   <p class="read" id="read" aria-live="polite" data-chk="read"></p>
+   <div class="ctl"><label for="thr"><span data-chk="thr-l">边权阈值</span><input id="thr" type="range" min="0" max="0.9" step="0.05" value="0"><output id="thrv" for="thr">0.00</output></label><span id="kept" data-chk="kept"></span></div>
+   <p class="leg" data-chk="leg"><span><svg viewBox="0 0 22 16" aria-hidden="true"><circle cx="11" cy="8" r="6" fill="var(--node)" stroke="var(--stone)" stroke-width="2"/></svg>未亮起</span><span><svg viewBox="0 0 22 16" aria-hidden="true"><circle cx="11" cy="8" r="6" fill="var(--maroon)" stroke="var(--maroon)" stroke-width="2"/></svg>亮起的特征</span><span><svg viewBox="0 0 22 16" aria-hidden="true"><path d="M1 8H21" stroke="var(--mauve)" stroke-width="3" stroke-linecap="round"/></svg>归因边（越粗越强）</span></p>
+  </div>
+  <figcaption><b>图 3：</b>对输入“利率 下调 之后 波动”追踪出的归因图（示意）。节点是特征，边是因果贡献；示例数据。</figcaption>
+ </figure>
+
+ <h2 id="s5"><span class="no">第 5 节</span>稀疏性的取舍</h2>
+ <div class="blk"><div class="main" data-chk="b7">
+  <p>式 (2) 里的 λ 决定了特征有多稀疏。λ 小，重建好，但同时亮起的特征很多，每条输入的归因图会很密；λ 大，图好读，但重建变差，可能把模型真正在算的东西丢掉。下面的曲线把这个取舍画成一条路径，拖动滑块看每个 λ 落在哪里。</p>
+ </div>
+ <aside class="mn"><b><span class="kk"></span>示例曲线</b>曲线由一个简单的函数生成，只用来演示滑块与读数的交互，不是训练结果。</aside>
+ </div>
+
+ <figure class="wide fig rise" id="fig4">
+  <div class="panel">
+   <p class="ptitle"><b>稀疏系数 λ 与重建误差</b><span>示例曲线，非真实训练</span></p>
+   <div class="cv" id="cv"><svg id="cvsvg" viewBox="0 0 560 250" role="img" aria-label="横轴是平均同时亮起的特征数，纵轴是重建误差，一条随 λ 变化的曲线和一个可移动的点"></svg><div class="ax" id="cvax" data-deco="1"></div></div>
+   <div class="ctl"><label for="lam"><span data-chk="lam-l">稀疏系数 λ</span><input id="lam" type="range" min="0.1" max="2" step="0.05" value="0.8"><output id="lamv" for="lam">0.80</output></label></div>
+   <p class="read" id="lamr" aria-live="polite" data-chk="lamr"></p>
+  </div>
+  <figcaption><b>图 4：</b>λ 越大，平均同时亮起的特征越少，重建误差越高。示例曲线。</figcaption>
+ </figure>
+
+ <h2 id="s6"><span class="no">第 6 节</span>局限与下一步</h2>
+ <div class="blk"><div class="main" data-chk="b8">
+  <p>这页只展示了一份研究笔记的版式，所以局限是写给真实研究的提醒：</p>
+  <ul class="pt">
+   <li><span class="lead">特征的名字是我们起的。</span>名字来自少数几个数据集示例，不能当作对特征的证明；需要用干预实验去检验。</li>
+   <li><span class="lead">归因图是对一条输入的局部解释。</span>它不能说明模型在所有输入上都这样算。</li>
+   <li><span class="lead">稀疏性是一个选择，不是真相。</span>不同的 λ 会给出不同的特征集合，应当把它和结论一起报告。</li>
+  </ul>
+  <p>下一步，我们会把这套流程用在更大的模型上，并把每张图的数据与代码一并公开，让读者可以自己拖动滑块、重画图。</p>
+ </div></div>
+
+ <h2 class="small" id="fns">脚注与参考文献</h2>
+ <div class="blk"><div class="main" data-chk="b9">
+  <ol class="notes" id="notes" data-chk="notes">
+   <li id="n1">示例脚注：这里的“特征”和“回路”都是研究里的工作定义，不同论文的用法略有差别。</li>
+   <li id="n2">示例脚注：L1 惩罚把许多特征激活压到零；训练时通常还会约束解码器的列范数，以免模型靠放大特征来绕过惩罚。</li>
+   <li id="n3">示例脚注：剪枝阈值为 0 时保留全部边；示例图中共有 19 条边，权重为手写占位。</li>
+  </ol>
+  <h4>参考文献</h4>
+  <ol class="notes" id="refs" data-chk="refs">
+   <li id="r1">Olah, C. 等。<i>Zoom In: An Introduction to Circuits.</i> Distill, 2020.</li>
+   <li id="r2">Cunningham, H.、Ewart, A.、Riggs, L.、Huben, R.、Sharkey, L. <i>Sparse Autoencoders Find Highly Interpretable Features in Language Models.</i> arXiv:2309.08600, 2023.</li>
+   <li id="r3">Vaswani, A. 等。<i>Attention Is All You Need.</i> NeurIPS, 2017.</li>
+  </ol>
+  <p class="sample" style="margin-top:22px">示例内容仅用于展示版式：作者、机构、特征、数据与结论均为虚构，参考文献为真实公开文献，只作格式示例。</p>
+ </div></div>
+</div>
+
+<footer><span>示例研究线索 · 可解释性论文页模板</span><span>v1.0 · 2026-11</span></footer>
+
+<script>
+{
+const RM=document.documentElement.classList.contains('rm');
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const NS='http://www.w3.org/2000/svg';
+const onView=(el,fn,th=.25)=>{if(RM||!('IntersectionObserver' in window)){fn();return}const o=new IntersectionObserver(es=>{if(es.some(e=>e.isIntersecting)){fn();o.disconnect()}},{threshold:th});o.observe(el)};
+$$('.rise').forEach(f=>onView(f,()=>f.classList.add('in'),.18));
+
+/* contents: collapsed on small screens, section in view marked */
+{const d=$('#tocd');if(matchMedia('(max-width:1100px)').matches)d.removeAttribute('open');
+ const links=$$('.toc a'),map=new Map(links.map(a=>[a.getAttribute('href').slice(1),a]));
+ const mark=id=>{links.forEach(a=>a.classList.toggle('on',a===map.get(id)))};
+ const hs=[...map.keys()].map(id=>document.getElementById(id)).filter(Boolean);
+ if('IntersectionObserver' in window){const o=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)mark(e.target.id)}),{rootMargin:'-15% 0px -70% 0px'});hs.forEach(h=>o.observe(h))}
+ mark('abs')}
+
+/* footnote and citation previews: one card, built on demand */
+{let pop=null,cur=null;
+ const hide=()=>{if(pop){pop.remove();pop=null;cur=null}};
+ const show=el=>{if(cur===el)return;hide();const isFn=el.classList.contains('fn');const src=document.getElementById((isFn?'n':'r')+(isFn?el.dataset.n:el.dataset.r));if(!src)return;
+  pop=document.createElement('div');pop.className='pop';pop.setAttribute('role','tooltip');pop.innerHTML='<b></b><span></span>';pop.firstChild.textContent=isFn?'脚注 '+el.dataset.n:'参考文献 '+el.dataset.r;pop.lastChild.textContent=src.textContent;
+  document.body.appendChild(pop);const r=el.getBoundingClientRect();const w=pop.offsetWidth;
+  let x=Math.max(12,Math.min(innerWidth-w-12,r.left+scrollX-w/2+r.width/2));pop.style.left=x+'px';pop.style.top=(r.bottom+scrollY+8)+'px';cur=el};
+ $$('sup.fn,a.cite').forEach(el=>{el.addEventListener('mouseenter',()=>show(el));el.addEventListener('focus',()=>show(el));el.addEventListener('mouseleave',hide);el.addEventListener('blur',hide);
+  if(el.classList.contains('fn'))el.addEventListener('click',()=>cur===el?hide():show(el))});
+ addEventListener('keydown',e=>{if(e.key==='Escape')hide()})}
+
+/* figure 2: feature browser (sample data) */
+{const F=[{id:'#2417',n:'利率下调'},{id:'#0861',n:'波动抬升'},{id:'#1530',n:'转折与否定'}];
+ const S=['央行 宣布 下调 政策 利率 债市 走强','降息 预期 升温 带动 指数 反弹','市场 担忧 加息 后 波动 率 骤升','成交 放量 但 价格 并未 上涨'].map(s=>s.split(' '));
+ const A=[[[0,.1,.9,.35,.7,0,0],[.85,.4,0,0,0,0],[0,0,.2,0,0,0,0],[0,0,0,0,0,0]],
+          [[0,0,0,0,0,.15,.3],[0,0,.45,.3,0,.4],[0,.3,.2,0,.5,.6,.95],[0,.4,0,0,0,0]],
+          [[0,0,0,0,0,0,0],[0,0,0,0,0,0],[0,.25,0,0,0,0,0],[0,0,.9,0,.7,.55]]];
+ const lv=a=>a>=.66?3:a>=.33?2:a>=.12?1:0;
+ const tabs=$('.tabs'),strips=$('#strips'),side=$('#side');let sel=0,tok=[0,0];
+ F.forEach((f,i)=>{const b=document.createElement('button');b.type='button';b.setAttribute('role','tab');b.textContent=f.id+' '+f.n;b.onclick=()=>pick(i);tabs.appendChild(b)});
+ strips.innerHTML=S.map((s,r)=>`<div class="row">${s.map((t,c)=>`<span class="tk" tabindex="0" data-r="${r}" data-c="${c}">${t}</span>`).join('')}</div>`).join('');
+ const tks=$$('.tk');
+ function paint(){tks.forEach(el=>{const r=+el.dataset.r,c=+el.dataset.c;el.style.transitionDelay=RM?'0s':(c*30)+'ms';el.dataset.lv=lv(A[sel][r][c])});$$('.tabs button').forEach((b,i)=>b.setAttribute('aria-selected',i===sel))}
+ function info(r,c){tok=[r,c];tks.forEach(el=>el.classList.toggle('cur',+el.dataset.r===r&&+el.dataset.c===c));
+  const rows=F.map((f,i)=>({f,a:A[i][r][c]})).sort((x,y)=>y.a-x.a);
+  side.innerHTML=`<h5>当前词的特征</h5><p class="who">${S[r][c]}</p><ul>${rows.map(x=>`<li><span>${x.f.id} ${x.f.n}</span><b>${x.a.toFixed(2)}</b><span class="bar"><i data-w="${Math.round(x.a*100)}"></i></span></li>`).join('')}</ul>`;
+  requestAnimationFrame(()=>requestAnimationFrame(()=>$$('.side .bar i').forEach((i,k)=>{i.style.width=i.dataset.w+'%';i.style.background=`var(--h${Math.max(1,lv(rows[k].a))})`})))}
+ function pick(i){sel=i;paint();let best=[0,0,0];A[i].forEach((row,r)=>row.forEach((a,c)=>{if(a>best[2])best=[r,c,a]}));info(best[0],best[1])}
+ tks.forEach(el=>{const go=()=>info(+el.dataset.r,+el.dataset.c);el.addEventListener('mouseenter',go);el.addEventListener('focus',go);el.addEventListener('click',go)});
+ pick(0)}
+
+/* figure 3: attribution graph (sample data) */
+{const svg=$('#gsvg'),W=560,H=330,colX=c=>(c+.5)*140,layerY=[262,182,102],outP={x:colX(3),y:30};
+ const NM={'0:0:1':['#0044','利率词'],'0:1:0':['#0861','下调动作'],'0:1:2':['#0719','降息预期'],'0:2:1':['#0310','时间后继'],'0:3:0':['#0502','价格波动'],'0:3:2':['#0277','数值词'],
+  '1:0:2':['#1102','政策利率'],'1:1:1':['#2417','利率下调'],'1:2:0':['#1960','事件之后'],'1:3:1':['#0861','波动抬升'],'2:1:2':['#3012','宽松周期'],'2:2:1':['#2210','后续反应'],'2:3:0':['#1530','风险偏好'],'2:3:1':['#0990','上升输出']};
+ const E=[['0:0:1','1:0:2',.62],['0:1:0','1:1:1',.48],['0:1:2','1:1:1',.31],['0:1:0','1:2:0',.22],['0:2:1','1:2:0',.7],['0:3:0','1:3:1',.55],['0:3:2','1:3:1',.38],['0:0:1','1:1:1',.27],
+  ['1:0:2','2:1:2',.35],['1:1:1','2:1:2',.58],['1:1:1','2:2:1',.4],['1:2:0','2:2:1',.66],['1:3:1','2:3:0',.5],['1:3:1','2:3:1',.82],['1:2:0','2:3:0',.3],
+  ['2:1:2','out',.25],['2:2:1','out',.44],['2:3:0','out',.52],['2:3:1','out',.93]];
+ const pos=id=>{if(id==='out')return outP;const[l,c,k]=id.split(':').map(Number);return{x:colX(c)+(k-1)*38,y:layerY[l]}};
+ const curve=(a,b,top)=>{const m=(a.y+top)/2;return`M${a.x} ${a.y-11}C${a.x} ${m} ${b.x} ${m} ${b.x} ${top}`};
+ let h='';
+ [0,1,2,3].forEach(c=>{Object.keys(NM).filter(id=>id.startsWith('0:'+c+':')).forEach(id=>{const p=pos(id);h+=`<path class="base" d="M${colX(c)} ${H-8}C${colX(c)} ${H-30} ${p.x} ${H-30} ${p.x} ${p.y+11}"/>`})});
+ E.forEach(([a,b,w],i)=>{const pa=pos(a),pb=pos(b);const top=b==='out'?pb.y+14:pb.y+11;h+=`<path class="e draw${w>.78?' s':''}" data-i="${i}" pathLength="1" d="${curve(pa,pb,top)}" stroke-width="${(1.2+w*3.6).toFixed(1)}" opacity="${(.35+w*.55).toFixed(2)}" style="transition-delay:${(2-+a[0])*0.18}s"/>`});
+ Object.keys(NM).forEach(id=>{const p=pos(id);h+=`<g class="n a" tabindex="0" role="button" data-id="${id}" aria-label="特征 ${NM[id][0]} ${NM[id][1]}"><circle cx="${p.x}" cy="${p.y}" r="11"/></g>`});
+ [0,1,2,3].forEach(c=>[0,1,2].forEach(l=>[0,1,2].forEach(k=>{const id=l+':'+c+':'+k;if(!NM[id]){const p=pos(id);h+=`<g class="n"><circle cx="${p.x}" cy="${p.y}" r="11"/></g>`}})));
+ svg.innerHTML=h;
+ {const o=$('#gout');o.style.left=(outP.x/W*100)+'%';o.style.top=(outP.y/H*100)+'%'}
+ {const gl=$('#gl');gl.innerHTML=['L3','L2','L1'].map((t,i)=>`<span style="top:${(layerY[2-i]/H*100).toFixed(1)}%">${t}</span>`).join('');gl.style.alignSelf='stretch'}
+ const nodes=$$('.gsvg .n.a'),edges=$$('.gsvg .e');const read=$('#read');let thr=0,pin=null;
+ const idle='把鼠标移到一个亮起的节点上，或用 Tab 键聚焦它，会只保留它的入边和出边。';
+ const kept=()=>{const k=E.filter(e=>e[2]>=thr).length;$('#kept').textContent=`保留 ${k} / ${E.length} 条边`};
+ function focusNode(id){svg.classList.toggle('focus',!!id);nodes.forEach(n=>{n.classList.toggle('sel',n.dataset.id===id);n.classList.toggle('on',false)});edges.forEach(e=>e.classList.remove('on'));
+  if(!id){read.innerHTML=idle;return}
+  let ins=[],outs=[];const on=new Set([id]);
+  E.forEach((e,i)=>{if(e[2]<thr)return;if(e[1]===id){ins.push(e);on.add(e[0]);edges[i].classList.add('on')}if(e[0]===id){outs.push(e);on.add(e[1]);edges[i].classList.add('on')}});
+  nodes.forEach(n=>n.classList.toggle('on',on.has(n.dataset.id)));
+  const mx=[...ins,...outs].reduce((m,e)=>Math.max(m,e[2]),0);
+  read.innerHTML=`<b>L${+id[0]+1} · ${NM[id][0]} ${NM[id][1]}</b>：入边 ${ins.length} 条，出边 ${outs.length} 条，最大边权 ${mx.toFixed(2)}（示例值）。`}
+ nodes.forEach(n=>{const id=n.dataset.id;n.addEventListener('mouseenter',()=>focusNode(id));n.addEventListener('focus',()=>focusNode(id));n.addEventListener('click',()=>{pin=pin===id?null:id;focusNode(pin)});n.addEventListener('mouseleave',()=>focusNode(pin));n.addEventListener('blur',()=>focusNode(pin))});
+ const apply=()=>{edges.forEach((e,i)=>e.classList.toggle('cut',E[i][2]<thr));$('#thrv').value=thr.toFixed(2);kept();focusNode(pin)};
+ $('#thr').addEventListener('input',e=>{thr=+e.target.value;apply()});
+ apply()}
+
+/* figure 4: sparsity curve (sample function) */
+{const svg=$('#cvsvg'),ax=$('#cvax'),W=560,H=250,pl=44,pr=14,pt=14,pb=34;
+ const L0=l=>200*Math.exp(-1.15*l)+8,ER=l=>.05+.14*Math.pow(l,1.4);
+ const X=v=>pl+v/220*(W-pl-pr),Y=v=>H-pb-v/.5*(H-pt-pb);
+ let g='',a='';
+ [0,.1,.2,.3,.4,.5].forEach(v=>{if(v*10%2===0)a+=`<span class="e" data-deco style="left:${(pl-8)/W*100}%;top:${Y(v)/H*100}%">${v.toFixed(1)}</span>`;g+=`<path class="gridl" d="M${pl} ${Y(v)}H${W-pr}"/>`;});
+ [0,100,200].forEach(v=>{a+=`<span class="m" data-deco style="left:${X(v)/W*100}%;top:${(H-pb+10)/H*100}%">${v}</span>`});
+ a+=`<span class="m" data-deco style="left:${(pl+(W-pl-pr)/2)/W*100}%;top:${(H-12)/H*100}%">平均同时亮起的特征数</span>`;
+ let d='';for(let i=0;i<=40;i++){const l=.1+i*(1.9/40);d+=(i?'L':'M')+X(L0(l)).toFixed(1)+' '+Y(ER(l)).toFixed(1)}
+ svg.innerHTML=g+`<path class="curve draw" pathLength="1" d="${d}"/><circle class="dot" id="dot" r="7"/>`;ax.innerHTML=a;ax.style.inset='0';
+ const dot=$('#dot'),r=$('#lamr');
+ const set=l=>{dot.setAttribute('cx',X(L0(l)));dot.setAttribute('cy',Y(ER(l)));$('#lamv').value=l.toFixed(2);r.innerHTML=`<b>λ = ${l.toFixed(2)}</b>：平均同时亮起约 ${Math.round(L0(l))} 个特征，重建误差约 ${ER(l).toFixed(2)}（示例曲线）。`};
+ $('#lam').addEventListener('input',e=>set(+e.target.value));set(.8)}
+}
+</script>
+</body>
+</html>

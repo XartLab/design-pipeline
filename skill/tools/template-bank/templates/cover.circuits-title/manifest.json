@@ -1,0 +1,154 @@
+{
+  "schema": "design-pipeline.template-bank-template.v1",
+  "id": "cover.circuits-title",
+  "family": "cover",
+  "style": "circuits-paper",
+  "title": "Paper title and byline: a bold sans title, a deck, a byline grid (authors left, affiliation and date stacked right) between two hairlines, a marker line and the abstract",
+  "use": "The first screen of a research paper: title, who wrote it, where, when, and the abstract that opens the article. Authors take markers (* and a dagger) explained in the note line.",
+  "canvas": {
+    "width": 1600,
+    "height": 900
+  },
+  "sizes": [
+    "1600x900",
+    "1920x1080"
+  ],
+  "aspect": "16:9",
+  "accent": {
+    "roles": [
+      "maroon"
+    ],
+    "maxShare": 0.02
+  },
+  "params": {
+    "guides": {
+      "type": "boolean",
+      "default": false,
+      "class": "decoration",
+      "note": "draw layout guides"
+    },
+    "theme": {
+      "type": "enum",
+      "values": [
+        "light",
+        "dark"
+      ],
+      "default": "light",
+      "class": "decoration",
+      "note": "light (white #FFFFFF) or dark (#141414) ground"
+    }
+  },
+  "slots": {
+    "brand": {
+      "kind": "text",
+      "default": "示例研究线索 · 可解释性",
+      "maxChars": 16,
+      "font": "sans"
+    },
+    "title_1": {
+      "kind": "text",
+      "default": "价格序列小模型里的特征",
+      "maxChars": 14,
+      "font": "sans",
+      "title": true,
+      "note": "title line 1; about 14 CJK characters at 66 units"
+    },
+    "title_2": {
+      "kind": "text",
+      "default": "一份可解释性研究笔记",
+      "maxChars": 14,
+      "font": "sans",
+      "title": true,
+      "note": "title line 2"
+    },
+    "deck": {
+      "kind": "text",
+      "default": "一个两层 Transformer 的特征、归因图与稀疏性（示例）",
+      "maxChars": 40,
+      "font": "sans"
+    },
+    "k_authors": {
+      "kind": "text",
+      "default": "作者",
+      "maxChars": 4,
+      "font": "sans",
+      "note": "kicker over the authors"
+    },
+    "k_affil": {
+      "kind": "text",
+      "default": "机构",
+      "maxChars": 4,
+      "font": "sans",
+      "note": "kicker over the affiliation"
+    },
+    "k_pub": {
+      "kind": "text",
+      "default": "发布",
+      "maxChars": 4,
+      "font": "sans",
+      "note": "kicker over the date"
+    },
+    "authors": {
+      "kind": "text",
+      "default": "示例作者甲*†、示例作者乙*、示例作者丙†、示例作者丁、示例作者戊、示例作者己、示例作者庚、示例作者辛、示例作者壬、示例作者癸、示例作者子*、示例作者丑",
+      "maxChars": 90,
+      "font": "sans",
+      "lines": 3,
+      "note": "names with markers, wrapped to 3 lines"
+    },
+    "affiliation": {
+      "kind": "text",
+      "default": "示例研究组 · 量化可解释性",
+      "maxChars": 20,
+      "font": "sans"
+    },
+    "published": {
+      "kind": "text",
+      "default": "2026 年 11 月 21 日",
+      "maxChars": 16,
+      "font": "sans"
+    },
+    "note": {
+      "kind": "text",
+      "default": "* 核心贡献者　† 基础设施贡献者　数据与结论均为示例",
+      "maxChars": 46,
+      "font": "sans"
+    },
+    "abstract_label": {
+      "kind": "text",
+      "default": "摘要",
+      "maxChars": 4,
+      "font": "sans",
+      "note": "bold lead-in of the abstract"
+    },
+    "abstract": {
+      "kind": "text",
+      "default": "我们在一个合成的价格序列任务上训练两层小型 Transformer，用稀疏自编码器取出特征，再对一条输入追踪归因图。本页的数据全部是示例，用来演示论文版式与交互图，不构成真实实验结果。",
+      "maxChars": 120,
+      "font": "sans",
+      "lines": 3,
+      "note": "3 lines"
+    }
+  },
+  "relations": [
+    "Title 66 units bold 700 black on two lines at x 96; deck 22 units in the 60% ink; the byline sits between two hairlines (y 430 and 662): authors 19 units in the 80% ink over three lines at the left, affiliation and date stacked in a 388-unit column at x 1116, each under a 13-unit tracked kicker in the 60% ink; the marker line is 15 units.",
+    "The abstract opens under the byline: a bold 17-unit lead-in at x 96 and 20-unit text at 1.7 line height starting at x 192."
+  ],
+  "decoration": [
+    "The brand mark (three nodes and two edges), the hairlines and the margin guides are decoration; all text is slots."
+  ],
+  "provenance": {
+    "corpus": "research-paper kit (examples/circuits-paper-kit): our own original interactive paper page in the circuits-paper grammar; all copy, features and numbers are labelled samples",
+    "experiment": "styles/circuits-paper/style.json provenance (three public reference pages measured privately in Chrome on 2026-11-21; never shipped)",
+    "accessed": "2026-11-21",
+    "method": "The reference papers' title block and byline container, re-set at card size with our own copy: a bold sans title, a hairline-bounded grid and the abstract opening the article.",
+    "sampleIds": [
+      "circuits-paper/title"
+    ],
+    "measured": [
+      "Byline: full-width band between two 10% black rules, kickers 9.6 px uppercase 50% ink, names 12.8 / 19.2 px, authors 570 px at the left, affiliation and date stacked 70 px apart in a 114 px column (scaled about 1.5x here).",
+      "Template: default and 50 seeds, both sizes, light and dark pass the static check."
+    ],
+    "summary": "circuits-paper title"
+  }
+}
