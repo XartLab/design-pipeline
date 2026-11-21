@@ -1,14 +1,18 @@
 "use strict";
 
-const { assertEnum, assertObject, canonicalJson, fail, isObject, sha256 } = require("./contract-utils.cjs");
+const { assertEnum, assertObject, canonicalJson, fail, isObject, sha256, wordCount } = require("./contract-utils.cjs");
 const { CATALOG_SCHEMA, validateCatalog } = require("./design-system-catalog-core.cjs");
 const { validateTokens } = require("./interoperability-core.cjs");
 
 const DECISION_SCHEMA = "design-pipeline.design-system-decision.v1";
+const DECISION_FILE = "design-system-decision.json";
 const PROJECTION_SCHEMA = "design-pipeline.design-system-token-projection.v1";
 const MODES = ["reference", "adopt", "substitute", "custom"];
 const STATUSES = ["stable", "canary", "beta", "experimental", "deprecated", "unknown"];
 const TYPES = new Set(["color", "dimension", "fontFamily", "fontWeight", "duration", "cubicBezier", "number", "strokeStyle", "border", "transition", "shadow", "gradient", "typography"]);
+const AUTHORIZED_BY = ["owner", "agent"];
+const DELEGATION_SOURCES = ["workflow-state", "owner-instruction"];
+const DELEGATION_MIN_WORDS = 6;
 
 function semanticName(name) {
   return name.replace(/^--/, "").replace(/[^A-Za-z0-9_-]+/g, ".").replace(/[-_]+/g, ".").replace(/^\.+|\.+$/g, "");
@@ -186,12 +190,14 @@ function validateCapabilityInventory(value) {
   if (!isObject(value.capabilityResults)) fail("design system decision", "capabilityInventory.capabilityResults must be an object");
 }
 
-function decideDesignSystem(request) {
+function decideDesignSystemCore(request, compared) {
   assertObject(request, "request", "design system decision");
   if (request.schema !== undefined && request.schema !== "design-pipeline.design-system-decision-request.v1") fail("design system decision", "unsupported request schema");
   if (request.version !== undefined && request.version !== "1") fail("design system decision", "unsupported request version");
   assertEnum(request.mode, MODES, "mode", "design system decision");
-  validateCatalog(request.catalog);
+  // An explicit owner scratch choice is not a fallback: it needs no catalog and no catalog search.
+  const ownerScratch = request.authorization?.by === "owner" && request.authorization?.scratch === true;
+  if (!(request.mode === "custom" && ownerScratch)) validateCatalog(request.catalog);
   if (request.allowCanary !== undefined && typeof request.allowCanary !== "boolean") fail("design system decision", "allowCanary must be boolean");
   const evidence = [];
   const rationale = [];
@@ -214,26 +220,48 @@ function decideDesignSystem(request) {
     if (request.capabilityInventory.directQueryResults === 0 && capabilityHits > 0) evidence.push("zero-result-inconclusive");
     evidence.push(`capability-inventory:${request.capabilityInventory.searchedCapabilities.length}:${capabilityHits}`);
   }
-  if (request.mode === "custom") {
-    const selected = existing || { id: request.customId || "project-custom", source: "project" };
-    rationale.push("Custom mode keeps the design system project-owned.");
-    evidence.push("mode:custom");
-    return { schema: DECISION_SCHEMA, status: "ready", mode: request.mode, projectAuthority: selected, selected, rejected, rationale, evidence, frontendStackDecision: request.frontendStackDecision, capabilityInventory: request.capabilityInventory || null };
-  }
-  const candidates = request.catalog.entries.slice().sort((a, b) => a.id.localeCompare(b.id));
+  // Any other custom choice compares the catalog first, so the receipt records what was considered.
+  const compareCatalog = !(request.mode === "custom" && ownerScratch);
+  const candidates = compareCatalog ? request.catalog.entries.slice().sort((a, b) => a.id.localeCompare(b.id)) : [];
   let selected = null;
   for (const entry of candidates) {
-    if (request.candidateId && entry.id !== request.candidateId) { rejected.push({ id: entry.id, reason: "not-requested" }); continue; }
     const entryStatus = entry.status || "stable";
+    if (request.candidateId && entry.id !== request.candidateId) {
+      rejected.push({ id: entry.id, reason: "not-requested" });
+      compared.push({ id: entry.id, status: entryStatus, compatible: null, outcome: "not-compared", reason: "not-requested" });
+      continue;
+    }
     assertEnum(entryStatus, STATUSES, `${entry.id}.status`, "design system decision");
-    if (["deprecated", "unknown"].includes(entryStatus)) { rejected.push({ id: entry.id, reason: `status-${entryStatus}` }); continue; }
-    if (["canary", "beta", "experimental"].includes(entryStatus) && !request.allowCanary) { rejected.push({ id: entry.id, reason: "prerelease-not-allowed" }); continue; }
+    if (["deprecated", "unknown"].includes(entryStatus)) {
+      if (!selected) rejected.push({ id: entry.id, reason: `status-${entryStatus}` });
+      compared.push({ id: entry.id, status: entryStatus, compatible: false, outcome: selected ? "not-selected" : "rejected", reason: `status-${entryStatus}` });
+      continue;
+    }
+    if (["canary", "beta", "experimental"].includes(entryStatus) && !request.allowCanary) {
+      if (!selected) rejected.push({ id: entry.id, reason: "prerelease-not-allowed" });
+      compared.push({ id: entry.id, status: entryStatus, compatible: null, outcome: selected ? "not-selected" : "rejected", reason: "prerelease-not-allowed" });
+      continue;
+    }
     const issues = incompatibilities(request.project, entry);
-    if (issues.length && request.mode !== "reference") { rejected.push({ id: entry.id, reason: "runtime-incompatible", evidence: issues }); continue; }
+    if (issues.length && request.mode !== "reference") {
+      if (!selected) rejected.push({ id: entry.id, reason: "runtime-incompatible", evidence: issues });
+      compared.push({ id: entry.id, status: entryStatus, compatible: false, outcome: selected ? "not-selected" : "rejected", reason: "runtime-incompatible" });
+      continue;
+    }
+    if (selected || request.mode === "custom") {
+      compared.push({ id: entry.id, status: entryStatus, compatible: issues.length === 0, outcome: "not-selected", reason: selected ? "another candidate was selected" : "custom substrate" });
+      continue;
+    }
     const sourceHash = entry.hash;
     selected = { id: entry.id, status: entryStatus, sourceHash };
+    compared.push({ id: entry.id, status: entryStatus, compatible: true, outcome: "selected" });
     evidence.push(`catalog:${entry.id}@${sourceHash}`);
-    break;
+  }
+  if (request.mode === "custom") {
+    const custom = existing || { id: request.customId || "project-custom", source: "project" };
+    rationale.push("Custom mode keeps the design system project-owned.");
+    evidence.push("mode:custom");
+    return { schema: DECISION_SCHEMA, status: "ready", mode: request.mode, projectAuthority: custom, selected: custom, rejected, rationale, evidence, frontendStackDecision: request.frontendStackDecision, capabilityInventory: request.capabilityInventory || null };
   }
   if (!selected) {
     rationale.push("No eligible catalog entry satisfies status and runtime constraints.");
@@ -255,4 +283,148 @@ function decideDesignSystem(request) {
   return { schema: DECISION_SCHEMA, status: "ready", mode: request.mode, projectAuthority, selected, rejected, rationale, evidence, frontendStackDecision: request.frontendStackDecision, capabilityInventory: request.capabilityInventory };
 }
 
-module.exports = { CATALOG_SCHEMA, DECISION_SCHEMA, MODES, PROJECTION_SCHEMA, decideDesignSystem, projectDesignSystemTokens, validateCatalog };
+// The receipt a change consumes: the same v1 schema, extended in place with the change it belongs
+// to, who authorized the substrate choice, and the candidates the decision compared.
+function normalizeAuthorization(value) {
+  if (!isObject(value)) return null;
+  return { by: value.by, scratch: value.scratch === true, delegation: isObject(value.delegation) ? { ...value.delegation } : null };
+}
+
+function decideDesignSystem(request) {
+  const compared = [];
+  const decision = decideDesignSystemCore(request, compared);
+  return {
+    ...decision,
+    changeId: typeof request.changeId === "string" && request.changeId.trim() ? request.changeId : null,
+    authorization: normalizeAuthorization(request.authorization),
+    compared,
+  };
+}
+
+function blockedDecision(code, message, extra = {}) {
+  return { status: "blocked", code, message, ...extra };
+}
+
+// The catalog capabilities the search found that the decision did not take: the unused relevant
+// capabilities QA must surface instead of letting them disappear.
+function unusedCapabilities(receipt) {
+  const inventory = isObject(receipt.capabilityInventory) ? receipt.capabilityInventory : null;
+  if (!inventory || !isObject(inventory.capabilityResults)) return [];
+  const selected = isObject(receipt.selected) ? receipt.selected.id : null;
+  const ids = new Set();
+  for (const value of Object.values(inventory.capabilityResults)) {
+    for (const id of Array.isArray(value?.matchedIds) ? value.matchedIds : []) {
+      if (typeof id === "string" && id !== selected) ids.add(id);
+    }
+  }
+  return [...ids].sort();
+}
+
+const DECISION_KEYS = ["schema", "status", "mode", "projectAuthority", "selected", "rejected", "rationale", "evidence", "frontendStackDecision", "capabilityInventory", "changeId", "authorization", "compared"];
+const COMPARED_KEYS = ["id", "status", "compatible", "outcome"];
+const COMPARED_OUTCOMES = ["selected", "rejected", "not-selected", "not-compared"];
+
+// The receipt shape the v1 schema declares: every field present, no unknown field, the declared types.
+function validateDecisionShape(receipt) {
+  if (!isObject(receipt)) return "the design-system decision receipt must be an object";
+  for (const key of DECISION_KEYS) if (!Object.hasOwn(receipt, key)) return `the design-system decision receipt is missing ${key}`;
+  for (const key of Object.keys(receipt)) if (!DECISION_KEYS.includes(key)) return `the design-system decision receipt carries the unknown field ${key}`;
+  if (!Array.isArray(receipt.rejected) || receipt.rejected.some((item) => !isObject(item))) return "rejected must be an array of objects";
+  for (const key of ["rationale", "evidence"]) {
+    if (!Array.isArray(receipt[key]) || receipt[key].some((item) => typeof item !== "string" || !item.trim())) return `${key} must be an array of non-empty strings`;
+  }
+  for (const key of ["projectAuthority", "selected", "frontendStackDecision", "capabilityInventory"]) {
+    if (receipt[key] !== null && !isObject(receipt[key])) return `${key} must be an object or null`;
+  }
+  if (receipt.changeId !== null && typeof receipt.changeId !== "string") return "changeId must be a string or null";
+  if (receipt.authorization !== null) {
+    if (!isObject(receipt.authorization)) return "authorization must be an object or null";
+    for (const key of ["by", "scratch", "delegation"]) if (!Object.hasOwn(receipt.authorization, key)) return `authorization is missing ${key}`;
+    if (!AUTHORIZED_BY.includes(receipt.authorization.by)) return "authorization.by must be owner or agent";
+    if (typeof receipt.authorization.scratch !== "boolean") return "authorization.scratch must be a boolean";
+    const delegation = receipt.authorization.delegation;
+    if (delegation !== null) {
+      if (!isObject(delegation)) return "authorization.delegation must be an object or null";
+      if (!DELEGATION_SOURCES.includes(delegation.source)) return "authorization.delegation.source must be workflow-state or owner-instruction";
+      if (delegation.source === "workflow-state" && !/^[a-f0-9]{64}$/.test(String(delegation.stateSha256 || ""))) return "authorization.delegation.stateSha256 must be SHA-256";
+      if (delegation.source === "owner-instruction" && (typeof delegation.quote !== "string" || !delegation.quote.trim())) return "authorization.delegation.quote must be a non-empty string";
+    }
+  }
+  if (!Array.isArray(receipt.compared)) return "compared must be an array of comparison records";
+  for (const item of receipt.compared) {
+    if (!isObject(item)) return "compared must be an array of comparison records";
+    for (const key of COMPARED_KEYS) if (!Object.hasOwn(item, key)) return `a compared record is missing ${key}`;
+    if (typeof item.id !== "string" || !item.id.trim()) return "a compared record needs an id";
+    if (typeof item.status !== "string" || !item.status.trim()) return "a compared record needs a status";
+    if (item.compatible !== null && typeof item.compatible !== "boolean") return "a compared record needs a boolean compatible";
+    if (!COMPARED_OUTCOMES.includes(item.outcome)) return "a compared record needs a known outcome";
+  }
+  return null;
+}
+
+// The consumable-decision contract. A receipt is consumable when it is schema-valid and ready, names
+// who authorized the substrate choice, and - unless the owner explicitly chose from scratch -
+// records the searched capabilities and the compared candidates. It never grants visual acceptance,
+// and a reference decision is a reference, not an adopted substrate.
+function validateDesignSystemDecision(receipt, options = {}) {
+  const shape = validateDecisionShape(receipt);
+  if (shape) return blockedDecision("UNSUPPORTED_SCHEMA", shape);
+  if (receipt.schema !== DECISION_SCHEMA) return blockedDecision("UNSUPPORTED_SCHEMA", `unsupported design-system decision schema ${String(receipt.schema)}`);
+  if (receipt.status !== "ready") return blockedDecision("DECISION_NOT_READY", `the design-system decision is ${String(receipt.status)}, not ready`);
+  if (!MODES.includes(receipt.mode)) return blockedDecision("UNSUPPORTED_MODE", `unsupported design-system decision mode ${String(receipt.mode)}`);
+  const authorization = isObject(receipt.authorization) ? receipt.authorization : null;
+  if (!authorization) return blockedDecision("DECISION_NOT_AUTHORIZED", "the design-system decision records no authorization for the substrate choice");
+  if (!AUTHORIZED_BY.includes(authorization.by)) return blockedDecision("DECISION_NOT_AUTHORIZED", "authorization.by must be owner or agent");
+  const scratch = authorization.scratch === true;
+  if (scratch && authorization.by !== "owner") return blockedDecision("DECISION_NOT_AUTHORIZED", "an agent cannot record an owner scratch choice");
+  if (scratch && receipt.mode !== "custom") return blockedDecision("SCRATCH_MODE_MISMATCH", `an owner scratch choice is a custom substrate, not ${receipt.mode}`);
+  const delegation = isObject(authorization.delegation) ? authorization.delegation : null;
+  if (authorization.by === "owner" && !delegation) {
+    return blockedDecision("DELEGATION_MISSING", "an owner-authorized decision must record the owner's instruction or the delegating workflow state");
+  }
+  if (delegation) {
+    if (!DELEGATION_SOURCES.includes(delegation.source)) return blockedDecision("DELEGATION_MISSING", "delegation.source must be workflow-state or owner-instruction");
+    if (delegation.source === "owner-instruction") {
+      if (typeof delegation.quote !== "string" || wordCount(delegation.quote) < DELEGATION_MIN_WORDS) {
+        return blockedDecision("DELEGATION_MISSING", `the owner's quoted instruction needs at least ${DELEGATION_MIN_WORDS} words`);
+      }
+    } else if (!/^[a-f0-9]{64}$/.test(String(delegation.stateSha256 || ""))) {
+      return blockedDecision("DELEGATION_MISSING", "the delegating workflow state needs its sha256");
+    }
+  }
+  const ownerScratch = authorization.by === "owner" && scratch;
+  const inventory = isObject(receipt.capabilityInventory) ? receipt.capabilityInventory : null;
+  const compared = Array.isArray(receipt.compared) ? receipt.compared : [];
+  if (!ownerScratch) {
+    if (!inventory) return blockedDecision("CAPABILITY_INVENTORY_MISSING", "the decision must record the searched capabilities before the substrate is chosen");
+    const searched = Array.isArray(inventory.searchedCapabilities) ? inventory.searchedCapabilities.filter((item) => typeof item === "string" && item.trim()) : [];
+    if (!searched.length) return blockedDecision("CAPABILITY_INVENTORY_MISSING", "the capability inventory records no searched capability");
+    const results = isObject(inventory.capabilityResults) ? inventory.capabilityResults : {};
+    const hits = Object.values(results).reduce((sum, item) => sum + (Number(item?.count) || 0), 0);
+    const evidence = Array.isArray(receipt.evidence) ? receipt.evidence : [];
+    if (inventory.directQueryResults === 0 && hits > 0 && !evidence.includes("zero-result-inconclusive")) {
+      return blockedDecision("ZERO_RESULT_NOT_MARKED", "a zero-result product query with capability hits must be marked inconclusive");
+    }
+    if (hits === 0) return blockedDecision("CAPABILITY_SEARCH_EMPTY", "the decision records no capability candidates; only an owner scratch choice may select a substrate without them");
+    if (["adopt", "substitute", "custom"].includes(receipt.mode) && !compared.length) {
+      return blockedDecision("COMPARISON_MISSING", "the decision records no compared candidates");
+    }
+    if (authorization.by === "owner" && ["reference", "adopt", "substitute"].includes(receipt.mode) && !compared.length) {
+      return blockedDecision("COMPARISON_MISSING", "an owner-authorized substrate choice must record the candidates that were compared");
+    }
+  }
+  if (options.changeId !== undefined && options.changeId !== null && receipt.changeId !== options.changeId) {
+    return blockedDecision("DECISION_CHANGE_MISMATCH", `the design-system decision belongs to change ${String(receipt.changeId)}, not ${String(options.changeId)}`);
+  }
+  return {
+    status: "ready",
+    code: "READY",
+    mode: receipt.mode,
+    changeId: receipt.changeId ?? null,
+    runtimeSubstrate: receipt.mode === "reference" ? null : (isObject(receipt.selected) ? receipt.selected : null),
+    unusedCapabilities: unusedCapabilities(receipt),
+    grantsVisualAcceptance: false,
+  };
+}
+
+module.exports = { CATALOG_SCHEMA, DECISION_SCHEMA, DECISION_FILE, MODES, PROJECTION_SCHEMA, decideDesignSystem, projectDesignSystemTokens, validateCatalog, validateDesignSystemDecision };

@@ -102,6 +102,10 @@ Use the public CLI for the complete lifecycle:
 - `design-system project-tokens` emits DTCG-compatible tokens plus an explicit loss report.
 - `design-system decide` records `reference`, `adopt`, `substitute`, or `custom`; runtime use
   requires compatible React/React DOM/StyleX constraints and admitted adapter intake.
+- The receipt is consumed by the change phases: `change advance --design-system-decision <file>` binds
+  it inside the change and refuses to advance into `directions`, `design-spec`, `motion-spec`, `tasks` or
+  `implementation` without a schema-valid receipt. An owner scratch choice needs no catalog search but
+  must carry the owner's own words.
 
 For web components, first record the exact user decision: at `quick` immediately before build, at
 `standard` and `full` in the numbered decision round (with further rounds for dependent questions)

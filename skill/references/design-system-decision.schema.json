@@ -4,7 +4,7 @@
   "title": "Design System Runtime Decision",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schema", "status", "mode", "projectAuthority", "selected", "rejected", "rationale", "evidence", "frontendStackDecision", "capabilityInventory"],
+  "required": ["schema", "status", "mode", "projectAuthority", "selected", "rejected", "rationale", "evidence", "frontendStackDecision", "capabilityInventory", "changeId", "authorization", "compared"],
   "properties": {
     "schema": {"const": "design-pipeline.design-system-decision.v1"},
     "status": {"enum": ["ready", "review", "blocked"]},
@@ -15,6 +15,41 @@
     "rationale": {"type": "array", "items": {"type": "string", "minLength": 1}},
     "evidence": {"type": "array", "items": {"type": "string", "minLength": 1}},
     "frontendStackDecision": {"type": ["object", "null"]},
-    "capabilityInventory": {"type": ["object", "null"]}
+    "capabilityInventory": {"type": ["object", "null"]},
+    "changeId": {"type": ["string", "null"]},
+    "authorization": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["by", "scratch", "delegation"],
+      "properties": {
+        "by": {"enum": ["owner", "agent"]},
+        "scratch": {"type": "boolean"},
+        "delegation": {
+          "type": ["object", "null"],
+          "additionalProperties": false,
+          "required": ["source"],
+          "properties": {
+            "source": {"enum": ["workflow-state", "owner-instruction"]},
+            "stateSha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+            "quote": {"type": "string", "minLength": 1}
+          }
+        }
+      }
+    },
+    "compared": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "status", "compatible", "outcome"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "status": {"type": "string", "minLength": 1},
+          "compatible": {"type": ["boolean", "null"]},
+          "outcome": {"enum": ["selected", "rejected", "not-selected", "not-compared"]},
+          "reason": {"type": "string", "minLength": 1}
+        }
+      }
+    }
   }
 }

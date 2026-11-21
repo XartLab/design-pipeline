@@ -19,6 +19,7 @@ const {
   sortValue,
 } = require("./contract-utils.cjs");
 const { acquireOwnerLock, assertTransition, defineMachine, listResidue, releaseOwnerLock, transactionSuffix } = require("./state-machine-core.cjs");
+const { validateDesignSystemDecision } = require("./design-system-decision-core.cjs");
 
 const STATE_V2 = "design-pipeline.state.v2";
 const V1_SCHEMAS = new Set(["design-pipeline.state.v1", "design-pipeline-state.v1"]);
@@ -245,6 +246,7 @@ function validateV2(state, options = {}) {
   assertObject(state.extensions, "extensions", "pipeline state");
   if (state.extensions.control !== undefined) validateControlProjection(state.extensions.control);
   if (state.extensions.visualTasks !== undefined) validateVisualTasks(state.extensions.visualTasks);
+  if (state.extensions.designSystem !== undefined) validateDesignSystemBinding(state.extensions.designSystem);
   return state;
 }
 
@@ -594,6 +596,61 @@ function requireExpectedState(stateFile, expectedSha256) {
   return { bytes: current, state: JSON.parse(current.toString("utf8")), actual };
 }
 
+// The phases a design change may not enter without a schema-valid design-system decision receipt.
+const GOVERNED_PHASES = ["directions", "design-spec", "motion-spec", "tasks", "implementation"];
+
+function validateDesignSystemBinding(value, label = "extensions.designSystem") {
+  if (value === null || value === undefined) return null;
+  assertObject(value, label, "pipeline state");
+  assertKeys(value, ["path", "sha256", "mode"], ["path", "sha256", "mode"], label, "pipeline state");
+  assertString(value.path, `${label}.path`, "pipeline state");
+  if (!/^[a-f0-9]{64}$/.test(String(value.sha256))) fail("pipeline state", `${label}.sha256 must be SHA-256`);
+  assertEnum(value.mode, ["reference", "adopt", "substitute", "custom"], `${label}.mode`, "pipeline state");
+  return value;
+}
+
+// The design-system decision a change consumes before it designs or builds. The receipt is bound to
+// the state with its hash, so a changed or removed receipt invalidates the advancement instead of
+// preserving stale approval. A gate failure carries the machine reason in the finding code and exits
+// as a blocked gate, not a contract error.
+function resolveDesignSystemDecision(state, input, changeRoot, targetPhase) {
+  const governed = GOVERNED_PHASES.includes(state.phase) || GOVERNED_PHASES.includes(targetPhase);
+  const supplied = input.designSystem || null;
+  const bound = state.extensions.designSystem || null;
+  if (!governed) {
+    if (supplied) fail("pipeline state", "the design-system decision receipt is bound when the change advances into directions, design-spec, motion-spec, tasks or implementation", { code: "OPTION_VALUE_INVALID" });
+    return bound;
+  }
+  const phase = GOVERNED_PHASES.includes(targetPhase) ? targetPhase : state.phase;
+  const source = supplied || bound;
+  if (!source) {
+    fail("pipeline state", `the ${phase} phase needs a schema-valid design-system decision receipt. Fix: run \`design-system decide\` and pass the receipt with --design-system-decision`, { code: "BLOCKED", findingCode: "DESIGN_SYSTEM_DECISION_REQUIRED" });
+  }
+  const file = path.resolve(changeRoot, source.path);
+  const relative = path.relative(changeRoot, file);
+  if (!relative || relative.startsWith("..") || path.isAbsolute(relative)) {
+    fail("pipeline state", `the design-system decision receipt ${source.path} is outside the change. Fix: keep the receipt inside the change root`, { code: "BLOCKED", findingCode: "DESIGN_SYSTEM_DECISION_OUTSIDE_CHANGE" });
+  }
+  if (!fs.existsSync(file)) {
+    fail("pipeline state", `the design-system decision receipt ${source.path} is missing. Fix: restore it or re-run the decision`, { code: "BLOCKED", findingCode: "DESIGN_SYSTEM_DECISION_MISSING" });
+  }
+  const digest = sha256(fs.readFileSync(file));
+  if (digest !== source.sha256) {
+    fail("pipeline state", `the design-system decision receipt ${source.path} changed after it was bound. Fix: re-run the decision and bind it again`, { code: "BLOCKED", findingCode: "DESIGN_SYSTEM_DECISION_CHANGED" });
+  }
+  let receipt = null;
+  try {
+    receipt = JSON.parse(fs.readFileSync(file, "utf8"));
+  } catch (error) {
+    fail("pipeline state", `the design-system decision receipt ${source.path} is not readable JSON: ${error.message}`, { code: "BLOCKED", findingCode: "DESIGN_SYSTEM_DECISION_UNREADABLE" });
+  }
+  const verdict = validateDesignSystemDecision(receipt, { phase, changeId: state.changeId });
+  if (verdict.status !== "ready") {
+    fail("pipeline state", `the design-system decision receipt is not usable for the ${phase} phase: ${verdict.message}. Fix: re-run \`design-system decide\` with the searched capabilities and the owner's decision`, { code: "BLOCKED", findingCode: verdict.code });
+  }
+  return { path: source.path, sha256: digest, mode: verdict.mode };
+}
+
 function advanceChange(stateFile, eventsFile, input) {
   return withWriterLock(stateFile, eventsFile, () => {
     const current = requireExpectedState(stateFile, input.expectedSha256);
@@ -605,6 +662,7 @@ function advanceChange(stateFile, eventsFile, input) {
     }
     const registry = loadRegistry();
     const targetPhase = input.phase || current.state.phase;
+    const designSystem = resolveDesignSystemDecision(current.state, input, path.dirname(stateFile), targetPhase);
     if (targetPhase !== current.state.phase) {
       const allowed = registry.registries[current.state.registryVersion].transitions[current.state.phase] || [];
       if (!allowed.includes(targetPhase)) {
@@ -639,6 +697,7 @@ function advanceChange(stateFile, eventsFile, input) {
         ...current.state.extensions,
         ...(input.control ? { control } : {}),
         ...(input.visualTasks !== undefined ? { visualTasks: input.visualTasks } : {}),
+        ...(designSystem ? { designSystem } : {}),
       },
     };
     validateV2(state);

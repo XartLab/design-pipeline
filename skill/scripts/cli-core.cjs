@@ -174,7 +174,7 @@ const REPEATABLE_OPTIONS = new Set(["--set", "--param", "--mix", "--taste", "--a
 const KNOWN_OPTIONS = new Set([
   ...BOOLEAN_OPTIONS,
   ...REPEATABLE_OPTIONS,
-  "--action", "--adapter-path", "--api-version", "--artifact", "--answer", "--approval", "--base", "--capability", "--catalog", "--category", "--change-id", "--change-root", "--context", "--expected-sha256", "--failpoint",
+  "--action", "--adapter-path", "--api-version", "--artifact", "--answer", "--approval", "--base", "--capability", "--catalog", "--category", "--change-id", "--change-root", "--context", "--design-system-decision", "--expected-sha256", "--failpoint",
   "--design-file", "--design-foundation", "--effect", "--evidence-root", "--feedback-root", "--graphics-catalog",
   "--framework", "--height", "--installed-evidence", "--inventory", "--kind", "--limit", "--manifest", "--markdown", "--matrix", "--measurements", "--minimum-age-ms",
   "--motion-file", "--motion-foundation", "--system-dir", "--observation", "--output", "--output-root", "--phase", "--platform", "--playwright-module", "--agent-browser", "--agent-browser-state", "--project-root",
@@ -727,6 +727,14 @@ function changeCommand(parsed, root, action) {
     nextActions: optionList(parsed, "--next-action"),
     failpoint: option(parsed, "--failpoint"),
   };
+  const decisionFile = option(parsed, "--design-system-decision");
+  if (decisionFile) {
+    const file = contained(changeRoot, decisionFile, "--design-system-decision");
+    mutation.designSystem = {
+      path: path.relative(changeRoot, file).split(path.sep).join("/"),
+      sha256: sha256(fs.readFileSync(file)),
+    };
+  }
   const foundationInputs = [["design", "--design-foundation"], ["motion", "--motion-foundation"]];
   for (const [kind, flag] of foundationInputs) {
     const raw = option(parsed, flag);
