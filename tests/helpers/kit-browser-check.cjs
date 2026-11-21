@@ -9,7 +9,7 @@
 const fs = require("node:fs");
 const path = require("node:path");
 const bank = require("../../skill/tools/template-bank/bank.cjs");
-const { checkPage } = require("../../skill/tools/template-bank/page-check.cjs");
+const { checkPage, FAST_FRAMES } = require("../../skill/tools/template-bank/page-check.cjs");
 const { resolvePuppeteer } = require("../../skill/scripts/film-capture-core.cjs");
 const { resolveBrowser } = require("../../skill/scripts/browser-locate.cjs");
 
@@ -27,7 +27,7 @@ const CI_SKIP = process.env.GITHUB_ACTIONS === "true" && "text-occluded differs 
 
 function launch(found, file) {
   const puppeteer = resolvePuppeteer(path.dirname(path.resolve(file)), found.puppeteerModule);
-  return puppeteer.launch({ executablePath: found.chrome, headless: true, args: ["--allow-file-access-from-files", "--force-color-profile=srgb", "--font-render-hinting=none", "--hide-scrollbars", "--force-prefers-reduced-motion"] });
+  return puppeteer.launch({ executablePath: found.chrome, headless: true, args: ["--allow-file-access-from-files", "--force-color-profile=srgb", "--font-render-hinting=none", "--hide-scrollbars", "--force-prefers-reduced-motion", ...FAST_FRAMES] });
 }
 
 async function pageHeight(browser, file, width) {

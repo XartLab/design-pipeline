@@ -367,6 +367,13 @@ function hueBudget(shot, roles, rules = PAGE_RULES) {
   };
 }
 
+// The w x h part of a decoded screenshot at (x, y).
+function cropImage(image, x, y, w, h) {
+  const data = Buffer.alloc(w * h * 4);
+  for (let row = 0; row < h; row += 1) image.data.copy(data, row * w * 4, ((y + row) * image.width + x) * 4, ((y + row) * image.width + x + w) * 4);
+  return { width: w, height: h, data };
+}
+
 function clampRegion(b, W, H, pad = 0) {
   const x0 = Math.max(0, Math.floor(b.x0 - pad)); const y0 = Math.max(0, Math.floor(b.y0 - pad));
   const x1 = Math.min(W, Math.ceil(b.x1 + pad)); const y1 = Math.min(H, Math.ceil(b.y1 + pad));
@@ -477,11 +484,18 @@ function linkReceipts(found, pageFile) {
 }
 
 // ---- main ----------------------------------------------------------------------------------------
+// A screenshot waits for compositor frames; capping them at the 60 Hz vsync makes each tiny clip cost ~55 ms,
+// and the check takes hundreds of them. Pixels are unchanged.
+const BATCH_GAP_PX = 8;
+const CLUSTER_MAX_PX = 600; // tallest single screenshot that serves several regions
+const CLUSTER_WASTE = 4; // such a screenshot may cover at most this many times the area of its regions
+const FAST_FRAMES = Object.freeze(["--disable-frame-rate-limit", "--disable-gpu-vsync"]);
+
 async function launch({ file = null, chrome, puppeteerModule } = {}) {
   const { resolvePuppeteer } = require("../../scripts/film-capture-core.cjs");
   const { resolveBrowser } = require("../../scripts/browser-locate.cjs");
   const puppeteer = resolvePuppeteer(file ? path.dirname(path.resolve(file)) : process.cwd(), puppeteerModule || undefined);
-  return puppeteer.launch({ executablePath: resolveBrowser(chrome || undefined), headless: true, args: ["--allow-file-access-from-files", "--force-color-profile=srgb", "--font-render-hinting=none", "--hide-scrollbars"] });
+  return puppeteer.launch({ executablePath: resolveBrowser(chrome || undefined), headless: true, args: ["--allow-file-access-from-files", "--force-color-profile=srgb", "--font-render-hinting=none", "--hide-scrollbars", ...FAST_FRAMES] });
 }
 
 // browser: an open puppeteer browser to reuse (the caller closes it); otherwise one is launched.
@@ -531,19 +545,26 @@ async function checkPage({ file, chrome, puppeteerModule, browser: shared = null
     const grounds = new Set(linked.filter((l) => l.output.layer === "ground" && l.image.collage !== null).map((l) => l.image.collage));
     if (grounds.size) await page.evaluate((drop) => { for (const el of document.querySelectorAll("[data-tc-collage]")) if (drop.includes(Number(el.getAttribute("data-tc-collage")))) el.removeAttribute("data-tc-collage"); }, [...grounds]);
     const collage = found.collage.filter((layer) => !grounds.has(layer.index));
-    const shot = async (region) => decodePng(Buffer.from(await page.screenshot({ type: "png", clip: region ? { x: region.x, y: region.y, width: region.w, height: region.h } : { x: 0, y: 0, width: W, height: H } })), "screenshot");
+    // The viewport is the whole canvas and every clip lies inside it, so nothing needs capturing beyond the
+    // viewport (that path re-lays the page out for each shot, ~2x slower on a tall page).
+    const shot = async (region) => decodePng(Buffer.from(await page.screenshot({ type: "png", captureBeyondViewport: false, clip: region ? { x: region.x, y: region.y, width: region.w, height: region.h } : { x: 0, y: 0, width: W, height: H } })), "screenshot");
+    // Only attributes that change are written: a write of the value already there still invalidates style.
+    // keys: [{ unit, tone }], units painted black (0) or white (1) and kept out of textOff; with isolate they
+    // are also the only elements left visible.
     const setState = (state) => page.evaluate((s) => {
-      if (s.isolate) document.documentElement.setAttribute("data-tc-iso", ""); else document.documentElement.removeAttribute("data-tc-iso");
+      const put = (el, name, value) => { if (value === null) { if (el.hasAttribute(name)) el.removeAttribute(name); } else if (el.getAttribute(name) !== value) el.setAttribute(name, value); };
+      const tones = new Map((s.keys || []).map((k) => [k.unit, k.tone]));
+      put(document.documentElement, "data-tc-iso", s.isolate ? "" : null);
       for (const el of document.querySelectorAll("[data-tc-unit]")) {
         const i = Number(el.getAttribute("data-tc-unit"));
-        el.removeAttribute("data-tc-key");
-        if (s.isolate && s.key && s.key.unit === i) el.setAttribute("data-tc-solo", ""); else el.removeAttribute("data-tc-solo");
-        if (s.textOff === "all" || (Array.isArray(s.textOff) && s.textOff.includes(i))) el.setAttribute("data-tc-off", ""); else el.removeAttribute("data-tc-off");
-        if (s.key && s.key.unit === i) { el.removeAttribute("data-tc-off"); el.setAttribute("data-tc-key", String(s.key.tone)); }
+        const keyed = tones.has(i);
+        put(el, "data-tc-solo", s.isolate && keyed ? "" : null);
+        put(el, "data-tc-off", !keyed && (s.textOff === "all" || (Array.isArray(s.textOff) && s.textOff.includes(i))) ? "" : null);
+        put(el, "data-tc-key", keyed ? String(tones.get(i)) : null);
       }
       for (const el of document.querySelectorAll("[data-tc-collage]")) {
         const i = Number(el.getAttribute("data-tc-collage"));
-        if (s.collageOff === "all" || (Array.isArray(s.collageOff) && s.collageOff.includes(i))) el.setAttribute("data-tc-hide", ""); else el.removeAttribute("data-tc-hide");
+        put(el, "data-tc-hide", s.collageOff === "all" || (Array.isArray(s.collageOff) && s.collageOff.includes(i)) ? "" : null);
       }
     }, state);
 
@@ -551,34 +572,87 @@ async function checkPage({ file, chrome, puppeteerModule, browser: shared = null
     // ink per unit: painted alone in black, then in white, with all other text and collage hidden;
     // the difference of the two shots is the unit's coverage (alpha) whatever the ground, and plates
     // painted above the text cancel out. ink = coverage >= inkThreshold / 255.
-    for (const unit of units) {
+    // The states are taken one after another over all units (not all of them per unit): switching the page
+    // between states restyles and repaints all of it, and a tall page makes that several times the cost of a
+    // screenshot. Within a state, units whose regions are far apart are measured together (the same state with
+    // each of them keyed, one screenshot per region), so a state is switched once per batch, not once per unit.
+    const regionOf = (unit) => {
       const pad = Math.ceil(Math.max(4, unit.fontSize * 0.25));
-      const region = clampRegion({ x0: Math.min(unit.rect.x0, unit.layout.x0), y0: Math.min(unit.rect.y0, unit.layout.y0), x1: Math.max(unit.rect.x1, unit.layout.x1), y1: Math.max(unit.rect.y1, unit.layout.y1) }, W, H, pad);
-      if (!region) { unit.ink = null; continue; }
-      const shots = [];
-      for (const tone of [0, 1]) {
-        await setState({ textOff: "all", collageOff: "all", key: { unit: unit.index, tone } });
-        shots.push(await shot(region));
+      return clampRegion({ x0: Math.min(unit.rect.x0, unit.layout.x0), y0: Math.min(unit.rect.y0, unit.layout.y0), x1: Math.max(unit.rect.x1, unit.layout.x1), y1: Math.max(unit.rect.y1, unit.layout.y1) }, W, H, pad);
+    };
+    for (const unit of units) unit.region = regionOf(unit);
+    // A unit's pixels in its region must not change when the others in its batch change, so batch members
+    // keep BATCH_GAP_PX between regions (text paints inside its region; the gap covers a glyph overhang).
+    const measurable = units.filter((u) => u.region);
+    const batches = [];
+    for (const unit of measurable) {
+      const r = unit.region;
+      const batch = batches.find((members) => members.every((m) => {
+        const o = m.region;
+        return r.x >= o.x + o.w + BATCH_GAP_PX || o.x >= r.x + r.w + BATCH_GAP_PX || r.y >= o.y + o.h + BATCH_GAP_PX || o.y >= r.y + r.h + BATCH_GAP_PX;
+      }));
+      if (batch) batch.push(unit); else batches.push([unit]);
+    }
+    // The members' regions as screenshots: regions that sit close together share one (cropped back to each
+    // region), because a shot of a page with filtered artwork costs the same whatever it clips.
+    const shootRegions = async (members) => {
+      const sorted = [...members].sort((p, q) => p.region.y - q.region.y || p.region.x - q.region.x);
+      const out = new Map();
+      for (let i = 0; i < sorted.length;) {
+        let box = { x0: sorted[i].region.x, y0: sorted[i].region.y, x1: sorted[i].region.x + sorted[i].region.w, y1: sorted[i].region.y + sorted[i].region.h };
+        let area = sorted[i].region.w * sorted[i].region.h;
+        let j = i + 1;
+        for (; j < sorted.length; j += 1) {
+          const r = sorted[j].region;
+          const grown = { x0: Math.min(box.x0, r.x), y0: Math.min(box.y0, r.y), x1: Math.max(box.x1, r.x + r.w), y1: Math.max(box.y1, r.y + r.h) };
+          const sum = area + r.w * r.h;
+          if (grown.y1 - grown.y0 > CLUSTER_MAX_PX || (grown.x1 - grown.x0) * (grown.y1 - grown.y0) > CLUSTER_WASTE * sum) break;
+          box = grown; area = sum;
+        }
+        const group = sorted.slice(i, j);
+        const image = await shot({ x: box.x0, y: box.y0, w: box.x1 - box.x0, h: box.y1 - box.y0 });
+        for (const unit of group) out.set(unit, group.length === 1 ? image : cropImage(image, unit.region.x - box.x0, unit.region.y - box.y0, unit.region.w, unit.region.h));
+        i = j;
       }
-      const local = { ...region, x: 0, y: 0 };
-      const ink = diffMask(shots[0], shots[1], local, rules.inkThreshold);
-      ink.region = region;
-      unit.ink = ink.count ? ink : null;
-      unit.inkBox = ink.count >= 4 ? maskBox(ink) : null;
-      // the same unit with every other element hidden: the ink it would have if nothing covered it
-      const alone = [];
+      return out;
+    };
+    // the batch in `state` with each member keyed black, then white: [black shot, white shot] per member
+    const shootBatch = async (members, state) => {
+      const out = new Map(members.map((u) => [u, []]));
       for (const tone of [0, 1]) {
-        await setState({ textOff: "all", collageOff: "all", key: { unit: unit.index, tone }, isolate: true });
-        alone.push(await shot(region));
+        await setState({ ...state, keys: members.map((u) => ({ unit: u.index, tone })) });
+        for (const [unit, image] of await shootRegions(members)) out.get(unit).push(image);
       }
-      const expected = diffMask(alone[0], alone[1], local, rules.inkThreshold);
-      expected.region = region;
-      unit.expected = expected;
-      // the ground for this unit's contrast: the page with only this unit hidden (other text stays,
-      // so small text over a giant glyph is measured against that glyph)
-      await setState({ textOff: [unit.index], collageOff: [] });
-      unit.ground = await shot(region);
-      unit.groundRegion = region;
+      return out;
+    };
+    for (const unit of units) if (!unit.region) unit.ink = null;
+    for (const members of batches) {
+      const shots = await shootBatch(members, { textOff: "all", collageOff: "all" });
+      for (const unit of members) {
+        const ink = diffMask(shots.get(unit)[0], shots.get(unit)[1], { ...unit.region, x: 0, y: 0 }, rules.inkThreshold);
+        ink.region = unit.region;
+        unit.ink = ink.count ? ink : null;
+        unit.inkBox = ink.count >= 4 ? maskBox(ink) : null;
+      }
+    }
+    // the same unit with every other element hidden: the ink it would have if nothing covered it
+    for (const members of batches) {
+      const alone = await shootBatch(members, { textOff: "all", collageOff: "all", isolate: true });
+      for (const unit of members) {
+        const expected = diffMask(alone.get(unit)[0], alone.get(unit)[1], { ...unit.region, x: 0, y: 0 }, rules.inkThreshold);
+        expected.region = unit.region;
+        unit.expected = expected;
+      }
+    }
+    // the ground for this unit's contrast: the page with only this unit hidden (other text stays,
+    // so small text over a giant glyph is measured against that glyph; the batch's other units are
+    // hidden too, but they are not in this region)
+    for (const members of batches) {
+      await setState({ textOff: members.map((u) => u.index), collageOff: [] });
+      for (const [unit, image] of await shootRegions(members)) {
+        unit.ground = image;
+        unit.groundRegion = unit.region;
+      }
     }
     // visible pixels of each collage layer
     for (const layer of collage) {
@@ -904,7 +978,7 @@ async function checkPage({ file, chrome, puppeteerModule, browser: shared = null
   }
 }
 
-module.exports = { PAGE_RULES, checkPage, hueBudget, launch };
+module.exports = { PAGE_RULES, checkPage, hueBudget, launch, FAST_FRAMES };
 
 if (require.main === module) {
   // kernel: page-check.cjs <file> [--size WxH] [--chrome exe] [--puppeteer-module dir]
