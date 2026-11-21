@@ -3,6 +3,9 @@
 All notable changes to Design Pipeline are documented here.
 
 ## [Unreleased]
+### Added
+
+- Guide: `references/reference-video-acquisition.md`. Records how to obtain a reference video when `yt-dlp` refuses the page (update yt-dlp, retry with cookies from a closed browser, read the player state in a headless browser and merge the streams with `ffmpeg`), what each step cannot do, and why the package ships no `reference fetch` command. Linked from `reference-spec.md#video-content-and-project-analysis`; no command, gate, schema or dependency changes.
 
 ## [0.15.0-beta.1] - 2026-11-14
 

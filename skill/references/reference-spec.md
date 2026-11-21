@@ -17,6 +17,10 @@ designer-pipeline reference analyze-video --project-root . --path reference/orig
 designer-pipeline project inspect --project-root . --query "<requested change>" --write --output .design-pipeline/project-analysis-v1.json
 ```
 
+The command reads bytes that already exist. When the reference is a page video that `yt-dlp`
+refuses, follow [reference-video-acquisition.md](reference-video-acquisition.md): it records the
+fallback ladder, its limits, and why the package ships no downloader command.
+
 The video must resolve inside the selected root. Keep the original bytes. This creates a report,
 overview, ordered time windows and an observation example, rather than an interpretation. Frame
 `atSec` is the actual decoded presentation timestamp relative to the first decoded frame; it is

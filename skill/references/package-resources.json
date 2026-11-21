@@ -523,6 +523,7 @@
     "references/reconstruction-evidence.schema.json",
     "references/scene-runtime.schema.json",
     "references/reference-spec.md",
+    "references/reference-video-acquisition.md",
     "references/reconstruction-spec.md",
     "references/design-spec.md",
     "references/anti-slop-review.md",
