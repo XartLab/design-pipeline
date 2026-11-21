@@ -76,6 +76,7 @@
     "crisis-command-ui-kit.test.cjs",
     "megastructure-ink-kit.test.cjs",
     "workflow-ui.test.cjs",
+    "workflow-ui-delivery-binding.test.cjs",
     "motion-foundation.test.cjs",
     "motion-verification.test.cjs",
     "full-motion-recipes.test.cjs",
