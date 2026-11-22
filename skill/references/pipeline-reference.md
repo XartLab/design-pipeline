@@ -592,7 +592,7 @@ usage, and `designer-pipeline --help` lists every command.
 | `explain-block` | `designer-pipeline explain-block --change-root <dir>` | Explain why a change is blocked and what the next action is. |
 | `package` | `designer-pipeline package --change-root <dir> --output <file>` | Package a completed change for hand-off. |
 | `patterns` | `designer-pipeline patterns search\|audit` | Search the bundled design patterns or audit a page against them. |
-| `ui-ir` | `designer-pipeline ui-ir check` | Validate a UI intermediate-representation artifact; needs `--artifact <file>` and `--catalog <file>`. |
+| `ui-ir` | `designer-pipeline ui-ir check` | Validate a UI intermediate-representation artifact; needs `--artifact <file>`, and takes an optional `--catalog <file>`. |
 | `design-code-map` | `designer-pipeline design-code-map check` | Validate a design-to-code mapping artifact; needs `--artifact <file>`. |
 | `art-motion` | `designer-pipeline art-motion render --spec <file> --output <new-dir> [--stills 0,1.5] [--chrome <exe>] [--puppeteer-module <file>] [--ffmpeg <exe>] [--ffprobe <exe>]` | Render an art-motion spec to stills or video with a render report. |
 | `diligence` | `designer-pipeline diligence --root <absolute-project-root> --project-root <absolute-project-root> [--write]` | Render the AI diligence statement from the workflow state. |
