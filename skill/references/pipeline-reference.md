@@ -580,6 +580,24 @@ Canonical guidance: [`stages.md#browser-and-evidence-rules`](stages.md#browser-a
 
 Canonical CLI and receipt contracts: [`stages.md#public-cli-surfaces`](stages.md#public-cli-surfaces).
 
+## Public CLI Commands
+
+Every top-level command has one usage line here. `designer-pipeline describe <command>` prints the same
+usage, and `designer-pipeline --help` lists every command.
+
+| Command | Usage | Use it for |
+| --- | --- | --- |
+| `plan` | `designer-pipeline plan --manifest <file> --output <file>` | Turn a delivery manifest into the executable plan for a project. |
+| `resume` | `designer-pipeline resume --change-root <dir>` | Continue an existing change from its saved state. |
+| `explain-block` | `designer-pipeline explain-block --change-root <dir>` | Explain why a change is blocked and what the next action is. |
+| `package` | `designer-pipeline package --change-root <dir> --output <file>` | Package a completed change for hand-off. |
+| `patterns` | `designer-pipeline patterns search\|audit` | Search the bundled design patterns or audit a page against them. |
+| `ui-ir` | `designer-pipeline ui-ir check` | Validate a UI intermediate-representation artifact; needs `--artifact <file>`, and takes an optional `--catalog <file>`. |
+| `design-code-map` | `designer-pipeline design-code-map check` | Validate a design-to-code mapping artifact; needs `--artifact <file>`. |
+| `art-motion` | `designer-pipeline art-motion render --spec <file> --output <new-dir> [--stills 0,1.5] [--chrome <exe>] [--puppeteer-module <file>] [--ffmpeg <exe>] [--ffprobe <exe>]` | Render an art-motion spec to stills or video with a render report. |
+| `diligence` | `designer-pipeline diligence --root <absolute-project-root> --project-root <absolute-project-root> [--write]` | Render the AI diligence statement from the workflow state. |
+| `style-signals` | `designer-pipeline style-signals check` | Validate a visual style-signals artifact against its schema; `--artifact <file>` defaults to the bundled one. |
+
 ## Specialist and Catalog Routing
 
 Canonical routing guidance: [`stages.md#specialist-and-catalog-routing`](stages.md#specialist-and-catalog-routing).

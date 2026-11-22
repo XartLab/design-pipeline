@@ -1273,6 +1273,19 @@ function auditPage(options, pass) {
   // WCAG 2.2 2.5.8: a link inside a sentence is constrained by the line height of the text around it.
   const inlineTextLink = (el) => el.matches('a[href], [role="link"]') && styleOf(el).display === "inline" && sentenceText(el);
   const controls = elements.filter((el) => el.matches(CONTROL) && !inlineTextLink(el));
+  // A prose link that is the only content of its paragraph is constrained by that paragraph's
+  // line box as well, so target size does not measure it. The paragraph may hold no other
+  // element and no text besides the link's own, and no line break: a link that shares the
+  // paragraph with other content is measured unless the sentence rule above exempts it.
+  const proseOnlyLink = (el) => {
+    if (!el.matches('a[href], [role="link"]') || styleOf(el).display !== "inline") return false;
+    const paragraph = el.closest("p");
+    if (!paragraph || paragraph.querySelector("br")) return false;
+    for (const node of paragraph.querySelectorAll("*")) if (node !== el && !el.contains(node)) return false;
+    const text = paragraph.textContent.trim();
+    return text !== "" && text === el.textContent.trim();
+  };
+  const targetControls = elements.filter((el) => el.matches(CONTROL) && !inlineTextLink(el) && !proseOnlyLink(el));
   // An absolutely positioned pseudo-element of a positioned control is part of its hit area: the box
   // target-size measures and the one control spacing keeps apart.
   const hitArea = (el) => {
@@ -1291,7 +1304,7 @@ function auditPage(options, pass) {
     return { ...area, width: area.right - area.left, height: area.bottom - area.top };
   };
   const targetSize = checks["audit.target-size"];
-  for (const el of controls) {
+  for (const el of targetControls) {
     targetSize.checked += 1;
     const { width, height } = hitArea(el);
     const minimum = thresholds.minTargetPx;

@@ -4,6 +4,14 @@ All notable changes to Design Pipeline are documented here.
 
 ## [Unreleased]
 
+### Fixed
+
+- `audit.target-size` no longer reports a prose link that is the only content of its paragraph as an undersized control (change `fix-issue-190-audit-and-cli-docs`, #190): the link sits in a paragraph line box, so it is exempt like a link inside a sentence. A link separated from surrounding text by a `<br>` or an in-flow block box, and a link that shares its paragraph with other content, are still measured.
+
+### Added
+
+- The maintained CLI reference gives every top-level `designer-pipeline` command one usage line (change `fix-issue-190-audit-and-cli-docs`, #190): `plan`, `resume`, `explain-block`, `package`, `patterns`, `ui-ir`, `design-code-map`, `art-motion`, `diligence` and `style-signals` now appear in `skill/references/pipeline-reference.md`.
+
 ## [0.15.0-beta.1] - 2026-11-14
 
 ### Added
