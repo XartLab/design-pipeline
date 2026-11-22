@@ -9,7 +9,8 @@ const { spawnSync } = require("node:child_process");
 const { checkDesignFoundation } = require("../skill/scripts/design-synthesis-core.cjs");
 const { checkAudio } = require("../skill/scripts/audio-core.cjs");
 const { scaffoldFilm } = require("../skill/scripts/film-project-core.cjs");
-const { initState, nextAction, readState, recordGate } = require("../skill/scripts/workflow-core.cjs");
+const { nextAction, readState, recordGate } = require("../skill/scripts/workflow-core.cjs");
+const { initProject: initState } = require("./helpers/decision-receipt.cjs");
 const { CACHE } = require("../skill/scripts/film-blocks-core.cjs");
 // Media checks need ffmpeg and ffprobe on PATH and skip without them (AGENTS.md); CI runners have neither.
 const hasFfmpeg = ["ffmpeg", "ffprobe"].every(bin => spawnSync(bin, ["-version"], { windowsHide: true }).status === 0);

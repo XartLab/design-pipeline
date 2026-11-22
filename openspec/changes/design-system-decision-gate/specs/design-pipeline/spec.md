@@ -77,3 +77,23 @@ A `reference` decision SHALL NOT name a runtime substrate, SHALL NOT grant Visua
 - **WHEN** a `reference` receipt is consumed
 - **THEN** the result SHALL report no runtime substrate
 - **AND** it SHALL report the unused relevant catalog capabilities
+
+### Requirement: the owner-facing ui and web flow is gated the same way
+
+The `next --deliverable ui|web` workflow SHALL bind the same receipt at the project root and SHALL NOT open its `concepts`, `components`, `work` or `build` stage while the bound receipt is missing, changed or not consumable. Recording the direction or the component decision SHALL be refused while it does not hold, and a film or edit run SHALL NOT be gated on a design-system decision.
+
+#### Scenario: a ui or web run without a receipt
+
+- **WHEN** `next` reaches the `concepts`, `components`, `work` or `build` stage of a ui or web project with no consumable bound receipt
+- **THEN** it SHALL return one run action that names the decision command and the bind command
+- **AND** `decide --stage concept|components` SHALL be refused as a blocked gate
+
+#### Scenario: the receipt changed after a stage finished
+
+- **WHEN** the bound receipt's bytes changed after the direction or component stage was recorded
+- **THEN** the stage SHALL reopen and `next` SHALL return the decision action again
+
+#### Scenario: a film run
+
+- **WHEN** `next` runs a film project
+- **THEN** no design-system decision SHALL be required and binding one SHALL be refused

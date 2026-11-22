@@ -14,7 +14,8 @@ const path = require("node:path");
 const { checkDesignSystemPackage, designMdTokens } = require("../skill/scripts/design-system-package-core.cjs");
 const { checkDesignFoundation } = require("../skill/scripts/design-synthesis-core.cjs");
 const { execute } = require("../skill/scripts/cli-core.cjs");
-const { initState, nextAction, decide } = require("../skill/scripts/workflow-core.cjs");
+const { nextAction, decide } = require("../skill/scripts/workflow-core.cjs");
+const { initProject: initState } = require("./helpers/decision-receipt.cjs");
 const { toComponents } = require("./helpers/web-flow.cjs");
 
 const URL_LOGO = "https://stripe.com/newsroom/brand-assets";

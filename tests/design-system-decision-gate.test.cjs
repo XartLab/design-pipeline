@@ -199,3 +199,52 @@ test("a receipt outside the change is refused", () => {
     return true;
   });
 });
+
+test("a bound receipt is re-checked after the change leaves the governed phases", () => {
+  const change = changeRoot();
+  const bound = writeReceipt(change, receipt());
+  const binding = { path: "design-system-decision.json", sha256: bound.sha256 };
+  for (const phase of ["directions", "design-spec", "tasks", "implementation", "gate-review"]) advance(change, { phase, ...(phase === "directions" ? { designSystem: binding } : {}) });
+  fs.rmSync(bound.file);
+  assert.throws(() => advance(change, { phase: "verification" }), (error) => {
+    assert.equal(error.details.findingCode, "DESIGN_SYSTEM_DECISION_MISSING");
+    return true;
+  });
+});
+
+test("an edited receipt also invalidates the release phases", () => {
+  const change = changeRoot();
+  const bound = writeReceipt(change, receipt());
+  const binding = { path: "design-system-decision.json", sha256: bound.sha256 };
+  for (const phase of ["directions", "design-spec", "tasks", "implementation", "gate-review", "verification"]) advance(change, { phase, ...(phase === "directions" ? { designSystem: binding } : {}) });
+  writeReceipt(change, receipt({ rationale: ["A different reason."] }));
+  assert.throws(() => advance(change, { phase: "release-readiness" }), (error) => {
+    assert.equal(error.details.findingCode, "DESIGN_SYSTEM_DECISION_CHANGED");
+    return true;
+  });
+});
+
+test("a replacement decision invalidates the evidence recorded under the old one", () => {
+  const change = changeRoot();
+  const bound = writeReceipt(change, receipt());
+  advance(change, {
+    phase: "directions",
+    designSystem: { path: "design-system-decision.json", sha256: bound.sha256 },
+    evidence: ["direction:approved"],
+    foundations: { design: { path: "DESIGN.md", status: "ready", sha256: HASH, validator: "foundation check" } },
+  });
+  const rebound = writeReceipt(change, receipt({ rationale: ["The owner chose another reference."] }));
+  const advanced = advance(change, { phase: "design-spec", designSystem: { path: "design-system-decision.json", sha256: rebound.sha256 }, evidence: ["spec:ready"] });
+  assert.deepEqual(advanced.state.evidence, ["spec:ready"]);
+  assert.deepEqual(advanced.state.foundations, { design: null, motion: null });
+  assert.equal(advanced.state.extensions.designSystem.sha256, rebound.sha256);
+});
+
+test("re-recording the same decision keeps the evidence it already approved", () => {
+  const change = changeRoot();
+  const bound = writeReceipt(change, receipt());
+  const binding = { path: "design-system-decision.json", sha256: bound.sha256 };
+  advance(change, { phase: "directions", designSystem: binding, evidence: ["direction:approved"] });
+  const advanced = advance(change, { phase: "design-spec", designSystem: binding });
+  assert.deepEqual(advanced.state.evidence, ["direction:approved"]);
+});

@@ -6,7 +6,7 @@ const fs = require("node:fs");
 const os = require("node:os");
 const path = require("node:path");
 const { spawnSync } = require("node:child_process");
-const { decide, decideVisualTask: actualDecideVisualTask, diligence, initState, nextAction, nextVisualTask, readState, recordGate: recordWorkflowGate } = require("../skill/scripts/workflow-core.cjs");
+const { bindStateDesignSystem, decide, decideVisualTask: actualDecideVisualTask, diligence, initState: initWorkflowState, nextAction, nextVisualTask, readState, recordGate: recordWorkflowGate } = require("../skill/scripts/workflow-core.cjs");
 const { advanceChange, createInitialState, inspectConsistency, writeNewChange } = require("../skill/scripts/pipeline-state-core.cjs");
 const { createArtifactMetadata } = require("../skill/scripts/artifact-core.cjs");
 const { canonicalJson, sha256 } = require("../skill/scripts/contract-utils.cjs");
@@ -15,19 +15,21 @@ const { stages: webStages } = require("../skill/scripts/workflows/web.cjs");
 const { validateShape } = require("../skill/scripts/runtime-review-core.cjs");
 const { extractReplicate } = require("./helpers/replicate-flow.cjs");
 const { PLAYBACK, SECTIONS, STATED, acceptSections, approveDescription, confirmPlayback, pickVariant, statedSkip, toBuild, toComponents, writeDescription, writeVariants } = require("./helpers/web-flow.cjs");
+const { initProject: initState, writeDecisionReceipt } = require("./helpers/decision-receipt.cjs");
 
 const tmp = () => fs.mkdtempSync(path.join(os.tmpdir(), "workflow-"));
 const cli = path.join(__dirname, "../skill/scripts/designer-pipeline.cjs");
+
 const touch = (dir, rel, body = "x") => { fs.mkdirSync(path.dirname(path.join(dir, rel)), { recursive: true }); fs.writeFileSync(path.join(dir, rel), body); };
 
 // Pure projection/lineage tests substitute only the trusted capture boundary. Public CLI
 // cases below run Chrome itself; supplied reports never enter this observation seam.
 function syntheticInteraction(dir, binding) {
-    const cliCore = require("../skill/scripts/cli-core.cjs");
-    const context = cliCore.preflightInteraction(dir, binding);
-    const responds = fs.readFileSync(context.localPage, "utf8").includes("translateX(20px)");
-    const capture = { pageOrigin: "file:", probes: context.doc.probes.map(probe => ({ id: probe.id, samples: [0, 50, 100, 150, 200, 250].map((t, index) => ({ t, phase: index < 2 ? "pre" : index === 2 ? "input" : "post", box: { x: responds && index >= 3 ? 40 : 20, y: 20, width: 80, height: 40 }, transform: responds && index >= 3 ? "matrix(1,0,0,1,20,0)" : "none", opacity: 1 })), requests: [] })) };
-    return { ...context, result: require("../skill/scripts/interaction-core.cjs").evaluateProbeFile(context.doc, capture) };
+  const cliCore = require("../skill/scripts/cli-core.cjs");
+  const context = cliCore.preflightInteraction(dir, binding);
+  const responds = fs.readFileSync(context.localPage, "utf8").includes("translateX(20px)");
+  const capture = { pageOrigin: "file:", probes: context.doc.probes.map(probe => ({ id: probe.id, samples: [0, 50, 100, 150, 200, 250].map((t, index) => ({ t, phase: index < 2 ? "pre" : index === 2 ? "input" : "post", box: { x: responds && index >= 3 ? 40 : 20, y: 20, width: 80, height: 40 }, transform: responds && index >= 3 ? "matrix(1,0,0,1,20,0)" : "none", opacity: 1 })), requests: [] })) };
+  return { ...context, result: require("../skill/scripts/interaction-core.cjs").evaluateProbeFile(context.doc, capture) };
 }
 function decideVisualTask(root, options) {
   const cliCore = require("../skill/scripts/cli-core.cjs"), observe = cliCore.observeInteraction;
@@ -119,6 +121,8 @@ function afterCheck(dir) {
 function webProject(t, { deliverable = "web", tier = "standard", mode = "brief" } = {}) {
   const root = tmp();
   t.after(() => fs.rmSync(root, { recursive: true, force: true, maxRetries: 3 }));
+  // initState binds a decision receipt for a ui or web project, which cannot reach its component or
+  // build stage without one.
   initState(root, { deliverable, tier, mode });
   return root;
 }
@@ -206,6 +210,7 @@ const ruleShapes = root => readState(root).rules.map(({ text, from, scope, objec
 function visualFixture(nativePhase = "implementation") {
   const dir = tmp();
   const state = createInitialState({ changeId: "visual-example", timestamp: new Date().toISOString(), phase: nativePhase, status: "implementing" });
+  state.extensions.designSystem = writeDecisionReceipt(dir, { changeId: "visual-example" });
   writeNewChange(path.join(dir, "state.json"), path.join(dir, "events.jsonl"), state);
   touch(dir, "reference.json", '{"outline":"rounded"}');
   touch(dir, "references/reference-spec.md", "Inspect the source before changing the declared property.");
@@ -236,16 +241,20 @@ function menuFixture() {
   const focused = selector => ({ selector, kind: "focused", equals: true });
   const click = selector => ({ kind: "click", selector });
   const step = (id, input, assertions) => ({ id, ...(input ? { input } : {}), assertions, timeoutMs: 20 });
-  touch(fixture.dir, "interaction.json", canonicalJson({ schema: "design-pipeline.interaction-probe.v1", id: "sort-menu", url: "index.html", probes: [{ id: "menu-selection", target: "#menu-demo", steps: [
-    step("initial", null, [visible(false), { selector: "#menu-trigger", kind: "attribute", name: "aria-expanded", equals: "false" }, { selector: "#selection-value", kind: "text", equals: "默认顺序" }]),
-    step("open", click("#menu-trigger"), [visible(true)]),
-    step("choose", click("#sort-updated"), [text(), visible(false)]),
-    step("reopen", click("#menu-trigger"), [focused("#sort-default")]),
-    step("next-option", { kind: "key", key: "ArrowDown" }, [focused("#sort-updated")]),
-    step("keyboard-select", { kind: "key", key: "Enter" }, [text(), visible(false), focused("#menu-trigger")]),
-    step("open-for-escape", click("#menu-trigger"), [visible(true)]),
-    step("escape", { kind: "key", key: "Escape" }, [visible(false), focused("#menu-trigger"), text()]),
-  ] }] }));
+  touch(fixture.dir, "interaction.json", canonicalJson({
+    schema: "design-pipeline.interaction-probe.v1", id: "sort-menu", url: "index.html", probes: [{
+      id: "menu-selection", target: "#menu-demo", steps: [
+        step("initial", null, [visible(false), { selector: "#menu-trigger", kind: "attribute", name: "aria-expanded", equals: "false" }, { selector: "#selection-value", kind: "text", equals: "默认顺序" }]),
+        step("open", click("#menu-trigger"), [visible(true)]),
+        step("choose", click("#sort-updated"), [text(), visible(false)]),
+        step("reopen", click("#menu-trigger"), [focused("#sort-default")]),
+        step("next-option", { kind: "key", key: "ArrowDown" }, [focused("#sort-updated")]),
+        step("keyboard-select", { kind: "key", key: "Enter" }, [text(), visible(false), focused("#menu-trigger")]),
+        step("open-for-escape", click("#menu-trigger"), [visible(true)]),
+        step("escape", { kind: "key", key: "Escape" }, [visible(false), focused("#menu-trigger"), text()]),
+      ]
+    }]
+  }));
   return fixture;
 }
 
@@ -1019,6 +1028,7 @@ test("native baselines require Git, reject cross-root state and do not infer pre
   for (const file of ["state.json", "events.jsonl", first.plan, "reference.json", "references/reference-spec.md", "outline-probe.json", "surface-probe.json"]) touch(nonGit, file, fs.readFileSync(path.join(first.dir, file)));
   // Obtain a consistent fresh native state without copying an old root-bound attempt.
   const fresh = createInitialState({ changeId: "visual-example", timestamp: new Date().toISOString(), phase: "implementation", status: "implementing" });
+  fresh.extensions.designSystem = writeDecisionReceipt(nonGit, { changeId: "visual-example" });
   fs.unlinkSync(path.join(nonGit, "state.json")); fs.unlinkSync(path.join(nonGit, "events.jsonl"));
   writeNewChange(path.join(nonGit, "state.json"), path.join(nonGit, "events.jsonl"), fresh);
   // QA's isolated home may itself sit below the maintenance repo; this fixture must not
@@ -1044,7 +1054,7 @@ test("native baselines require Git, reject cross-root state and do not infer pre
 test("native scope maps a nested change's paths into Git coordinates", t => {
   const fixture = visualFixture(), nested = path.join(fixture.dir, "changes/nested");
   t.after(() => fs.rmSync(fixture.dir, { recursive: true, force: true }));
-  for (const file of ["state.json", "events.jsonl", fixture.plan, "reference.json", "references/reference-spec.md", "outline-probe.json", "surface-probe.json"]) touch(nested, file, fs.readFileSync(path.join(fixture.dir, file)));
+  for (const file of ["state.json", "events.jsonl", fixture.plan, "reference.json", "references/reference-spec.md", "outline-probe.json", "surface-probe.json", "design-system-decision.json"]) touch(nested, file, fs.readFileSync(path.join(fixture.dir, file)));
   gitFixture(fixture.dir, "add", "."); gitFixture(fixture.dir, "commit", "-qm", "nested change");
   const action = nextVisualTask(nested, { plan: fixture.plan });
   assert.equal(action.status, undefined, action.blockers?.join("; "));
@@ -4153,4 +4163,76 @@ test("a deferred direction pick wakes when the board it shows changes, and --unt
   assert.equal(result.status, 1, result.text);
   assert.match(result.json.error.message, /--until .* goes only with --later/);
   assert.deepEqual(snapshot(root), before);
+});
+
+// The design-system decision gates the owner-facing ui/web stages (concepts, components, work, build).
+test("a web run cannot reach its component stage without a design-system decision", t => {
+  const root = tmp();
+  t.after(() => fs.rmSync(root, { recursive: true, force: true, maxRetries: 3 }));
+  initWorkflowState(root, { deliverable: "web", tier: "quick" });
+  decide(root, { by: "owner", stage: "intake", choice: "skip", answer: "No playback needed; the brief is the page." });
+  const action = nextAction(root);
+  assert.equal(action.stage, "components");
+  assert.equal(action.type, "run");
+  assert.equal(action.findingCode, "DESIGN_SYSTEM_DECISION_REQUIRED");
+  assert.match(action.command, /design-system decide/);
+  assert.match(action.then, /--design-system-decision design-system-decision\.json/);
+  refuses(root, { stage: "components", choice: "scratch", answer: "Write from scratch" }, "BLOCKED");
+  assert.equal(fs.existsSync(path.join(root, "design-system-decision.json")), false, "the fix command is returned, not run");
+});
+
+test("a ui run cannot reach its work stage without a design-system decision", t => {
+  const root = tmp();
+  t.after(() => fs.rmSync(root, { recursive: true, force: true, maxRetries: 3 }));
+  initWorkflowState(root, { deliverable: "ui", tier: "quick" });
+  const action = nextAction(root);
+  assert.equal(action.stage, "work");
+  assert.equal(action.type, "run");
+  assert.equal(action.findingCode, "DESIGN_SYSTEM_DECISION_REQUIRED");
+});
+
+test("a film run is not gated on a design-system decision", t => {
+  const root = tmp();
+  t.after(() => fs.rmSync(root, { recursive: true, force: true, maxRetries: 3 }));
+  initWorkflowState(root, { deliverable: "film", tier: "standard" });
+  const action = nextAction(root);
+  assert.equal(action.stage, "intake");
+  assert.notEqual(action.findingCode, "DESIGN_SYSTEM_DECISION_REQUIRED");
+  assert.throws(() => bindStateDesignSystem(root, "design-system-decision.json"), /binds a ui or web project/);
+});
+
+test("an edited receipt reopens a direction stage that already finished", t => {
+  const root = webProject(t);
+  toComponents(root);
+  assert.equal(nextAction(root).stage, "components");
+  const file = path.join(root, "design-system-decision.json");
+  const receipt = JSON.parse(fs.readFileSync(file, "utf8"));
+  receipt.rationale = ["The owner changed their mind about the substrate."];
+  fs.writeFileSync(file, `${JSON.stringify(receipt, null, 2)}\n`);
+  const action = nextAction(root);
+  assert.equal(action.stage, "concepts", "the finished direction stage reopened");
+  assert.equal(action.findingCode, "DESIGN_SYSTEM_DECISION_CHANGED");
+});
+
+test("a removed receipt reopens the stages that already finished", t => {
+  const root = webProject(t, { tier: "quick" });
+  toComponents(root);
+  prepareWebComponents(root);
+  assert.equal(nextAction(root).stage, "build");
+  fs.rmSync(path.join(root, "design-system-decision.json"));
+  const action = nextAction(root);
+  assert.equal(action.stage, "components", "the finished component stage reopened");
+  assert.equal(action.findingCode, "DESIGN_SYSTEM_DECISION_MISSING");
+});
+
+test("binding a receipt lets the web flow continue past its component stage", t => {
+  const root = tmp();
+  t.after(() => fs.rmSync(root, { recursive: true, force: true, maxRetries: 3 }));
+  initWorkflowState(root, { deliverable: "web", tier: "quick" });
+  decide(root, { by: "owner", stage: "intake", choice: "skip", answer: "No playback needed; the brief is the page." });
+  writeDecisionReceipt(root);
+  assert.equal(bindStateDesignSystem(root, "design-system-decision.json").mode, "custom");
+  const action = nextAction(root);
+  assert.equal(action.stage, "components");
+  assert.equal(action.type, "run", "the stage's own work is next, not the decision fix");
 });

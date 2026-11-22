@@ -6,7 +6,8 @@ const fs = require("node:fs");
 const os = require("node:os");
 const path = require("node:path");
 const { spawnSync } = require("node:child_process");
-const { STATE, initState, nextAction, decide, readState, recordGate } = require("../skill/scripts/workflow-core.cjs");
+const { STATE, nextAction, decide, readState, recordGate } = require("../skill/scripts/workflow-core.cjs");
+const { initProject: initState, writeDecisionReceipt } = require("./helpers/decision-receipt.cjs");
 const { validateComponentManifest } = require("../skill/scripts/design-system-catalog-core.cjs");
 const { acceptSections, approveDescription, toBuild, toComponents } = require("./helpers/web-flow.cjs");
 const cli = path.resolve(__dirname, "../skill/scripts/designer-pipeline.cjs");
@@ -320,7 +321,7 @@ test("actual CLI outside the project accepts scratch and only valid real manifes
     return JSON.parse(result.stdout);
   }
   try {
-    assert.equal(run(["next", "--deliverable", "web", "--tier", "quick", "--mode", "brief"]).stage, "intake");
+    assert.equal(run(["next", "--deliverable", "web", "--tier", "quick", "--mode", "brief", "--design-system-decision", writeDecisionReceipt(root).path]).stage, "intake");
     run(["decide", "--stage", "intake", "--by", "owner", "--choice", "skip", "--answer", "I will build a one-screen navigation page from scratch."]);
     assert.equal(run(["next"]).stage, "components");
     run(["decide", "--stage", "components", "--by", "owner", "--choice", "scratch", "--answer", "从零写"]);

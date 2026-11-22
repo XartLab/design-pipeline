@@ -281,11 +281,11 @@ function migrateV1(state) {
   }
   const design = isObject(state.designFoundation)
     ? {
-        path: state.designFoundation.path ?? null,
-        status: state.designFoundation.status ?? "unknown",
-        sha256: state.designFoundation.sha256 ?? null,
-        validator: null,
-      }
+      path: state.designFoundation.path ?? null,
+      status: state.designFoundation.status ?? "unknown",
+      sha256: state.designFoundation.sha256 ?? null,
+      validator: null,
+    }
     : null;
   const migrated = {
     schema: STATE_V2,
@@ -609,23 +609,9 @@ function validateDesignSystemBinding(value, label = "extensions.designSystem") {
   return value;
 }
 
-// The design-system decision a change consumes before it designs or builds. The receipt is bound to
-// the state with its hash, so a changed or removed receipt invalidates the advancement instead of
-// preserving stale approval. A gate failure carries the machine reason in the finding code and exits
-// as a blocked gate, not a contract error.
-function resolveDesignSystemDecision(state, input, changeRoot, targetPhase) {
-  const governed = GOVERNED_PHASES.includes(state.phase) || GOVERNED_PHASES.includes(targetPhase);
-  const supplied = input.designSystem || null;
-  const bound = state.extensions.designSystem || null;
-  if (!governed) {
-    if (supplied) fail("pipeline state", "the design-system decision receipt is bound when the change advances into directions, design-spec, motion-spec, tasks or implementation", { code: "OPTION_VALUE_INVALID" });
-    return bound;
-  }
-  const phase = GOVERNED_PHASES.includes(targetPhase) ? targetPhase : state.phase;
-  const source = supplied || bound;
-  if (!source) {
-    fail("pipeline state", `the ${phase} phase needs a schema-valid design-system decision receipt. Fix: run \`design-system decide\` and pass the receipt with --design-system-decision`, { code: "BLOCKED", findingCode: "DESIGN_SYSTEM_DECISION_REQUIRED" });
-  }
+// One receipt, checked where it binds: contained in the change, present, unchanged since it was bound,
+// and consumable for the phase that is advancing. Returns the binding to keep.
+function checkDesignSystemDecision(source, state, changeRoot, phase) {
   const file = path.resolve(changeRoot, source.path);
   const relative = path.relative(changeRoot, file);
   if (!relative || relative.startsWith("..") || path.isAbsolute(relative)) {
@@ -649,6 +635,26 @@ function resolveDesignSystemDecision(state, input, changeRoot, targetPhase) {
     fail("pipeline state", `the design-system decision receipt is not usable for the ${phase} phase: ${verdict.message}. Fix: re-run \`design-system decide\` with the searched capabilities and the owner's decision`, { code: "BLOCKED", findingCode: verdict.code });
   }
   return { path: source.path, sha256: digest, mode: verdict.mode };
+}
+
+// The design-system decision a change consumes before it designs or builds. The receipt is bound to
+// the state with its hash, so a changed or removed receipt invalidates the advancement instead of
+// preserving stale approval. A gate failure carries the machine reason in the finding code and exits
+// as a blocked gate, not a contract error.
+function resolveDesignSystemDecision(state, input, changeRoot, targetPhase) {
+  const governed = GOVERNED_PHASES.includes(state.phase) || GOVERNED_PHASES.includes(targetPhase);
+  const supplied = input.designSystem || null;
+  const bound = state.extensions.designSystem || null;
+  if (!governed) {
+    if (supplied) fail("pipeline state", "the design-system decision receipt is bound when the change advances into directions, design-spec, motion-spec, tasks or implementation", { code: "OPTION_VALUE_INVALID" });
+    // Leaving the governed phases does not end the binding: verification, release-readiness and archive
+    // rest on the same receipt, so a deleted or edited receipt invalidates them too.
+    return bound ? checkDesignSystemDecision(bound, state, changeRoot, targetPhase) : null;
+  }
+  if (!supplied && !bound) {
+    fail("pipeline state", `the ${GOVERNED_PHASES.includes(targetPhase) ? targetPhase : state.phase} phase needs a schema-valid design-system decision receipt. Fix: run \`design-system decide\` and pass the receipt with --design-system-decision`, { code: "BLOCKED", findingCode: "DESIGN_SYSTEM_DECISION_REQUIRED" });
+  }
+  return checkDesignSystemDecision(supplied || bound, state, changeRoot, GOVERNED_PHASES.includes(targetPhase) ? targetPhase : state.phase);
 }
 
 function advanceChange(stateFile, eventsFile, input) {
@@ -679,9 +685,14 @@ function advanceChange(stateFile, eventsFile, input) {
       evidence: input.evidence,
       nextActions: input.nextActions,
     });
+    // A replacement receipt is a new substrate: the foundations, evidence, control results and
+    // visual-task progress recorded under the previous one describe the old decision, so they are
+    // dropped instead of being hardened into the new one.
+    const previous = current.state.extensions.designSystem || null;
+    const rebound = Boolean(designSystem && previous && designSystem.sha256 !== previous.sha256);
     const control = input.control
-      ? { ...(current.state.extensions.control || {}), ...input.control }
-      : current.state.extensions.control;
+      ? { ...(rebound ? {} : current.state.extensions.control || {}), ...input.control }
+      : rebound ? undefined : current.state.extensions.control;
     const state = {
       ...current.state,
       phase: targetPhase,
@@ -691,10 +702,10 @@ function advanceChange(stateFile, eventsFile, input) {
       updatedAt: input.timestamp,
       blockers: input.blockers || [],
       nextActions: input.nextActions || [],
-      foundations: input.foundations ? { ...current.state.foundations, ...input.foundations } : current.state.foundations,
-      evidence: input.evidence?.length ? [...new Set([...current.state.evidence, ...input.evidence])] : current.state.evidence,
+      foundations: rebound ? { design: null, motion: null } : input.foundations ? { ...current.state.foundations, ...input.foundations } : current.state.foundations,
+      evidence: rebound ? [...new Set(input.evidence || [])] : input.evidence?.length ? [...new Set([...current.state.evidence, ...input.evidence])] : current.state.evidence,
       extensions: {
-        ...current.state.extensions,
+        ...(rebound ? {} : current.state.extensions),
         ...(input.control ? { control } : {}),
         ...(input.visualTasks !== undefined ? { visualTasks: input.visualTasks } : {}),
         ...(designSystem ? { designSystem } : {}),

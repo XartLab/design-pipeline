@@ -45,3 +45,21 @@ The binding records the receipt's path and hash, like the design and motion foun
 is compared on every later mutation of the change, so an edited or removed receipt invalidates the
 advancement instead of preserving stale approval. A gate refusal throws with code `BLOCKED`, so the
 CLI exits 2 (gate failed) and keeps the machine reason in `details.findingCode`.
+
+## The owner-facing flow
+
+`next --deliverable ui|web` keeps its own stage list and its own `.design-pipeline/state.json`, so it
+gets the same validator rather than a second one. `next --design-system-decision <file>` (or the same
+flag beside `--deliverable`) writes `{path, sha256, mode}` into `state.designSystem` after validating
+the receipt; every later `next` re-reads the file and compares its hash before it opens `concepts`,
+`components`, `work` or `build`. A missing, edited or removed receipt returns one `run` action that
+carries the `design-system decide` command and the bind command, which reopens a stage that already
+finished. `decide --stage concept|components` refuses while the receipt does not hold. Film and edit
+runs have no substrate choice to record and are left alone.
+
+## Leaving the governed phases
+
+`gate-review`, `verification`, `release-readiness` and `archive` are not governed phases, but they
+rest on the same receipt. A bound receipt is therefore re-checked on every later mutation, and a
+replacement receipt drops the foundations, evidence, control results and visual-task progress recorded
+under the previous one instead of carrying them into the new decision.

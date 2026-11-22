@@ -15,7 +15,8 @@ const { SCHEMA, auditResultFailure, evaluateProbeFile, validateProbeFile } = req
 const { captureInteraction } = require("../skill/scripts/interaction-capture-core.cjs");
 const { resolvePuppeteer } = require("../skill/scripts/film-capture-core.cjs");
 const { resolveBrowser } = require("../skill/scripts/browser-locate.cjs");
-const { decide, initState, nextAction, readState, recordGate } = require("../skill/scripts/workflow-core.cjs");
+const { decide, nextAction, readState, recordGate } = require("../skill/scripts/workflow-core.cjs");
+const { initProject: initState } = require("./helpers/decision-receipt.cjs");
 const { acceptSections, toBuild, toComponents } = require("./helpers/web-flow.cjs");
 
 const repoRoot = path.resolve(__dirname, "..");
@@ -784,10 +785,12 @@ test("a journey that loads a file outside the project on click fails verify inte
   // fails the probe whose click loaded a file the gate could neither hash nor watch.
   const html = `<!doctype html><html lang="en"><body><div id="wrapper"><button id="load" type="button">Load</button><p id="status">idle</p></div>
 <script>document.getElementById("load").addEventListener("click", () => { const link = document.createElement("link"); link.rel = "stylesheet"; link.href = ${JSON.stringify(brand)}; document.head.appendChild(link); document.getElementById("status").textContent = "loaded"; });</script></body></html>`;
-  const journey = { id: "load", target: "#wrapper", steps: [
-    { id: "initial", timeoutMs: 200, assertions: [{ selector: "#status", kind: "text", equals: "idle" }] },
-    { id: "click", input: { kind: "click", selector: "#load" }, timeoutMs: 1000, assertions: [{ selector: "#status", kind: "text", equals: "loaded" }] },
-  ] };
+  const journey = {
+    id: "load", target: "#wrapper", steps: [
+      { id: "initial", timeoutMs: 200, assertions: [{ selector: "#status", kind: "text", equals: "idle" }] },
+      { id: "click", input: { kind: "click", selector: "#load" }, timeoutMs: 1000, assertions: [{ selector: "#status", kind: "text", equals: "loaded" }] },
+    ]
+  };
   const dir = stage(t, "journey", probeDoc("journey-outside", journey), { web: true, html });
   const result = verify(dir);
   assert.equal(result.status, 2, result.text);

@@ -7,7 +7,8 @@ const os = require("node:os");
 const path = require("node:path");
 const test = require("node:test");
 
-const { decide, initState, nextAction } = require("../skill/scripts/workflow-core.cjs");
+const { decide, nextAction } = require("../skill/scripts/workflow-core.cjs");
+const { initProject: initState } = require("./helpers/decision-receipt.cjs");
 const { execute } = require("../skill/scripts/cli-core.cjs");
 const { validateMotionFoundationText } = require("../skill/scripts/motion-foundation-core.cjs");
 const { pngBytes } = require("./helpers/reference-fixtures.cjs");

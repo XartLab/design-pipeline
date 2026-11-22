@@ -12,7 +12,8 @@ const os = require("node:os");
 const path = require("node:path");
 const test = require("node:test");
 
-const { decide, initState, nextAction, readState } = require("../skill/scripts/workflow-core.cjs");
+const { decide, nextAction, readState } = require("../skill/scripts/workflow-core.cjs");
+const { initProject: initState } = require("./helpers/decision-receipt.cjs");
 const { checkDirectionPreview } = require("../skill/scripts/direction-preview-core.cjs");
 const { execute } = require("../skill/scripts/cli-core.cjs");
 const { draw, loadCatalog, parseCatalog } = require("../skill/scripts/directions-core.cjs");
