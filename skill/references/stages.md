@@ -146,6 +146,17 @@ workflow (`next --deliverable film --job-plan`), which has no stack choices to m
   complete `capabilityInventory` embedded in the request, or reference their contained artifact
   paths with `frontendStackDecisionPath` and `capabilityInventoryPath`. A non-custom decision
   without either artifact is blocked; custom mode still requires the frontend-stack decision.
+- Write the decision receipt into the change as `design-system-decision.json` and bind it when the
+  change advances: `designer-pipeline change advance --change-root <change> --design-system-decision
+  design-system-decision.json`. A change cannot enter `directions`, `design-spec`, `motion-spec`,
+  `tasks` or `implementation` without a schema-valid receipt, and an edited or removed receipt
+  invalidates the advancement.
+- The owner-facing `next --deliverable ui|web` flow is gated the same way: bind the receipt with
+  `designer-pipeline next --project-root <project> --design-system-decision design-system-decision.json`
+  (or pass it beside `--deliverable` when the project starts). Its `concepts`, `components`, `work` and
+  `build` stages open only while the bound receipt is unchanged and consumable, so a missing, edited or
+  removed receipt reopens a stage that already finished. `decide --stage concept|components` refuses
+  the same way.
 - Inspect existing UI patterns before inventing new ones.
 - Check whether the project already has source-of-truth design docs or OpenSpec-style folders.
 - Confirm the graphics selection in `toolchain-plan.json` against

@@ -11,7 +11,8 @@ const crypto = require("node:crypto");
 const fs = require("node:fs");
 const os = require("node:os");
 const path = require("node:path");
-const { decide, initState, nextAction, readState } = require("../skill/scripts/workflow-core.cjs");
+const { decide, nextAction, readState } = require("../skill/scripts/workflow-core.cjs");
+const { initProject: initState } = require("./helpers/decision-receipt.cjs");
 const flow = require("./helpers/web-flow.cjs");
 const { readReceipt, saveReceipt, writeDirectionSet } = require("./helpers/direction-fixture.cjs");
 

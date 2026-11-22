@@ -17,7 +17,8 @@ const { SCHEMA, auditResultFailure, evaluateProbeFile, validateProbeFile } = req
 const { captureInteraction } = require("../skill/scripts/interaction-capture-core.cjs");
 const { resolvePuppeteer } = require("../skill/scripts/film-capture-core.cjs");
 const { resolveBrowser } = require("../skill/scripts/browser-locate.cjs");
-const { decide, initState, readState } = require("../skill/scripts/workflow-core.cjs");
+const { decide, readState } = require("../skill/scripts/workflow-core.cjs");
+const { initProject: initState } = require("./helpers/decision-receipt.cjs");
 const { toComponents } = require("./helpers/web-flow.cjs");
 
 const repoRoot = path.resolve(__dirname, "..");
@@ -124,11 +125,15 @@ test("the summary reports only what the stress newly breaks, passes reachable tr
   const clip = "audit.content-clipping";
   const baseline = measurement({ [clip]: [item(clip, "#already")] });
   const stressed = measurement({ [clip]: [item(clip, "#already"), item(clip, "#name"), item(clip, "#role", { related: "#role" }), item(clip, "#titled")], "audit.horizontal-overflow": [item("audit.horizontal-overflow", "html", { message: "the page scrolls sideways" })] });
-  const viewport = { viewport: VIEWPORTS[0], requests: [], result: baseline, stress: { applied: applied(), result: stressed, reverted: 0, truncation: [
-    { selector: "#name", truncation: false, wayBack: false },
-    { selector: "#role", truncation: true, wayBack: false },
-    { selector: "#titled", truncation: true, wayBack: true },
-  ] } };
+  const viewport = {
+    viewport: VIEWPORTS[0], requests: [], result: baseline, stress: {
+      applied: applied(), result: stressed, reverted: 0, truncation: [
+        { selector: "#name", truncation: false, wayBack: false },
+        { selector: "#role", truncation: true, wayBack: false },
+        { selector: "#titled", truncation: true, wayBack: true },
+      ]
+    }
+  };
   const summary = audit.summarizeAudit("page-audit", [viewport], project, [], { stress: true });
   assert.equal(summary.status, "failed");
   const findings = summary.findings.filter((finding) => finding.pass === "stress");

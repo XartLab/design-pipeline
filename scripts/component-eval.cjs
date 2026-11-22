@@ -10,6 +10,20 @@ const { createArtifactMetadata, validateArtifactMetadata } = require("../skill/s
 const { invalidateDownstream } = require("../skill/scripts/invalidation-core.cjs");
 
 const now = () => new Date().toISOString();
+
+const DESIGN_SYSTEM_FILE = "design-system-decision.json";
+
+// The receipt the run's own state consumes: a project-owned substrate, chosen from scratch by the
+// workflow state that dispatched this evaluation, so it needs no catalog search.
+function designSystemReceipt(changeId, stateSha256) {
+  return {
+    schema: "design-pipeline.design-system-decision.v1", status: "ready", mode: "custom",
+    projectAuthority: { id: "project-custom", source: "project" }, selected: { id: "project-custom", source: "project" },
+    rejected: [], rationale: ["The evaluation rebuilds its component from the reference, so the substrate stays project-owned."],
+    evidence: ["mode:custom"], frontendStackDecision: null, capabilityInventory: null, changeId,
+    authorization: { by: "owner", scratch: true, delegation: { source: "workflow-state", stateSha256 } }, compared: []
+  };
+}
 const writeJson = (file, value) => fs.writeFileSync(file, canonicalJson(value));
 const readJson = file => JSON.parse(fs.readFileSync(file, "utf8"));
 function treeHash(root) {
@@ -78,7 +92,7 @@ function projectEvent(event) {
   if (event.type === "retry_fallback_applied") return { kind: "fallback", from: publicValue(event.from), to: publicValue(event.to), text: redact(event.reason), timestamp };
   return null;
 }
-function jsonLines(onEvent, onError = () => {}) {
+function jsonLines(onEvent, onError = () => { }) {
   const decoder = new StringDecoder("utf8"); let buffer = "", line = 0;
   function consume(final = false) {
     let end;
@@ -109,13 +123,15 @@ class Workbench {
       if (alive) throw error("LOCKED", "此评测目录已有运行服务"); fs.unlinkSync(this.lockFile);
     }
     fs.writeFileSync(this.lockFile, JSON.stringify({ pid: process.pid }), { flag: "wx" });
-    try { for (const entry of fs.readdirSync(this.runtimeRoot, { withFileTypes: true })) {
-      if (!entry.isDirectory() || !/^badge-[a-f0-9]+$/.test(entry.name)) continue;
-      const dir = safePath(this.runtimeRoot, entry.name), state = readJson(path.join(dir, "state.json"));
-      if (inspectConsistency(state, fs.readFileSync(path.join(dir, "events.jsonl"), "utf8")).status !== "consistent") throw error("STATE_INCONSISTENT", "状态与事件不一致，需要核对");
-      const run = state.extensions.componentEval; this.runs.set(run.id, run);
-      if (["running", "verifying"].includes(run.status)) { run.status = "inconclusive"; run.notice = "服务重启，先前进程状态未核实；没有自动重派"; for (const task of run.tasks) if (["running", "verifying"].includes(task.status)) task.status = "inconclusive"; this.save(run, "component-recovery", run.notice); }
-    } } catch (e) { fs.unlinkSync(this.lockFile); throw e; }
+    try {
+      for (const entry of fs.readdirSync(this.runtimeRoot, { withFileTypes: true })) {
+        if (!entry.isDirectory() || !/^badge-[a-f0-9]+$/.test(entry.name)) continue;
+        const dir = safePath(this.runtimeRoot, entry.name), state = readJson(path.join(dir, "state.json"));
+        if (inspectConsistency(state, fs.readFileSync(path.join(dir, "events.jsonl"), "utf8")).status !== "consistent") throw error("STATE_INCONSISTENT", "状态与事件不一致，需要核对");
+        const run = state.extensions.componentEval; this.runs.set(run.id, run);
+        if (["running", "verifying"].includes(run.status)) { run.status = "inconclusive"; run.notice = "服务重启，先前进程状态未核实；没有自动重派"; for (const task of run.tasks) if (["running", "verifying"].includes(task.status)) task.status = "inconclusive"; this.save(run, "component-recovery", run.notice); }
+      }
+    } catch (e) { fs.unlinkSync(this.lockFile); throw e; }
   }
   histories() {
     const matrix = readJson(path.join(this.root, "comparison-matrix.json"));
@@ -152,8 +168,16 @@ class Workbench {
     const commonInputHash = sha256(canonicalJson({ referenceHashes, runtime, goals: TASKS, tokenLimit: null, timeLimitSec: null }));
     const inputHash = sha256(canonicalJson({ commonInputHash, model: input.model, treatment: input.treatment, toolkitHash }));
     const run = { id, kind: "live", title: "珐琅徽章组件", selector: input.model, treatment: input.treatment, actualModels: [], inputHash, commonInputHash, referenceHashes, runtime, createdAt: now(), status: "ready", tokenLimit: null, timeLimitSec: null, totalTokens: null, tasks: input.treatment === "tool" ? buildTasks().slice(0, 1) : buildTasks(), toolkitHash, dispatchVersion: 2 };
+    const stateFile = path.join(dir, "state.json"), eventsFile = path.join(dir, "events.jsonl");
     const state = createInitialState({ changeId: id, timestamp: now(), phase: "implementation", status: "implementing" }); state.extensions.componentEval = run;
-    writeNewChange(path.join(dir, "state.json"), path.join(dir, "events.jsonl"), state); this.runs.set(id, run); this.save(run, "component-created", "已创建单一徽章组件任务，等待显式启动"); return run;
+    writeNewChange(stateFile, eventsFile, state);
+    // The run is dispatched to rebuild its component from the reference, so the substrate stays
+    // project-owned; the run's own state is the workflow state that delegated that choice.
+    const receipt = canonicalJson(designSystemReceipt(id, sha256(fs.readFileSync(stateFile))));
+    fs.writeFileSync(path.join(dir, DESIGN_SYSTEM_FILE), receipt);
+    state.extensions.designSystem = { path: DESIGN_SYSTEM_FILE, sha256: sha256(receipt), mode: "custom" };
+    commitStateAndEvents(stateFile, eventsFile, state, fs.readFileSync(eventsFile, "utf8"));
+    this.runs.set(id, run); this.save(run, "component-created", "已创建单一徽章组件任务，等待显式启动"); return run;
   }
   assetUrl(file) {
     const relative = path.relative(this.mediaRoot, file); if (relative.startsWith("..") || path.isAbsolute(relative)) return null;
@@ -386,7 +410,7 @@ class Workbench {
     const run = this.get(id); if (this.closed) throw error("CLOSED", "服务已关闭"); if (this.active || this.pumping) throw error("BUSY", "当前只有一个活跃任务，请先处理当前运行");
     if (!this.options.executable && !this.options.spawnTask) throw error("OMP_MISSING", "未配置OMP执行器");
     if (run.tasks.some(t => t.status === "awaiting-review")) throw error("REVIEW_REQUIRED", "请先验收当前视觉节点");
-    run.status = "ready"; this.pumping = this.pump(run).finally(() => { this.pumping = null; }); this.pumping.catch(() => {}); return this.detail(id);
+    run.status = "ready"; this.pumping = this.pump(run).finally(() => { this.pumping = null; }); this.pumping.catch(() => { }); return this.detail(id);
   }
   async pump(run) {
     try {

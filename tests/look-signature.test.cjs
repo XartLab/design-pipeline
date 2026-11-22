@@ -12,7 +12,8 @@ const os = require("node:os");
 const path = require("node:path");
 const test = require("node:test");
 
-const { decide, initState, nextAction } = require("../skill/scripts/workflow-core.cjs");
+const { decide, nextAction } = require("../skill/scripts/workflow-core.cjs");
+const { initProject: initState } = require("./helpers/decision-receipt.cjs");
 const { checkDirectionPreview } = require("../skill/scripts/direction-preview-core.cjs");
 const ledger = require("../skill/scripts/appearance-ledger-core.cjs");
 const { resolvePuppeteer } = require("../skill/scripts/film-capture-core.cjs");

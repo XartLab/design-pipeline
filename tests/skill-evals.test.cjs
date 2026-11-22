@@ -15,6 +15,7 @@ const validatorPath = path.join(repoRoot, "skill", "scripts", "validate-evals.cj
 const cliPath = path.join(repoRoot, "skill", "scripts", "designer-pipeline.cjs");
 const manifest = loadManifest(manifestPath);
 const frontDoor = require("./helpers/skill-surface.cjs").readSkillSurface();
+const { writeDecisionReceipt } = require("./helpers/decision-receipt.cjs");
 const behaviorFixtures = path.join(repoRoot, "evals", "cases", "skill-behavior");
 
 function runCli(root, args, exitCode = 0) {
@@ -98,8 +99,10 @@ test("supporting CSS eval observes real focus, motion and preserved layout", { s
     const render = (css) => page.setContent(`<!doctype html><style>${css}</style><button class="save">保存</button>`);
     const snapshot = () => page.locator(".save").evaluate((el) => {
       const css = getComputedStyle(el), box = el.getBoundingClientRect();
-      return { paletteLayout: [css.backgroundColor, css.color, css.padding, css.borderWidth, css.borderRadius, box.width, box.height],
-        focus: [document.activeElement === el, el.matches(":focus-visible"), css.outlineStyle, css.outlineWidth], duration: css.transitionDuration };
+      return {
+        paletteLayout: [css.backgroundColor, css.color, css.padding, css.borderWidth, css.borderRadius, box.width, box.height],
+        focus: [document.activeElement === el, el.matches(":focus-visible"), css.outlineStyle, css.outlineWidth], duration: css.transitionDuration
+      };
     });
     await render(fs.readFileSync(path.join(behaviorFixtures, "input.css"), "utf8"));
     const baseline = await snapshot();
@@ -135,7 +138,8 @@ test("quick Chinese page eval checks browser behavior and the public workflow", 
   const item = manifest.cases.find((entry) => entry.id === "quick-chinese-profile-page");
   const root = fs.mkdtempSync(path.join(os.tmpdir(), "skill-eval-page-"));
   t.after(() => fs.rmSync(root, { recursive: true, force: true }));
-  const start = runCli(root, ["next", "--project-root", ".", "--deliverable", "ui", "--tier", "quick", "--mode", "brief"]);
+  // A ui run cannot reach its work stage without a design-system decision, so the eval binds one.
+  const start = runCli(root, ["next", "--project-root", ".", "--deliverable", "ui", "--tier", "quick", "--mode", "brief", "--design-system-decision", writeDecisionReceipt(root).path]);
   assert.equal(start.type, "run");
   assert.equal(start.stage, "work");
   fs.copyFileSync(path.join(behaviorFixtures, "index.html"), path.join(root, "index.html"));
@@ -195,14 +199,16 @@ test("quick Chinese page eval checks browser behavior and the public workflow", 
     assert.deepEqual(next.evidence.gates, {});
     const state = JSON.parse(fs.readFileSync(path.join(root, ".design-pipeline/state.json"), "utf8"));
     assert.deepEqual([state.deliverable, state.tier, state.mode], ["ui", "quick", "brief"]);
-    checkOutcome(item, root, { state: next.type === "done" ? "ready" : next.type, signals: {
-      "quick-workflow": state.deliverable === "ui" && state.tier === "quick" && state.mode === "brief",
-      "required-validation": required.every(Boolean), "email-validation": invalidEmail, "keyboard-save": success === "资料已保存。",
-      "reload-persistence": saved.name === "林晓雨" && saved.email === "xiaoyu@example.com" && saved.notifications === false,
-      "responsive": size[0] === size[1] && size[1] === 320, "no-animation": animationCount === 0,
-      // Acceptance is the owner's own review record, never a gate result.
-      "user-acceptance-separate": state.decisions.drafts.at(-1)?.verdict === "accept" && state.decisions.drafts.at(-1)?.by === "owner" && Object.keys(next.evidence.gates).length === 0,
-    } });
+    checkOutcome(item, root, {
+      state: next.type === "done" ? "ready" : next.type, signals: {
+        "quick-workflow": state.deliverable === "ui" && state.tier === "quick" && state.mode === "brief",
+        "required-validation": required.every(Boolean), "email-validation": invalidEmail, "keyboard-save": success === "资料已保存。",
+        "reload-persistence": saved.name === "林晓雨" && saved.email === "xiaoyu@example.com" && saved.notifications === false,
+        "responsive": size[0] === size[1] && size[1] === 320, "no-animation": animationCount === 0,
+        // Acceptance is the owner's own review record, never a gate result.
+        "user-acceptance-separate": state.decisions.drafts.at(-1)?.verdict === "accept" && state.decisions.drafts.at(-1)?.by === "owner" && Object.keys(next.evidence.gates).length === 0,
+      }
+    });
   } finally { await browser.close(); }
 });
 
@@ -221,12 +227,14 @@ test("missing reference eval runs the fail-closed CLI and preserves pending inpu
   const rejected = runCli(root, ["reference", "resolve", "--change-root", ".", "--path", "missing.png"], 1);
   assert.equal(rejected.error.code, "CONTRACT_INVALID");
   assert.deepEqual(fs.readFileSync(path.join(root, "reference-evidence.json")), original);
-  checkOutcome(item, root, { state: checked.status, signals: {
-    "source-pending": checked.reference.source.availability === "pending", "blocked": checked.status === "blocked",
-    "unlock-action": checked.reference.source.requestedFrom === "the user" && rejected.error.code === "CONTRACT_INVALID",
-    "fail-closed": checked.reference.source.path === null && checked.reference.source.sha256 === null
-      && fs.readFileSync(path.join(root, "reference-evidence.json")).equals(original),
-  } });
+  checkOutcome(item, root, {
+    state: checked.status, signals: {
+      "source-pending": checked.reference.source.availability === "pending", "blocked": checked.status === "blocked",
+      "unlock-action": checked.reference.source.requestedFrom === "the user" && rejected.error.code === "CONTRACT_INVALID",
+      "fail-closed": checked.reference.source.path === null && checked.reference.source.sha256 === null
+        && fs.readFileSync(path.join(root, "reference-evidence.json")).equals(original),
+    }
+  });
   assert.throws(() => checkOutcome({ ...item, expectedState: "ready" }, root, { state: checked.status, signals: {} }));
   assert.throws(() => checkOutcome(item, root, { state: checked.status, signals: {} }));
   assert.throws(() => checkOutcome({ ...item, requiredSignals: [], requiredArtifacts: ["not-generated.json"] }, root, { state: checked.status, signals: {} }));

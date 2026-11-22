@@ -18,6 +18,7 @@ const { createArtifactMetadata, validateArtifactMetadata } = require("./artifact
 const { captureGitSnapshot, inspectGitChanges, samePath } = require("./execution-target-core.cjs");
 const { RESULT_SCHEMA, validateProbeFile, journeyResultFailure, auditResultFailure, scrollResultFailure } = require("./interaction-core.cjs");
 const { advanceChange } = require("./pipeline-state-core.cjs");
+const { validateDesignSystemDecision } = require("./design-system-decision-core.cjs");
 const { readState: readNativeState } = require("./control-runtime-core.cjs");
 const { downstreamPhases, invalidateDownstream } = require("./invalidation-core.cjs");
 const { resolveVideoObservation } = require("./reference-video-core.cjs");
@@ -153,6 +154,57 @@ function bindStateJobPlan(root, file) {
   return { ...state.jobPlan };
 }
 
+// The stages a ui or web run may not enter without a schema-valid design-system decision receipt.
+// `concepts` names the substrate and `components`, `work` and `build` build on it, so each of them
+// re-checks the receipt bound in the state: a missing, edited or removed receipt reopens the stage.
+const DECISION_STAGES = new Set(["concepts", "components", "work", "build"]);
+const DECISION_FILE = "design-system-decision.json";
+
+const decisionFix = (root, where) => `record the searched capabilities, the candidates and the owner's choice with \`${cliCommand()} design-system decide --root ${shellPath(path.resolve(root))} --project-root ${shellPath(path.resolve(root))} --artifact <request.json> --write --output ${shellPath(where)}\`, then bind it with \`${cliCommand()} next --root ${shellPath(path.resolve(root))} --project-root ${shellPath(path.resolve(root))} --design-system-decision ${shellPath(where)}\``;
+
+// The project's bound receipt, checked against the file it names. A ui or web stage that chooses a
+// substrate or builds on one is only finished while that receipt is present, unchanged and consumable.
+function stateDesignSystem(root, state) {
+  const binding = state.designSystem;
+  if (!binding) return { status: "missing", binding: null, findingCode: "DESIGN_SYSTEM_DECISION_REQUIRED", message: "no design-system decision receipt is bound to this project" };
+  const where = typeof binding.path === "string" ? binding.path : "";
+  const file = path.resolve(root, where);
+  const relative = path.relative(root, file);
+  if (!where || !relative || relative.startsWith("..") || path.isAbsolute(relative)) return { status: "changed", binding, findingCode: "DESIGN_SYSTEM_DECISION_OUTSIDE_CHANGE", message: `the bound receipt ${where} is outside the project` };
+  if (!fs.existsSync(file)) return { status: "missing", binding, findingCode: "DESIGN_SYSTEM_DECISION_MISSING", message: `the bound receipt ${where} is missing` };
+  const digest = sha256(fs.readFileSync(file));
+  if (digest !== binding.sha256) return { status: "changed", binding, findingCode: "DESIGN_SYSTEM_DECISION_CHANGED", message: `the bound receipt ${where} changed after it was bound` };
+  let receipt;
+  try { receipt = readJson(file, "design-system decision"); }
+  catch (error) { return { status: "changed", binding, findingCode: "DESIGN_SYSTEM_DECISION_UNREADABLE", message: `the bound receipt ${where} is unreadable: ${reasonOf(error)}` }; }
+  const verdict = validateDesignSystemDecision(receipt);
+  if (verdict.status !== "ready") return { status: "blocked", binding, findingCode: verdict.code, message: verdict.message };
+  return { status: "ready", binding, mode: verdict.mode };
+}
+
+// A receipt to bind now: contained, valid, and recorded by its project-relative posix path.
+function newDesignSystemBinding(root, file) {
+  const target = resolveInside(root, file, "design-system decision", { scope: "workflow", mustExist: true });
+  const where = path.relative(root, target).split(path.sep).join("/");
+  let receipt;
+  try { receipt = readJson(target, "design-system decision"); }
+  catch (error) { fail("workflow", `the design-system decision ${where} is invalid: ${reasonOf(error)}. Fix: re-run \`design-system decide\` and write a valid receipt`); }
+  const verdict = validateDesignSystemDecision(receipt);
+  if (verdict.status !== "ready") fail("workflow", `the design-system decision ${where} is not usable: ${verdict.message}. Fix: ${decisionFix(root, where)}`, { code: "BLOCKED", findingCode: verdict.code });
+  return { path: where, sha256: sha256(fs.readFileSync(target)), mode: verdict.mode };
+}
+
+// Binds or rebinds the project's design-system decision (next --design-system-decision). The receipt
+// is validated first, so a refused call changes nothing; every later stage re-checks its hash.
+function bindStateDesignSystem(root, file) {
+  const state = readState(root);
+  if (!state) fail("workflow", `no project state to bind. Fix: start the project with next --deliverable ui|web --tier quick|standard|full --design-system-decision ${DECISION_FILE}`, { code: "INPUT_MISSING" });
+  if (!["ui", "web"].includes(state.deliverable)) fail("workflow", `a design-system decision binds a ui or web project, not a ${state.deliverable} project. Fix: drop --design-system-decision`);
+  state.designSystem = newDesignSystemBinding(root, file);
+  writeState(root, state);
+  return { ...state.designSystem };
+}
+
 // Tier from the request size when the agent does not choose: one element is quick, a whole
 // deliverable is standard, shared or multi-part work is full.
 function initState(root, options = {}) {
@@ -168,7 +220,7 @@ function initState(root, options = {}) {
   let jobPlan = null;
   if (named) jobPlan = newJobPlan(root, options.jobPlan);
   else if (options.deliverable === "film" && fs.existsSync(path.join(root, JOB_PLAN))) jobPlan = newJobPlan(root, JOB_PLAN);
-  const state = { schema: SCHEMA, deliverable: options.deliverable, tier, mode, director: options.director || null, assistedBy: options.assistedBy || null, ...(jobPlan ? { jobPlan } : {}), decisions: {}, gates: {}, rules: [], createdAt: new Date().toISOString() };
+  const state = { schema: SCHEMA, deliverable: options.deliverable, tier, mode, director: options.director || null, assistedBy: options.assistedBy || null, ...(jobPlan ? { jobPlan } : {}), ...(options.designSystem !== undefined && options.designSystem !== null ? { designSystem: newDesignSystemBinding(root, options.designSystem) } : {}), decisions: {}, gates: {}, rules: [], createdAt: new Date().toISOString() };
   state.delegation = roles.defaultDelegation(state, stagesFor(state).map(stage => stage.id));
   writeState(root, state);
   return state;
@@ -204,6 +256,27 @@ function nextAction(root, { deferral = true } = {}) {
   roles.ensureDelegation(state, stages.map(stage => stage.id)); // In memory only: next never writes state.
   const done = [];
   for (const stage of stages) {
+    // A stage that chooses or builds on a substrate opens only on a consumable decision receipt, so a
+    // missing, edited or removed receipt reopens a stage that was already finished.
+    if (["ui", "web"].includes(state.deliverable) && DECISION_STAGES.has(stage.id)) {
+      const decision = stateDesignSystem(root, state);
+      if (decision.status !== "ready") {
+        return {
+          type: "run",
+          stage: stage.id,
+          deliverable: state.deliverable,
+          tier: state.tier,
+          completed: done,
+          remaining: stages.length - done.length,
+          instruction: `The ${stage.id} stage needs a design-system decision before it can run: ${decision.message}. ${decisionFix(root, DECISION_FILE)}`,
+          command: `${cliCommand()} design-system decide --root ${shellPath(path.resolve(root))} --project-root ${shellPath(path.resolve(root))} --artifact <request.json> --write --output ${shellPath(DECISION_FILE)}`,
+          then: `${cliCommand()} next --root ${shellPath(path.resolve(root))} --project-root ${shellPath(path.resolve(root))} --design-system-decision ${shellPath(DECISION_FILE)}`,
+          why: "A substrate chosen without a recorded decision is a fallback hardened into the build.",
+          findingCode: decision.findingCode,
+          line: `${state.deliverable}/${state.tier}: ${stage.id} (${done.length + 1}/${stages.length}) - needs a design-system decision`,
+        };
+      }
+    }
     const verification = stage.gate ? gateStatus(state, root, stage.gate.name, stage.gate.inputs(state, root)) : null;
     if ((!stage.finished || stage.finished(state, root)) && (!verification || verification.status === "passed")) { done.push(stage.id); continue; }
     const action = ownerFacing(withRoles(stage.action(state, root), state), state, stage.id);
@@ -346,6 +419,12 @@ function decide(root, options = {}) {
   const state = readState(root);
   if (!state) fail("workflow", "no project state. Fix: run next with --deliverable and --tier first", { code: "INPUT_MISSING" });
   stateJobPlan(root, state); // A stale Stage 0 binding records nothing.
+  // The direction and component records choose the substrate, so neither may be recorded while the
+  // project's design-system decision does not hold.
+  if (["ui", "web"].includes(state.deliverable) && ["concept", "components"].includes(options.stage)) {
+    const decision = stateDesignSystem(root, state);
+    if (decision.status !== "ready") fail("workflow", `the ${options.stage} record needs a design-system decision: ${decision.message}. Fix: ${decisionFix(root, DECISION_FILE)}`, { code: "BLOCKED", findingCode: decision.findingCode });
+  }
   const stage = options.stage;
   assertEnum(stage, ["intake", "reference", "extract", "concept", "components", "description", "section", "sample", "review", "deliver"], "stage", "workflow");
   state.decisions = state.decisions || {};
@@ -758,8 +837,8 @@ function currentVisual(context) {
       const failure = !record.observation || record.observation.kind !== "interaction" || record.observation.attempt?.taskHash !== record.taskHash || record.observation.attempt?.planHash !== context.progress.planHash || !samePath(record.observation.attempt?.changeRoot, context.root) || canonicalJson(record.observation.checks) !== canonicalJson(task.visual.checks)
         ? "Legacy or unobserved completion requires fresh dispatch and actual verification."
         : record.taskHash !== expected.$task || canonicalJson(record.inputHashes) !== canonicalJson(expected)
-        ? "Task or upstream input changed."
-        : visualEvidenceFailure(context, task, expected, record.artifacts);
+          ? "Task or upstream input changed."
+          : visualEvidenceFailure(context, task, expected, record.artifacts);
       if (!failure) {
         const review = record.review;
         if (task.visual.review === true && !(review?.verdict === "accept" && review.valid === true && review.artifactHash === visualHash(canonicalJson(record.artifacts)))) {
@@ -980,4 +1059,4 @@ function decideVisualTask(changeRoot, options = {}) {
   return { status: failure ? "blocked" : "recorded", taskId: current.id, ...(failure ? { failure } : {}), visualAcceptance: "not-evaluated", next: nextVisualTask(changeRoot) };
 }
 
-module.exports = { DELIVERABLES, SCHEMA, STATE, TIERS, bindStateJobPlan, decide, decideVisualTask, deferAsk, diligence, initState, nextAction, nextVisualTask, projectJobPlan, readState, recordGate };
+module.exports = { DECISION_FILE, DECISION_STAGES, DELIVERABLES, SCHEMA, STATE, TIERS, bindStateDesignSystem, bindStateJobPlan, decide, decideVisualTask, deferAsk, diligence, initState, nextAction, nextVisualTask, projectJobPlan, readState, recordGate, stateDesignSystem };

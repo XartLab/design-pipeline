@@ -21,6 +21,7 @@ const {
 const { sha256 } = require("../skill/scripts/contract-utils.cjs");
 const { compileDesignPlan, validatePlan } = require("../skill/scripts/plan-core.cjs");
 const { validateArtifactMetadata } = require("../skill/scripts/artifact-core.cjs");
+const { writeDecisionReceipt } = require("./helpers/decision-receipt.cjs");
 
 function tempChange() {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), "design-pipeline-state-"));
@@ -106,6 +107,7 @@ test("advance is CAS-guarded, locked, transition-checked, and crash-safe", () =>
   assert.throws(() => advanceChange(change.stateFile, change.eventsFile, { expectedSha256: firstHash, timestamp: "2026-07-23T00:02:00.000Z", phase: "directions", summary: "stale" }), /does not match/);
   assert.throws(() => advanceChange(change.stateFile, change.eventsFile, { expectedSha256: advanced.stateSha256, timestamp: "2026-07-23T00:02:00.000Z", phase: "archive", summary: "jump" }), /not allowed/);
 
+  const bound = writeDecisionReceipt(change.root, { changeId: "state-test" });
   const beforeState = fs.readFileSync(change.stateFile);
   const beforeEvents = fs.readFileSync(change.eventsFile);
   for (const failpoint of ["after-stage", "after-backup", "after-events", "after-state"]) {
@@ -114,6 +116,7 @@ test("advance is CAS-guarded, locked, transition-checked, and crash-safe", () =>
       timestamp: "2026-07-23T00:03:00.000Z",
       phase: "directions",
       summary: `interrupt ${failpoint}`,
+      designSystem: bound,
       failpoint,
     }), /simulated interruption/);
     assert.deepEqual(fs.readFileSync(change.stateFile), beforeState);
@@ -207,10 +210,12 @@ function visualProgress() {
   const hash = "sha256:" + "b".repeat(64);
   return {
     planHash: hash, planPath: "tasks/visual-plan.json", completed: {
-      outline: { taskHash: hash, inputHashes: { $plan: hash, $task: hash, "reference.png": hash }, artifacts: [{
-        schema: "design-pipeline.artifact.v1", schema_version: 1, path: "versions/outline/component.html", producer: "outline",
-        input_hashes: { $plan: hash }, artifact_hash: hash, dependencies: [], created_at: "2026-07-23T00:00:00.000Z", status: "ready",
-      }], status: "stale" },
+      outline: {
+        taskHash: hash, inputHashes: { $plan: hash, $task: hash, "reference.png": hash }, artifacts: [{
+          schema: "design-pipeline.artifact.v1", schema_version: 1, path: "versions/outline/component.html", producer: "outline",
+          input_hashes: { $plan: hash }, artifact_hash: hash, dependencies: [], created_at: "2026-07-23T00:00:00.000Z", status: "ready",
+        }], status: "stale"
+      },
     }, failures: { enamel: "Missing the required runtime comparison" },
   };
 }
@@ -413,6 +418,7 @@ test("visual progress updates use the existing CAS transaction and retain unrela
   const change = tempChange();
   const initial = createInitialState({ changeId: "visual-advance", timestamp: "2026-07-23T00:00:00.000Z", phase: "implementation" });
   initial.extensions.keep = { existing: true };
+  initial.extensions.designSystem = writeDecisionReceipt(change.root, { changeId: "visual-advance" });
   writeNewChange(change.stateFile, change.eventsFile, initial);
   const firstHash = sha256(fs.readFileSync(change.stateFile));
   const progress = visualProgress();

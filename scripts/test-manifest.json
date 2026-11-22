@@ -41,6 +41,7 @@
     "design-synthesis.test.cjs",
     "design-system-catalog.test.cjs",
     "design-system-decision.test.cjs",
+    "design-system-decision-gate.test.cjs",
     "design-system-provider.test.cjs",
     "design-tool-port.test.cjs",
     "adaptation.test.cjs",

@@ -174,7 +174,7 @@ const REPEATABLE_OPTIONS = new Set(["--set", "--param", "--mix", "--taste", "--a
 const KNOWN_OPTIONS = new Set([
   ...BOOLEAN_OPTIONS,
   ...REPEATABLE_OPTIONS,
-  "--action", "--adapter-path", "--api-version", "--artifact", "--answer", "--approval", "--base", "--capability", "--catalog", "--category", "--change-id", "--change-root", "--context", "--expected-sha256", "--failpoint",
+  "--action", "--adapter-path", "--api-version", "--artifact", "--answer", "--approval", "--base", "--capability", "--catalog", "--category", "--change-id", "--change-root", "--context", "--design-system-decision", "--expected-sha256", "--failpoint",
   "--design-file", "--design-foundation", "--effect", "--evidence-root", "--feedback-root", "--graphics-catalog",
   "--framework", "--height", "--installed-evidence", "--inventory", "--kind", "--limit", "--manifest", "--markdown", "--matrix", "--measurements", "--minimum-age-ms",
   "--motion-file", "--motion-foundation", "--system-dir", "--observation", "--output", "--output-root", "--phase", "--platform", "--playwright-module", "--agent-browser", "--agent-browser-state", "--project-root",
@@ -407,12 +407,12 @@ function inspectDoctor(skillRoot = path.resolve(__dirname, ".."), nodeVersion = 
     missing.length || !fs.existsSync(path.join(skillRoot, "references", "graphics-runtime-catalog.json"))
       ? null
       : validateRegistry(
-          readJson(path.join(skillRoot, "references", "adapter-registry.json"), "adapter registry"),
-          readJson(
-            path.join(skillRoot, "references", "graphics-runtime-catalog.json"),
-            "graphics catalog",
-          ),
-        );
+        readJson(path.join(skillRoot, "references", "adapter-registry.json"), "adapter registry"),
+        readJson(
+          path.join(skillRoot, "references", "graphics-runtime-catalog.json"),
+          "graphics catalog",
+        ),
+      );
   return {
     status: missing.length || !nodeSupported ? "blocked" : "ready",
     node: nodeVersion,
@@ -500,7 +500,7 @@ function publicHelp() {
     "  film methods --project-root <dir> --input <plan.json> [--write] [--replace]",
     "  film templates [--query <terms> | --template <id>] [--all]",
     "  film capture-timeline --composition <index.html> | --url <preview url> [--composition-id main] [--output timeline.json] [--chrome <exe>] [--puppeteer-module <path>]",
-    "  next [--project-root .] [--deliverable film|edit|web|ui --tier quick|standard|full --mode brief|replicate --director <model> --assisted-by <tool-and-model>] [--job-plan <job-plan.json>]   (one next step; film binds the Stage 0 plan, product-launch-video films need an admitted product source; exit 2 when blocked)",
+    "  next [--project-root .] [--deliverable film|edit|web|ui --tier quick|standard|full --mode brief|replicate --director <model> --assisted-by <tool-and-model>] [--job-plan <job-plan.json>] [--design-system-decision <design-system-decision.json>]   (one next step; film binds the Stage 0 plan, ui and web bind their design-system decision, product-launch-video films need an admitted product source; exit 2 when blocked)",
     "  decide --root <absolute-project-root> --project-root <absolute-project-root> --stage intake|reference|extract|concept|components|description|section|sample|review|deliver --by owner|agent [--delegate <checkpoint> ...] [--keep <checkpoint> ...] [--choice n|A|B|C|mad|pv|skip|<ids>] [--verdict accept|reject] [--answer <text>] [--evidence <file>] [--anti-goal <text>] [--tradeoff <text>] [--scope object|project] [--promote <from> ...] [--revision bytes|commitment] [--affects <ids>|all|none] [--ref <reference> ...] [--mix <part>=<id> ...] [--taste <the owner's taste statement> ...]",
     "    components requires --choice <project|github|index|discover|scratch, comma-separated> and --answer <text>; scratch cannot be combined; github requires a https://github.com/<owner>/<repo> URL in --answer; discover lets the agent find open-source GitHub repositories and record each with a pinned revision and license evidence; on web, --verdict reject --answer records a decision-round correction as a rule bound to the result under review",
     "    --later [--until <ISO time with offset, e.g. 2026-10-16T09:00:00+08:00>] records that the owner will answer the current owner ask later (no other decide flag beside it): until then next returns blocked (kind owner, exit 2) with the deferred ask; it asks again after the time, when what is asked or the page it is about changes, when another ask is current, or once the owner's answer is recorded",
@@ -727,6 +727,14 @@ function changeCommand(parsed, root, action) {
     nextActions: optionList(parsed, "--next-action"),
     failpoint: option(parsed, "--failpoint"),
   };
+  const decisionFile = option(parsed, "--design-system-decision");
+  if (decisionFile) {
+    const file = contained(changeRoot, decisionFile, "--design-system-decision");
+    mutation.designSystem = {
+      path: path.relative(changeRoot, file).split(path.sep).join("/"),
+      sha256: sha256(fs.readFileSync(file)),
+    };
+  }
   const foundationInputs = [["design", "--design-foundation"], ["motion", "--motion-foundation"]];
   for (const [kind, flag] of foundationInputs) {
     const raw = option(parsed, flag);
@@ -3145,14 +3153,16 @@ const COMMANDS = {
       check: { run: ({ parsed, root, command }) => spatialCommand(parsed, root, command) },
       resolve: { run: ({ parsed, root }) => referenceResolveCommand(parsed, root) },
       extract: { run: ({ parsed, root }) => referenceExtractCommand(parsed, root) },
-      "analyze-video": { required: ["--path", "--output"], run: ({ parsed, root }) => {
-        const options = { path: option(parsed, "--path"), output: option(parsed, "--output"), ...(option(parsed, "--start") === null ? {} : { startSec: Number(option(parsed, "--start")) }), ...(option(parsed, "--end") === null ? {} : { endSec: Number(option(parsed, "--end")) }), ...(option(parsed, "--fps") === null ? {} : { sampleFps: Number(option(parsed, "--fps")) }), ...(option(parsed, "--max-frames") === null ? {} : { maxFrames: Number(option(parsed, "--max-frames")) }), ...(option(parsed, "--shots") === true ? { shots: true } : {}), ...(option(parsed, "--cut-threshold") === null ? {} : { cutThreshold: Number(option(parsed, "--cut-threshold")) }), ...(option(parsed, "--min-shot") === null ? {} : { minShotSec: Number(option(parsed, "--min-shot")) }) };
-        // --study adds study.json, an audio excerpt and spectrogram when the source has sound, and cut-grid candidates.
-        const result = option(parsed, "--study") === true
-          ? require("../tools/art-motion/reference.cjs").analyzeReference(analysisRoot(parsed, root), options)
-          : require("./reference-video-core.cjs").analyzeVideo(analysisRoot(parsed, root), options);
-        return { result, exitCode: 0 };
-      } },
+      "analyze-video": {
+        required: ["--path", "--output"], run: ({ parsed, root }) => {
+          const options = { path: option(parsed, "--path"), output: option(parsed, "--output"), ...(option(parsed, "--start") === null ? {} : { startSec: Number(option(parsed, "--start")) }), ...(option(parsed, "--end") === null ? {} : { endSec: Number(option(parsed, "--end")) }), ...(option(parsed, "--fps") === null ? {} : { sampleFps: Number(option(parsed, "--fps")) }), ...(option(parsed, "--max-frames") === null ? {} : { maxFrames: Number(option(parsed, "--max-frames")) }), ...(option(parsed, "--shots") === true ? { shots: true } : {}), ...(option(parsed, "--cut-threshold") === null ? {} : { cutThreshold: Number(option(parsed, "--cut-threshold")) }), ...(option(parsed, "--min-shot") === null ? {} : { minShotSec: Number(option(parsed, "--min-shot")) }) };
+          // --study adds study.json, an audio excerpt and spectrogram when the source has sound, and cut-grid candidates.
+          const result = option(parsed, "--study") === true
+            ? require("../tools/art-motion/reference.cjs").analyzeReference(analysisRoot(parsed, root), options)
+            : require("./reference-video-core.cjs").analyzeVideo(analysisRoot(parsed, root), options);
+          return { result, exitCode: 0 };
+        }
+      },
     },
   },
   project: { actions: { inspect: { run: ({ parsed, root }) => projectInspectCommand(parsed, root) } } },
@@ -3204,9 +3214,11 @@ const COMMANDS = {
         required: ["--project-root", "--input"],
         run: ({ parsed, root }) => {
           try {
-            return { result: prepareFilmMethods(contained(root, option(parsed, "--project-root"), "--project-root"), readJson(contained(root, option(parsed, "--input"), "--input"), "film methods request"), {
-              root, write: option(parsed, "--write") === true, replace: option(parsed, "--replace") === true,
-            }), exitCode: 0 };
+            return {
+              result: prepareFilmMethods(contained(root, option(parsed, "--project-root"), "--project-root"), readJson(contained(root, option(parsed, "--input"), "--input"), "film methods request"), {
+                root, write: option(parsed, "--write") === true, replace: option(parsed, "--replace") === true,
+              }), exitCode: 0
+            };
           } catch (error) {
             if (error.code === "STORYBOARD_FAILED") return { result: error.details.result, exitCode: 2 };
             throw error;
@@ -3387,13 +3399,14 @@ const COMMANDS = {
   next: {
     run: ({ parsed, root }) => {
       if (option(parsed, "--change-root")) {
-        if (option(parsed, "--deliverable") || option(parsed, "--replace") || option(parsed, "--job-plan")) fail("cli", "native visual tasks cannot initialize or bind a legacy workflow", { code: "OPTION_CONFLICT" });
+        if (option(parsed, "--deliverable") || option(parsed, "--replace") || option(parsed, "--job-plan") || option(parsed, "--design-system-decision")) fail("cli", "native visual tasks cannot initialize or bind a legacy workflow", { code: "OPTION_CONFLICT" });
         const result = workflow.nextVisualTask(changeRootFrom(parsed, root), { plan: option(parsed, "--plan") });
         return { result, exitCode: result.status === "blocked" ? 2 : 0 };
       }
       const project = contained(root, option(parsed, "--project-root", "."), "--project-root");
-      if (option(parsed, "--deliverable")) workflow.initState(project, { deliverable: option(parsed, "--deliverable"), tier: option(parsed, "--tier"), mode: option(parsed, "--mode"), director: option(parsed, "--director"), assistedBy: option(parsed, "--assisted-by"), replace: option(parsed, "--replace") === true, jobPlan: option(parsed, "--job-plan") || undefined });
+      if (option(parsed, "--deliverable")) workflow.initState(project, { deliverable: option(parsed, "--deliverable"), tier: option(parsed, "--tier"), mode: option(parsed, "--mode"), director: option(parsed, "--director"), assistedBy: option(parsed, "--assisted-by"), replace: option(parsed, "--replace") === true, jobPlan: option(parsed, "--job-plan") || undefined, designSystem: option(parsed, "--design-system-decision") || undefined });
       else if (option(parsed, "--job-plan")) workflow.bindStateJobPlan(project, option(parsed, "--job-plan"));
+      if (!option(parsed, "--deliverable") && option(parsed, "--design-system-decision")) workflow.bindStateDesignSystem(project, option(parsed, "--design-system-decision"));
       const result = workflow.nextAction(project);
       return { result, exitCode: result.type === "blocked" ? 2 : 0 };
     },
