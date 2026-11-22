@@ -107,6 +107,7 @@
     "interaction-capture.test.cjs",
     "interaction-cli.test.cjs",
     "interaction-audit.test.cjs",
+    "issue-190.test.cjs",
     "interaction-stress.test.cjs",
     "interaction-scroll.test.cjs",
     "page-compare.test.cjs",
