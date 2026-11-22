@@ -556,6 +556,27 @@ test("new change paths cannot traverse an existing directory link", (context) =>
   assert.equal(fs.existsSync(path.join(outside, "change")), false);
 });
 
+test("reference analyze-video path errors explain where to put files and help states both path constraints", () => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), "design-pipeline-video-error-"));
+  const project = path.join(root, "project");
+  const outside = fs.mkdtempSync(path.join(os.tmpdir(), "design-pipeline-video-outside-"));
+  fs.mkdirSync(project);
+  const source = path.join(outside, "source.mp4");
+  fs.writeFileSync(source, "not-a-real-video");
+  const result = run(["reference", "analyze-video", "--root", root, "--path", source, "--output", "analysis"]);
+  assert.equal(result.status, 1);
+  assert.match(result.output.error.message, /\.design-pipeline/);
+  assert.match(result.output.error.message, /project-root-relative/);
+
+  const nested = run(["reference", "analyze-video", "--root", root, "--project-root", "project", "--path", source, "--output", "analysis"]);
+  assert.equal(nested.status, 1);
+  assert.match(nested.output.error.message, new RegExp(path.join(project, ".design-pipeline").replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
+
+  const help = spawnSync(process.execPath, [cli, "reference", "analyze-video", "--help"], { cwd: repoRoot, encoding: "utf8", windowsHide: true });
+  assert.equal(help.status, 0, help.stderr);
+  assert.match(help.stdout, /--path and --output must both stay inside the project root/);
+});
+
 test("failed benchmark scenarios can enter the deduplicated local feedback loop", () => {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), "design-pipeline-cli-"));
   fixtures(root);

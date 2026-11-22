@@ -243,6 +243,9 @@ function rootFrom(parsed) {
   return fs.realpathSync(root);
 }
 
+function containedRepair(root, label) {
+  return `Fix: pass --root <a directory that contains ${label} and the other paths> (it defaults to the current directory). Alternatively, copy or move ${label} under ${path.join(root, ".design-pipeline")} and pass a path relative to --root`;
+}
 function contained(root, raw, label, mustExist = true) {
   let target;
   try {
@@ -252,9 +255,9 @@ function contained(root, raw, label, mustExist = true) {
     if (typeof raw === "string" && !path.isAbsolute(raw) && path.resolve(root) !== path.resolve(process.cwd())) {
       fail("cli", `${error.message.replace(/^cli: /, "")}; a relative ${label} is resolved against --root (${root}). Fix: pass it relative to --root, or absolute`, { code: error.code || "CONTRACT_INVALID" });
     }
-    // Paths are contained in --root (default: the current directory); say how to widen it.
+    // Paths are contained in --root (default: the current directory); say where to put them and how to widen it.
     if (/must stay inside|resolves outside|no contained existing parent/.test(error.message)) {
-      fail("cli", `${error.message.replace(/^cli: /, "")}. Fix: pass --root <a directory that contains ${label} and the other paths> (it defaults to the current directory), or move the files under ${path.resolve(root)}`, { code: error.code || "CONTRACT_INVALID" });
+      fail("cli", `${error.message.replace(/^cli: /, "")}. ${containedRepair(root, label)}`, { code: error.code || "CONTRACT_INVALID" });
     }
     throw error;
   }
@@ -464,7 +467,7 @@ function publicHelp() {
     "  fonts refresh [--source <id> --revision <commit>|head] [--output <file>] [--discover]   (re-measure the pinned sources by HTTP range; default output is the user cache)",
     "  change init|resume|advance|migrate|repair",
     "  foundation check [--kind design|motion|all] | direction check | direction draw --medium web|ppt|info|app [--second 0-59] [--pool <numbers>] [--east-pool <numbers>]   (the roulette: S % count + 1 in the medium's section and S % 12 + 1 in east, past styles the ledger's last three deliveries used) | playground check | reference check|resolve | reconstruction check | scene check",
-    "  reference analyze-video --path <video> --output <new-dir> [--project-root <dir>] [--start sec --end sec --fps 12 --max-frames 400] [--study] [--shots [--cut-threshold 0.18] [--min-shot 0.25]]   (decoded timed windows; observations pending; --study adds study.json with audio and cut-grid candidates; --shots segments by detected shot with per-shot frames, motion and sound events)",
+    "  reference analyze-video --path <video> --output <new-dir> [--project-root <dir>] [--start sec --end sec --fps 12 --max-frames 400] [--study] [--shots [--cut-threshold 0.18] [--min-shot 0.25]]   (decoded timed windows; --path and --output must both stay inside the project root and be project-root-relative; observations pending; --study adds study.json with audio and cut-grid candidates; --shots segments by detected shot with per-shot frames, motion and sound events)",
     "  reference extract --url <http(s) page> --output <dir> [--target-id <id>] [--width 1440 --height 900] [--replace]   (deterministic palette, type scale and spacing from computed styles: extraction.json, palette-evidence.json (status pending; DOM source ready, raster pending) and design-md-draft.md; a challenge or block page exits 1 REFERENCE_BLOCKED, an HTTP 4xx/5xx page REFERENCE_HTTP_STATUS, a page that renders nothing REFERENCE_EMPTY)",
     "  project inspect [--project-root <dir>] [--scope <relative-dir>] [--query <brief>] [--write --output project-analysis.json]   (read-only source evidence)",
     "  runtime-review build --change-root <dir> --manifest <file> [--root <workspace>] [--json]",
@@ -1099,6 +1102,23 @@ function referenceExtractCommand(parsed, root) {
 function analysisRoot(parsed, root) {
   return option(parsed, "--change-root") ? changeRootFrom(parsed, root)
     : option(parsed, "--project-root") ? contained(root, option(parsed, "--project-root"), "--project-root") : root;
+}
+function analyzeVideoCommand(parsed, root) {
+  const options = { path: option(parsed, "--path"), output: option(parsed, "--output"), ...(option(parsed, "--start") === null ? {} : { startSec: Number(option(parsed, "--start")) }), ...(option(parsed, "--end") === null ? {} : { endSec: Number(option(parsed, "--end")) }), ...(option(parsed, "--fps") === null ? {} : { sampleFps: Number(option(parsed, "--fps")) }), ...(option(parsed, "--max-frames") === null ? {} : { maxFrames: Number(option(parsed, "--max-frames")) }), ...(option(parsed, "--shots") === true ? { shots: true } : {}), ...(option(parsed, "--cut-threshold") === null ? {} : { cutThreshold: Number(option(parsed, "--cut-threshold")) }), ...(option(parsed, "--min-shot") === null ? {} : { minShotSec: Number(option(parsed, "--min-shot")) }) };
+  const projectRoot = analysisRoot(parsed, root);
+  try {
+    // --study adds study.json, an audio excerpt and spectrogram when the source has sound, and cut-grid candidates.
+    const result = option(parsed, "--study") === true
+      ? require("../tools/art-motion/reference.cjs").analyzeReference(projectRoot, options)
+      : require("./reference-video-core.cjs").analyzeVideo(projectRoot, options);
+    return { result, exitCode: 0 };
+  } catch (error) {
+    const message = String(error?.message || "");
+    if (/must stay inside|resolves outside|no contained existing parent|must be a contained relative path/.test(message) && !/\bFix:/.test(message)) {
+      fail("cli", `${message.replace(/^[^:]+: /, "")}. Fix: copy the file into ${path.join(projectRoot, ".design-pipeline")} and pass --path and --output as project-root-relative paths (both must stay inside the project root)`, { code: error.code || "CONTRACT_INVALID" });
+    }
+    throw error;
+  }
 }
 
 function projectInspectCommand(parsed, root) {
@@ -3145,14 +3165,7 @@ const COMMANDS = {
       check: { run: ({ parsed, root, command }) => spatialCommand(parsed, root, command) },
       resolve: { run: ({ parsed, root }) => referenceResolveCommand(parsed, root) },
       extract: { run: ({ parsed, root }) => referenceExtractCommand(parsed, root) },
-      "analyze-video": { required: ["--path", "--output"], run: ({ parsed, root }) => {
-        const options = { path: option(parsed, "--path"), output: option(parsed, "--output"), ...(option(parsed, "--start") === null ? {} : { startSec: Number(option(parsed, "--start")) }), ...(option(parsed, "--end") === null ? {} : { endSec: Number(option(parsed, "--end")) }), ...(option(parsed, "--fps") === null ? {} : { sampleFps: Number(option(parsed, "--fps")) }), ...(option(parsed, "--max-frames") === null ? {} : { maxFrames: Number(option(parsed, "--max-frames")) }), ...(option(parsed, "--shots") === true ? { shots: true } : {}), ...(option(parsed, "--cut-threshold") === null ? {} : { cutThreshold: Number(option(parsed, "--cut-threshold")) }), ...(option(parsed, "--min-shot") === null ? {} : { minShotSec: Number(option(parsed, "--min-shot")) }) };
-        // --study adds study.json, an audio excerpt and spectrogram when the source has sound, and cut-grid candidates.
-        const result = option(parsed, "--study") === true
-          ? require("../tools/art-motion/reference.cjs").analyzeReference(analysisRoot(parsed, root), options)
-          : require("./reference-video-core.cjs").analyzeVideo(analysisRoot(parsed, root), options);
-        return { result, exitCode: 0 };
-      } },
+      "analyze-video": { required: ["--path", "--output"], run: ({ parsed, root }) => analyzeVideoCommand(parsed, root) },
     },
   },
   project: { actions: { inspect: { run: ({ parsed, root }) => projectInspectCommand(parsed, root) } } },
