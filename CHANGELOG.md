@@ -4,6 +4,10 @@ All notable changes to Design Pipeline are documented here.
 
 ## [Unreleased]
 
+### Added
+
+- Mechanical anti-slop lint (change `anti-slop-mechanical-lint`, #212): `evaluate-anti-slop.cjs --lint <page-or-dir> [--url <url>]` runs the vendored Hallmark sloplint (MIT, revision `4f6a46c`, `skill/vendor/hallmark-sloplint/`) and maps every finding through `references/anti-slop-lint-map.json` to a rubric rule and class (hard, contextual, preference, excluded). A hard finding on a rule the evidence marks `pass` fails with `LINT_CONTRADICTS_PASS`; an unmapped gate fails with `LINT_GATE_UNMAPPED`. The evidence file gains an optional `lint` block (`tool`, `commit`, `target` digest, `findings`); a linted file that changes after the block was written is rejected as stale. The rubric gains the hard rule `no-fabricated-proof` (invented metrics, testimonials, logo walls, case-study counts). Guide: `references/anti-slop-review.md`.
+
 ## [0.15.0-beta.1] - 2026-11-14
 
 ### Added

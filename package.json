@@ -29,6 +29,7 @@
     "sources:import:film": "node scripts/import-film-sources.cjs",
     "templates:discover": "node scripts/refresh-prompt-motion-index.cjs",
     "sources:import:gepa": "node scripts/import-gepa.cjs",
+    "sources:import:hallmark-sloplint": "node scripts/import-hallmark-sloplint.cjs",
     "sources:import:ui-craft": "node scripts/import-ui-craft-sources.cjs",
     "sources:import:direction-library": "node scripts/import-design-direction-library.cjs",
     "sources:import:brand-design-systems": "node scripts/import-brand-design-systems.cjs",

@@ -98,6 +98,13 @@
         "The design intentionally uses a pale editorial field, oversized display type, and restrained red accent."
       ],
       "rationale": "These choices form a cohesive ink-light profile rather than a generic luxury template."
+    },
+    {
+      "ruleId": "no-fabricated-proof",
+      "outcome": "pass",
+      "evidence": [
+        "The page shows no invented metrics, testimonials, customer logos or case-study counts."
+      ]
     }
   ]
 }

@@ -1,0 +1,58 @@
+{
+  "schema": "design-pipeline.hallmark-sloplint-source.v1",
+  "source": {
+    "repository": "https://github.com/Nutlope/hallmark",
+    "revision": "4f6a46c6dc325d40ab268c93e25c7b96676ebccd",
+    "gitTree": "9e8903ca226995b7deee8ccb8df6a00cc9581083",
+    "committedAt": "2026-10-29T17:50:04+01:00",
+    "license": "MIT",
+    "reviewedAt": "2026-11-23",
+    "scope": [
+      "skills/hallmark/scripts/sloplint.mjs",
+      "skills/hallmark/scripts/sloplint-render.mjs",
+      "skills/hallmark/LICENSE"
+    ],
+    "contentHashScope": "selected linter scripts and license: sorted POSIX path, NUL, SHA-256 blob hash, newline; gitTree is the upstream repository root, not this scoped snapshot"
+  },
+  "licenses": [
+    {
+      "path": "upstream/skills/hallmark/LICENSE",
+      "license": "MIT",
+      "copyright": "Copyright (c) 2026 Hallmark contributors"
+    }
+  ],
+  "snapshot": {
+    "root": "upstream",
+    "fileCount": 3,
+    "byteCount": 331946,
+    "treeSha256": "d31c6921368d9134c8e6a4374da5d2341ef86176d3923a19b07fec400f35a26c",
+    "executableFiles": [],
+    "objects": [
+      {
+        "path": "skills/hallmark/LICENSE",
+        "mode": "100644",
+        "oid": "f4bfc53d8d773d3b10d95c2d58a5773dd4e2f3aa",
+        "size": 1078
+      },
+      {
+        "path": "skills/hallmark/scripts/sloplint-render.mjs",
+        "mode": "100644",
+        "oid": "0ecc64bc79aa34db1fadc7178617bcc53c47e064",
+        "size": 99164
+      },
+      {
+        "path": "skills/hallmark/scripts/sloplint.mjs",
+        "mode": "100644",
+        "oid": "1b6ab1dde6ebafb23074195519233f5f88537146",
+        "size": 231704
+      }
+    ]
+  },
+  "boundary": {
+    "mode": "built-in-reference-adaptation",
+    "installsUpstreamDependencies": false,
+    "executesUpstreamScripts": false,
+    "executesDeployment": false,
+    "changesProjectRuntime": false
+  }
+}

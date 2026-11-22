@@ -15,6 +15,7 @@
     "adapter-intake.test.cjs",
     "adapter-registry.test.cjs",
     "anti-slop-review.test.cjs",
+    "anti-slop-lint.test.cjs",
     "answer-me-with-html-sources.test.cjs",
     "answer-me-with-html.test.cjs",
     "astryx-bundled-snapshot.test.cjs",

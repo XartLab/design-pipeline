@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Product updates</title>
+  <style>
+    html, body { overflow-x: clip; }
+    body { font-family: system-ui, sans-serif; margin: 0; background: #fbfbfd; color: #14141a; }
+    :focus-visible { outline: 2px solid #14141a; outline-offset: 2px; }
+    .card { max-width: 32rem; margin: 4rem auto; padding: 2rem; }
+    label { display: block; margin: 0 0 1rem; }
+    input[type="email"] { font: inherit; padding: .6rem .7rem; width: 100%; box-sizing: border-box; }
+    button { font: inherit; padding: .6rem 1rem; }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <h1>Product updates</h1>
+    <p>Get a short email when we ship something worth reading.</p>
+    <form>
+      <label>Email <input type="email" name="email"></label>
+      <button type="submit">Join</button>
+    </form>
+  </main>
+  <script>
+    document.querySelector("form").addEventListener("submit", (event) => {
+      event.preventDefault();
+      document.querySelector(".card").innerHTML = "<p>Thanks for joining, we will be in touch.</p>";
+    });
+  </script>
+</body>
+</html>

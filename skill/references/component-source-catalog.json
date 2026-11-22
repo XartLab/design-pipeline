@@ -9877,6 +9877,44 @@
       "licenseScope": "Exact pinned LICENSE contains an explicit MIT grant and notice-retention condition. Scope: Tracked code snapshot; Inter and GeistMono fonts have separate OFL-1.1 boundaries. Both harness/public/fonts/Inter-OFL.txt and GeistMono-OFL.txt were fetched at the same pin and contain explicit SIL OFL 1.1 grants: fonts cannot be sold alone, retain OFL and notices, and modified fonts respect any reserved names. MIT is not a font grant."
     },
     {
+      "id": "source/nutlope/hallmark",
+      "sourceId": "nutlope/hallmark",
+      "recordType": "source",
+      "name": "Hallmark sloplint",
+      "availability": "bundled-implementation",
+      "aliases": [
+        "https://github.com/Nutlope/hallmark",
+        "https://github.com/Nutlope/hallmark/tree/4f6a46c6dc325d40ab268c93e25c7b96676ebccd"
+      ],
+      "localPaths": {
+        "manifest": "vendor/hallmark-sloplint/manifest.json",
+        "implementation": "vendor/hallmark-sloplint/upstream"
+      },
+      "provenance": {
+        "source": "hallmark-sloplint",
+        "license": "MIT",
+        "url": "https://github.com/Nutlope/hallmark",
+        "revision": "4f6a46c6dc325d40ab268c93e25c7b96676ebccd",
+        "gitTree": "9e8903ca226995b7deee8ccb8df6a00cc9581083",
+        "contentHash": "d31c6921368d9134c8e6a4374da5d2341ef86176d3923a19b07fec400f35a26c",
+        "hashScope": "Manifest snapshot scope; sorted POSIX path, NUL, SHA-256 blob hash, newline; not a Git tree hash."
+      },
+      "license": {
+        "state": "verified",
+        "id": "MIT",
+        "evidence": [
+          "https://github.com/Nutlope/hallmark/blob/4f6a46c6dc325d40ab268c93e25c7b96676ebccd/skills/hallmark/LICENSE"
+        ]
+      },
+      "adoptionBoundary": {
+        "mode": "built-in-reference-adaptation",
+        "installsUpstreamDependencies": false,
+        "executesDeployment": false,
+        "changesProjectRuntime": false
+      },
+      "licenseScope": "Exact pinned LICENSE is MIT (Copyright (c) 2026 Hallmark contributors). Only the two dependency-free linter scripts and their license are vendored; the anti-slop evaluator runs sloplint as a child process and never imports it into the runtime."
+    },
+    {
       "id": "source/vuetifyjs/0",
       "sourceId": "vuetifyjs/0",
       "recordType": "source",
