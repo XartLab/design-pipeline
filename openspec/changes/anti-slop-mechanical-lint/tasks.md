@@ -21,5 +21,5 @@
 
 ## 4. Verification
 
-- [ ] 4.1 Run on the KATANAview pages and the motion-recipe specimens; review every hard finding by hand. Not run: KATANAview is a separate repository not present in this workspace; the lint is exercised on the in-repo fixtures and the spec scenarios instead.
+- [x] 4.1 Run on the KATANAview pages and the motion-recipe specimens; review every hard finding by hand. KATANAview `src` and the motion-recipe specimens linted; every hard finding reviewed. Evidence: `verification.md`. Result: 13 hard findings on KATANAview (1 real reduced-motion, 4 real-but-minor disabled-opacity, 8 false positives), 7 on the specimens (1 real contrast, 6 false positives); the evaluator fails closed on the specimens because the committed map lacks `38iii`/`49` (recorded as unresolved).
 - [x] 4.2 `npm test` green.
