@@ -3,11 +3,11 @@
   "bundle": "design-direction-library",
   "source": {
     "repository": "https://github.com/alchaincyf/huashu-design",
-    "revision": "9b01ee8751679724dd43d855a532944aaa2c2b59",
-    "gitTree": "90bc6a8d9ed7a419b4b8436b24d635ba3a53ce08",
-    "committedAt": "2026-10-31T02:50:57+09:00",
+    "revision": "59065698ad63f87ea1532c126c87f488d4f93fd6",
+    "gitTree": "aa00c6912c866363e7004f4603220142b3fc4cb7",
+    "committedAt": "2026-11-23T14:10:32+08:00",
     "license": "MIT",
-    "reviewedAt": "2026-11-04",
+    "reviewedAt": "2026-11-23",
     "scope": [
       "**"
     ]
@@ -21,9 +21,9 @@
   ],
   "snapshot": {
     "root": "upstream",
-    "fileCount": 195,
-    "byteCount": 1681706,
-    "treeSha256": "ce60b19a7016ab62ec204c8a6c66c8a5684cd18ce1ee5239491e4f1c202824f5",
+    "fileCount": 233,
+    "byteCount": 1984402,
+    "treeSha256": "85c75d70efe76c5ad8d7dc3823c443b6f625acb441d7394ec6e65c212c68ea45",
     "executableFiles": [
       "scripts/add-music.sh",
       "scripts/cloud/tts-doubao.mjs",
@@ -96,16 +96,16 @@
       {
         "path": "assets/director-notes-samples/launch-film-30s-sample.md",
         "mode": "100644",
-        "oid": "f45b546a56453d8c35ac6b27ac94725722b885f2",
-        "size": 80207,
-        "sha256": "92929cba00fee525a70cbe3cd3f6e7b4d2ca7afb9a91a707721cfce9b34b92cd"
+        "oid": "3dfbae68f8ed37e40f9d893e63d09e0e3f740531",
+        "size": 80208,
+        "sha256": "e7c480a3ab9611540d13b8d85729cdaa7f611cf414e69b3231686aa7b124232f"
       },
       {
         "path": "assets/ios_frame.jsx",
         "mode": "100644",
-        "oid": "eb0160e489e2a5112a35b716af710c11f9200485",
-        "size": 4753,
-        "sha256": "e19b4dd028aed54f8c20cea8b070c349e89f2ebcb9ff6b29fd37a9b2381789bd"
+        "oid": "1cb014cb22ddd13a84738299e314cdb1831d6cc6",
+        "size": 5064,
+        "sha256": "928246af706f08dc6693f9c9529a22c3bdb5be1de325e6ab9adcf69d5f9b8f07"
       },
       {
         "path": "assets/macos_window.jsx",
@@ -124,16 +124,23 @@
       {
         "path": "assets/personal-asset-index.example.json",
         "mode": "100644",
-        "oid": "dd4b0d6e64e1fdea2213e1f75804637e3885d4fc",
-        "size": 1826,
-        "sha256": "b35ca20aa41f6a52ad7248969a25eadaf607d3379f79fd1f4cb841fca423886c"
+        "oid": "0bbb7cb6bf972234d123d30da5a354156f7f2e8c",
+        "size": 1822,
+        "sha256": "682b94dd142874ac31c69c27afb8a831a160d3345a73f7701b503ca9332e394d"
+      },
+      {
+        "path": "assets/showboard.jsx",
+        "mode": "100644",
+        "oid": "04bd950ccf426af1efc540e2abbb4ea479bb26b9",
+        "size": 7175,
+        "sha256": "e3650289fca619dd7a264c7337b7932a0a29b69a007b01fe63b0989d07d47ba5"
       },
       {
         "path": "assets/showcases/INDEX.md",
         "mode": "100644",
-        "oid": "5a89e42ccf9379b1a98db40a0439eeadc8e6f192",
-        "size": 5538,
-        "sha256": "576c8c1c6ca508e074337a9bcc001615c72ab7bf13611421ff2b13007fd970f9"
+        "oid": "9ce5c01cfaaeeb1faceb71891a292b61764ef5da",
+        "size": 5548,
+        "sha256": "b8ee044ccf6aa37d74deda48007cac662161796745b229db86adffcce34320f5"
       },
       {
         "path": "assets/style-specimens/app/01-hardware-panel.html",
@@ -442,6 +449,62 @@
         "oid": "2cba994048610fc965dc93dcb56b4cc542dbfc60",
         "size": 3271,
         "sha256": "3c359424e539394a0e4d9cf4b66cd77945e7f8dd5c491490e10860f2127cea0e"
+      },
+      {
+        "path": "assets/style-specimens/paradigm/01-world-as-interface.html",
+        "mode": "100644",
+        "oid": "cf726f353d795678acd6fcda5a73e58bd4e049af",
+        "size": 5780,
+        "sha256": "e7e9d1241663ecbea24c517e517e5dac648443260b256bc3f1e46866e6c21771"
+      },
+      {
+        "path": "assets/style-specimens/paradigm/02-signature-object.html",
+        "mode": "100644",
+        "oid": "d96ab42763b29899d7b995a451859dbc95089291",
+        "size": 4951,
+        "sha256": "e65be5ec2c4be4454ac6e42609808afb53d19b8610f8c0e723f6299f1fbf0ab9"
+      },
+      {
+        "path": "assets/style-specimens/paradigm/03-time-has-shape.html",
+        "mode": "100644",
+        "oid": "bd97cc429007debe5df3bc7c4bf3b7958702ba15",
+        "size": 6517,
+        "sha256": "48e204690480436024a6ad1be7829f892c873d31380dd532c678c8452db04b45"
+      },
+      {
+        "path": "assets/style-specimens/paradigm/04-one-semantic-color.html",
+        "mode": "100644",
+        "oid": "9c92ff2eba15c5e582f73f7e98634d0bbc2fbbf3",
+        "size": 5914,
+        "sha256": "16823db272976bfca8204d23277942f6cbce006f617d9cd05be1fd2d19346ede"
+      },
+      {
+        "path": "assets/style-specimens/paradigm/05-content-is-the-interface.html",
+        "mode": "100644",
+        "oid": "77a4d752d024dce2041d93e8d294d51388f1b36b",
+        "size": 3900,
+        "sha256": "0cc157b233b8b0778ac4ab62fadd9ce9a9457dabd8b69272b8c64a0eb0bbc86e"
+      },
+      {
+        "path": "assets/style-specimens/paradigm/06-ai-lands-on-the-object.html",
+        "mode": "100644",
+        "oid": "3c97fbf761d8b5a5642de33f593a18156040bc41",
+        "size": 4729,
+        "sha256": "0225d3bfef3520288f0cc8911bceb08621ff595a61c0f24e1cdf23249c8c52c2"
+      },
+      {
+        "path": "assets/style-specimens/paradigm/07-character-carries-state.html",
+        "mode": "100644",
+        "oid": "42604ee8680b71920c64220d3da04cae75e6d30b",
+        "size": 5985,
+        "sha256": "a4ee07de065a50d582ea98bc6ba69896a7eb5d796a68746073b4706e596fa28a"
+      },
+      {
+        "path": "assets/style-specimens/paradigm/08-access-shapes-the-form.html",
+        "mode": "100644",
+        "oid": "9ce561e5bcd486723239608e7af791f064d6ba03",
+        "size": 4095,
+        "sha256": "a1f0a8f92a87d25d88f1d2a91e6eafb40c4bf2f327817036be41ab573521609a"
       },
       {
         "path": "assets/style-specimens/ppt/01-neo-swiss-billboard.html",
@@ -780,6 +843,13 @@
         "sha256": "27ebe2936c2f59b9b58b447fe09ce85b53a6ca2092a70a0f7676369d35944c6f"
       },
       {
+        "path": "assets/wechat_frame.jsx",
+        "mode": "100644",
+        "oid": "9cf6cd0e045480ecbb5a5e65cde532e7fb38533e",
+        "size": 12228,
+        "sha256": "d83dba5dde46a7523027f25201f1487cbfd7ca060472621ea6f5e358b5f4c3eb"
+      },
+      {
         "path": "LICENSE",
         "mode": "100644",
         "oid": "ed67368a2a79ed7be97b2a4852330cdac5b8b12a",
@@ -789,23 +859,23 @@
       {
         "path": "README.en.md",
         "mode": "100644",
-        "oid": "ec064235faa80c29b8c4d55480dfb05ba444466e",
-        "size": 29948,
-        "sha256": "66908c76b256431a18a0300d1ba0d4accfe37910f6a1bdd5bdfb72599f6f874c"
+        "oid": "d29815fe906a9f93e05a41a2d9773c5952992258",
+        "size": 36276,
+        "sha256": "40843257577116db0b5b8c5739ef8b970b89630d851c77fe6415cac9ec81b7f9"
       },
       {
         "path": "README.md",
         "mode": "100644",
-        "oid": "2e00918d256635162362d56b2325ea8df4cce581",
-        "size": 30113,
-        "sha256": "5931dcd0ee6aec5b4cfe27fe970ba1887e438a45f5da0a55d55f9c56f7687c67"
+        "oid": "835c6526c0934b7578081e3f4fe37c808f7fc724",
+        "size": 34736,
+        "sha256": "c02b97945bdb66a0131a0e54b8efe530d2c4239a89294c0e9579b6db8f7ce965"
       },
       {
         "path": "references/about-author.md",
         "mode": "100644",
-        "oid": "b471e8fda7a82ea2af0bc4387f30064033cd2156",
-        "size": 10459,
-        "sha256": "f53cdc9ca43881fd95f75b16b9176190708117b138c3d4ff2560e78b9ca2b945"
+        "oid": "8d7be6a42a2fc2081b8c2096e0d9c1c7f9004284",
+        "size": 10605,
+        "sha256": "e13a14ee26c0946f837da353db8ddf2245733989683ad294928d52a49ffba27f"
       },
       {
         "path": "references/ai-video-review.md",
@@ -817,16 +887,16 @@
       {
         "path": "references/animation-best-practices.md",
         "mode": "100644",
-        "oid": "49f3e0c04403d5b7fdcafdfcf579766d0ab7a7c7",
-        "size": 22500,
-        "sha256": "5b135596a6b8da215e30747b68c706fda3f760f3f17204f94edb8e625f898d93"
+        "oid": "1c9dbd82658c31a046816ae4535a9cb618525fc6",
+        "size": 22605,
+        "sha256": "98ce6e679b4fad129c2071b4f504b6a871b64ac2659fe86e123739963a885b10"
       },
       {
         "path": "references/animation-pitfalls.md",
         "mode": "100644",
-        "oid": "e669ccbae05af0507ccb0a35ca4901e956718ae7",
+        "oid": "7d4b7bd74d7f8d5ce310832f140dd63bb9a0a640",
         "size": 30806,
-        "sha256": "7a1a6a6f9e545ebfde4921899c8f05a5477c6f31125e0656724a32de18ccd604"
+        "sha256": "8301b78606a655d4beea801ef5b4afeaa91715d805bb68fed7d2dea41e6b61fd"
       },
       {
         "path": "references/animations.md",
@@ -836,18 +906,25 @@
         "sha256": "58f056917e469fe4b9e3d6422721ba80e68c980e5e30b17297f1bef2bcfca9c0"
       },
       {
+        "path": "references/app-paradigms.md",
+        "mode": "100644",
+        "oid": "48282beb13dad4f29ddee7af9cb3e5b5a8e4f344",
+        "size": 14615,
+        "sha256": "8f8084fde6649800a0bd55855ae1195d378c62d74497a4fd5f0bd946ff2fd315"
+      },
+      {
         "path": "references/app-prototype.md",
         "mode": "100644",
-        "oid": "0f4289f76c9aad16832e1641de31eea9f87f71cf",
-        "size": 11895,
-        "sha256": "a00aab7726c72960e4859c0ee0df2ac1cb58ea3a42e55462f0373bea42428984"
+        "oid": "023b0df4d6449cea8bfb7fd0e7c8a8c49df41489",
+        "size": 14848,
+        "sha256": "9d1d79ad2ae8d7318640501cab4c61be596fbe0c4a47b0b88b46cab616f6e59a"
       },
       {
         "path": "references/apple-gallery-showcase.md",
         "mode": "100644",
-        "oid": "63346e819343afaf2a975e1860e460924673a874",
+        "oid": "255e3b40547eba0aedf1a36b183003ad8ce5e411",
         "size": 11568,
-        "sha256": "ac969d1a9a1b29bd84a00c0a787f7bee97cb70051ecda4e966c7656c67de312d"
+        "sha256": "70ad435f372717e57a4d8607274d75830607c4e389fd702a33f12f052b5a11b5"
       },
       {
         "path": "references/audio-design-rules.md",
@@ -859,9 +936,9 @@
       {
         "path": "references/brand-asset-protocol.md",
         "mode": "100644",
-        "oid": "f17e9e7e889270b009294ec4aa89e7535577bcd1",
+        "oid": "fedcda0e0133d6234dee8400bd6a6bdaf4c139a9",
         "size": 15424,
-        "sha256": "932c64e46fc60e3aff076fde5c98e7609c4365b7c1e84dd593994471c354cb4a"
+        "sha256": "b5a405a43af6f73222567b7259a139d7476aea7e29aaf1cc220a7003b3391924"
       },
       {
         "path": "references/camera-language.md",
@@ -873,51 +950,51 @@
       {
         "path": "references/cinematic-patterns.md",
         "mode": "100644",
-        "oid": "b8b1dc9e6a43a53545895385edf8876887eacf7b",
-        "size": 11086,
-        "sha256": "1266cb4feb14e44997b6abcc33091991565402ec6a7b22698628b31a4da472b8"
+        "oid": "1216110a7d741b309d80b9ff44182f1ee25ed840",
+        "size": 11115,
+        "sha256": "3b6f3a846b71f4ce8194286de615972797ded033b5a925ecda8a8f0c25753d15"
       },
       {
         "path": "references/content-guidelines.md",
         "mode": "100644",
-        "oid": "c1fa2f871924bb5fa612daa58d31901f7ab7160b",
-        "size": 11791,
-        "sha256": "d9e1f08740bc6a1327b9bedaafad37b9791a1640a3b13b686b53f4a9483414e2"
+        "oid": "b077592b29f61c689825b667e8387be84abdad11",
+        "size": 12328,
+        "sha256": "babc668d856940cf3e78fcf67d247a446aabddcbc7242b5570b0e2eff17ad9e1"
       },
       {
         "path": "references/critique-guide.md",
         "mode": "100644",
-        "oid": "8eb55ce9eea9bcf089c828ff5b9d021cd850da50",
-        "size": 9022,
-        "sha256": "3636ed8422bb88a11bc3e1db00b252b707f20cf83f6ec900077abb020ff7a8ce"
+        "oid": "25b2c761686b922904d99a3f397c6103448c2f03",
+        "size": 9091,
+        "sha256": "44b800eb73b31c5ef5235fbd07977c722ab7c95e610e47f5673a7008554bea69"
       },
       {
         "path": "references/design-context.md",
         "mode": "100644",
-        "oid": "12adeb06d8834e0c9ba934a62b95330c39d33cd2",
-        "size": 6704,
-        "sha256": "93a7e6be5f6cb29076d3651747d5033701362ddd03283b1ddf11b105757430b6"
+        "oid": "7cff7106f41fc05e52f1d782901587cbcc16dac3",
+        "size": 6737,
+        "sha256": "a95c61bf84373a56a3ced3a8662a31033e4347231d0306a212f38d78c4eaab8f"
       },
       {
         "path": "references/design-styles.md",
         "mode": "100644",
-        "oid": "51da30ae5fed96cc0e206aed7b0d64ededc3f526",
-        "size": 108231,
-        "sha256": "8a6c6003ea3217fe20889d758894a537b84cea1eb5a064284fd3814b1220ac80"
+        "oid": "c9f3e8d4a1b8611c2ff1d36328352aef53e505cc",
+        "size": 108285,
+        "sha256": "3bfa148ed909f59dd79a653d1b7c5a4964f45e4ee1801413f07453f1e5189f17"
       },
       {
         "path": "references/directions.md",
         "mode": "100644",
-        "oid": "ee1025f96cd3af4f7af055c1368d103d0b1d230a",
-        "size": 12686,
-        "sha256": "9d4410ab3da9ffa636943292a09c61cd85a7cd9c7421989974bde67db992b583"
+        "oid": "34bee35edd740e738b1bde066d2fa6dfb39dc156",
+        "size": 16239,
+        "sha256": "6ab9e9f18cbb0c26d82d2dbbe403c77b89ad21b40fae014764a2666efbc88b7e"
       },
       {
         "path": "references/editable-pptx.md",
         "mode": "100644",
-        "oid": "7c3dfbfb73c575d7d52c3206b2b619380056874d",
-        "size": 18570,
-        "sha256": "cc76f248d3f22f6c2b42b9b02acc95a1b278f2e57bfcc22120d6fa0b09a285ad"
+        "oid": "db8f21d61c39e338e3d0bdb9f1881b5c5c7fd522",
+        "size": 18660,
+        "sha256": "8f109b991c29e4a417317e5179f94a1cf5d1992c5f63fdc4e0d5d94caccf0434"
       },
       {
         "path": "references/evolution.md",
@@ -929,9 +1006,9 @@
       {
         "path": "references/experience.md",
         "mode": "100644",
-        "oid": "8441153803b099fe9b1f38e231711d2d5a541f88",
-        "size": 5220,
-        "sha256": "06ce6c443967b06f1d53f500b5b9a65dc7262bdf93d4e116396af4a9cd99a5aa"
+        "oid": "21f679d1dbe9d412b8c0da9d5f3c18e4c50da925",
+        "size": 9885,
+        "sha256": "34fdf652ded94e6ba3228db324877431a3b33f908c3fff9d3ed9350eeb0237c3"
       },
       {
         "path": "references/gsap-recipes.md",
@@ -943,9 +1020,9 @@
       {
         "path": "references/hero-animation-case-study.md",
         "mode": "100644",
-        "oid": "24abb0f7401a0a9de628c80d835681727707c996",
-        "size": 11570,
-        "sha256": "631fdd9de016da9fc012fde754b1b81f02c2fbf60b69836aeb62d1fbfcfd8d44"
+        "oid": "8bde5aedf3d0d16e4475151c194f4df72e8c6994",
+        "size": 11620,
+        "sha256": "87f279242e7d9e9d015461fb71409dd9459d239d2dc2cd7071449dccbe0d09ef"
       },
       {
         "path": "references/hyperframes-backend.md",
@@ -964,9 +1041,16 @@
       {
         "path": "references/materials.md",
         "mode": "100644",
-        "oid": "8ddd904734d4f18645b12145106a4886655f42f1",
-        "size": 5679,
-        "sha256": "3ed5df12fcd628bfc145f70b251c2f0837bfd6b196c3a7930a6039f8c7405bf8"
+        "oid": "7a36c3b4e475d355a40ac7d2f401ff6c361391fb",
+        "size": 9261,
+        "sha256": "30adaa9fd8a0b28f1c97a92acf19a0054bb86ca067b93d9af4ad6f3f80bb9fae"
+      },
+      {
+        "path": "references/modules/appstore.md",
+        "mode": "100644",
+        "oid": "39ec8669425bf3d0b526d4b6dae6807b6b3fe6f5",
+        "size": 11248,
+        "sha256": "1302a476724b6f7fd119751add22208497d1b68cb2a5eb910a613247269715cd"
       },
       {
         "path": "references/modules/deck.md",
@@ -983,6 +1067,13 @@
         "sha256": "d262c515d7ccf8843e5128a416588e968f237a07a4e2299ff0a30685f4d3734c"
       },
       {
+        "path": "references/modules/miniprogram.md",
+        "mode": "100644",
+        "oid": "58132bfd6ec0085e0465490c20303537ccc01d92",
+        "size": 12531,
+        "sha256": "6eb77079cd494b6b76a0d33e13b886a86e68297865afdaddeb681caed7bf4543"
+      },
+      {
         "path": "references/modules/motion.md",
         "mode": "100644",
         "oid": "1b98fd2ff3a27a42845f65293d4c2cea809f553e",
@@ -992,9 +1083,9 @@
       {
         "path": "references/modules/web.md",
         "mode": "100644",
-        "oid": "960e5c7095b034ce2fa4fe9990ed4cdb6eb15cc7",
-        "size": 2467,
-        "sha256": "73733f02f6fa3c19ed56e1949f4f0c5511a09a5f45a98c8298a1222ddc9c3591"
+        "oid": "7c18df582d1754e260a9b40cd864020e1d34b20d",
+        "size": 4743,
+        "sha256": "33ae0d9a461bd6e67eab3b65483077136cad9159f14d47c6b5b9e63815a49955"
       },
       {
         "path": "references/modules/xiaohongshu.md",
@@ -1006,9 +1097,16 @@
       {
         "path": "references/multi-perspective-parallel-case-study.md",
         "mode": "100644",
-        "oid": "2271954c38b9f8935da76c4af753d32e178b0f2a",
-        "size": 11093,
-        "sha256": "e1f80cc2e3e12d04405f897f3da49b371dbc7782c5ba23152a956c2780e738da"
+        "oid": "cf8953f01b16e08174461e6fc43ce09e328c9084",
+        "size": 11153,
+        "sha256": "ed56f66dcc39965f0eb61c874d44002568d692dd55f00d5c516b5b1e82878062"
+      },
+      {
+        "path": "references/polish-loop.md",
+        "mode": "100644",
+        "oid": "b4849872639e51b3f1549151e64099e7c6a35a3a",
+        "size": 4253,
+        "sha256": "1698335e745ae08c4cc52d4e80e0f1eaf3812ebd60d9102c0f052d4cacf48f13"
       },
       {
         "path": "references/pptx-from-rendered-html.md",
@@ -1020,9 +1118,9 @@
       {
         "path": "references/react-setup.md",
         "mode": "100644",
-        "oid": "e2f56a9eb5638b612cd91dcc5d4a46b29025701e",
-        "size": 9682,
-        "sha256": "97dfcbbea673131b9d10c5fe0c553fe489d3c2e583381de72e8c1b3c5eed5346"
+        "oid": "4ed3ccb04fd897e9792fcdd77898e91e8e175ac0",
+        "size": 10469,
+        "sha256": "766b917f1619bd2753ddce1d7772f9cd0defb66610b9843b7cb09e78c260e1f7"
       },
       {
         "path": "references/scene-templates.md",
@@ -1034,23 +1132,30 @@
       {
         "path": "references/sfx-library.md",
         "mode": "100644",
-        "oid": "50b23696160b98bf051d5986e83a0cbb7a3e8a28",
+        "oid": "6a2f17afb87142f2a5e5cd148da5489f66ea78f0",
         "size": 9762,
-        "sha256": "43e5e00a23e72b78b1872fbf88c38f829a2d3feb5cc5dc49260cdeb98f1958f9"
+        "sha256": "7286934e551121a41a739a6e0794d267d673f9d6832434683eb5851d552d9e0e"
       },
       {
         "path": "references/slide-decks.md",
         "mode": "100644",
-        "oid": "c0c5d9b993e3cdd2dbb294f054619f293e4e98af",
-        "size": 36181,
-        "sha256": "f7c67305f9f169c6ce86bb35ddf5fd0b95bd543822f7aa0e27f0f66bbd95ac05"
+        "oid": "b63c54f6c32d38d56a5db5979ae812bf9557ae78",
+        "size": 36193,
+        "sha256": "e279295d8b135aed36df02cc8c4afc99b844b96d3ea2514a278e4601232da502"
+      },
+      {
+        "path": "references/steady-track.md",
+        "mode": "100644",
+        "oid": "683c79ea1f64c291e7097685f35b0d1f3540b96f",
+        "size": 6878,
+        "sha256": "d40d92f4755b7b175dcb1523e5e4663048882c60b37e464c2961584ef9b24854"
       },
       {
         "path": "references/storyboard-basics.md",
         "mode": "100644",
-        "oid": "56a5f03b13e46f233605c7c16de7f5a06d633edf",
-        "size": 23987,
-        "sha256": "b8775952ae96bbe3e99f080520896fa9d853d324733c771da5f45da865b6f884"
+        "oid": "4a812e1fcc87a856302bcbee534e2988c69b88e0",
+        "size": 24025,
+        "sha256": "c855bdcce7b3ec6ba6b69d820ee762a78575b4284c7db9dc8e141efae4bc1574"
       },
       {
         "path": "references/tweaks-system.md",
@@ -1062,9 +1167,9 @@
       {
         "path": "references/typography.md",
         "mode": "100644",
-        "oid": "476e0bc3254a7add1328a9d571e3d94d570e90d3",
+        "oid": "faa867f82929658b925b847596d07371de695117",
         "size": 18751,
-        "sha256": "4aae63d6bc39a0f67a05398b11bc381b7190f51bb7cd83f1a933f2e7551984cb"
+        "sha256": "c43c4a98861c137b7272d5886ab5c1afa0c4c1fbbb3b0d28dd6a4dc152f52dbd"
       },
       {
         "path": "references/ui-demo-animation.md",
@@ -1076,30 +1181,44 @@
       {
         "path": "references/verification.md",
         "mode": "100644",
-        "oid": "377e0eadcfdf2e57a02b79825f47ef80c57ef4dc",
-        "size": 6998,
-        "sha256": "2481be020d5253efebcc6dd1a3bea80db25c1d03ce92d5a0347124c7407b366c"
+        "oid": "b22b5e82abf47b9b0d837b0ed4d45a9b39d3c00a",
+        "size": 7261,
+        "sha256": "a4b367da117aa63cc41160971e07b90e33156cd40ead0be5da93c30003542052"
       },
       {
         "path": "references/video-export.md",
         "mode": "100644",
-        "oid": "5e2717dbb214a6c153fcb91c7861f28538dc363a",
-        "size": 11527,
-        "sha256": "7ed97faa22b49f407c61a482eddb3b30a7463c3e5e491e5a4b2bcb48ad7929f6"
+        "oid": "2cf6bba370cb88e0f911a61983f5fbd08ab313e9",
+        "size": 11592,
+        "sha256": "9ea35fd5d448641adeb6a51b07522f12e6c79674ad88de204b23a8bbd9f55d26"
       },
       {
         "path": "references/voiceover-pipeline.md",
         "mode": "100644",
-        "oid": "c11c9978199428f8dc96d87ec2c7f784c908ab56",
-        "size": 20121,
-        "sha256": "c8e992779eb3de74b7c46c195a46dd716ee922def7ea5f9e19beef814834e756"
+        "oid": "8ecf9d1341d35741858350cc2e3e060b741059d5",
+        "size": 20263,
+        "sha256": "c46f34626223b4c3a028d3102f9ba9746cbc502d25d30ddbfcd058df2db72347"
       },
       {
         "path": "references/workflow.md",
         "mode": "100644",
-        "oid": "b437756ce839891f98b05642babe93f8da2e3882",
-        "size": 10921,
-        "sha256": "b10d3e6702deffef717fbfc10851e9517fa274d4179967f60fc6ca0c0203648e"
+        "oid": "28ccd5cf62c146da4f6bc472939050fad17400a5",
+        "size": 11857,
+        "sha256": "265f528b77c9f72fc6b584d92965546523312630264b80260611a861f1f69f86"
+      },
+      {
+        "path": "scripts/_pyenv.py",
+        "mode": "100644",
+        "oid": "7a1b394e009efed9d048f3e9366f65bbd55a8579",
+        "size": 2369,
+        "sha256": "ba68ff50f8d5d9c5c9c2018e8612b53567ed9551199d219ec38d844a910bc311"
+      },
+      {
+        "path": "scripts/_ready.py",
+        "mode": "100644",
+        "oid": "518d9cf340013a3b581ee9587720b6150f84faf6",
+        "size": 2565,
+        "sha256": "676067e5cac7c4bd313d13ad10141960a9d48cdbc8bd3df1428ea375c9185593"
       },
       {
         "path": "scripts/add-music.sh",
@@ -1109,18 +1228,32 @@
         "sha256": "d3d07de431975f15c05e04826e5df588f4a4eebecd70fa55b51bc79af7658a1b"
       },
       {
+        "path": "scripts/appstore_render.py",
+        "mode": "100644",
+        "oid": "d3dde2d960031a0b2b78759c670d5a65f7be7af7",
+        "size": 8031,
+        "sha256": "873ac321a9af9b985be3ff12dffb0d6bf34fd6da63fc662e9a4af703a6b3f221"
+      },
+      {
+        "path": "scripts/appstore_shots.py",
+        "mode": "100644",
+        "oid": "fda4e5a9b71bc1e1ca9d17d31c91b591a02185b0",
+        "size": 5546,
+        "sha256": "d5ceff7364aa4b747e74b96bb3d39d8c2446264f0d6aaee4603dc55fd95eb506"
+      },
+      {
         "path": "scripts/build_specimens.py",
         "mode": "100644",
-        "oid": "7fc288db3126ef353fca4a5b8486a22647168a67",
-        "size": 4456,
-        "sha256": "a1fb2a4cbe295b4350c5ec429d41b50056b4018c3d2dfb5d641ad80d393b0728"
+        "oid": "726954590e329c3c2dc6d0d06fa3129dc787b7db",
+        "size": 4627,
+        "sha256": "812b4e6b959e94ab44b1d044b6768dc899adaf66a5aef54faeb812e9bf2e6b6c"
       },
       {
         "path": "scripts/capabilities.py",
         "mode": "100644",
-        "oid": "62efd70b904e377c4c1d6196e6beb648ff06fc3e",
-        "size": 3888,
-        "sha256": "6ed98cb8fee5c00d103e1ebab60350ceea2a58e8e08799082d8056d94fb7266f"
+        "oid": "0bdc7a1db5b5a0256bfab31d61ea404f6c399f22",
+        "size": 11118,
+        "sha256": "d3d3e6eba8bbd074fdf75e08f49caf4bd69f19e20b3d49636598ed906e31072b"
       },
       {
         "path": "scripts/cloud/ai-review-video.py",
@@ -1146,9 +1279,9 @@
       {
         "path": "scripts/design_lint.py",
         "mode": "100644",
-        "oid": "6c0516928d8219edb15e4b4e547ce3ce08b7502c",
-        "size": 28487,
-        "sha256": "9146951a55d17781ae635ebef8d2c36d795f46587e55505d1883a45c8b1bedd1"
+        "oid": "c457fb5fc72e305f6675c5fea36531d205184995",
+        "size": 34573,
+        "sha256": "035c4ab18b81a2e37282a00a708ca99d664774d1337ef04c3f49aeb3f66d1232"
       },
       {
         "path": "scripts/design-gate-hook.sh",
@@ -1160,9 +1293,9 @@
       {
         "path": "scripts/export_deck_pdf.mjs",
         "mode": "100644",
-        "oid": "af4fbb2e94b6727172f805e59ee09ad331ef65dc",
-        "size": 3209,
-        "sha256": "323f3d5963e8b9245d468f051d4b676e67d9b97cc73b62d98239a13c65d8cc31"
+        "oid": "976afe96691562e22a410bd33e0942add9c803db",
+        "size": 3383,
+        "sha256": "78baf0f6c2779ec3f3d23a92ecae8039148b06c38bdaaf2e65ac70fc22ee0eef"
       },
       {
         "path": "scripts/export_deck_pptx.mjs",
@@ -1174,30 +1307,37 @@
       {
         "path": "scripts/export_deck_stage_pdf.mjs",
         "mode": "100644",
-        "oid": "a5526b8080e5634540bc5a9b99a171a0706dece6",
-        "size": 4781,
-        "sha256": "d024a6b5fa84c1d25caf4c1acf47ca24a5c9e8c7ed3c45befa9fabac82765b04"
+        "oid": "6dbac7975a96a3b32aa5e582b7aeb3e1c1e75ecd",
+        "size": 4955,
+        "sha256": "567fdb3f7d63b7511ddf917963c2d23efe01d85d3944997fedfed5f0f66794b5"
       },
       {
         "path": "scripts/fetch_images.py",
         "mode": "100644",
-        "oid": "e913b82ea65e1d1d8b0449f9a86ad260cb5b1ae2",
-        "size": 4442,
-        "sha256": "6bb273e785513c965a14445a2daaabbf9afc38f1dd93802c28a35374c53def89"
+        "oid": "63f5c0dff03a23de2ed51ed9cbe14235985b03e1",
+        "size": 4951,
+        "sha256": "9e407628210a93801ada1c45291a4a9b85d25ec88f12fed7d21f2337f17ad745"
       },
       {
         "path": "scripts/gen_deck_thumbs.mjs",
         "mode": "100644",
-        "oid": "4ef73d0387704118eb9bdbe154598e7474bda3e2",
-        "size": 3037,
-        "sha256": "7a6ec5c4351e36aaeeec66f5488a3ef12574bb994b3f81c4b35fd33144066e33"
+        "oid": "1b3b7453312b2944156b4a4f8ef239e1dac71a1f",
+        "size": 3509,
+        "sha256": "e48e5a38cceacdce66f2527fa9627e30d7e61a10a1fc54cf0b4cafb7e767f197"
+      },
+      {
+        "path": "scripts/gen_image.py",
+        "mode": "100644",
+        "oid": "8f9f08378372bfa2fbe19bb1f102d3dffed00865",
+        "size": 12420,
+        "sha256": "ea1f0cac9a4241b87610fdb95e207836e4683205d9f704a613ab555c67b88a8d"
       },
       {
         "path": "scripts/html2pptx.js",
         "mode": "100644",
-        "oid": "f794cf17c2eab52eaa63d2fc526588ab12e1d00a",
-        "size": 34510,
-        "sha256": "79bd2df2c0aed3548ba78d88f7bf2906c2fbdef6bcf9dce8ee4a83013c6563ac"
+        "oid": "330ba18766303efd0d9c9e26f6d965ab328f8e1b",
+        "size": 34728,
+        "sha256": "ffc5b3b46fb6039bf5f0588ced2ec78670f5f16c10b8696beb5bff086955d384"
       },
       {
         "path": "scripts/learn.py",
@@ -1209,9 +1349,16 @@
       {
         "path": "scripts/mix-voiceover.sh",
         "mode": "100755",
-        "oid": "ab1da5de64d2e78adf45821147f6eb8c02e7b37b",
-        "size": 4461,
-        "sha256": "cae4cfdfabbf918a6bd9fa7a2cac63e463903b348461360a19ca163d98b960ed"
+        "oid": "ac03350345df7ddf076ac1a1107441407655634a",
+        "size": 5358,
+        "sha256": "5db3b020db6b542899a10b4838a028a849cad3fd81484ce9f0a7ffa35e29aee6"
+      },
+      {
+        "path": "scripts/mp_handoff.py",
+        "mode": "100644",
+        "oid": "42b644039e41ab483a64512cc6b5254e76b3855a",
+        "size": 26900,
+        "sha256": "6d6250ab43ee3a34585dd6415ca35f55fe6f822d6d7c5ad922b1924c011a59fb"
       },
       {
         "path": "scripts/narrate-pipeline.mjs",
@@ -1221,18 +1368,39 @@
         "sha256": "5b387544314c9f6374de7399a23b6692b77333e53a8fb4e2d892e2ae6e836a14"
       },
       {
+        "path": "scripts/offline.py",
+        "mode": "100644",
+        "oid": "b36e3b7786f80591028262518885a850a8326811",
+        "size": 14763,
+        "sha256": "cbb825b8ef5e43fe38529b6deaa0561198ecd8dfbdbba59765297532fe268982"
+      },
+      {
+        "path": "scripts/polish.py",
+        "mode": "100644",
+        "oid": "03ab49a69f2e6bbf49bde6938df70936602f1c69",
+        "size": 10965,
+        "sha256": "32c6a640b8183dcb7ba1155ec6777e3defbb665ea3e230c6f977216e73ff9057"
+      },
+      {
         "path": "scripts/pptx_from_rendered.py",
         "mode": "100644",
-        "oid": "1e04de08b17d558146826df80e64e192a94f9c59",
-        "size": 29623,
-        "sha256": "9c81eac40cafcbd0c213267a0c37419c7fe16811a4da9aa7e3b9bc707aa50315"
+        "oid": "5babc5cca9f1e19d3b358422f32680f6d297f16d",
+        "size": 29656,
+        "sha256": "8e0ebb7b7e02ba25f7e849559b5af913b2e6f6985993c6b3f6794afae0da30b3"
       },
       {
         "path": "scripts/ref_board.py",
         "mode": "100644",
-        "oid": "0035efd486e2bb9548f04aa19634b1e6266f1a85",
-        "size": 6865,
-        "sha256": "a6365647e91de2ef9c3802d3d043ba5974f533673678dd6c5b6e654909a85f67"
+        "oid": "7b3989b22b7a4059c49d69d6a03964b05676df8b",
+        "size": 7036,
+        "sha256": "d58f258fc3b36a357695ac6ba4129ea7619097ea94d6a7e9e674291adf3ada88"
+      },
+      {
+        "path": "scripts/ref_card.py",
+        "mode": "100644",
+        "oid": "851320fb425833c210f0f6e7fa7ab74faddbb721",
+        "size": 9230,
+        "sha256": "f287391e7cd196c369a64a901dafb429123def7717479c5e0f9b96d8edb33043"
       },
       {
         "path": "scripts/render-narration.sh",
@@ -1258,9 +1426,9 @@
       {
         "path": "scripts/sfx-cues.sh",
         "mode": "100755",
-        "oid": "7fc71d58cfced9e5832330bd1525d10c5f209c94",
-        "size": 1628,
-        "sha256": "842cda4237dd88d84b4de634bf23507ec01aacb621ce5f6ac17e2a1c60857244"
+        "oid": "838dd8c37413d81da658affebf2f0626d56a9abd",
+        "size": 1643,
+        "sha256": "d7211d4978a48c7b9b9d854b2243c006013eb90c8dded83a8763cd195d2a35d3"
       },
       {
         "path": "scripts/tests/fixtures/lint_broken.html",
@@ -1298,6 +1466,13 @@
         "sha256": "facad17c3839d0319b1b899fb9503b188ae819605778a5b968cfc5adcc764fc3"
       },
       {
+        "path": "scripts/tests/fixtures/lint_svg_scaled.html",
+        "mode": "100644",
+        "oid": "2ff2bfec953cdafed2f631d701282720f808bdad",
+        "size": 717,
+        "sha256": "b28da683594ef4017875072d370a591e5c14954da31964936c5035f8109418a9"
+      },
+      {
         "path": "scripts/tests/fixtures/lint_tricky_bad.html",
         "mode": "100644",
         "oid": "24ccb9753c7ea68ee412f584e8d9efb429b30930",
@@ -1319,6 +1494,41 @@
         "sha256": "1d74749163760e65f138d77443f81a7adf7326348c22eb187ec631ec13e513f3"
       },
       {
+        "path": "scripts/tests/fixtures/mp_bad.html",
+        "mode": "100644",
+        "oid": "03af4cd29da7901956dad02850a5525a789b6b75",
+        "size": 1291,
+        "sha256": "0f175fa0e64a5a10ea913e0ed9ed6d70354755f91ce8103e8494b25849e7f78f"
+      },
+      {
+        "path": "scripts/tests/fixtures/mp_grid.html",
+        "mode": "100644",
+        "oid": "a5094ad3b5c16bfed71960af52111ea237924993",
+        "size": 1235,
+        "sha256": "bb5151715215d3b883135ad4436d30cddff16ea931514d6ec38434039d701898"
+      },
+      {
+        "path": "scripts/tests/fixtures/mp_ok.html",
+        "mode": "100644",
+        "oid": "62e3b7b960bcc3cf9b4ce8ecd238dcb7487607fc",
+        "size": 1638,
+        "sha256": "12ad26965facd995649f79d3d0d1cb470345537e95beb75e23efa0dc38229182"
+      },
+      {
+        "path": "scripts/tests/fixtures/mp_scaled.html",
+        "mode": "100644",
+        "oid": "158d2e24b15eeddee7a2a23987cb354d1177085c",
+        "size": 1725,
+        "sha256": "7c8debd084d229343a85dd57a7df01bd609ec76b61c5bcd3176414bc5e4a5986"
+      },
+      {
+        "path": "scripts/tests/fixtures/offline_jsx.html",
+        "mode": "100644",
+        "oid": "c22b31ab305c6de65aadc16aa12118462c57018f",
+        "size": 1255,
+        "sha256": "b318e4f78fa9c69d5257c37b71e1f1b54d2667e1f37ce4246e874a5f943149e1"
+      },
+      {
         "path": "scripts/tests/fixtures/xhs_bad.html",
         "mode": "100644",
         "oid": "7f4f0b0d2fd3fd62e80fbf9a29625597224ea175",
@@ -1333,6 +1543,20 @@
         "sha256": "e5c84b017e53c6fe3e2fa7f8eb9d4f51a42f90562875b73677037858c07ed3ba"
       },
       {
+        "path": "scripts/tests/test_appstore.py",
+        "mode": "100644",
+        "oid": "107f57c9337d99cb520fb3e042d5f9f88fc979d7",
+        "size": 5372,
+        "sha256": "d1cd45e59d076c8c42d07c698ae04b6cd588b13e685d244f8837d1c35161110d"
+      },
+      {
+        "path": "scripts/tests/test_capabilities.py",
+        "mode": "100644",
+        "oid": "0e2d5efbe52ea7ca6f40904b96434454003efc32",
+        "size": 4426,
+        "sha256": "a1ccc85c23e324d157e1ab379600abcdfae9b39828f9e335e2f217cce9ce281e"
+      },
+      {
         "path": "scripts/tests/test_compare_failures.py",
         "mode": "100644",
         "oid": "890708134baf262d894effbb765f63036d366282",
@@ -1342,9 +1566,37 @@
       {
         "path": "scripts/tests/test_design_lint.py",
         "mode": "100644",
-        "oid": "530b4279d9d974381071e3e56f0e9518b0a23329",
-        "size": 8606,
-        "sha256": "220d4ddf35fabe9d720dd999017733563bcaf0fd5d93ab5325243cfc9c2e4f41"
+        "oid": "296b9c59e32b2da95da8db2f531d3472fdbd036c",
+        "size": 12245,
+        "sha256": "d7954311ac8d9c6d60c1359ef74715b1369a12b47a9cee96132e2fb98d0c0fdc"
+      },
+      {
+        "path": "scripts/tests/test_gen_image.py",
+        "mode": "100644",
+        "oid": "c23e91b7fe952125a279b774198e48c44149ba97",
+        "size": 4618,
+        "sha256": "1096a451558c0c45d323b392665fae0233c30ca1193637e99c754dd429511bf6"
+      },
+      {
+        "path": "scripts/tests/test_mp_handoff.py",
+        "mode": "100644",
+        "oid": "85fc93a7c1e90a466010e78bc506552e59408944",
+        "size": 7434,
+        "sha256": "9b791bdd77bd2f40f859c231cc4fadbcab1f1cecc2de1a75e9b9bee16007b58c"
+      },
+      {
+        "path": "scripts/tests/test_offline.py",
+        "mode": "100644",
+        "oid": "23e80fe607b048c1d4b0c2ca8d93e3ba0c70a34b",
+        "size": 1664,
+        "sha256": "bd8eaa8d40cd59a1ab648b3ef8d714997f321c88e9308f94664c59cd12d14a04"
+      },
+      {
+        "path": "scripts/tests/test_polish.py",
+        "mode": "100644",
+        "oid": "8b53e6ac2ca812e2ece2321c257720ab7c6adae5",
+        "size": 2572,
+        "sha256": "711f0e24c3056330b25c9edac06e826a0ae8b00d69655e052e09fe71fe7a45be"
       },
       {
         "path": "scripts/tests/test_pptx_from_rendered.py",
@@ -1352,6 +1604,20 @@
         "oid": "fd8850bc2cf5ca97927b112f875630d3105202d5",
         "size": 4099,
         "sha256": "d915b6083b377010315ab8dfa00418e9cf26ce1c7912219cb44d7429ec020d73"
+      },
+      {
+        "path": "scripts/tests/test_pptx_svg_index.py",
+        "mode": "100644",
+        "oid": "dc0d9c1952ecb2dd7379cc580c5c8316b7b10d0c",
+        "size": 1674,
+        "sha256": "70fbc511a72aa1a6abf7bf7efd5e69d02a0e40868a9e1c4f818b94f87f6fd79e"
+      },
+      {
+        "path": "scripts/tests/test_ref_card.py",
+        "mode": "100644",
+        "oid": "4c9103d7c93f21b6aa7967ecedc4f25214a7cb92",
+        "size": 2391,
+        "sha256": "1222663602fa64f75bdb6faaebfde7f1eedee6968218066998b82fa2a30b1481"
       },
       {
         "path": "scripts/tests/test_xhs_render.py",
@@ -1370,60 +1636,74 @@
       {
         "path": "scripts/verify.py",
         "mode": "100644",
-        "oid": "6becf2b8e1e121f4b14e1784aa6d9b8b8c8ff25a",
-        "size": 5451,
-        "sha256": "7a0a3243f51a1c816944a948a5caba239c63c9890327a60d80934d493153e9e4"
+        "oid": "2c6770833a43240092bbb9d53626add7501220f6",
+        "size": 5630,
+        "sha256": "b7ce4a8e9b075a6e6e9f1d25fb5b1c50d3fc901c4eec293f62aaa46c8fa625f9"
       },
       {
         "path": "scripts/xhs_render.py",
         "mode": "100644",
-        "oid": "10f19b6bf19da51376681ae54e645cdd43d046c7",
-        "size": 10925,
-        "sha256": "789cdeb1a2d5a56e4e65f9f4b4de2ed6f4d554b2fe385619c66cbbaf1ca404ce"
+        "oid": "0986fc73a27cbfc7f7104f71834eed7e32fd7395",
+        "size": 11109,
+        "sha256": "0b8c31cee3e12004d6294f98ca8fa3275a4c6d4f4414fe601a6e0a41899c4003"
       },
       {
         "path": "SECURITY.md",
         "mode": "100644",
-        "oid": "63bdc478d1f579b9a455127c26894101a60cf122",
-        "size": 7396,
-        "sha256": "ff44af3fb26a8411bf94bd4d0704bc6aa2c205256f7c636bf7a2ce28e5ca4bdb"
+        "oid": "0861e393016390b1330bec859834d14a6f8d9402",
+        "size": 7387,
+        "sha256": "963f799c2f9fcaf544c6672c1e86dd6bf533b6bb40e9d4bfc23330f2c058c908"
       },
       {
         "path": "SKILL.md",
         "mode": "100644",
-        "oid": "23f09262546164b63c04fbca36b04d77a9fc1618",
-        "size": 15699,
-        "sha256": "095ffe5c156e0f299233f7bed44080ce0654c191b9a97ca580c5d798cf45eaf8"
+        "oid": "236a40a455dccc4f36228955a76279fed187cb6e",
+        "size": 21708,
+        "sha256": "b7cbdeccff28c339673457bcab7cc5a8961b45cef65f1dda32e3f8b27b370bde"
       },
       {
         "path": "test-prompts.json",
         "mode": "100644",
-        "oid": "e9d3d13d75c7837458554527ef15d09a23d47e16",
-        "size": 4018,
-        "sha256": "75fa52dd41ec6d04119ee74fb93f49655a12e3780176bf0ddd14c5328d53a1d8"
+        "oid": "258335e64f690bce16d759928949ab55c3433851",
+        "size": 7248,
+        "sha256": "5554b29e15a204ac8367bf2f058b7957ccf526f5a739f8b6edf32e6bf900f4fd"
       }
     ]
   },
   "fetched": {
     "root": "fetched",
-    "fileCount": 244,
-    "byteCount": 41738191,
-    "treeSha256": "d569e575d65729e9c18cecbb6bea60c02558138b41d966756373ad87780a9821",
+    "fileCount": 263,
+    "byteCount": 47341943,
+    "treeSha256": "647d02fe65161774a74150f5ce47bb166e3caa74a5391aa8b433593e80034159",
     "executableFiles": [],
     "objects": [
       {
         "path": ".env.example",
         "mode": "100644",
-        "oid": "7208e80bb0ff6131eaa96bf0c00c67877ba57114",
-        "size": 463,
-        "sha256": "ee04a1e71a37d698b68cda506eba579c47d7559b345ae90a350e890130cfafb4"
+        "oid": "6f93ce035b1edc323f97b1eeb2d253ce476ad302",
+        "size": 840,
+        "sha256": "b735f44760cb7b03bf8fa435f6974af53e4b85d62631388d509e3b59208c1c97"
       },
       {
         "path": ".gitignore",
         "mode": "100644",
-        "oid": "0aabc32f42f162dbec312c778ddfaf424b5960bc",
-        "size": 844,
-        "sha256": "c263d044826b41803d8fe9f04ec74b6d43dfed469fa1a5cd51131cffa157292e"
+        "oid": "fff98f8497905f3c58cb02369906ab72579aedaa",
+        "size": 757,
+        "sha256": "ea1daaf715f1b11cb0c61cf36c54f496b1abc89de3a110d8bec7bcbed514d19f"
+      },
+      {
+        "path": "assets/appstore/template-sheet.jpg",
+        "mode": "100644",
+        "oid": "db600b677cf901149c973e6241d530cedd8d5574",
+        "size": 100466,
+        "sha256": "5fe3378f4c89e8a6cf6825da74c0216013613a094d2a066fdacea53cf84e1175"
+      },
+      {
+        "path": "assets/appstore/template.html",
+        "mode": "100644",
+        "oid": "cd70c0b027f95b2151c6b3e631a44135ee08ea62",
+        "size": 7732,
+        "sha256": "c157b646f52edf58cf16a527ab5f6304c64e1fc31721c6c8002e7a38b0a7d3bc"
       },
       {
         "path": "assets/bgm-ad.mp3",
@@ -2371,6 +2651,76 @@
         "sha256": "1df972f662d7c4f2aff7bb2e5dd824f2a0a898dec5d0eda78ac36cb05bdefd01"
       },
       {
+        "path": "assets/style-specimens/paradigm/01-world-as-interface.jpg",
+        "mode": "100644",
+        "oid": "71b38084b72d412991137d2afd147eb1000b61dc",
+        "size": 118133,
+        "sha256": "02d15425f5aba2498deafa864487bf28842ebc60c2a8b12023e47b6b8298052a"
+      },
+      {
+        "path": "assets/style-specimens/paradigm/02-signature-object.jpg",
+        "mode": "100644",
+        "oid": "c12634655db2375634f703327d4535dc22e29e74",
+        "size": 78906,
+        "sha256": "d329d730c41c40b1285bdd3d90ff6c9dcbeb1fd5929ec97af5065d792cde27ae"
+      },
+      {
+        "path": "assets/style-specimens/paradigm/03-time-has-shape.jpg",
+        "mode": "100644",
+        "oid": "62c861f23fddcc514f2fcfc9a9854b6ad2fd5e3d",
+        "size": 88107,
+        "sha256": "8fe6d8eda011c8087d4ab7f0e70fdaf4c28aa4cf2b4efe92e189a3e54b28122f"
+      },
+      {
+        "path": "assets/style-specimens/paradigm/04-one-semantic-color.jpg",
+        "mode": "100644",
+        "oid": "11b94192427488cdedaa25edd3923a430e705800",
+        "size": 84511,
+        "sha256": "d9b037455231cded2b03d3a846619ad73caf00ea25265349f73c027263c0077d"
+      },
+      {
+        "path": "assets/style-specimens/paradigm/05-content-is-the-interface.jpg",
+        "mode": "100644",
+        "oid": "09157b9862c000f97af88a9d397e72f921ab536e",
+        "size": 99481,
+        "sha256": "b3a5943ae62e12db3730554faae10613487580eb97f586e64cb5d64479024bf5"
+      },
+      {
+        "path": "assets/style-specimens/paradigm/06-ai-lands-on-the-object.jpg",
+        "mode": "100644",
+        "oid": "b4450ece7aa28c3195918513bbcd11a65fc2f0a4",
+        "size": 92736,
+        "sha256": "7dfbca3d49ce39a885becfbcf23cbef0c4b9cec05ef74459671eda41eedfee81"
+      },
+      {
+        "path": "assets/style-specimens/paradigm/07-character-carries-state.jpg",
+        "mode": "100644",
+        "oid": "5a43b9dd7dff4d613edc34851eb64739a7b0785d",
+        "size": 86770,
+        "sha256": "06d47c493ad5411b3b2227b6a676a486a6c67cba6583afffe28fa6cfcb9b349c"
+      },
+      {
+        "path": "assets/style-specimens/paradigm/08-access-shapes-the-form.jpg",
+        "mode": "100644",
+        "oid": "475ad1902650b46058d8d50615c79e152d9ffd0a",
+        "size": 98530,
+        "sha256": "07896db197392d31c154274eb007a56cd1db4e3e8f45b3a54685421439a1d17d"
+      },
+      {
+        "path": "assets/style-specimens/paradigm/img/balcony.jpg",
+        "mode": "100644",
+        "oid": "c291f3a8bfd97768b7a6145cb75ee5a65e1fb003",
+        "size": 136319,
+        "sha256": "30ee84360f00b3e472bdb46b4dfa275d5e92e090a1af7e077dfc49df4ccc3fef"
+      },
+      {
+        "path": "assets/style-specimens/paradigm/img/box.jpg",
+        "mode": "100644",
+        "oid": "e4adbcf8dd884b96294550ba3ae459e850f38030",
+        "size": 53376,
+        "sha256": "ac4fd1779f346cf271afe0105330fb4f30774c01d036969d0749185bac062db2"
+      },
+      {
         "path": "assets/style-specimens/ppt/01-neo-swiss-billboard.jpg",
         "mode": "100644",
         "oid": "45a4f8422029195aab56cd9d3cc84c5d7df67eb8",
@@ -2530,6 +2880,13 @@
         "oid": "d712e9745465bf0dd147efb310b66ce8a6ec4b90",
         "size": 236666,
         "sha256": "d09eff02d9bff67f158aebe5eff35dce3a57fbf30041a3663dc655cbeb244355"
+      },
+      {
+        "path": "assets/style-specimens/sheet-paradigm.jpg",
+        "mode": "100644",
+        "oid": "d9d8ece95891cd59f25306a730b2d26b0c5a30c7",
+        "size": 105411,
+        "sha256": "6baa839650bfde3d9321c48a45f9a3b1eebae36b0c79d87f65358cbacc5356df"
       },
       {
         "path": "assets/style-specimens/sheet-ppt.jpg",
@@ -2938,6 +3295,48 @@
         "sha256": "c4e49e9ffe7f00b93414117c608362a826ac6970ecd13cdbe56f4c19907beb7e"
       },
       {
+        "path": "assets/vendor/babel.min.js",
+        "mode": "100644",
+        "oid": "8830ea360e6bc7ec272015f86b113cda88f2765d",
+        "size": 3137752,
+        "sha256": "2623a9e22809915ce789b4461154e277ddce520d5a4320c14d44332a5d0dcea0"
+      },
+      {
+        "path": "assets/vendor/react-dom.development.js",
+        "mode": "100644",
+        "oid": "57a309ce960564faa0ce264ab7a9e633859fd1a7",
+        "size": 1080227,
+        "sha256": "f9044a5e9c39db8bb1a204dff924e526ec0a621e695bb69de1035811be8709e4"
+      },
+      {
+        "path": "assets/vendor/react-dom.production.min.js",
+        "mode": "100644",
+        "oid": "fb4e099c05623afac0779278631c0712676e2b65",
+        "size": 131835,
+        "sha256": "35f4f974f4b2bcd44da73963347f8952e341f83909e4498227d4e26b98f66f0d"
+      },
+      {
+        "path": "assets/vendor/react.development.js",
+        "mode": "100644",
+        "oid": "37b38b35678d60f903d7f6e574f65ac1c9503f54",
+        "size": 109931,
+        "sha256": "28348fef6cb0ed8b2ceeb22deaf824428fd13875d84c73d38f77dd216fc24e7f"
+      },
+      {
+        "path": "assets/vendor/react.production.min.js",
+        "mode": "100644",
+        "oid": "9f467cace439d574903ae9d7aa6ef1068552c2f6",
+        "size": 10751,
+        "sha256": "d949f1c3687aedadcedac85261865f29b17cd273997e7f6b2bfc53b2f9d4c4dd"
+      },
+      {
+        "path": "cordis.patch.yml",
+        "mode": "100644",
+        "oid": "ba72480ebc8f70e377b35b336b42338c32a3dcfe",
+        "size": 554,
+        "sha256": "eab3865657409014dc5e16ab8258201668b8807424479b179ce0d4a8c84172ee"
+      },
+      {
         "path": "demos/c1-ios-prototype-en.html",
         "mode": "100644",
         "oid": "df3a605ac96cf881f016e821e0f67b4fd07486f2",
@@ -3101,16 +3500,16 @@
       {
         "path": "package-lock.json",
         "mode": "100644",
-        "oid": "f72209ec95bc5ed12900d891eaf5dba7f497c35c",
-        "size": 28566,
-        "sha256": "0c334005bfe0da4ad5fa1ea805a1d99d3290f636add29faa861c841ddaac6a69"
+        "oid": "7aed2ab60598f7908124f7953167b65886e4f0c8",
+        "size": 9742,
+        "sha256": "0466af2aa61b5a0364b542603cc4b945cc98024305e133688283536a839f7cb6"
       },
       {
         "path": "package.json",
         "mode": "100644",
-        "oid": "baadd4585c57c4aab62be54b0b37bdd7c4746a6b",
-        "size": 133,
-        "sha256": "144b28fbf3911f2969589bbddb3208bb02e98bfb33988723d33d3a724ad3b7d5"
+        "oid": "e82f9f18c7308496ccac0427278bb4562de792f9",
+        "size": 891,
+        "sha256": "0b8f16b6069d8018f440bbc1c3f0554fb4618109206ad3c1af90685455bda049"
       },
       {
         "path": "scripts/tests/fixtures/assets/logo.png",
@@ -3429,6 +3828,62 @@
       "title": "20 瑞士网格年报",
       "path": "upstream/assets/style-specimens/info/20-swiss-grid-report.html",
       "preview": "assets/style-specimens/info/20-swiss-grid-report.jpg"
+    },
+    {
+      "id": "paradigm/01-world-as-interface",
+      "family": "paradigm",
+      "title": "01 界面即世界",
+      "path": "upstream/assets/style-specimens/paradigm/01-world-as-interface.html",
+      "preview": "assets/style-specimens/paradigm/01-world-as-interface.jpg"
+    },
+    {
+      "id": "paradigm/02-signature-object",
+      "family": "paradigm",
+      "title": "02 签名物件",
+      "path": "upstream/assets/style-specimens/paradigm/02-signature-object.html",
+      "preview": "assets/style-specimens/paradigm/02-signature-object.jpg"
+    },
+    {
+      "id": "paradigm/03-time-has-shape",
+      "family": "paradigm",
+      "title": "03 时间有形状",
+      "path": "upstream/assets/style-specimens/paradigm/03-time-has-shape.html",
+      "preview": "assets/style-specimens/paradigm/03-time-has-shape.jpg"
+    },
+    {
+      "id": "paradigm/04-one-semantic-color",
+      "family": "paradigm",
+      "title": "04 一套语义色",
+      "path": "upstream/assets/style-specimens/paradigm/04-one-semantic-color.html",
+      "preview": "assets/style-specimens/paradigm/04-one-semantic-color.jpg"
+    },
+    {
+      "id": "paradigm/05-content-is-the-interface",
+      "family": "paradigm",
+      "title": "05 内容当主角",
+      "path": "upstream/assets/style-specimens/paradigm/05-content-is-the-interface.html",
+      "preview": "assets/style-specimens/paradigm/05-content-is-the-interface.jpg"
+    },
+    {
+      "id": "paradigm/06-ai-lands-on-the-object",
+      "family": "paradigm",
+      "title": "06 AI 落在物上",
+      "path": "upstream/assets/style-specimens/paradigm/06-ai-lands-on-the-object.html",
+      "preview": "assets/style-specimens/paradigm/06-ai-lands-on-the-object.jpg"
+    },
+    {
+      "id": "paradigm/07-character-carries-state",
+      "family": "paradigm",
+      "title": "07 角色承载状态",
+      "path": "upstream/assets/style-specimens/paradigm/07-character-carries-state.html",
+      "preview": "assets/style-specimens/paradigm/07-character-carries-state.jpg"
+    },
+    {
+      "id": "paradigm/08-access-shapes-the-form",
+      "family": "paradigm",
+      "title": "08 可达性定形式",
+      "path": "upstream/assets/style-specimens/paradigm/08-access-shapes-the-form.html",
+      "preview": "assets/style-specimens/paradigm/08-access-shapes-the-form.jpg"
     },
     {
       "id": "ppt/01-neo-swiss-billboard",

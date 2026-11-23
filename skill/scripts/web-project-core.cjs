@@ -14,21 +14,21 @@ const { cliCommand, shellPath } = require("./workflows/shared.cjs");
 
 // 固定版本，与 film scaffold 固定 gsap/hyperframes 同理：同一份脚手架今天与明天装出同一棵树。
 const VERSIONS = {
-  "vite": "8.3.7",
+  "vite": "8.3.8",
   "react": "19.3.1",
   "react-dom": "19.3.1",
   "@vitejs/plugin-react": "6.3.0",
-  "vue": "3.5.45",
-  "@vitejs/plugin-vue": "6.0.10",
-  "svelte": "5.57.3",
+  "vue": "3.5.46",
+  "@vitejs/plugin-vue": "6.0.11",
+  "svelte": "5.59.1",
   "@sveltejs/vite-plugin-svelte": "7.3.1",
-  "solid-js": "1.9.18",
-  "vite-plugin-solid": "2.11.15",
+  "solid-js": "2.0.3",
+  "vite-plugin-solid": "2.11.17",
   "tailwindcss": "4.3.5",
   "@tailwindcss/vite": "4.3.5",
-  "sass": "1.108.1",
+  "sass": "1.108.2",
   "less": "4.9.1",
-  "postcss": "8.5.32",
+  "postcss": "8.5.33",
 };
 
 const FRAMEWORKS = {

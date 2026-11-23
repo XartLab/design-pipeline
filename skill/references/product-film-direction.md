@@ -192,7 +192,7 @@ cropping, or another deliberate composition. The user's direction and shot evide
 add storyboard fields or make source-specific grid sizes, parallax ratios, camera counts, or aspect
 ratios mandatory. For the full optional method, read the iart `shot-composition` playbook
 (`designer-pipeline iart search --query "shot composition"` returns its path; fetch the iart bundle
-first if search asks for it), from [iart-ai/motion-design-skills at `3c129f769d90a1328c209c386492333c9ac62312`](https://github.com/iart-ai/motion-design-skills/blob/3c129f769d90a1328c209c386492333c9ac62312/skills/shot-composition/SKILL.md).
+first if search asks for it), from [iart-ai/motion-design-skills at `b85e50c4cef5ff17aa2187a10d49d2dae9226c74`](https://github.com/iart-ai/motion-design-skills/blob/b85e50c4cef5ff17aa2187a10d49d2dae9226c74/skills/shot-composition/SKILL.md).
 
 Completion: every beat has an action and handoff; major claims have a visible demonstration;
 the sequence includes development and payoff; music/sound cues are planned alongside the picture.

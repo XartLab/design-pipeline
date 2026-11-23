@@ -216,7 +216,7 @@ When the installed `animejs` companion skill lacks the current markers:
 ## PixiJS v8 Profile
 
 Verified against the official `pixijs/pixijs-skills` suite at commit
-`83760c6f53462ca9cecd68055041f5a8c94758ce` on 2026-10-07. The review covers the existing companion
+`93784384269b1d8677fb2ae166c81d750cba4281` on 2026-11-23. The review covers the existing companion
 markers and the selected scene/rendering methods in `pixijs-rendering.md`; it does not certify
 every upstream example.
 

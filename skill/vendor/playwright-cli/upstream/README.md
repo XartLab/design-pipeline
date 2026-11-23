@@ -15,7 +15,7 @@ This package provides CLI interface into Playwright. If you are using **coding a
 - **Token-efficient**. Does not force page data into LLM.
 
 ### Requirements
-- Node.js 18 or newer
+- Node.js 20 or newer
 - Claude Code, GitHub Copilot, or any other coding agent.
 
 ## Getting Started
@@ -26,6 +26,9 @@ This package provides CLI interface into Playwright. If you are using **coding a
 npm install -g @playwright/cli@latest
 playwright-cli --help
 ```
+
+Argument parsing and startup errors exit with code 1 and print an error message. With
+`--json`, these errors are written to stdout as `{ "isError": true, "error": "..." }`.
 
 ### Installing skills
 
@@ -78,8 +81,8 @@ Playwright CLI keeps the browser profile in memory by default. Your cookies and 
 are preserved between CLI calls within the session, but lost when the browser closes. Use
 `--persistent` to save the profile to disk for persistence across browser restarts.
 
-You can use different instances of the browser for different projects with sessions. Pass `-s=` to
-the invocation to talk to a specific browser.
+You can use different instances of the browser for different projects with sessions. Pass `-s=name`,
+`-s name` or `--session name` to the invocation to talk to a specific browser.
 
 ```bash
 playwright-cli open https://playwright.dev
@@ -331,6 +334,24 @@ playwright-cli close                    # close the browser
 playwright-cli delete-data              # delete user data for default session
 ```
 
+When attaching via the Playwright Extension, the session controls only the tabs selected by the
+user and the tabs it opens. These tabs form a group named after the session. Use `--session-color`
+to choose its color, or `--no-tab-group` to leave the tabs ungrouped:
+
+```bash
+playwright-cli attach --extension=chrome --session=finance --session-color=blue
+playwright-cli -s=finance goto https://example.com
+playwright-cli -s=finance detach         # leave the tabs open; the group turns gray
+```
+
+Without `--session`, the session takes the browser name (`chrome`, `msedge`). To close all tabs
+of an extension session, including tabs selected by the user, use `detach --close-tabs` instead.
+Other tabs and the browser remain open:
+
+```bash
+playwright-cli -s=finance detach --close-tabs
+```
+
 ### Snapshots
 
 After each command, playwright-cli provides a snapshot of the current browser state.
@@ -419,7 +440,7 @@ playwright-cli kill-all                 # forcefully kill all browser processes
 
 ### Local installation
 
-If global `playwright-cli` command is not available, try a local version via `npx playwright cli`:
+If global `playwright-cli` command is not available, try a local version via `npx playwright cli`. It needs Playwright 1.59 or newer:
 
 ```bash
 npx --no-install playwright --version
@@ -631,7 +652,7 @@ The installed skill includes detailed reference guides for common tasks:
 * **Running and Debugging Playwright tests** — run, debug and manage Playwright test suites
 * **Request mocking** — intercept and mock network requests
 * **Running Playwright code** — execute arbitrary Playwright scripts
-* **Browser session management** — manage multiple browser sessions
+* **Browser session management** — manage multiple browser sessions and attach to the user's browser
 * **Storage state (cookies, localStorage)** — persist and restore browser state
 * **Test generation (plan / generate / heal)** — generate Playwright tests from a spec or interactions
 * **Tracing** — record and inspect execution traces

@@ -2,12 +2,12 @@
 sourceMeta:
   id: ibelick-ui-skills-rules
   kind: github
-  url: https://github.com/ibelick/ui-skills/tree/73fb128d046d1f0d74c2909cd26eb616e3415567
-  reviewedRevision: 73fb128d046d1f0d74c2909cd26eb616e3415567
+  url: https://github.com/ibelick/ui-skills/tree/7ef0076fce1dfa39dd2bc43b7dc13add6eda8a41
+  reviewedRevision: 7ef0076fce1dfa39dd2bc43b7dc13add6eda8a41
   reviewedContentHash: d74377eed8c3234594d7236d216aeba4f7bb01dcbdd22139f2b69d094b5578bb
   contentHashScope: ordered UTF-8 sourceFiles with path-and-newline separators
   sourceFiles: skills/baseline-ui/SKILL.md, skills/fixing-metadata/SKILL.md, skills/fixing-motion-performance/SKILL.md
-  reviewedAt: 2026-11-11T00:00:00.000Z
+  reviewedAt: 2026-11-23T00:00:00.000Z
   freshnessDays: 365
   license: MIT
   useBoundary: reference-only; rules are held as this project's own audit codes, review rows and guides; do not install or execute the upstream skills
@@ -21,7 +21,7 @@ URLs, social cards, icons, structured data) and `fixing-motion-performance` (ani
 fourth skill this project uses from that repository, `fixing-accessibility`, is bundled as a
 snapshot and described in [ui-craft-sources.md](ui-craft-sources.md#fixing-accessibility).
 
-- Source: [ibelick/ui-skills](https://github.com/ibelick/ui-skills/tree/73fb128d046d1f0d74c2909cd26eb616e3415567), MIT, `Copyright (c) 2026 Julien Thibeaut`.
+- Source: [ibelick/ui-skills](https://github.com/ibelick/ui-skills/tree/7ef0076fce1dfa39dd2bc43b7dc13add6eda8a41), MIT, `Copyright (c) 2026 Julien Thibeaut`.
 - Not bundled: none of the three skill files ships. Do not install or execute them for this pipeline.
 
 ## Where the rules are

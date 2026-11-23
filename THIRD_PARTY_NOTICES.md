@@ -4,7 +4,7 @@
 
 The complete official `gepa-optimize-anything` skill (seven files), repository README,
 pyproject metadata and original MIT license are bundled under `skill/vendor/gepa/upstream/`
-from reviewed revision `8c7b697a71977980afc7537dac0881e784eef99f` (reviewed 2026-11-04).
+from reviewed revision `ce5b0d6e3d6af6c6dbec6de2c54536bbb961d309` (reviewed 2026-11-23).
 Copyright © 2025 Lakshya A Agrawal. `skill/vendor/gepa/manifest.json` records the scoped
 original Git blobs and hashes. The native Python runtime is an optional, separately prepared
 dependency pinned to that same revision. Upstream plugin/preflight metadata and alternative
@@ -18,12 +18,12 @@ runtime, workflow, remote prompt, or skill implementation is bundled or executed
 
 - `hi5jeff/deepclonewebsite`, reviewed commit
   `ab180fbe14a0f86c478bf033b375b1d40fabe6b1`, MIT, Copyright (c) 2026 hi5jeff.
-- `wevm/frog`, reviewed commit `cbe18b192b59a8770466ee9f193b17294778c8a9`, MIT,
+- `wevm/frog`, reviewed commit `ec05812cf8b7090dcfd2827c630bf85aea44d734`, MIT,
   Copyright (c) 2025-present weth LLC.
 - `MengTo/skills`, reviewed commit `3f4c22d10055d3fdddb17248d59d0c1b731cb8d3`, MIT,
   Copyright (c) 2026 Meng To. The bundled index contains names, categories, and reviewed routes,
   not upstream `SKILL.md` bodies.
-- `shadcn-ui/ui`, reviewed commit `4aaea19d9cff3e0908e12a8c1d504b8c5ec34610`, MIT,
+- `shadcn-ui/ui`, reviewed commit `055aa6b7837b1808456a24beb4c97a677864aa82`, MIT,
   Copyright (c) 2023 shadcn. Preset option values and defaults are declarative compatibility data.
 - `Koboyo Icons`, reviewed 2026-08-13 from https://koboyo.com/icons and
   https://koboyo.com/icons/license. The registry stores discovery, license, and access-boundary
@@ -37,7 +37,7 @@ runtime, workflow, remote prompt, or skill implementation is bundled or executed
   MIT + Commons Clause. The pipeline stores the DecryptedText behavioral and accessibility
   contract only; it does not redistribute the component library itself.
 - `imskyleen/animate-ui`, reviewed 2026-11-12 at commit
-  `22a9236ae107328f8564edb7e3299375da3247af` from https://github.com/imskyleen/animate-ui and
+  `9873c628afdcdb030e74dc2930774a2aa473bd39` from https://github.com/imskyleen/animate-ui and
   https://animate-ui.com/docs, MIT + Commons Clause, Copyright (c) 2025 Elliot Sutton. The pipeline
   stores component names, import paths, install commands and its own descriptions
   (`skill/references/component-source-catalog.json`, record `animate-ui/components`), a pinned
@@ -63,7 +63,7 @@ runtime, workflow, remote prompt, or skill implementation is bundled or executed
   and compatibility metadata only; no upstream source code, runtime, or dependency is bundled.
   Licenses and usage terms remain unverified and the respective upstream sites are authoritative.
 - `reflex-dev/xy`, reviewed release `v0.0.6` at commit
-  `6483032a7947e1f44ced1a560ac08f1025637529`, Apache-2.0. The pipeline bundles only routing and
+  `877dd79b0b5dfb24534b25d742c44e2eeb1988fc`, Apache-2.0. The pipeline bundles only routing and
   integration guidance; no XY Python, Rust, WebGL, or Reflex runtime code is redistributed.
 - `anthropics/claude-plugins-official`, `plugins/playground/skills/playground`, reviewed
   2026-08-14 from the main branch, Apache-2.0. Design Pipeline adapts the high-level interactive
@@ -262,7 +262,7 @@ SOFTWARE.
 The bundled design-playbook library is a byte-preserved snapshot of:
 
 - Source: https://github.com/MengTo/skills
-- Reviewed commit: `1de14e21b2ba8937c0f7f6ddca581cf7cd9d94af`
+- Reviewed commit: `409b4d04c98559bbd9d3344260e3a0878df30d43`
 - Original copyright: Copyright (c) 2026 Meng To
 - License: MIT
 
@@ -549,7 +549,7 @@ The bundled motion-skill library is a byte-preserved snapshot of the MIT-license
 [`iart-ai/motion-skills`](https://github.com/iart-ai/motion-skills) index and the licensed packs
 listed in `skill/vendor/iart-motion-skills/manifest.json`.
 
-- Index commit: `238dfc55aac123d4649be39adfe58c43193ca349`
+- Index commit: `e8ba1f4eb2bcca3d1639d7545b9cd2bcfe4a3c6f`
 - Reviewed: 2026-08-26
 - Original copyright: Copyright (c) 2026 iart.ai
 - License: MIT
@@ -654,7 +654,7 @@ not claim blanket clearance for upstream assets or include that font in generate
 
 The complete byte-preserved source snapshot under `skill/vendor/good-css/upstream/` is from
 https://github.com/vojtaholik/good-css at reviewed commit
-`a6804e75b5ee946d6b007ac20734f958d7938bca` (reviewed 2026-11-04).
+`35e0e8c673854ca34d8e1879038e44834c855dfb` (reviewed 2026-11-23).
 All 133 tracked files are retained, including the 47 practices/specimens, eight generated reference
 files, harness assets, source generator/checker and inert plugin/deployment metadata.
 
@@ -760,7 +760,7 @@ a release asset and is not mirrored. The template's native Windows render and WS
 
 The byte-preserved scoped snapshot under `skill/vendor/emil-design-eng/upstream/` is from
 https://github.com/emilkowalski/skills at reviewed commit
-`f1090bec277140d02ed202440185ad9d02ac1490` (reviewed 2026-11-04).
+`64eb3deb9a5fbfa041faf783e0bc3fd635872e9c` (reviewed 2026-11-23).
 Only `skills/emil-design-eng/**` and the root `LICENSE` are retained (2 files); sibling skills,
 the repository README and other root files are excluded.
 
@@ -781,7 +781,7 @@ records are project-owned.
 
 The byte-preserved scoped snapshot under `skill/vendor/make-interfaces-feel-better/upstream/` is
 from https://github.com/jakubkrehel/make-interfaces-feel-better at reviewed commit
-`35545ea1512ad59fa463e6b1f95ca9c052981fe6` (reviewed 2026-10-13).
+`6d9f2f1df10e8ce2ae1708598a73b0506fb98794` (reviewed 2026-11-23).
 Only `skills/make-interfaces-feel-better/**` (the skill, its five topic guides and agent metadata),
 the root `README.md` and the root `LICENSE` are retained (9 files); repository-root `AGENTS.md`
 and `CLAUDE.md` are excluded.
@@ -793,7 +793,7 @@ MIT, Copyright (c) 2026 Jakub Krehel. The complete original license is
 
 The byte-preserved scoped snapshot under `skill/vendor/fixing-accessibility/upstream/` is from
 https://github.com/ibelick/ui-skills at reviewed commit
-`73fb128d046d1f0d74c2909cd26eb616e3415567` (reviewed 2026-11-04).
+`7ef0076fce1dfa39dd2bc43b7dc13add6eda8a41` (reviewed 2026-11-23).
 Only `skills/fixing-accessibility/**` and the root `LICENSE` are retained (2 files); the website,
 CLI, sibling skills and repository-root agent files are excluded.
 
@@ -803,7 +803,7 @@ MIT, Copyright (c) 2026 Julien Thibeaut. The complete original license is
 ## shadcn-ui/ui (shadcn skill)
 
 The byte-preserved scoped snapshot under `skill/vendor/shadcn/upstream/` is from
-https://github.com/shadcn-ui/ui at reviewed commit `4aaea19d9cff3e0908e12a8c1d504b8c5ec34610`
+https://github.com/shadcn-ui/ui at reviewed commit `055aa6b7837b1808456a24beb4c97a677864aa82`
 (reviewed 2026-10-13). Only `skills/shadcn/**` (the skill, its guides, rules, showcase assets,
 evals, coverage script and agent metadata) and the root `LICENSE.md` are retained (22 files); the
 application, registry and package sources of the monorepo are excluded.
@@ -816,7 +816,7 @@ or the bundled coverage script, and does not install shadcn/ui into a project.
 
 The byte-preserved scoped snapshot under `skill/vendor/playwright-cli/upstream/` is from
 https://github.com/microsoft/playwright-cli at reviewed commit
-`db2a0fad3a768319a16e3a2bb8078cf62e690b07` (reviewed 2026-11-04).
+`c872a33cec77fa03c28fa7c6d1ad99d15d04ce42` (reviewed 2026-11-23).
 Only `skills/playwright-cli/**` (the skill and its ten reference guides), the root `README.md` and
 the root `LICENSE` are retained (13 files); the CLI source, tests, CI and repository-root agent
 files are excluded.
@@ -892,7 +892,7 @@ words.
   `README.md`. MIT, Copyright (c) 2025 Vercel Labs. Record:
   `skill/references/web-interface-guidelines.md`.
 - https://github.com/ibelick/ui-skills at reviewed commit
-  `73fb128d046d1f0d74c2909cd26eb616e3415567` (reviewed 2026-11-11): `skills/baseline-ui/SKILL.md`,
+  `7ef0076fce1dfa39dd2bc43b7dc13add6eda8a41` (reviewed 2026-11-23): `skills/baseline-ui/SKILL.md`,
   `skills/fixing-metadata/SKILL.md` and `skills/fixing-motion-performance/SKILL.md`. MIT,
   Copyright (c) 2026 Julien Thibeaut. Record: `skill/references/ibelick-ui-skills.md`.
 
@@ -924,8 +924,8 @@ SOFTWARE.
 
 The byte-preserved text and HTML under `skill/vendor/huashu-design/upstream/` are from
 https://github.com/alchaincyf/huashu-design at reviewed commit
-`9b01ee8751679724dd43d855a532944aaa2c2b59` (reviewed 2026-11-04), Git tree
-`90bc6a8d9ed7a419b4b8436b24d635ba3a53ce08`. 181 of the 389 tracked files ship in the package:
+`59065698ad63f87ea1532c126c87f488d4f93fd6` (reviewed 2026-11-23), Git tree
+`aa00c6912c866363e7004f4603220142b3fc4cb7`. 181 of the 389 tracked files ship in the package:
 the license, READMEs, the project `SKILL.md` (stored as `UPSTREAM-SKILL.md`), `references/`, the
 84 HTML style specimens, small text assets and `scripts/` as inert reference material. The other
 208 files (specimen images, music and sound effects, showcase and demo pages and images, package

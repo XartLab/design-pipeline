@@ -2,12 +2,12 @@
 sourceMeta:
   id: animate-ui
   kind: github
-  url: https://github.com/imskyleen/animate-ui/tree/22a9236ae107328f8564edb7e3299375da3247af
-  reviewedRevision: 22a9236ae107328f8564edb7e3299375da3247af
+  url: https://github.com/imskyleen/animate-ui/tree/9873c628afdcdb030e74dc2930774a2aa473bd39
+  reviewedRevision: 9873c628afdcdb030e74dc2930774a2aa473bd39
   reviewedContentHash: 8ff98fece9000f75e9b97574a372ea07524e6676cb050b081fa65978ef561e2a
   contentHashScope: ordered UTF-8 sourceFiles with path-and-newline separators
   sourceFiles: skills/animate-ui/SKILL.md, skills/animate-ui/references/catalog.md, skills/animate-ui/references/vue.md, skills/animate-ui/references/migrate.md, skills/animate-ui/references/review.md, LICENSE.md
-  reviewedAt: 2026-11-12T00:00:00.000Z
+  reviewedAt: 2026-11-23T00:00:00.000Z
   freshnessDays: 365
   license: LicenseRef-MIT-Commons-Clause
   useBoundary: reference-only for the upstream skill text, which is restated here; components are installed into the target project from npm or the upstream registry after the user approves the route; do not copy upstream component source into this package
@@ -22,7 +22,7 @@ changes. It also has its own primitives for entrances, text, numbers, buttons an
 and backgrounds, styled buttons, page transitions and animated icons that install as files from
 its shadcn registry.
 
-- Source: [imskyleen/animate-ui](https://github.com/imskyleen/animate-ui/tree/22a9236ae107328f8564edb7e3299375da3247af),
+- Source: [imskyleen/animate-ui](https://github.com/imskyleen/animate-ui/tree/9873c628afdcdb030e74dc2930774a2aa473bd39),
   documentation at <https://animate-ui.com/docs>, `Copyright (c) 2025 Elliot Sutton`.
 - Licence: MIT with the Commons Clause. Use in any application, website or product is allowed,
   commercial included. Selling or redistributing the components themselves is not.

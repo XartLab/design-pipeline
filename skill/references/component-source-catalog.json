@@ -471,10 +471,10 @@
           "https://api.github.com/repos/shadcn-ui/ui/git/blobs/fad4d887a681dd49233e5ed01ee2c7a1513089a0",
           "https://ui.shadcn.com/",
           "https://github.com/shadcn-ui/ui",
-          "https://github.com/shadcn-ui/ui/blob/4aaea19d9cff3e0908e12a8c1d504b8c5ec34610/LICENSE.md"
+          "https://github.com/shadcn-ui/ui/blob/055aa6b7837b1808456a24beb4c97a677864aa82/LICENSE.md"
         ]
       },
-      "licenseScope": "MIT license text verified at existing registry revision 4aaea19d9cff3e0908e12a8c1d504b8c5ec34610; retain copyright and license notices. Paid products, linked source and unrelated hosted-site assets are not licensed by this root grant.",
+      "licenseScope": "MIT license text verified at existing registry revision 055aa6b7837b1808456a24beb4c97a677864aa82; retain copyright and license notices. Paid products, linked source and unrelated hosted-site assets are not licensed by this root grant.",
       "name": {
         "en": "shadcn/ui component primitives",
         "zh": "shadcn/ui 组件基元"
@@ -4642,13 +4642,13 @@
           "https://api.github.com/repos/DavidHDev/react-bits/license",
           "https://github.com/DavidHDev/react-bits/blob/main/LICENSE.md",
           "https://api.github.com/repos/DavidHDev/react-bits/git/blobs/4069ce9d0ef1a712c93d6ce48ade5d5667e0f5ee",
-          "https://github.com/DavidHDev/react-bits/blob/4dc7b5b7772e1217c8fb8d2a7aa074302180e5b4/LICENSE.md",
+          "https://github.com/DavidHDev/react-bits/blob/424f86f38cc9581653c6d3c4e241a5fff2b91b16/LICENSE.md",
           "https://reactbits.dev/r/DepthCarousel-TS-TW.json",
-          "https://github.com/DavidHDev/react-bits/blob/4dc7b5b7772e1217c8fb8d2a7aa074302180e5b4/src/ts-tailwind/Components/DepthCarousel/DepthCarousel.tsx",
+          "https://github.com/DavidHDev/react-bits/blob/424f86f38cc9581653c6d3c4e241a5fff2b91b16/src/ts-tailwind/Components/DepthCarousel/DepthCarousel.tsx",
           "2026-10-12 identity verified: live public JS-CSS and TS-TW registry JSON equal pinned public repository registry files; component content equals corresponding pinned source files."
         ]
       },
-      "licenseScope": "Repository is expressly declared by catalog/stack metadata. Decoded current LICENSE.md grants commercial application/website/product incorporation with retained notices, but prohibits selling, sublicensing or redistributing components alone, in bundles or ported versions. GitHub SPDX response is NOASSERTION; actual custom license text establishes the restricted grant, never plain MIT. Since November 2026 the same restriction also covers the React Bits tools, the sound library and their exports sold or redistributed on their own; component use is unchanged. DecryptedText and Dither share this evidence; paid React Bits Pro is not covered. 2026-10-12 identity resolved from exact live public registry/pinned source equality: this is the public DepthCarousel-TS-TW component at revision 4dc7b5b7772e1217c8fb8d2a7aa074302180e5b4, not React Bits Pro. Preserve copyright/license notices; no standalone/bundled/ported component redistribution. Its GSAP dependency is governed separately by the user-authorized GSAP Standard No Charge terms.",
+      "licenseScope": "Repository is expressly declared by catalog/stack metadata. Decoded current LICENSE.md grants commercial application/website/product incorporation with retained notices, but prohibits selling, sublicensing or redistributing components alone, in bundles or ported versions. GitHub SPDX response is NOASSERTION; actual custom license text establishes the restricted grant, never plain MIT. Since November 2026 the same restriction also covers the React Bits tools, the sound library and their exports sold or redistributed on their own; component use is unchanged. DecryptedText and Dither share this evidence; paid React Bits Pro is not covered. 2026-10-12 identity resolved from exact live public registry/pinned source equality: this is the public DepthCarousel-TS-TW component at revision 424f86f38cc9581653c6d3c4e241a5fff2b91b16, not React Bits Pro. Preserve copyright/license notices; no standalone/bundled/ported component redistribution. Its GSAP dependency is governed separately by the user-authorized GSAP Standard No Charge terms.",
       "name": {
         "en": "React Bits depth carousel",
         "zh": "React Bits 深度轮播"
@@ -4678,8 +4678,8 @@
         "source": "React Bits",
         "url": "https://reactbits.dev/components/depth-carousel",
         "repository": "https://github.com/DavidHDev/react-bits",
-        "revision": "4dc7b5b7772e1217c8fb8d2a7aa074302180e5b4",
-        "sourceCode": "https://github.com/DavidHDev/react-bits/blob/4dc7b5b7772e1217c8fb8d2a7aa074302180e5b4/src/ts-tailwind/Components/DepthCarousel/DepthCarousel.tsx",
+        "revision": "424f86f38cc9581653c6d3c4e241a5fff2b91b16",
+        "sourceCode": "https://github.com/DavidHDev/react-bits/blob/424f86f38cc9581653c6d3c4e241a5fff2b91b16/src/ts-tailwind/Components/DepthCarousel/DepthCarousel.tsx",
         "license": "MIT + Commons Clause",
         "licenseNotice": "Retain copyright/license notices. Do not sell, sublicense or redistribute components themselves alone, bundled or ported. GSAP dependency follows Standard No Charge terms; competing no-code animation tools need written consent.",
         "attribution": "Public React Bits component identity verified against matching registry and pinned implementation; no upstream bytes copied into this index."
@@ -4696,7 +4696,7 @@
         "id": "MIT",
         "evidence": [
           "https://api.github.com/repos/motiondivision/motion/license",
-          "https://github.com/motiondivision/motion/blob/7415b6cd14dfdb35d91dfc5b9758994444cc228b/LICENSE.md",
+          "https://github.com/motiondivision/motion/blob/133051adce0f0b0bfb661f9f517dc2250ba3a288/LICENSE.md",
           "https://api.github.com/repos/motiondivision/motion/git/blobs/81110442c72270dd317667cc52181522647401f2",
           "2026-10-12 verified with gh api repos/motiondivision/motion/license; full MIT grant decoded and pinned license inspected; retain copyright and permission notices."
         ]
@@ -4740,7 +4740,7 @@
         "source": "Motion",
         "url": "https://github.com/motiondivision/motion",
         "repository": "https://github.com/motiondivision/motion",
-        "revision": "7415b6cd14dfdb35d91dfc5b9758994444cc228b",
+        "revision": "133051adce0f0b0bfb661f9f517dc2250ba3a288",
         "license": "MIT",
         "licenseNotice": "Retain Motion copyright and MIT permission notices for copied or substantially included library software.",
         "attribution": "Verified npm/ESM library metadata; no remote implementation is vendored."
@@ -4878,12 +4878,12 @@
         "state": "verified",
         "id": "LicenseRef-MIT-Commons-Clause",
         "evidence": [
-          "https://github.com/imskyleen/animate-ui/blob/22a9236ae107328f8564edb7e3299375da3247af/LICENSE.md",
-          "https://github.com/imskyleen/animate-ui/blob/22a9236ae107328f8564edb7e3299375da3247af/README.md",
+          "https://github.com/imskyleen/animate-ui/blob/9873c628afdcdb030e74dc2930774a2aa473bd39/LICENSE.md",
+          "https://github.com/imskyleen/animate-ui/blob/9873c628afdcdb030e74dc2930774a2aa473bd39/README.md",
           "2026-11-12 read at the locked revision: MIT text with a Commons Clause restriction; the published packages declare SEE LICENSE IN LICENSE.md."
         ]
       },
-      "licenseScope": "LICENSE.md at revision 22a9236ae107328f8564edb7e3299375da3247af is the MIT text limited to use \"as part of an application, website, or product\" plus a Commons Clause restriction: any commercial use is allowed, selling or redistributing the components themselves in their original form, alone or in a bundle, is not. Copyright (c) 2025 Elliot Sutton. It is never plain MIT. This package therefore ships names, import paths, install commands and its own descriptions only, and no upstream component source; a project installs the components itself from npm or the upstream registry.",
+      "licenseScope": "LICENSE.md at revision 9873c628afdcdb030e74dc2930774a2aa473bd39 is the MIT text limited to use \"as part of an application, website, or product\" plus a Commons Clause restriction: any commercial use is allowed, selling or redistributing the components themselves in their original form, alone or in a bundle, is not. Copyright (c) 2025 Elliot Sutton. It is never plain MIT. This package therefore ships names, import paths, install commands and its own descriptions only, and no upstream component source; a project installs the components itself from npm or the upstream registry.",
       "name": {
         "en": "Animate UI animated primitives and registry components",
         "zh": "Animate UI 动效基元与组件"
@@ -7402,8 +7402,8 @@
         "source": "Animate UI",
         "url": "https://animate-ui.com/docs",
         "repository": "https://github.com/imskyleen/animate-ui",
-        "revision": "22a9236ae107328f8564edb7e3299375da3247af",
-        "sourceCode": "https://github.com/imskyleen/animate-ui/tree/22a9236ae107328f8564edb7e3299375da3247af/packages/react/src/primitives",
+        "revision": "9873c628afdcdb030e74dc2930774a2aa473bd39",
+        "sourceCode": "https://github.com/imskyleen/animate-ui/tree/9873c628afdcdb030e74dc2930774a2aa473bd39/packages/react/src/primitives",
         "license": "MIT + Commons Clause",
         "licenseNotice": "Retain the copyright and license notice. Use in any application, website or product, commercial or not; do not sell or redistribute the components themselves in their original form, alone or in a bundle.",
         "attribution": "imskyleen/animate-ui; names, import paths and install commands read at the locked revision, descriptions written for this index; no upstream component source is bundled"
@@ -7879,7 +7879,7 @@
           "https://api.github.com/repos/DavidHDev/react-bits/license",
           "https://github.com/DavidHDev/react-bits/blob/main/LICENSE.md",
           "https://api.github.com/repos/DavidHDev/react-bits/git/blobs/4069ce9d0ef1a712c93d6ce48ade5d5667e0f5ee",
-          "https://github.com/DavidHDev/react-bits/blob/4dc7b5b7772e1217c8fb8d2a7aa074302180e5b4/LICENSE.md"
+          "https://github.com/DavidHDev/react-bits/blob/424f86f38cc9581653c6d3c4e241a5fff2b91b16/LICENSE.md"
         ]
       },
       "licenseScope": "Repository is expressly declared by catalog/stack metadata. Decoded current LICENSE.md grants commercial application/website/product incorporation with retained notices, but prohibits selling, sublicensing or redistributing components alone, in bundles or ported versions. GitHub SPDX response is NOASSERTION; actual custom license text establishes the restricted grant, never plain MIT. Since November 2026 the same restriction also covers the React Bits tools, the sound library and their exports sold or redistributed on their own; component use is unchanged. DecryptedText and Dither share this evidence; paid React Bits Pro is not covered."
@@ -8013,8 +8013,8 @@
       "availability": "reference-link",
       "aliases": [
         "https://github.com/emilkowalski/skills",
-        "https://github.com/emilkowalski/skills/tree/f1090bec277140d02ed202440185ad9d02ac1490",
-        "https://github.com/emilkowalski/skills/tree/f1090bec277140d02ed202440185ad9d02ac1490"
+        "https://github.com/emilkowalski/skills/tree/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
+        "https://github.com/emilkowalski/skills/tree/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c"
       ],
       "localPaths": {
         "guide": "references/ui-craft-sources.md",
@@ -8024,19 +8024,19 @@
         "source": "Animation opportunity and review reference",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
-        "contentHash": "936fccfc37aa3a13bd49e4a5b56e937bfbc92013edfcc89fa8cb61294e1adf1c",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
+        "contentHash": "515a9b768394c7152291063ebb81621d8a34ff7af073dab33b63f98cc9a28888",
         "hashScope": "ordered UTF-8 sourceFiles with path-and-newline separators"
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE",
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE",
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant retrieved at requested revision f1090bec277140d02ed202440185ad9d02ac1490; applies to that repository snapshot, not later upstream revisions. Applies to repository software and its associated documentation under the explicit root license; retain required notices. Does not establish a blanket grant for hosted-site assets, separately licensed packages, linked implementations, trademarks, or paid/proprietary offerings. The bundled emil-design-eng snapshot (LICENSE and skills/emil-design-eng/** at f1090bec277140d02ed202440185ad9d02ac1490, vendor/emil-design-eng/manifest.json) carries the same pinned MIT grant; the rest of the repository stays reference-only."
+      "licenseScope": "Explicit MIT grant retrieved at requested revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; applies to that repository snapshot, not later upstream revisions. Applies to repository software and its associated documentation under the explicit root license; retain required notices. Does not establish a blanket grant for hosted-site assets, separately licensed packages, linked implementations, trademarks, or paid/proprietary offerings. The bundled emil-design-eng snapshot (LICENSE and skills/emil-design-eng/** at 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c, vendor/emil-design-eng/manifest.json) carries the same pinned MIT grant; the rest of the repository stays reference-only."
     },
     {
       "id": "source/facebook/astryx",
@@ -8085,16 +8085,16 @@
         "source": "gepa",
         "license": "MIT",
         "url": "https://github.com/gepa-ai/gepa",
-        "revision": "8c7b697a71977980afc7537dac0881e784eef99f",
-        "gitTree": "22284bd2f2a442022fd12547845b34a2af5bad01",
-        "contentHash": "6d549f5cbb4eac9ed00ae5fa618d0e51a8cc617b930313d05f71b4b019fc1e78",
+        "revision": "ce5b0d6e3d6af6c6dbec6de2c54536bbb961d309",
+        "gitTree": "a596ad918f0cfedc7f9b108269685f7039d4ed9a",
+        "contentHash": "f73e24bca27d820714bbe34ed1f3942cdfd40ba1d4cb0fd8873bcf68e0d1702f",
         "hashScope": "selected official skill and root metadata: sorted POSIX path, NUL, SHA-256 blob hash, newline; gitTree is the upstream repository root, not this scoped snapshot"
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/gepa-ai/gepa/blob/8c7b697a71977980afc7537dac0881e784eef99f/LICENSE"
+          "https://github.com/gepa-ai/gepa/blob/ce5b0d6e3d6af6c6dbec6de2c54536bbb961d309/LICENSE"
         ]
       },
       "webRanking": false,
@@ -8277,7 +8277,7 @@
         "source": "fixing-accessibility",
         "license": "MIT",
         "url": "https://github.com/ibelick/ui-skills",
-        "revision": "73fb128d046d1f0d74c2909cd26eb616e3415567",
+        "revision": "7ef0076fce1dfa39dd2bc43b7dc13add6eda8a41",
         "contentHash": "bc4375b2fce2417ccf354e00b08cc7365e7bd11cd3ce6b5d501ff82a7d15fcd4",
         "hashScope": "Manifest snapshot scope; sorted POSIX path, NUL, SHA-256 blob hash, newline; not a Git tree hash."
       },
@@ -8285,7 +8285,7 @@
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/ibelick/ui-skills/blob/73fb128d046d1f0d74c2909cd26eb616e3415567/LICENSE"
+          "https://github.com/ibelick/ui-skills/blob/7ef0076fce1dfa39dd2bc43b7dc13add6eda8a41/LICENSE"
         ]
       },
       "licenseScope": "Exact pinned LICENSE contains an explicit MIT grant and notice-retention condition. Scope: LICENSE and skills/fixing-accessibility/** snapshot; the repository's other skills are not bundled."
@@ -8307,14 +8307,14 @@
         "source": "iart ad-video-skills",
         "license": "MIT",
         "url": "https://github.com/iart-ai/ad-video-skills",
-        "revision": "0de0f2a1c1f42a98103fc0ec436509276428372c",
-        "gitTree": "553d0cb2bc1132ab389c46713ecb2fac3e8a5b90"
+        "revision": "cc8071678f4225ee7bdccc4506f2468722bb3515",
+        "gitTree": "d3860d8f1eea5ab662ca0161214f8d1535c75a4c"
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/iart-ai/ad-video-skills/blob/0de0f2a1c1f42a98103fc0ec436509276428372c/LICENSE"
+          "https://github.com/iart-ai/ad-video-skills/blob/cc8071678f4225ee7bdccc4506f2468722bb3515/LICENSE"
         ]
       },
       "webRanking": false,
@@ -8337,14 +8337,14 @@
         "source": "iart data-animation-skills",
         "license": "MIT",
         "url": "https://github.com/iart-ai/data-animation-skills",
-        "revision": "8ce2709c3992490251e8a991535b1945f01c6865",
-        "gitTree": "c29a617cb7b2b152a16337b1c9f892fb713e5db5"
+        "revision": "6570c0c4fbc9daa8d7ac1f1163a890352344206b",
+        "gitTree": "bf38d15cf0aa5ec5a4e37ad89348a0dfa9fff58b"
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/iart-ai/data-animation-skills/blob/8ce2709c3992490251e8a991535b1945f01c6865/LICENSE"
+          "https://github.com/iart-ai/data-animation-skills/blob/6570c0c4fbc9daa8d7ac1f1163a890352344206b/LICENSE"
         ]
       },
       "licenseScope": "Exact pinned LICENSE contains an explicit MIT grant and notice-retention condition. Scope: Included motion-graphics pack."
@@ -8366,14 +8366,14 @@
         "source": "iart ecommerce-video-skills",
         "license": "MIT",
         "url": "https://github.com/iart-ai/ecommerce-video-skills",
-        "revision": "2bd0dd19c9b2df5230f5d8f7453861b9681e49b4",
-        "gitTree": "4964058fd2886d1d3529ba5cb9b8123dadfa3cef"
+        "revision": "a430fbbb7660783c421ad0a145bcc1c98d6f0b7b",
+        "gitTree": "c598d22b8b9d8727d317ce8ae4f63168ebdc342e"
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/iart-ai/ecommerce-video-skills/blob/2bd0dd19c9b2df5230f5d8f7453861b9681e49b4/LICENSE"
+          "https://github.com/iart-ai/ecommerce-video-skills/blob/a430fbbb7660783c421ad0a145bcc1c98d6f0b7b/LICENSE"
         ]
       },
       "webRanking": false,
@@ -8396,14 +8396,14 @@
         "source": "iart explainer-video-skills",
         "license": "MIT",
         "url": "https://github.com/iart-ai/explainer-video-skills",
-        "revision": "3e2d411b725d9a72939cf8e5eb81579e751373e7",
-        "gitTree": "4bd354428641721d0dc5ad27d074895752323ec0"
+        "revision": "3c13a1bc360c08503f24f9c9a99fda6d3d35de56",
+        "gitTree": "06b49e435104d1bb905a22375d0cbfcaaccbed76"
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/iart-ai/explainer-video-skills/blob/3e2d411b725d9a72939cf8e5eb81579e751373e7/LICENSE"
+          "https://github.com/iart-ai/explainer-video-skills/blob/3c13a1bc360c08503f24f9c9a99fda6d3d35de56/LICENSE"
         ]
       },
       "webRanking": false,
@@ -8426,14 +8426,14 @@
         "source": "iart freelance-motion-skills",
         "license": "MIT",
         "url": "https://github.com/iart-ai/freelance-motion-skills",
-        "revision": "d85c2b484693d0387333c778d9c95230fa1856ce",
-        "gitTree": "ca87cc8f6a7d8db8d29b2bbd9d315f674b9da6c7"
+        "revision": "9f294eb6df73cde7e2dea235f42275df11a16466",
+        "gitTree": "035c02080452d6c26ffe2c14684d7e77dc137d46"
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/iart-ai/freelance-motion-skills/blob/d85c2b484693d0387333c778d9c95230fa1856ce/LICENSE"
+          "https://github.com/iart-ai/freelance-motion-skills/blob/9f294eb6df73cde7e2dea235f42275df11a16466/LICENSE"
         ]
       },
       "webRanking": false,
@@ -8456,14 +8456,14 @@
         "source": "iart kinetic-typography-skills",
         "license": "MIT",
         "url": "https://github.com/iart-ai/kinetic-typography-skills",
-        "revision": "fccc94bd325d824235ee9e715e65abde57b6513a",
-        "gitTree": "6fb27cc6ff3df15e127b9c69e01a1dd9f7dea159"
+        "revision": "2b79c81230c6647a344844f9ed53b6fa07f3f1f9",
+        "gitTree": "fa8e141dc9cddb6e0555ef3614e23fbc0bff8b30"
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/iart-ai/kinetic-typography-skills/blob/fccc94bd325d824235ee9e715e65abde57b6513a/LICENSE"
+          "https://github.com/iart-ai/kinetic-typography-skills/blob/2b79c81230c6647a344844f9ed53b6fa07f3f1f9/LICENSE"
         ]
       },
       "licenseScope": "Exact pinned LICENSE contains an explicit MIT grant and notice-retention condition. Scope: Included web-motion pack."
@@ -8485,14 +8485,14 @@
         "source": "iart manim-skills",
         "license": "MIT",
         "url": "https://github.com/iart-ai/manim-skills",
-        "revision": "a15833c44de5108a3ee68f178a1fca126aa7c6d8",
-        "gitTree": "91c6408abe2eff68733d3ec365e32a72f83f5317"
+        "revision": "3e989cb044f6a6fed8c07b06dddade6e3463d7ac",
+        "gitTree": "446d550017153e93a876a0cb170d93284c23298f"
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/iart-ai/manim-skills/blob/a15833c44de5108a3ee68f178a1fca126aa7c6d8/LICENSE"
+          "https://github.com/iart-ai/manim-skills/blob/3e989cb044f6a6fed8c07b06dddade6e3463d7ac/LICENSE"
         ]
       },
       "webRanking": false,
@@ -8515,14 +8515,14 @@
         "source": "iart map-animation-skills",
         "license": "MIT",
         "url": "https://github.com/iart-ai/map-animation-skills",
-        "revision": "390ca98bbcf2ea88a430a69c0dcbf423e43d075d",
-        "gitTree": "4f6d546945e8c53be9a0904ab35270994a299b3c"
+        "revision": "c8ef8463f5a4a8aa35ff0c6c17f42e52bbf588a5",
+        "gitTree": "a56326efa2f3f9cfe26777848f3ab72bb954d58e"
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/iart-ai/map-animation-skills/blob/390ca98bbcf2ea88a430a69c0dcbf423e43d075d/LICENSE"
+          "https://github.com/iart-ai/map-animation-skills/blob/c8ef8463f5a4a8aa35ff0c6c17f42e52bbf588a5/LICENSE"
         ]
       },
       "webRanking": false,
@@ -8545,14 +8545,14 @@
         "source": "iart motion-design-skills",
         "license": "MIT",
         "url": "https://github.com/iart-ai/motion-design-skills",
-        "revision": "3c129f769d90a1328c209c386492333c9ac62312",
-        "gitTree": "82fc32426d562a5adddf503e2a58bdd8d11288a5"
+        "revision": "b85e50c4cef5ff17aa2187a10d49d2dae9226c74",
+        "gitTree": "b44110ae320cb2cacdc2b874b2664677499041ae"
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/iart-ai/motion-design-skills/blob/3c129f769d90a1328c209c386492333c9ac62312/LICENSE"
+          "https://github.com/iart-ai/motion-design-skills/blob/b85e50c4cef5ff17aa2187a10d49d2dae9226c74/LICENSE"
         ]
       },
       "licenseScope": "Exact pinned LICENSE contains an explicit MIT grant and notice-retention condition. Scope: Included motion-design pack."
@@ -8574,14 +8574,14 @@
         "source": "iart motion-skills",
         "license": "MIT",
         "url": "https://github.com/iart-ai/motion-skills",
-        "revision": "238dfc55aac123d4649be39adfe58c43193ca349",
-        "gitTree": "0a4f498f554dd88330eab1ecb5605b66704e13e0"
+        "revision": "e8ba1f4eb2bcca3d1639d7545b9cd2bcfe4a3c6f",
+        "gitTree": "25734a32299e01287680170cfc06e7f90e1749df"
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/iart-ai/motion-skills/blob/238dfc55aac123d4649be39adfe58c43193ca349/LICENSE"
+          "https://github.com/iart-ai/motion-skills/blob/e8ba1f4eb2bcca3d1639d7545b9cd2bcfe4a3c6f/LICENSE"
         ]
       },
       "licenseScope": "Exact pinned LICENSE contains an explicit MIT grant and notice-retention condition. Scope: Motion pack index only; linked packs assessed separately."
@@ -8603,14 +8603,14 @@
         "source": "iart text-message-video-skills",
         "license": "MIT",
         "url": "https://github.com/iart-ai/text-message-video-skills",
-        "revision": "3a800e1e9b9635fa196a07b0143c80f7e9648558",
-        "gitTree": "da64f7b71887bfe3c88ac36f95444dc331d9e800"
+        "revision": "10ae6bb32e89519c904b8f7950479ff655f839aa",
+        "gitTree": "ef0fcdcc50dcb3a65ef78379edd63b8a77e79626"
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/iart-ai/text-message-video-skills/blob/3a800e1e9b9635fa196a07b0143c80f7e9648558/LICENSE"
+          "https://github.com/iart-ai/text-message-video-skills/blob/10ae6bb32e89519c904b8f7950479ff655f839aa/LICENSE"
         ]
       },
       "webRanking": false,
@@ -8633,14 +8633,14 @@
         "source": "iart tiktok-video-skills",
         "license": "MIT",
         "url": "https://github.com/iart-ai/tiktok-video-skills",
-        "revision": "2a775336b5a638cbf8a61dbd785f9a1b649be016",
-        "gitTree": "61aae28da0a8adaaff22ad0bef62f3c2c5de6e05"
+        "revision": "88e7152fc2710fa16852d013959cfd988a8adc8b",
+        "gitTree": "5595204a256cad2e887fd72c48c11e6d1d8cf672"
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/iart-ai/tiktok-video-skills/blob/2a775336b5a638cbf8a61dbd785f9a1b649be016/LICENSE"
+          "https://github.com/iart-ai/tiktok-video-skills/blob/88e7152fc2710fa16852d013959cfd988a8adc8b/LICENSE"
         ]
       },
       "webRanking": false,
@@ -8663,14 +8663,14 @@
         "source": "iart web-animation-skills",
         "license": "MIT",
         "url": "https://github.com/iart-ai/web-animation-skills",
-        "revision": "b6dba3eb759726845a44163ff0bad70dd9e7fbb6",
-        "gitTree": "b3716d4c1f9da41c60f17c8018f5f9ff41baf284"
+        "revision": "ed3a045192679b24d32090ee7a983871311ababd",
+        "gitTree": "5d61b1cc29f167112bfee5e2300325858c2d475c"
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/iart-ai/web-animation-skills/blob/b6dba3eb759726845a44163ff0bad70dd9e7fbb6/LICENSE"
+          "https://github.com/iart-ai/web-animation-skills/blob/ed3a045192679b24d32090ee7a983871311ababd/LICENSE"
         ]
       },
       "licenseScope": "Exact pinned LICENSE contains an explicit MIT grant and notice-retention condition. Scope: Included web-motion pack."
@@ -8692,14 +8692,14 @@
         "source": "iart webgl-animation-skills",
         "license": "MIT",
         "url": "https://github.com/iart-ai/webgl-animation-skills",
-        "revision": "50697d659fbf70152f48f9f8aadf1efe78bbdde1",
-        "gitTree": "be55aec884d7c76562ddaf59ee368c48c70acd84"
+        "revision": "0041933813688c357804f7b13dcb85095c5a3210",
+        "gitTree": "d4665c7c8be3abc036f5db7e5f94cb8f34c91b20"
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/iart-ai/webgl-animation-skills/blob/50697d659fbf70152f48f9f8aadf1efe78bbdde1/LICENSE"
+          "https://github.com/iart-ai/webgl-animation-skills/blob/0041933813688c357804f7b13dcb85095c5a3210/LICENSE"
         ]
       },
       "licenseScope": "Exact pinned LICENSE contains an explicit MIT grant and notice-retention condition. Scope: Included webgl pack."
@@ -8721,14 +8721,14 @@
         "source": "iart youtube-video-skills",
         "license": "MIT",
         "url": "https://github.com/iart-ai/youtube-video-skills",
-        "revision": "f3df381d65abe5078f5ed410bbc3ed72e7cb92bd",
-        "gitTree": "d20eeb9c6022206b94073b98cb7799ee90ea7918"
+        "revision": "7838388571a3a6301bf5633e91941f9dfed0abfd",
+        "gitTree": "385c75534e19fbdc74cab36653871123fa021afe"
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/iart-ai/youtube-video-skills/blob/f3df381d65abe5078f5ed410bbc3ed72e7cb92bd/LICENSE"
+          "https://github.com/iart-ai/youtube-video-skills/blob/7838388571a3a6301bf5633e91941f9dfed0abfd/LICENSE"
         ]
       },
       "webRanking": false,
@@ -8752,15 +8752,15 @@
         "source": "make-interfaces-feel-better",
         "license": "MIT",
         "url": "https://github.com/jakubkrehel/make-interfaces-feel-better",
-        "revision": "35545ea1512ad59fa463e6b1f95ca9c052981fe6",
-        "contentHash": "d60a83f0eccb7d6e5b6a1e4eab47e1e1ee9d0a985f4737c8d34decc88db16961",
+        "revision": "6d9f2f1df10e8ce2ae1708598a73b0506fb98794",
+        "contentHash": "f806bccaf7f7baa2d15ba936bbfff83e4c69dc31c6197fd170f008421a14af1e",
         "hashScope": "Manifest snapshot scope; sorted POSIX path, NUL, SHA-256 blob hash, newline; not a Git tree hash."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/jakubkrehel/make-interfaces-feel-better/blob/35545ea1512ad59fa463e6b1f95ca9c052981fe6/LICENSE"
+          "https://github.com/jakubkrehel/make-interfaces-feel-better/blob/6d9f2f1df10e8ce2ae1708598a73b0506fb98794/LICENSE"
         ]
       },
       "licenseScope": "Exact pinned LICENSE contains an explicit MIT grant and notice-retention condition. Scope: LICENSE, README.md and skills/make-interfaces-feel-better/** snapshot."
@@ -9043,17 +9043,17 @@
         "source": "mengto-skills",
         "license": "MIT",
         "url": "https://github.com/mengto/skills",
-        "revision": "1de14e21b2ba8937c0f7f6ddca581cf7cd9d94af",
-        "gitTree": "8f1fd0384a302803c8dff9b9cd06438face91e56",
-        "contentHash": "086de3eb7cece47628c80571a7f7184b0d6eab19a20ba8227196823e19cd01d5",
+        "revision": "409b4d04c98559bbd9d3344260e3a0878df30d43",
+        "gitTree": "d2646e5f32393f8652f411aeb35fbb4fc118b36d",
+        "contentHash": "016c63e7476ba0c7502f74b878ba33760b5272b2b3c4b0cc1079340bf9962182",
         "hashScope": "Manifest snapshot scope; sorted POSIX path, NUL, SHA-256 blob hash, newline; not a Git tree hash."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/MengTo/Skills/blob/1de14e21b2ba8937c0f7f6ddca581cf7cd9d94af/LICENSE",
-          "https://github.com/MengTo/Skills/blob/1de14e21b2ba8937c0f7f6ddca581cf7cd9d94af/agent-skills/web-design/scroll-world-storytelling/demo/threejs/assets/THREE-LICENSE.txt"
+          "https://github.com/MengTo/Skills/blob/409b4d04c98559bbd9d3344260e3a0878df30d43/LICENSE",
+          "https://github.com/MengTo/Skills/blob/409b4d04c98559bbd9d3344260e3a0878df30d43/agent-skills/web-design/scroll-world-storytelling/demo/threejs/assets/THREE-LICENSE.txt"
         ]
       },
       "licenseScope": "Exact pinned LICENSE contains an explicit MIT grant and notice-retention condition. Scope: Complete tracked snapshot; nested third-party THREE-LICENSE.txt requires separate attribution. The pinned nested THREE-LICENSE.txt independently grants MIT for bundled three.js material, Copyright © 2010-2025 three.js authors; preserve that notice as well as the repository notice."
@@ -9076,15 +9076,15 @@
         "source": "playwright-cli",
         "license": "Apache-2.0",
         "url": "https://github.com/microsoft/playwright-cli",
-        "revision": "db2a0fad3a768319a16e3a2bb8078cf62e690b07",
-        "contentHash": "b09d73b7064556c4db737afa8b126bf7b47cf215f4dc9c48c346851fb7b53e29",
+        "revision": "c872a33cec77fa03c28fa7c6d1ad99d15d04ce42",
+        "contentHash": "29264138d0aa2327275d47b60d4a65b73719394080a3ce31ee9c6dfd4430b662",
         "hashScope": "Manifest snapshot scope; sorted POSIX path, NUL, SHA-256 blob hash, newline; not a Git tree hash."
       },
       "license": {
         "state": "verified",
         "id": "Apache-2.0",
         "evidence": [
-          "https://github.com/microsoft/playwright-cli/blob/db2a0fad3a768319a16e3a2bb8078cf62e690b07/LICENSE"
+          "https://github.com/microsoft/playwright-cli/blob/c872a33cec77fa03c28fa7c6d1ad99d15d04ce42/LICENSE"
         ]
       },
       "licenseScope": "Exact pinned LICENSE contains the Apache License 2.0; no NOTICE file exists at the reviewed revision; retain the license and copyright notices. Scope: LICENSE, README.md and skills/playwright-cli/** snapshot of the skill text; the pipeline never installs the CLI."
@@ -9217,16 +9217,16 @@
         "source": "UI UX Pro Max companion baseline",
         "license": "MIT",
         "url": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
-        "revision": "713eef51b04efc98d6fa565323b495f7c9c89fd4"
+        "revision": "7e935ad920b390035e0e139bce555d091d14c70b"
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill/blob/713eef51b04efc98d6fa565323b495f7c9c89fd4/LICENSE"
+          "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill/blob/7e935ad920b390035e0e139bce555d091d14c70b/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant retrieved at requested revision 713eef51b04efc98d6fa565323b495f7c9c89fd4; applies to that repository snapshot, not later upstream revisions. Applies to repository software and its associated documentation under the explicit root license; retain required notices. Does not establish a blanket grant for hosted-site assets, separately licensed packages, linked implementations, trademarks, or paid/proprietary offerings."
+      "licenseScope": "Explicit MIT grant retrieved at requested revision 7e935ad920b390035e0e139bce555d091d14c70b; applies to that repository snapshot, not later upstream revisions. Applies to repository software and its associated documentation under the explicit root license; retain required notices. Does not establish a blanket grant for hosted-site assets, separately licensed packages, linked implementations, trademarks, or paid/proprietary offerings."
     },
     {
       "id": "source/pbakaus/impeccable",
@@ -9267,16 +9267,16 @@
         "source": "PixiJS v8 production 2D rendering",
         "license": "MIT",
         "url": "https://github.com/pixijs/pixijs-skills",
-        "revision": "83760c6f53462ca9cecd68055041f5a8c94758ce"
+        "revision": "93784384269b1d8677fb2ae166c81d750cba4281"
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/pixijs/pixijs-skills/blob/83760c6f53462ca9cecd68055041f5a8c94758ce/LICENSE"
+          "https://github.com/pixijs/pixijs-skills/blob/93784384269b1d8677fb2ae166c81d750cba4281/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant retrieved at requested revision 83760c6f53462ca9cecd68055041f5a8c94758ce; applies to that repository snapshot, not later upstream revisions. Applies to repository software and its associated documentation under the explicit root license; retain required notices. Does not establish a blanket grant for hosted-site assets, separately licensed packages, linked implementations, trademarks, or paid/proprietary offerings."
+      "licenseScope": "Explicit MIT grant retrieved at requested revision 93784384269b1d8677fb2ae166c81d750cba4281; applies to that repository snapshot, not later upstream revisions. Applies to repository software and its associated documentation under the explicit root license; retain required notices. Does not establish a blanket grant for hosted-site assets, separately licensed packages, linked implementations, trademarks, or paid/proprietary offerings."
     },
     {
       "id": "source/project-components",
@@ -9535,7 +9535,7 @@
         "source": "shadcn",
         "license": "MIT",
         "url": "https://github.com/shadcn-ui/ui",
-        "revision": "4aaea19d9cff3e0908e12a8c1d504b8c5ec34610"
+        "revision": "055aa6b7837b1808456a24beb4c97a677864aa82"
       },
       "license": {
         "state": "verified",
@@ -9546,11 +9546,11 @@
           "https://api.github.com/repos/shadcn-ui/ui/git/blobs/fad4d887a681dd49233e5ed01ee2c7a1513089a0",
           "https://ui.shadcn.com/",
           "https://github.com/shadcn-ui/ui",
-          "https://github.com/shadcn-ui/ui/blob/4aaea19d9cff3e0908e12a8c1d504b8c5ec34610/LICENSE.md",
-          "https://github.com/shadcn-ui/ui/blob/4aaea19d9cff3e0908e12a8c1d504b8c5ec34610/LICENSE.md"
+          "https://github.com/shadcn-ui/ui/blob/055aa6b7837b1808456a24beb4c97a677864aa82/LICENSE.md",
+          "https://github.com/shadcn-ui/ui/blob/055aa6b7837b1808456a24beb4c97a677864aa82/LICENSE.md"
         ]
       },
-      "licenseScope": "MIT license text verified at existing registry revision 4aaea19d9cff3e0908e12a8c1d504b8c5ec34610; retain copyright and license notices. Paid products, linked source and unrelated hosted-site assets are not licensed by this root grant. The bundled shadcn skill snapshot (LICENSE.md and skills/shadcn/** at 4aaea19d9cff3e0908e12a8c1d504b8c5ec34610, vendor/shadcn/manifest.json) is guidance text under the same MIT grant; no component source is bundled."
+      "licenseScope": "MIT license text verified at existing registry revision 055aa6b7837b1808456a24beb4c97a677864aa82; retain copyright and license notices. Paid products, linked source and unrelated hosted-site assets are not licensed by this root grant. The bundled shadcn skill snapshot (LICENSE.md and skills/shadcn/** at 055aa6b7837b1808456a24beb4c97a677864aa82, vendor/shadcn/manifest.json) is guidance text under the same MIT grant; no component source is bundled."
     },
     {
       "id": "source/shadcnblocks",
@@ -9843,7 +9843,7 @@
       "availability": "bundled-implementation",
       "aliases": [
         "https://github.com/vojtaholik/good-css",
-        "https://github.com/vojtaholik/good-css/tree/a6804e75b5ee946d6b007ac20734f958d7938bca"
+        "https://github.com/vojtaholik/good-css/tree/35e0e8c673854ca34d8e1879038e44834c855dfb"
       ],
       "localPaths": {
         "guide": "references/good-css.md",
@@ -9854,18 +9854,18 @@
         "source": "good-css",
         "license": "MIT AND OFL-1.1",
         "url": "https://github.com/vojtaholik/good-css",
-        "revision": "a6804e75b5ee946d6b007ac20734f958d7938bca",
-        "gitTree": "24e09738cb61dd42078c5054aabd2ac970eb1c49",
-        "contentHash": "bfe7189dd6f562e34e24e34b6869b95ca507ea1a8da38ccca938821b4571c430",
+        "revision": "35e0e8c673854ca34d8e1879038e44834c855dfb",
+        "gitTree": "9815584badca18eb4854f194da7b67efd06130f6",
+        "contentHash": "c31628f811e7c8e1868c6c15078212857f6a33dc25a8614c6fdf0fabf62d1efd",
         "hashScope": "Manifest snapshot scope; sorted POSIX path, NUL, SHA-256 blob hash, newline; not a Git tree hash."
       },
       "license": {
         "state": "verified",
         "id": "MIT AND OFL-1.1",
         "evidence": [
-          "https://github.com/vojtaholik/good-css/blob/a6804e75b5ee946d6b007ac20734f958d7938bca/LICENSE",
-          "https://github.com/vojtaholik/good-css/blob/a6804e75b5ee946d6b007ac20734f958d7938bca/harness/public/fonts/Inter-OFL.txt",
-          "https://github.com/vojtaholik/good-css/blob/a6804e75b5ee946d6b007ac20734f958d7938bca/harness/public/fonts/GeistMono-OFL.txt"
+          "https://github.com/vojtaholik/good-css/blob/35e0e8c673854ca34d8e1879038e44834c855dfb/LICENSE",
+          "https://github.com/vojtaholik/good-css/blob/35e0e8c673854ca34d8e1879038e44834c855dfb/harness/public/fonts/Inter-OFL.txt",
+          "https://github.com/vojtaholik/good-css/blob/35e0e8c673854ca34d8e1879038e44834c855dfb/harness/public/fonts/GeistMono-OFL.txt"
         ]
       },
       "adoptionBoundary": {
@@ -9916,16 +9916,16 @@
         "source": "wevm/frog",
         "license": "MIT",
         "url": "https://github.com/wevm/frog",
-        "revision": "cbe18b192b59a8770466ee9f193b17294778c8a9"
+        "revision": "ec05812cf8b7090dcfd2827c630bf85aea44d734"
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/wevm/frog/blob/cbe18b192b59a8770466ee9f193b17294778c8a9/LICENSE"
+          "https://github.com/wevm/frog/blob/ec05812cf8b7090dcfd2827c630bf85aea44d734/LICENSE"
         ]
       },
-      "licenseScope": "The stack tool is pinned at cbe18b192b59a8770466ee9f193b17294778c8a9. Actual LICENSE was fetched at that exact revision and contains complete MIT grant, Copyright (c) 2025-present weth, LLC, with notice retention. This supersedes the external slice initial current-main evidence; it does not grant rights to external services or linked materials."
+      "licenseScope": "The stack tool is pinned at ec05812cf8b7090dcfd2827c630bf85aea44d734. Actual LICENSE was fetched at that exact revision and contains complete MIT grant, Copyright (c) 2025-present weth, LLC, with notice retention. This supersedes the external slice initial current-main evidence; it does not grant rights to external services or linked materials."
     },
     {
       "id": "source/garrytan/gstack",
@@ -9969,14 +9969,14 @@
         "source": "Motion",
         "license": "MIT",
         "url": "https://github.com/motiondivision/motion",
-        "revision": "7415b6cd14dfdb35d91dfc5b9758994444cc228b"
+        "revision": "133051adce0f0b0bfb661f9f517dc2250ba3a288"
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
           "https://api.github.com/repos/motiondivision/motion/license",
-          "https://github.com/motiondivision/motion/blob/7415b6cd14dfdb35d91dfc5b9758994444cc228b/LICENSE.md",
+          "https://github.com/motiondivision/motion/blob/133051adce0f0b0bfb661f9f517dc2250ba3a288/LICENSE.md",
           "https://api.github.com/repos/motiondivision/motion/git/blobs/81110442c72270dd317667cc52181522647401f2",
           "2026-10-12 verified with gh api repos/motiondivision/motion/license; full MIT grant decoded and pinned license inspected; retain copyright and permission notices."
         ]
@@ -10006,12 +10006,12 @@
         "state": "verified",
         "id": "LicenseRef-MIT-Commons-Clause",
         "evidence": [
-          "https://github.com/imskyleen/animate-ui/blob/22a9236ae107328f8564edb7e3299375da3247af/LICENSE.md",
-          "https://github.com/imskyleen/animate-ui/blob/22a9236ae107328f8564edb7e3299375da3247af/README.md",
+          "https://github.com/imskyleen/animate-ui/blob/9873c628afdcdb030e74dc2930774a2aa473bd39/LICENSE.md",
+          "https://github.com/imskyleen/animate-ui/blob/9873c628afdcdb030e74dc2930774a2aa473bd39/README.md",
           "2026-11-12 read at the locked revision: MIT text with a Commons Clause restriction; the published packages declare SEE LICENSE IN LICENSE.md."
         ]
       },
-      "licenseScope": "LICENSE.md at revision 22a9236ae107328f8564edb7e3299375da3247af is the MIT text limited to use \"as part of an application, website, or product\" plus a Commons Clause restriction: any commercial use is allowed, selling or redistributing the components themselves in their original form, alone or in a bundle, is not. Copyright (c) 2025 Elliot Sutton. It is never plain MIT. This package therefore ships names, import paths, install commands and its own descriptions only, and no upstream component source; a project installs the components itself from npm or the upstream registry."
+      "licenseScope": "LICENSE.md at revision 9873c628afdcdb030e74dc2930774a2aa473bd39 is the MIT text limited to use \"as part of an application, website, or product\" plus a Commons Clause restriction: any commercial use is allowed, selling or redistributing the components themselves in their original form, alone or in a bundle, is not. Copyright (c) 2025 Elliot Sutton. It is never plain MIT. This package therefore ships names, import paths, install commands and its own descriptions only, and no upstream component source; a project installs the components itself from npm or the upstream registry."
     },
     {
       "id": "motion-reference/3d-coverflow",
@@ -64163,17 +64163,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -64236,17 +64236,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -64317,17 +64317,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -64398,17 +64398,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -64477,17 +64477,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -64557,17 +64557,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -64624,17 +64624,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -64692,17 +64692,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -64774,17 +64774,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -64844,17 +64844,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -64912,17 +64912,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -64983,17 +64983,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -65043,17 +65043,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -65112,17 +65112,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -65182,17 +65182,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -65257,17 +65257,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -65326,17 +65326,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -65394,17 +65394,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -65470,17 +65470,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -65541,17 +65541,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -65606,17 +65606,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -65690,17 +65690,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -65765,17 +65765,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -65840,17 +65840,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -65923,17 +65923,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -66008,17 +66008,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -66092,17 +66092,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -66165,17 +66165,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -66236,17 +66236,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -66306,17 +66306,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -66378,17 +66378,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -66447,17 +66447,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -66525,17 +66525,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -66602,17 +66602,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -66675,17 +66675,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -66756,17 +66756,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -66820,17 +66820,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -66896,17 +66896,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -66963,17 +66963,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -67035,17 +67035,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -67114,17 +67114,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -67186,17 +67186,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -67257,17 +67257,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -67334,17 +67334,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -67406,17 +67406,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -67475,17 +67475,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -67546,17 +67546,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -67614,17 +67614,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -67685,17 +67685,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -67753,17 +67753,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -67829,17 +67829,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -67900,17 +67900,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -67971,17 +67971,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -68043,17 +68043,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -68126,17 +68126,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -68191,17 +68191,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -68270,17 +68270,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -68340,17 +68340,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -68413,17 +68413,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -68483,17 +68483,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -68551,17 +68551,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -68620,17 +68620,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -68686,17 +68686,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -68763,17 +68763,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -68831,17 +68831,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -68907,17 +68907,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -68978,17 +68978,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -69057,17 +69057,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -69134,17 +69134,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -69199,17 +69199,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -69276,17 +69276,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -69353,17 +69353,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -69418,17 +69418,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -69497,17 +69497,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -69559,17 +69559,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -69635,17 +69635,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -69704,17 +69704,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -69771,17 +69771,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -69837,17 +69837,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -69910,17 +69910,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -69977,17 +69977,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -70050,17 +70050,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -70121,17 +70121,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -70190,17 +70190,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -70260,17 +70260,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -70333,17 +70333,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -70402,17 +70402,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -70469,17 +70469,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -70546,17 +70546,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -70614,17 +70614,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {
@@ -70679,17 +70679,17 @@
         "source": "emilkowalski/skills animation-vocabulary glossary",
         "license": "MIT",
         "url": "https://github.com/emilkowalski/skills",
-        "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
+        "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
         "attribution": "Term and definition quoted verbatim from skills/animation-vocabulary/SKILL.md; aliases, close-term notes and local links are this repository's."
       },
       "license": {
         "state": "verified",
         "id": "MIT",
         "evidence": [
-          "https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/LICENSE"
+          "https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/LICENSE"
         ]
       },
-      "licenseScope": "Explicit MIT grant at revision f1090bec277140d02ed202440185ad9d02ac1490; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
+      "licenseScope": "Explicit MIT grant at revision 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c; covers the quoted term and definition. Aliases, close-term notes and local links are project-owned.",
       "webRanking": false
     },
     {

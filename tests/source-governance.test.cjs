@@ -28,8 +28,8 @@ const sourceRefs = {
   },
   "skill/references/animation-opportunity-and-review.md": {
     sourceId: "emilkowalski-animation-review",
-    revision: "f1090bec277140d02ed202440185ad9d02ac1490",
-    contentHash: "936fccfc37aa3a13bd49e4a5b56e937bfbc92013edfcc89fa8cb61294e1adf1c",
+    revision: "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
+    contentHash: "515a9b768394c7152291063ebb81621d8a34ff7af073dab33b63f98cc9a28888",
     license: "MIT",
     reviewedAt: "2026-08-26T00:00:00.000Z",
     sourceFiles: [
@@ -41,8 +41,8 @@ const sourceRefs = {
   },
   "skill/references/react-doctor.md": {
     sourceId: "millionco-react-doctor",
-    revision: "9791c32f61fb1477a4f8dd596ff80184ad26b2e3",
-    contentHash: "9185b6f241eece1f0f9bb4c6264f50ad8fa081d379fe788c51593a2d343ffa24",
+    revision: "b6ba66ef427bf81995555e380eeba679f8b5d305",
+    contentHash: "a08bc685fb7560da325e4cb14119edc4ee27f90aac7ccdc5f9ece1759a787f1e",
     license: "LicenseRef-Million-Modified-MIT",
     reviewedAt: "2026-10-13T00:00:00.000Z",
     sourceFiles: ["skills/react-doctor/SKILL.md", "skills/react-doctor/references/explain.md"],
@@ -57,7 +57,7 @@ const sourceRefs = {
   },
   "skill/references/ibelick-ui-skills.md": {
     sourceId: "ibelick-ui-skills-rules",
-    revision: "73fb128d046d1f0d74c2909cd26eb616e3415567",
+    revision: "7ef0076fce1dfa39dd2bc43b7dc13add6eda8a41",
     contentHash: "d74377eed8c3234594d7236d216aeba4f7bb01dcbdd22139f2b69d094b5578bb",
     license: "MIT",
     reviewedAt: "2026-11-11T00:00:00.000Z",
@@ -65,7 +65,7 @@ const sourceRefs = {
   },
   "skill/references/animate-ui.md": {
     sourceId: "animate-ui",
-    revision: "22a9236ae107328f8564edb7e3299375da3247af",
+    revision: "9873c628afdcdb030e74dc2930774a2aa473bd39",
     contentHash: "8ff98fece9000f75e9b97574a372ea07524e6676cb050b081fa65978ef561e2a",
     license: "LicenseRef-MIT-Commons-Clause",
     reviewedAt: "2026-11-12T00:00:00.000Z",
@@ -308,16 +308,16 @@ test("the existing audit reports current, drifted, and missing evidence determin
 const referenceSkills = {
   "skill/references/reference-skill-motion-web.md": {
     sourceId: "motion-web-reference-skill",
-    url: "https://github.com/feitangyuan/motion-web/tree/5f4e40f1253e11e28850d08dce28b9b7e4320115",
-    revision: "5f4e40f1253e11e28850d08dce28b9b7e4320115",
-    contentHash: "68945441b0bbd6b79f2849206c019c2c7bc01a13a2bbd5c267c9c3d5c069c1b4",
+    url: "https://github.com/feitangyuan/motion-web/tree/536ef6551530ff0c6b091e2b7786d3ecc21f26fa",
+    revision: "536ef6551530ff0c6b091e2b7786d3ecc21f26fa",
+    contentHash: "872f0816f29cb301d4b750c7a562a0c19e7d591853c7d80c0ae495995158e180",
     license: "CC-BY-NC-4.0",
   },
   "skill/references/reference-skill-onetake.md": {
     sourceId: "onetake-reference-skill",
-    url: "https://github.com/feitangyuan/onetake/tree/013a61ac8d98883c73733f59c06e49e9ba444f14",
-    revision: "013a61ac8d98883c73733f59c06e49e9ba444f14",
-    contentHash: "b1748e94eb8e09a13a247345d8d9eee9b244469e7557d65e5d7dec8984ad2d5d",
+    url: "https://github.com/feitangyuan/onetake/tree/4e024be4c6c696b260f39a35aee6bd56d303b679",
+    revision: "4e024be4c6c696b260f39a35aee6bd56d303b679",
+    contentHash: "37341e8988f55a3c3e7aff59bb060a54ec017e64fc41a948e026ba36504410f5",
     license: "PolyForm-Noncommercial-1.0.0",
   },
 };

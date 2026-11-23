@@ -2,11 +2,11 @@
 sourceMeta:
   id: emilkowalski-animation-review
   kind: github
-  url: https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/skills/animation-vocabulary/SKILL.md
-  reviewedRevision: f1090bec277140d02ed202440185ad9d02ac1490
-  reviewedContentHash: 40d2b27adfdfeb0570a9f20e7d0255109d9233c50603878bcd0dcd04c923fd94
+  url: https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/skills/animation-vocabulary/SKILL.md
+  reviewedRevision: 64eb3deb9a5fbfa041faf783e0bc3fd635872e9c
+  reviewedContentHash: 42df33f1583483cc441fcd76693b3399148602705d2e9b8a26665d6b1951cd0b
   contentHashScope: single-source UTF-8 bytes at reviewedRevision
-  reviewedAt: 2026-11-11T00:00:00.000Z
+  reviewedAt: 2026-11-23T00:00:00.000Z
   freshnessDays: 365
   license: MIT
   useBoundary: reference-only; terms and definitions quoted verbatim with attribution; do not install or execute upstream content
@@ -162,7 +162,7 @@ are descriptions to look up, not names to record. This is guidance; no gate read
 
 Terms, category names and definitions are quoted verbatim from
 `skills/animation-vocabulary/SKILL.md` in
-[emilkowalski/skills](https://github.com/emilkowalski/skills/blob/f1090bec277140d02ed202440185ad9d02ac1490/skills/animation-vocabulary/SKILL.md)
+[emilkowalski/skills](https://github.com/emilkowalski/skills/blob/64eb3deb9a5fbfa041faf783e0bc3fd635872e9c/skills/animation-vocabulary/SKILL.md)
 (MIT, Copyright (c) Emil Kowalski; see `THIRD_PARTY_NOTICES.md`). Aliases, close-term differences,
 local links, the anti-pattern records and this guide are project-owned. The upstream skill is not
 installed or executed.

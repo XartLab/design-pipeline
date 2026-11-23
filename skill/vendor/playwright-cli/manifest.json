@@ -3,11 +3,11 @@
   "name": "playwright-cli",
   "source": {
     "repository": "https://github.com/microsoft/playwright-cli",
-    "revision": "db2a0fad3a768319a16e3a2bb8078cf62e690b07",
-    "gitTree": "de743b8ce92d494d70f7eb51664571a48d72cadb",
-    "committedAt": "2026-11-03T09:14:04-08:00",
+    "revision": "c872a33cec77fa03c28fa7c6d1ad99d15d04ce42",
+    "gitTree": "a9c949ec4dbbe4e833e035f3952dfcf745780524",
+    "committedAt": "2026-11-18T10:50:12-08:00",
     "license": "Apache-2.0",
-    "reviewedAt": "2026-11-04",
+    "reviewedAt": "2026-11-23",
     "scope": [
       "skills/playwright-cli/**",
       "LICENSE",
@@ -26,8 +26,8 @@
   "snapshot": {
     "root": "upstream",
     "fileCount": 13,
-    "byteCount": 107353,
-    "treeSha256": "b09d73b7064556c4db737afa8b126bf7b47cf215f4dc9c48c346851fb7b53e29",
+    "byteCount": 110662,
+    "treeSha256": "29264138d0aa2327275d47b60d4a65b73719394080a3ce31ee9c6dfd4430b662",
     "executableFiles": [],
     "objects": [
       {
@@ -40,9 +40,9 @@
       {
         "path": "README.md",
         "mode": "100644",
-        "oid": "ed86206ae4176692b9f17c10b53f668fff2b84d5",
-        "size": 26504,
-        "sha256": "0ebce0d1585577c7fd370f6e5f47133500f5d2f0871a4201519d11706f803746"
+        "oid": "8b3a377017a9263b8d33de3463187440af9b19ba",
+        "size": 27569,
+        "sha256": "c41510c25edf5383a7242dd1ad1de08a2a47d2a76068558028a180ca9762cb53"
       },
       {
         "path": "skills/playwright-cli/references/element-attributes.md",
@@ -75,16 +75,16 @@
       {
         "path": "skills/playwright-cli/references/running-code.md",
         "mode": "100644",
-        "oid": "5bf7e8cfb52112da2ecd9600631fa8365fbb90f1",
-        "size": 5913,
-        "sha256": "3029569ed6ddaeffc0b87badde967efdc2973b1677f078830098146eb3b78ebe"
+        "oid": "565eefdb584a6e904ceb86701fd789977840a6d4",
+        "size": 5968,
+        "sha256": "eac97e0b77e723f8b1d7b64f276f92efa72f74453f45a805352d27ea1853a495"
       },
       {
         "path": "skills/playwright-cli/references/session-management.md",
         "mode": "100644",
-        "oid": "eb1bde35d9ce619d5cd939384d656e5c91310ebd",
-        "size": 5929,
-        "sha256": "a4f16271f95d3eec7bc56e659d8adbb8f6ad7d603a6fa15efdcdd071a50c6ce3"
+        "oid": "96f126b56e1b0b6d91d918f6b2987d9ec68d4dfd",
+        "size": 7698,
+        "sha256": "2f4d953136cbfb998136095c064c38f4223ea049d6e13610e17db078dde8971c"
       },
       {
         "path": "skills/playwright-cli/references/storage-state.md",
@@ -117,9 +117,9 @@
       {
         "path": "skills/playwright-cli/SKILL.md",
         "mode": "100644",
-        "oid": "aa8dea4bba35a00b362fa925b25b8058b9a28fa6",
-        "size": 15702,
-        "sha256": "b07a6cbe4e5b638046fe0b9df0e84783cb9899f0aed3db1eef915601c3260a64"
+        "oid": "4ad911bdb742adc1728ea4b3eb6c208e379386fa",
+        "size": 16122,
+        "sha256": "1c4c34000f6102ee71fe91bf25351a221f7da37f48f2d556e1756f66e17d356f"
       }
     ]
   },

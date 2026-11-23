@@ -19,7 +19,7 @@ const {
 test("bundles licensed iart packs and excludes the unlicensed pack", () => {
   const { manifest } = loadIartCatalog(manifestFile);
   assert.equal(manifest.index.repository, "https://github.com/iart-ai/motion-skills");
-  assert.equal(manifest.index.revision, "238dfc55aac123d4649be39adfe58c43193ca349");
+  assert.equal(manifest.index.revision, "e8ba1f4eb2bcca3d1639d7545b9cd2bcfe4a3c6f");
   assert.equal(manifest.packs.length, 15);
   assert.equal(manifest.skills.length, 50);
   assert.deepEqual(manifest.excluded.map((entry) => entry.id), ["generative-illustration-skills"]);

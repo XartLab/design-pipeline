@@ -913,7 +913,7 @@
     {
       "id": "ibelick-ui-skills-rules",
       "repo": "https://github.com/ibelick/ui-skills",
-      "revision": "73fb128d046d1f0d74c2909cd26eb616e3415567",
+      "revision": "7ef0076fce1dfa39dd2bc43b7dc13add6eda8a41",
       "license": "MIT",
       "record": "references/ibelick-ui-skills.md",
       "files": [

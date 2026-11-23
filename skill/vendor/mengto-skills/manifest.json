@@ -2,20 +2,20 @@
   "schema": "design-pipeline.mengto-skills-source.v1",
   "source": {
     "repository": "https://github.com/MengTo/skills",
-    "revision": "1de14e21b2ba8937c0f7f6ddca581cf7cd9d94af",
-    "gitTree": "8f1fd0384a302803c8dff9b9cd06438face91e56",
-    "committedAt": "2026-11-03T14:26:41+08:00",
+    "revision": "409b4d04c98559bbd9d3344260e3a0878df30d43",
+    "gitTree": "d2646e5f32393f8652f411aeb35fbb4fc118b36d",
+    "committedAt": "2026-11-23T20:10:45+08:00",
     "license": "MIT",
-    "reviewedAt": "2026-11-04",
+    "reviewedAt": "2026-11-23",
     "scope": [
       "**"
     ]
   },
   "snapshot": {
     "root": "upstream",
-    "fileCount": 1447,
-    "byteCount": 140866597,
-    "treeSha256": "086de3eb7cece47628c80571a7f7184b0d6eab19a20ba8227196823e19cd01d5",
+    "fileCount": 1921,
+    "byteCount": 199325376,
+    "treeSha256": "016c63e7476ba0c7502f74b878ba33760b5272b2b3c4b0cc1079340bf9962182",
     "executableFiles": [
       "agent-skills/codex/audit-reference-originality/scripts/build_evidence_inventory.py",
       "agent-skills/codex/browser-video-recording/scripts/render_browser_demo.py",
@@ -31,6 +31,19 @@
       "agent-skills/game-combat/game-dev-combat-animation/scripts/tools/vidcompose.py",
       "agent-skills/game-development/build-rigged-game-assets/scripts/validate_asset_manifest.py",
       "agent-skills/game-development/build-vesperfall-review-assets/scripts/validate_pair.py",
+      "agent-skills/media/digital-twin/scripts/crops.sh",
+      "agent-skills/media/digital-twin/scripts/extract_frames.sh",
+      "agent-skills/media/digital-twin/scripts/hf_seedream_batch.sh",
+      "agent-skills/media/digital-twin/scripts/measure_drafts.sh",
+      "agent-skills/media/digital-twin/scripts/run_round.sh",
+      "agent-skills/media/digital-twin/scripts/voice/build_ref.py",
+      "agent-skills/media/digital-twin/scripts/voice/el.sh",
+      "agent-skills/media/digital-twin/scripts/voice/make_dataset.py",
+      "agent-skills/media/digital-twin/scripts/voice/make_ivc.py",
+      "agent-skills/media/digital-twin/scripts/voice/scan_dataset.py",
+      "agent-skills/media/digital-twin/scripts/voice/score_voice.py",
+      "agent-skills/media/digital-twin/scripts/voice/tts_line.sh",
+      "agent-skills/media/digital-twin/scripts/voice/watch_train.sh",
       "agent-skills/media/html-reel/scripts/bubble.mjs",
       "agent-skills/media/html-reel/scripts/decursor.py",
       "agent-skills/media/html-reel/scripts/fil-words.py",
@@ -42,6 +55,36 @@
       "agent-skills/media/html-reel/scripts/timemap.py",
       "agent-skills/media/html-reel/scripts/verify-export.mjs",
       "agent-skills/media/html-reel/scripts/vo-words.py",
+      "agent-skills/media/url-to-motion-design/scripts/fetch-source.mjs",
+      "agent-skills/media/url-to-motion-design/scripts/panel.py",
+      "agent-skills/media/url-to-motion-design/scripts/publish-list.mjs",
+      "agent-skills/media/url-to-motion-design/scripts/render.mjs",
+      "agent-skills/media/url-to-motion-design/scripts/screening.mjs",
+      "agent-skills/media/url-to-motion-design/scripts/shots.mjs",
+      "agent-skills/media/url-to-motion-design/scripts/video.mjs",
+      "agent-skills/video-editing/genjutsu-scene/scripts/dedup.py",
+      "agent-skills/video-editing/genjutsu-scene/scripts/drive.py",
+      "agent-skills/video-editing/genjutsu-scene/scripts/eyes.py",
+      "agent-skills/video-editing/genjutsu-scene/scripts/gaze.py",
+      "agent-skills/video-editing/genjutsu-scene/scripts/judgekit.py",
+      "agent-skills/video-editing/genjutsu-scene/scripts/lipsync.py",
+      "agent-skills/video-editing/genjutsu-scene/scripts/phon.py",
+      "agent-skills/video-editing/genjutsu-scene/scripts/post.sh",
+      "agent-skills/video-editing/genjutsu-scene/scripts/tally.py",
+      "agent-skills/video-editing/long-video-to-short/scripts/base.sh",
+      "agent-skills/video-editing/long-video-to-short/scripts/check_export.sh",
+      "agent-skills/video-editing/making-of-film/scripts/align-voice.py",
+      "agent-skills/video-editing/making-of-film/scripts/film-facts.mjs",
+      "agent-skills/video-editing/making-of-film/scripts/fix-onsets.mjs",
+      "agent-skills/video-editing/making-of-film/scripts/judge-pack.py",
+      "agent-skills/video-editing/making-of-film/scripts/locked.sh",
+      "agent-skills/video-editing/making-of-film/scripts/preview.sh",
+      "agent-skills/video-editing/making-of-film/scripts/realign-phrases.py",
+      "agent-skills/video-editing/making-of-film/scripts/rects.mjs",
+      "agent-skills/video-editing/making-of-film/scripts/render-scenes.sh",
+      "agent-skills/video-editing/making-of-film/scripts/render.mjs",
+      "agent-skills/video-editing/making-of-film/scripts/sync-check.mjs",
+      "agent-skills/video-editing/making-of-film/scripts/voice-edit.mjs",
       "agent-skills/web-design/add-shader-cursor-trail/scripts/verify-cursor-trail.mjs",
       "agent-skills/workflow/workflow-progress-screenshots/scripts/capture.mjs",
       "agent-skills/workflow/workflow-progress-screenshots/scripts/compare.py",
@@ -93,6 +136,48 @@
         "size": 9799
       },
       {
+        "path": "agent-skills/3d/3d-construction-sequence/agents/openai.yaml",
+        "mode": "100644",
+        "oid": "395162882a5157e64f05e18507c01d7ccc02f507",
+        "size": 247
+      },
+      {
+        "path": "agent-skills/3d/3d-construction-sequence/demo/assets/Three-LICENSE.txt",
+        "mode": "100644",
+        "oid": "d07e209686512b9ac93d7df5481a4a6f622093e7",
+        "size": 1081
+      },
+      {
+        "path": "agent-skills/3d/3d-construction-sequence/demo/assets/three.min.js",
+        "mode": "100644",
+        "oid": "4494cf4e8d37049896b6051da6edfe44a83355af",
+        "size": 608081
+      },
+      {
+        "path": "agent-skills/3d/3d-construction-sequence/demo/index.html",
+        "mode": "100644",
+        "oid": "c3375617c83e1404540a48950bf62226dd743b1c",
+        "size": 16411
+      },
+      {
+        "path": "agent-skills/3d/3d-construction-sequence/demo/preview.jpg",
+        "mode": "100644",
+        "oid": "3d697d61af220c9884cb7796b76698f070745ace",
+        "size": 159237
+      },
+      {
+        "path": "agent-skills/3d/3d-construction-sequence/demo/PROMPT.md",
+        "mode": "100644",
+        "oid": "33c243e872faec3c302c54bf274a4f03b8f085cc",
+        "size": 896
+      },
+      {
+        "path": "agent-skills/3d/3d-construction-sequence/SKILL.md",
+        "mode": "100644",
+        "oid": "94e9616c387628f3d946794a2e7382eb046f0490",
+        "size": 3753
+      },
+      {
         "path": "agent-skills/3d/3d-falling-leaves/agents/openai.yaml",
         "mode": "100644",
         "oid": "73859562691f5a6ad25d4e95248c62c3b3b33853",
@@ -127,6 +212,60 @@
         "mode": "100644",
         "oid": "23f00630a55a6589e911426d2fa250070ff1f2dd",
         "size": 5028
+      },
+      {
+        "path": "agent-skills/3d/3d-harbour-water/agents/openai.yaml",
+        "mode": "100644",
+        "oid": "ec515bfb2bccfa45494c141363ac10c33f19e051",
+        "size": 245
+      },
+      {
+        "path": "agent-skills/3d/3d-harbour-water/demo/assets/harbour-water.js",
+        "mode": "100644",
+        "oid": "fb8334be6c1b3d8e9a14b0e0fc31c44cc4e8ca87",
+        "size": 10879
+      },
+      {
+        "path": "agent-skills/3d/3d-harbour-water/demo/assets/LICENSE-three.txt",
+        "mode": "100644",
+        "oid": "cf781430404b0ae0ba7d8dea3457a3515dd7c9b9",
+        "size": 1081
+      },
+      {
+        "path": "agent-skills/3d/3d-harbour-water/demo/assets/quay.js",
+        "mode": "100644",
+        "oid": "b668a514f5c1ea6662bc0e1a7f7b533ed6ec8988",
+        "size": 17873
+      },
+      {
+        "path": "agent-skills/3d/3d-harbour-water/demo/assets/three-reflector.min.js",
+        "mode": "100644",
+        "oid": "8cd390bc87a996667f5111f9fc31daea512c27ea",
+        "size": 505262
+      },
+      {
+        "path": "agent-skills/3d/3d-harbour-water/demo/index.html",
+        "mode": "100644",
+        "oid": "ed0fb69c2840ec49583725cf5f49a30a15ff0b1f",
+        "size": 3186
+      },
+      {
+        "path": "agent-skills/3d/3d-harbour-water/demo/preview.jpg",
+        "mode": "100644",
+        "oid": "93074c06ce3ed83a669d351b92b0546e58f0687c",
+        "size": 304696
+      },
+      {
+        "path": "agent-skills/3d/3d-harbour-water/demo/PROMPT.md",
+        "mode": "100644",
+        "oid": "2e8ca036359a7763331cc70b2fe1070142f32195",
+        "size": 1229
+      },
+      {
+        "path": "agent-skills/3d/3d-harbour-water/SKILL.md",
+        "mode": "100644",
+        "oid": "4dca0766c1eb129b7df438a444e04c777e382320",
+        "size": 6434
       },
       {
         "path": "agent-skills/3d/3d-high-poly-models/agents/openai.yaml",
@@ -165,6 +304,114 @@
         "size": 5753
       },
       {
+        "path": "agent-skills/3d/3d-kasumidera-ultra-realism/agents/openai.yaml",
+        "mode": "100644",
+        "oid": "2c6a6768cfde581d72b21a6f36c491cc43c1b58e",
+        "size": 295
+      },
+      {
+        "path": "agent-skills/3d/3d-kasumidera-ultra-realism/demo/assets/bridge.jpg",
+        "mode": "100644",
+        "oid": "1962c3b681c50a2488acb7a06c49613d9a613f9c",
+        "size": 407475
+      },
+      {
+        "path": "agent-skills/3d/3d-kasumidera-ultra-realism/demo/assets/cliff.jpg",
+        "mode": "100644",
+        "oid": "bdf75c0fb1a926fc68cd1455c833a8835493441b",
+        "size": 312826
+      },
+      {
+        "path": "agent-skills/3d/3d-kasumidera-ultra-realism/demo/assets/cloud.jpg",
+        "mode": "100644",
+        "oid": "1a2c9fc623d44888da19d14c4129145a0c58c447",
+        "size": 438040
+      },
+      {
+        "path": "agent-skills/3d/3d-kasumidera-ultra-realism/demo/assets/eaves.jpg",
+        "mode": "100644",
+        "oid": "aeb99f5e36c0aad8e7616cf8af2e9d6f6964eba0",
+        "size": 367553
+      },
+      {
+        "path": "agent-skills/3d/3d-kasumidera-ultra-realism/demo/assets/gate.jpg",
+        "mode": "100644",
+        "oid": "6a3b80e60db679c17addd23b20de9456718e4463",
+        "size": 418887
+      },
+      {
+        "path": "agent-skills/3d/3d-kasumidera-ultra-realism/demo/assets/journal.jpg",
+        "mode": "100644",
+        "oid": "c7ff1993abf7b832bfd2b62f2c8558c5135890a9",
+        "size": 372837
+      },
+      {
+        "path": "agent-skills/3d/3d-kasumidera-ultra-realism/demo/index.html",
+        "mode": "100644",
+        "oid": "1152e762aab7458879c782f46b8e31d16481cee8",
+        "size": 7978
+      },
+      {
+        "path": "agent-skills/3d/3d-kasumidera-ultra-realism/demo/preview.jpg",
+        "mode": "100644",
+        "oid": "71d70cdbd6adc525956258344d0c49f965053e76",
+        "size": 293242
+      },
+      {
+        "path": "agent-skills/3d/3d-kasumidera-ultra-realism/demo/PROMPT.md",
+        "mode": "100644",
+        "oid": "70b2ac4f32325ad0ce07271547b59d0a062c9dac",
+        "size": 1204
+      },
+      {
+        "path": "agent-skills/3d/3d-kasumidera-ultra-realism/REFERENCES.md",
+        "mode": "100644",
+        "oid": "c017103ed36fe8b59a9167fc1b88220fb1aa0ea0",
+        "size": 1966
+      },
+      {
+        "path": "agent-skills/3d/3d-kasumidera-ultra-realism/references/creator-steering.md",
+        "mode": "100644",
+        "oid": "915e49c8747bb3ed8a30cc3e162c40652012f1b6",
+        "size": 5839
+      },
+      {
+        "path": "agent-skills/3d/3d-kasumidera-ultra-realism/references/director-prompts.md",
+        "mode": "100644",
+        "oid": "d443d4f6d56b92cd4827b76121e64edea33284c0",
+        "size": 4810
+      },
+      {
+        "path": "agent-skills/3d/3d-kasumidera-ultra-realism/references/frame-credits.md",
+        "mode": "100644",
+        "oid": "0a2f26d936408d991c09f044d4f1543325d36e2d",
+        "size": 1273
+      },
+      {
+        "path": "agent-skills/3d/3d-kasumidera-ultra-realism/references/generation-prompts.md",
+        "mode": "100644",
+        "oid": "b81f2bd060de8b7ae92e12f63ed6fac0eaa378e3",
+        "size": 26063
+      },
+      {
+        "path": "agent-skills/3d/3d-kasumidera-ultra-realism/references/play-and-deliver.md",
+        "mode": "100644",
+        "oid": "1483f0a422b081c312d1b87319d77191d011c797",
+        "size": 5451
+      },
+      {
+        "path": "agent-skills/3d/3d-kasumidera-ultra-realism/references/scene-recipes.md",
+        "mode": "100644",
+        "oid": "0d286fb638f45efb69dde6f193ee07ec7b535d89",
+        "size": 6475
+      },
+      {
+        "path": "agent-skills/3d/3d-kasumidera-ultra-realism/SKILL.md",
+        "mode": "100644",
+        "oid": "96db7b8360e62bf256adc99fe0fb8e2be1ce3439",
+        "size": 5646
+      },
+      {
         "path": "agent-skills/3d/3d-metal-material/agents/openai.yaml",
         "mode": "100644",
         "oid": "9b75227da20b7d420df6fc7ff3d7fbfd4dfbf0b6",
@@ -193,6 +440,48 @@
         "mode": "100644",
         "oid": "83ee5d94164b8ef13910195405890005e6036de9",
         "size": 10281
+      },
+      {
+        "path": "agent-skills/3d/3d-modular-buildings/agents/openai.yaml",
+        "mode": "100644",
+        "oid": "660e94bb7c3f72ad8516ad709aa86ea6f31ce40b",
+        "size": 266
+      },
+      {
+        "path": "agent-skills/3d/3d-modular-buildings/demo/assets/Three-LICENSE.txt",
+        "mode": "100644",
+        "oid": "d07e209686512b9ac93d7df5481a4a6f622093e7",
+        "size": 1081
+      },
+      {
+        "path": "agent-skills/3d/3d-modular-buildings/demo/assets/three.min.js",
+        "mode": "100644",
+        "oid": "4494cf4e8d37049896b6051da6edfe44a83355af",
+        "size": 608081
+      },
+      {
+        "path": "agent-skills/3d/3d-modular-buildings/demo/index.html",
+        "mode": "100644",
+        "oid": "8231d3b9625569bd5d848e02c4387e83ca753461",
+        "size": 13508
+      },
+      {
+        "path": "agent-skills/3d/3d-modular-buildings/demo/preview.jpg",
+        "mode": "100644",
+        "oid": "43b8ccc294239a28c20910745bbc67bdb1817772",
+        "size": 132309
+      },
+      {
+        "path": "agent-skills/3d/3d-modular-buildings/demo/PROMPT.md",
+        "mode": "100644",
+        "oid": "eb5034b39886026e0a0a44ee33535f932889bc68",
+        "size": 920
+      },
+      {
+        "path": "agent-skills/3d/3d-modular-buildings/SKILL.md",
+        "mode": "100644",
+        "oid": "0c2688447c4fac2a35fa60a03f85068c53ee277a",
+        "size": 4084
       },
       {
         "path": "agent-skills/3d/3d-orbit-inspect-demo/agents/openai.yaml",
@@ -315,10 +604,58 @@
         "size": 4918
       },
       {
+        "path": "agent-skills/3d/3d-survey-scan/agents/openai.yaml",
+        "mode": "100644",
+        "oid": "7b3356bd9430a7af9cd693e55c82055c1b565d42",
+        "size": 218
+      },
+      {
+        "path": "agent-skills/3d/3d-survey-scan/demo/assets/Three-LICENSE.txt",
+        "mode": "100644",
+        "oid": "d07e209686512b9ac93d7df5481a4a6f622093e7",
+        "size": 1081
+      },
+      {
+        "path": "agent-skills/3d/3d-survey-scan/demo/assets/three.min.js",
+        "mode": "100644",
+        "oid": "4494cf4e8d37049896b6051da6edfe44a83355af",
+        "size": 608081
+      },
+      {
+        "path": "agent-skills/3d/3d-survey-scan/demo/index.html",
+        "mode": "100644",
+        "oid": "29cb53b14c94cdfffa11816e343298fca3e2357e",
+        "size": 16608
+      },
+      {
+        "path": "agent-skills/3d/3d-survey-scan/demo/preview.jpg",
+        "mode": "100644",
+        "oid": "b1c97be64bc9f60b08c5bb79a7d5b707d684b030",
+        "size": 138661
+      },
+      {
+        "path": "agent-skills/3d/3d-survey-scan/demo/PROMPT.md",
+        "mode": "100644",
+        "oid": "dc00df5c91c05e82cf4132ea8b818e1bcc616e04",
+        "size": 904
+      },
+      {
+        "path": "agent-skills/3d/3d-survey-scan/SKILL.md",
+        "mode": "100644",
+        "oid": "d503f213438e4fdd680ef4fa7609993210f7dd14",
+        "size": 3744
+      },
+      {
         "path": "agent-skills/3d/3d-ultra-realistic-water/agents/openai.yaml",
         "mode": "100644",
         "oid": "75e6e48ccdbc468b3156cdc458925e2d080fa409",
         "size": 328
+      },
+      {
+        "path": "agent-skills/3d/3d-ultra-realistic-water/assets/creek-optics.mjs",
+        "mode": "100644",
+        "oid": "7263b24cfe0c89600bbb0c542beb74a8921a2c75",
+        "size": 1089
       },
       {
         "path": "agent-skills/3d/3d-ultra-realistic-water/assets/ocean.mjs",
@@ -369,6 +706,18 @@
         "size": 3504
       },
       {
+        "path": "agent-skills/3d/3d-ultra-realistic-water/references/check-creek.mjs",
+        "mode": "100644",
+        "oid": "de65bd1aaa6ed79fde283a6fd1d6a4bb22c537ac",
+        "size": 626
+      },
+      {
+        "path": "agent-skills/3d/3d-ultra-realistic-water/references/creek.md",
+        "mode": "100644",
+        "oid": "8187e990ada82fc487ea1b0496100d3ad75cd291",
+        "size": 2823
+      },
+      {
         "path": "agent-skills/3d/3d-ultra-realistic-water/references/ocean.md",
         "mode": "100644",
         "oid": "6723a90f0a93db59806beb694a51e7b195d666b5",
@@ -377,8 +726,8 @@
       {
         "path": "agent-skills/3d/3d-ultra-realistic-water/SKILL.md",
         "mode": "100644",
-        "oid": "4c11350bd80c7db6e89140e6f1e2425eebc58257",
-        "size": 10833
+        "oid": "41dd05e076268c67cd585a6de1453fbe630390c4",
+        "size": 11026
       },
       {
         "path": "agent-skills/3d/3d-underwater-god-rays/agents/openai.yaml",
@@ -549,10 +898,412 @@
         "size": 11039
       },
       {
+        "path": "agent-skills/3d/animate-procedural-birds/agents/openai.yaml",
+        "mode": "100644",
+        "oid": "84b73ffb89501ed2607f232548c97e6db3b0f084",
+        "size": 284
+      },
+      {
+        "path": "agent-skills/3d/animate-procedural-birds/demo/assets/THREE-LICENSE.txt",
+        "mode": "100644",
+        "oid": "d07e209686512b9ac93d7df5481a4a6f622093e7",
+        "size": 1081
+      },
+      {
+        "path": "agent-skills/3d/animate-procedural-birds/demo/assets/three.min.js",
+        "mode": "100644",
+        "oid": "4494cf4e8d37049896b6051da6edfe44a83355af",
+        "size": 608081
+      },
+      {
+        "path": "agent-skills/3d/animate-procedural-birds/demo/assets/wagtail.js",
+        "mode": "100644",
+        "oid": "5d9628d95db02ddebd3f3499ec78163f84a76eb3",
+        "size": 4438
+      },
+      {
+        "path": "agent-skills/3d/animate-procedural-birds/demo/index.html",
+        "mode": "100644",
+        "oid": "4ede75732b170e20e405e6afea4d555733915e36",
+        "size": 1501
+      },
+      {
+        "path": "agent-skills/3d/animate-procedural-birds/demo/preview.jpg",
+        "mode": "100644",
+        "oid": "9e3e6b7d3f7e882893b053c0c8ce64fbf4dd50cf",
+        "size": 55756
+      },
+      {
+        "path": "agent-skills/3d/animate-procedural-birds/demo/PROMPT.md",
+        "mode": "100644",
+        "oid": "9fdf7aae418944903a72f26b7496142f5ebf613b",
+        "size": 1174
+      },
+      {
+        "path": "agent-skills/3d/animate-procedural-birds/demo/study.js",
+        "mode": "100644",
+        "oid": "450e7cef4d986b47772c005709dd46869784a710",
+        "size": 2721
+      },
+      {
+        "path": "agent-skills/3d/animate-procedural-birds/references/check-perch.cjs",
+        "mode": "100644",
+        "oid": "479015ef0b2b82fc31290c1948994756aaae31d7",
+        "size": 928
+      },
+      {
+        "path": "agent-skills/3d/animate-procedural-birds/SKILL.md",
+        "mode": "100644",
+        "oid": "abb8e75759b53313717ae418b1210b1961cd1126",
+        "size": 3036
+      },
+      {
+        "path": "agent-skills/3d/control-camera-lenses/agents/openai.yaml",
+        "mode": "100644",
+        "oid": "973d5f6dc17004c1374f4827463e1e86f6dae3a7",
+        "size": 268
+      },
+      {
+        "path": "agent-skills/3d/control-camera-lenses/demo/assets/lens.js",
+        "mode": "100644",
+        "oid": "a34c412ebe3edb28ec8e80c5011b2260078d087e",
+        "size": 1018
+      },
+      {
+        "path": "agent-skills/3d/control-camera-lenses/demo/assets/THREE-LICENSE.txt",
+        "mode": "100644",
+        "oid": "d07e209686512b9ac93d7df5481a4a6f622093e7",
+        "size": 1081
+      },
+      {
+        "path": "agent-skills/3d/control-camera-lenses/demo/assets/three.min.js",
+        "mode": "100644",
+        "oid": "4494cf4e8d37049896b6051da6edfe44a83355af",
+        "size": 608081
+      },
+      {
+        "path": "agent-skills/3d/control-camera-lenses/demo/index.html",
+        "mode": "100644",
+        "oid": "fc15bbdd0200a3268c8656b7005f27b35f69f33d",
+        "size": 1709
+      },
+      {
+        "path": "agent-skills/3d/control-camera-lenses/demo/preview.jpg",
+        "mode": "100644",
+        "oid": "5090ba2fe8737462e375352fcbb568d39cfdfb90",
+        "size": 99175
+      },
+      {
+        "path": "agent-skills/3d/control-camera-lenses/demo/PROMPT.md",
+        "mode": "100644",
+        "oid": "e6dff3b86b0e3bbd0728b590d21207268f0c9bac",
+        "size": 1151
+      },
+      {
+        "path": "agent-skills/3d/control-camera-lenses/demo/study.js",
+        "mode": "100644",
+        "oid": "2cdfdaf2a208897b60a633a21f056c178f41061d",
+        "size": 4205
+      },
+      {
+        "path": "agent-skills/3d/control-camera-lenses/references/check-lens.cjs",
+        "mode": "100644",
+        "oid": "3266c703eaa5129b6039881dd77cd36a7f4dd6b6",
+        "size": 769
+      },
+      {
+        "path": "agent-skills/3d/control-camera-lenses/SKILL.md",
+        "mode": "100644",
+        "oid": "1438f194a743f6efab04fa2ce2a1396de9a95fd4",
+        "size": 2866
+      },
+      {
+        "path": "agent-skills/3d/forest-floor-specimen/agents/openai.yaml",
+        "mode": "100644",
+        "oid": "c0f2550acbb6e3ed948a5a84fd68ef3685f22621",
+        "size": 226
+      },
+      {
+        "path": "agent-skills/3d/forest-floor-specimen/demo/assets/THREE-LICENSE.txt",
+        "mode": "100644",
+        "oid": "d07e209686512b9ac93d7df5481a4a6f622093e7",
+        "size": 1081
+      },
+      {
+        "path": "agent-skills/3d/forest-floor-specimen/demo/assets/three.min.js",
+        "mode": "100644",
+        "oid": "4494cf4e8d37049896b6051da6edfe44a83355af",
+        "size": 608081
+      },
+      {
+        "path": "agent-skills/3d/forest-floor-specimen/demo/index.html",
+        "mode": "100644",
+        "oid": "28713d01c80ac0afc177a9e68a3eeec6b5544c4f",
+        "size": 20097
+      },
+      {
+        "path": "agent-skills/3d/forest-floor-specimen/demo/preview.jpg",
+        "mode": "100644",
+        "oid": "82d92f7480863fcc6811bebe27817e7b218c2db4",
+        "size": 59336
+      },
+      {
+        "path": "agent-skills/3d/forest-floor-specimen/demo/PROMPT.md",
+        "mode": "100644",
+        "oid": "01781ef56a558ce3dcc8faeff4dfee4d8541947e",
+        "size": 1120
+      },
+      {
+        "path": "agent-skills/3d/forest-floor-specimen/SKILL.md",
+        "mode": "100644",
+        "oid": "c3daec201d0c6a314e30f790716af3d8ac5e3aeb",
+        "size": 1582
+      },
+      {
+        "path": "agent-skills/3d/light-a-threejs-workspace/demo/assets/THREE-LICENSE.txt",
+        "mode": "100644",
+        "oid": "cf781430404b0ae0ba7d8dea3457a3515dd7c9b9",
+        "size": 1081
+      },
+      {
+        "path": "agent-skills/3d/light-a-threejs-workspace/demo/assets/three.min.js",
+        "mode": "100644",
+        "oid": "90e0791b261fa94f3e39aa1a5da8db0d7e302dc8",
+        "size": 518458
+      },
+      {
+        "path": "agent-skills/3d/light-a-threejs-workspace/demo/index.html",
+        "mode": "100644",
+        "oid": "a974db5f6fd22938c737d6c3fcebf53130cc2be3",
+        "size": 9980
+      },
+      {
+        "path": "agent-skills/3d/light-a-threejs-workspace/demo/preview.jpg",
+        "mode": "100644",
+        "oid": "c926b870555019c2e3defa3531c4aba3a56aedab",
+        "size": 135411
+      },
+      {
+        "path": "agent-skills/3d/light-a-threejs-workspace/demo/PROMPT.md",
+        "mode": "100644",
+        "oid": "107084958b69093cd8af234ff1c34effdcc11773",
+        "size": 1016
+      },
+      {
+        "path": "agent-skills/3d/light-a-threejs-workspace/SKILL.md",
+        "mode": "100644",
+        "oid": "3949bf9e1f377b2de7a0ce31c0068eb431460787",
+        "size": 3266
+      },
+      {
+        "path": "agent-skills/3d/model-threejs-control-icons/demo/assets/THREE-LICENSE.txt",
+        "mode": "100644",
+        "oid": "cf781430404b0ae0ba7d8dea3457a3515dd7c9b9",
+        "size": 1081
+      },
+      {
+        "path": "agent-skills/3d/model-threejs-control-icons/demo/assets/three.min.js",
+        "mode": "100644",
+        "oid": "90e0791b261fa94f3e39aa1a5da8db0d7e302dc8",
+        "size": 518458
+      },
+      {
+        "path": "agent-skills/3d/model-threejs-control-icons/demo/index.html",
+        "mode": "100644",
+        "oid": "b949dc168715dfb514db4c964df59ba82b1b8750",
+        "size": 8128
+      },
+      {
+        "path": "agent-skills/3d/model-threejs-control-icons/demo/preview.jpg",
+        "mode": "100644",
+        "oid": "6254367f95ffcae32d4dc6299bb2b7ab247bde6c",
+        "size": 90018
+      },
+      {
+        "path": "agent-skills/3d/model-threejs-control-icons/demo/PROMPT.md",
+        "mode": "100644",
+        "oid": "44d88b273afeee3f91baa5b6fbdd83fc1e1a1cb6",
+        "size": 1020
+      },
+      {
+        "path": "agent-skills/3d/model-threejs-control-icons/SKILL.md",
+        "mode": "100644",
+        "oid": "8c9809462fad9768a679b534aa89256ededd820b",
+        "size": 2463
+      },
+      {
+        "path": "agent-skills/3d/perching-butterfly/agents/openai.yaml",
+        "mode": "100644",
+        "oid": "696e90fd9da8bb3a33a806fb04ea0ed8a8f2992b",
+        "size": 219
+      },
+      {
+        "path": "agent-skills/3d/perching-butterfly/demo/assets/THREE-LICENSE.txt",
+        "mode": "100644",
+        "oid": "d07e209686512b9ac93d7df5481a4a6f622093e7",
+        "size": 1081
+      },
+      {
+        "path": "agent-skills/3d/perching-butterfly/demo/assets/three.min.js",
+        "mode": "100644",
+        "oid": "4494cf4e8d37049896b6051da6edfe44a83355af",
+        "size": 608081
+      },
+      {
+        "path": "agent-skills/3d/perching-butterfly/demo/index.html",
+        "mode": "100644",
+        "oid": "b5bea84af3a3a88d8552b4e33d0459c6b467af54",
+        "size": 20003
+      },
+      {
+        "path": "agent-skills/3d/perching-butterfly/demo/preview.jpg",
+        "mode": "100644",
+        "oid": "285f0e7a1e11ad5ac35bd16c832f59c9bc99d3dd",
+        "size": 51799
+      },
+      {
+        "path": "agent-skills/3d/perching-butterfly/demo/PROMPT.md",
+        "mode": "100644",
+        "oid": "889d1aa7bdabbcb0ceae84862c5c5317301df489",
+        "size": 1112
+      },
+      {
+        "path": "agent-skills/3d/perching-butterfly/SKILL.md",
+        "mode": "100644",
+        "oid": "62b2a51871d057bea455fec315912990b8ec187d",
+        "size": 1534
+      },
+      {
         "path": "agent-skills/3d/README.md",
         "mode": "100644",
-        "oid": "c764b00ae637637c743b290a96233caa26dec826",
-        "size": 3901
+        "oid": "70b864cd5bb9d0c4aca24b3b78308528802a399a",
+        "size": 6091
+      },
+      {
+        "path": "agent-skills/3d/relight-painted-surfaces/agents/openai.yaml",
+        "mode": "100644",
+        "oid": "a9730ddda18a699043405b2787c1a7763aaff9cc",
+        "size": 257
+      },
+      {
+        "path": "agent-skills/3d/relight-painted-surfaces/assets/paint-light.js",
+        "mode": "100644",
+        "oid": "2f111ebe605a7ebb33e4a21a2a9c55195cd94607",
+        "size": 6143
+      },
+      {
+        "path": "agent-skills/3d/relight-painted-surfaces/assets/paint-renderer.js",
+        "mode": "100644",
+        "oid": "8e77695666ce393cf9ac592745821bd38d8619a4",
+        "size": 5579
+      },
+      {
+        "path": "agent-skills/3d/relight-painted-surfaces/assets/paint-shader.js",
+        "mode": "100644",
+        "oid": "c3ad0031a4a33d4ecce54c9168a759ee000dc7e5",
+        "size": 2027
+      },
+      {
+        "path": "agent-skills/3d/relight-painted-surfaces/demo/assets/commission-engraving.webp",
+        "mode": "100644",
+        "oid": "7111d39f3e32dd160ada8ee82c0232aef7ce37b5",
+        "size": 370874
+      },
+      {
+        "path": "agent-skills/3d/relight-painted-surfaces/demo/assets/handoff.js",
+        "mode": "100644",
+        "oid": "737c20bab28c474acc6ca3608415d65f4c77aca3",
+        "size": 2264596
+      },
+      {
+        "path": "agent-skills/3d/relight-painted-surfaces/demo/assets/paint-light.min.js",
+        "mode": "100644",
+        "oid": "1815f24097f97128e9ea9d6a2da9b140b8b9d19c",
+        "size": 545964
+      },
+      {
+        "path": "agent-skills/3d/relight-painted-surfaces/demo/assets/paper-grain.png",
+        "mode": "100644",
+        "oid": "9ebd8428b55c7ce01b0642ad935ddebd249e135a",
+        "size": 130882
+      },
+      {
+        "path": "agent-skills/3d/relight-painted-surfaces/demo/assets/Three-LICENSE.txt",
+        "mode": "100644",
+        "oid": "8ada2a5f982916b0ba4b7a0aa7de347587e745d7",
+        "size": 1081
+      },
+      {
+        "path": "agent-skills/3d/relight-painted-surfaces/demo/index.html",
+        "mode": "100644",
+        "oid": "dcabc25f984e4e8f567db9a5ef0e7a2447668c4a",
+        "size": 6659
+      },
+      {
+        "path": "agent-skills/3d/relight-painted-surfaces/demo/preview.jpg",
+        "mode": "100644",
+        "oid": "4d2b5d12002defd95c9bd0a8451662b7ddf9cad4",
+        "size": 188201
+      },
+      {
+        "path": "agent-skills/3d/relight-painted-surfaces/demo/PROMPT.md",
+        "mode": "100644",
+        "oid": "d62e42625b1f836ceaf7a5e522dac864989f83e8",
+        "size": 1191
+      },
+      {
+        "path": "agent-skills/3d/relight-painted-surfaces/scripts/bake_maps.py",
+        "mode": "100644",
+        "oid": "96454b9349c4b1ebbdfd434c56421838ac7dedce",
+        "size": 5689
+      },
+      {
+        "path": "agent-skills/3d/relight-painted-surfaces/SKILL.md",
+        "mode": "100644",
+        "oid": "2c314cab06298970e30d3e32da1a26bc825a9461",
+        "size": 6396
+      },
+      {
+        "path": "agent-skills/3d/woodland-chapter-cameras/agents/openai.yaml",
+        "mode": "100644",
+        "oid": "5d9776a40c6e657e000c2b6a53a6bf3029a9e056",
+        "size": 226
+      },
+      {
+        "path": "agent-skills/3d/woodland-chapter-cameras/demo/assets/THREE-LICENSE.txt",
+        "mode": "100644",
+        "oid": "d07e209686512b9ac93d7df5481a4a6f622093e7",
+        "size": 1081
+      },
+      {
+        "path": "agent-skills/3d/woodland-chapter-cameras/demo/assets/three.min.js",
+        "mode": "100644",
+        "oid": "4494cf4e8d37049896b6051da6edfe44a83355af",
+        "size": 608081
+      },
+      {
+        "path": "agent-skills/3d/woodland-chapter-cameras/demo/index.html",
+        "mode": "100644",
+        "oid": "0b4884ea3c8f5d6de490fb4b43fbd65911750eec",
+        "size": 20513
+      },
+      {
+        "path": "agent-skills/3d/woodland-chapter-cameras/demo/preview.jpg",
+        "mode": "100644",
+        "oid": "3f3b387ca78f72de5e5db81904d6ab1c881e503c",
+        "size": 84791
+      },
+      {
+        "path": "agent-skills/3d/woodland-chapter-cameras/demo/PROMPT.md",
+        "mode": "100644",
+        "oid": "9b086abccc33f9efc9052ed2213c8873b2b1d487",
+        "size": 1160
+      },
+      {
+        "path": "agent-skills/3d/woodland-chapter-cameras/SKILL.md",
+        "mode": "100644",
+        "oid": "7fa1f977c57e411910d6372ae41c68d59931c3fe",
+        "size": 1666
       },
       {
         "path": "agent-skills/codex/article-prompts-to-skills/agents/openai.yaml",
@@ -707,8 +1458,8 @@
       {
         "path": "agent-skills/codex/browser-video-recording/SKILL.md",
         "mode": "100644",
-        "oid": "3e2a81ccf517e72bf5f2ef81ce242dca730ba506",
-        "size": 6146
+        "oid": "8861743e829b3f44e6d57fb27245e9739a64e282",
+        "size": 6576
       },
       {
         "path": "agent-skills/codex/build-daily-inspiration-sites/agents/openai.yaml",
@@ -833,8 +1584,8 @@
       {
         "path": "agent-skills/codex/elevenlabs-tts/SKILL.md",
         "mode": "100644",
-        "oid": "bf2ba8aa8160755aea6f557316f8940368e3b15d",
-        "size": 3526
+        "oid": "e20b7db0ce880bd775abaef4249b222a3c3727b0",
+        "size": 3699
       },
       {
         "path": "agent-skills/codex/generate-reference-inspired-brand-worlds/agents/openai.yaml",
@@ -1995,6 +2746,42 @@
         "size": 4374
       },
       {
+        "path": "agent-skills/game-development/build-3d-character-selector/agents/openai.yaml",
+        "mode": "100644",
+        "oid": "904bc1e7d1047503be7606d3e3454932d9acb440",
+        "size": 284
+      },
+      {
+        "path": "agent-skills/game-development/build-3d-character-selector/assets/demo.jpg",
+        "mode": "100644",
+        "oid": "0021d4c5fe82ab4570523f5098c5bc1e4f4703de",
+        "size": 174645
+      },
+      {
+        "path": "agent-skills/game-development/build-3d-character-selector/assets/demo.mp4",
+        "mode": "100644",
+        "oid": "a8f866e7ae6e1d57586d76e0ffbcff3bb4650a30",
+        "size": 3679986
+      },
+      {
+        "path": "agent-skills/game-development/build-3d-character-selector/assets/full-body-selector.jpg",
+        "mode": "100644",
+        "oid": "665672e576e899eb5103d07370b98802394b6d63",
+        "size": 121144
+      },
+      {
+        "path": "agent-skills/game-development/build-3d-character-selector/references/character-production.md",
+        "mode": "100644",
+        "oid": "87b6d55fea970d4268e6a2ccb9b47db63eb2ec5f",
+        "size": 4330
+      },
+      {
+        "path": "agent-skills/game-development/build-3d-character-selector/SKILL.md",
+        "mode": "100644",
+        "oid": "ad83b6095c46e001c1ab70fba392e920f5bece2d",
+        "size": 5006
+      },
+      {
         "path": "agent-skills/game-development/build-game-audio-feedback/agents/openai.yaml",
         "mode": "100644",
         "oid": "e3ef731b6ae56b346d17a1d79d46f661e4f058ff",
@@ -2109,6 +2896,42 @@
         "size": 2348
       },
       {
+        "path": "agent-skills/game-development/build-lens-raindrops/agents/openai.yaml",
+        "mode": "100644",
+        "oid": "e020d3793ae8fc0cb0d2dc83eea58ac99292ab3d",
+        "size": 245
+      },
+      {
+        "path": "agent-skills/game-development/build-lens-raindrops/assets/demo.jpg",
+        "mode": "100644",
+        "oid": "cd6868a77c903994c0f3896b282284388013f0e7",
+        "size": 203667
+      },
+      {
+        "path": "agent-skills/game-development/build-lens-raindrops/assets/demo.mp4",
+        "mode": "100644",
+        "oid": "e8f61c23661c6411697fcd3c2f4a03051c38a787",
+        "size": 12332397
+      },
+      {
+        "path": "agent-skills/game-development/build-lens-raindrops/assets/drop-field.frag",
+        "mode": "100644",
+        "oid": "d276dc4628ce8aa7ead854ee9840a035be37ca0c",
+        "size": 2207
+      },
+      {
+        "path": "agent-skills/game-development/build-lens-raindrops/assets/refract.frag",
+        "mode": "100644",
+        "oid": "7a47770d689455209c1486428dd2d1afca7d16a6",
+        "size": 605
+      },
+      {
+        "path": "agent-skills/game-development/build-lens-raindrops/SKILL.md",
+        "mode": "100644",
+        "oid": "287a6b7e3e3caf725432d50d51becdb73e22c54d",
+        "size": 4190
+      },
+      {
         "path": "agent-skills/game-development/build-mobile-threejs-games/agents/openai.yaml",
         "mode": "100644",
         "oid": "9726c4f3812658f8d517e8e67997cb1970de6dd5",
@@ -2119,6 +2942,48 @@
         "mode": "100644",
         "oid": "24375a237ed223ce82e1e32fcda438974904525f",
         "size": 1202
+      },
+      {
+        "path": "agent-skills/game-development/build-point-cloud-scan/agents/openai.yaml",
+        "mode": "100644",
+        "oid": "c5f19d91e36c5ecd1352779877f9acec49a9d831",
+        "size": 236
+      },
+      {
+        "path": "agent-skills/game-development/build-point-cloud-scan/assets/character-scan.jpg",
+        "mode": "100644",
+        "oid": "f2510ca1def80b1430eb64fed3095f923d02d7a6",
+        "size": 132706
+      },
+      {
+        "path": "agent-skills/game-development/build-point-cloud-scan/assets/demo.jpg",
+        "mode": "100644",
+        "oid": "30462158463b44e556d2925039c3c1445fc5f414",
+        "size": 189766
+      },
+      {
+        "path": "agent-skills/game-development/build-point-cloud-scan/assets/demo.mp4",
+        "mode": "100644",
+        "oid": "25f8c5b699dd64e42e27f29b55b1e57e75a1f6fe",
+        "size": 6323121
+      },
+      {
+        "path": "agent-skills/game-development/build-point-cloud-scan/assets/district-scan.jpg",
+        "mode": "100644",
+        "oid": "1b759a302896f90c08ce397c08a2e901b83a9b9c",
+        "size": 256889
+      },
+      {
+        "path": "agent-skills/game-development/build-point-cloud-scan/assets/scan-cage.mjs",
+        "mode": "100644",
+        "oid": "088c7408bdc0b1de9b4cbdc51bef65efcd12ac82",
+        "size": 2270
+      },
+      {
+        "path": "agent-skills/game-development/build-point-cloud-scan/SKILL.md",
+        "mode": "100644",
+        "oid": "9bd27888280ec2117c5a92b9f3aa06baf773cf9b",
+        "size": 5066
       },
       {
         "path": "agent-skills/game-development/build-rigged-game-assets/agents/openai.yaml",
@@ -2173,6 +3038,42 @@
         "mode": "100644",
         "oid": "313552370f071d00326ff2e7ef5273009e006c84",
         "size": 4418
+      },
+      {
+        "path": "agent-skills/game-development/build-ultra-realistic-game-interiors/agents/openai.yaml",
+        "mode": "100644",
+        "oid": "5e0277dcf7126867e81937f1ddf4750b47eaf81f",
+        "size": 315
+      },
+      {
+        "path": "agent-skills/game-development/build-ultra-realistic-game-interiors/assets/four-room-look.jpg",
+        "mode": "100644",
+        "oid": "b010b962f17e989a3bf5b3533a21c17a1bb298c3",
+        "size": 419211
+      },
+      {
+        "path": "agent-skills/game-development/build-ultra-realistic-game-interiors/references/gameplay.md",
+        "mode": "100644",
+        "oid": "3e9cb5d3de13354c8145ceba8683056b7bc9a901",
+        "size": 5351
+      },
+      {
+        "path": "agent-skills/game-development/build-ultra-realistic-game-interiors/references/prompts-and-review.md",
+        "mode": "100644",
+        "oid": "60ad18f3a31d831bb72ff6febfcf86586d61190b",
+        "size": 6514
+      },
+      {
+        "path": "agent-skills/game-development/build-ultra-realistic-game-interiors/references/rendering.md",
+        "mode": "100644",
+        "oid": "ff2792ecbb83eff6dab5a263dda21b22ae763784",
+        "size": 4535
+      },
+      {
+        "path": "agent-skills/game-development/build-ultra-realistic-game-interiors/SKILL.md",
+        "mode": "100644",
+        "oid": "d156bff3f80afc440802cb5bff6ae6d4ac759ea3",
+        "size": 3809
       },
       {
         "path": "agent-skills/game-development/build-vesperfall-review-assets/agents/openai.yaml",
@@ -2235,6 +3136,78 @@
         "size": 1033
       },
       {
+        "path": "agent-skills/game-development/game-dev-character-model/assets/viewer.html",
+        "mode": "100644",
+        "oid": "2aa19e0ad44912c1adefc9f44f25e35f4856eda8",
+        "size": 13803
+      },
+      {
+        "path": "agent-skills/game-development/game-dev-character-model/demo/assets/a-pose-full.jpg",
+        "mode": "100644",
+        "oid": "4a5b3592a5cfb23d8b56452b1ba44d0cb13482ba",
+        "size": 73382
+      },
+      {
+        "path": "agent-skills/game-development/game-dev-character-model/demo/assets/concept.jpg",
+        "mode": "100644",
+        "oid": "e061052572c1c3ffb287fdc7106856fdc9740ada",
+        "size": 134894
+      },
+      {
+        "path": "agent-skills/game-development/game-dev-character-model/demo/assets/posed-back.jpg",
+        "mode": "100644",
+        "oid": "d9ee84af70f84bbea2668789b803f699134d1377",
+        "size": 70549
+      },
+      {
+        "path": "agent-skills/game-development/game-dev-character-model/demo/assets/posed-face.jpg",
+        "mode": "100644",
+        "oid": "c89147ff3ab9dc11124df6e2f1fad6b8e21a8230",
+        "size": 164239
+      },
+      {
+        "path": "agent-skills/game-development/game-dev-character-model/demo/assets/posed-full.jpg",
+        "mode": "100644",
+        "oid": "1b394ee442d2d71c6d78bb1084ebc5d4550e1344",
+        "size": 72155
+      },
+      {
+        "path": "agent-skills/game-development/game-dev-character-model/demo/assets/posed-half.jpg",
+        "mode": "100644",
+        "oid": "65321304cc1339905b47fe82bd5ea8960695eab2",
+        "size": 120626
+      },
+      {
+        "path": "agent-skills/game-development/game-dev-character-model/demo/index.html",
+        "mode": "100644",
+        "oid": "994d027152beac7bf7d5fc054110d8bbc8d23aa4",
+        "size": 10711
+      },
+      {
+        "path": "agent-skills/game-development/game-dev-character-model/demo/preview.jpg",
+        "mode": "100644",
+        "oid": "ea864f1974797613644ceb6193317eb8f740d068",
+        "size": 100038
+      },
+      {
+        "path": "agent-skills/game-development/game-dev-character-model/demo/PROMPT.md",
+        "mode": "100644",
+        "oid": "950be9ec2605c284858a5439bbeb5e9fa9d911d2",
+        "size": 2077
+      },
+      {
+        "path": "agent-skills/game-development/game-dev-character-model/scripts/capture.mjs",
+        "mode": "100644",
+        "oid": "a5f2b814ab1be84effde6416f05cfa68858218c6",
+        "size": 3027
+      },
+      {
+        "path": "agent-skills/game-development/game-dev-character-model/SKILL.md",
+        "mode": "100644",
+        "oid": "e4b98286bf02b2a414f0af706c86d8cfe422b033",
+        "size": 10159
+      },
+      {
         "path": "agent-skills/game-development/optimize-threejs-games/agents/openai.yaml",
         "mode": "100644",
         "oid": "6e87ccb2d52485544e2f0bf6822fde3ec14f435a",
@@ -2249,8 +3222,8 @@
       {
         "path": "agent-skills/game-development/README.md",
         "mode": "100644",
-        "oid": "be8e5c97da97f371472840062e9c7043b67eccdb",
-        "size": 6222
+        "oid": "c8dd8fb61f69c0d9bb8d5f468fa8ec99630be37f",
+        "size": 7740
       },
       {
         "path": "agent-skills/game-development/ship-web-games/agents/openai.yaml",
@@ -3533,8 +4506,8 @@
       {
         "path": "agent-skills/media/create-ai-avatar/demo/index.html",
         "mode": "100644",
-        "oid": "1cff8394e7a40fe1c76927291dc511800ddc6121",
-        "size": 8744
+        "oid": "50a888fdb4354d51440420fef7fbdcc1db3c9514",
+        "size": 8777
       },
       {
         "path": "agent-skills/media/create-ai-avatar/demo/mouths.jpg",
@@ -3563,14 +4536,14 @@
       {
         "path": "agent-skills/media/create-ai-avatar/references/heygen.md",
         "mode": "100644",
-        "oid": "63211e24ce2471bd7e15c057b880ca5d550301e7",
-        "size": 3286
+        "oid": "432024709204b47054b814e9f2d5c1c4771d5bb8",
+        "size": 3534
       },
       {
         "path": "agent-skills/media/create-ai-avatar/references/judging.md",
         "mode": "100644",
-        "oid": "0edd04e70d4a82d41c43e357652403a5249f01b4",
-        "size": 2427
+        "oid": "35111749d3e3ed857ff7271a4c8838c280f938d6",
+        "size": 2495
       },
       {
         "path": "agent-skills/media/create-ai-avatar/scripts/balance.mjs",
@@ -3635,8 +4608,344 @@
       {
         "path": "agent-skills/media/create-ai-avatar/SKILL.md",
         "mode": "100644",
-        "oid": "fdf2064282e7c22e8fcaf425943989bd3662f294",
-        "size": 9498
+        "oid": "afd7111ade0df32ccb7e71c75b2da0af4f023b43",
+        "size": 10572
+      },
+      {
+        "path": "agent-skills/media/digital-twin/agents/openai.yaml",
+        "mode": "100644",
+        "oid": "9983789b09d868647b9f67407001b962ec5dc709",
+        "size": 540
+      },
+      {
+        "path": "agent-skills/media/digital-twin/demo/face.webp",
+        "mode": "100644",
+        "oid": "26fec11a76e31fd2b92f6005fa2ba94f5aec30e4",
+        "size": 41968
+      },
+      {
+        "path": "agent-skills/media/digital-twin/demo/index.html",
+        "mode": "100644",
+        "oid": "b3a6fefc4817b552cc4d0a77ed513bb5e1cd311c",
+        "size": 41998
+      },
+      {
+        "path": "agent-skills/media/digital-twin/demo/preview.jpg",
+        "mode": "100644",
+        "oid": "adf7ed5c79612a1a84cd2d3b6dd940e486e8f902",
+        "size": 103359
+      },
+      {
+        "path": "agent-skills/media/digital-twin/demo/PROMPT.md",
+        "mode": "100644",
+        "oid": "78251c402a9d250fa589e7ae494f8b3811ae1f93",
+        "size": 5229
+      },
+      {
+        "path": "agent-skills/media/digital-twin/demo/step-window.css",
+        "mode": "100644",
+        "oid": "82fc214f81c45f5d94bbf95b988e5627c59b21b4",
+        "size": 5411
+      },
+      {
+        "path": "agent-skills/media/digital-twin/demo/step-window.js",
+        "mode": "100644",
+        "oid": "605771574f43f7a34e838d4970323c76d37704a7",
+        "size": 8424
+      },
+      {
+        "path": "agent-skills/media/digital-twin/demo/still-1-before.webp",
+        "mode": "100644",
+        "oid": "e5ebc4c2cea506a30447d384052c2a0b2f4031b5",
+        "size": 44964
+      },
+      {
+        "path": "agent-skills/media/digital-twin/demo/still-1.webp",
+        "mode": "100644",
+        "oid": "de23017fa2457a6c58edbfddfac4c3ce1a538efd",
+        "size": 46768
+      },
+      {
+        "path": "agent-skills/media/digital-twin/demo/still-2.webp",
+        "mode": "100644",
+        "oid": "2d22954b073fec097512fa2f22a6ca1b9c0b500d",
+        "size": 40852
+      },
+      {
+        "path": "agent-skills/media/digital-twin/demo/still-3.webp",
+        "mode": "100644",
+        "oid": "c748b1217d8d29d3fb8e7e0f874b23583048e611",
+        "size": 50004
+      },
+      {
+        "path": "agent-skills/media/digital-twin/demo/talk-final.mp4",
+        "mode": "100644",
+        "oid": "c7023085aaa2dba1bf3dab6832526847cdd73e94",
+        "size": 1015321
+      },
+      {
+        "path": "agent-skills/media/digital-twin/demo/talk-final.webp",
+        "mode": "100644",
+        "oid": "40168019abe4ffbc6456c5d5a5800469d1238747",
+        "size": 33296
+      },
+      {
+        "path": "agent-skills/media/digital-twin/demo/talk.mp4",
+        "mode": "100644",
+        "oid": "e972ce154e0a5902137addce220c4c03eb44b37c",
+        "size": 362665
+      },
+      {
+        "path": "agent-skills/media/digital-twin/demo/talk.webp",
+        "mode": "100644",
+        "oid": "3aae9e82b8cbcb23dfdb7974daf1f12fd9fdae63",
+        "size": 30300
+      },
+      {
+        "path": "agent-skills/media/digital-twin/demo/twin-demo.css",
+        "mode": "100644",
+        "oid": "f98ab99963e1d441efcfcdab944f8763f5e8ad7b",
+        "size": 31932
+      },
+      {
+        "path": "agent-skills/media/digital-twin/demo/twin-demo.js",
+        "mode": "100644",
+        "oid": "9b7ada657c3f1d34ac874e67675294a22623b825",
+        "size": 63365
+      },
+      {
+        "path": "agent-skills/media/digital-twin/demo/voice.mp3",
+        "mode": "100644",
+        "oid": "b9629e6c2aec9384fec5ac710b73fa15bf21037c",
+        "size": 132327
+      },
+      {
+        "path": "agent-skills/media/digital-twin/references/audit.md",
+        "mode": "100644",
+        "oid": "3e5cdf7ab58a90f814a3562dd57346db585b75a2",
+        "size": 3650
+      },
+      {
+        "path": "agent-skills/media/digital-twin/references/cinematic.md",
+        "mode": "100644",
+        "oid": "6cc95e802c6ef4950e2f58fbb309d838fe7766c9",
+        "size": 4025
+      },
+      {
+        "path": "agent-skills/media/digital-twin/references/consent.md",
+        "mode": "100644",
+        "oid": "b083072c080a83c68e512e715bda62e656893c48",
+        "size": 1943
+      },
+      {
+        "path": "agent-skills/media/digital-twin/references/costs.md",
+        "mode": "100644",
+        "oid": "1aeaa9e77b5c75f34078adcfd2625cc217478b76",
+        "size": 1651
+      },
+      {
+        "path": "agent-skills/media/digital-twin/references/fil-workflow.md",
+        "mode": "100644",
+        "oid": "b9b5589ad23f861b846c8245418f8f11b67e8814",
+        "size": 3247
+      },
+      {
+        "path": "agent-skills/media/digital-twin/references/identity-template.md",
+        "mode": "100644",
+        "oid": "eccda6cd8ba6fc88058ec1bd3f68c005d3ad9724",
+        "size": 4936
+      },
+      {
+        "path": "agent-skills/media/digital-twin/references/judging.md",
+        "mode": "100644",
+        "oid": "85baffa3d93e1937666e2e3b8507f53eb4a2100a",
+        "size": 2449
+      },
+      {
+        "path": "agent-skills/media/digital-twin/references/references.md",
+        "mode": "100644",
+        "oid": "6149fdbaf7e9b46e2e131b720068966d60bb2c75",
+        "size": 4597
+      },
+      {
+        "path": "agent-skills/media/digital-twin/references/speaking.md",
+        "mode": "100644",
+        "oid": "9ee32e80d861fb7a991b328cc4344983cf177f3b",
+        "size": 3841
+      },
+      {
+        "path": "agent-skills/media/digital-twin/references/stills.md",
+        "mode": "100644",
+        "oid": "89ea7a1970e1f91ce32fe0090c214d29d5f3d951",
+        "size": 6438
+      },
+      {
+        "path": "agent-skills/media/digital-twin/references/video.md",
+        "mode": "100644",
+        "oid": "10ca938beebd3002de40cb4698e15898225b71ee",
+        "size": 6998
+      },
+      {
+        "path": "agent-skills/media/digital-twin/references/voice.md",
+        "mode": "100644",
+        "oid": "331db9d75d1e90d688350c1df4c79414100941af",
+        "size": 9240
+      },
+      {
+        "path": "agent-skills/media/digital-twin/references/workspace.md",
+        "mode": "100644",
+        "oid": "0d776ff8f0c6afb31f7074d099a099fcac7ae6c9",
+        "size": 3344
+      },
+      {
+        "path": "agent-skills/media/digital-twin/scripts/crops.sh",
+        "mode": "100755",
+        "oid": "bc736095853b08d464d373dd05ea8beed7c542ed",
+        "size": 1037
+      },
+      {
+        "path": "agent-skills/media/digital-twin/scripts/extract_frames.sh",
+        "mode": "100755",
+        "oid": "9d8d0879dc5ce1be0680798fbe07e7ab88388489",
+        "size": 852
+      },
+      {
+        "path": "agent-skills/media/digital-twin/scripts/faces.swift",
+        "mode": "100644",
+        "oid": "b3d133e3feb12e3bf0fffdb04da00662a2477e3f",
+        "size": 914
+      },
+      {
+        "path": "agent-skills/media/digital-twin/scripts/film_grade.py",
+        "mode": "100644",
+        "oid": "162a3f57e19a1da35d317dc9b06fa95f7c91f84e",
+        "size": 3668
+      },
+      {
+        "path": "agent-skills/media/digital-twin/scripts/fix_still.py",
+        "mode": "100644",
+        "oid": "6bb49e084428850ef884d159f29a9cabd072ac99",
+        "size": 2517
+      },
+      {
+        "path": "agent-skills/media/digital-twin/scripts/hf_seedream_batch.sh",
+        "mode": "100755",
+        "oid": "182bb8306eb12185b8ccf6fc374a821bea739673",
+        "size": 1423
+      },
+      {
+        "path": "agent-skills/media/digital-twin/scripts/landmarks.swift",
+        "mode": "100644",
+        "oid": "940e50778088835feb68f69623d8f17840185bcc",
+        "size": 1957
+      },
+      {
+        "path": "agent-skills/media/digital-twin/scripts/lmjson.swift",
+        "mode": "100644",
+        "oid": "b0a99ab48f4a232f8ce821b20791c82c89fff9f1",
+        "size": 2064
+      },
+      {
+        "path": "agent-skills/media/digital-twin/scripts/make_round.py",
+        "mode": "100644",
+        "oid": "35c8f197547fe87539299d38ed2e0cbaf009663c",
+        "size": 2785
+      },
+      {
+        "path": "agent-skills/media/digital-twin/scripts/measure_drafts.sh",
+        "mode": "100755",
+        "oid": "a8b494ebb856334b7585425b06649729d250013e",
+        "size": 1492
+      },
+      {
+        "path": "agent-skills/media/digital-twin/scripts/measure.py",
+        "mode": "100644",
+        "oid": "780fe7fe363a63a8faa706bd864418640796ea60",
+        "size": 1799
+      },
+      {
+        "path": "agent-skills/media/digital-twin/scripts/numbered_sheet.py",
+        "mode": "100644",
+        "oid": "a5f9884cb35ae331319c642e61934be64d8a49dc",
+        "size": 1276
+      },
+      {
+        "path": "agent-skills/media/digital-twin/scripts/run_round.sh",
+        "mode": "100755",
+        "oid": "a0a95058bde9abd7d77b8c5d0bf9e541afe49a18",
+        "size": 828
+      },
+      {
+        "path": "agent-skills/media/digital-twin/scripts/speakstats.swift",
+        "mode": "100644",
+        "oid": "2d49b1f6ed0863a6f402cd456d7290ec19b48595",
+        "size": 3368
+      },
+      {
+        "path": "agent-skills/media/digital-twin/scripts/speaksummary.py",
+        "mode": "100644",
+        "oid": "d81bc10919e621d804a5d991dc20830517430521",
+        "size": 2340
+      },
+      {
+        "path": "agent-skills/media/digital-twin/scripts/voice/build_ref.py",
+        "mode": "100755",
+        "oid": "10dd60faccafe63d290847c31bcc33337646d1b8",
+        "size": 2505
+      },
+      {
+        "path": "agent-skills/media/digital-twin/scripts/voice/el.sh",
+        "mode": "100755",
+        "oid": "d15dcd877d56ff420f35beb3b629e42e19f46028",
+        "size": 758
+      },
+      {
+        "path": "agent-skills/media/digital-twin/scripts/voice/make_dataset.py",
+        "mode": "100755",
+        "oid": "47c049eba66ca099de0f582d7572ff4ba16ee69c",
+        "size": 1861
+      },
+      {
+        "path": "agent-skills/media/digital-twin/scripts/voice/make_ivc.py",
+        "mode": "100755",
+        "oid": "905229a2933491190e8d41c3b0b598168062196b",
+        "size": 2547
+      },
+      {
+        "path": "agent-skills/media/digital-twin/scripts/voice/scan_dataset.py",
+        "mode": "100755",
+        "oid": "7c0a3294d2ecee0df150dbe9e75af83425b9e8a2",
+        "size": 1871
+      },
+      {
+        "path": "agent-skills/media/digital-twin/scripts/voice/score_voice.py",
+        "mode": "100755",
+        "oid": "1b998190952179c468e7b3e9199bee9cda0a54e0",
+        "size": 3851
+      },
+      {
+        "path": "agent-skills/media/digital-twin/scripts/voice/tts_line.sh",
+        "mode": "100755",
+        "oid": "9c52c7142869f13a8a53a2aa6e3a8c8149357136",
+        "size": 1262
+      },
+      {
+        "path": "agent-skills/media/digital-twin/scripts/voice/watch_train.sh",
+        "mode": "100755",
+        "oid": "9a7e83ddfd7756e34a9b614eabcb6a2bcd50bf61",
+        "size": 988
+      },
+      {
+        "path": "agent-skills/media/digital-twin/scripts/warp_face.py",
+        "mode": "100644",
+        "oid": "925241618d0c96e51278be1c7fb1de223d6a596b",
+        "size": 7928
+      },
+      {
+        "path": "agent-skills/media/digital-twin/SKILL.md",
+        "mode": "100644",
+        "oid": "42b9e44bc5a586a0bf9fa007e735bbb4b821a664",
+        "size": 23048
       },
       {
         "path": "agent-skills/media/html-explainer-video/agents/openai.yaml",
@@ -3755,8 +5064,8 @@
       {
         "path": "agent-skills/media/html-explainer-video/references/camera.md",
         "mode": "100644",
-        "oid": "0eb1168f72f4c046ab8b964dabe287eec457bac9",
-        "size": 6263
+        "oid": "8f14d12247fdf4b99f8e8ce13863e9cce72c07f0",
+        "size": 7006
       },
       {
         "path": "agent-skills/media/html-explainer-video/references/checks.md",
@@ -3767,8 +5076,8 @@
       {
         "path": "agent-skills/media/html-explainer-video/references/fil-editor.md",
         "mode": "100644",
-        "oid": "6732a8ec195b43d74e51a2e530cbadc16a48027e",
-        "size": 7091
+        "oid": "bd84053f2dbb4fd18725160e51b0057ae1fd3519",
+        "size": 7187
       },
       {
         "path": "agent-skills/media/html-explainer-video/references/format.md",
@@ -3839,8 +5148,8 @@
       {
         "path": "agent-skills/media/html-explainer-video/SKILL.md",
         "mode": "100644",
-        "oid": "5326cec466cbdc96d7d3a0b8cdca0d5b5b7f3668",
-        "size": 16370
+        "oid": "a92c1625c1b1b0de560134187c1ab305bcfb4e2e",
+        "size": 16782
       },
       {
         "path": "agent-skills/media/html-explainer-video/sounds/bell_A4.mp3",
@@ -4025,8 +5334,8 @@
       {
         "path": "agent-skills/media/html-reel/references/fil-editor.md",
         "mode": "100644",
-        "oid": "c1e4a62bbf1f6df76dfde5e0f40aaf99ed568dc0",
-        "size": 13631
+        "oid": "4cfb8adf2b1572a1bfacab6804db7fdfd151d4ac",
+        "size": 13839
       },
       {
         "path": "agent-skills/media/html-reel/references/formula.md",
@@ -4043,8 +5352,8 @@
       {
         "path": "agent-skills/media/html-reel/references/retime.md",
         "mode": "100644",
-        "oid": "ac4a55ffd7064e08fa0633dd6de5f24eab79d8db",
-        "size": 5100
+        "oid": "91cfd655c485fa0dbdfa4b88e1d849455322de27",
+        "size": 5289
       },
       {
         "path": "agent-skills/media/html-reel/references/source.md",
@@ -4055,8 +5364,8 @@
       {
         "path": "agent-skills/media/html-reel/references/structures.md",
         "mode": "100644",
-        "oid": "7263e6a3c495b2367836e8b9f6228155e1dd65e5",
-        "size": 6827
+        "oid": "63eb0832d85caa9eca7f1f50c61644bcac7ab0db",
+        "size": 6867
       },
       {
         "path": "agent-skills/media/html-reel/scripts/bubble.mjs",
@@ -4187,8 +5496,8 @@
       {
         "path": "agent-skills/media/html-reel/SKILL.md",
         "mode": "100644",
-        "oid": "f98512fa2e3b28f93e5693654d1f0fdc8fd7389e",
-        "size": 27660
+        "oid": "034685be75c80d3cb5f379ca79a1de50dd0159a5",
+        "size": 29187
       },
       {
         "path": "agent-skills/media/unsplash-asset-images/demo/index.html",
@@ -4213,6 +5522,150 @@
         "mode": "100644",
         "oid": "cacf5a32616451ae8e14140c2b167558089ebf6e",
         "size": 5096
+      },
+      {
+        "path": "agent-skills/media/url-to-motion-design/agents/openai.yaml",
+        "mode": "100644",
+        "oid": "79184bebb9ce780f777c82f4238babe2a44f0d2e",
+        "size": 548
+      },
+      {
+        "path": "agent-skills/media/url-to-motion-design/lab/anchors/prompt-box-final.jpg",
+        "mode": "100644",
+        "oid": "a7afdcc52133041b14d627d9c39b51a5f1aff948",
+        "size": 73310
+      },
+      {
+        "path": "agent-skills/media/url-to-motion-design/lab/anchors/prompt-box.jpg",
+        "mode": "100644",
+        "oid": "70aa6d210fa54223059bef0f154856bfb3397e4a",
+        "size": 187036
+      },
+      {
+        "path": "agent-skills/media/url-to-motion-design/lab/anchors/ruled-lines-final.jpg",
+        "mode": "100644",
+        "oid": "69c79592b65546f839baa27811366b797cee0b2b",
+        "size": 50475
+      },
+      {
+        "path": "agent-skills/media/url-to-motion-design/lab/anchors/ruled-lines.jpg",
+        "mode": "100644",
+        "oid": "f7f3c643aff3c9fed4a2ef38d0f5fdc278ba85ec",
+        "size": 150331
+      },
+      {
+        "path": "agent-skills/media/url-to-motion-design/lab/runner.html",
+        "mode": "100644",
+        "oid": "411ead1fffbad7f306e434a194e0a7d587e5861a",
+        "size": 5922
+      },
+      {
+        "path": "agent-skills/media/url-to-motion-design/lab/screening.html",
+        "mode": "100644",
+        "oid": "6a42a803a35a27b5114001a243247b7ea6c7af4e",
+        "size": 10331
+      },
+      {
+        "path": "agent-skills/media/url-to-motion-design/lab/server.mjs",
+        "mode": "100644",
+        "oid": "75bcbda864531728ed5b43aa6a5073ec0d34247a",
+        "size": 4898
+      },
+      {
+        "path": "agent-skills/media/url-to-motion-design/lab/template.html",
+        "mode": "100644",
+        "oid": "35d053105fb2c1a9a4807acd6f7b02ab83eed682",
+        "size": 4597
+      },
+      {
+        "path": "agent-skills/media/url-to-motion-design/references/builder-brief.md",
+        "mode": "100644",
+        "oid": "e632dc05dee48404d294138630fccc66da6a6dcf",
+        "size": 4422
+      },
+      {
+        "path": "agent-skills/media/url-to-motion-design/references/judge.md",
+        "mode": "100644",
+        "oid": "4957f4f5a58826ea3b9875955c47e9d0b0427945",
+        "size": 2388
+      },
+      {
+        "path": "agent-skills/media/url-to-motion-design/references/lab.md",
+        "mode": "100644",
+        "oid": "da31953e7795af608c5595476fb4ce8b8b45ded1",
+        "size": 3438
+      },
+      {
+        "path": "agent-skills/media/url-to-motion-design/references/publish.md",
+        "mode": "100644",
+        "oid": "c83753f066bae1f12d1a03e9f3a79175849b461d",
+        "size": 3877
+      },
+      {
+        "path": "agent-skills/media/url-to-motion-design/references/scene-contract.md",
+        "mode": "100644",
+        "oid": "e911c7469803906be37b064828e47d7f41904580",
+        "size": 4915
+      },
+      {
+        "path": "agent-skills/media/url-to-motion-design/references/seven-to-eight.md",
+        "mode": "100644",
+        "oid": "a43e6a17f31c478d408292c0280923c2ac212942",
+        "size": 4213
+      },
+      {
+        "path": "agent-skills/media/url-to-motion-design/scripts/__pycache__/panel.cpython-314.pyc",
+        "mode": "100644",
+        "oid": "894d83ac29ad882b3dbb49626f4da0e5c52315c7",
+        "size": 8556
+      },
+      {
+        "path": "agent-skills/media/url-to-motion-design/scripts/fetch-source.mjs",
+        "mode": "100755",
+        "oid": "1bc7f20b278cf1f8c294f7038d44d0dfdaf285fc",
+        "size": 2925
+      },
+      {
+        "path": "agent-skills/media/url-to-motion-design/scripts/panel.py",
+        "mode": "100755",
+        "oid": "829747182c07303f79640148e31b05c16255596d",
+        "size": 4033
+      },
+      {
+        "path": "agent-skills/media/url-to-motion-design/scripts/publish-list.mjs",
+        "mode": "100755",
+        "oid": "183c22ef2f519e55d872fb06fd342a73ed251594",
+        "size": 1324
+      },
+      {
+        "path": "agent-skills/media/url-to-motion-design/scripts/render.mjs",
+        "mode": "100755",
+        "oid": "693879116f5084440741f81297b8a3c1c467284d",
+        "size": 2339
+      },
+      {
+        "path": "agent-skills/media/url-to-motion-design/scripts/screening.mjs",
+        "mode": "100755",
+        "oid": "394e5a8b9bb051c328d57129dbeaaead9d163412",
+        "size": 4374
+      },
+      {
+        "path": "agent-skills/media/url-to-motion-design/scripts/shots.mjs",
+        "mode": "100755",
+        "oid": "ac9385fd3b4562f4462e7ca82b935d51822238d6",
+        "size": 4843
+      },
+      {
+        "path": "agent-skills/media/url-to-motion-design/scripts/video.mjs",
+        "mode": "100755",
+        "oid": "e59b99ce367d66d75867d3d95ca00933a55bf635",
+        "size": 4846
+      },
+      {
+        "path": "agent-skills/media/url-to-motion-design/SKILL.md",
+        "mode": "100644",
+        "oid": "e89f34e63abd21af539aa176530c89f741799473",
+        "size": 6887
       },
       {
         "path": "agent-skills/ui/audit-ai-design-slop/agents/openai.yaml",
@@ -4269,6 +5722,42 @@
         "size": 3090
       },
       {
+        "path": "agent-skills/ui/moss-glass-controls/agents/openai.yaml",
+        "mode": "100644",
+        "oid": "299000e7a5ac8f14057dbae1ad9202f298205a50",
+        "size": 215
+      },
+      {
+        "path": "agent-skills/ui/moss-glass-controls/demo/assets/fern.jpg",
+        "mode": "100644",
+        "oid": "e486c58633a0f2b3367e837a5205c6b60bac2675",
+        "size": 33788
+      },
+      {
+        "path": "agent-skills/ui/moss-glass-controls/demo/index.html",
+        "mode": "100644",
+        "oid": "1ecf40858bda339dd1151e93c45add40f181f8b5",
+        "size": 8180
+      },
+      {
+        "path": "agent-skills/ui/moss-glass-controls/demo/preview.jpg",
+        "mode": "100644",
+        "oid": "ef2e1dab30edae0a140f07ac6f6aa464e2d49d8b",
+        "size": 64322
+      },
+      {
+        "path": "agent-skills/ui/moss-glass-controls/demo/PROMPT.md",
+        "mode": "100644",
+        "oid": "31587a867e61fdbc9394488acd142e31c7fbafce",
+        "size": 1114
+      },
+      {
+        "path": "agent-skills/ui/moss-glass-controls/SKILL.md",
+        "mode": "100644",
+        "oid": "57d68b7d32aa3179bcf8f61580e01f16640f46be",
+        "size": 1400
+      },
+      {
         "path": "agent-skills/ui/no-ai-design-slop/agents/openai.yaml",
         "mode": "100644",
         "oid": "14801c5fef75e1d80a68d915d669832b4f2bea36",
@@ -4291,6 +5780,564 @@
         "mode": "100644",
         "oid": "1562176afd7130e4568409203f459074cea09bdf",
         "size": 7007
+      },
+      {
+        "path": "agent-skills/ui/refract-liquid-glass/demo/index.html",
+        "mode": "100644",
+        "oid": "a84bdb6de1fe0e40f14eb9e979f83631cd37ab09",
+        "size": 11171
+      },
+      {
+        "path": "agent-skills/ui/refract-liquid-glass/demo/preview.jpg",
+        "mode": "100644",
+        "oid": "281715564e601ef7102e411a31936dd93fe90d9d",
+        "size": 153849
+      },
+      {
+        "path": "agent-skills/ui/refract-liquid-glass/demo/PROMPT.md",
+        "mode": "100644",
+        "oid": "fbfd72afddd45ed62aeb8b5b0d678c3fcb8696c7",
+        "size": 986
+      },
+      {
+        "path": "agent-skills/ui/refract-liquid-glass/SKILL.md",
+        "mode": "100644",
+        "oid": "8667b57325039012caefb6ed0575a9643441b467",
+        "size": 3007
+      },
+      {
+        "path": "agent-skills/ui/segmented-field-menu/agents/openai.yaml",
+        "mode": "100644",
+        "oid": "eacdc4000e716ca5891860042f2648ed496326d1",
+        "size": 222
+      },
+      {
+        "path": "agent-skills/ui/segmented-field-menu/demo/assets/THREE-LICENSE.txt",
+        "mode": "100644",
+        "oid": "d07e209686512b9ac93d7df5481a4a6f622093e7",
+        "size": 1081
+      },
+      {
+        "path": "agent-skills/ui/segmented-field-menu/demo/assets/three.min.js",
+        "mode": "100644",
+        "oid": "4494cf4e8d37049896b6051da6edfe44a83355af",
+        "size": 608081
+      },
+      {
+        "path": "agent-skills/ui/segmented-field-menu/demo/index.html",
+        "mode": "100644",
+        "oid": "6b1873fb4691f8690117b6b902ecaeb68c6abd06",
+        "size": 22656
+      },
+      {
+        "path": "agent-skills/ui/segmented-field-menu/demo/preview.jpg",
+        "mode": "100644",
+        "oid": "d89dfa5ae4efa041cb7d94c783457ca4e1235df0",
+        "size": 82466
+      },
+      {
+        "path": "agent-skills/ui/segmented-field-menu/demo/PROMPT.md",
+        "mode": "100644",
+        "oid": "1545395496f623b2e1be03bbb9054510e25d249f",
+        "size": 1160
+      },
+      {
+        "path": "agent-skills/ui/segmented-field-menu/SKILL.md",
+        "mode": "100644",
+        "oid": "7f77238c5cce94cddfb9cf73ffd8d81a2c622840",
+        "size": 1479
+      },
+      {
+        "path": "agent-skills/ui/shade-glass-button-press/demo/index.html",
+        "mode": "100644",
+        "oid": "8f8ad51f86b4e04faef102847d467fd5bbefc599",
+        "size": 12554
+      },
+      {
+        "path": "agent-skills/ui/shade-glass-button-press/demo/preview.jpg",
+        "mode": "100644",
+        "oid": "9c9fa49c3397aa6b8ec29e054897b126a84ec370",
+        "size": 135316
+      },
+      {
+        "path": "agent-skills/ui/shade-glass-button-press/demo/PROMPT.md",
+        "mode": "100644",
+        "oid": "69daa76eefe3ef7740a74378468a6ec962668025",
+        "size": 946
+      },
+      {
+        "path": "agent-skills/ui/shade-glass-button-press/SKILL.md",
+        "mode": "100644",
+        "oid": "79c57eb3117569d199926e37f3f97bb5869dfe77",
+        "size": 2509
+      },
+      {
+        "path": "agent-skills/video-editing/genjutsu-scene/references/comp-example.py",
+        "mode": "100644",
+        "oid": "8f39afd5d8fb186cfa8b839b6e47cce1a9995bc9",
+        "size": 5611
+      },
+      {
+        "path": "agent-skills/video-editing/genjutsu-scene/references/genjutsu-prompt-greymourn.txt",
+        "mode": "100644",
+        "oid": "5a07a553df3121fbd7ea663974cbf907789622b4",
+        "size": 656
+      },
+      {
+        "path": "agent-skills/video-editing/genjutsu-scene/references/greymourn-checks.json",
+        "mode": "100644",
+        "oid": "745d350cdf3871faec689a99f5cd7f7cf3cf3d7d",
+        "size": 331
+      },
+      {
+        "path": "agent-skills/video-editing/genjutsu-scene/references/greymourn-judgekit.json",
+        "mode": "100644",
+        "oid": "4f5fb74bb1bafbfed3d9f828d6c9e6a2ff1007fc",
+        "size": 666
+      },
+      {
+        "path": "agent-skills/video-editing/genjutsu-scene/references/greymourn.md",
+        "mode": "100644",
+        "oid": "dd54e3ea74d0bac9c8f489d9c380eabec17ec5ee",
+        "size": 3865
+      },
+      {
+        "path": "agent-skills/video-editing/genjutsu-scene/references/judge-prompt.md",
+        "mode": "100644",
+        "oid": "46a6b5fcd8f47c3bda87fcfd8db3dfc56317fc07",
+        "size": 3147
+      },
+      {
+        "path": "agent-skills/video-editing/genjutsu-scene/references/plate-capture-example.mjs",
+        "mode": "100644",
+        "oid": "b90b5245eb25b98dc5d2f2c9e610541e2b70b7f2",
+        "size": 3100
+      },
+      {
+        "path": "agent-skills/video-editing/genjutsu-scene/references/seedream-common-greymourn.txt",
+        "mode": "100644",
+        "oid": "08bd66ea92fde7834e580283082a47b9342f3ec4",
+        "size": 1657
+      },
+      {
+        "path": "agent-skills/video-editing/genjutsu-scene/references/seedream-lowkey-greymourn.txt",
+        "mode": "100644",
+        "oid": "f50fd571ab9589ca7c65ba09f6afc8ebf0d72a49",
+        "size": 487
+      },
+      {
+        "path": "agent-skills/video-editing/genjutsu-scene/scripts/blender_plate.py",
+        "mode": "100644",
+        "oid": "7260291050744561c8aad6a8b4f3f602a7f1e44f",
+        "size": 3721
+      },
+      {
+        "path": "agent-skills/video-editing/genjutsu-scene/scripts/dedup.py",
+        "mode": "100755",
+        "oid": "485ca96083cbde9a4254e057d881772583cbf2be",
+        "size": 2547
+      },
+      {
+        "path": "agent-skills/video-editing/genjutsu-scene/scripts/drive.py",
+        "mode": "100755",
+        "oid": "89299b3a18fc096bade03047c205ea4cab1d6ff8",
+        "size": 3655
+      },
+      {
+        "path": "agent-skills/video-editing/genjutsu-scene/scripts/eyes.py",
+        "mode": "100755",
+        "oid": "329100accc792f5d8cc7092114cf4a974996d9cf",
+        "size": 2083
+      },
+      {
+        "path": "agent-skills/video-editing/genjutsu-scene/scripts/gaze.py",
+        "mode": "100755",
+        "oid": "67f03de69f4b0aa230c91ee44adaf8c35b88a9f4",
+        "size": 2994
+      },
+      {
+        "path": "agent-skills/video-editing/genjutsu-scene/scripts/judgekit.py",
+        "mode": "100755",
+        "oid": "3ccbc43ff2d96fd26421dd27c73ca6d9942bb119",
+        "size": 4796
+      },
+      {
+        "path": "agent-skills/video-editing/genjutsu-scene/scripts/lipsync.py",
+        "mode": "100755",
+        "oid": "1db1a1f01b2827d28988bd37a5a13b3f1746c290",
+        "size": 2630
+      },
+      {
+        "path": "agent-skills/video-editing/genjutsu-scene/scripts/lmdump.swift",
+        "mode": "100644",
+        "oid": "e5b2effabef7ed469edeaa32cfb5279ea5c78336",
+        "size": 3168
+      },
+      {
+        "path": "agent-skills/video-editing/genjutsu-scene/scripts/phon.py",
+        "mode": "100755",
+        "oid": "b7ee31d63c125e7fb6e8f30cadb0cfcb49f469e0",
+        "size": 2208
+      },
+      {
+        "path": "agent-skills/video-editing/genjutsu-scene/scripts/post.sh",
+        "mode": "100755",
+        "oid": "cce0525f9645a7135a408f61fd839565f928fbb2",
+        "size": 1847
+      },
+      {
+        "path": "agent-skills/video-editing/genjutsu-scene/scripts/seg.swift",
+        "mode": "100644",
+        "oid": "99801b84fcc1e5a869b5bc2d5e75fc7d149b808f",
+        "size": 1095
+      },
+      {
+        "path": "agent-skills/video-editing/genjutsu-scene/scripts/tally.py",
+        "mode": "100755",
+        "oid": "f47755d09cf09f6c1b99d58083c0c166a2bc8f25",
+        "size": 1626
+      },
+      {
+        "path": "agent-skills/video-editing/genjutsu-scene/SKILL.md",
+        "mode": "100644",
+        "oid": "f4f1c27e8e421efec6995b956d382413fc536f6d",
+        "size": 19559
+      },
+      {
+        "path": "agent-skills/video-editing/long-video-to-short/references/judging.md",
+        "mode": "100644",
+        "oid": "fb173c118f9736df867190ff84d448edc5cd4d25",
+        "size": 2374
+      },
+      {
+        "path": "agent-skills/video-editing/long-video-to-short/references/motion.md",
+        "mode": "100644",
+        "oid": "9f368ae4c369f08841c538d7feddfdf8945b2f27",
+        "size": 2439
+      },
+      {
+        "path": "agent-skills/video-editing/long-video-to-short/references/on-camera.md",
+        "mode": "100644",
+        "oid": "168e2fbbfc98599a9ce39af6c27398fb03c86859",
+        "size": 6887
+      },
+      {
+        "path": "agent-skills/video-editing/long-video-to-short/references/plan-example.json",
+        "mode": "100644",
+        "oid": "c963f2cf90365485a8b91a026ec5fb49f6e73b33",
+        "size": 2215
+      },
+      {
+        "path": "agent-skills/video-editing/long-video-to-short/references/posting.md",
+        "mode": "100644",
+        "oid": "afc3a75e76f256c10f3bc10041a666b7b524bf6e",
+        "size": 3181
+      },
+      {
+        "path": "agent-skills/video-editing/long-video-to-short/references/run.md",
+        "mode": "100644",
+        "oid": "5274383ba5c75b24da8128abea6063d1f080c0f1",
+        "size": 3153
+      },
+      {
+        "path": "agent-skills/video-editing/long-video-to-short/scripts/align_phrases.py",
+        "mode": "100644",
+        "oid": "bf8065dafbb06e15b467bc7d099e1b54f68370f3",
+        "size": 3717
+      },
+      {
+        "path": "agent-skills/video-editing/long-video-to-short/scripts/base.sh",
+        "mode": "100755",
+        "oid": "104ea5c90e9ff42003ae303a5f135456d7bafc49",
+        "size": 944
+      },
+      {
+        "path": "agent-skills/video-editing/long-video-to-short/scripts/build_voice.py",
+        "mode": "100644",
+        "oid": "0847782dacd4663e86af5995c6b871c8467d81fb",
+        "size": 3191
+      },
+      {
+        "path": "agent-skills/video-editing/long-video-to-short/scripts/check_export.sh",
+        "mode": "100755",
+        "oid": "49056c01dc190f53e78c2581e5e9b7095ad18b39",
+        "size": 1443
+      },
+      {
+        "path": "agent-skills/video-editing/long-video-to-short/scripts/export.py",
+        "mode": "100644",
+        "oid": "66ade13bb3fa57bf4b5b34c7f7e636fe5c32481d",
+        "size": 4822
+      },
+      {
+        "path": "agent-skills/video-editing/long-video-to-short/scripts/plates.py",
+        "mode": "100644",
+        "oid": "4ee77b8e54a3277b8ce9b03c27f828a69078b7bb",
+        "size": 4477
+      },
+      {
+        "path": "agent-skills/video-editing/long-video-to-short/scripts/reel_draw.py",
+        "mode": "100644",
+        "oid": "3eeb3fe6ce9922676d71dd36848b1f547d0e2b96",
+        "size": 13262
+      },
+      {
+        "path": "agent-skills/video-editing/long-video-to-short/scripts/scenes.py",
+        "mode": "100644",
+        "oid": "72db4f08a7993e88bbcda200991516ac25b1da6d",
+        "size": 3470
+      },
+      {
+        "path": "agent-skills/video-editing/long-video-to-short/scripts/segdir.swift",
+        "mode": "100644",
+        "oid": "0858dd59165d8e5fb9fbe0f6c446cf3a970b9c99",
+        "size": 1349
+      },
+      {
+        "path": "agent-skills/video-editing/long-video-to-short/scripts/sync_check.py",
+        "mode": "100644",
+        "oid": "0ce40fa2297b711fbddb5347931fa4e4e36ed1ef",
+        "size": 1434
+      },
+      {
+        "path": "agent-skills/video-editing/long-video-to-short/SKILL.md",
+        "mode": "100644",
+        "oid": "8fba95e7f61db0e2b2dfc12e5a553a8778a069cc",
+        "size": 14322
+      },
+      {
+        "path": "agent-skills/video-editing/making-of-film/assets/judge-prompt.md",
+        "mode": "100644",
+        "oid": "eb20a67a09fd8421d4b2bf11c3070d115d232429",
+        "size": 2119
+      },
+      {
+        "path": "agent-skills/video-editing/making-of-film/assets/starter/film.css",
+        "mode": "100644",
+        "oid": "f9713bf190cc79dad31646a6359ecc13822e7406",
+        "size": 7278
+      },
+      {
+        "path": "agent-skills/video-editing/making-of-film/assets/starter/film.html",
+        "mode": "100644",
+        "oid": "fedfd11cdda2bbce64942fda3928e6da7ea7fc18",
+        "size": 4083
+      },
+      {
+        "path": "agent-skills/video-editing/making-of-film/assets/starter/film.js",
+        "mode": "100644",
+        "oid": "b897950ffe93b3fa8645a8dea3035d581e687307",
+        "size": 5588
+      },
+      {
+        "path": "agent-skills/video-editing/making-of-film/assets/starter/fonts/Geist-Variable.woff2",
+        "mode": "100644",
+        "oid": "3c19abbeff3a2651dcc7ba36f5d99842626d3d99",
+        "size": 69488
+      },
+      {
+        "path": "agent-skills/video-editing/making-of-film/assets/starter/fonts/GeistMono-Variable.woff2",
+        "mode": "100644",
+        "oid": "50c5a55f8f982f52940e4874a8fd8a2632f0d3e9",
+        "size": 71212
+      },
+      {
+        "path": "agent-skills/video-editing/making-of-film/assets/starter/fonts/GeistSerifVF.woff2",
+        "mode": "100644",
+        "oid": "4b6c8faa87f17f6bc469b7cddad6ec2a4aaf431c",
+        "size": 49036
+      },
+      {
+        "path": "agent-skills/video-editing/making-of-film/assets/starter/script.txt",
+        "mode": "100644",
+        "oid": "ba6db71cc2e7954c7e027000b037d029b10d46e5",
+        "size": 421
+      },
+      {
+        "path": "agent-skills/video-editing/making-of-film/assets/starter/words.js",
+        "mode": "100644",
+        "oid": "098f4d024977419738b13a8963208b1296d2e06d",
+        "size": 2255
+      },
+      {
+        "path": "agent-skills/video-editing/making-of-film/assets/starter/words.json",
+        "mode": "100644",
+        "oid": "06e649a263addc080b366b017f9f06be0f68d901",
+        "size": 2320
+      },
+      {
+        "path": "agent-skills/video-editing/making-of-film/assets/twin.js",
+        "mode": "100644",
+        "oid": "ab8265d69625a2e51c35d1a41f333efa56c6990c",
+        "size": 1529
+      },
+      {
+        "path": "agent-skills/video-editing/making-of-film/references/camera-and-twin.md",
+        "mode": "100644",
+        "oid": "4f356f3dd14f68da627716522b1aa9ebb4063cb1",
+        "size": 5569
+      },
+      {
+        "path": "agent-skills/video-editing/making-of-film/references/greymourn.md",
+        "mode": "100644",
+        "oid": "6a2486e06b9e6fef23b3435ba24ee3634b165e33",
+        "size": 6756
+      },
+      {
+        "path": "agent-skills/video-editing/making-of-film/references/judging.md",
+        "mode": "100644",
+        "oid": "d099222eeeff202ca176332cd28288279c2e4978",
+        "size": 2774
+      },
+      {
+        "path": "agent-skills/video-editing/making-of-film/references/look.md",
+        "mode": "100644",
+        "oid": "7e027fc948a5421926aa0cc5a6045a9353b81052",
+        "size": 7095
+      },
+      {
+        "path": "agent-skills/video-editing/making-of-film/references/motion.md",
+        "mode": "100644",
+        "oid": "65383062e4344309dc6f1fbac71a2084b91d345b",
+        "size": 4088
+      },
+      {
+        "path": "agent-skills/video-editing/making-of-film/references/render.md",
+        "mode": "100644",
+        "oid": "091916e8d74a72a1cbb7388dc99c7144f92cc4c8",
+        "size": 4905
+      },
+      {
+        "path": "agent-skills/video-editing/making-of-film/references/script.md",
+        "mode": "100644",
+        "oid": "de9f741550d2e973bfd78fe59a68a5e97fb09f43",
+        "size": 9402
+      },
+      {
+        "path": "agent-skills/video-editing/making-of-film/references/structure.md",
+        "mode": "100644",
+        "oid": "0945ee5c825c79746493e9bdebe613a48360ff34",
+        "size": 7643
+      },
+      {
+        "path": "agent-skills/video-editing/making-of-film/references/voice.md",
+        "mode": "100644",
+        "oid": "717dfaca32888b7e12f12c81c5c831e12e6a6396",
+        "size": 4188
+      },
+      {
+        "path": "agent-skills/video-editing/making-of-film/scripts/__pycache__/align-voice.cpython-314.pyc",
+        "mode": "100644",
+        "oid": "213ee9a751e2a1f37e5e3af2fd423a81d8f09f28",
+        "size": 6315
+      },
+      {
+        "path": "agent-skills/video-editing/making-of-film/scripts/__pycache__/judge-pack.cpython-314.pyc",
+        "mode": "100644",
+        "oid": "3d3d4cd676aae52cbcc0dc0237ddf8dc76460a37",
+        "size": 4156
+      },
+      {
+        "path": "agent-skills/video-editing/making-of-film/scripts/__pycache__/realign-phrases.cpython-314.pyc",
+        "mode": "100644",
+        "oid": "0cad84918cedf85b13c4db5be0a20e60fd0383fe",
+        "size": 14377
+      },
+      {
+        "path": "agent-skills/video-editing/making-of-film/scripts/align-voice.py",
+        "mode": "100755",
+        "oid": "07d3216e3530349e223bcfce524524a3d1a0a1e8",
+        "size": 2551
+      },
+      {
+        "path": "agent-skills/video-editing/making-of-film/scripts/explainer.css",
+        "mode": "100644",
+        "oid": "15def813ec3f661ac0adaf827c64ed375fe52e95",
+        "size": 6852
+      },
+      {
+        "path": "agent-skills/video-editing/making-of-film/scripts/explainer.js",
+        "mode": "100644",
+        "oid": "da3f232b137845a63d1d1fba9ca5840c64a959d0",
+        "size": 30515
+      },
+      {
+        "path": "agent-skills/video-editing/making-of-film/scripts/film-facts.mjs",
+        "mode": "100755",
+        "oid": "6393c4ce52dee051cdcd4998e789de48dab295c5",
+        "size": 4784
+      },
+      {
+        "path": "agent-skills/video-editing/making-of-film/scripts/fix-onsets.mjs",
+        "mode": "100755",
+        "oid": "42861b2710bbeab5c76fbaddd53f756b02633e91",
+        "size": 2502
+      },
+      {
+        "path": "agent-skills/video-editing/making-of-film/scripts/judge-pack.py",
+        "mode": "100755",
+        "oid": "84749f1e67ae929965d404e793bfe35aef563713",
+        "size": 2141
+      },
+      {
+        "path": "agent-skills/video-editing/making-of-film/scripts/locked.sh",
+        "mode": "100755",
+        "oid": "fad7bb69f1b59a092e2d5d0fba0f49ceea60deec",
+        "size": 821
+      },
+      {
+        "path": "agent-skills/video-editing/making-of-film/scripts/motion.js",
+        "mode": "100644",
+        "oid": "f10fc100b203c969960b1765b71b7934b48c4677",
+        "size": 11430
+      },
+      {
+        "path": "agent-skills/video-editing/making-of-film/scripts/preview.sh",
+        "mode": "100755",
+        "oid": "95aa5b7c8848b0e5ec638190ad6b58526acaeac9",
+        "size": 3203
+      },
+      {
+        "path": "agent-skills/video-editing/making-of-film/scripts/realign-phrases.py",
+        "mode": "100755",
+        "oid": "46d35c300abf09245e9ccddffb47765ee6758766",
+        "size": 6956
+      },
+      {
+        "path": "agent-skills/video-editing/making-of-film/scripts/rects.mjs",
+        "mode": "100755",
+        "oid": "92564c26aabd1c6763645db5f35cb21e144b8485",
+        "size": 3149
+      },
+      {
+        "path": "agent-skills/video-editing/making-of-film/scripts/render-scenes.sh",
+        "mode": "100755",
+        "oid": "4f7e9fd003df1306bee86aa064e79c4bfab7d002",
+        "size": 894
+      },
+      {
+        "path": "agent-skills/video-editing/making-of-film/scripts/render.mjs",
+        "mode": "100755",
+        "oid": "41d57555c66cb9fa1ef76cc27ba7edc7bca9ea10",
+        "size": 8946
+      },
+      {
+        "path": "agent-skills/video-editing/making-of-film/scripts/sync-check.mjs",
+        "mode": "100755",
+        "oid": "c29f7ee0141e46dbaee4ddc748fd751428cac375",
+        "size": 2199
+      },
+      {
+        "path": "agent-skills/video-editing/making-of-film/scripts/voice-edit.mjs",
+        "mode": "100755",
+        "oid": "29206946b39b15108ba973fd6b5e77e091cf6c6c",
+        "size": 8582
+      },
+      {
+        "path": "agent-skills/video-editing/making-of-film/SKILL.md",
+        "mode": "100644",
+        "oid": "e34f74451399f55ab3eba7128e6f7e7ca945096b",
+        "size": 22257
       },
       {
         "path": "agent-skills/web-design/add-mouse-driven-orbit/agents/openai.yaml",
@@ -5241,6 +7288,48 @@
         "size": 1066
       },
       {
+        "path": "agent-skills/web-design/compose-a-woodland-landing-page/agents/openai.yaml",
+        "mode": "100644",
+        "oid": "5769f0c4f2f7af63879f7b3ad79b236205d9178b",
+        "size": 241
+      },
+      {
+        "path": "agent-skills/web-design/compose-a-woodland-landing-page/demo/assets/THREE-LICENSE.txt",
+        "mode": "100644",
+        "oid": "d07e209686512b9ac93d7df5481a4a6f622093e7",
+        "size": 1081
+      },
+      {
+        "path": "agent-skills/web-design/compose-a-woodland-landing-page/demo/assets/three.min.js",
+        "mode": "100644",
+        "oid": "4494cf4e8d37049896b6051da6edfe44a83355af",
+        "size": 608081
+      },
+      {
+        "path": "agent-skills/web-design/compose-a-woodland-landing-page/demo/index.html",
+        "mode": "100644",
+        "oid": "9437059098ea75d46dc52c75a88fcffa5d83517c",
+        "size": 23780
+      },
+      {
+        "path": "agent-skills/web-design/compose-a-woodland-landing-page/demo/preview.jpg",
+        "mode": "100644",
+        "oid": "8c3c9b67928a9fec262acd109f509553a4842ae2",
+        "size": 80275
+      },
+      {
+        "path": "agent-skills/web-design/compose-a-woodland-landing-page/demo/PROMPT.md",
+        "mode": "100644",
+        "oid": "fa1bb85810fef52c64fd4dcd0161a1400ad9547a",
+        "size": 1208
+      },
+      {
+        "path": "agent-skills/web-design/compose-a-woodland-landing-page/SKILL.md",
+        "mode": "100644",
+        "oid": "ade843d7573da4dc170cef0d56c8f9fe8cbff77d",
+        "size": 1742
+      },
+      {
         "path": "agent-skills/web-design/container-lines/demo/assets/page-01-65695f80-23f9-46ee-8487-cbb6c93cc48b-3840w.webp",
         "mode": "100644",
         "oid": "14c17545abe76f947ee8bf0df2c35fb5e6d37adc",
@@ -5545,6 +7634,102 @@
         "mode": "100644",
         "oid": "756e9e4012f3353f3176dc7307dc1da2d0986f8c",
         "size": 4865
+      },
+      {
+        "path": "agent-skills/web-design/dither-ascii-ink-hover/agents/openai.yaml",
+        "mode": "100644",
+        "oid": "ae8ef711b5c5a8cd86675ff4313309b88eff19ff",
+        "size": 237
+      },
+      {
+        "path": "agent-skills/web-design/dither-ascii-ink-hover/demo/assets/broken-rule.png",
+        "mode": "100644",
+        "oid": "af8e8949735c14957a40698516ff48f2bce8e49c",
+        "size": 7819
+      },
+      {
+        "path": "agent-skills/web-design/dither-ascii-ink-hover/demo/assets/field-printer.webp",
+        "mode": "100644",
+        "oid": "028445edcee106b5c34f51f055f66852031954eb",
+        "size": 136130
+      },
+      {
+        "path": "agent-skills/web-design/dither-ascii-ink-hover/demo/assets/field-studio.webp",
+        "mode": "100644",
+        "oid": "95d587635c6c7dfb191de6b8296f1d8409427e63",
+        "size": 265802
+      },
+      {
+        "path": "agent-skills/web-design/dither-ascii-ink-hover/demo/assets/Font-LICENSE.txt",
+        "mode": "100644",
+        "oid": "21f361881ed4f2f5042bce8d059d8df562fc409c",
+        "size": 4407
+      },
+      {
+        "path": "agent-skills/web-design/dither-ascii-ink-hover/demo/assets/geist-mono.woff2",
+        "mode": "100644",
+        "oid": "50c5a55f8f982f52940e4874a8fd8a2632f0d3e9",
+        "size": 71212
+      },
+      {
+        "path": "agent-skills/web-design/dither-ascii-ink-hover/demo/assets/geist-sans.woff2",
+        "mode": "100644",
+        "oid": "3c19abbeff3a2651dcc7ba36f5d99842626d3d99",
+        "size": 69488
+      },
+      {
+        "path": "agent-skills/web-design/dither-ascii-ink-hover/demo/assets/geist-serif.woff2",
+        "mode": "100644",
+        "oid": "ea217ac1a1d6e4b49f07c6970a373a4a3314a6a6",
+        "size": 46904
+      },
+      {
+        "path": "agent-skills/web-design/dither-ascii-ink-hover/demo/assets/ledger-screen.png",
+        "mode": "100644",
+        "oid": "47288bd37fd61a3a97ce50fd168fa3a24d50802e",
+        "size": 11965
+      },
+      {
+        "path": "agent-skills/web-design/dither-ascii-ink-hover/demo/assets/paper-grain.png",
+        "mode": "100644",
+        "oid": "9ebd8428b55c7ce01b0642ad935ddebd249e135a",
+        "size": 130882
+      },
+      {
+        "path": "agent-skills/web-design/dither-ascii-ink-hover/demo/assets/studio-note.png",
+        "mode": "100644",
+        "oid": "a9acc98113395069b1c5d81b52d0b35f0a497109",
+        "size": 44063
+      },
+      {
+        "path": "agent-skills/web-design/dither-ascii-ink-hover/demo/assets/style.css",
+        "mode": "100644",
+        "oid": "35f50db2213acfdc855c58a2514db64da9909df1",
+        "size": 139291
+      },
+      {
+        "path": "agent-skills/web-design/dither-ascii-ink-hover/demo/index.html",
+        "mode": "100644",
+        "oid": "677c7e641c0f8357042f7121ab4900f69128956e",
+        "size": 2201
+      },
+      {
+        "path": "agent-skills/web-design/dither-ascii-ink-hover/demo/preview.jpg",
+        "mode": "100644",
+        "oid": "d6b557f65cd8e08186e3d652d51290d0fc13870e",
+        "size": 190305
+      },
+      {
+        "path": "agent-skills/web-design/dither-ascii-ink-hover/demo/PROMPT.md",
+        "mode": "100644",
+        "oid": "92234dd03b6930994653663d282558dbcd1489db",
+        "size": 1045
+      },
+      {
+        "path": "agent-skills/web-design/dither-ascii-ink-hover/SKILL.md",
+        "mode": "100644",
+        "oid": "fab5725d0c0802b1873e2634cf547ec788e9943c",
+        "size": 2034
       },
       {
         "path": "agent-skills/web-design/dither-background/demo/assets/source-preview.jpg",
@@ -6055,6 +8240,144 @@
         "mode": "100644",
         "oid": "48b9f75b8d2cd73fe7e834703c80e0accefb2fd6",
         "size": 4451
+      },
+      {
+        "path": "agent-skills/web-design/generate-ledger-logo-register/agents/openai.yaml",
+        "mode": "100644",
+        "oid": "b080a3fdd5610b9a902108033fd9e131f374326c",
+        "size": 243
+      },
+      {
+        "path": "agent-skills/web-design/generate-ledger-logo-register/demo/assets/broken-rule.png",
+        "mode": "100644",
+        "oid": "af8e8949735c14957a40698516ff48f2bce8e49c",
+        "size": 7819
+      },
+      {
+        "path": "agent-skills/web-design/generate-ledger-logo-register/demo/assets/Font-LICENSE.txt",
+        "mode": "100644",
+        "oid": "21f361881ed4f2f5042bce8d059d8df562fc409c",
+        "size": 4407
+      },
+      {
+        "path": "agent-skills/web-design/generate-ledger-logo-register/demo/assets/geist-mono.woff2",
+        "mode": "100644",
+        "oid": "50c5a55f8f982f52940e4874a8fd8a2632f0d3e9",
+        "size": 71212
+      },
+      {
+        "path": "agent-skills/web-design/generate-ledger-logo-register/demo/assets/geist-sans.woff2",
+        "mode": "100644",
+        "oid": "3c19abbeff3a2651dcc7ba36f5d99842626d3d99",
+        "size": 69488
+      },
+      {
+        "path": "agent-skills/web-design/generate-ledger-logo-register/demo/assets/geist-serif.woff2",
+        "mode": "100644",
+        "oid": "ea217ac1a1d6e4b49f07c6970a373a4a3314a6a6",
+        "size": 46904
+      },
+      {
+        "path": "agent-skills/web-design/generate-ledger-logo-register/demo/assets/paper-grain.png",
+        "mode": "100644",
+        "oid": "9ebd8428b55c7ce01b0642ad935ddebd249e135a",
+        "size": 130882
+      },
+      {
+        "path": "agent-skills/web-design/generate-ledger-logo-register/demo/assets/partner0.webp",
+        "mode": "100644",
+        "oid": "6160898f23a2a9ad0eb18508af5cc45148aa6454",
+        "size": 16926
+      },
+      {
+        "path": "agent-skills/web-design/generate-ledger-logo-register/demo/assets/partner1.webp",
+        "mode": "100644",
+        "oid": "5ef37220b27e365cb2f0679383c4ea3aa798dcf0",
+        "size": 19200
+      },
+      {
+        "path": "agent-skills/web-design/generate-ledger-logo-register/demo/assets/partner2.webp",
+        "mode": "100644",
+        "oid": "dc31e90b8fa0cc309f2aaf60f995cad81607ac80",
+        "size": 15606
+      },
+      {
+        "path": "agent-skills/web-design/generate-ledger-logo-register/demo/assets/partner3.webp",
+        "mode": "100644",
+        "oid": "a1a6b85ce04619cd7877a1cc4e6a2d19003b0d75",
+        "size": 14850
+      },
+      {
+        "path": "agent-skills/web-design/generate-ledger-logo-register/demo/assets/partner4.webp",
+        "mode": "100644",
+        "oid": "a86ea18c2f756e7ad4e6f02725ada1ea47eee5f0",
+        "size": 11994
+      },
+      {
+        "path": "agent-skills/web-design/generate-ledger-logo-register/demo/assets/partner5.webp",
+        "mode": "100644",
+        "oid": "8fd9057178ed9f9ab8bcce309636f3e1597bdda6",
+        "size": 14796
+      },
+      {
+        "path": "agent-skills/web-design/generate-ledger-logo-register/demo/assets/studio-note.png",
+        "mode": "100644",
+        "oid": "a9acc98113395069b1c5d81b52d0b35f0a497109",
+        "size": 44063
+      },
+      {
+        "path": "agent-skills/web-design/generate-ledger-logo-register/demo/assets/style.css",
+        "mode": "100644",
+        "oid": "1ba74c6c669fc295882c2c6bc8e17c962db9882f",
+        "size": 106023
+      },
+      {
+        "path": "agent-skills/web-design/generate-ledger-logo-register/demo/index.html",
+        "mode": "100644",
+        "oid": "23529ac28bcb77a4eaf63219a2c8fcf39ced3ff3",
+        "size": 1807
+      },
+      {
+        "path": "agent-skills/web-design/generate-ledger-logo-register/demo/preview.jpg",
+        "mode": "100644",
+        "oid": "ad6a0f3f8d4f67212540003056cf908ee50d43d5",
+        "size": 146277
+      },
+      {
+        "path": "agent-skills/web-design/generate-ledger-logo-register/demo/PROMPT.md",
+        "mode": "100644",
+        "oid": "38ce86d7f64c9cc6bc5ecda8a97beca99fbacf2e",
+        "size": 1147
+      },
+      {
+        "path": "agent-skills/web-design/generate-ledger-logo-register/references/generation-prompt.md",
+        "mode": "100644",
+        "oid": "909d2e60b7b1200e452aa4912cdb6d19432d9447",
+        "size": 1919
+      },
+      {
+        "path": "agent-skills/web-design/generate-ledger-logo-register/references/identity-sheet.jpg",
+        "mode": "100644",
+        "oid": "599214ddcb5a98eed92fd187679c2b7af527077b",
+        "size": 43299
+      },
+      {
+        "path": "agent-skills/web-design/generate-ledger-logo-register/references/reading-order.json",
+        "mode": "100644",
+        "oid": "b32110e77388994666b4b62dacaee7dc81da5c9c",
+        "size": 96
+      },
+      {
+        "path": "agent-skills/web-design/generate-ledger-logo-register/scripts/extract_sheet.py",
+        "mode": "100644",
+        "oid": "1ee9477c5f8638ef8dea31b63991b0ce4a2d9d98",
+        "size": 2602
+      },
+      {
+        "path": "agent-skills/web-design/generate-ledger-logo-register/SKILL.md",
+        "mode": "100644",
+        "oid": "73c35e420818abae9f3cd7e7234501ccc89dc0f9",
+        "size": 2234
       },
       {
         "path": "agent-skills/web-design/glass-dark-mode-clock/demo/assets/source-preview.jpg",
@@ -6945,6 +9268,108 @@
         "size": 9875
       },
       {
+        "path": "agent-skills/web-design/neoclassical-ledger-ui/agents/openai.yaml",
+        "mode": "100644",
+        "oid": "114445f6a7b0bfe70e73901efc9a7b7b70bd9aed",
+        "size": 217
+      },
+      {
+        "path": "agent-skills/web-design/neoclassical-ledger-ui/demo/assets/broken-rule.png",
+        "mode": "100644",
+        "oid": "af8e8949735c14957a40698516ff48f2bce8e49c",
+        "size": 7819
+      },
+      {
+        "path": "agent-skills/web-design/neoclassical-ledger-ui/demo/assets/Font-LICENSE.txt",
+        "mode": "100644",
+        "oid": "21f361881ed4f2f5042bce8d059d8df562fc409c",
+        "size": 4407
+      },
+      {
+        "path": "agent-skills/web-design/neoclassical-ledger-ui/demo/assets/geist-mono.woff2",
+        "mode": "100644",
+        "oid": "50c5a55f8f982f52940e4874a8fd8a2632f0d3e9",
+        "size": 71212
+      },
+      {
+        "path": "agent-skills/web-design/neoclassical-ledger-ui/demo/assets/geist-sans.woff2",
+        "mode": "100644",
+        "oid": "3c19abbeff3a2651dcc7ba36f5d99842626d3d99",
+        "size": 69488
+      },
+      {
+        "path": "agent-skills/web-design/neoclassical-ledger-ui/demo/assets/geist-serif.woff2",
+        "mode": "100644",
+        "oid": "ea217ac1a1d6e4b49f07c6970a373a4a3314a6a6",
+        "size": 46904
+      },
+      {
+        "path": "agent-skills/web-design/neoclassical-ledger-ui/demo/assets/paper-grain.png",
+        "mode": "100644",
+        "oid": "9ebd8428b55c7ce01b0642ad935ddebd249e135a",
+        "size": 130882
+      },
+      {
+        "path": "agent-skills/web-design/neoclassical-ledger-ui/demo/assets/service-accounts.webp",
+        "mode": "100644",
+        "oid": "33660c6de16482b200157b4a16db93f7737bbf15",
+        "size": 44232
+      },
+      {
+        "path": "agent-skills/web-design/neoclassical-ledger-ui/demo/assets/service-connectivity.webp",
+        "mode": "100644",
+        "oid": "15c99fd5e43d822a352a94ae31d1cd124293823b",
+        "size": 50868
+      },
+      {
+        "path": "agent-skills/web-design/neoclassical-ledger-ui/demo/assets/service-ledger.webp",
+        "mode": "100644",
+        "oid": "438a107a08cbcb1221107e43022a977764d29585",
+        "size": 42876
+      },
+      {
+        "path": "agent-skills/web-design/neoclassical-ledger-ui/demo/assets/service-payment.webp",
+        "mode": "100644",
+        "oid": "0417ebc7be8cf592fbbb0e62f15908c3c3700174",
+        "size": 71084
+      },
+      {
+        "path": "agent-skills/web-design/neoclassical-ledger-ui/demo/assets/studio-note.png",
+        "mode": "100644",
+        "oid": "a9acc98113395069b1c5d81b52d0b35f0a497109",
+        "size": 44063
+      },
+      {
+        "path": "agent-skills/web-design/neoclassical-ledger-ui/demo/assets/style.css",
+        "mode": "100644",
+        "oid": "09540e208910c8f433c0dead477702687248a89d",
+        "size": 106027
+      },
+      {
+        "path": "agent-skills/web-design/neoclassical-ledger-ui/demo/index.html",
+        "mode": "100644",
+        "oid": "598205911f6ae66fbbc14ba9ee7c2ad0b2fca08d",
+        "size": 2386
+      },
+      {
+        "path": "agent-skills/web-design/neoclassical-ledger-ui/demo/preview.jpg",
+        "mode": "100644",
+        "oid": "bd46a496e6c08ae21f4cd327dfef229396dcb2b9",
+        "size": 154908
+      },
+      {
+        "path": "agent-skills/web-design/neoclassical-ledger-ui/demo/PROMPT.md",
+        "mode": "100644",
+        "oid": "739170e21ef0ab60465559af69b68148e15af89c",
+        "size": 1039
+      },
+      {
+        "path": "agent-skills/web-design/neoclassical-ledger-ui/SKILL.md",
+        "mode": "100644",
+        "oid": "c5326c5a1faaf7ed8c86a95e242b426b0d8d6f68",
+        "size": 2072
+      },
+      {
         "path": "agent-skills/web-design/nested-container-clean-agency/demo/assets/page-01-2f563338-39fa-47ea-9761-658d4f3f84db-1600w.jpg",
         "mode": "100644",
         "oid": "74b6044b7a373ebbb73626a00905fc0b2b292d9a",
@@ -7221,6 +9646,138 @@
         "size": 4038
       },
       {
+        "path": "agent-skills/web-design/painted-product-showcase/agents/openai.yaml",
+        "mode": "100644",
+        "oid": "e9059289168859b7161ce53d785ffea9cd21b638",
+        "size": 231
+      },
+      {
+        "path": "agent-skills/web-design/painted-product-showcase/demo/assets/behavior.js",
+        "mode": "100644",
+        "oid": "96a46142e873254f9e11325c5eeca8378cff0bb3",
+        "size": 12458
+      },
+      {
+        "path": "agent-skills/web-design/painted-product-showcase/demo/assets/broken-rule.png",
+        "mode": "100644",
+        "oid": "af8e8949735c14957a40698516ff48f2bce8e49c",
+        "size": 7819
+      },
+      {
+        "path": "agent-skills/web-design/painted-product-showcase/demo/assets/Font-LICENSE.txt",
+        "mode": "100644",
+        "oid": "21f361881ed4f2f5042bce8d059d8df562fc409c",
+        "size": 4407
+      },
+      {
+        "path": "agent-skills/web-design/painted-product-showcase/demo/assets/geist-mono.woff2",
+        "mode": "100644",
+        "oid": "50c5a55f8f982f52940e4874a8fd8a2632f0d3e9",
+        "size": 71212
+      },
+      {
+        "path": "agent-skills/web-design/painted-product-showcase/demo/assets/geist-sans.woff2",
+        "mode": "100644",
+        "oid": "3c19abbeff3a2651dcc7ba36f5d99842626d3d99",
+        "size": 69488
+      },
+      {
+        "path": "agent-skills/web-design/painted-product-showcase/demo/assets/geist-serif.woff2",
+        "mode": "100644",
+        "oid": "ea217ac1a1d6e4b49f07c6970a373a4a3314a6a6",
+        "size": 46904
+      },
+      {
+        "path": "agent-skills/web-design/painted-product-showcase/demo/assets/harbor-mask.png",
+        "mode": "100644",
+        "oid": "188483295cd05c4b7a4de8bf77ed5eef0ce1d5d1",
+        "size": 3383
+      },
+      {
+        "path": "agent-skills/web-design/painted-product-showcase/demo/assets/harbor-water.webp",
+        "mode": "100644",
+        "oid": "42f3cb249030d0655f5a8f279214cd0b9c9c0c9d",
+        "size": 505988
+      },
+      {
+        "path": "agent-skills/web-design/painted-product-showcase/demo/assets/lake-mask.png",
+        "mode": "100644",
+        "oid": "c5cdab8c4004f4a8f63756f9f3007790e1648025",
+        "size": 2053
+      },
+      {
+        "path": "agent-skills/web-design/painted-product-showcase/demo/assets/lake-water.webp",
+        "mode": "100644",
+        "oid": "1e6d5d4a0d801bced39991b08d3db6337260a436",
+        "size": 580798
+      },
+      {
+        "path": "agent-skills/web-design/painted-product-showcase/demo/assets/paper-grain.png",
+        "mode": "100644",
+        "oid": "9ebd8428b55c7ce01b0642ad935ddebd249e135a",
+        "size": 130882
+      },
+      {
+        "path": "agent-skills/web-design/painted-product-showcase/demo/assets/platform-ruins.webp",
+        "mode": "100644",
+        "oid": "bfc8f3b2733a42e99daa47b2ed5f59202b4aab2e",
+        "size": 220164
+      },
+      {
+        "path": "agent-skills/web-design/painted-product-showcase/demo/assets/studio-note.png",
+        "mode": "100644",
+        "oid": "a9acc98113395069b1c5d81b52d0b35f0a497109",
+        "size": 44063
+      },
+      {
+        "path": "agent-skills/web-design/painted-product-showcase/demo/assets/style.css",
+        "mode": "100644",
+        "oid": "d148bd55dae5aceca1c8109a3aaa75e854cf65a7",
+        "size": 105958
+      },
+      {
+        "path": "agent-skills/web-design/painted-product-showcase/demo/assets/wordmark.webp",
+        "mode": "100644",
+        "oid": "10dbf3e11196c6e97ae385b3525aa54b1e5d4f68",
+        "size": 17692
+      },
+      {
+        "path": "agent-skills/web-design/painted-product-showcase/demo/index.html",
+        "mode": "100644",
+        "oid": "e2796b8450398088b5e33f53631edea6ae1cc9bc",
+        "size": 1465268
+      },
+      {
+        "path": "agent-skills/web-design/painted-product-showcase/demo/preview.jpg",
+        "mode": "100644",
+        "oid": "0ac71c15fbba4fb1038404e77855d4acc8292a7f",
+        "size": 188768
+      },
+      {
+        "path": "agent-skills/web-design/painted-product-showcase/demo/PROMPT.md",
+        "mode": "100644",
+        "oid": "9cf505184be5d5bfab55ea0dda01d9f5fb4a8e24",
+        "size": 1076
+      },
+      {
+        "path": "agent-skills/web-design/painted-product-showcase/references/ledger.js",
+        "mode": "100644",
+        "oid": "3d2e0ed9a9c3394fbb713468ebfbcbe9b9eaa45f",
+        "size": 14047
+      },
+      {
+        "path": "agent-skills/web-design/painted-product-showcase/references/water.js",
+        "mode": "100644",
+        "oid": "93ca4aa1fb6e33e899ab6e65c4ab38d0913a53cf",
+        "size": 7625
+      },
+      {
+        "path": "agent-skills/web-design/painted-product-showcase/SKILL.md",
+        "mode": "100644",
+        "oid": "6146f31cd697470bd28c9e71efb0d9cc7a7c1911",
+        "size": 2331
+      },
+      {
         "path": "agent-skills/web-design/paper-cinder-transition/agents/openai.yaml",
         "mode": "100644",
         "oid": "6fc802d43a0e23bebf365e6d1c73f3c7f3c7b316",
@@ -7279,6 +9836,48 @@
         "mode": "100644",
         "oid": "1913edbd49b5daf4024c64f7c935650bc1c1a17e",
         "size": 10566
+      },
+      {
+        "path": "agent-skills/web-design/pollen-pointer-trail/agents/openai.yaml",
+        "mode": "100644",
+        "oid": "2fa820381a8f8e4bae56bea74c20d007f6691452",
+        "size": 221
+      },
+      {
+        "path": "agent-skills/web-design/pollen-pointer-trail/demo/assets/THREE-LICENSE.txt",
+        "mode": "100644",
+        "oid": "d07e209686512b9ac93d7df5481a4a6f622093e7",
+        "size": 1081
+      },
+      {
+        "path": "agent-skills/web-design/pollen-pointer-trail/demo/assets/three.min.js",
+        "mode": "100644",
+        "oid": "4494cf4e8d37049896b6051da6edfe44a83355af",
+        "size": 608081
+      },
+      {
+        "path": "agent-skills/web-design/pollen-pointer-trail/demo/index.html",
+        "mode": "100644",
+        "oid": "7ccc2af9331fba0633008dca676767509eb012d6",
+        "size": 22084
+      },
+      {
+        "path": "agent-skills/web-design/pollen-pointer-trail/demo/preview.jpg",
+        "mode": "100644",
+        "oid": "530ebb645af3f2272ec87a2ae53cbe5b84144fa3",
+        "size": 77197
+      },
+      {
+        "path": "agent-skills/web-design/pollen-pointer-trail/demo/PROMPT.md",
+        "mode": "100644",
+        "oid": "c89ec1a0d94c1e40368494796869d026b70e3c68",
+        "size": 1085
+      },
+      {
+        "path": "agent-skills/web-design/pollen-pointer-trail/SKILL.md",
+        "mode": "100644",
+        "oid": "5ecea3006851e5ada75b35c6a7cde8ac41fb0629",
+        "size": 1509
       },
       {
         "path": "agent-skills/web-design/pricing-page/demo/index.html",
@@ -7539,6 +10138,48 @@
         "size": 10442
       },
       {
+        "path": "agent-skills/web-design/scroll-mesh-survey/agents/openai.yaml",
+        "mode": "100644",
+        "oid": "cd4d56cdba7e82453eb42f7ef4a7c45c2d7e5192",
+        "size": 211
+      },
+      {
+        "path": "agent-skills/web-design/scroll-mesh-survey/demo/assets/THREE-LICENSE.txt",
+        "mode": "100644",
+        "oid": "d07e209686512b9ac93d7df5481a4a6f622093e7",
+        "size": 1081
+      },
+      {
+        "path": "agent-skills/web-design/scroll-mesh-survey/demo/assets/three.min.js",
+        "mode": "100644",
+        "oid": "4494cf4e8d37049896b6051da6edfe44a83355af",
+        "size": 608081
+      },
+      {
+        "path": "agent-skills/web-design/scroll-mesh-survey/demo/index.html",
+        "mode": "100644",
+        "oid": "5d8611ecba9bc2bb92e454d43c90e8e0c9a9d11f",
+        "size": 20239
+      },
+      {
+        "path": "agent-skills/web-design/scroll-mesh-survey/demo/preview.jpg",
+        "mode": "100644",
+        "oid": "3dc20c9c4af3bbc87bb600d13b67c71e4795ccbf",
+        "size": 51570
+      },
+      {
+        "path": "agent-skills/web-design/scroll-mesh-survey/demo/PROMPT.md",
+        "mode": "100644",
+        "oid": "7bdc0864478408446a87a23bb70aff8f99d523a3",
+        "size": 1125
+      },
+      {
+        "path": "agent-skills/web-design/scroll-mesh-survey/SKILL.md",
+        "mode": "100644",
+        "oid": "d19bdc7151c80bbf3f8f1bc36a442fd42c52f777",
+        "size": 1626
+      },
+      {
         "path": "agent-skills/web-design/scroll-progress-timeline/agents/openai.yaml",
         "mode": "100644",
         "oid": "386473f83a57417ebc2a5e003dd1a738b6f479ad",
@@ -7573,6 +10214,192 @@
         "mode": "100644",
         "oid": "0695aeba2f58e7cf224192645fb0c420d9c15821",
         "size": 3991
+      },
+      {
+        "path": "agent-skills/web-design/scroll-scrubbed-object-handoff/agents/openai.yaml",
+        "mode": "100644",
+        "oid": "f5b456ac788ef95e4371b61dddee23490e1f6474",
+        "size": 247
+      },
+      {
+        "path": "agent-skills/web-design/scroll-scrubbed-object-handoff/demo/assets/behavior.js",
+        "mode": "100644",
+        "oid": "4ecba3a5567f4590694af32aaf12c35703d2ca51",
+        "size": 961937
+      },
+      {
+        "path": "agent-skills/web-design/scroll-scrubbed-object-handoff/demo/assets/broken-rule.png",
+        "mode": "100644",
+        "oid": "af8e8949735c14957a40698516ff48f2bce8e49c",
+        "size": 7819
+      },
+      {
+        "path": "agent-skills/web-design/scroll-scrubbed-object-handoff/demo/assets/commission-engraving.webp",
+        "mode": "100644",
+        "oid": "7111d39f3e32dd160ada8ee82c0232aef7ce37b5",
+        "size": 370874
+      },
+      {
+        "path": "agent-skills/web-design/scroll-scrubbed-object-handoff/demo/assets/depth-studio-token.webp",
+        "mode": "100644",
+        "oid": "f5bec30afafaaeedce05b72e2d2c2a4d2c78a935",
+        "size": 40660
+      },
+      {
+        "path": "agent-skills/web-design/scroll-scrubbed-object-handoff/demo/assets/Font-LICENSE.txt",
+        "mode": "100644",
+        "oid": "21f361881ed4f2f5042bce8d059d8df562fc409c",
+        "size": 4407
+      },
+      {
+        "path": "agent-skills/web-design/scroll-scrubbed-object-handoff/demo/assets/geist-mono.woff2",
+        "mode": "100644",
+        "oid": "50c5a55f8f982f52940e4874a8fd8a2632f0d3e9",
+        "size": 71212
+      },
+      {
+        "path": "agent-skills/web-design/scroll-scrubbed-object-handoff/demo/assets/geist-sans.woff2",
+        "mode": "100644",
+        "oid": "3c19abbeff3a2651dcc7ba36f5d99842626d3d99",
+        "size": 69488
+      },
+      {
+        "path": "agent-skills/web-design/scroll-scrubbed-object-handoff/demo/assets/geist-serif.woff2",
+        "mode": "100644",
+        "oid": "ea217ac1a1d6e4b49f07c6970a373a4a3314a6a6",
+        "size": 46904
+      },
+      {
+        "path": "agent-skills/web-design/scroll-scrubbed-object-handoff/demo/assets/hand-clockwork-bleed.webp",
+        "mode": "100644",
+        "oid": "13706ed4dab2463c82ec2c2b0ea7dfe6a2aeffb3",
+        "size": 375730
+      },
+      {
+        "path": "agent-skills/web-design/scroll-scrubbed-object-handoff/demo/assets/hand-porcelain-bleed.webp",
+        "mode": "100644",
+        "oid": "bbc39b077cad6c52c539889544da6460792b9edc",
+        "size": 352850
+      },
+      {
+        "path": "agent-skills/web-design/scroll-scrubbed-object-handoff/demo/assets/handoff-human-bleed.webp",
+        "mode": "100644",
+        "oid": "768406a79c6471ebfb54d6d4d2cc0b71954c61bb",
+        "size": 221268
+      },
+      {
+        "path": "agent-skills/web-design/scroll-scrubbed-object-handoff/demo/assets/handoff-pouch.webp",
+        "mode": "100644",
+        "oid": "69b122b234e6aee96fe683adfee2e25b23b7c464",
+        "size": 83818
+      },
+      {
+        "path": "agent-skills/web-design/scroll-scrubbed-object-handoff/demo/assets/handoff-robot-bleed.webp",
+        "mode": "100644",
+        "oid": "37637465aa25879f68e747934fad992a22355be4",
+        "size": 349240
+      },
+      {
+        "path": "agent-skills/web-design/scroll-scrubbed-object-handoff/demo/assets/ledger-screen.png",
+        "mode": "100644",
+        "oid": "47288bd37fd61a3a97ce50fd168fa3a24d50802e",
+        "size": 11965
+      },
+      {
+        "path": "agent-skills/web-design/scroll-scrubbed-object-handoff/demo/assets/normal-studio-token.webp",
+        "mode": "100644",
+        "oid": "df96795defc9a7a9f0f69438bfe2b71655975a0e",
+        "size": 185170
+      },
+      {
+        "path": "agent-skills/web-design/scroll-scrubbed-object-handoff/demo/assets/paper-grain.png",
+        "mode": "100644",
+        "oid": "9ebd8428b55c7ce01b0642ad935ddebd249e135a",
+        "size": 130882
+      },
+      {
+        "path": "agent-skills/web-design/scroll-scrubbed-object-handoff/demo/assets/roughness-studio-token.webp",
+        "mode": "100644",
+        "oid": "2975cc1929918a838833f2ed52fc33515c082f5f",
+        "size": 73814
+      },
+      {
+        "path": "agent-skills/web-design/scroll-scrubbed-object-handoff/demo/assets/services-figure.webp",
+        "mode": "100644",
+        "oid": "6b8a2a841bbfe3001f9763d59121c1429853eea9",
+        "size": 335924
+      },
+      {
+        "path": "agent-skills/web-design/scroll-scrubbed-object-handoff/demo/assets/studio-note.png",
+        "mode": "100644",
+        "oid": "a9acc98113395069b1c5d81b52d0b35f0a497109",
+        "size": 44063
+      },
+      {
+        "path": "agent-skills/web-design/scroll-scrubbed-object-handoff/demo/assets/studio-token.webp",
+        "mode": "100644",
+        "oid": "d62bb52b6da1e6ba0cadc842ab8b5d4f28fee35f",
+        "size": 120130
+      },
+      {
+        "path": "agent-skills/web-design/scroll-scrubbed-object-handoff/demo/assets/style.css",
+        "mode": "100644",
+        "oid": "7c5ead57a65309d2486c4e05084fb8c6063b9f60",
+        "size": 121915
+      },
+      {
+        "path": "agent-skills/web-design/scroll-scrubbed-object-handoff/demo/assets/Three-LICENSE.txt",
+        "mode": "100644",
+        "oid": "8ada2a5f982916b0ba4b7a0aa7de347587e745d7",
+        "size": 1081
+      },
+      {
+        "path": "agent-skills/web-design/scroll-scrubbed-object-handoff/demo/index.html",
+        "mode": "100644",
+        "oid": "c261b469ad7bdc26a91b5986e25a2278c9bcca80",
+        "size": 2456411
+      },
+      {
+        "path": "agent-skills/web-design/scroll-scrubbed-object-handoff/demo/preview.jpg",
+        "mode": "100644",
+        "oid": "83bda3cdf14d6393edd02b2b7493a73cb416ca67",
+        "size": 168444
+      },
+      {
+        "path": "agent-skills/web-design/scroll-scrubbed-object-handoff/demo/PROMPT.md",
+        "mode": "100644",
+        "oid": "60810415e05531fbb40f1773b1e2b8f46628d38e",
+        "size": 1032
+      },
+      {
+        "path": "agent-skills/web-design/scroll-scrubbed-object-handoff/references/coin-light.js",
+        "mode": "100644",
+        "oid": "a5288febd1ccfbbee3274c66f83e2a6e425da91e",
+        "size": 4473
+      },
+      {
+        "path": "agent-skills/web-design/scroll-scrubbed-object-handoff/references/engraving.js",
+        "mode": "100644",
+        "oid": "775983c4b2ea9877c49f7b80b6a516447d13a47b",
+        "size": 5828
+      },
+      {
+        "path": "agent-skills/web-design/scroll-scrubbed-object-handoff/references/handoff.js",
+        "mode": "100644",
+        "oid": "25633785759028efa53fa00a3ba5930fd8735688",
+        "size": 14042
+      },
+      {
+        "path": "agent-skills/web-design/scroll-scrubbed-object-handoff/references/paint-shader.js",
+        "mode": "100644",
+        "oid": "aeb30a67cd2d1fd1f61901d9ad96b9a460889c23",
+        "size": 2009
+      },
+      {
+        "path": "agent-skills/web-design/scroll-scrubbed-object-handoff/SKILL.md",
+        "mode": "100644",
+        "oid": "d49aae5ef505ca0daaed0ce5b52ac84d138b1f02",
+        "size": 2540
       },
       {
         "path": "agent-skills/web-design/scroll-scrubbed-visual-sequence/agents/openai.yaml",
@@ -8019,6 +10846,42 @@
         "size": 4925
       },
       {
+        "path": "agent-skills/web-design/sylva-field-guide-layout/agents/openai.yaml",
+        "mode": "100644",
+        "oid": "3e78bb68896887a4d2fd3085feb604775fab0e9d",
+        "size": 227
+      },
+      {
+        "path": "agent-skills/web-design/sylva-field-guide-layout/demo/assets/fern.jpg",
+        "mode": "100644",
+        "oid": "e486c58633a0f2b3367e837a5205c6b60bac2675",
+        "size": 33788
+      },
+      {
+        "path": "agent-skills/web-design/sylva-field-guide-layout/demo/index.html",
+        "mode": "100644",
+        "oid": "f893b3cc65453adc22fb0eb2001047a1e89f9a4c",
+        "size": 7707
+      },
+      {
+        "path": "agent-skills/web-design/sylva-field-guide-layout/demo/preview.jpg",
+        "mode": "100644",
+        "oid": "770971075e6cfe988d624bbbb7e382424352bfa1",
+        "size": 62767
+      },
+      {
+        "path": "agent-skills/web-design/sylva-field-guide-layout/demo/PROMPT.md",
+        "mode": "100644",
+        "oid": "6ef5a419c5816c6985db8f6026221999326630ac",
+        "size": 1153
+      },
+      {
+        "path": "agent-skills/web-design/sylva-field-guide-layout/SKILL.md",
+        "mode": "100644",
+        "oid": "0c2bee93a9a1bd8808862912fc79f403544d6c51",
+        "size": 1576
+      },
+      {
         "path": "agent-skills/web-design/tailwindcss/demo/index.html",
         "mode": "100644",
         "oid": "6e44b3d8592e4c0ecf0ebb7a28ab41f56cba946a",
@@ -8333,8 +11196,8 @@
       {
         "path": "agent-skills/web-design/WEB-DESIGN-SKILLS.md",
         "mode": "100644",
-        "oid": "40c0319d22f1e14261d20c2c776fcfeeb285c43d",
-        "size": 1130
+        "oid": "f7fe2e079b02bc554e35a80f5bf638087c307f0d",
+        "size": 2359
       },
       {
         "path": "agent-skills/web-design/webgl-3d-object/demo/assets/page-01-4734259a-bad7-422f-981e-ce01e79184f2-1600w.jpg",
@@ -8501,8 +11364,32 @@
       {
         "path": "agent-skills/workflow/README.md",
         "mode": "100644",
-        "oid": "adce99c38f176c883d6c83bd5040e42c5d30f903",
-        "size": 2386
+        "oid": "6c604d1c61bbda35e599e75cfd206b8558a01039",
+        "size": 2560
+      },
+      {
+        "path": "agent-skills/workflow/release-threeui-demo/agents/openai.yaml",
+        "mode": "100644",
+        "oid": "d5124c0e8e0206f602ae04f01e01276c41586a3e",
+        "size": 302
+      },
+      {
+        "path": "agent-skills/workflow/release-threeui-demo/references/fil-posts.md",
+        "mode": "100644",
+        "oid": "2d1900cefaf252dab502d85d9a4cd5cee265d88d",
+        "size": 3532
+      },
+      {
+        "path": "agent-skills/workflow/release-threeui-demo/scripts/verify_master.py",
+        "mode": "100644",
+        "oid": "045f80c44bd371b7aea5ede221a6c9e14ac489a1",
+        "size": 4259
+      },
+      {
+        "path": "agent-skills/workflow/release-threeui-demo/SKILL.md",
+        "mode": "100644",
+        "oid": "0905e5b9701ddc5b9ac14e1c1fb90940afc5a9c7",
+        "size": 6648
       },
       {
         "path": "agent-skills/workflow/workflow-progress-screenshots/scripts/capture.mjs",
@@ -8675,8 +11562,8 @@
       {
         "path": "DEMOS.md",
         "mode": "100644",
-        "oid": "828a4881f80b7a85994e228387ed2c7258d494b6",
-        "size": 27960
+        "oid": "df00cc85b2ae628d4bfd97845c532fef88193cae",
+        "size": 34404
       },
       {
         "path": "LICENSE",
@@ -8687,8 +11574,8 @@
       {
         "path": "README.md",
         "mode": "100644",
-        "oid": "47c3b6e12f3c827864c9d2aba4852a615f106126",
-        "size": 20862
+        "oid": "99a934f4fdd944071ba659b67ce29123fdbc8f62",
+        "size": 30108
       },
       {
         "path": "SCREENSHOTS-preview.jpg",
@@ -8699,14 +11586,14 @@
       {
         "path": "SCREENSHOTS.html",
         "mode": "100644",
-        "oid": "13c3321f306a0f8724ca7ca6d704388da46060c4",
-        "size": 140122
+        "oid": "a301658a299d37dfc09c2223159c0e82c94182bc",
+        "size": 171975
       },
       {
         "path": "SCREENSHOTS.md",
         "mode": "100644",
-        "oid": "10e8120c4e3bf3a5a0ac2af19652faf8a79fa8a3",
-        "size": 54558
+        "oid": "0fd0c1322f58dde5cd947845536ffb7dfb796f67",
+        "size": 68175
       },
       {
         "path": "scripts/backfill-skill-demos.mjs",
@@ -8741,15 +11628,16 @@
     ]
   },
   "categories": {
-    "3d": 16,
+    "3d": 29,
     "codex": 20,
     "game-combat": 6,
-    "game-development": 20,
+    "game-development": 25,
     "illustration": 14,
-    "media": 5,
-    "ui": 3,
-    "web-design": 92,
-    "workflow": 4
+    "media": 7,
+    "ui": 7,
+    "video-editing": 3,
+    "web-design": 101,
+    "workflow": 5
   },
   "skills": [
     {
@@ -8758,6 +11646,17 @@
       "category": "3d",
       "description": "Build convincing woven cloth in Three.js, with a thread-level weave normal map, sheen and anisotropic highlights, folds that never stretch the texture, hems with thickness, stitches, seams, frayed edges, fold occlusion, dye and wear variation, and light passing through thin fabric. Use for linen, silk, wool, canvas, curtains, banners, cloaks, tablecloths, tapestries or any 3D drape that currently looks like a plastic sheet, a stretched texture, or a flat coloured plane.",
       "path": "upstream/agent-skills/3d/3d-cloth-material/SKILL.md",
+      "activation": "automatic",
+      "stages": [
+        "implementation"
+      ]
+    },
+    {
+      "id": "3d/3d-construction-sequence",
+      "name": "3d-construction-sequence",
+      "category": "3d",
+      "description": "Animate existing Three.js architecture or equipment assembling from a structural wireframe into finished solids. Use for a replayable 3D build, fabrication sequence or staged reconstruction with rigid parts and synchronized shadows.",
+      "path": "upstream/agent-skills/3d/3d-construction-sequence/SKILL.md",
       "activation": "automatic",
       "stages": [
         "implementation"
@@ -8786,6 +11685,17 @@
       ]
     },
     {
+      "id": "3d/3d-harbour-water",
+      "name": "3d-harbour-water",
+      "category": "3d",
+      "description": "Build sheltered waterfronts in Three.js with depth-aware reflections of docks and signs, rain rings, boats that ride the swell, and wakes that follow turns. Use for night harbours, canals, urban quays, or a game boat whose reflection slides away from the hull.",
+      "path": "upstream/agent-skills/3d/3d-harbour-water/SKILL.md",
+      "activation": "automatic",
+      "stages": [
+        "implementation"
+      ]
+    },
+    {
       "id": "3d/3d-high-poly-models",
       "name": "3d-high-poly-models",
       "category": "3d",
@@ -8808,11 +11718,33 @@
       ]
     },
     {
+      "id": "3d/3d-kasumidera-ultra-realism",
+      "name": "3d-kasumidera-ultra-realism",
+      "category": "3d",
+      "description": "Build or art-direct walkable Three.js environments in Kasumidera’s painterly ultra-realism style. Use for warm weathered architecture, layered mountain scenery, volumetric light, and close-up materials that hold up at player height and 200% optical zoom.",
+      "path": "upstream/agent-skills/3d/3d-kasumidera-ultra-realism/SKILL.md",
+      "activation": "automatic",
+      "stages": [
+        "implementation"
+      ]
+    },
+    {
       "id": "3d/3d-metal-material",
       "name": "3d-metal-material",
       "category": "3d",
       "description": "Build hyperrealistic PBR metal in Three.js: steel, brass, gold, copper and iron as true conductors (metalness 1, measured F0 tint, no albedo) with roughness-varied finishes (polished, brushed anisotropic, aged with patina and worn edges) lit by a dark HDR studio of real bright window cards prefiltered with PMREM. Use when metal looks like grey plastic, a dull blur, or a black hole; when blades, tools, rings, ingots, hardware or product metal need reflections with edges and structure; or when a finish needs scratches, streaks, fingerprints and bevels that catch light.",
       "path": "upstream/agent-skills/3d/3d-metal-material/SKILL.md",
+      "activation": "automatic",
+      "stages": [
+        "implementation"
+      ]
+    },
+    {
+      "id": "3d/3d-modular-buildings",
+      "name": "3d-modular-buildings",
+      "category": "3d",
+      "description": "Model human-scale buildings for a real-time 3D environment. Use for believable streets, waterfront districts, modular facades, entrances and rooftops that need to work from a distant approach and a walk-up camera.",
+      "path": "upstream/agent-skills/3d/3d-modular-buildings/SKILL.md",
       "activation": "automatic",
       "stages": [
         "implementation"
@@ -8874,10 +11806,21 @@
       ]
     },
     {
+      "id": "3d/3d-survey-scan",
+      "name": "3d-survey-scan",
+      "category": "3d",
+      "description": "Add a replayable world-space survey pulse to an existing Three.js scene. Use for a cyan scanner that briefly traces mesh edges and passes over solid architecture, terrain or water while the camera and gameplay stay live.",
+      "path": "upstream/agent-skills/3d/3d-survey-scan/SKILL.md",
+      "activation": "automatic",
+      "stages": [
+        "implementation"
+      ]
+    },
+    {
       "id": "3d/3d-ultra-realistic-water",
       "name": "3d-ultra-realistic-water",
       "category": "3d",
-      "description": "Build an ultra-realistic open ocean in Three.js with a deep-water Gerstner spectrum shaded per pixel from analytic derivatives, each wave faded at its own pixel footprint, plus Fresnel sky-cube and planar reflections, subsurface light through the crests, HDR sun glitter, Jacobian lace foam, a Kelvin wake, hull foam, buoyancy queries and aerial perspective into the sky's horizon haze. Use for seas, oceans, sunset or daylight water, sun glitter paths, ship or boat scenes, wakes, coastal flyovers and any 3D scene with a moving camera and a water horizon. Includes the approved water from Pirate Ship Sunset as a reusable module and demo.",
+      "description": "Build an ultra-realistic open ocean in Three.js with a deep-water Gerstner spectrum shaded per pixel from analytic derivatives, each wave faded at its own pixel footprint, plus Fresnel sky-cube and planar reflections, subsurface light through the crests, HDR sun glitter, Jacobian lace foam, a Kelvin wake, hull foam, buoyancy queries and aerial perspective into the sky's horizon haze. Use for shallow creeks, water around rocks, seas, oceans, sunset or daylight water, sun glitter paths, ship or boat scenes, wakes, coastal flyovers and any 3D scene with a moving camera and a water horizon. Includes the approved water from Pirate Ship Sunset as a reusable module and demo.",
       "path": "upstream/agent-skills/3d/3d-ultra-realistic-water/SKILL.md",
       "activation": "automatic",
       "stages": [
@@ -8923,6 +11866,94 @@
       "category": "3d",
       "description": "Build convincing timber for Three.js as one procedural MeshPhysicalMaterial with growth rings, cathedral figure, pores, medullary rays, checks, tool marks, end grain, and oil, wax, or lacquer finishes, so the grain follows the form and survives macro close-ups without image textures. Use for wood boards, benches, carved panels, tool handles, joinery, floors, and any request to make 3D wood look real, detailed, or less like a tiled photo or plastic.",
       "path": "upstream/agent-skills/3d/3d-wood-material/SKILL.md",
+      "activation": "automatic",
+      "stages": [
+        "implementation"
+      ]
+    },
+    {
+      "id": "3d/animate-procedural-birds",
+      "name": "animate-procedural-birds",
+      "category": "3d",
+      "description": "Build and animate a small bird in Three.js with a recognizable species silhouette, folding wings, independent head and tail motion, grounded toes and a shadow that holds up in close shots. Use for perching, takeoff, flight and landing in wildlife scenes.",
+      "path": "upstream/agent-skills/3d/animate-procedural-birds/SKILL.md",
+      "activation": "automatic",
+      "stages": [
+        "implementation"
+      ]
+    },
+    {
+      "id": "3d/control-camera-lenses",
+      "name": "control-camera-lenses",
+      "category": "3d",
+      "description": "Add photographic focal length, sensor fit, subject tracking and depth-aware shallow focus to a Three.js scene. Use for lens selectors, dolly and zoom shots, eye focus, and sharp deterministic film exports.",
+      "path": "upstream/agent-skills/3d/control-camera-lenses/SKILL.md",
+      "activation": "automatic",
+      "stages": [
+        "implementation"
+      ]
+    },
+    {
+      "id": "3d/forest-floor-specimen",
+      "name": "forest-floor-specimen",
+      "category": "3d",
+      "description": "Model an animated 3D botanical study with fern fronds, folded pinnae, a moss cushion and grounded stones for a light editorial Journey section.",
+      "path": "upstream/agent-skills/3d/forest-floor-specimen/SKILL.md",
+      "activation": "automatic",
+      "stages": [
+        "implementation"
+      ]
+    },
+    {
+      "id": "3d/light-a-threejs-workspace",
+      "name": "light-a-threejs-workspace",
+      "category": "3d",
+      "description": "Construct a procedural Three.js desk interior with textured furniture, a window and blinds, shadowed volumetric daylight, and coupled lighting presets.",
+      "path": "upstream/agent-skills/3d/light-a-threejs-workspace/SKILL.md",
+      "activation": "automatic",
+      "stages": [
+        "implementation"
+      ]
+    },
+    {
+      "id": "3d/model-threejs-control-icons",
+      "name": "model-threejs-control-icons",
+      "category": "3d",
+      "description": "Model and light detailed Three.js icons for small interface controls. Use for miniature objects, physically based materials, and a reusable high-density icon atlas.",
+      "path": "upstream/agent-skills/3d/model-threejs-control-icons/SKILL.md",
+      "activation": "automatic",
+      "stages": [
+        "implementation"
+      ]
+    },
+    {
+      "id": "3d/perching-butterfly",
+      "name": "perching-butterfly",
+      "category": "3d",
+      "description": "Animate a small 3D butterfly that banks in flight, approaches an actual plant surface, settles with hinged wings and takes off when disturbed.",
+      "path": "upstream/agent-skills/3d/perching-butterfly/SKILL.md",
+      "activation": "automatic",
+      "stages": [
+        "implementation"
+      ]
+    },
+    {
+      "id": "3d/relight-painted-surfaces",
+      "name": "relight-painted-surfaces",
+      "category": "3d",
+      "description": "Add pointer-driven lighting to a 2D painting, sprite, or holographic card using separate depth, normal, and roughness maps. Use for moving highlights on illustrated metal, skin, cloth, or paper while the painted silhouette stays registered.",
+      "path": "upstream/agent-skills/3d/relight-painted-surfaces/SKILL.md",
+      "activation": "automatic",
+      "stages": [
+        "implementation"
+      ]
+    },
+    {
+      "id": "3d/woodland-chapter-cameras",
+      "name": "woodland-chapter-cameras",
+      "category": "3d",
+      "description": "Stage a live Three.js valley with a creek, instanced trees and layered fog across a hero, story chapter and footer using distinct scroll-driven camera poses.",
+      "path": "upstream/agent-skills/3d/woodland-chapter-cameras/SKILL.md",
       "activation": "automatic",
       "stages": [
         "implementation"
@@ -9234,6 +12265,19 @@
       ]
     },
     {
+      "id": "game-development/build-3d-character-selector",
+      "name": "build-3d-character-selector",
+      "category": "game-development",
+      "description": "Make an original 3D cast from identity and full-body references, prepare textured GLBs for the browser, and build a full-body character selection screen with rotation, material lighting and animated swaps. Use for character generation, a casting room, a wardrobe or a playable roster.",
+      "path": "upstream/agent-skills/game-development/build-3d-character-selector/SKILL.md",
+      "activation": "automatic",
+      "stages": [
+        "design",
+        "implementation",
+        "qa"
+      ]
+    },
+    {
       "id": "game-development/build-game-audio-feedback",
       "name": "build-game-audio-feedback",
       "category": "game-development",
@@ -9338,11 +12382,37 @@
       ]
     },
     {
+      "id": "game-development/build-lens-raindrops",
+      "name": "build-lens-raindrops",
+      "category": "game-development",
+      "description": "Add camera-space water drops, rain on glass and windshield beads that bend the live scene. Use for a rain-soaked driving camera, a wet intro lens, speed-responsive runoff or a performant WebGL refraction pass.",
+      "path": "upstream/agent-skills/game-development/build-lens-raindrops/SKILL.md",
+      "activation": "automatic",
+      "stages": [
+        "design",
+        "implementation",
+        "qa"
+      ]
+    },
+    {
       "id": "game-development/build-mobile-threejs-games",
       "name": "build-mobile-threejs-games",
       "category": "game-development",
       "description": "Build, tune, or test a Three.js game for mobile web. Use for touch movement, action controls, target selection, touch inventory, safe areas, portrait/landscape layouts, responsive HUD, battery/performance budgets, and real mobile browser QA.",
       "path": "upstream/agent-skills/game-development/build-mobile-threejs-games/SKILL.md",
+      "activation": "automatic",
+      "stages": [
+        "design",
+        "implementation",
+        "qa"
+      ]
+    },
+    {
+      "id": "game-development/build-point-cloud-scan",
+      "name": "build-point-cloud-scan",
+      "category": "game-development",
+      "description": "Build animated 3D scans from actual mesh topology in Three.js or WebGL. Use for a city survey pulse, a staged construction reveal, or a character swap where dots and wireframe travel across the surface before it resolves.",
+      "path": "upstream/agent-skills/game-development/build-point-cloud-scan/SKILL.md",
       "activation": "automatic",
       "stages": [
         "design",
@@ -9369,6 +12439,19 @@
       "category": "game-development",
       "description": "Build or refactor reusable, data-driven enemy archetype and moveset systems for Three.js action games. Use for enemy content schemas, model and rig conventions, combat move timing and contact contracts, runtime state boundaries, placeholder fallbacks, deterministic fixtures, or production playthrough validation.",
       "path": "upstream/agent-skills/game-development/build-threejs-enemy-systems/SKILL.md",
+      "activation": "automatic",
+      "stages": [
+        "design",
+        "implementation",
+        "qa"
+      ]
+    },
+    {
+      "id": "game-development/build-ultra-realistic-game-interiors",
+      "name": "build-ultra-realistic-game-interiors",
+      "category": "game-development",
+      "description": "Build or refine photoreal, walkable first-person interiors in Three.js. Use for the worn cyberpunk look of Nocturne Hotel, for rooms that lose realism when the camera moves, or for a reference-matched 9/10 pass on room lighting, materials and in-game interactions.",
+      "path": "upstream/agent-skills/game-development/build-ultra-realistic-game-interiors/SKILL.md",
       "activation": "automatic",
       "stages": [
         "design",
@@ -9421,6 +12504,19 @@
       "category": "game-development",
       "description": "Design, implement, tune, or test Three.js action-game encounters. Use for arena layout, enemy composition, spawn pacing, objectives, boss phases, reward cadence, encounter fixtures, and difficulty validation.",
       "path": "upstream/agent-skills/game-development/design-game-encounters/SKILL.md",
+      "activation": "automatic",
+      "stages": [
+        "design",
+        "implementation",
+        "qa"
+      ]
+    },
+    {
+      "id": "game-development/game-dev-character-model",
+      "name": "game-dev-character-model",
+      "category": "game-development",
+      "description": "Create a realistic, AAA-looking 3D character model for a game or web scene, from a description or a reference video/image, as a textured, rigged GLB standing in a relaxed pose in a lit three.js viewer. Covers designing an original character, the photoreal A-pose concept image, image-to-3D with Meshy or Tripo through Fil, rigging, posing in code, hangar-style lighting, headless capture, and the checks before showing it. Use when the user asks for a character model, a hero/heroine/NPC, \"a model as good as X\", a realistic human for a game, or to rig or pose a generated character.",
+      "path": "upstream/agent-skills/game-development/game-dev-character-model/SKILL.md",
       "activation": "automatic",
       "stages": [
         "design",
@@ -9651,8 +12747,20 @@
       "id": "media/create-ai-avatar",
       "name": "create-ai-avatar",
       "category": "media",
-      "description": "Make an AI avatar of yourself that looks and sounds like you. A HeyGen digital twin trained on a couple of minutes of your own footage says lines you never recorded, in your own ElevenLabs voice, lip-synced from the audio, on the engine whose mouth moves most like yours. Covers picking and joining takes, training, consent, making the voice, rendering the same line on Avatar V, IV and III, and judging them mouth to mouth against your real footage before anything else is made. Use when someone wants a digital twin, an AI avatar or talking head of themselves or a consenting person, a HeyGen avatar from their YouTube videos or recordings, their avatar to speak in their own cloned voice, a lip-synced talking video from a photo and audio, or says their avatar looks wrong, over-acts or its mouth isn't theirs.",
+      "description": "Make an AI avatar of yourself that looks and sounds like you. A HeyGen digital twin trained on a couple of minutes of your own footage says lines you never recorded, in your own ElevenLabs voice, lip-synced from the audio, on the engine whose mouth moves most like yours. Covers picking and joining takes, training, consent, making the voice, rendering the same line on Avatar 6 (HeyGen's newest, through Fil), V, IV and III, and judging them mouth to mouth against your real footage before anything else is made. Use when someone wants a digital twin, an AI avatar or talking head of themselves or a consenting person, a HeyGen avatar from their YouTube videos or recordings, their avatar to speak in their own cloned voice, a lip-synced talking video from a photo and audio, or says their avatar looks wrong, over-acts or its mouth isn't theirs.",
       "path": "upstream/agent-skills/media/create-ai-avatar/SKILL.md",
+      "activation": "automatic",
+      "stages": [
+        "directions",
+        "implementation"
+      ]
+    },
+    {
+      "id": "media/digital-twin",
+      "name": "digital-twin",
+      "category": "media",
+      "description": "Build a digital twin of yourself, meaning photoreal stills of you in your own real room, talking video clips of you, and lines in your own cloned voice, that people who know you accept as you. It's a proven workflow (160+ numbered stills over two dozen rounds, 20+ talking drafts and a voice taken from 8.7 to 9.2/10 on one creator's twin, Nov 2026). It covers consent, picking references from your own recordings, writing an identity prompt, the 4-part prompt stack on Seedream 5 Pro, your-real-room-only with the camera as the only variable, 3 images at a time, cinematic looks taken from reference videos as words, measuring face proportions, the audit and paste-back fix, an instant voice clone with an audio tag, a speaker-similarity scorer, Seedance 2.5 draft talking clips, and the traps (voice verification lockouts, iMacs, grey hair, wide mouths, other people's faces bleeding in). Use it whenever someone wants AI images, video or voice of THEMSELVES, even if they only say \"my digital twin\", \"AI headshots of me\", \"a video of me talking\", \"clone my voice\", \"make me a presenter clip\", \"an AI avatar of me\", \"me at my desk\", \"a talking-head intro without filming\" or \"creator or founder content with my face\". Only for your own face and voice, or someone who gave documented consent.",
+      "path": "upstream/agent-skills/media/digital-twin/SKILL.md",
       "activation": "automatic",
       "stages": [
         "directions",
@@ -9675,7 +12783,7 @@
       "id": "media/html-reel",
       "name": "html-reel",
       "category": "media",
-      "description": "Turn a tweet, a video, a YouTube video or a landing page into a 9:16 reel (Instagram Reels, TikTok, Shorts) that says what the source says and looks like it, with every cut on a word. Read the source (its words, its media, its measured fonts and colours), pick a structure (a promo, a showcase, \"found this\", an explainer, before and after), write the script in the creator's voice from the source's own facts, make the voice with timestamps (their cloned ElevenLabs voice), then build the picture from HTML scenes drawn from one clock (window.__frame(t)) in the source's look, opening on its cover (the hook's best moment as the first frame), its demo video framed and cut to words, and assemble it in Fil's video editor over MCP. The creator is in it from the first draft as a placeholder in the camera layouts (a backlit studio silhouette) (full frame, a bubble, half the frame), swapped for their phone takes when they record, and everything retimed to their own words by word anchors, t = W(τ); a reel can also be faceless. Use when someone wants a reel, a short or a vertical video from a post, a thread, a launch, a landing page, a demo video or a YouTube video, \"a reel like this one\", or a talking-head promo cut to their own delivery.",
+      "description": "Turn a tweet, a video, a YouTube video or a landing page into a 9:16 reel (Instagram Reels, TikTok, Shorts) that says what the source says and looks like it, with every cut on a word. Read the source (its words, its media, its measured fonts and colours), pick a structure (a promo, a showcase, \"found this\", an explainer, before and after), write the script in the creator's voice from the source's own facts, make the voice with timestamps (their cloned ElevenLabs voice), then build the picture from HTML scenes drawn from one clock (window.__frame(t)) in the source's look, opening on its cover (the hook's best moment as the first frame), its demo video framed and cut to words, and assemble it in Fil's video editor over MCP. The creator is in it from the first draft as a placeholder in the camera layouts (a backlit studio silhouette) (full frame, a bubble, half the frame), swapped for their on-camera clips (their approved HeyGen Avatar 6 twin speaking the final voice; phone takes for a creator who records, with everything retimed to their own words by word anchors, t = W(τ)); a reel can also be faceless. Use when someone wants a reel, a short or a vertical video from a post, a thread, a launch, a landing page, a demo video or a YouTube video, \"a reel like this one\", or a talking-head promo cut to their own delivery.",
       "path": "upstream/agent-skills/media/html-reel/SKILL.md",
       "activation": "automatic",
       "stages": [
@@ -9689,6 +12797,18 @@
       "category": "media",
       "description": "Use when you need to pick high-quality Unsplash images for product/design assets (avatars, headshots, portraits, large website backgrounds, and abstract wallpapers) and output real Unsplash URLs plus practical instructions for producing the right resolutions and aspect ratios (1:1, 4:5, 3:4, 16:9, 9:16).",
       "path": "upstream/agent-skills/media/unsplash-asset-images/SKILL.md",
+      "activation": "automatic",
+      "stages": [
+        "directions",
+        "implementation"
+      ]
+    },
+    {
+      "id": "media/url-to-motion-design",
+      "name": "url-to-motion-design",
+      "category": "media",
+      "description": "Turn a launch film, product video or post at a URL (an X or Twitter post, YouTube, Vimeo, a direct video link) into Fil HTML motion scenes. Captures the film's best 5 to 10 distinct motion-graphics shots as screenshots and clips, rebuilds each as an original Fil motion scene in its look with Fil's own words, polishes them with blind judges to 8/10, puts them in a section of the HTML motion scenes canvas, and shows them as a screening page and MP4s. Use when someone shares a video or a post and asks to capture its scenes, to get screenshots of its best shots, to add its scenes or style to the motion scenes library, or to make motion scenes like it, or says url to motion design, even if they only ask for the screenshots first.",
+      "path": "upstream/agent-skills/media/url-to-motion-design/SKILL.md",
       "activation": "automatic",
       "stages": [
         "directions",
@@ -9722,6 +12842,19 @@
       ]
     },
     {
+      "id": "ui/moss-glass-controls",
+      "name": "moss-glass-controls",
+      "category": "ui",
+      "description": "Build Sylva-style dark glass action pills and woodland cards with an inset rim, pale icon well and a gradient that travels around the edge on hover.",
+      "path": "upstream/agent-skills/ui/moss-glass-controls/SKILL.md",
+      "activation": "automatic",
+      "stages": [
+        "brief",
+        "directions",
+        "qa"
+      ]
+    },
+    {
       "id": "ui/no-ai-design-slop",
       "name": "no-ai-design-slop",
       "category": "ui",
@@ -9732,6 +12865,79 @@
         "brief",
         "directions",
         "qa"
+      ]
+    },
+    {
+      "id": "ui/refract-liquid-glass",
+      "name": "refract-liquid-glass",
+      "category": "ui",
+      "description": "Build sharp, draggable liquid-glass panels that bend a live backdrop through a rounded glass lip. Use for scene-aware refraction, responsive rim reflections, and elastic panel motion.",
+      "path": "upstream/agent-skills/ui/refract-liquid-glass/SKILL.md",
+      "activation": "automatic",
+      "stages": [
+        "brief",
+        "directions",
+        "qa"
+      ]
+    },
+    {
+      "id": "ui/segmented-field-menu",
+      "name": "segmented-field-menu",
+      "category": "ui",
+      "description": "Create an inset upper-right navigation dock with compact icon-and-label segments, a pale selected segment and a matching footer dock for an editorial landing page.",
+      "path": "upstream/agent-skills/ui/segmented-field-menu/SKILL.md",
+      "activation": "automatic",
+      "stages": [
+        "brief",
+        "directions",
+        "qa"
+      ]
+    },
+    {
+      "id": "ui/shade-glass-button-press",
+      "name": "shade-glass-button-press",
+      "category": "ui",
+      "description": "Add fingertip-local press deformation and a refractive release wave to a glass button. Use for taps, held presses, rim shimmer, and synchronized icon or text response.",
+      "path": "upstream/agent-skills/ui/shade-glass-button-press/SKILL.md",
+      "activation": "automatic",
+      "stages": [
+        "brief",
+        "directions",
+        "qa"
+      ]
+    },
+    {
+      "id": "video-editing/genjutsu-scene",
+      "name": "genjutsu-scene",
+      "category": "video-editing",
+      "description": "Make a scene of Meng To himself inside any world, saying his line with his own face, voice and mouth, from his HeyGen Avatar 6 twin to Genjutsu. The world comes from the video's own footage (a game capture), a three.js 3D scene or a Blender scene, in its costume and light. Avatar 6 always, Genjutsu only if necessary. Greymourn scene one recipe (Nov 2026, rules updated 23 Nov) with a new Avatar 6 clip of the exact line approved first, an eye-anchored drive from it, a plate from the world, a Seedream start still described from the twin's frame and picked before any Genjutsu, Higgsfield Genjutsu motion transfer, Sync Lipsync 3 only if the mouth measures weak (remap + repeated-frame fix), a 4K60 insert, lip-sync and gaze measures, two blind Opus judges, a 480p draft then the 1080p final, every spend priced and run on his typed yes. Use whenever he asks for \"me inside the game\", \"put me in this Blender/3D scene\", \"me in knight armour\", a Genjutsu shot of himself, the next scene of a film, or a fix to one (lip sync, eyes, head size, light, the ending), even without saying Genjutsu. Not for his desk camera (making-of-film), studio stills or clips (meng-digital-twin), or a character in his place.",
+      "path": "upstream/agent-skills/video-editing/genjutsu-scene/SKILL.md",
+      "activation": "automatic",
+      "stages": [
+        "implementation"
+      ]
+    },
+    {
+      "id": "video-editing/long-video-to-short",
+      "name": "long-video-to-short",
+      "category": "video-editing",
+      "description": "Turn a finished long video (a tutorial, a making-of, a first impression) into a 60-second 9:16 short for Instagram Reels, YouTube Shorts and TikTok, at 1080 × 1920, 60 fps and under 30 MB, with you on camera as your HeyGen Avatar 6 twin. Script the useful part in your own voice, voice it with your cloned voice, time every caption word to its sound by phrases, crop the long video's own 4K footage for the backgrounds, draw headlines and word-by-word captions frame by frame in Python, have your Avatar 6 twin say the on-camera lines from the very same sound, cut the twin out and seat it in each scene, and only where a scene really needs it re-skin the twin with Higgsfield Genjutsu (a costume, a world's light). Render two cuts (Instagram ends on a comment keyword, Shorts and TikTok on \"full video in the description\"), check the rendered files (transcript, caption timing, loudness, silence, colour tags, size), score the animation with independent judges, then schedule the posts paused for the creator's yes. Use when someone asks for a short, a reel, a Short or a TikTok from a long video, \"a 60 second version\", \"a social cut\", \"put me on camera with my avatar\", or wants an existing short's captions, cut-out, lip sync, grade or posts fixed. For a reel made from a tweet or a landing page use html-reel; for one scene of yourself inside a game world use genjutsu-scene.",
+      "path": "upstream/agent-skills/video-editing/long-video-to-short/SKILL.md",
+      "activation": "automatic",
+      "stages": [
+        "reference",
+        "directions"
+      ]
+    },
+    {
+      "id": "video-editing/making-of-film",
+      "name": "making-of-film",
+      "category": "video-editing",
+      "description": "Make Meng To's 4–5 minute \"how I made X\" YouTube film from a finished project or a brief, as the Greymourn Castle tutorial was made (Nov 2026) and as he ruled after it (19–23 Nov). A demo, not a presentation, with the exact real UI and real pages full frame for at least 25 % of the runtime; the film's look from the project's own palette and 4K captures, no invented UI; a plain grade-five script in his voice, every claim checked; his voice from the first second over the result (no silent cold open), hook, promise with chapter times, stack, numbered steps, where it falls short (tips, not failures, in sponsored parts), cost, what I'd keep, end card; every cut on the voice's words, cuts by default; him on camera 10–20 % (his approved HeyGen Avatar 6 twin, or his own takes of whole sentences, 5–30 s); his cloned voice with no tag; 4K60 render and export; blind judges; Fil edit; release hand-off. Use whenever Meng wants a tutorial, making-of, build log or \"how I made this\" video of his project, \"a video like the Greymourn tutorial\", or any stage of one (script, scenes, camera, twin, render, judging), even if he only says \"make the tutorial video\". Not for a 1-minute explainer (html-explainer-video), a reel (html-reel), clips of him alone (meng-digital-twin) or upload and covers (youtube-video-release).",
+      "path": "upstream/agent-skills/video-editing/making-of-film/SKILL.md",
+      "activation": "automatic",
+      "stages": [
+        "implementation"
       ]
     },
     {
@@ -10034,6 +13240,19 @@
       ]
     },
     {
+      "id": "web-design/compose-a-woodland-landing-page",
+      "name": "compose-a-woodland-landing-page",
+      "category": "web-design",
+      "description": "Compose a Sylva-style botanical landing page as a six-chapter field guide, alternating light editorial spreads, dark participation cards and live woodland views.",
+      "path": "upstream/agent-skills/web-design/compose-a-woodland-landing-page/SKILL.md",
+      "activation": "automatic",
+      "stages": [
+        "directions",
+        "implementation",
+        "qa"
+      ]
+    },
+    {
       "id": "web-design/container-lines",
       "name": "container-lines",
       "category": "web-design",
@@ -10117,6 +13336,19 @@
       "category": "web-design",
       "description": "Create a dark glass layout system with frosted premium shells, clean multi-column workspace structure, floating data cards, and restrained atmospheric depth.",
       "path": "upstream/agent-skills/web-design/dark-glass-clean-layout/SKILL.md",
+      "activation": "automatic",
+      "stages": [
+        "directions",
+        "implementation",
+        "qa"
+      ]
+    },
+    {
+      "id": "web-design/dither-ascii-ink-hover",
+      "name": "dither-ascii-ink-hover",
+      "category": "web-design",
+      "description": "Reveal warm dither dots and ASCII marks beneath the pointer on an illustration using intersecting CSS masks. Use for a printed, holographic inspection effect with a one-pass scan.",
+      "path": "upstream/agent-skills/web-design/dither-ascii-ink-hover/SKILL.md",
       "activation": "automatic",
       "stages": [
         "directions",
@@ -10260,6 +13492,19 @@
       "category": "web-design",
       "description": "Create a dark container-led technical design system with fuchsia-purple accents, layered rounded shells, crisp frame lines, and playful futuristic focal objects.",
       "path": "upstream/agent-skills/web-design/funky-purple-container-tech/SKILL.md",
+      "activation": "automatic",
+      "stages": [
+        "directions",
+        "implementation",
+        "qa"
+      ]
+    },
+    {
+      "id": "web-design/generate-ledger-logo-register",
+      "name": "generate-ledger-logo-register",
+      "category": "web-design",
+      "description": "Generate a family of original fictional wordmarks on a Seedream contact sheet, extract transparent assets, and present them as a partner or studio logo register.",
+      "path": "upstream/agent-skills/web-design/generate-ledger-logo-register/SKILL.md",
       "activation": "automatic",
       "stages": [
         "directions",
@@ -10502,6 +13747,19 @@
       ]
     },
     {
+      "id": "web-design/neoclassical-ledger-ui",
+      "name": "neoclassical-ledger-ui",
+      "category": "web-design",
+      "description": "Design parchment editorial interfaces with neoclassical object paintings, ledger typography and printed rules. Use for art-directed portfolios, finance showcases, or studio case studies.",
+      "path": "upstream/agent-skills/web-design/neoclassical-ledger-ui/SKILL.md",
+      "activation": "automatic",
+      "stages": [
+        "directions",
+        "implementation",
+        "qa"
+      ]
+    },
+    {
       "id": "web-design/nested-container-clean-agency",
       "name": "nested-container-clean-agency",
       "category": "web-design",
@@ -10567,6 +13825,19 @@
       ]
     },
     {
+      "id": "web-design/painted-product-showcase",
+      "name": "painted-product-showcase",
+      "category": "web-design",
+      "description": "Build interactive HTML product demos over expansive painted landscapes, with translucent neutral panels, sample data, and stateful charts, invoices or budgets.",
+      "path": "upstream/agent-skills/web-design/painted-product-showcase/SKILL.md",
+      "activation": "automatic",
+      "stages": [
+        "directions",
+        "implementation",
+        "qa"
+      ]
+    },
+    {
       "id": "web-design/paper-cinder-transition",
       "name": "paper-cinder-transition",
       "category": "web-design",
@@ -10585,6 +13856,19 @@
       "category": "web-design",
       "description": "Build a cursor trail whose spacing stays constant at any hand speed, by emitting motes per unit of distance travelled rather than on a timer, so a flick draws the same continuous ribbon as a crawl instead of breaking into scattered dots. Covers sub-segment placement, the ring-buffer ordering trap, the idle breath a distance emitter needs, anchoring the trail to the screen in a 3-D scene, scaling scatter against the plane it hangs on, coasting instead of stopping dead, touch and reduced-motion fallbacks, and why moving the emitter to a DOM overlay to raise its z-index costs more than it buys. Use for cursor wisps, pointer sparks, embers, magic trails, comet tails, plankton, dust, or any mote trail that must stay legible however fast the hand moves.",
       "path": "upstream/agent-skills/web-design/pointer-trail-emitter/SKILL.md",
+      "activation": "automatic",
+      "stages": [
+        "directions",
+        "implementation",
+        "qa"
+      ]
+    },
+    {
+      "id": "web-design/pollen-pointer-trail",
+      "name": "pollen-pointer-trail",
+      "category": "web-design",
+      "description": "Emit a sparse, distance-spaced trail of airborne pollen from the pointer over a woodland scene, with depth drift, short lives and bounded particles.",
+      "path": "upstream/agent-skills/web-design/pollen-pointer-trail/SKILL.md",
       "activation": "automatic",
       "stages": [
         "directions",
@@ -10645,11 +13929,37 @@
       ]
     },
     {
+      "id": "web-design/scroll-mesh-survey",
+      "name": "scroll-mesh-survey",
+      "category": "web-design",
+      "description": "Scrub a narrow topology scan across a visible 3D object and its companion editorial figures. Use when a scroll gesture should disclose surface structure in both directions.",
+      "path": "upstream/agent-skills/web-design/scroll-mesh-survey/SKILL.md",
+      "activation": "automatic",
+      "stages": [
+        "directions",
+        "implementation",
+        "qa"
+      ]
+    },
+    {
       "id": "web-design/scroll-progress-timeline",
       "name": "scroll-progress-timeline",
       "category": "web-design",
       "description": "Turn any ordered process into a data-driven vertical or horizontal scroll story with a base line, progress fill, active step states, responsive collapse, semantic fallback, and reduced-motion behavior. Use for onboarding, checkout, roadmaps, recipes, case studies, service processes, histories, or narratives where progress through the sequence should become visible while scrolling.",
       "path": "upstream/agent-skills/web-design/scroll-progress-timeline/SKILL.md",
+      "activation": "automatic",
+      "stages": [
+        "directions",
+        "implementation",
+        "qa"
+      ]
+    },
+    {
+      "id": "web-design/scroll-scrubbed-object-handoff",
+      "name": "scroll-scrubbed-object-handoff",
+      "category": "web-design",
+      "description": "Choreograph a reversible scroll handoff between layered illustrations, transforming a held object into multiple moving pieces that land in a second scene.",
+      "path": "upstream/agent-skills/web-design/scroll-scrubbed-object-handoff/SKILL.md",
       "activation": "automatic",
       "stages": [
         "directions",
@@ -10754,6 +14064,19 @@
       "category": "web-design",
       "description": "Create subtle editorial word-by-word text reveal animations where each word fades and rises into place once it enters the viewport. Use for premium portfolio headlines, hero copy, section intros, and short marketing text that needs a cinematic staggered reveal with IntersectionObserver or in-view detection.",
       "path": "upstream/agent-skills/web-design/staggered-word-reveal/SKILL.md",
+      "activation": "automatic",
+      "stages": [
+        "directions",
+        "implementation",
+        "qa"
+      ]
+    },
+    {
+      "id": "web-design/sylva-field-guide-layout",
+      "name": "sylva-field-guide-layout",
+      "category": "web-design",
+      "description": "Lay out a botanical editorial UI with continuous vertical rules, sparse diagonal guides, large lightweight typography and aligned chapter labels and specimen captions.",
+      "path": "upstream/agent-skills/web-design/sylva-field-guide-layout/SKILL.md",
       "activation": "automatic",
       "stages": [
         "directions",
@@ -10928,6 +14251,17 @@
         "directions",
         "implementation",
         "qa"
+      ]
+    },
+    {
+      "id": "workflow/release-threeui-demo",
+      "name": "release-threeui-demo",
+      "category": "workflow",
+      "description": "Release an interactive web project on ThreeUI with a direct HTML preview, a verified 4K60 MP4, three open-source technique skills, and platform-specific Fil drafts for X, Threads and LinkedIn.",
+      "path": "upstream/agent-skills/workflow/release-threeui-demo/SKILL.md",
+      "activation": "automatic",
+      "stages": [
+        "implementation"
       ]
     },
     {

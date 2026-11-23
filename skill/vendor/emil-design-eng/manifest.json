@@ -3,11 +3,11 @@
   "name": "emil-design-eng",
   "source": {
     "repository": "https://github.com/emilkowalski/skills",
-    "revision": "f1090bec277140d02ed202440185ad9d02ac1490",
-    "gitTree": "7d952685029ffc0702e3faa2291f7424f7cd9632",
-    "committedAt": "2026-11-02T10:21:52+01:00",
+    "revision": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
+    "gitTree": "ad86a1c8afedd72f4288cd7b782866e1a68983a9",
+    "committedAt": "2026-11-15T13:42:50+01:00",
     "license": "MIT",
-    "reviewedAt": "2026-11-04",
+    "reviewedAt": "2026-11-23",
     "scope": [
       "skills/emil-design-eng/**",
       "LICENSE"
@@ -24,8 +24,8 @@
   "snapshot": {
     "root": "upstream",
     "fileCount": 2,
-    "byteCount": 28579,
-    "treeSha256": "6a117e5bda9e135fb4b68b407fc49dbac2705a1fd52cac5445e2004932c5d258",
+    "byteCount": 29327,
+    "treeSha256": "995d1bcbd460b91fc56e9674e401dab0201384a294791d5d09c1006a99f48623",
     "executableFiles": [],
     "objects": [
       {
@@ -38,9 +38,9 @@
       {
         "path": "skills/emil-design-eng/SKILL.md",
         "mode": "100644",
-        "oid": "dc063c2a861922c1c9f2412b824b0862746304f5",
-        "size": 27509,
-        "sha256": "965cc3108047a1f68e504977ae7816c66115b202a32e7509c0b8305314839c54"
+        "oid": "5155a4bf33e99028645dbdad4c049a3d209b1f21",
+        "size": 28257,
+        "sha256": "cdbfe467e6c9a4940c3a19e795cecf1ba659378d7412e06c245c6ae49da47da6"
       }
     ]
   },
@@ -48,7 +48,7 @@
     {
       "name": "emil-design-eng",
       "path": "upstream/skills/emil-design-eng/SKILL.md",
-      "description": "This skill encodes Emil Kowalski's philosophy on UI polish, component design, animation decisions, and the invisible details that make software feel great."
+      "description": "Emil Kowalski's design-engineering philosophy for UI polish, component design, animation decisions, and the invisible details that make software feel great. Use when building or reviewing a UI component's interactions and polish (press and hover states, popover origin, tooltip timing, transitions vs keyframes, clip-path techniques, drag details) and no narrower skill fits."
     }
   ],
   "boundary": {

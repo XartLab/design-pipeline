@@ -3,11 +3,11 @@
   "name": "make-interfaces-feel-better",
   "source": {
     "repository": "https://github.com/jakubkrehel/make-interfaces-feel-better",
-    "revision": "35545ea1512ad59fa463e6b1f95ca9c052981fe6",
-    "gitTree": "178b8d6fe1643aa0cafad3fc20d665f666352d4f",
-    "committedAt": "2026-08-29T18:59:35+02:00",
+    "revision": "6d9f2f1df10e8ce2ae1708598a73b0506fb98794",
+    "gitTree": "11642ac22d44671e1c04823fc565ef7d16820c05",
+    "committedAt": "2026-11-17T20:42:38-05:00",
     "license": "MIT",
-    "reviewedAt": "2026-10-13",
+    "reviewedAt": "2026-11-23",
     "scope": [
       "skills/make-interfaces-feel-better/**",
       "LICENSE",
@@ -25,8 +25,8 @@
   "snapshot": {
     "root": "upstream",
     "fileCount": 9,
-    "byteCount": 43641,
-    "treeSha256": "d60a83f0eccb7d6e5b6a1e4eab47e1e1ee9d0a985f4737c8d34decc88db16961",
+    "byteCount": 43631,
+    "treeSha256": "f806bccaf7f7baa2d15ba936bbfff83e4c69dc31c6197fd170f008421a14af1e",
     "executableFiles": [],
     "objects": [
       {
@@ -39,9 +39,9 @@
       {
         "path": "README.md",
         "mode": "100644",
-        "oid": "201b1b7f498864b09479be10b3421d43cefa8744",
-        "size": 661,
-        "sha256": "d1357d0aa07aa105bab5775c23124c197ab0b921891cf6876a05e5afb24255bd"
+        "oid": "50b11a5fe789b7763d4950ab5b924cfe7da534fb",
+        "size": 651,
+        "sha256": "7da0bda77dc82bac97a8854deacb6e0bedddc319c20fcaa2e16eda94db1c2f82"
       },
       {
         "path": "skills/make-interfaces-feel-better/agents/openai.yaml",
