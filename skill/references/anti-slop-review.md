@@ -67,6 +67,36 @@ Result states:
 - `needs-review`: contextual evidence is missing, failed, or not verified.
 - `pass`: no blocker or warning remains; accepted contextual decisions stay visible.
 
+## Mechanical lint
+
+`--lint <page-or-dir>` runs the vendored Hallmark sloplint (`skill/vendor/hallmark-sloplint/`) on
+the target and maps every finding through `references/anti-slop-lint-map.json` to a rubric rule and
+a class. Add `--url <http-url>` to lint a running server (sloplint renders it); add
+`--lint-map <json>` to evaluate against another reviewed map instead of the bundled one.
+
+```powershell
+node <design-pipeline>/scripts/evaluate-anti-slop.cjs `
+  --root . `
+  --evidence design/changes/<change-id>/anti-slop-evidence.json `
+  --lint <page-or-dir> `
+  --json
+```
+
+The gate map assigns one class per upstream gate:
+
+- `hard`: broken behaviour, missing access or dishonest content. A hard finding on a rule the
+  evidence marks `pass` fails the run with `LINT_CONTRADICTS_PASS`, naming the gate, file and line.
+- `contextual`: a template or taste tell. It is listed with the finding; record `accepted-context`
+  on the mapped rule with a product reason to answer it, otherwise it stays open.
+- `preference`: advisory craft notes; they never block.
+- `excluded`: Hallmark house rules and bookkeeping that another gate owns; no finding is produced.
+
+A gate the map does not name fails the run with `LINT_GATE_UNMAPPED`, so an upstream update cannot
+add unreviewed law silently. The run writes a `lint` block into the report (`tool`, `commit`,
+`target`, `digest`, `findings`). Copy that block into the evidence file's optional `lint` field to
+bind the review to the linted files: the target digest is recomputed on the next run, and a file
+that changed after the block was written is rejected as stale (`LINT_STALE`).
+
 ## Two-sided craft check
 
 Anti-slop is not a ban on richness. Run both checks:

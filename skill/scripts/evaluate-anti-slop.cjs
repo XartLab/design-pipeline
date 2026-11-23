@@ -4,6 +4,7 @@
 const crypto = require("node:crypto");
 const fs = require("node:fs");
 const path = require("node:path");
+const { spawnSync } = require("node:child_process");
 
 const SEVERITIES = new Set(["hard", "contextual", "preference"]);
 const SURFACES = new Set([
@@ -38,6 +39,16 @@ const EXCEPTION_POLICIES = {
   contextual: "documented-context",
   preference: "preference-only",
 };
+
+const LINT_TOOL = "sloplint";
+const LINT_COMMIT = "4f6a46c6dc325d40ab268c93e25c7b96676ebccd";
+const LINT_GRADES = new Set(["FAIL", "REFLEX", "WARN"]);
+const LINT_PSEUDO_GATES = new Set(["render", "kept", "waive"]);
+const LINT_EXTENSIONS = new Set([".css", ".html", ".jsx", ".tsx", ".vue", ".svelte", ".astro"]);
+const LINT_SKIP_DIRECTORIES = new Set(["dist", "build", "coverage"]);
+const LINT_CLASSES = new Set(["hard", "contextual", "preference", "excluded"]);
+const DEFAULT_LINT_MAP = path.join(__dirname, "..", "references", "anti-slop-lint-map.json");
+const SLOPLINT = path.join(__dirname, "..", "vendor", "hallmark-sloplint", "upstream", "skills", "hallmark", "scripts", "sloplint.mjs");
 
 // A waiver must say why this target differs, after hallmark's gates.md: a reason under 24
 // characters, or one copied word for word onto several rules, explains nothing. Characters are
@@ -95,6 +106,9 @@ function parseArgs(argv) {
     ["--rubric", "rubric"],
     ["--evidence", "evidence"],
     ["--output", "output"],
+    ["--lint", "lint"],
+    ["--url", "url"],
+    ["--lint-map", "lintMap"],
   ]);
   for (let index = 0; index < argv.length; index += 1) {
     const arg = argv[index];
@@ -122,7 +136,7 @@ function parseArgs(argv) {
 }
 
 function usage() {
-  return "Usage: node evaluate-anti-slop.cjs --evidence <json> [--rubric <json>] [--output <path>] [--root <path>] [--json]";
+  return "Usage: node evaluate-anti-slop.cjs --evidence <json> [--rubric <json>] [--output <path>] [--root <path>] [--lint <page-or-dir>] [--url <http-url>] [--lint-map <json>] [--json]";
 }
 
 function readJson(file, label) {
@@ -366,8 +380,149 @@ function validateObservation(observation, rulesById, ids) {
   }
 }
 
+function sha256Hex(data) {
+  return crypto.createHash("sha256").update(data).digest("hex");
+}
+
+function loadLintMap(file) {
+  let map;
+  try {
+    map = JSON.parse(fs.readFileSync(file, "utf8"));
+  } catch (error) {
+    fail(`invalid lint map JSON at ${file}: ${error.message}`);
+  }
+  if (!isObject(map) || map.schema !== "design-pipeline.anti-slop-lint-map.v1" || !isObject(map.gates)) {
+    fail(`lint map has an invalid structure: ${file}`);
+  }
+  return map;
+}
+
+function lookupGate(map, gate) {
+  const id = String(gate);
+  if (Object.hasOwn(map.gates, id)) return map.gates[id];
+  if (/^F\d+$/i.test(id) && Object.hasOwn(map.gates, "F*")) return map.gates["F*"];
+  return null;
+}
+
+// The files sloplint would lint under a target, matching its own collector: .css plus
+// HTML/JSX/TSX/Vue/Svelte/Astro, skipping node_modules, dot folders and dist/build/coverage.
+function collectLintFiles(target) {
+  const files = [];
+  const visit = (abs, top) => {
+    const stat = fs.statSync(abs);
+    if (stat.isDirectory()) {
+      const base = path.basename(abs);
+      if (base === "node_modules" || base.startsWith(".") || (!top && LINT_SKIP_DIRECTORIES.has(base))) return;
+      for (const entry of fs.readdirSync(abs)) visit(path.join(abs, entry), false);
+    } else if (LINT_EXTENSIONS.has(path.extname(abs).toLowerCase())) {
+      files.push(abs);
+    }
+  };
+  visit(target, true);
+  return files;
+}
+
+function hashLintFiles(files, root) {
+  const entries = files
+    .map((file) => ({ relative: path.relative(root, file).split(path.sep).join("/"), hash: sha256Hex(fs.readFileSync(file)) }))
+    .sort((left, right) => left.relative.localeCompare(right.relative));
+  return sha256Hex(entries.map((entry) => `${entry.relative}\0${entry.hash}\n`).join(""));
+}
+
+function lintTarget(options) {
+  return options.lint ? path.resolve(options.root, options.lint) : options.url;
+}
+
+// The target digest binds a lint block to the files it linted. A URL is hashed as its own string;
+// a file or directory is hashed over the sorted path/SHA-256 pairs of the files sloplint would read.
+function lintDigest(target, root) {
+  if (/^https?:\/\//i.test(target)) return sha256Hex(target);
+  const absolute = path.isAbsolute(target) ? target : path.resolve(root, target);
+  if (!fs.existsSync(absolute)) fail(`--lint target does not exist: ${absolute}`);
+  return hashLintFiles(collectLintFiles(absolute), root);
+}
+
+function runSloplint(options, root) {
+  if (!fs.existsSync(SLOPLINT)) fail(`vendored sloplint is missing: ${SLOPLINT}`);
+  const args = [];
+  if (options.lint) args.push(path.resolve(root, options.lint));
+  if (options.url) args.push("--url", options.url);
+  args.push("--json");
+  // shortcut: file targets are linted statically; sloplint's render tier is left to --url, which it
+  // enables itself. Upgrade: pass --render when a browser and puppeteer-core are both resolvable.
+  const child = spawnSync(process.execPath, [SLOPLINT, ...args], { cwd: root, encoding: "utf8", windowsHide: true, maxBuffer: 64 * 1024 * 1024 });
+  let parsed;
+  try {
+    parsed = JSON.parse(child.stdout);
+  } catch {
+    fail(`sloplint did not produce JSON: ${String(child.stderr || child.stdout || "").trim().slice(0, 240)}`);
+  }
+  if (!isObject(parsed) || !Array.isArray(parsed.findings)) fail("sloplint JSON has no findings array");
+  return parsed.findings;
+}
+
+function mapLintFindings(findings, map, mapFile) {
+  const mapped = [];
+  const unmapped = new Set();
+  for (const finding of findings) {
+    const gate = String(finding.gate ?? "");
+    if (!LINT_GRADES.has(String(finding.grade)) || LINT_PSEUDO_GATES.has(gate)) continue;
+    const entry = lookupGate(map, gate);
+    if (!entry) { unmapped.add(gate); continue; }
+    if (!LINT_CLASSES.has(entry.class)) fail(`lint map gate ${gate} has an invalid class`);
+    if (entry.class === "excluded") continue;
+    if (!validId(entry.rule)) fail(`lint map gate ${gate} names an invalid rule ${entry.rule}`);
+    mapped.push({ gate, rule: entry.rule, class: entry.class, file: finding.file, line: finding.line, evidence: finding.evidence, fix: finding.fix ?? "" });
+  }
+  if (unmapped.size) {
+    fail(`LINT_GATE_UNMAPPED: ${[...unmapped].sort().join(", ")} not in ${mapFile}`);
+  }
+  return mapped;
+}
+
+function lintFindingStatus(finding, observations) {
+  if (finding.class === "preference") return "advisory";
+  const observation = observations.get(finding.rule);
+  if (finding.class === "contextual" && observation?.outcome === "accepted-context") return "accepted-context";
+  return "open";
+}
+
+function checkLintContradiction(findings, observations) {
+  for (const finding of findings) {
+    if (finding.class !== "hard") continue;
+    if (observations.get(finding.rule)?.outcome === "pass") {
+      fail(`LINT_CONTRADICTS_PASS: gate ${finding.gate} at ${finding.file}:${finding.line} is a hard finding but ${finding.rule} is marked pass`);
+    }
+  }
+}
+
+function verifyStoredLint(lint, root) {
+  if (lint.commit !== LINT_COMMIT) fail(`lint block was produced by a different sloplint revision (${lint.commit}); the vendored linter is ${LINT_COMMIT}`);
+  if (lintDigest(lint.target, root) !== lint.digest) fail(`LINT_STALE: ${lint.target} changed since the lint block was written`);
+}
+
+function validateLintBlock(lint, rulesById) {
+  assertObjectShape(lint, "evidence lint", ["tool", "commit", "target", "digest", "findings"]);
+  if (lint.tool !== LINT_TOOL) fail(`evidence lint tool must be ${LINT_TOOL}`);
+  if (lint.commit !== LINT_COMMIT) fail(`evidence lint commit must be ${LINT_COMMIT}`);
+  if (typeof lint.target !== "string" || !lint.target.trim()) fail("evidence lint target is required");
+  if (typeof lint.digest !== "string" || !/^[0-9a-f]{64}$/.test(lint.digest)) fail("evidence lint digest is invalid");
+  if (!Array.isArray(lint.findings)) fail("evidence lint findings must be an array");
+  for (const finding of lint.findings) {
+    assertObjectShape(finding, "evidence lint finding", ["gate", "rule", "class", "file", "line", "evidence"], ["gate", "rule", "class", "file", "line", "evidence", "fix"]);
+    if (typeof finding.gate !== "string" || !finding.gate) fail("evidence lint finding gate is invalid");
+    if (!rulesById.has(finding.rule)) fail(`evidence lint finding names unknown rule ${finding.rule}`);
+    if (!LINT_CLASSES.has(finding.class)) fail(`evidence lint finding ${finding.gate} class is invalid`);
+    if (finding.class === "hard" && rulesById.get(finding.rule).severity !== "hard") fail(`evidence lint finding ${finding.gate} is hard but rule ${finding.rule} is not a hard rule`);
+    if (typeof finding.file !== "string" || !finding.file) fail("evidence lint finding file is invalid");
+    if (!Number.isInteger(finding.line) || finding.line < 1) fail("evidence lint finding line is invalid");
+    if (typeof finding.evidence !== "string") fail("evidence lint finding evidence is invalid");
+    if (finding.fix !== undefined && typeof finding.fix !== "string") fail("evidence lint finding fix is invalid");
+  }
+}
+
 function validateEvidence(evidence, rulesById) {
-  assertObjectShape(evidence, "evidence", ["schema", "target", "observations"]);
+  assertObjectShape(evidence, "evidence", ["schema", "target", "observations"], ["schema", "target", "observations", "lint"]);
   if (
     evidence.schema !== "design-pipeline.anti-slop-evidence.v1" ||
     !Array.isArray(evidence.observations)
@@ -392,6 +547,7 @@ function validateEvidence(evidence, rulesById) {
       );
     }
   }
+  if (evidence.lint !== undefined) validateLintBlock(evidence.lint, rulesById);
   return new Map(evidence.observations.map((item) => [item.ruleId, item]));
 }
 
@@ -550,6 +706,28 @@ function evaluate(options) {
     applicableRules,
     observations,
   );
+
+  const lintMapFile = options.lintMap
+    ? path.resolve(options.root, options.lintMap)
+    : DEFAULT_LINT_MAP;
+  let lintBlock = null;
+  if (options.lint || options.url) {
+    const map = loadLintMap(lintMapFile);
+    const mapped = mapLintFindings(runSloplint(options, options.root), map, lintMapFile);
+    lintBlock = {
+      tool: LINT_TOOL,
+      commit: LINT_COMMIT,
+      target: options.lint || options.url,
+      digest: lintDigest(lintTarget(options), options.root),
+      findings: mapped,
+    };
+  } else if (evidence.lint) {
+    verifyStoredLint(evidence.lint, options.root);
+    lintBlock = evidence.lint;
+  }
+  const lintFindings = lintBlock ? lintBlock.findings : [];
+  checkLintContradiction(lintFindings, observations);
+
   const status = counts.blockers > 0
     ? "blocked"
     : counts.warnings > 0
@@ -573,6 +751,18 @@ function evaluate(options) {
     summary: counts,
     findings,
     acceptedContexts,
+    lint: lintBlock
+      ? {
+        tool: lintBlock.tool,
+        commit: lintBlock.commit,
+        target: lintBlock.target,
+        digest: lintBlock.digest,
+        findings: lintFindings.map((finding) => ({
+          ...finding,
+          status: lintFindingStatus(finding, observations),
+        })),
+      }
+      : null,
   };
   const destination = outputPath(options);
   atomicWriteJson(destination, report);

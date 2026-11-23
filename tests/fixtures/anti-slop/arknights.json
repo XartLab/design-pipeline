@@ -98,6 +98,13 @@
         "The design intentionally uses near-black surfaces and a saturated cyan signal color."
       ],
       "rationale": "These choices form a coherent franchise-specific signal system and are not generic defaults."
+    },
+    {
+      "ruleId": "no-fabricated-proof",
+      "outcome": "pass",
+      "evidence": [
+        "The page shows no invented metrics, testimonials, customer logos or case-study counts."
+      ]
     }
   ]
 }

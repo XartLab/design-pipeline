@@ -378,6 +378,21 @@
       "committedAt": "2026-04-21T18:47:02-05:00"
     },
     {
+      "id": "hallmark-sloplint",
+      "kind": "vendored",
+      "repo": "https://github.com/Nutlope/hallmark",
+      "revision": "4f6a46c6dc325d40ab268c93e25c7b96676ebccd",
+      "reviewedAt": "2026-11-23",
+      "bundle": "hallmark-sloplint",
+      "importer": [
+        "scripts/import-hallmark-sloplint.cjs",
+        "--source",
+        "{source}"
+      ],
+      "committedAt": "2026-10-29T17:50:04+01:00",
+      "treeSha256": "d31c6921368d9134c8e6a4374da5d2341ef86176d3923a19b07fec400f35a26c"
+    },
+    {
       "id": "holosticker",
       "kind": "vendored",
       "repo": "https://github.com/jal-co/holosticker",

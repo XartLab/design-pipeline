@@ -85,6 +85,63 @@
           }
         }
       }
+    },
+    "lint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tool", "commit", "target", "digest", "findings"],
+      "properties": {
+        "tool": {
+          "const": "sloplint"
+        },
+        "commit": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "target": {
+          "type": "string",
+          "minLength": 1
+        },
+        "digest": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "findings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["gate", "rule", "class", "file", "line", "evidence"],
+            "properties": {
+              "gate": {
+                "type": "string",
+                "minLength": 1
+              },
+              "rule": {
+                "type": "string",
+                "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+              },
+              "class": {
+                "enum": ["hard", "contextual", "preference"]
+              },
+              "file": {
+                "type": "string",
+                "minLength": 1
+              },
+              "line": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "evidence": {
+                "type": "string"
+              },
+              "fix": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

@@ -251,6 +251,23 @@
         "pols-anti-slop-law",
         "anthropic-frontend-design"
       ]
+    },
+    {
+      "id": "no-fabricated-proof",
+      "title": "Proof is real, not invented",
+      "category": "content",
+      "severity": "hard",
+      "appliesTo": [
+        "all"
+      ],
+      "principle": "Metrics, testimonials, customer logos and case-study counts must come from the brief or the owner; inventing them is a hard defect, not a style choice.",
+      "evidenceRequired": [
+        "Source of each metric, testimonial, logo and case-study count, or a note that the target shows none."
+      ],
+      "exceptionPolicy": "none",
+      "sourceIds": [
+        "pols-anti-slop-law"
+      ]
     }
   ]
 }

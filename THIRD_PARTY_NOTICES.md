@@ -671,6 +671,18 @@ files, harness assets, source generator/checker and inert plugin/deployment meta
 study builder. Generated studies retain the MIT notice, font licenses and original practices.
 The package does not install upstream dependencies, activate its plugin or run its deployment.
 
+## Nutlope/hallmark
+
+The Hallmark mechanical anti-slop linter (`skills/hallmark/scripts/sloplint.mjs`) and its render
+helper (`sloplint-render.mjs`), with the original MIT license, are vendored unmodified under
+`skill/vendor/hallmark-sloplint/upstream/` from reviewed revision
+`4f6a46c6dc325d40ab268c93e25c7b96676ebccd` (reviewed 2026-11-23).
+`skill/vendor/hallmark-sloplint/manifest.json` records the three scoped Git blobs and their hashes.
+The anti-slop evaluator runs the linter as a child process (`node`, `--json`); it is never imported
+into this repository's runtime and its ESM and flags stay upstream's. MIT, Copyright (c) 2026
+Hallmark contributors; full original license:
+`skill/vendor/hallmark-sloplint/upstream/skills/hallmark/LICENSE`.
+
 ## Leonxlnx/taste-skill
 
 The complete byte-preserved source snapshot under `skill/vendor/taste-skill/upstream/` is from

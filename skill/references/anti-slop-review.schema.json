@@ -39,6 +39,9 @@
     },
     "acceptedContexts": {
       "type": "array"
+    },
+    "lint": {
+      "type": ["object", "null"]
     }
   }
 }

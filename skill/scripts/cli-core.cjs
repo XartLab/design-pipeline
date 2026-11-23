@@ -191,6 +191,7 @@ const KNOWN_OPTIONS = new Set([
   "--text", "--text-file", "--weight", "--contrast",
   "--tool", "--prompt", "--landmarks", "--layer", "--subject",
   "--decision", "--port",
+  "--lint", "--lint-map",
 ]);
 function parseArgs(argv) {
   const positionals = [];
@@ -407,12 +408,12 @@ function inspectDoctor(skillRoot = path.resolve(__dirname, ".."), nodeVersion = 
     missing.length || !fs.existsSync(path.join(skillRoot, "references", "graphics-runtime-catalog.json"))
       ? null
       : validateRegistry(
-          readJson(path.join(skillRoot, "references", "adapter-registry.json"), "adapter registry"),
-          readJson(
-            path.join(skillRoot, "references", "graphics-runtime-catalog.json"),
-            "graphics catalog",
-          ),
-        );
+        readJson(path.join(skillRoot, "references", "adapter-registry.json"), "adapter registry"),
+        readJson(
+          path.join(skillRoot, "references", "graphics-runtime-catalog.json"),
+          "graphics catalog",
+        ),
+      );
   return {
     status: missing.length || !nodeSupported ? "blocked" : "ready",
     node: nodeVersion,
@@ -3145,14 +3146,16 @@ const COMMANDS = {
       check: { run: ({ parsed, root, command }) => spatialCommand(parsed, root, command) },
       resolve: { run: ({ parsed, root }) => referenceResolveCommand(parsed, root) },
       extract: { run: ({ parsed, root }) => referenceExtractCommand(parsed, root) },
-      "analyze-video": { required: ["--path", "--output"], run: ({ parsed, root }) => {
-        const options = { path: option(parsed, "--path"), output: option(parsed, "--output"), ...(option(parsed, "--start") === null ? {} : { startSec: Number(option(parsed, "--start")) }), ...(option(parsed, "--end") === null ? {} : { endSec: Number(option(parsed, "--end")) }), ...(option(parsed, "--fps") === null ? {} : { sampleFps: Number(option(parsed, "--fps")) }), ...(option(parsed, "--max-frames") === null ? {} : { maxFrames: Number(option(parsed, "--max-frames")) }), ...(option(parsed, "--shots") === true ? { shots: true } : {}), ...(option(parsed, "--cut-threshold") === null ? {} : { cutThreshold: Number(option(parsed, "--cut-threshold")) }), ...(option(parsed, "--min-shot") === null ? {} : { minShotSec: Number(option(parsed, "--min-shot")) }) };
-        // --study adds study.json, an audio excerpt and spectrogram when the source has sound, and cut-grid candidates.
-        const result = option(parsed, "--study") === true
-          ? require("../tools/art-motion/reference.cjs").analyzeReference(analysisRoot(parsed, root), options)
-          : require("./reference-video-core.cjs").analyzeVideo(analysisRoot(parsed, root), options);
-        return { result, exitCode: 0 };
-      } },
+      "analyze-video": {
+        required: ["--path", "--output"], run: ({ parsed, root }) => {
+          const options = { path: option(parsed, "--path"), output: option(parsed, "--output"), ...(option(parsed, "--start") === null ? {} : { startSec: Number(option(parsed, "--start")) }), ...(option(parsed, "--end") === null ? {} : { endSec: Number(option(parsed, "--end")) }), ...(option(parsed, "--fps") === null ? {} : { sampleFps: Number(option(parsed, "--fps")) }), ...(option(parsed, "--max-frames") === null ? {} : { maxFrames: Number(option(parsed, "--max-frames")) }), ...(option(parsed, "--shots") === true ? { shots: true } : {}), ...(option(parsed, "--cut-threshold") === null ? {} : { cutThreshold: Number(option(parsed, "--cut-threshold")) }), ...(option(parsed, "--min-shot") === null ? {} : { minShotSec: Number(option(parsed, "--min-shot")) }) };
+          // --study adds study.json, an audio excerpt and spectrogram when the source has sound, and cut-grid candidates.
+          const result = option(parsed, "--study") === true
+            ? require("../tools/art-motion/reference.cjs").analyzeReference(analysisRoot(parsed, root), options)
+            : require("./reference-video-core.cjs").analyzeVideo(analysisRoot(parsed, root), options);
+          return { result, exitCode: 0 };
+        }
+      },
     },
   },
   project: { actions: { inspect: { run: ({ parsed, root }) => projectInspectCommand(parsed, root) } } },
@@ -3204,9 +3207,11 @@ const COMMANDS = {
         required: ["--project-root", "--input"],
         run: ({ parsed, root }) => {
           try {
-            return { result: prepareFilmMethods(contained(root, option(parsed, "--project-root"), "--project-root"), readJson(contained(root, option(parsed, "--input"), "--input"), "film methods request"), {
-              root, write: option(parsed, "--write") === true, replace: option(parsed, "--replace") === true,
-            }), exitCode: 0 };
+            return {
+              result: prepareFilmMethods(contained(root, option(parsed, "--project-root"), "--project-root"), readJson(contained(root, option(parsed, "--input"), "--input"), "film methods request"), {
+                root, write: option(parsed, "--write") === true, replace: option(parsed, "--replace") === true,
+              }), exitCode: 0
+            };
           } catch (error) {
             if (error.code === "STORYBOARD_FAILED") return { result: error.details.result, exitCode: 2 };
             throw error;
