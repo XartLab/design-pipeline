@@ -15,902 +15,6 @@
   },
   "sources": [
     {
-      "id": "web-interface-guidelines",
-      "repo": "https://github.com/vercel-labs/web-interface-guidelines",
-      "revision": "434b7f91364665f2f733b310ec54809bf8f37937",
-      "license": "MIT",
-      "record": "references/web-interface-guidelines.md",
-      "files": [
-        {
-          "key": "command",
-          "path": "command.md",
-          "extract": "bullets",
-          "from": "## Rules",
-          "to": "## Output Format"
-        },
-        {
-          "key": "readme",
-          "path": "README.md",
-          "extract": "selected"
-        }
-      ],
-      "rules": [
-        {
-          "id": "command/accessibility/01",
-          "rule": "Icon-only buttons need `aria-label`",
-          "status": "uc",
-          "targets": [
-            "UC-11"
-          ],
-          "issue": 354
-        },
-        {
-          "id": "command/accessibility/02",
-          "rule": "Form controls need `<label>` or `aria-label`",
-          "status": "uc",
-          "targets": [
-            "UC-12"
-          ],
-          "issue": 354
-        },
-        {
-          "id": "command/accessibility/03",
-          "rule": "Interactive elements need keyboard handlers (`onKeyDown`/`onKeyUp`)",
-          "status": "uc",
-          "targets": [
-            "UC-08",
-            "vendor/interface-discipline/upstream/skills/better-accessibility/UPSTREAM-SKILL.md#full-keyboard-support"
-          ]
-        },
-        {
-          "id": "command/accessibility/04",
-          "rule": "`<button>` for actions, `<a>`/`<Link>` for navigation (not `<div onClick>`)",
-          "status": "uc",
-          "targets": [
-            "UC-11"
-          ]
-        },
-        {
-          "id": "command/accessibility/05",
-          "rule": "Images need `alt` (or `alt=\"\"` if decorative)",
-          "status": "uc",
-          "targets": [
-            "UC-13"
-          ],
-          "issue": 354
-        },
-        {
-          "id": "command/accessibility/06",
-          "rule": "Decorative icons need `aria-hidden=\"true\"`",
-          "status": "uc",
-          "targets": [
-            "UC-11"
-          ]
-        },
-        {
-          "id": "command/accessibility/07",
-          "rule": "Async updates (toasts, validation) need `aria-live=\"polite\"`",
-          "status": "local",
-          "targets": [
-            "references/interface-defaults.md#forms-and-feedback",
-            "vendor/interface-discipline/upstream/skills/better-accessibility/screen-readers.md#live-regions"
-          ]
-        },
-        {
-          "id": "command/accessibility/08",
-          "rule": "Use semantic HTML (`<button>`, `<a>`, `<label>`, `<table>`) before ARIA",
-          "status": "uc",
-          "targets": [
-            "UC-11",
-            "UC-09"
-          ]
-        },
-        {
-          "id": "command/accessibility/09",
-          "rule": "Headings hierarchical `<h1>`–`<h6>`; include skip link for main content",
-          "status": "audit",
-          "targets": [
-            "audit.heading-levels",
-            "vendor/interface-discipline/upstream/skills/better-accessibility/focus-and-keyboard.md#skip-link"
-          ]
-        },
-        {
-          "id": "command/accessibility/10",
-          "rule": "`scroll-margin-top` on heading anchors",
-          "status": "local",
-          "targets": [
-            "vendor/good-css/upstream/PRACTICES.md#anchor-targets-that-clear-a-sticky-header",
-            "vendor/interface-discipline/upstream/skills/better-accessibility/UPSTREAM-SKILL.md#structure-is-navigation"
-          ]
-        },
-        {
-          "id": "command/accessibility/11",
-          "rule": "Meaningful media needs captions, transcripts, or descriptions as applicable",
-          "status": "uc",
-          "targets": [
-            "UC-32",
-            "vendor/interface-discipline/upstream/skills/better-accessibility/screen-readers.md#video-and-audio"
-          ]
-        },
-        {
-          "id": "command/accessibility/12",
-          "rule": "Media controls need keyboard support; decorative media needs assistive-tech hiding",
-          "status": "uc",
-          "targets": [
-            "UC-32"
-          ]
-        },
-        {
-          "id": "command/focus-states/01",
-          "rule": "Interactive elements need visible focus: `focus-visible:ring-*` or equivalent",
-          "status": "audit",
-          "targets": [
-            "audit.state-contrast",
-            "UC-08"
-          ]
-        },
-        {
-          "id": "command/focus-states/02",
-          "rule": "Never `outline-none` / `outline: none` without focus replacement",
-          "status": "audit",
-          "targets": [
-            "audit.state-contrast",
-            "UC-08"
-          ]
-        },
-        {
-          "id": "command/focus-states/03",
-          "rule": "Use `:focus-visible` over `:focus` (avoid focus ring on click)",
-          "status": "local",
-          "targets": [
-            "vendor/good-css/upstream/PRACTICES.md#one-focus-ring-with-focus-visible",
-            "vendor/interface-discipline/upstream/skills/better-accessibility/UPSTREAM-SKILL.md#visible-focus-rings"
-          ]
-        },
-        {
-          "id": "command/focus-states/04",
-          "rule": "Group focus with `:focus-within` for compound controls",
-          "status": "local",
-          "targets": [
-            "vendor/interface-discipline/upstream/skills/better-accessibility/focus-and-keyboard.md#focus-rings"
-          ]
-        },
-        {
-          "id": "command/focus-states/05",
-          "rule": "Sticky headers/footers/overlays must not cover the focused element",
-          "status": "uc",
-          "targets": [
-            "UC-08",
-            "vendor/interface-discipline/upstream/skills/better-accessibility/focus-and-keyboard.md#focus-not-obscured"
-          ]
-        },
-        {
-          "id": "command/forms/01",
-          "rule": "Inputs need `autocomplete` and meaningful `name`",
-          "status": "uc",
-          "targets": [
-            "UC-12",
-            "vendor/interface-discipline/upstream/skills/better-accessibility/forms.md#autocomplete-and-input-types"
-          ],
-          "issue": 354
-        },
-        {
-          "id": "command/forms/02",
-          "rule": "Use correct `type` (`email`, `tel`, `url`, `number`) and `inputmode`",
-          "status": "uc",
-          "targets": [
-            "UC-12"
-          ],
-          "issue": 354
-        },
-        {
-          "id": "command/forms/03",
-          "rule": "Never block paste (`onPaste` + `preventDefault`)",
-          "status": "uc",
-          "targets": [
-            "UC-12"
-          ],
-          "issue": 354
-        },
-        {
-          "id": "command/forms/04",
-          "rule": "Labels clickable (`htmlFor` or wrapping control)",
-          "status": "local",
-          "targets": [
-            "references/interface-defaults.md#forms-and-feedback"
-          ]
-        },
-        {
-          "id": "command/forms/05",
-          "rule": "Disable spellcheck on emails, codes, usernames (`spellCheck={false}`)",
-          "status": "local",
-          "targets": [
-            "vendor/interface-discipline/upstream/skills/better-accessibility/forms.md#autocomplete-and-input-types"
-          ]
-        },
-        {
-          "id": "command/forms/06",
-          "rule": "Checkboxes/radios: label + control share single hit target (no dead zones)",
-          "status": "local",
-          "targets": [
-            "references/interface-defaults.md#forms-and-feedback",
-            "vendor/interface-discipline/upstream/skills/better-accessibility/forms.md#labels"
-          ]
-        },
-        {
-          "id": "command/forms/07",
-          "rule": "Submit button stays enabled until request starts; spinner during request",
-          "status": "local",
-          "targets": [
-            "references/interface-defaults.md#forms-and-feedback"
-          ]
-        },
-        {
-          "id": "command/forms/08",
-          "rule": "Errors inline next to fields; focus first error on submit",
-          "status": "uc",
-          "targets": [
-            "UC-12"
-          ]
-        },
-        {
-          "id": "command/forms/09",
-          "rule": "Placeholders end with `…` and show example pattern",
-          "status": "local",
-          "targets": [
-            "vendor/interface-discipline/upstream/skills/better-writing/UPSTREAM-SKILL.md#placeholders-show-an-example"
-          ],
-          "partial": true,
-          "note": "A placeholder shows a realistic example in the format the field accepts; the trailing ellipsis is not adopted."
-        },
-        {
-          "id": "command/forms/10",
-          "rule": "`autocomplete=\"off\"` on non-auth fields to avoid password manager triggers",
-          "status": "uc",
-          "targets": [
-            "UC-33"
-          ],
-          "issue": 354
-        },
-        {
-          "id": "command/forms/11",
-          "rule": "Warn before navigation with unsaved changes (`beforeunload` or router guard)",
-          "status": "local",
-          "targets": [
-            "vendor/interface-discipline/upstream/skills/better-accessibility/forms.md#submit-behavior"
-          ]
-        },
-        {
-          "id": "command/animation/01",
-          "rule": "Honor `prefers-reduced-motion` (provide reduced variant or disable)",
-          "status": "audit",
-          "targets": [
-            "audit.reduced-motion",
-            "UC-06"
-          ]
-        },
-        {
-          "id": "command/animation/02",
-          "rule": "Animate `transform`/`opacity` only (compositor-friendly)",
-          "status": "local",
-          "targets": [
-            "references/animation-opportunity-and-review.md#property-tiers"
-          ]
-        },
-        {
-          "id": "command/animation/03",
-          "rule": "Never `transition: all`—list properties explicitly",
-          "status": "audit",
-          "targets": [
-            "audit.motion-properties",
-            "references/animation-opportunity-and-review.md#rules",
-            "references/interface-defaults.md#motion-details-not-in-the-motion-rules"
-          ]
-        },
-        {
-          "id": "command/animation/04",
-          "rule": "Set correct `transform-origin`",
-          "status": "uc",
-          "targets": [
-            "UC-05"
-          ]
-        },
-        {
-          "id": "command/animation/05",
-          "rule": "SVG: transforms on `<g>` wrapper with `transform-box: fill-box; transform-origin: center`",
-          "status": "uc",
-          "targets": [
-            "UC-34"
-          ]
-        },
-        {
-          "id": "command/animation/06",
-          "rule": "Animations interruptible—respond to user input mid-animation",
-          "status": "uc",
-          "targets": [
-            "UC-04"
-          ]
-        },
-        {
-          "id": "command/animation/07",
-          "rule": "Autoplay motion >5 seconds alongside other content needs pause, stop, or hide controls",
-          "status": "uc",
-          "targets": [
-            "UC-06"
-          ]
-        },
-        {
-          "id": "command/animation/08",
-          "rule": "Muted decorative loops must stop under `prefers-reduced-motion`",
-          "status": "uc",
-          "targets": [
-            "UC-06",
-            "UC-32"
-          ]
-        },
-        {
-          "id": "command/typography/01",
-          "rule": "`…` not `...`",
-          "status": "local",
-          "targets": [
-            "vendor/interface-discipline/upstream/skills/better-typography/wrapping-and-punctuation.md#smart-punctuation"
-          ],
-          "issue": 354
-        },
-        {
-          "id": "command/typography/02",
-          "rule": "Curly quotes `“` `”` not straight `\"`",
-          "status": "local",
-          "targets": [
-            "vendor/interface-discipline/upstream/skills/better-typography/wrapping-and-punctuation.md#smart-punctuation"
-          ],
-          "issue": 354
-        },
-        {
-          "id": "command/typography/03",
-          "rule": "Non-breaking spaces: `10&nbsp;MB`, `⌘&nbsp;K`, brand names",
-          "status": "local",
-          "targets": [
-            "vendor/interface-discipline/upstream/skills/better-typography/wrapping-and-punctuation.md#smart-punctuation"
-          ]
-        },
-        {
-          "id": "command/typography/04",
-          "rule": "Loading states end with `…`: `\"Loading…\"`, `\"Saving…\"`",
-          "status": "uc",
-          "targets": [
-            "UC-39",
-            "vendor/interface-discipline/upstream/skills/better-writing/patterns.md#status-copy"
-          ]
-        },
-        {
-          "id": "command/typography/05",
-          "rule": "`font-variant-numeric: tabular-nums` for number columns/comparisons",
-          "status": "audit",
-          "targets": [
-            "audit.tabular-numbers"
-          ]
-        },
-        {
-          "id": "command/typography/06",
-          "rule": "Use `text-wrap: balance` or `text-pretty` on headings (prevents widows)",
-          "status": "local",
-          "targets": [
-            "vendor/interface-discipline/upstream/skills/better-typography/UPSTREAM-SKILL.md#wrap-deliberately"
-          ]
-        },
-        {
-          "id": "command/content-handling/01",
-          "rule": "Text containers handle long content: `truncate`, `line-clamp-*`, or `break-words`",
-          "status": "audit",
-          "targets": [
-            "audit.content-clipping",
-            "audit.content-overflow",
-            "vendor/good-css/upstream/PRACTICES.md#long-text-that-wraps-truncates-or-clamps"
-          ]
-        },
-        {
-          "id": "command/content-handling/02",
-          "rule": "Flex children need `min-w-0` to allow text truncation",
-          "status": "local",
-          "targets": [
-            "references/worst-case-content.md#content-length"
-          ]
-        },
-        {
-          "id": "command/content-handling/03",
-          "rule": "Handle empty states—don't render broken UI for empty strings/arrays",
-          "status": "uc",
-          "targets": [
-            "UC-18"
-          ]
-        },
-        {
-          "id": "command/content-handling/04",
-          "rule": "User-generated content: anticipate short, average, and very long inputs",
-          "status": "local",
-          "targets": [
-            "references/worst-case-content.md#content-length"
-          ]
-        },
-        {
-          "id": "command/images/01",
-          "rule": "`<img>` needs explicit `width` and `height` (prevents CLS)",
-          "status": "pending",
-          "issue": 354
-        },
-        {
-          "id": "command/images/02",
-          "rule": "Below-fold images: `loading=\"lazy\"`",
-          "status": "uc",
-          "targets": [
-            "UC-41"
-          ],
-          "issue": 354
-        },
-        {
-          "id": "command/images/03",
-          "rule": "Above-fold critical images: `priority` or `fetchpriority=\"high\"`",
-          "status": "uc",
-          "targets": [
-            "UC-41"
-          ],
-          "issue": 354
-        },
-        {
-          "id": "command/performance/01",
-          "rule": "Large lists (>50 items): virtualize (`virtua`, `content-visibility: auto`)",
-          "status": "uc",
-          "targets": [
-            "UC-31"
-          ]
-        },
-        {
-          "id": "command/performance/02",
-          "rule": "No layout reads in render (`getBoundingClientRect`, `offsetHeight`, `offsetWidth`, `scrollTop`)",
-          "status": "uc",
-          "targets": [
-            "UC-31"
-          ]
-        },
-        {
-          "id": "command/performance/03",
-          "rule": "Batch DOM reads/writes; avoid interleaving",
-          "status": "uc",
-          "targets": [
-            "UC-31"
-          ]
-        },
-        {
-          "id": "command/performance/04",
-          "rule": "Prefer uncontrolled inputs; controlled inputs must be cheap per keystroke",
-          "status": "uc",
-          "targets": [
-            "UC-31"
-          ]
-        },
-        {
-          "id": "command/performance/05",
-          "rule": "Add `<link rel=\"preconnect\">` for CDN/asset domains",
-          "status": "not-adopted",
-          "reason": "A request to another host fails the audit's external-request finding because the gate cannot hash it; fonts, styles and scripts are self-hosted, so there is no asset host to preconnect to (references/ui-craft-sources.md#measured-audit)."
-        },
-        {
-          "id": "command/performance/06",
-          "rule": "Critical fonts: `<link rel=\"preload\" as=\"font\">` with `font-display: swap`",
-          "status": "uc",
-          "targets": [
-            "UC-41"
-          ]
-        },
-        {
-          "id": "command/performance/07",
-          "rule": "Prefer `<video autoplay muted loop playsinline>` over animated GIF; provide a still alternative",
-          "status": "uc",
-          "targets": [
-            "UC-32"
-          ]
-        },
-        {
-          "id": "command/performance/08",
-          "rule": "Short non-essential loops: Safari H.264 MP4 `<picture>` source, `prefers-reduced-motion` media condition, and still fallback",
-          "status": "uc",
-          "targets": [
-            "UC-32"
-          ]
-        },
-        {
-          "id": "command/navigation-state/01",
-          "rule": "URL reflects state—filters, tabs, pagination, expanded panels in query params",
-          "status": "local",
-          "targets": [
-            "references/interface-defaults.md#navigation-and-state"
-          ]
-        },
-        {
-          "id": "command/navigation-state/02",
-          "rule": "Links use `<a>`/`<Link>` (Cmd/Ctrl+click, middle-click support)",
-          "status": "uc",
-          "targets": [
-            "UC-11",
-            "references/interface-defaults.md#navigation-and-state"
-          ]
-        },
-        {
-          "id": "command/navigation-state/03",
-          "rule": "Deep-link all stateful UI (if uses `useState`, consider URL sync via nuqs or similar)",
-          "status": "local",
-          "targets": [
-            "references/interface-defaults.md#navigation-and-state"
-          ]
-        },
-        {
-          "id": "command/navigation-state/04",
-          "rule": "Destructive actions need confirmation modal or undo window—never immediate",
-          "status": "uc",
-          "targets": [
-            "UC-16"
-          ]
-        },
-        {
-          "id": "command/touch-interaction/01",
-          "rule": "`touch-action: manipulation` (prevents double-tap zoom delay)",
-          "status": "local",
-          "targets": [
-            "references/mobile-web.md#4-tap-latency-and-touch-action"
-          ]
-        },
-        {
-          "id": "command/touch-interaction/02",
-          "rule": "`-webkit-tap-highlight-color` set intentionally",
-          "status": "local",
-          "targets": [
-            "references/mobile-web.md#2-tap-highlight"
-          ]
-        },
-        {
-          "id": "command/touch-interaction/03",
-          "rule": "`overscroll-behavior: contain` in modals/drawers/sheets",
-          "status": "local",
-          "targets": [
-            "references/mobile-web.md#5-overscroll-and-pull-to-refresh"
-          ]
-        },
-        {
-          "id": "command/touch-interaction/04",
-          "rule": "Page rubber-band suppression: `overscroll-behavior: none` on `<html>` inside `@media (pointer: fine)`; keep coarse-pointer page defaults for pull-to-refresh. Test hybrid touch devices: `pointer` describes the primary input, and `none` also disables scroll chaining and native swipe navigation",
-          "status": "local",
-          "targets": [
-            "vendor/good-css/upstream/PRACTICES.md#no-rubber-band-bounce-on-desktop",
-            "references/mobile-web.md#5-overscroll-and-pull-to-refresh"
-          ]
-        },
-        {
-          "id": "command/touch-interaction/05",
-          "rule": "During drag: disable text selection, `inert` on dragged elements",
-          "status": "uc",
-          "targets": [
-            "UC-34"
-          ]
-        },
-        {
-          "id": "command/touch-interaction/06",
-          "rule": "Drag/swipe/pinch/path gestures need tap/click and keyboard alternatives unless essential",
-          "status": "local",
-          "targets": [
-            "vendor/interface-discipline/upstream/skills/better-accessibility/hit-areas.md#gestures-and-dragging",
-            "references/interface-defaults.md#motion-details-not-in-the-motion-rules"
-          ]
-        },
-        {
-          "id": "command/touch-interaction/07",
-          "rule": "`autoFocus` sparingly—desktop only, single primary input; avoid on mobile",
-          "status": "uc",
-          "targets": [
-            "UC-33"
-          ]
-        },
-        {
-          "id": "command/safe-areas-layout/01",
-          "rule": "Full-bleed layouts need `env(safe-area-inset-*)` for notches",
-          "status": "local",
-          "targets": [
-            "references/mobile-web.md#6-safe-area-insets"
-          ]
-        },
-        {
-          "id": "command/safe-areas-layout/02",
-          "rule": "Avoid unwanted scrollbars: `overflow-x-hidden` on containers, fix content overflow",
-          "status": "audit",
-          "targets": [
-            "audit.horizontal-overflow"
-          ]
-        },
-        {
-          "id": "command/safe-areas-layout/03",
-          "rule": "Flex/grid over JS measurement for layout",
-          "status": "uc",
-          "targets": [
-            "UC-34"
-          ]
-        },
-        {
-          "id": "command/dark-mode-theming/01",
-          "rule": "`color-scheme: dark` on `<html>` for dark themes (fixes scrollbar, inputs)",
-          "status": "local",
-          "targets": [
-            "references/interface-defaults.md#surfaces"
-          ],
-          "issue": 354
-        },
-        {
-          "id": "command/dark-mode-theming/02",
-          "rule": "`<meta name=\"theme-color\">` matches page background",
-          "status": "local",
-          "targets": [
-            "references/mobile-web.md#10-status-bar-and-verification",
-            "references/interface-defaults.md#surfaces"
-          ]
-        },
-        {
-          "id": "command/dark-mode-theming/03",
-          "rule": "Native `<select>`: explicit `background-color` and `color` (Windows dark mode)",
-          "status": "uc",
-          "targets": [
-            "UC-34"
-          ]
-        },
-        {
-          "id": "command/locale-i18n/01",
-          "rule": "Dates/times: use `Intl.DateTimeFormat` not hardcoded formats",
-          "status": "local",
-          "targets": [
-            "references/interface-defaults.md#code-tables-and-truncation"
-          ]
-        },
-        {
-          "id": "command/locale-i18n/02",
-          "rule": "Numbers/currency: use `Intl.NumberFormat` not hardcoded formats",
-          "status": "local",
-          "targets": [
-            "references/interface-defaults.md#code-tables-and-truncation"
-          ]
-        },
-        {
-          "id": "command/locale-i18n/03",
-          "rule": "Detect language via `Accept-Language` / `navigator.languages`, not IP",
-          "status": "uc",
-          "targets": [
-            "UC-35"
-          ]
-        },
-        {
-          "id": "command/locale-i18n/04",
-          "rule": "Brand names, code tokens, identifiers: wrap with `translate=\"no\"` to prevent garbled auto-translation",
-          "status": "uc",
-          "targets": [
-            "UC-35"
-          ]
-        },
-        {
-          "id": "command/hydration-safety/01",
-          "rule": "Inputs with `value` need `onChange` (or use `defaultValue` for uncontrolled)",
-          "status": "uc",
-          "targets": [
-            "UC-30"
-          ]
-        },
-        {
-          "id": "command/hydration-safety/02",
-          "rule": "Date/time rendering: guard against hydration mismatch (server vs client)",
-          "status": "uc",
-          "targets": [
-            "UC-30"
-          ]
-        },
-        {
-          "id": "command/hydration-safety/03",
-          "rule": "`suppressHydrationWarning` only where truly needed",
-          "status": "uc",
-          "targets": [
-            "UC-30"
-          ]
-        },
-        {
-          "id": "command/hover-interactive-states/01",
-          "rule": "Buttons/links need `hover:` state (visual feedback)",
-          "status": "uc",
-          "targets": [
-            "UC-38",
-            "references/impeccable-contract.md#craft-floor"
-          ]
-        },
-        {
-          "id": "command/hover-interactive-states/02",
-          "rule": "Interactive states increase contrast: hover/active/focus more prominent than rest",
-          "status": "uc",
-          "targets": [
-            "UC-38"
-          ]
-        },
-        {
-          "id": "command/content-copy/01",
-          "rule": "Active voice: \"Install the CLI\" not \"The CLI will be installed\"",
-          "status": "uc",
-          "targets": [
-            "UC-36"
-          ]
-        },
-        {
-          "id": "command/content-copy/02",
-          "rule": "Title Case for headings/buttons (Chicago style)",
-          "status": "not-adopted",
-          "reason": "Sentence case is the default where a project has no capitalization policy, and one case is kept per element type (vendor/interface-discipline/upstream/skills/better-writing/UPSTREAM-SKILL.md#one-capitalization-policy)."
-        },
-        {
-          "id": "command/content-copy/03",
-          "rule": "Numerals for counts: \"8 deployments\" not \"eight\"",
-          "status": "uc",
-          "targets": [
-            "UC-36"
-          ]
-        },
-        {
-          "id": "command/content-copy/04",
-          "rule": "Specific button labels: \"Save API Key\" not \"Continue\"",
-          "status": "uc",
-          "targets": [
-            "UC-14"
-          ]
-        },
-        {
-          "id": "command/content-copy/05",
-          "rule": "Error messages include fix/next step, not just problem",
-          "status": "uc",
-          "targets": [
-            "UC-16"
-          ]
-        },
-        {
-          "id": "command/content-copy/06",
-          "rule": "Second person; avoid first person",
-          "status": "local",
-          "targets": [
-            "vendor/interface-discipline/upstream/skills/better-writing/UPSTREAM-SKILL.md#address-the-reader-directly"
-          ]
-        },
-        {
-          "id": "command/content-copy/07",
-          "rule": "`&` over \"and\" where space-constrained",
-          "status": "uc",
-          "targets": [
-            "UC-36"
-          ]
-        },
-        {
-          "id": "command/anti-patterns/01",
-          "rule": "`user-scalable=no` or `maximum-scale=1` disabling zoom",
-          "status": "local",
-          "targets": [
-            "references/mobile-web.md#3-input-zoom-and-the-16px-rule",
-            "vendor/interface-discipline/upstream/skills/better-accessibility/UPSTREAM-SKILL.md#survive-zoom-and-text-resize"
-          ],
-          "issue": 354
-        },
-        {
-          "id": "command/anti-patterns/02",
-          "rule": "`onPaste` with `preventDefault`",
-          "status": "duplicate",
-          "duplicateOf": "command/forms/03"
-        },
-        {
-          "id": "command/anti-patterns/03",
-          "rule": "`transition: all`",
-          "status": "duplicate",
-          "duplicateOf": "command/animation/03"
-        },
-        {
-          "id": "command/anti-patterns/04",
-          "rule": "`outline-none` without focus-visible replacement",
-          "status": "duplicate",
-          "duplicateOf": "command/focus-states/02"
-        },
-        {
-          "id": "command/anti-patterns/05",
-          "rule": "Inline `onClick` navigation without `<a>`",
-          "status": "duplicate",
-          "duplicateOf": "command/navigation-state/02"
-        },
-        {
-          "id": "command/anti-patterns/06",
-          "rule": "`<div>` or `<span>` with click handlers (should be `<button>`)",
-          "status": "duplicate",
-          "duplicateOf": "command/accessibility/04"
-        },
-        {
-          "id": "command/anti-patterns/07",
-          "rule": "Images without dimensions",
-          "status": "duplicate",
-          "duplicateOf": "command/images/01"
-        },
-        {
-          "id": "command/anti-patterns/08",
-          "rule": "Large arrays `.map()` without virtualization",
-          "status": "duplicate",
-          "duplicateOf": "command/performance/01"
-        },
-        {
-          "id": "command/anti-patterns/09",
-          "rule": "Form inputs without labels",
-          "status": "duplicate",
-          "duplicateOf": "command/accessibility/02"
-        },
-        {
-          "id": "command/anti-patterns/10",
-          "rule": "Icon buttons without `aria-label`",
-          "status": "duplicate",
-          "duplicateOf": "command/accessibility/01"
-        },
-        {
-          "id": "command/anti-patterns/11",
-          "rule": "Hardcoded date/number formats (use `Intl.*`)",
-          "status": "duplicate",
-          "duplicateOf": "command/locale-i18n/01"
-        },
-        {
-          "id": "command/anti-patterns/12",
-          "rule": "`autoFocus` without clear justification",
-          "status": "duplicate",
-          "duplicateOf": "command/touch-interaction/07"
-        },
-        {
-          "id": "command/anti-patterns/13",
-          "rule": "Animated GIF when compressed video is suitable",
-          "status": "duplicate",
-          "duplicateOf": "command/performance/07"
-        },
-        {
-          "id": "command/anti-patterns/14",
-          "rule": "Gesture-only action without tap/click and keyboard alternative",
-          "status": "duplicate",
-          "duplicateOf": "command/touch-interaction/06"
-        },
-        {
-          "id": "readme/01",
-          "rule": "**Ellipsis for further input & loading states.** Menu options that open a follow-up e.g., \"Rename…\" & loading/processing states e.g., \"Loading…\", \"Saving…\", \"Generating…\" end with an ellipsis.",
-          "status": "uc",
-          "targets": [
-            "UC-39"
-          ]
-        },
-        {
-          "id": "readme/02",
-          "rule": "**Submission rule.** Keep submit enabled until submission starts; then disable during the in-flight request, show a spinner, & include an idempotency key.",
-          "status": "uc",
-          "targets": [
-            "UC-40"
-          ]
-        },
-        {
-          "id": "readme/03",
-          "rule": "**Network latency budgets.** `POST/PATCH/DELETE` complete in <500ms.",
-          "status": "uc",
-          "targets": [
-            "UC-40",
-            "references/interface-defaults.md#waiting"
-          ]
-        },
-        {
-          "id": "readme/04",
-          "rule": "**Don’t use the main thread for expensive work.** Move especially long tasks to [Web Workers](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API) to avoid blocking interaction with the page.",
-          "status": "uc",
-          "targets": [
-            "UC-31"
-          ]
-        }
-      ]
-    },
-    {
       "id": "ibelick-ui-skills-rules",
       "repo": "https://github.com/ibelick/ui-skills",
       "revision": "73fb128d046d1f0d74c2909cd26eb616e3415567",
@@ -1877,6 +981,2123 @@
           "status": "uc",
           "targets": [
             "UC-44"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "userinterface-wiki",
+      "repo": "https://github.com/raphaelsalaja/userinterface-wiki",
+      "revision": "256a954080c8bcf1b1ceb1e2a4079d1f24cf593a",
+      "license": "MIT",
+      "record": "references/userinterface-wiki-rules.md",
+      "files": [
+        {
+          "key": "rules",
+          "path": "skills/rules",
+          "skillPath": "skills/SKILL.md",
+          "extract": "rule-files"
+        }
+      ],
+      "rules": [
+        {
+          "id": "rules/a11y-reduced-motion-check",
+          "rule": "`a11y-reduced-motion-check` - Respect prefers-reduced-motion for sound",
+          "status": "pending",
+          "issue": 360,
+          "targets": []
+        },
+        {
+          "id": "rules/a11y-toggle-setting",
+          "rule": "`a11y-toggle-setting` - Provide toggle to disable sounds",
+          "status": "pending",
+          "issue": 360,
+          "targets": []
+        },
+        {
+          "id": "rules/a11y-visual-equivalent",
+          "rule": "`a11y-visual-equivalent` - Every sound must have a visual equivalent",
+          "status": "pending",
+          "issue": 360,
+          "targets": []
+        },
+        {
+          "id": "rules/a11y-volume-control",
+          "rule": "`a11y-volume-control` - Allow independent volume adjustment",
+          "status": "pending",
+          "issue": 360,
+          "targets": []
+        },
+        {
+          "id": "rules/appropriate-confirmations-only",
+          "rule": "`appropriate-confirmations-only` - Sound for payments, uploads, submissions",
+          "status": "pending",
+          "issue": 360,
+          "targets": []
+        },
+        {
+          "id": "rules/appropriate-errors-warnings",
+          "rule": "`appropriate-errors-warnings` - Sound for errors that can't be overlooked",
+          "status": "pending",
+          "issue": 360,
+          "targets": []
+        },
+        {
+          "id": "rules/appropriate-no-decorative",
+          "rule": "`appropriate-no-decorative` - No sound on hover or decorative moments",
+          "status": "pending",
+          "issue": 360,
+          "targets": []
+        },
+        {
+          "id": "rules/appropriate-no-high-frequency",
+          "rule": "`appropriate-no-high-frequency` - No sound on typing or keyboard nav",
+          "status": "pending",
+          "issue": 360,
+          "targets": []
+        },
+        {
+          "id": "rules/appropriate-no-punishing",
+          "rule": "`appropriate-no-punishing` - Inform, don't punish with harsh sounds",
+          "status": "pending",
+          "issue": 360,
+          "targets": []
+        },
+        {
+          "id": "rules/impl-default-subtle",
+          "rule": "`impl-default-subtle` - Default volume subtle (0.3), not loud",
+          "status": "pending",
+          "issue": 360,
+          "targets": []
+        },
+        {
+          "id": "rules/impl-preload-audio",
+          "rule": "`impl-preload-audio` - Preload audio files to avoid delay",
+          "status": "pending",
+          "issue": 360,
+          "targets": []
+        },
+        {
+          "id": "rules/impl-reset-current-time",
+          "rule": "`impl-reset-current-time` - Reset currentTime before replay",
+          "status": "pending",
+          "issue": 360,
+          "targets": []
+        },
+        {
+          "id": "rules/weight-duration-matches-action",
+          "rule": "`weight-duration-matches-action` - Sound duration matches action duration",
+          "status": "pending",
+          "issue": 360,
+          "targets": []
+        },
+        {
+          "id": "rules/weight-match-action",
+          "rule": "`weight-match-action` - Sound weight matches action importance",
+          "status": "pending",
+          "issue": 360,
+          "targets": []
+        },
+        {
+          "id": "rules/context-cleanup-nodes",
+          "rule": "`context-cleanup-nodes` - Disconnect audio nodes after playback",
+          "status": "pending",
+          "issue": 360,
+          "targets": []
+        },
+        {
+          "id": "rules/context-resume-suspended",
+          "rule": "`context-resume-suspended` - Resume suspended AudioContext before playing",
+          "status": "pending",
+          "issue": 360,
+          "targets": []
+        },
+        {
+          "id": "rules/context-reuse-single",
+          "rule": "`context-reuse-single` - Reuse single AudioContext, don't create per sound",
+          "status": "pending",
+          "issue": 360,
+          "targets": []
+        },
+        {
+          "id": "rules/envelope-exponential-decay",
+          "rule": "`envelope-exponential-decay` - Exponential ramps for natural decay",
+          "status": "pending",
+          "issue": 360,
+          "targets": []
+        },
+        {
+          "id": "rules/envelope-no-zero-target",
+          "rule": "`envelope-no-zero-target` - Exponential ramps target 0.001, not 0",
+          "status": "pending",
+          "issue": 360,
+          "targets": []
+        },
+        {
+          "id": "rules/envelope-set-initial-value",
+          "rule": "`envelope-set-initial-value` - Set initial value before ramping",
+          "status": "pending",
+          "issue": 360,
+          "targets": []
+        },
+        {
+          "id": "rules/design-filter-for-character",
+          "rule": "`design-filter-for-character` - Bandpass filter to shape percussive sounds",
+          "status": "pending",
+          "issue": 360,
+          "targets": []
+        },
+        {
+          "id": "rules/design-noise-for-percussion",
+          "rule": "`design-noise-for-percussion` - Filtered noise for clicks/taps",
+          "status": "pending",
+          "issue": 360,
+          "targets": []
+        },
+        {
+          "id": "rules/design-oscillator-for-tonal",
+          "rule": "`design-oscillator-for-tonal` - Oscillators with pitch sweep for tonal sounds",
+          "status": "pending",
+          "issue": 360,
+          "targets": []
+        },
+        {
+          "id": "rules/param-click-duration",
+          "rule": "`param-click-duration` - Click sounds: 5-15ms duration",
+          "status": "pending",
+          "issue": 360,
+          "targets": []
+        },
+        {
+          "id": "rules/param-filter-frequency-range",
+          "rule": "`param-filter-frequency-range` - Click filter: 3000-6000Hz",
+          "status": "pending",
+          "issue": 360,
+          "targets": []
+        },
+        {
+          "id": "rules/param-q-value-range",
+          "rule": "`param-q-value-range` - Filter Q: 2-5 for focused but natural",
+          "status": "pending",
+          "issue": 360,
+          "targets": []
+        },
+        {
+          "id": "rules/param-reasonable-gain",
+          "rule": "`param-reasonable-gain` - Gain under 1.0 to prevent clipping",
+          "status": "pending",
+          "issue": 360,
+          "targets": []
+        },
+        {
+          "id": "rules/timing-under-300ms",
+          "rule": "`timing-under-300ms` - User animations must complete within 300ms",
+          "status": "uc",
+          "targets": [
+            "UC-03"
+          ],
+          "partial": true,
+          "note": "the local budget caps user-initiated motion at 300ms and allows a stated reason for longer modal motion"
+        },
+        {
+          "id": "rules/timing-consistent",
+          "rule": "`timing-consistent` - Similar elements use identical timing values",
+          "status": "uc",
+          "targets": [
+            "UC-03"
+          ]
+        },
+        {
+          "id": "rules/timing-no-entrance-context-menu",
+          "rule": "`timing-no-entrance-context-menu` - Context menus: no entrance animation, exit only",
+          "status": "duplicate",
+          "duplicateOf": "rules/none-context-menu-entrance"
+        },
+        {
+          "id": "rules/easing-for-state-change",
+          "rule": "`easing-for-state-change` - System state changes use easing curves",
+          "status": "uc",
+          "targets": [
+            "UC-03"
+          ]
+        },
+        {
+          "id": "rules/easing-entrance-ease-out",
+          "rule": "`easing-entrance-ease-out` - Entrances use ease-out",
+          "status": "uc",
+          "targets": [
+            "UC-03"
+          ]
+        },
+        {
+          "id": "rules/easing-exit-ease-in",
+          "rule": "`easing-exit-ease-in` - Exits use ease-in",
+          "status": "not-adopted",
+          "reason": "The local rule uses the project exit token and, without one, ease-out, never ease-in: references/ui-craft-sources.md#precedence."
+        },
+        {
+          "id": "rules/easing-transition-ease-in-out",
+          "rule": "`easing-transition-ease-in-out` - View transitions use ease-in-out",
+          "status": "uc",
+          "targets": [
+            "UC-03"
+          ]
+        },
+        {
+          "id": "rules/easing-linear-only-progress",
+          "rule": "`easing-linear-only-progress` - Linear only for progress/time representation",
+          "status": "uc",
+          "targets": [
+            "UC-03"
+          ]
+        },
+        {
+          "id": "rules/easing-natural-decay",
+          "rule": "`easing-natural-decay` - Use exponential ramps for natural decay, not linear",
+          "status": "uc",
+          "targets": [
+            "UC-26"
+          ]
+        },
+        {
+          "id": "rules/easing-no-linear-motion",
+          "rule": "`easing-no-linear-motion` - Linear easing only for progress indicators",
+          "status": "uc",
+          "targets": [
+            "UC-03"
+          ]
+        },
+        {
+          "id": "rules/physics-active-state",
+          "rule": "`physics-active-state` - Interactive elements need :active scale transform",
+          "status": "uc",
+          "targets": [
+            "UC-27"
+          ],
+          "partial": true,
+          "note": "press scale is optional in the local rule and stays within 0.95-0.98 when it is used"
+        },
+        {
+          "id": "rules/physics-subtle-deformation",
+          "rule": "`physics-subtle-deformation` - Squash/stretch in 0.95-1.05 range",
+          "status": "uc",
+          "targets": [
+            "UC-27"
+          ]
+        },
+        {
+          "id": "rules/physics-spring-for-overshoot",
+          "rule": "`physics-spring-for-overshoot` - Springs for overshoot-and-settle, not easing",
+          "status": "local",
+          "targets": [
+            "references/userinterface-wiki-rules.md#animation-principles-and-timing"
+          ]
+        },
+        {
+          "id": "rules/physics-no-excessive-stagger",
+          "rule": "`physics-no-excessive-stagger` - Stagger delays under 50ms per item",
+          "status": "not-adopted",
+          "reason": "The local stagger budget is the project token, 30-80ms per item by default, not a fixed 50ms cap: references/ui-craft-sources.md#precedence."
+        },
+        {
+          "id": "rules/staging-one-focal-point",
+          "rule": "`staging-one-focal-point` - One prominent animation at a time",
+          "status": "local",
+          "targets": [
+            "references/userinterface-wiki-rules.md#animation-principles-and-timing"
+          ]
+        },
+        {
+          "id": "rules/staging-dim-background",
+          "rule": "`staging-dim-background` - Dim modal/dialog backgrounds",
+          "status": "uc",
+          "targets": [
+            "UC-28"
+          ]
+        },
+        {
+          "id": "rules/staging-z-index-hierarchy",
+          "rule": "`staging-z-index-hierarchy` - Animated elements respect z-index layers",
+          "status": "uc",
+          "targets": [
+            "UC-29"
+          ]
+        },
+        {
+          "id": "rules/spring-for-gestures",
+          "rule": "`spring-for-gestures` - Gesture-driven motion (drag, flick) must use springs",
+          "status": "local",
+          "targets": [
+            "references/userinterface-wiki-rules.md#animation-principles-and-timing"
+          ]
+        },
+        {
+          "id": "rules/spring-for-interruptible",
+          "rule": "`spring-for-interruptible` - Interruptible motion must use springs",
+          "status": "local",
+          "targets": [
+            "references/userinterface-wiki-rules.md#animation-principles-and-timing"
+          ]
+        },
+        {
+          "id": "rules/spring-preserves-velocity",
+          "rule": "`spring-preserves-velocity` - Springs preserve input energy on release",
+          "status": "local",
+          "targets": [
+            "references/userinterface-wiki-rules.md#animation-principles-and-timing"
+          ]
+        },
+        {
+          "id": "rules/spring-params-balanced",
+          "rule": "`spring-params-balanced` - Avoid excessive oscillation in spring params",
+          "status": "local",
+          "targets": [
+            "references/userinterface-wiki-rules.md#animation-principles-and-timing"
+          ]
+        },
+        {
+          "id": "rules/duration-press-hover",
+          "rule": "`duration-press-hover` - Press/hover: 120-180ms",
+          "status": "not-adopted",
+          "reason": "Press and hover feedback runs 100-160ms in this project, not the upstream 120-180ms band: references/animation-opportunity-and-review.md."
+        },
+        {
+          "id": "rules/duration-small-state",
+          "rule": "`duration-small-state` - Small state changes: 180-260ms",
+          "status": "local",
+          "targets": [
+            "references/userinterface-wiki-rules.md#animation-principles-and-timing"
+          ],
+          "partial": true,
+          "note": "small state changes follow the project duration budget instead of a fixed 180-260ms band"
+        },
+        {
+          "id": "rules/duration-max-300ms",
+          "rule": "`duration-max-300ms` - User-initiated max 300ms",
+          "status": "uc",
+          "targets": [
+            "UC-03"
+          ]
+        },
+        {
+          "id": "rules/duration-shorten-before-curve",
+          "rule": "`duration-shorten-before-curve` - Fix slow feel with shorter duration, not curve",
+          "status": "uc",
+          "targets": [
+            "UC-03"
+          ]
+        },
+        {
+          "id": "rules/none-high-frequency",
+          "rule": "`none-high-frequency` - No animation for high-frequency interactions",
+          "status": "local",
+          "targets": [
+            "references/userinterface-wiki-rules.md#animation-principles-and-timing"
+          ]
+        },
+        {
+          "id": "rules/none-keyboard-navigation",
+          "rule": "`none-keyboard-navigation` - Keyboard navigation instant, no animation",
+          "status": "local",
+          "targets": [
+            "references/userinterface-wiki-rules.md#animation-principles-and-timing"
+          ]
+        },
+        {
+          "id": "rules/none-context-menu-entrance",
+          "rule": "`none-context-menu-entrance` - Context menus: no entrance, exit only",
+          "status": "uc",
+          "targets": [
+            "UC-25"
+          ]
+        },
+        {
+          "id": "rules/exit-requires-wrapper",
+          "rule": "`exit-requires-wrapper` - Conditional motion elements need AnimatePresence wrapper",
+          "status": "uc",
+          "targets": [
+            "UC-46"
+          ]
+        },
+        {
+          "id": "rules/exit-prop-required",
+          "rule": "`exit-prop-required` - Elements in AnimatePresence need exit prop",
+          "status": "uc",
+          "targets": [
+            "UC-46"
+          ]
+        },
+        {
+          "id": "rules/exit-key-required",
+          "rule": "`exit-key-required` - Dynamic lists need unique keys, not index",
+          "status": "uc",
+          "targets": [
+            "UC-46"
+          ]
+        },
+        {
+          "id": "rules/presence-hook-in-child",
+          "rule": "`presence-hook-in-child` - useIsPresent in child, not parent",
+          "status": "uc",
+          "targets": [
+            "UC-46"
+          ]
+        },
+        {
+          "id": "rules/presence-safe-to-remove",
+          "rule": "`presence-safe-to-remove` - Call safeToRemove after async cleanup",
+          "status": "uc",
+          "targets": [
+            "UC-46"
+          ]
+        },
+        {
+          "id": "rules/presence-disable-interactions",
+          "rule": "`presence-disable-interactions` - Disable interactions on exiting elements",
+          "status": "uc",
+          "targets": [
+            "UC-46"
+          ]
+        },
+        {
+          "id": "rules/mode-wait-doubles-duration",
+          "rule": "`mode-wait-doubles-duration` - Mode \"wait\" doubles duration; halve timing",
+          "status": "uc",
+          "targets": [
+            "UC-46"
+          ]
+        },
+        {
+          "id": "rules/mode-sync-layout-conflict",
+          "rule": "`mode-sync-layout-conflict` - Mode \"sync\" causes layout conflicts",
+          "status": "uc",
+          "targets": [
+            "UC-46"
+          ]
+        },
+        {
+          "id": "rules/mode-pop-layout-for-lists",
+          "rule": "`mode-pop-layout-for-lists` - Use popLayout for list reordering",
+          "status": "uc",
+          "targets": [
+            "UC-46"
+          ]
+        },
+        {
+          "id": "rules/nested-propagate-required",
+          "rule": "`nested-propagate-required` - Nested AnimatePresence needs propagate prop",
+          "status": "uc",
+          "targets": [
+            "UC-46"
+          ]
+        },
+        {
+          "id": "rules/nested-consistent-timing",
+          "rule": "`nested-consistent-timing` - Coordinate parent-child exit durations",
+          "status": "uc",
+          "targets": [
+            "UC-46"
+          ]
+        },
+        {
+          "id": "rules/exit-matches-initial",
+          "rule": "`exit-matches-initial` - Exit mirrors initial for symmetry",
+          "status": "not-adopted",
+          "reason": "The project's exit treatment is softer than the entrance, with a small offset; a literal reversal does not override that motion decision: references/ui-craft-sources.md#precedence."
+        },
+        {
+          "id": "rules/pseudo-content-required",
+          "rule": "`pseudo-content-required` - ::before/::after need content property",
+          "status": "local",
+          "targets": [
+            "references/userinterface-wiki-rules.md#pseudo-elements-native-styling-and-view-transitions"
+          ]
+        },
+        {
+          "id": "rules/pseudo-over-dom-node",
+          "rule": "`pseudo-over-dom-node` - Pseudo-elements over extra DOM nodes for decoration",
+          "status": "uc",
+          "targets": [
+            "UC-54"
+          ]
+        },
+        {
+          "id": "rules/pseudo-position-relative-parent",
+          "rule": "`pseudo-position-relative-parent` - Parent needs position: relative",
+          "status": "local",
+          "targets": [
+            "references/userinterface-wiki-rules.md#pseudo-elements-native-styling-and-view-transitions"
+          ]
+        },
+        {
+          "id": "rules/pseudo-z-index-layering",
+          "rule": "`pseudo-z-index-layering` - Z-index for correct pseudo-element layering",
+          "status": "uc",
+          "targets": [
+            "UC-53"
+          ]
+        },
+        {
+          "id": "rules/pseudo-hit-target-expansion",
+          "rule": "`pseudo-hit-target-expansion` - Negative inset for larger hit targets",
+          "status": "audit",
+          "targets": [
+            "audit.target-size"
+          ]
+        },
+        {
+          "id": "rules/pseudo-marker-styling",
+          "rule": "`pseudo-marker-styling` - Use ::marker for custom list bullet styles",
+          "status": "uc",
+          "targets": [
+            "UC-52"
+          ]
+        },
+        {
+          "id": "rules/pseudo-first-line-styling",
+          "rule": "`pseudo-first-line-styling` - Use ::first-line for typographic treatments",
+          "status": "local",
+          "targets": [
+            "references/userinterface-wiki-rules.md#pseudo-elements-native-styling-and-view-transitions"
+          ]
+        },
+        {
+          "id": "rules/transition-name-required",
+          "rule": "`transition-name-required` - View transitions need view-transition-name",
+          "status": "uc",
+          "targets": [
+            "UC-45"
+          ]
+        },
+        {
+          "id": "rules/transition-name-unique",
+          "rule": "`transition-name-unique` - Each transition name unique during transition",
+          "status": "audit",
+          "targets": [
+            "audit.view-transition-names"
+          ]
+        },
+        {
+          "id": "rules/transition-name-cleanup",
+          "rule": "`transition-name-cleanup` - Remove transition name after completion",
+          "status": "uc",
+          "targets": [
+            "UC-45"
+          ]
+        },
+        {
+          "id": "rules/transition-over-js-library",
+          "rule": "`transition-over-js-library` - Prefer View Transitions API over JS libraries",
+          "status": "uc",
+          "targets": [
+            "UC-45"
+          ]
+        },
+        {
+          "id": "rules/transition-style-pseudo-elements",
+          "rule": "`transition-style-pseudo-elements` - Style ::view-transition-group for custom animations",
+          "status": "uc",
+          "targets": [
+            "UC-45"
+          ]
+        },
+        {
+          "id": "rules/native-backdrop-styling",
+          "rule": "`native-backdrop-styling` - Use ::backdrop for dialog backgrounds",
+          "status": "local",
+          "targets": [
+            "references/userinterface-wiki-rules.md#pseudo-elements-native-styling-and-view-transitions"
+          ]
+        },
+        {
+          "id": "rules/native-placeholder-styling",
+          "rule": "`native-placeholder-styling` - Use ::placeholder for input styling",
+          "status": "local",
+          "targets": [
+            "references/userinterface-wiki-rules.md#pseudo-elements-native-styling-and-view-transitions"
+          ]
+        },
+        {
+          "id": "rules/native-selection-styling",
+          "rule": "`native-selection-styling` - Use ::selection for text selection styling",
+          "status": "local",
+          "targets": [
+            "references/userinterface-wiki-rules.md#pseudo-elements-native-styling-and-view-transitions"
+          ]
+        },
+        {
+          "id": "rules/morphing-three-lines",
+          "rule": "`morphing-three-lines` - Every icon uses exactly 3 SVG lines",
+          "status": "uc",
+          "targets": [
+            "UC-55"
+          ]
+        },
+        {
+          "id": "rules/morphing-use-collapsed",
+          "rule": "`morphing-use-collapsed` - Unused lines use collapsed constant",
+          "status": "uc",
+          "targets": [
+            "UC-55"
+          ]
+        },
+        {
+          "id": "rules/morphing-consistent-viewbox",
+          "rule": "`morphing-consistent-viewbox` - All icons share same viewBox (14x14)",
+          "status": "uc",
+          "targets": [
+            "UC-55"
+          ]
+        },
+        {
+          "id": "rules/morphing-group-variants",
+          "rule": "`morphing-group-variants` - Rotational variants share group and base lines",
+          "status": "uc",
+          "targets": [
+            "UC-55"
+          ]
+        },
+        {
+          "id": "rules/morphing-spring-rotation",
+          "rule": "`morphing-spring-rotation` - Spring physics for grouped icon rotation",
+          "status": "uc",
+          "targets": [
+            "UC-55"
+          ]
+        },
+        {
+          "id": "rules/morphing-reduced-motion",
+          "rule": "`morphing-reduced-motion` - Respect prefers-reduced-motion",
+          "status": "uc",
+          "targets": [
+            "UC-55"
+          ]
+        },
+        {
+          "id": "rules/morphing-jump-non-grouped",
+          "rule": "`morphing-jump-non-grouped` - Instant rotation jump between non-grouped icons",
+          "status": "uc",
+          "targets": [
+            "UC-55"
+          ]
+        },
+        {
+          "id": "rules/morphing-strokelinecap-round",
+          "rule": "`morphing-strokelinecap-round` - Round stroke line caps",
+          "status": "uc",
+          "targets": [
+            "UC-55"
+          ]
+        },
+        {
+          "id": "rules/morphing-aria-hidden",
+          "rule": "`morphing-aria-hidden` - Icon SVGs are aria-hidden",
+          "status": "uc",
+          "targets": [
+            "UC-55"
+          ]
+        },
+        {
+          "id": "rules/container-two-div-pattern",
+          "rule": "`container-two-div-pattern` - Outer animated div, inner measured div; never same element",
+          "status": "uc",
+          "targets": [
+            "UC-47"
+          ]
+        },
+        {
+          "id": "rules/container-guard-initial-zero",
+          "rule": "`container-guard-initial-zero` - Guard bounds === 0 on initial render, fall back to \"auto\"",
+          "status": "uc",
+          "targets": [
+            "UC-47"
+          ]
+        },
+        {
+          "id": "rules/container-use-resize-observer",
+          "rule": "`container-use-resize-observer` - Use ResizeObserver for measurement, not getBoundingClientRect",
+          "status": "uc",
+          "targets": [
+            "UC-47"
+          ]
+        },
+        {
+          "id": "rules/container-overflow-hidden",
+          "rule": "`container-overflow-hidden` - Set overflow: hidden on animated container during transitions",
+          "status": "uc",
+          "targets": [
+            "UC-47"
+          ]
+        },
+        {
+          "id": "rules/container-no-excessive-use",
+          "rule": "`container-no-excessive-use` - Use sparingly: buttons, accordions, interactive elements",
+          "status": "uc",
+          "targets": [
+            "UC-47"
+          ]
+        },
+        {
+          "id": "rules/container-callback-ref",
+          "rule": "`container-callback-ref` - Use callback ref (not useRef) for measurement hooks",
+          "status": "uc",
+          "targets": [
+            "UC-47"
+          ]
+        },
+        {
+          "id": "rules/container-transition-delay",
+          "rule": "`container-transition-delay` - Add small delay for natural catching-up feel",
+          "status": "uc",
+          "targets": [
+            "UC-47"
+          ]
+        },
+        {
+          "id": "rules/ux-fitts-hit-area",
+          "rule": "`ux-fitts-hit-area` - Expand hit areas with invisible padding or pseudo-elements",
+          "status": "audit",
+          "targets": [
+            "audit.target-size"
+          ]
+        },
+        {
+          "id": "rules/ux-fitts-target-size",
+          "rule": "`ux-fitts-target-size` - Size interactive targets for easy clicking (min 32px)",
+          "status": "not-adopted",
+          "reason": "The measured target floor in this project is 24x24px, and 40px desktop or 44px touch are advice a dense product may waive, not a 32px minimum: references/ui-craft-sources.md#precedence."
+        },
+        {
+          "id": "rules/ux-hicks-minimize-choices",
+          "rule": "`ux-hicks-minimize-choices` - Minimize choices to reduce decision time",
+          "status": "uc",
+          "targets": [
+            "UC-48",
+            "references/userinterface-wiki-rules.md#laws-of-ux-in-interface-review"
+          ]
+        },
+        {
+          "id": "rules/ux-millers-chunking",
+          "rule": "`ux-millers-chunking` - Chunk data into groups of 5-9 for scannability",
+          "status": "uc",
+          "targets": [
+            "UC-48",
+            "references/userinterface-wiki-rules.md#laws-of-ux-in-interface-review"
+          ]
+        },
+        {
+          "id": "rules/ux-doherty-under-400ms",
+          "rule": "`ux-doherty-under-400ms` - Respond within 400ms to feel instant",
+          "status": "local",
+          "targets": [
+            "references/interface-defaults.md#waiting"
+          ]
+        },
+        {
+          "id": "rules/ux-doherty-perceived-speed",
+          "rule": "`ux-doherty-perceived-speed` - Fake speed with skeletons, optimistic UI, progress indicators",
+          "status": "uc",
+          "targets": [
+            "UC-48",
+            "references/userinterface-wiki-rules.md#laws-of-ux-in-interface-review"
+          ]
+        },
+        {
+          "id": "rules/ux-postels-accept-messy-input",
+          "rule": "`ux-postels-accept-messy-input` - Accept messy input, output clean data",
+          "status": "local",
+          "targets": [
+            "references/interface-defaults.md#forms-and-feedback"
+          ]
+        },
+        {
+          "id": "rules/ux-progressive-disclosure",
+          "rule": "`ux-progressive-disclosure` - Show what matters now, reveal complexity later",
+          "status": "uc",
+          "targets": [
+            "UC-48",
+            "references/userinterface-wiki-rules.md#laws-of-ux-in-interface-review"
+          ]
+        },
+        {
+          "id": "rules/ux-jakobs-familiar-patterns",
+          "rule": "`ux-jakobs-familiar-patterns` - Use familiar UI patterns users know from other sites",
+          "status": "uc",
+          "targets": [
+            "UC-48",
+            "references/userinterface-wiki-rules.md#laws-of-ux-in-interface-review"
+          ]
+        },
+        {
+          "id": "rules/ux-aesthetic-usability",
+          "rule": "`ux-aesthetic-usability` - Visual polish increases perceived usability",
+          "status": "uc",
+          "targets": [
+            "UC-48",
+            "references/userinterface-wiki-rules.md#laws-of-ux-in-interface-review"
+          ]
+        },
+        {
+          "id": "rules/ux-proximity-grouping",
+          "rule": "`ux-proximity-grouping` - Group related elements spatially with tighter spacing",
+          "status": "uc",
+          "targets": [
+            "UC-48",
+            "references/userinterface-wiki-rules.md#laws-of-ux-in-interface-review"
+          ]
+        },
+        {
+          "id": "rules/ux-similarity-consistency",
+          "rule": "`ux-similarity-consistency` - Similar elements should look alike",
+          "status": "uc",
+          "targets": [
+            "UC-48",
+            "references/userinterface-wiki-rules.md#laws-of-ux-in-interface-review"
+          ]
+        },
+        {
+          "id": "rules/ux-common-region-boundaries",
+          "rule": "`ux-common-region-boundaries` - Use boundaries to group related content",
+          "status": "uc",
+          "targets": [
+            "UC-48",
+            "references/userinterface-wiki-rules.md#laws-of-ux-in-interface-review"
+          ]
+        },
+        {
+          "id": "rules/ux-von-restorff-emphasis",
+          "rule": "`ux-von-restorff-emphasis` - Make important elements visually distinct",
+          "status": "uc",
+          "targets": [
+            "UC-48",
+            "references/userinterface-wiki-rules.md#laws-of-ux-in-interface-review"
+          ]
+        },
+        {
+          "id": "rules/ux-serial-position",
+          "rule": "`ux-serial-position` - Place key items first or last in sequences",
+          "status": "uc",
+          "targets": [
+            "UC-48",
+            "references/userinterface-wiki-rules.md#laws-of-ux-in-interface-review"
+          ]
+        },
+        {
+          "id": "rules/ux-peak-end-finish-strong",
+          "rule": "`ux-peak-end-finish-strong` - End experiences with clear success states",
+          "status": "uc",
+          "targets": [
+            "UC-48",
+            "references/userinterface-wiki-rules.md#laws-of-ux-in-interface-review"
+          ]
+        },
+        {
+          "id": "rules/ux-teslers-complexity",
+          "rule": "`ux-teslers-complexity` - Move complexity to the system, not the user",
+          "status": "uc",
+          "targets": [
+            "UC-48",
+            "references/userinterface-wiki-rules.md#laws-of-ux-in-interface-review"
+          ]
+        },
+        {
+          "id": "rules/ux-goal-gradient-progress",
+          "rule": "`ux-goal-gradient-progress` - Show progress toward completion",
+          "status": "uc",
+          "targets": [
+            "UC-48",
+            "references/userinterface-wiki-rules.md#laws-of-ux-in-interface-review"
+          ]
+        },
+        {
+          "id": "rules/ux-zeigarnik-show-incomplete",
+          "rule": "`ux-zeigarnik-show-incomplete` - Show incomplete state to drive completion",
+          "status": "uc",
+          "targets": [
+            "UC-48",
+            "references/userinterface-wiki-rules.md#laws-of-ux-in-interface-review"
+          ]
+        },
+        {
+          "id": "rules/ux-pragnanz-simplify",
+          "rule": "`ux-pragnanz-simplify` - Simplify complex visuals into clear forms",
+          "status": "uc",
+          "targets": [
+            "UC-48",
+            "references/userinterface-wiki-rules.md#laws-of-ux-in-interface-review"
+          ]
+        },
+        {
+          "id": "rules/ux-pareto-prioritize-features",
+          "rule": "`ux-pareto-prioritize-features` - Prioritize the critical 20% of features",
+          "status": "uc",
+          "targets": [
+            "UC-48",
+            "references/userinterface-wiki-rules.md#laws-of-ux-in-interface-review"
+          ]
+        },
+        {
+          "id": "rules/ux-cognitive-load-reduce",
+          "rule": "`ux-cognitive-load-reduce` - Minimize extraneous cognitive load",
+          "status": "uc",
+          "targets": [
+            "UC-48",
+            "references/userinterface-wiki-rules.md#laws-of-ux-in-interface-review"
+          ]
+        },
+        {
+          "id": "rules/ux-uniform-connectedness",
+          "rule": "`ux-uniform-connectedness` - Visually connect related elements with lines or frames",
+          "status": "uc",
+          "targets": [
+            "UC-48",
+            "references/userinterface-wiki-rules.md#laws-of-ux-in-interface-review"
+          ]
+        },
+        {
+          "id": "rules/prefetch-trajectory-over-hover",
+          "rule": "`prefetch-trajectory-over-hover` - Trajectory prediction over hover; reclaims 100-200ms",
+          "status": "uc",
+          "targets": [
+            "UC-56"
+          ]
+        },
+        {
+          "id": "rules/prefetch-not-everything",
+          "rule": "`prefetch-not-everything` - Prefetch by intent, not viewport; avoid wasted bandwidth",
+          "status": "uc",
+          "targets": [
+            "UC-56"
+          ]
+        },
+        {
+          "id": "rules/prefetch-hit-slop",
+          "rule": "`prefetch-hit-slop` - Use hitSlop to trigger predictions earlier",
+          "status": "uc",
+          "targets": [
+            "UC-56"
+          ]
+        },
+        {
+          "id": "rules/prefetch-touch-fallback",
+          "rule": "`prefetch-touch-fallback` - Fall back gracefully on touch devices (no cursor)",
+          "status": "uc",
+          "targets": [
+            "UC-56"
+          ]
+        },
+        {
+          "id": "rules/prefetch-keyboard-tab",
+          "rule": "`prefetch-keyboard-tab` - Prefetch on keyboard navigation when focus approaches",
+          "status": "uc",
+          "targets": [
+            "UC-56"
+          ]
+        },
+        {
+          "id": "rules/prefetch-use-selectively",
+          "rule": "`prefetch-use-selectively` - Use predictive prefetching where latency is noticeable",
+          "status": "uc",
+          "targets": [
+            "UC-56"
+          ]
+        },
+        {
+          "id": "rules/type-tabular-nums-for-data",
+          "rule": "`type-tabular-nums-for-data` - Tabular numbers for columns, dashboards, pricing",
+          "status": "local",
+          "targets": [
+            "references/userinterface-wiki-rules.md#typography-and-visual-treatment"
+          ]
+        },
+        {
+          "id": "rules/type-oldstyle-nums-for-prose",
+          "rule": "`type-oldstyle-nums-for-prose` - Oldstyle numbers blend into body text",
+          "status": "uc",
+          "targets": [
+            "UC-49"
+          ]
+        },
+        {
+          "id": "rules/type-slashed-zero",
+          "rule": "`type-slashed-zero` - Slashed zero in code-adjacent UIs",
+          "status": "local",
+          "targets": [
+            "references/userinterface-wiki-rules.md#typography-and-visual-treatment"
+          ]
+        },
+        {
+          "id": "rules/type-opentype-contextual-alternates",
+          "rule": "`type-opentype-contextual-alternates` - Keep calt enabled for contextual glyph adjustment",
+          "status": "uc",
+          "targets": [
+            "UC-50"
+          ]
+        },
+        {
+          "id": "rules/type-disambiguation-stylistic-set",
+          "rule": "`type-disambiguation-stylistic-set` - Enable ss02 to distinguish I/l/1 and 0/O",
+          "status": "local",
+          "targets": [
+            "references/userinterface-wiki-rules.md#typography-and-visual-treatment"
+          ]
+        },
+        {
+          "id": "rules/type-optical-sizing-auto",
+          "rule": "`type-optical-sizing-auto` - Leave font-optical-sizing auto for size-adaptive glyphs",
+          "status": "local",
+          "targets": [
+            "references/userinterface-wiki-rules.md#typography-and-visual-treatment"
+          ]
+        },
+        {
+          "id": "rules/type-antialiased-on-retina",
+          "rule": "`type-antialiased-on-retina` - Antialiased font smoothing on retina displays",
+          "status": "local",
+          "targets": [
+            "references/userinterface-wiki-rules.md#typography-and-visual-treatment"
+          ]
+        },
+        {
+          "id": "rules/type-text-wrap-balance-headings",
+          "rule": "`type-text-wrap-balance-headings` - text-wrap: balance on headings for even lines",
+          "status": "local",
+          "targets": [
+            "references/userinterface-wiki-rules.md#typography-and-visual-treatment"
+          ]
+        },
+        {
+          "id": "rules/type-underline-offset",
+          "rule": "`type-underline-offset` - Offset underlines below descenders",
+          "status": "local",
+          "targets": [
+            "references/userinterface-wiki-rules.md#typography-and-visual-treatment"
+          ]
+        },
+        {
+          "id": "rules/type-no-font-synthesis",
+          "rule": "`type-no-font-synthesis` - Disable font-synthesis to prevent faux bold/italic",
+          "status": "local",
+          "targets": [
+            "references/userinterface-wiki-rules.md#typography-and-visual-treatment"
+          ]
+        },
+        {
+          "id": "rules/type-font-display-swap",
+          "rule": "`type-font-display-swap` - Use font-display: swap to avoid invisible text during load",
+          "status": "uc",
+          "targets": [
+            "UC-41"
+          ]
+        },
+        {
+          "id": "rules/type-variable-weight-continuous",
+          "rule": "`type-variable-weight-continuous` - Use continuous weight values (100-900) with variable fonts",
+          "status": "local",
+          "targets": [
+            "references/userinterface-wiki-rules.md#typography-and-visual-treatment"
+          ]
+        },
+        {
+          "id": "rules/type-text-wrap-pretty",
+          "rule": "`type-text-wrap-pretty` - text-wrap: pretty for body text to reduce orphans",
+          "status": "local",
+          "targets": [
+            "references/userinterface-wiki-rules.md#typography-and-visual-treatment"
+          ]
+        },
+        {
+          "id": "rules/type-justify-with-hyphens",
+          "rule": "`type-justify-with-hyphens` - Pair text-align: justify with hyphens: auto",
+          "status": "local",
+          "targets": [
+            "references/userinterface-wiki-rules.md#typography-and-visual-treatment"
+          ]
+        },
+        {
+          "id": "rules/type-letter-spacing-uppercase",
+          "rule": "`type-letter-spacing-uppercase` - Add letter-spacing to uppercase and small-caps text",
+          "status": "local",
+          "targets": [
+            "references/userinterface-wiki-rules.md#typography-and-visual-treatment"
+          ]
+        },
+        {
+          "id": "rules/type-proper-fractions",
+          "rule": "`type-proper-fractions` - Use diagonal-fractions for proper typographic fractions",
+          "status": "uc",
+          "targets": [
+            "UC-51"
+          ]
+        },
+        {
+          "id": "rules/visual-concentric-radius",
+          "rule": "`visual-concentric-radius` - Inner radius = outer radius minus padding for nested elements",
+          "status": "audit",
+          "targets": [
+            "audit.nested-radius"
+          ]
+        },
+        {
+          "id": "rules/visual-layered-shadows",
+          "rule": "`visual-layered-shadows` - Layer multiple shadows for realistic depth",
+          "status": "uc",
+          "targets": [
+            "UC-57"
+          ]
+        },
+        {
+          "id": "rules/visual-shadow-direction",
+          "rule": "`visual-shadow-direction` - All shadows share same offset direction (single light source)",
+          "status": "uc",
+          "targets": [
+            "UC-57"
+          ]
+        },
+        {
+          "id": "rules/visual-no-pure-black-shadow",
+          "rule": "`visual-no-pure-black-shadow` - Use neutral colors, not pure black, for shadows",
+          "status": "uc",
+          "targets": [
+            "UC-57"
+          ]
+        },
+        {
+          "id": "rules/visual-shadow-matches-elevation",
+          "rule": "`visual-shadow-matches-elevation` - Shadow size indicates elevation in consistent scale",
+          "status": "uc",
+          "targets": [
+            "UC-57"
+          ]
+        },
+        {
+          "id": "rules/visual-animate-shadow-pseudo",
+          "rule": "`visual-animate-shadow-pseudo` - Animate shadow via pseudo-element opacity for performance",
+          "status": "uc",
+          "targets": [
+            "UC-57"
+          ]
+        },
+        {
+          "id": "rules/visual-consistent-spacing-scale",
+          "rule": "`visual-consistent-spacing-scale` - Use a consistent spacing scale, not arbitrary values",
+          "status": "uc",
+          "targets": [
+            "UC-57"
+          ]
+        },
+        {
+          "id": "rules/visual-border-alpha-colors",
+          "rule": "`visual-border-alpha-colors` - Semi-transparent borders adapt to any background",
+          "status": "uc",
+          "targets": [
+            "UC-57"
+          ]
+        },
+        {
+          "id": "rules/visual-button-shadow-anatomy",
+          "rule": "`visual-button-shadow-anatomy` - Six-layer shadow anatomy for polished buttons",
+          "status": "uc",
+          "targets": [
+            "UC-57"
+          ],
+          "partial": true,
+          "note": "the six-layer button anatomy is an optional authored style here, not a default for every button"
+        }
+      ]
+    },
+    {
+      "id": "web-interface-guidelines",
+      "repo": "https://github.com/vercel-labs/web-interface-guidelines",
+      "revision": "434b7f91364665f2f733b310ec54809bf8f37937",
+      "license": "MIT",
+      "record": "references/web-interface-guidelines.md",
+      "files": [
+        {
+          "key": "command",
+          "path": "command.md",
+          "extract": "bullets",
+          "from": "## Rules",
+          "to": "## Output Format"
+        },
+        {
+          "key": "readme",
+          "path": "README.md",
+          "extract": "selected"
+        }
+      ],
+      "rules": [
+        {
+          "id": "command/accessibility/01",
+          "rule": "Icon-only buttons need `aria-label`",
+          "status": "uc",
+          "targets": [
+            "UC-11"
+          ],
+          "issue": 354
+        },
+        {
+          "id": "command/accessibility/02",
+          "rule": "Form controls need `<label>` or `aria-label`",
+          "status": "uc",
+          "targets": [
+            "UC-12"
+          ],
+          "issue": 354
+        },
+        {
+          "id": "command/accessibility/03",
+          "rule": "Interactive elements need keyboard handlers (`onKeyDown`/`onKeyUp`)",
+          "status": "uc",
+          "targets": [
+            "UC-08",
+            "vendor/interface-discipline/upstream/skills/better-accessibility/UPSTREAM-SKILL.md#full-keyboard-support"
+          ]
+        },
+        {
+          "id": "command/accessibility/04",
+          "rule": "`<button>` for actions, `<a>`/`<Link>` for navigation (not `<div onClick>`)",
+          "status": "uc",
+          "targets": [
+            "UC-11"
+          ]
+        },
+        {
+          "id": "command/accessibility/05",
+          "rule": "Images need `alt` (or `alt=\"\"` if decorative)",
+          "status": "uc",
+          "targets": [
+            "UC-13"
+          ],
+          "issue": 354
+        },
+        {
+          "id": "command/accessibility/06",
+          "rule": "Decorative icons need `aria-hidden=\"true\"`",
+          "status": "uc",
+          "targets": [
+            "UC-11"
+          ]
+        },
+        {
+          "id": "command/accessibility/07",
+          "rule": "Async updates (toasts, validation) need `aria-live=\"polite\"`",
+          "status": "local",
+          "targets": [
+            "references/interface-defaults.md#forms-and-feedback",
+            "vendor/interface-discipline/upstream/skills/better-accessibility/screen-readers.md#live-regions"
+          ]
+        },
+        {
+          "id": "command/accessibility/08",
+          "rule": "Use semantic HTML (`<button>`, `<a>`, `<label>`, `<table>`) before ARIA",
+          "status": "uc",
+          "targets": [
+            "UC-11",
+            "UC-09"
+          ]
+        },
+        {
+          "id": "command/accessibility/09",
+          "rule": "Headings hierarchical `<h1>`–`<h6>`; include skip link for main content",
+          "status": "audit",
+          "targets": [
+            "audit.heading-levels",
+            "vendor/interface-discipline/upstream/skills/better-accessibility/focus-and-keyboard.md#skip-link"
+          ]
+        },
+        {
+          "id": "command/accessibility/10",
+          "rule": "`scroll-margin-top` on heading anchors",
+          "status": "local",
+          "targets": [
+            "vendor/good-css/upstream/PRACTICES.md#anchor-targets-that-clear-a-sticky-header",
+            "vendor/interface-discipline/upstream/skills/better-accessibility/UPSTREAM-SKILL.md#structure-is-navigation"
+          ]
+        },
+        {
+          "id": "command/accessibility/11",
+          "rule": "Meaningful media needs captions, transcripts, or descriptions as applicable",
+          "status": "uc",
+          "targets": [
+            "UC-32",
+            "vendor/interface-discipline/upstream/skills/better-accessibility/screen-readers.md#video-and-audio"
+          ]
+        },
+        {
+          "id": "command/accessibility/12",
+          "rule": "Media controls need keyboard support; decorative media needs assistive-tech hiding",
+          "status": "uc",
+          "targets": [
+            "UC-32"
+          ]
+        },
+        {
+          "id": "command/focus-states/01",
+          "rule": "Interactive elements need visible focus: `focus-visible:ring-*` or equivalent",
+          "status": "audit",
+          "targets": [
+            "audit.state-contrast",
+            "UC-08"
+          ]
+        },
+        {
+          "id": "command/focus-states/02",
+          "rule": "Never `outline-none` / `outline: none` without focus replacement",
+          "status": "audit",
+          "targets": [
+            "audit.state-contrast",
+            "UC-08"
+          ]
+        },
+        {
+          "id": "command/focus-states/03",
+          "rule": "Use `:focus-visible` over `:focus` (avoid focus ring on click)",
+          "status": "local",
+          "targets": [
+            "vendor/good-css/upstream/PRACTICES.md#one-focus-ring-with-focus-visible",
+            "vendor/interface-discipline/upstream/skills/better-accessibility/UPSTREAM-SKILL.md#visible-focus-rings"
+          ]
+        },
+        {
+          "id": "command/focus-states/04",
+          "rule": "Group focus with `:focus-within` for compound controls",
+          "status": "local",
+          "targets": [
+            "vendor/interface-discipline/upstream/skills/better-accessibility/focus-and-keyboard.md#focus-rings"
+          ]
+        },
+        {
+          "id": "command/focus-states/05",
+          "rule": "Sticky headers/footers/overlays must not cover the focused element",
+          "status": "uc",
+          "targets": [
+            "UC-08",
+            "vendor/interface-discipline/upstream/skills/better-accessibility/focus-and-keyboard.md#focus-not-obscured"
+          ]
+        },
+        {
+          "id": "command/forms/01",
+          "rule": "Inputs need `autocomplete` and meaningful `name`",
+          "status": "uc",
+          "targets": [
+            "UC-12",
+            "vendor/interface-discipline/upstream/skills/better-accessibility/forms.md#autocomplete-and-input-types"
+          ],
+          "issue": 354
+        },
+        {
+          "id": "command/forms/02",
+          "rule": "Use correct `type` (`email`, `tel`, `url`, `number`) and `inputmode`",
+          "status": "uc",
+          "targets": [
+            "UC-12"
+          ],
+          "issue": 354
+        },
+        {
+          "id": "command/forms/03",
+          "rule": "Never block paste (`onPaste` + `preventDefault`)",
+          "status": "uc",
+          "targets": [
+            "UC-12"
+          ],
+          "issue": 354
+        },
+        {
+          "id": "command/forms/04",
+          "rule": "Labels clickable (`htmlFor` or wrapping control)",
+          "status": "local",
+          "targets": [
+            "references/interface-defaults.md#forms-and-feedback"
+          ]
+        },
+        {
+          "id": "command/forms/05",
+          "rule": "Disable spellcheck on emails, codes, usernames (`spellCheck={false}`)",
+          "status": "local",
+          "targets": [
+            "vendor/interface-discipline/upstream/skills/better-accessibility/forms.md#autocomplete-and-input-types"
+          ]
+        },
+        {
+          "id": "command/forms/06",
+          "rule": "Checkboxes/radios: label + control share single hit target (no dead zones)",
+          "status": "local",
+          "targets": [
+            "references/interface-defaults.md#forms-and-feedback",
+            "vendor/interface-discipline/upstream/skills/better-accessibility/forms.md#labels"
+          ]
+        },
+        {
+          "id": "command/forms/07",
+          "rule": "Submit button stays enabled until request starts; spinner during request",
+          "status": "local",
+          "targets": [
+            "references/interface-defaults.md#forms-and-feedback"
+          ]
+        },
+        {
+          "id": "command/forms/08",
+          "rule": "Errors inline next to fields; focus first error on submit",
+          "status": "uc",
+          "targets": [
+            "UC-12"
+          ]
+        },
+        {
+          "id": "command/forms/09",
+          "rule": "Placeholders end with `…` and show example pattern",
+          "status": "local",
+          "targets": [
+            "vendor/interface-discipline/upstream/skills/better-writing/UPSTREAM-SKILL.md#placeholders-show-an-example"
+          ],
+          "partial": true,
+          "note": "A placeholder shows a realistic example in the format the field accepts; the trailing ellipsis is not adopted."
+        },
+        {
+          "id": "command/forms/10",
+          "rule": "`autocomplete=\"off\"` on non-auth fields to avoid password manager triggers",
+          "status": "uc",
+          "targets": [
+            "UC-33"
+          ],
+          "issue": 354
+        },
+        {
+          "id": "command/forms/11",
+          "rule": "Warn before navigation with unsaved changes (`beforeunload` or router guard)",
+          "status": "local",
+          "targets": [
+            "vendor/interface-discipline/upstream/skills/better-accessibility/forms.md#submit-behavior"
+          ]
+        },
+        {
+          "id": "command/animation/01",
+          "rule": "Honor `prefers-reduced-motion` (provide reduced variant or disable)",
+          "status": "audit",
+          "targets": [
+            "audit.reduced-motion",
+            "UC-06"
+          ]
+        },
+        {
+          "id": "command/animation/02",
+          "rule": "Animate `transform`/`opacity` only (compositor-friendly)",
+          "status": "local",
+          "targets": [
+            "references/animation-opportunity-and-review.md#property-tiers"
+          ]
+        },
+        {
+          "id": "command/animation/03",
+          "rule": "Never `transition: all`—list properties explicitly",
+          "status": "audit",
+          "targets": [
+            "audit.motion-properties",
+            "references/animation-opportunity-and-review.md#rules",
+            "references/interface-defaults.md#motion-details-not-in-the-motion-rules"
+          ]
+        },
+        {
+          "id": "command/animation/04",
+          "rule": "Set correct `transform-origin`",
+          "status": "uc",
+          "targets": [
+            "UC-05"
+          ]
+        },
+        {
+          "id": "command/animation/05",
+          "rule": "SVG: transforms on `<g>` wrapper with `transform-box: fill-box; transform-origin: center`",
+          "status": "uc",
+          "targets": [
+            "UC-34"
+          ]
+        },
+        {
+          "id": "command/animation/06",
+          "rule": "Animations interruptible—respond to user input mid-animation",
+          "status": "uc",
+          "targets": [
+            "UC-04"
+          ]
+        },
+        {
+          "id": "command/animation/07",
+          "rule": "Autoplay motion >5 seconds alongside other content needs pause, stop, or hide controls",
+          "status": "uc",
+          "targets": [
+            "UC-06"
+          ]
+        },
+        {
+          "id": "command/animation/08",
+          "rule": "Muted decorative loops must stop under `prefers-reduced-motion`",
+          "status": "uc",
+          "targets": [
+            "UC-06",
+            "UC-32"
+          ]
+        },
+        {
+          "id": "command/typography/01",
+          "rule": "`…` not `...`",
+          "status": "local",
+          "targets": [
+            "vendor/interface-discipline/upstream/skills/better-typography/wrapping-and-punctuation.md#smart-punctuation"
+          ],
+          "issue": 354
+        },
+        {
+          "id": "command/typography/02",
+          "rule": "Curly quotes `“` `”` not straight `\"`",
+          "status": "local",
+          "targets": [
+            "vendor/interface-discipline/upstream/skills/better-typography/wrapping-and-punctuation.md#smart-punctuation"
+          ],
+          "issue": 354
+        },
+        {
+          "id": "command/typography/03",
+          "rule": "Non-breaking spaces: `10&nbsp;MB`, `⌘&nbsp;K`, brand names",
+          "status": "local",
+          "targets": [
+            "vendor/interface-discipline/upstream/skills/better-typography/wrapping-and-punctuation.md#smart-punctuation"
+          ]
+        },
+        {
+          "id": "command/typography/04",
+          "rule": "Loading states end with `…`: `\"Loading…\"`, `\"Saving…\"`",
+          "status": "uc",
+          "targets": [
+            "UC-39",
+            "vendor/interface-discipline/upstream/skills/better-writing/patterns.md#status-copy"
+          ]
+        },
+        {
+          "id": "command/typography/05",
+          "rule": "`font-variant-numeric: tabular-nums` for number columns/comparisons",
+          "status": "audit",
+          "targets": [
+            "audit.tabular-numbers"
+          ]
+        },
+        {
+          "id": "command/typography/06",
+          "rule": "Use `text-wrap: balance` or `text-pretty` on headings (prevents widows)",
+          "status": "local",
+          "targets": [
+            "vendor/interface-discipline/upstream/skills/better-typography/UPSTREAM-SKILL.md#wrap-deliberately"
+          ]
+        },
+        {
+          "id": "command/content-handling/01",
+          "rule": "Text containers handle long content: `truncate`, `line-clamp-*`, or `break-words`",
+          "status": "audit",
+          "targets": [
+            "audit.content-clipping",
+            "audit.content-overflow",
+            "vendor/good-css/upstream/PRACTICES.md#long-text-that-wraps-truncates-or-clamps"
+          ]
+        },
+        {
+          "id": "command/content-handling/02",
+          "rule": "Flex children need `min-w-0` to allow text truncation",
+          "status": "local",
+          "targets": [
+            "references/worst-case-content.md#content-length"
+          ]
+        },
+        {
+          "id": "command/content-handling/03",
+          "rule": "Handle empty states—don't render broken UI for empty strings/arrays",
+          "status": "uc",
+          "targets": [
+            "UC-18"
+          ]
+        },
+        {
+          "id": "command/content-handling/04",
+          "rule": "User-generated content: anticipate short, average, and very long inputs",
+          "status": "local",
+          "targets": [
+            "references/worst-case-content.md#content-length"
+          ]
+        },
+        {
+          "id": "command/images/01",
+          "rule": "`<img>` needs explicit `width` and `height` (prevents CLS)",
+          "status": "pending",
+          "issue": 354
+        },
+        {
+          "id": "command/images/02",
+          "rule": "Below-fold images: `loading=\"lazy\"`",
+          "status": "uc",
+          "targets": [
+            "UC-41"
+          ],
+          "issue": 354
+        },
+        {
+          "id": "command/images/03",
+          "rule": "Above-fold critical images: `priority` or `fetchpriority=\"high\"`",
+          "status": "uc",
+          "targets": [
+            "UC-41"
+          ],
+          "issue": 354
+        },
+        {
+          "id": "command/performance/01",
+          "rule": "Large lists (>50 items): virtualize (`virtua`, `content-visibility: auto`)",
+          "status": "uc",
+          "targets": [
+            "UC-31"
+          ]
+        },
+        {
+          "id": "command/performance/02",
+          "rule": "No layout reads in render (`getBoundingClientRect`, `offsetHeight`, `offsetWidth`, `scrollTop`)",
+          "status": "uc",
+          "targets": [
+            "UC-31"
+          ]
+        },
+        {
+          "id": "command/performance/03",
+          "rule": "Batch DOM reads/writes; avoid interleaving",
+          "status": "uc",
+          "targets": [
+            "UC-31"
+          ]
+        },
+        {
+          "id": "command/performance/04",
+          "rule": "Prefer uncontrolled inputs; controlled inputs must be cheap per keystroke",
+          "status": "uc",
+          "targets": [
+            "UC-31"
+          ]
+        },
+        {
+          "id": "command/performance/05",
+          "rule": "Add `<link rel=\"preconnect\">` for CDN/asset domains",
+          "status": "not-adopted",
+          "reason": "A request to another host fails the audit's external-request finding because the gate cannot hash it; fonts, styles and scripts are self-hosted, so there is no asset host to preconnect to (references/ui-craft-sources.md#measured-audit)."
+        },
+        {
+          "id": "command/performance/06",
+          "rule": "Critical fonts: `<link rel=\"preload\" as=\"font\">` with `font-display: swap`",
+          "status": "uc",
+          "targets": [
+            "UC-41"
+          ]
+        },
+        {
+          "id": "command/performance/07",
+          "rule": "Prefer `<video autoplay muted loop playsinline>` over animated GIF; provide a still alternative",
+          "status": "uc",
+          "targets": [
+            "UC-32"
+          ]
+        },
+        {
+          "id": "command/performance/08",
+          "rule": "Short non-essential loops: Safari H.264 MP4 `<picture>` source, `prefers-reduced-motion` media condition, and still fallback",
+          "status": "uc",
+          "targets": [
+            "UC-32"
+          ]
+        },
+        {
+          "id": "command/navigation-state/01",
+          "rule": "URL reflects state—filters, tabs, pagination, expanded panels in query params",
+          "status": "local",
+          "targets": [
+            "references/interface-defaults.md#navigation-and-state"
+          ]
+        },
+        {
+          "id": "command/navigation-state/02",
+          "rule": "Links use `<a>`/`<Link>` (Cmd/Ctrl+click, middle-click support)",
+          "status": "uc",
+          "targets": [
+            "UC-11",
+            "references/interface-defaults.md#navigation-and-state"
+          ]
+        },
+        {
+          "id": "command/navigation-state/03",
+          "rule": "Deep-link all stateful UI (if uses `useState`, consider URL sync via nuqs or similar)",
+          "status": "local",
+          "targets": [
+            "references/interface-defaults.md#navigation-and-state"
+          ]
+        },
+        {
+          "id": "command/navigation-state/04",
+          "rule": "Destructive actions need confirmation modal or undo window—never immediate",
+          "status": "uc",
+          "targets": [
+            "UC-16"
+          ]
+        },
+        {
+          "id": "command/touch-interaction/01",
+          "rule": "`touch-action: manipulation` (prevents double-tap zoom delay)",
+          "status": "local",
+          "targets": [
+            "references/mobile-web.md#4-tap-latency-and-touch-action"
+          ]
+        },
+        {
+          "id": "command/touch-interaction/02",
+          "rule": "`-webkit-tap-highlight-color` set intentionally",
+          "status": "local",
+          "targets": [
+            "references/mobile-web.md#2-tap-highlight"
+          ]
+        },
+        {
+          "id": "command/touch-interaction/03",
+          "rule": "`overscroll-behavior: contain` in modals/drawers/sheets",
+          "status": "local",
+          "targets": [
+            "references/mobile-web.md#5-overscroll-and-pull-to-refresh"
+          ]
+        },
+        {
+          "id": "command/touch-interaction/04",
+          "rule": "Page rubber-band suppression: `overscroll-behavior: none` on `<html>` inside `@media (pointer: fine)`; keep coarse-pointer page defaults for pull-to-refresh. Test hybrid touch devices: `pointer` describes the primary input, and `none` also disables scroll chaining and native swipe navigation",
+          "status": "local",
+          "targets": [
+            "vendor/good-css/upstream/PRACTICES.md#no-rubber-band-bounce-on-desktop",
+            "references/mobile-web.md#5-overscroll-and-pull-to-refresh"
+          ]
+        },
+        {
+          "id": "command/touch-interaction/05",
+          "rule": "During drag: disable text selection, `inert` on dragged elements",
+          "status": "uc",
+          "targets": [
+            "UC-34"
+          ]
+        },
+        {
+          "id": "command/touch-interaction/06",
+          "rule": "Drag/swipe/pinch/path gestures need tap/click and keyboard alternatives unless essential",
+          "status": "local",
+          "targets": [
+            "vendor/interface-discipline/upstream/skills/better-accessibility/hit-areas.md#gestures-and-dragging",
+            "references/interface-defaults.md#motion-details-not-in-the-motion-rules"
+          ]
+        },
+        {
+          "id": "command/touch-interaction/07",
+          "rule": "`autoFocus` sparingly—desktop only, single primary input; avoid on mobile",
+          "status": "uc",
+          "targets": [
+            "UC-33"
+          ]
+        },
+        {
+          "id": "command/safe-areas-layout/01",
+          "rule": "Full-bleed layouts need `env(safe-area-inset-*)` for notches",
+          "status": "local",
+          "targets": [
+            "references/mobile-web.md#6-safe-area-insets"
+          ]
+        },
+        {
+          "id": "command/safe-areas-layout/02",
+          "rule": "Avoid unwanted scrollbars: `overflow-x-hidden` on containers, fix content overflow",
+          "status": "audit",
+          "targets": [
+            "audit.horizontal-overflow"
+          ]
+        },
+        {
+          "id": "command/safe-areas-layout/03",
+          "rule": "Flex/grid over JS measurement for layout",
+          "status": "uc",
+          "targets": [
+            "UC-34"
+          ]
+        },
+        {
+          "id": "command/dark-mode-theming/01",
+          "rule": "`color-scheme: dark` on `<html>` for dark themes (fixes scrollbar, inputs)",
+          "status": "local",
+          "targets": [
+            "references/interface-defaults.md#surfaces"
+          ],
+          "issue": 354
+        },
+        {
+          "id": "command/dark-mode-theming/02",
+          "rule": "`<meta name=\"theme-color\">` matches page background",
+          "status": "local",
+          "targets": [
+            "references/mobile-web.md#10-status-bar-and-verification",
+            "references/interface-defaults.md#surfaces"
+          ]
+        },
+        {
+          "id": "command/dark-mode-theming/03",
+          "rule": "Native `<select>`: explicit `background-color` and `color` (Windows dark mode)",
+          "status": "uc",
+          "targets": [
+            "UC-34"
+          ]
+        },
+        {
+          "id": "command/locale-i18n/01",
+          "rule": "Dates/times: use `Intl.DateTimeFormat` not hardcoded formats",
+          "status": "local",
+          "targets": [
+            "references/interface-defaults.md#code-tables-and-truncation"
+          ]
+        },
+        {
+          "id": "command/locale-i18n/02",
+          "rule": "Numbers/currency: use `Intl.NumberFormat` not hardcoded formats",
+          "status": "local",
+          "targets": [
+            "references/interface-defaults.md#code-tables-and-truncation"
+          ]
+        },
+        {
+          "id": "command/locale-i18n/03",
+          "rule": "Detect language via `Accept-Language` / `navigator.languages`, not IP",
+          "status": "uc",
+          "targets": [
+            "UC-35"
+          ]
+        },
+        {
+          "id": "command/locale-i18n/04",
+          "rule": "Brand names, code tokens, identifiers: wrap with `translate=\"no\"` to prevent garbled auto-translation",
+          "status": "uc",
+          "targets": [
+            "UC-35"
+          ]
+        },
+        {
+          "id": "command/hydration-safety/01",
+          "rule": "Inputs with `value` need `onChange` (or use `defaultValue` for uncontrolled)",
+          "status": "uc",
+          "targets": [
+            "UC-30"
+          ]
+        },
+        {
+          "id": "command/hydration-safety/02",
+          "rule": "Date/time rendering: guard against hydration mismatch (server vs client)",
+          "status": "uc",
+          "targets": [
+            "UC-30"
+          ]
+        },
+        {
+          "id": "command/hydration-safety/03",
+          "rule": "`suppressHydrationWarning` only where truly needed",
+          "status": "uc",
+          "targets": [
+            "UC-30"
+          ]
+        },
+        {
+          "id": "command/hover-interactive-states/01",
+          "rule": "Buttons/links need `hover:` state (visual feedback)",
+          "status": "uc",
+          "targets": [
+            "UC-38",
+            "references/impeccable-contract.md#craft-floor"
+          ]
+        },
+        {
+          "id": "command/hover-interactive-states/02",
+          "rule": "Interactive states increase contrast: hover/active/focus more prominent than rest",
+          "status": "uc",
+          "targets": [
+            "UC-38"
+          ]
+        },
+        {
+          "id": "command/content-copy/01",
+          "rule": "Active voice: \"Install the CLI\" not \"The CLI will be installed\"",
+          "status": "uc",
+          "targets": [
+            "UC-36"
+          ]
+        },
+        {
+          "id": "command/content-copy/02",
+          "rule": "Title Case for headings/buttons (Chicago style)",
+          "status": "not-adopted",
+          "reason": "Sentence case is the default where a project has no capitalization policy, and one case is kept per element type (vendor/interface-discipline/upstream/skills/better-writing/UPSTREAM-SKILL.md#one-capitalization-policy)."
+        },
+        {
+          "id": "command/content-copy/03",
+          "rule": "Numerals for counts: \"8 deployments\" not \"eight\"",
+          "status": "uc",
+          "targets": [
+            "UC-36"
+          ]
+        },
+        {
+          "id": "command/content-copy/04",
+          "rule": "Specific button labels: \"Save API Key\" not \"Continue\"",
+          "status": "uc",
+          "targets": [
+            "UC-14"
+          ]
+        },
+        {
+          "id": "command/content-copy/05",
+          "rule": "Error messages include fix/next step, not just problem",
+          "status": "uc",
+          "targets": [
+            "UC-16"
+          ]
+        },
+        {
+          "id": "command/content-copy/06",
+          "rule": "Second person; avoid first person",
+          "status": "local",
+          "targets": [
+            "vendor/interface-discipline/upstream/skills/better-writing/UPSTREAM-SKILL.md#address-the-reader-directly"
+          ]
+        },
+        {
+          "id": "command/content-copy/07",
+          "rule": "`&` over \"and\" where space-constrained",
+          "status": "uc",
+          "targets": [
+            "UC-36"
+          ]
+        },
+        {
+          "id": "command/anti-patterns/01",
+          "rule": "`user-scalable=no` or `maximum-scale=1` disabling zoom",
+          "status": "local",
+          "targets": [
+            "references/mobile-web.md#3-input-zoom-and-the-16px-rule",
+            "vendor/interface-discipline/upstream/skills/better-accessibility/UPSTREAM-SKILL.md#survive-zoom-and-text-resize"
+          ],
+          "issue": 354
+        },
+        {
+          "id": "command/anti-patterns/02",
+          "rule": "`onPaste` with `preventDefault`",
+          "status": "duplicate",
+          "duplicateOf": "command/forms/03"
+        },
+        {
+          "id": "command/anti-patterns/03",
+          "rule": "`transition: all`",
+          "status": "duplicate",
+          "duplicateOf": "command/animation/03"
+        },
+        {
+          "id": "command/anti-patterns/04",
+          "rule": "`outline-none` without focus-visible replacement",
+          "status": "duplicate",
+          "duplicateOf": "command/focus-states/02"
+        },
+        {
+          "id": "command/anti-patterns/05",
+          "rule": "Inline `onClick` navigation without `<a>`",
+          "status": "duplicate",
+          "duplicateOf": "command/navigation-state/02"
+        },
+        {
+          "id": "command/anti-patterns/06",
+          "rule": "`<div>` or `<span>` with click handlers (should be `<button>`)",
+          "status": "duplicate",
+          "duplicateOf": "command/accessibility/04"
+        },
+        {
+          "id": "command/anti-patterns/07",
+          "rule": "Images without dimensions",
+          "status": "duplicate",
+          "duplicateOf": "command/images/01"
+        },
+        {
+          "id": "command/anti-patterns/08",
+          "rule": "Large arrays `.map()` without virtualization",
+          "status": "duplicate",
+          "duplicateOf": "command/performance/01"
+        },
+        {
+          "id": "command/anti-patterns/09",
+          "rule": "Form inputs without labels",
+          "status": "duplicate",
+          "duplicateOf": "command/accessibility/02"
+        },
+        {
+          "id": "command/anti-patterns/10",
+          "rule": "Icon buttons without `aria-label`",
+          "status": "duplicate",
+          "duplicateOf": "command/accessibility/01"
+        },
+        {
+          "id": "command/anti-patterns/11",
+          "rule": "Hardcoded date/number formats (use `Intl.*`)",
+          "status": "duplicate",
+          "duplicateOf": "command/locale-i18n/01"
+        },
+        {
+          "id": "command/anti-patterns/12",
+          "rule": "`autoFocus` without clear justification",
+          "status": "duplicate",
+          "duplicateOf": "command/touch-interaction/07"
+        },
+        {
+          "id": "command/anti-patterns/13",
+          "rule": "Animated GIF when compressed video is suitable",
+          "status": "duplicate",
+          "duplicateOf": "command/performance/07"
+        },
+        {
+          "id": "command/anti-patterns/14",
+          "rule": "Gesture-only action without tap/click and keyboard alternative",
+          "status": "duplicate",
+          "duplicateOf": "command/touch-interaction/06"
+        },
+        {
+          "id": "readme/01",
+          "rule": "**Ellipsis for further input & loading states.** Menu options that open a follow-up e.g., \"Rename…\" & loading/processing states e.g., \"Loading…\", \"Saving…\", \"Generating…\" end with an ellipsis.",
+          "status": "uc",
+          "targets": [
+            "UC-39"
+          ]
+        },
+        {
+          "id": "readme/02",
+          "rule": "**Submission rule.** Keep submit enabled until submission starts; then disable during the in-flight request, show a spinner, & include an idempotency key.",
+          "status": "uc",
+          "targets": [
+            "UC-40"
+          ]
+        },
+        {
+          "id": "readme/03",
+          "rule": "**Network latency budgets.** `POST/PATCH/DELETE` complete in <500ms.",
+          "status": "uc",
+          "targets": [
+            "UC-40",
+            "references/interface-defaults.md#waiting"
+          ]
+        },
+        {
+          "id": "readme/04",
+          "rule": "**Don’t use the main thread for expensive work.** Move especially long tasks to [Web Workers](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API) to avoid blocking interaction with the page.",
+          "status": "uc",
+          "targets": [
+            "UC-31"
           ]
         }
       ]

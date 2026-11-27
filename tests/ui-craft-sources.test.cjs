@@ -169,7 +169,7 @@ test("review checklist ids run UC-01 upward without a gap, and every row states 
   assert.ok(start > 0 && end > start, "the guide has a review checklist before Precedence");
   const isRow = line => /^\| UC-/.test(line);
   const rows = lines.slice(start, end).filter(isRow).map(line => line.replace(/^\| /, "").replace(/ \|$/, "").split(" | "));
-  assert.ok(rows.length >= 44, "UC-01 to UC-44");
+  assert.ok(rows.length >= 57, "UC-01 to UC-57");
   assert.deepEqual(rows.map(row => row[0]), rows.map((row, index) => `UC-${String(index + 1).padStart(2, "0")}`));
   // The checklist is the one place a UC id is defined.
   assert.equal(lines.filter(isRow).length, rows.length);
@@ -180,9 +180,12 @@ test("review checklist ids run UC-01 upward without a gap, and every row states 
     assert.match(sources, /`[^`]+`|\]\([^)]+\)|^from the former /, `${id} names its source`);
   }
   // The rows added from the pinned rule lists cite them by key, and the guide explains the keys.
-  for (const [id, , sources] of rows.slice(29)) assert.match(sources, /`(WIG|BU|FMP)`/, `${id} cites the upstream rule list`);
+  for (const [id, , sources] of rows.slice(29)) assert.match(sources, /`(WIG|BU|FMP|UIW)`/, `${id} cites the upstream rule list`);
   const guide = lines.join("\n");
-  for (const key of ["WIG", "BU", "FMP"]) assert.match(guide, new RegExp(`\`${key}\` is\\s`), `source key ${key} is explained`);
+  for (const key of ["WIG", "BU", "FMP", "UIW"]) assert.match(guide, new RegExp(`\`${key}\` is\\s`), `source key ${key} is explained`);
+  // Every new checklist row is a review record, so the QA checklist names each one.
+  const qa = fs.readFileSync(path.join(skillRoot, "references/qa-checklist.md"), "utf8");
+  for (const [id] of rows.slice(44)) assert.ok(qa.includes(`\`${id}\``), `qa-checklist.md names ${id}`);
 });
 
 function rejectionFixture(t, name) {

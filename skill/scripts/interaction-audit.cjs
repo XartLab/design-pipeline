@@ -86,6 +86,7 @@ const AUDIT_CODES = Object.freeze([
   "audit.reduced-motion",
   "audit.state-contrast",
   "audit.motion-properties",
+  "audit.view-transition-names",
 ]);
 
 // An optional check measures only what the probe declares. Without its declaration it reports
@@ -353,6 +354,7 @@ function auditPage(options, pass) {
     "audit.content-clipping", "audit.content-overflow", "audit.target-size", "audit.control-gap", "audit.control-inset",
     "audit.layout-gap", "audit.layout-alignment", "audit.nested-radius", "audit.line-length", "audit.line-height",
     "audit.heading-levels", "audit.reduced-motion", "audit.state-contrast", "audit.motion-properties",
+    "audit.view-transition-names",
   ];
   const OPTIONAL = ["audit.tabular-numbers", "audit.content-overflow", "audit.control-inset", "audit.layout-gap", "audit.layout-alignment", "audit.nested-radius", "audit.line-length", "audit.line-height"];
   const MAX_ITEMS = 100;
@@ -400,6 +402,7 @@ function auditPage(options, pass) {
     motionLayout: "Animate transform instead and leave the layout value fixed: scale() for width or height, translate() for top, left or margin. A layout property is measured again on every frame, with everything around it.",
     motionOffscreen: "Pause the loop while its element is out of view: toggle animation-play-state (or Animation.pause()) from an IntersectionObserver, or put the section under content-visibility: auto. A loading indicator is exempt once it says so: role=\"status\" or role=\"progressbar\" on it, or aria-busy=\"true\" on the region it fills.",
     motionBlur: "Run the blur once, for a short effect, and stop. For a lasting glow, blur the layer once and animate its opacity.",
+    transitionNameDuplicate: "Give every visible element that takes part in a View Transition its own view-transition-name, or remove the name from the elements that do not need it.",
   };
   const { thresholds, declare } = options;
   const tolerance = thresholds.tolerances;
@@ -1577,6 +1580,31 @@ function auditPage(options, pass) {
     if (!(box.width > 0 || box.height > 0)) continue;
     const where = box.top >= viewport.height ? `${round2(box.top - viewport.height)}px below` : box.bottom <= 0 ? `${round2(-box.bottom)}px above` : box.left >= viewport.width ? `${round2(box.left - viewport.width)}px right of` : box.right <= 0 ? `${round2(-box.right)}px left of` : null;
     if (where) failed("audit.motion-properties", target, { selector, expected: "an infinite animation paused while its element is outside the viewport", actual: `${name} runs in an infinite loop ${where} the ${viewport.width}x${viewport.height} viewport`, message: "an infinite animation keeps running off screen", fix: FIX.motionOffscreen });
+  }
+
+  // audit.view-transition-names: a View Transition matches elements by name, so two visible
+  // elements may not share one. `none` does not take part; `match-element` is per element by
+  // definition, so neither is a collision.
+  const transitionNames = new Map();
+  for (const el of elements) {
+    const name = styleOf(el).viewTransitionName;
+    if (!name || name === "none" || name === "match-element") continue;
+    const named = transitionNames.get(name) || [];
+    named.push(el);
+    transitionNames.set(name, named);
+  }
+  const transitionNameCheck = checks["audit.view-transition-names"];
+  for (const [name, named] of transitionNames) {
+    transitionNameCheck.checked += named.length;
+    if (named.length < 2) continue;
+    const selectors = named.map((el) => selectorOf(el));
+    failed("audit.view-transition-names", named[0], {
+      selector: selectors.join(", "),
+      expected: "a view-transition-name used by one visible element",
+      actual: `${named.length} visible elements use view-transition-name ${name}`,
+      message: `the view-transition-name ${name} is used by ${named.length} visible elements`,
+      fix: FIX.transitionNameDuplicate,
+    });
   }
 
   // audit.state-contrast is measured by the state passes after this one; the driver puts their sum

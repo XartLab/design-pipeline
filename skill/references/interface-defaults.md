@@ -72,16 +72,41 @@ See [mobile-web.md](mobile-web.md): tap feedback, `touch-action`, zoom, 16px inp
   const delay = 200, minimum = 400;
   ```
 
+## Pseudo-elements and native styling
+
+- **Prefer a pseudo-element over an extra node.** `::before` and `::after` carry decoration that does not need its own element; `::marker` styles a list bullet, `::first-line` a lead line, `::backdrop` a dialog backdrop, `::placeholder` an input placeholder and `::selection` a selected run. Use them where the design is a decoration or a native state, not where the content is real text a screen reader must read.
+- **A pseudo-element needs `content` and a positioned parent.** `content` is required for `::before` and `::after`; an absolute pseudo-element needs a positioned containing block, otherwise it anchors to the wrong ancestor.
+- **Give pseudo-elements a layer.** A pseudo-element that paints over content takes an explicit z-index from the project's stacking scale, so it does not land above a control it belongs to.
+
+## View Transitions
+
+- **Use the browser's View Transitions for a navigation-level change.** The element that moves carries a `view-transition-name`; the name is set when the transition starts and cleared when it ends, and `::view-transition-*` pseudo-elements carry any custom styling.
+- **One name, one element.** Two visible elements may not share a name; `audit.view-transition-names` measures that on the rendered page. `none` does not take part in a transition, and `match-element` is unique per element by definition.
+- **Do not use it where the change must be interruptible or cancellable**, and do not swap an interaction-heavy animation system for it. A size change inside a transition is still layout work; a measured FLIP transform plays it as a transform instead.
+
+## Typographic features
+
+- **Oldstyle numerals in prose, lining or tabular figures in data.** A body paragraph with figures reads better with oldstyle numerals; a table, a price column or a dashboard reads better with lining figures, and comparable numbers need tabular figures.
+- **Keep contextual alternates on.** `calt` lets a font substitute the right glyph pair automatically; a font that has no alternates is unaffected.
+- **Use diagonal fractions for real fractions.** `diagonal-fractions` turns a fraction into a slanted form; without it the font's own fraction glyphs are used.
+
 ## Motion details not in the motion rules
 
 - **Name animated properties.** `transition: opacity 150ms, transform 150ms`, never `transition: all`.
 - **Toggled state uses transitions, not keyframes**, so a reversal mid-flight retargets (UC-04). Keyframes are for one-shot sequences.
 - **Animate only the axis that changes.** Do not animate width when only height changes.
 - **Measure an inner element to animate container size.** Observe a child with `ResizeObserver` and animate the outer box. Measuring and animating the same node loops. While a panel collapses, give its content a fixed open width so text does not reflow mid-motion.
+- **Guard the first measurement.** A container measured on its first render reports zero; fall back to `auto` or an intrinsic size until a real size arrives, so the panel never animates from zero.
+- **Clip only while the size changes.** `overflow: hidden` belongs to the transition, not to the resting state; restore the intended overflow when it ends.
+- **Measure through a callback ref.** A ref that follows the node keeps the measurement attached when the content is replaced.
+- **Reach for size animation last.** Animate the container size for buttons, accordions and compact interactive panels; ordinary page layout uses its own flow.
 - **Tooltips warm up once.** The first tooltip in a group waits; while one is showing, neighbours open instantly without animation; all close instantly.
 - **Swapped icons cross-fade.** Copy to copied: scale from about 0.25 to 1, opacity 0 to 1, blur 4px to 0, no bounce. Add a 2px blur to a cross-fade only when it still reads as two overlapping objects, and keep blur under 20px.
+- **Morph an icon only when it is the same object.** Two states of one icon (a copy action changing to a check) may morph when the project draws linear icons; two unrelated shapes cross-fade. A morphing set shares one viewBox and the same three-line structure, an unused line collapses to one constant, rotational variants reuse one group, stroke line caps are round, rotation uses the project spring primitive and reduced motion falls back to the end state. The icon carries `aria-hidden="true"`; the control keeps its own name.
 - **Flicks dismiss, edges resist.** A sheet dismisses on distance or on speed (a short, fast flick counts, roughly above 0.1 px/ms). Drag past a boundary meets growing friction, not a wall. Every gesture also has a button or key path.
 - **Exits need a presence boundary.** In React with a presence library, an element with an exit animation sits inside the presence wrapper and is keyed by a stable id, not an index.
+- **Presence hooks belong in the child.** The component that knows whether it is exiting calls `useIsPresent`; the parent that owns the boundary does not. A child that cleans up asynchronously calls `safeToRemove` only when that cleanup is done, and it takes no pointer or keyboard input while it exits.
+- **Budget the presence mode.** `mode="wait"` runs the exit before the entrance, so each phase needs its own share of the duration budget; `mode="sync"` overlaps them and needs a layout check; `popLayout` keeps reordered lists from jumping. A nested presence boundary propagates the exit, and its timing follows the parent.
 
 ## Review severity hint
 

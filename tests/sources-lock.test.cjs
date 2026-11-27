@@ -1,13 +1,14 @@
 "use strict";
 
 const assert = require("node:assert/strict");
+const crypto = require("node:crypto");
 const fs = require("node:fs");
 const os = require("node:os");
 const path = require("node:path");
 const { spawnSync } = require("node:child_process");
 const test = require("node:test");
 const { BUNDLE_KINDS, checkAgreement, pinsIn, readLock, validateLock } = require("../scripts/sources-lock.cjs");
-const { hexReplacer } = require("../scripts/sources-update.cjs");
+const { adaptedHash, hexReplacer } = require("../scripts/sources-update.cjs");
 const { upstreamStatus } = require("../scripts/sources-check.cjs");
 
 const repoRoot = path.resolve(__dirname, "..");
@@ -28,6 +29,17 @@ test("the lock agrees with every derived pin, manifest and notice", () => {
   const lock = readLock(repoRoot);
   assert.deepEqual(validateLock(lock), []);
   assert.deepEqual(checkAgreement(repoRoot, lock), []);
+});
+
+test("adapted-reference hashes keep extensionless files as blobs and expand only slash-terminated directories", (t) => {
+  const site = fixture(t);
+  const record = "---\nsourceMeta:\n  contentHashScope: ordered UTF-8 sourceFiles with path-and-newline separators\n  sourceFiles: LICENSE, docs/\n---\n";
+  const expected = crypto.createHash("sha256").update([
+    "LICENSE\nMIT License\n\nCopyright (c) 2026 Acme\n\n",
+    "docs/a.md\nfirst\n\n",
+    "docs/b.md\ncited by vendored path\n\n",
+  ].join(""), "utf8").digest("hex");
+  assert.equal(adaptedHash(site.upstream, site.first, record), expected);
 });
 
 test("every vendored bundle is locked, and every locked bundle is vendored", () => {

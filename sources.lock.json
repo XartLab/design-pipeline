@@ -1170,6 +1170,17 @@
       ]
     },
     {
+      "id": "userinterface-wiki",
+      "kind": "adapted-reference",
+      "repo": "https://github.com/raphaelsalaja/userinterface-wiki",
+      "revision": "256a954080c8bcf1b1ceb1e2a4079d1f24cf593a",
+      "reviewedAt": "2026-11-27",
+      "documents": [
+        "skill/references/userinterface-wiki-rules.md"
+      ],
+      "committedAt": "2026-11-27T15:41:23Z"
+    },
+    {
       "id": "web-interface-guidelines",
       "kind": "adapted-reference",
       "repo": "https://github.com/vercel-labs/web-interface-guidelines",

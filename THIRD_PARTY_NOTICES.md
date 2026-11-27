@@ -76,6 +76,13 @@ runtime, workflow, remote prompt, or skill implementation is bundled or executed
   `expect`, no positional locators, optional screenshot-baseline report) as an original static
   checker, `skill/tools/browser-practice/lint.cjs`; no upstream text or code is bundled.
 
+`raphaelsalaja/userinterface-wiki`, reviewed at commit
+`256a954080c8bcf1b1ceb1e2a4079d1f24cf593a` from
+https://github.com/raphaelsalaja/userinterface-wiki, MIT, Copyright (c) 2026 Raphael Salaja.
+The package contains an original adaptation in `skill/references/userinterface-wiki-rules.md`
+and comparison data in `skill/references/ui-rule-coverage.json`; no upstream rule files or
+commands are bundled or executed.
+
 The MIT-licensed sources retain their upstream copyright and permission notices. Their repositories
 remain the authority for full license text and runtime installation instructions.
 

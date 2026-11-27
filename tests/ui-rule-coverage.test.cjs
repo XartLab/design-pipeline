@@ -10,7 +10,7 @@ const fs = require("node:fs");
 const path = require("node:path");
 const test = require("node:test");
 const { AUDIT_CODES } = require("../skill/scripts/interaction-audit.cjs");
-const { COVERAGE, FIXTURE, FIXTURE_SCHEMA, extractBullets, extractSelected, sectionSlug } = require("../scripts/refresh-ui-rule-fixture.cjs");
+const { COVERAGE, FIXTURE, FIXTURE_SCHEMA, extractBullets, extractRuleFiles, extractSelected, sectionSlug } = require("../scripts/refresh-ui-rule-fixture.cjs");
 const { lockedSource } = require("./helpers/locked-source.cjs");
 
 const repoRoot = path.resolve(__dirname, "..");
@@ -98,8 +98,9 @@ function problems(coverage, fixture, ctx = context()) {
     for (const file of Array.isArray(source.files) ? source.files : []) {
       if (!/^[a-z0-9-]+$/.test(file.key || "") || keys.has(file.key)) found.push(`${label}: file keys must be unique kebab names`);
       keys.add(file.key);
-      if (typeof file.path !== "string" || !["bullets", "selected"].includes(file.extract)) found.push(`${label}: ${file.key} needs a path and extract "bullets" or "selected"`);
+      if (typeof file.path !== "string" || !["bullets", "selected", "rule-files"].includes(file.extract)) found.push(`${label}: ${file.key} needs a path and extract "bullets", "selected" or "rule-files"`);
       if (file.extract === "bullets" && typeof file.from !== "string") found.push(`${label}: ${file.key} needs the heading its rules start at`);
+      if (file.extract === "rule-files" && typeof file.skillPath !== "string") found.push(`${label}: ${file.key} needs the skillPath its rule index lives at`);
     }
     if (!keys.size) found.push(`${label}: files must list the upstream rule files`);
 
@@ -167,12 +168,13 @@ test("the rule coverage map is correct against the pinned upstream rule lists", 
   assert.deepEqual(problems(readJson(COVERAGE), readJson(FIXTURE)), []);
 });
 
-test("the map covers the four contracted rule lists at the locked revisions", () => {
+test("the map covers the contracted rule lists at the locked revisions", () => {
   const coverage = readJson(COVERAGE);
   const fixture = readJson(FIXTURE);
   assert.deepEqual(coverage.sources.map((source) => [source.id, source.files.map((file) => file.path)]), [
-    ["web-interface-guidelines", ["command.md", "README.md"]],
     ["ibelick-ui-skills-rules", ["skills/baseline-ui/SKILL.md", "skills/fixing-metadata/SKILL.md", "skills/fixing-motion-performance/SKILL.md"]],
+    ["userinterface-wiki", ["skills/rules"]],
+    ["web-interface-guidelines", ["command.md", "README.md"]],
   ]);
   for (const source of coverage.sources) {
     const locked = lockedSource(source.id);
@@ -184,16 +186,25 @@ test("the map covers the four contracted rule lists at the locked revisions", ()
     const pinned = fixture.sources.find((item) => item.id === source.id);
     assert.match(pinned.revision, SHA, source.id);
     assert.match(pinned.contentHash, /^[0-9a-f]{64}$/, source.id);
-    assert.deepEqual(pinned.files.map((file) => file.path), source.files.map((file) => file.path), source.id);
     for (const rule of pinned.rules) assert.ok(Number.isInteger(rule.line) && rule.line > 0 && rule.text, `${source.id} ${rule.id}`);
   }
   const byKey = (source, key) => source.rules.filter((row) => row.id.startsWith(`${key}/`));
-  const [vercel, ibelick] = coverage.sources;
+  const [ibelick, uiw, vercel] = coverage.sources;
   // command.md: 104 rule lines, 13 of them the closing anti-pattern list restating earlier rules.
   assert.equal(byKey(vercel, "command").length, 104);
   assert.equal(byKey(vercel, "command").filter((row) => row.status === "duplicate").length, 13);
   assert.equal(byKey(vercel, "readme").length, 4);
   assert.deepEqual(["baseline-ui", "fixing-metadata", "fixing-motion-performance"].map((key) => byKey(ibelick, key).length), [42, 37, 41]);
+  // userinterface-wiki ships one file per rule: 152 rule files, one map row each.
+  assert.equal(byKey(uiw, "rules").length, 152);
+  const pinnedUiw = fixture.sources.find((item) => item.id === "userinterface-wiki");
+  assert.equal(pinnedUiw.files.length, 152, "one pinned file per upstream rule file");
+  assert.deepEqual(pinnedUiw.files.map((file) => file.path), [...new Set(pinnedUiw.files.map((file) => file.path))], "no rule file is listed twice");
+  assert.deepEqual(pinnedUiw.files.map((file) => path.basename(file.path, ".md")).sort(), byKey(uiw, "rules").map((row) => row.id.slice("rules/".length)).sort(), "every rule file has exactly one row");
+  for (const file of pinnedUiw.files) assert.match(file.path, /^skills\/rules\/[a-z0-9-]+\.md$/, file.path);
+  // The 27 audio and sound-synthesis rules are tracked on #360, not held here.
+  assert.equal(uiw.rules.filter((row) => row.status === "pending").length, 27);
+  assert.ok(uiw.rules.filter((row) => row.status === "pending").every((row) => row.issue === 360));
 });
 
 test("known decisions stay recorded: not adopted with a reason, missing rules pending on their issue", () => {
@@ -208,15 +219,36 @@ test("known decisions stay recorded: not adopted with a reason, missing rules pe
   }
   for (const id of ["baseline-ui/stack/02", "baseline-ui/stack/03", "baseline-ui/stack/04", "baseline-ui/components/04"]) assert.match(row(id).rule, /motion\/react|tw-animate-css|`cn`|Base UI/, id);
   const pendingIssues = new Set(coverage.sources.flatMap((source) => source.rules).filter((item) => item.status === "pending").map((item) => item.issue));
-  assert.deepEqual([...pendingIssues].sort(), [353, 354]);
+  assert.deepEqual([...pendingIssues].sort(), [353, 354, 360]);
   // #355 landed as audit.motion-properties: its measurable rules are audit rows, the rest review rows.
   for (const id of ["command/animation/03", "baseline-ui/animation/03", "baseline-ui/animation/07", "fixing-motion-performance/never-patterns/02", "fixing-motion-performance/scroll/04", "fixing-motion-performance/blur-and-filters/03"]) {
     assert.equal(row(id).status, "audit", id);
     assert.ok(row(id).targets.includes("audit.motion-properties"), id);
   }
   for (const id of ["baseline-ui/animation/07", "fixing-motion-performance/scroll/04"]) assert.match(row(id).note, /scrolls out of view later is reviewed under UC-43/, id);
-  assert.equal(coverage.sources[1].rules.filter((entry) => entry.id.startsWith("fixing-motion-performance/") && entry.status === "pending").length, 0);
-  for (const item of coverage.sources[1].rules.filter((entry) => entry.id.startsWith("fixing-metadata/") && entry.status === "pending")) assert.equal(item.issue, 353, item.id);
+  const ibelick = coverage.sources.find((source) => source.id === "ibelick-ui-skills-rules");
+  assert.equal(ibelick.rules.filter((entry) => entry.id.startsWith("fixing-motion-performance/") && entry.status === "pending").length, 0);
+  for (const item of ibelick.rules.filter((entry) => entry.id.startsWith("fixing-metadata/") && entry.status === "pending")) assert.equal(item.issue, 353, item.id);
+  // userinterface-wiki: the duplicate-name rule is measured, the deliberate differences are recorded.
+  assert.equal(row("rules/transition-name-unique").status, "audit");
+  assert.ok(row("rules/transition-name-unique").targets.includes("audit.view-transition-names"));
+  for (const id of ["rules/easing-exit-ease-in", "rules/exit-matches-initial", "rules/duration-press-hover", "rules/ux-fitts-target-size", "rules/physics-no-excessive-stagger"]) {
+    assert.equal(row(id).status, "not-adopted", id);
+    assert.ok(row(id).reason.length > 40, id);
+  }
+  assert.equal(row("rules/timing-no-entrance-context-menu").status, "duplicate");
+  assert.equal(row("rules/timing-no-entrance-context-menu").duplicateOf, "rules/none-context-menu-entrance");
+  assert.equal(row("rules/type-oldstyle-nums-for-prose").targets[0], "UC-49");
+  assert.equal(row("rules/type-opentype-contextual-alternates").targets[0], "UC-50");
+  assert.equal(row("rules/type-proper-fractions").targets[0], "UC-51");
+  assert.equal(row("rules/pseudo-marker-styling").targets[0], "UC-52");
+  assert.equal(row("rules/pseudo-z-index-layering").targets[0], "UC-53");
+  assert.equal(row("rules/pseudo-over-dom-node").targets[0], "UC-54");
+  assert.equal(row("rules/container-guard-initial-zero").targets[0], "UC-47");
+  assert.equal(row("rules/ux-hicks-minimize-choices").targets[0], "UC-48");
+  assert.equal(row("rules/ux-millers-chunking").targets[0], "UC-48");
+  assert.equal(row("rules/ux-goal-gradient-progress").targets[0], "UC-48");
+  assert.equal(row("rules/ux-progressive-disclosure").targets[0], "UC-48");
   // No row is mapped for appearance: a status total is the sum of real rows.
   for (const source of coverage.sources) assert.equal(Object.values(counts(source)).reduce((sum, value) => sum + value, 0), source.rules.length, source.id);
 });
@@ -229,14 +261,18 @@ test("a wrong map is rejected: missing rows, dead targets, empty reasons and sta
     edit(next.coverage, next.fixture);
     return problems(next.coverage, next.fixture).join("\n");
   };
-  const rules = (data) => data.sources[0].rules;
+  const source = (data, id) => data.sources.find((item) => item.id === id);
+  const rules = (data) => source(data, "web-interface-guidelines").rules;
   const find = (data, status) => rules(data).find((row) => row.status === status);
 
   assert.match(broken((map) => { rules(map).splice(0, 1); }), /command\/accessibility\/01: upstream rule has no mapping: Icon-only buttons/);
-  assert.match(broken((map, pinned) => { pinned.sources.find((item) => item.id === "web-interface-guidelines").rules.push({ id: "command/forms/12", line: 50, text: "A rule upstream added" }); }), /command\/forms\/12: upstream rule has no mapping: A rule upstream added/);
+  assert.match(broken((map, pinned) => { source(pinned, "web-interface-guidelines").rules.push({ id: "command/forms/12", line: 50, text: "A rule upstream added" }); }), /command\/forms\/12: upstream rule has no mapping: A rule upstream added/);
   assert.match(broken((map) => { rules(map)[0].rule = "Icon-only buttons need a label"; }), /mapped text differs from the upstream line/);
   assert.match(broken((map) => { rules(map).push({ id: "command/forms/99", rule: "Invented", status: "pending", issue: 354 }); }), /command\/forms\/99: row is not in the pinned upstream list/);
-  assert.match(broken((map, pinned) => { pinned.sources[0].contentHash = "0".repeat(64); }), /upstream rule files changed .*run scripts\/refresh-ui-rule-fixture\.cjs/);
+  assert.match(broken((map, pinned) => { source(pinned, "web-interface-guidelines").contentHash = "0".repeat(64); }), /upstream rule files changed .*run scripts\/refresh-ui-rule-fixture\.cjs/);
+  // A rule file the upstream added without an index row, and a rule row without a rule file.
+  assert.match(broken((map, pinned) => { source(pinned, "userinterface-wiki").rules.push({ id: "rules/new-rule", line: 1, text: "`new-rule` - A new rule" }); }), /rules\/new-rule: upstream rule has no mapping/);
+  assert.match(broken((map) => { source(map, "userinterface-wiki").rules = source(map, "userinterface-wiki").rules.filter((row) => row.id !== "rules/transition-name-unique"); }), /rules\/transition-name-unique: upstream rule has no mapping/);
 
   assert.match(broken((map) => { find(map, "audit").targets = ["audit.not-a-code"]; }), /"audit\.not-a-code" is not an audit code/);
   assert.match(broken((map) => { find(map, "uc").targets = ["UC-99"]; }), /"UC-99" is not a review row/);
@@ -274,9 +310,25 @@ test("the pinned list is extracted from rule files mechanically", () => {
   assert.throws(() => extractSelected(text, { path: "guide.md" }, [{ id: "guide/01", rule: "A rule upstream removed" }]), /no longer has the selected rule guide\/01/);
 });
 
-test("the map and both source records ship in the package", () => {
+test("a rule directory is pinned one file per rule, matched against the upstream index", () => {
+  const skill = ["# Wiki", "", "### Rules", "", "- `first-rule` - The first rule", "- `second-rule` - The second rule"].join("\n");
+  const spec = { key: "rules", path: "skills/rules", skillPath: "skills/SKILL.md" };
+  const paths = ["skills/rules/_sections.md", "skills/rules/_template.md", "skills/rules/first-rule.md", "skills/rules/second-rule.md"];
+  const extracted = extractRuleFiles(skill, spec, paths);
+  assert.deepEqual(extracted.files, ["skills/rules/first-rule.md", "skills/rules/second-rule.md"], "the metadata files are not rules");
+  assert.deepEqual(extracted.rules, [
+    { id: "rules/first-rule", line: 5, text: "`first-rule` - The first rule" },
+    { id: "rules/second-rule", line: 6, text: "`second-rule` - The second rule" },
+  ]);
+  // A rule file without an index row, an index row without a rule file, and a repeated file all fail.
+  assert.throws(() => extractRuleFiles(skill, spec, [...paths, "skills/rules/third-rule.md"]), /has no Quick Reference row for third-rule/);
+  assert.throws(() => extractRuleFiles(skill, spec, paths.filter((file) => !file.endsWith("second-rule.md"))), /Quick Reference ids without rule files: second-rule/);
+  assert.throws(() => extractRuleFiles(skill, spec, [...paths, "skills/rules/first-rule.md"]), /repeats a rule filename/);
+});
+
+test("the map and every source record ship in the package", () => {
   const required = readJson("skill/references/package-resources.json").required;
-  for (const file of ["references/ui-rule-coverage.json", "references/web-interface-guidelines.md", "references/ibelick-ui-skills.md"]) {
+  for (const file of ["references/ui-rule-coverage.json", "references/web-interface-guidelines.md", "references/ibelick-ui-skills.md", "references/userinterface-wiki-rules.md"]) {
     assert.equal(required.filter((item) => item === file).length, 1, file);
     assert.ok(fs.existsSync(path.join(skillRoot, file)), file);
   }

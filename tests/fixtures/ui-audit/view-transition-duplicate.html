@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Audit fixture: duplicate View Transition names</title>
+<link rel="icon" href="data:,">
+<style>
+/* Two visible elements share one view-transition-name; a hidden one repeats it as well. */
+.card { view-transition-name: card; }
+.hidden { display: none; view-transition-name: card; }
+</style>
+</head>
+<body>
+<main>
+  <div class="card" id="first">First named card</div>
+  <div class="card" id="second">Second named card</div>
+  <div class="hidden" id="hidden">Hidden card</div>
+</main>
+</body>
+</html>
