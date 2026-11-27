@@ -20,11 +20,13 @@ Source keys used below. `LA` is a lintapple rule id, adapted in `scripts/interac
 | `ID/` | `vendor/interface-discipline/upstream/skills/*/*.md` (domain skill, then file) |
 | `SC/` | `vendor/shadcn/upstream/skills/shadcn/rules/*.md` (only in a shadcn project) |
 
-Three more keys name upstream rule lists that are pinned but not vendored; the section cited after
+Four more keys name upstream rule lists that are pinned but not vendored; the section cited after
 the key is a heading in that file. `WIG` is `command.md` of Vercel's Web Interface Guidelines
 (`README.md` where the row says so; [record](web-interface-guidelines.md)). `BU` is
 `skills/baseline-ui/SKILL.md` of ibelick/ui-skills and `FMP` is
 `skills/fixing-motion-performance/SKILL.md` of the same repository ([record](ibelick-ui-skills.md)).
+`UIW` is the pinned rule inventory of raphaelsalaja/userinterface-wiki, one file per rule
+([record](userinterface-wiki-rules.md)).
 [Rule coverage](#rule-coverage) maps every rule of those lists to a row here.
 
 ## Measured audit
@@ -59,15 +61,16 @@ A token may raise a floor, never lower it below the WCAG values (24px targets, 4
 | `audit.reduced-motion` | Loaded once with `prefers-reduced-motion: reduce` and once without, both read 1s after load: no content (text or media) visible without the preference at that moment is hidden under it by opacity 0, `visibility`, or a transform or clip that puts it out of view or to zero size, and no running animation or transition moves anything but opacity or color; motion on or inside `role="status"`, `role="progressbar"`, `role="alert"` or `aria-busy="true"` (spinners, progress, skeletons) is essential motion and exempt | 1s | none | [motion sources](#reading-motion-and-state-sources); `FA`, `ID/better-accessibility/motion-and-zoom.md` |
 | `audit.state-contrast` | With `:hover` and `:focus-visible` forced on every control (CDP `CSS.forcePseudoState`), text whose color or background color the state changes meets the text-contrast floors, and each focusable control shows a `:focus-visible` outline, ring, border or background change of at least `contrastFocus` against what it sits on (the browser's two-tone `outline-style: auto` ring passes). A state drawn with a filter, translucency or a gradient that cannot be measured is listed under `notMeasured` in the coverage and does not fail. `:active` is not measured: it lasts only as long as a press, and an unstyled link's `:active` is the browser's activelink red | 3:1 | `colors` roles; stricter → `thresholds.contrastFocus`, `contrastNormal`, `contrastLarge` | [state sources](#reading-motion-and-state-sources); `FA`, `ID/better-accessibility/focus-and-keyboard.md` |
 | `audit.motion-properties` | No element (the document element included), `::before` or `::after` has a timed `transition-property: all` or a timed transition of a layout property (`width`, `height`, the four insets, `margin`, `padding`, their longhands and logical forms); transitions are read from computed style, so one that never fires is still judged. No keyframe or script animation the document holds a second after load animates a layout property; no infinite one animates `filter` or `backdrop-filter` `blur()`; no infinite one is running on an element wholly outside the viewport at that reading (paused, or skipped by `content-visibility: auto`, passes; a loop on a pseudo-element, whose box cannot be read, is listed under `notMeasured` and does not fail). Motion on or inside `role="status"`, `role="progressbar"`, `role="alert"` or `aria-busy="true"` is exempt. `min-`/`max-` sizes, border widths and grid tracks are not judged | none | none | `BU` Animation; `FMP`; `WIG` Animation; [compositor cost](animation-opportunity-and-review.md#5-compositor-cost) |
+| `audit.view-transition-names` | No two visible elements share one computed `view-transition-name`; the name is read from computed style, so a stylesheet rule counts. `none` and the root element's browser-assigned `root` name are not authored participants, and `match-element` is unique per element by definition, so none count as collisions. A page that names no element reports `not-applicable` | none | none | `UIW` Pseudo-elements, native styling, and View Transitions |
 
 `audit.font-family` and every check without a `declare` input always run; `thresholds.fonts` is
 required. The optional selector checks are `audit.tabular-numbers` (declared numbers, plus inferred
 numeric cells), `audit.content-overflow`, `audit.control-inset`, `audit.layout-gap`,
 `audit.layout-alignment`, `audit.nested-radius`, and `audit.line-length` and `audit.line-height`
 (running text is a role only the author knows: labels, captions, table cells and hero lines are
-not). `audit.heading-levels`, `audit.reduced-motion`, `audit.state-contrast` and
-`audit.motion-properties` need no declaration and always run. A declared selector that matches nothing is a
-failed finding.
+not). `audit.heading-levels`, `audit.reduced-motion`, `audit.state-contrast`,
+`audit.motion-properties` and `audit.view-transition-names` need no declaration and always run. A
+declared selector that matches nothing is a failed finding.
 
 The audit also classifies every request the page made at any viewport. A CDN or dev-server URL, or
 a file outside the project, fails the verifier's existing `external-request` finding once per
@@ -161,6 +164,19 @@ finding status, removed signals) in [interface-discipline.md](interface-discipli
 | UC-42 | Source-level, scroll-linked motion: nothing animates from `scrollTop`, `scrollY`, a `scroll` listener or a polled scroll position; a scroll or view timeline drives it where the browser has one, and an IntersectionObserver decides visibility and pausing; scroll-linked motion changes `transform` or `opacity` only on a large surface. Check: grep the motion code for `scroll` listeners and `requestAnimationFrame` loops that read scroll position. | `FMP` Never patterns, Scroll; [UI transition rules](ui-transition-rules.md) |
 | UC-43 | Source-level, loops: an effect runs once unless the loop itself carries meaning; a loop pauses when its element leaves the viewport (`audit.motion-properties` measures loops that are off screen when the page is read, not ones that scroll out later); a large image or a full-screen surface is not animated as a whole. | `BU` Animation; `FMP` Choose the mechanism, Scroll; [motion gate](animation-opportunity-and-review.md#6-subtract-pass) |
 | UC-44 | Source-level, mechanism: a View Transition is not used where the change must be interruptible or cancellable, and a size change inside one is budgeted as layout work; a layout-like effect measures once and plays as a transform (FLIP); one component uses one animation API, never a half-migrated mix. | `FMP` Measurement, View transitions, Tool boundaries; [runtime decision](capability-routing.md#runtime-animation-decision) |
+| UC-45 | View Transitions: the API is used for a navigation-level change the browser and the project's router support and that need not be interrupted or cancelled; each element that takes part carries its own name, the name is set and cleared at the transition boundary, `::view-transition-*` pseudo-elements carry any custom styling, and an interaction-heavy animation system is not replaced by it. `audit.view-transition-names` measures the duplicate-name defect on the rendered page. | `UIW` Pseudo-elements, native styling, and View Transitions; [UI transition rules](ui-transition-rules.md) |
+| UC-46 | Presence and exit: a conditional exiting child sits inside the presence boundary with a stable unique key; the entrance is a guide to the exit, but the exit is lighter and uses the project exit token rather than a literal reverse pose or ease-in; the presence hook is called in the child that consumes it; interactions are disabled while the child exits; `safeToRemove` runs only after asynchronous cleanup finishes; `mode="wait"` is budgeted per phase, `mode="sync"` is checked for layout conflicts, `popLayout` is used for reordered lists, and nested boundaries propagate with coordinated timing. | `UIW` Exit and presence behavior; [interface defaults](interface-defaults.md#motion-details-not-in-the-motion-rules) |
+| UC-47 | Container-size motion: a two-node structure observes the content and animates the outer container; `ResizeObserver` measures instead of repeated synchronous layout reads; a callback ref follows a changing node; the initial zero measurement falls back to an automatic or intrinsic size; `overflow: hidden` applies only during the transition; a follow-up delay is used only when it helps content catch up; size animation stays limited to controls and compact interactive panels. | `UIW` Container-size motion; [interface defaults](interface-defaults.md#motion-details-not-in-the-motion-rules) |
+| UC-48 | Laws of UX: reduce simultaneous choices and reveal advanced options progressively; group content into scannable chunks without prescribing a universal chunk size; show progress in multi-step flows, give slow work feedback, end with a clear success state and keep unfinished work visible when a person must return. | `UIW` Laws of UX in interface review; [interface defaults](interface-defaults.md#waiting) |
+| UC-49 | Oldstyle numerals blend figures into prose; use lining or tabular figures when data needs alignment. Select the feature only when the chosen font supports it. | `UIW` Typography and visual treatment; `ID/better-typography/variable-fonts-and-opentype.md` |
+| UC-50 | Keep contextual alternates (`calt`) enabled when the selected font supports them, so adjacent glyph pairs can use their contextual forms. | `UIW` Typography and visual treatment; `ID/better-typography/variable-fonts-and-opentype.md` |
+| UC-51 | Use diagonal fractions for actual fractional values when the selected font provides the feature; do not force a decorative fraction into copy that does not call for one. | `UIW` Typography and visual treatment; `ID/better-typography/variable-fonts-and-opentype.md` |
+| UC-52 | Use `::marker` when styling a list's bullet or number, and keep the result legible and consistent with the list's hierarchy. | `UIW` Pseudo-elements, native styling, and View Transitions |
+| UC-53 | Give pseudo-elements an explicit layer from the local z-index scale so decorative paint does not cover a control or its content. | `UIW` Pseudo-elements, native styling, and View Transitions |
+| UC-54 | Prefer a pseudo-element over an extra DOM node for decoration when it needs no independent semantics, focus, interaction or content. | `UIW` Pseudo-elements, native styling, and View Transitions |
+| UC-55 | Morphing icons: morphing is used only when the project draws linear icons and the two states read as the same object; every icon shares one viewBox and the same three-line structure, an unused line collapses to one constant, rotational variants reuse one group, stroke line caps are round, rotation uses the project spring primitive, reduced motion falls back to the end state, and the icon is `aria-hidden` while the control keeps its own name. | `UIW` Morphing icons; [interface defaults](interface-defaults.md#motion-details-not-in-the-motion-rules) |
+| UC-56 | Predictive prefetching: prefetching happens only where latency is noticeable and the framework supports it safely; intent is predicted from pointer trajectory or an approaching keyboard focus rather than from every visible link or hover; a hit-slop option widens the prediction area; touch devices use a bounded fallback; navigation still works when the speculative work is unavailable or cancelled. | `UIW` Predictive prefetching |
+| UC-57 | Visual depth: elevation and spacing tokens come first; shadows share one light direction, use layered low-opacity depth rather than a single dark smudge, and stay subordinate to readable contrast; a semi-transparent border adapts to both themes; a shadow is animated through a pseudo-element opacity layer; the six-layer button anatomy is used only as an optional authored style where the surface and contrast contract support it. | `UIW` Typography and visual treatment; [interface defaults](interface-defaults.md#surfaces) |
 
 ## Precedence
 
@@ -285,22 +301,29 @@ come from probe inputs, selectors replace `data-ui-*` markers, the target floor 
 
 ### Rule coverage
 
-[`ui-rule-coverage.json`](ui-rule-coverage.json) lists every rule of four upstream rule lists
-(Vercel's Web Interface Guidelines `command.md`, and ibelick/ui-skills `baseline-ui`,
-`fixing-metadata` and `fixing-motion-performance`) with where this project holds it: an `audit.*`
+[`ui-rule-coverage.json`](ui-rule-coverage.json) lists every rule of five upstream rule lists
+(Vercel's Web Interface Guidelines `command.md`, ibelick/ui-skills `baseline-ui`,
+`fixing-metadata` and `fixing-motion-performance`, and raphaelsalaja/userinterface-wiki, one file
+per rule) with where this project holds it: an `audit.*`
 code, a `UC-` row, project or vendored text, `pending` with the issue that will add it, or
 `not-adopted` with the reason. It is comparison data for tests and maintenance: not a gate, not a
-receipt field and not something a review records. The two record documents,
-[web-interface-guidelines.md](web-interface-guidelines.md) and
-[ibelick-ui-skills.md](ibelick-ui-skills.md), carry the pinned revision and the hash of the rule
-files; neither source is vendored, installed or fetched at run time.
+receipt field and not something a review records. The three record documents,
+[web-interface-guidelines.md](web-interface-guidelines.md),
+[ibelick-ui-skills.md](ibelick-ui-skills.md) and
+[userinterface-wiki-rules.md](userinterface-wiki-rules.md), carry the pinned revision and the hash of
+the rule files; none of the sources is vendored, installed or fetched at run time.
 
 Not adopted, with the governing rule: Title Case for headings and buttons (sentence case is the
 default, `ID/better-writing/UPSTREAM-SKILL.md`); `<link rel="preconnect">` for asset hosts (an
-external request fails the audit, see [Measured audit](#measured-audit)); and `baseline-ui`'s stack
+external request fails the audit, see [Measured audit](#measured-audit)); `baseline-ui`'s stack
 prescriptions (Tailwind defaults, `motion/react`, `tw-animate-css`, `cn`, Base UI, the Tailwind
 shadow scale, `size-*`), because craft details are expressed in the project's existing styling
-system ([Stage integration](#stage-integration)).
+system ([Stage integration](#stage-integration)); and five userinterface-wiki values: exits use the
+project exit token and are softer than their entrances, never ease-in or a literal reverse; press
+feedback is 100-160ms, not 120-180ms; targets keep the measured 24px floor, not a 32px minimum; and
+the stagger token allows 30-80ms rather than imposing a 50ms cap ([Precedence](#precedence),
+[animation opportunity](animation-opportunity-and-review.md)). The userinterface-wiki audio
+feedback and sound synthesis rules stay `pending` on #360.
 
 ### Reading, motion and state sources
 

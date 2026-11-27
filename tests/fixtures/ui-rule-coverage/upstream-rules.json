@@ -629,6 +629,1537 @@
       ]
     },
     {
+      "id": "userinterface-wiki",
+      "repo": "https://github.com/raphaelsalaja/userinterface-wiki",
+      "revision": "256a954080c8bcf1b1ceb1e2a4079d1f24cf593a",
+      "license": "MIT",
+      "contentHash": "735c7f1696d407ed51bec9ffce0cc2d5f27ef01e3b8e9f6ad855c8dc1c8717b3",
+      "files": [
+        {
+          "key": "a11y-reduced-motion-check",
+          "path": "skills/rules/a11y-reduced-motion-check.md",
+          "sha256": "1a0869cdbf53bef12e60040bb6c72c9807d9efb8f96896df2183d9982f3bac9a"
+        },
+        {
+          "key": "a11y-toggle-setting",
+          "path": "skills/rules/a11y-toggle-setting.md",
+          "sha256": "fc962bffad8bdec75c25bfaea5ed52d932182aad39a623ae55990f2eae951954"
+        },
+        {
+          "key": "a11y-visual-equivalent",
+          "path": "skills/rules/a11y-visual-equivalent.md",
+          "sha256": "0dc157e8cf17eae1201af5700d7493accae9eccbbc25f010e80564df175e8965"
+        },
+        {
+          "key": "a11y-volume-control",
+          "path": "skills/rules/a11y-volume-control.md",
+          "sha256": "c028ecf3ec12438ad0f1df2ade66d30797bdf0f62a96b173cbdd72178fcc6b4a"
+        },
+        {
+          "key": "appropriate-confirmations-only",
+          "path": "skills/rules/appropriate-confirmations-only.md",
+          "sha256": "d62368a90ec3e5e6efa9333c23aae816082d63eb1c5996ab43b3b4187ae7d8f6"
+        },
+        {
+          "key": "appropriate-errors-warnings",
+          "path": "skills/rules/appropriate-errors-warnings.md",
+          "sha256": "4a6cc6fcb6d506c758f4be69f6257bd11bea7bbb17e15270fb66cccaac35a3f0"
+        },
+        {
+          "key": "appropriate-no-decorative",
+          "path": "skills/rules/appropriate-no-decorative.md",
+          "sha256": "a2eb4823d8d5118879413957636fb9e837678a7d9e79d3fdd16df7948cd4a430"
+        },
+        {
+          "key": "appropriate-no-high-frequency",
+          "path": "skills/rules/appropriate-no-high-frequency.md",
+          "sha256": "31b42a1078105ee7dc5c584eb1189d48dd785ce6942dfece53fd4b100a8e0592"
+        },
+        {
+          "key": "appropriate-no-punishing",
+          "path": "skills/rules/appropriate-no-punishing.md",
+          "sha256": "eb7a066193b86a715697819928b10dd55cde85dd6d61f435f82a016ca58c147a"
+        },
+        {
+          "key": "container-callback-ref",
+          "path": "skills/rules/container-callback-ref.md",
+          "sha256": "76f0d4f6a24c46a08e87705c0a11f89fe75001ca5993de2b3230b849f3c616a7"
+        },
+        {
+          "key": "container-guard-initial-zero",
+          "path": "skills/rules/container-guard-initial-zero.md",
+          "sha256": "95cd8366aea936cda34183fda79644ad8cc76099fe1ce95730e35a833f4e09ac"
+        },
+        {
+          "key": "container-no-excessive-use",
+          "path": "skills/rules/container-no-excessive-use.md",
+          "sha256": "855ed439639a296ddc2ef2552ba62ff1c92fb0fe007c819e4f6c48fb8fc8c370"
+        },
+        {
+          "key": "container-overflow-hidden",
+          "path": "skills/rules/container-overflow-hidden.md",
+          "sha256": "a6f0f12290d3d07d5f7a2989704ae5adb0e9292738926b47c09e17bd0ed956c2"
+        },
+        {
+          "key": "container-transition-delay",
+          "path": "skills/rules/container-transition-delay.md",
+          "sha256": "f661bb948c5a2d3fc118e297e2f4724f0a76cf70c1a618e02b420b134d7093f6"
+        },
+        {
+          "key": "container-two-div-pattern",
+          "path": "skills/rules/container-two-div-pattern.md",
+          "sha256": "9644f7b45ad9bf29a662a3e05f1f1cd40ceeec15e6de4e6479ca04f50fabda25"
+        },
+        {
+          "key": "container-use-resize-observer",
+          "path": "skills/rules/container-use-resize-observer.md",
+          "sha256": "f4f1afc2cf6bfbf36e9a33c28edef218644453d98da5c9dcd0b093073430762c"
+        },
+        {
+          "key": "context-cleanup-nodes",
+          "path": "skills/rules/context-cleanup-nodes.md",
+          "sha256": "4fef1ad2f3d270bdfc3e0a1a7efe3f4216a4796eab08f52a2fab74b98cead4cc"
+        },
+        {
+          "key": "context-resume-suspended",
+          "path": "skills/rules/context-resume-suspended.md",
+          "sha256": "8b61109810b4d2069d218b2f6a5c86a38a8899e214fafa18450ac3869970b0dc"
+        },
+        {
+          "key": "context-reuse-single",
+          "path": "skills/rules/context-reuse-single.md",
+          "sha256": "ff3452055888b4cdeb25a622420e308b18806792726b798f69cb7957bac7f8e2"
+        },
+        {
+          "key": "design-filter-for-character",
+          "path": "skills/rules/design-filter-for-character.md",
+          "sha256": "632da6e09419c1dd350d8a76d10aeee3e090ba58c2d74d8ac017f6a3a41313a9"
+        },
+        {
+          "key": "design-noise-for-percussion",
+          "path": "skills/rules/design-noise-for-percussion.md",
+          "sha256": "f264177816429c916664ae4e1c7b46c92065c794d5c874f6b5295f53a5a05cea"
+        },
+        {
+          "key": "design-oscillator-for-tonal",
+          "path": "skills/rules/design-oscillator-for-tonal.md",
+          "sha256": "4511107ef7c91c241e00e9d2b0891866b8c376eb3212cf210c41060a5da092ff"
+        },
+        {
+          "key": "duration-max-300ms",
+          "path": "skills/rules/duration-max-300ms.md",
+          "sha256": "ba93126876d110e779ecf81c8c75c1e230a6007dacc122b703d9d915b0c8336d"
+        },
+        {
+          "key": "duration-press-hover",
+          "path": "skills/rules/duration-press-hover.md",
+          "sha256": "02ffa70f9760389688203fedcfef17081ed8c5b13fdda6227f2c16df781fd410"
+        },
+        {
+          "key": "duration-shorten-before-curve",
+          "path": "skills/rules/duration-shorten-before-curve.md",
+          "sha256": "09585bd32b750ffa5128298504d6eac893a838d82ba5425de2b92a9c01cb0426"
+        },
+        {
+          "key": "duration-small-state",
+          "path": "skills/rules/duration-small-state.md",
+          "sha256": "9b52c12fcd8b5a1c869ef6222232ebd9e92ff246023d19522146c7bf145706d9"
+        },
+        {
+          "key": "easing-entrance-ease-out",
+          "path": "skills/rules/easing-entrance-ease-out.md",
+          "sha256": "aaaf3b0d09c66d851aec6af450d4422e39a9f06b2b88f97fa27c2e84dec6ad39"
+        },
+        {
+          "key": "easing-exit-ease-in",
+          "path": "skills/rules/easing-exit-ease-in.md",
+          "sha256": "8b77b021af52bf6ad38f0d97c913ae21156497a32487d3d4002f3d86218fd5f6"
+        },
+        {
+          "key": "easing-for-state-change",
+          "path": "skills/rules/easing-for-state-change.md",
+          "sha256": "e81fe2d95adf0abb9958cfa6e988e0dd2202064214e5c9c7f3842735eb6ae284"
+        },
+        {
+          "key": "easing-linear-only-progress",
+          "path": "skills/rules/easing-linear-only-progress.md",
+          "sha256": "73d72b95379911593d3c1ace4c87f7930cda4029f3ba0aba5cc37c4c70ab256b"
+        },
+        {
+          "key": "easing-natural-decay",
+          "path": "skills/rules/easing-natural-decay.md",
+          "sha256": "50187580cb0b47abbd37e0f969664f6def04e78fe624cea831df738156e990c2"
+        },
+        {
+          "key": "easing-no-linear-motion",
+          "path": "skills/rules/easing-no-linear-motion.md",
+          "sha256": "ffdf0d974dabcd0f73ea1abc0cf9d3aea9d9768663edd0e8a24b200420e79300"
+        },
+        {
+          "key": "easing-transition-ease-in-out",
+          "path": "skills/rules/easing-transition-ease-in-out.md",
+          "sha256": "898a0a8e68cbad39522721f329a533f112570866c10128e6778c75716087923b"
+        },
+        {
+          "key": "envelope-exponential-decay",
+          "path": "skills/rules/envelope-exponential-decay.md",
+          "sha256": "b64cfc5340bdf6d53c5c3167306610bbf84a6e09dbc90f5bb536b35005d65db9"
+        },
+        {
+          "key": "envelope-no-zero-target",
+          "path": "skills/rules/envelope-no-zero-target.md",
+          "sha256": "da05514c00e182ea0e29ff49d8720ed5d968f14d53e8d062b25d8e20277e4d15"
+        },
+        {
+          "key": "envelope-set-initial-value",
+          "path": "skills/rules/envelope-set-initial-value.md",
+          "sha256": "f0139a1c013600a181bc31ca04ed5ef5b31a68fd7e08796069651a5914a37fc7"
+        },
+        {
+          "key": "exit-key-required",
+          "path": "skills/rules/exit-key-required.md",
+          "sha256": "e9d397d601a0331abcb21ae8a4a4468da2383cd8b768649d8f9a686dfba30b5f"
+        },
+        {
+          "key": "exit-matches-initial",
+          "path": "skills/rules/exit-matches-initial.md",
+          "sha256": "42f64d07e2064979f53ad86321f1da71380c94273172e8bae51cdc6e6b38d153"
+        },
+        {
+          "key": "exit-prop-required",
+          "path": "skills/rules/exit-prop-required.md",
+          "sha256": "eabbfc52ece55a1d8eb38d111c22df6f504f68817772d331337cc2154398b83d"
+        },
+        {
+          "key": "exit-requires-wrapper",
+          "path": "skills/rules/exit-requires-wrapper.md",
+          "sha256": "7121a528b86d6bd01a0359380650557e01e9f3a7af35cb2cad647dacdc41eb68"
+        },
+        {
+          "key": "impl-default-subtle",
+          "path": "skills/rules/impl-default-subtle.md",
+          "sha256": "2d83096dc6f4e664cc97c57ffa3e1362252d6c4efaec1b44765b0c62c9f8721c"
+        },
+        {
+          "key": "impl-preload-audio",
+          "path": "skills/rules/impl-preload-audio.md",
+          "sha256": "ed6c7922f1c6aaa8572051b5c3bc2debacd56e6f351bb7d30972cea1c6e8d2b0"
+        },
+        {
+          "key": "impl-reset-current-time",
+          "path": "skills/rules/impl-reset-current-time.md",
+          "sha256": "bbeee75ca1db017836d57fd528e60f3db342ad7d0e0e582ef2d69c817dc46cfe"
+        },
+        {
+          "key": "mode-pop-layout-for-lists",
+          "path": "skills/rules/mode-pop-layout-for-lists.md",
+          "sha256": "c18df17cba7f083ef756585a66d73fe74b9796b1e4af3611f9e2fdb2244eecc8"
+        },
+        {
+          "key": "mode-sync-layout-conflict",
+          "path": "skills/rules/mode-sync-layout-conflict.md",
+          "sha256": "80c9bcb188211875570def0d6c58daf15521023fa78bdea871cae8cf3fd5ae7c"
+        },
+        {
+          "key": "mode-wait-doubles-duration",
+          "path": "skills/rules/mode-wait-doubles-duration.md",
+          "sha256": "a97c2873b61411a763146ad90c978cf29200ad1d61c4a4b5ec94c00fede14d40"
+        },
+        {
+          "key": "morphing-aria-hidden",
+          "path": "skills/rules/morphing-aria-hidden.md",
+          "sha256": "1712dc109c58cae202b7469f7a3a467606c59fef5f3da95a501dd04567fc1206"
+        },
+        {
+          "key": "morphing-consistent-viewbox",
+          "path": "skills/rules/morphing-consistent-viewbox.md",
+          "sha256": "3d9b7ad5c600833846b9a5d0bafd5b5a1cf334860b31f14504fc5bd9f2262117"
+        },
+        {
+          "key": "morphing-group-variants",
+          "path": "skills/rules/morphing-group-variants.md",
+          "sha256": "7a1223c7a4092fa92765f5030a275b0b0b310db6eae6097e13a128af1ac4c1d7"
+        },
+        {
+          "key": "morphing-jump-non-grouped",
+          "path": "skills/rules/morphing-jump-non-grouped.md",
+          "sha256": "15888eac8773c98353774a10ea1eff7ce652ec408952387e56c95dbaf9d7baf7"
+        },
+        {
+          "key": "morphing-reduced-motion",
+          "path": "skills/rules/morphing-reduced-motion.md",
+          "sha256": "a904b57b5a6de63f05ec4901c329c7546913a5a87be42d78a22356d8773d241a"
+        },
+        {
+          "key": "morphing-spring-rotation",
+          "path": "skills/rules/morphing-spring-rotation.md",
+          "sha256": "0ee5e5c45b4175c20c90069cc23aad306c256c1e28c78dc2f9f9bc28789fb3ca"
+        },
+        {
+          "key": "morphing-strokelinecap-round",
+          "path": "skills/rules/morphing-strokelinecap-round.md",
+          "sha256": "5cf648ec1e3fd93b6e7a8d8b7e4dd75dd4c43a250ae250b544063aa2d51b00f3"
+        },
+        {
+          "key": "morphing-three-lines",
+          "path": "skills/rules/morphing-three-lines.md",
+          "sha256": "88b9c0071817a746bb56681a38386d2631b73d324c375674e3badfaa0072ca3e"
+        },
+        {
+          "key": "morphing-use-collapsed",
+          "path": "skills/rules/morphing-use-collapsed.md",
+          "sha256": "5ac04d64f722905feab51348d71810ebded50725999bc6ec94a93f748a79ab01"
+        },
+        {
+          "key": "native-backdrop-styling",
+          "path": "skills/rules/native-backdrop-styling.md",
+          "sha256": "6de2bec3cdf56e4b2406b82f5ba38878cd618709bea1fc21bb22ef09e7714a01"
+        },
+        {
+          "key": "native-placeholder-styling",
+          "path": "skills/rules/native-placeholder-styling.md",
+          "sha256": "4a4f17cada38696b9561e2aef7f5fa9d65e9f3014ad62283d16b0f92767a63f5"
+        },
+        {
+          "key": "native-selection-styling",
+          "path": "skills/rules/native-selection-styling.md",
+          "sha256": "cf8b976b25e613e0555251ff4598e06c9ebe94b2b339ca71b8fe704a15d5fcff"
+        },
+        {
+          "key": "nested-consistent-timing",
+          "path": "skills/rules/nested-consistent-timing.md",
+          "sha256": "5db29aef550bb641041e99b8b86a5181ac1e90c2cc06e8d707e00466dc9025f3"
+        },
+        {
+          "key": "nested-propagate-required",
+          "path": "skills/rules/nested-propagate-required.md",
+          "sha256": "81a000f1fc44770ac8d53c6471dd919afb8fc9ee8af3d451f196d4c5d89e5fa2"
+        },
+        {
+          "key": "none-context-menu-entrance",
+          "path": "skills/rules/none-context-menu-entrance.md",
+          "sha256": "808bf7e405687f7ed253e350cf22d2adeca96930a06ab200d3c02b9625fe3306"
+        },
+        {
+          "key": "none-high-frequency",
+          "path": "skills/rules/none-high-frequency.md",
+          "sha256": "bb4aa10ef8f8b8c89841615076f9a58024af9531ef7682bccc2c410ab02e7bea"
+        },
+        {
+          "key": "none-keyboard-navigation",
+          "path": "skills/rules/none-keyboard-navigation.md",
+          "sha256": "21f8e291980fa658e024f2b243947d24a86eb6e0e800b99f35f088b43effd834"
+        },
+        {
+          "key": "param-click-duration",
+          "path": "skills/rules/param-click-duration.md",
+          "sha256": "6063e31d707475f5f15b822fb878e25dfef58d3f270f16218a2a02b450122022"
+        },
+        {
+          "key": "param-filter-frequency-range",
+          "path": "skills/rules/param-filter-frequency-range.md",
+          "sha256": "1a34fb2af5cd55779200b431e7e823ce128b129afb5b13c382f45b7e92c52a4f"
+        },
+        {
+          "key": "param-q-value-range",
+          "path": "skills/rules/param-q-value-range.md",
+          "sha256": "45e70734116275e4e0db638ae8958579365770aa05f293e2f7ac9cf5bb61ec3b"
+        },
+        {
+          "key": "param-reasonable-gain",
+          "path": "skills/rules/param-reasonable-gain.md",
+          "sha256": "5b15e6b87a3f915276f910b7b392023a3f582ca82c49462b3c0a146ddbf22567"
+        },
+        {
+          "key": "physics-active-state",
+          "path": "skills/rules/physics-active-state.md",
+          "sha256": "e65084f3d4eb3a652f8b41a9bd75d877dbfde11bbd32856acb36fa6ff42356a1"
+        },
+        {
+          "key": "physics-no-excessive-stagger",
+          "path": "skills/rules/physics-no-excessive-stagger.md",
+          "sha256": "4126a6f6c6fb1d6f7eec7832e5c8d744d745c1258558ca71ba15ad2e38bc740e"
+        },
+        {
+          "key": "physics-spring-for-overshoot",
+          "path": "skills/rules/physics-spring-for-overshoot.md",
+          "sha256": "712f74fc59fe2b4b6783f0e40cd8c8b663cffd322ae98fd00f00e03de17c32b3"
+        },
+        {
+          "key": "physics-subtle-deformation",
+          "path": "skills/rules/physics-subtle-deformation.md",
+          "sha256": "a865b10e5ad18f1d97c8b3e13897d7f6c55a246d8dd5f410ace4353129a471ba"
+        },
+        {
+          "key": "prefetch-hit-slop",
+          "path": "skills/rules/prefetch-hit-slop.md",
+          "sha256": "9d56811a1a17499b952e10453187c2da5a5180bd36371a743af84fcb95d37c7d"
+        },
+        {
+          "key": "prefetch-keyboard-tab",
+          "path": "skills/rules/prefetch-keyboard-tab.md",
+          "sha256": "71d58a6fa661dc785bbab8a8d948ff41d0751715a8992499cdef0dc3c3c946b0"
+        },
+        {
+          "key": "prefetch-not-everything",
+          "path": "skills/rules/prefetch-not-everything.md",
+          "sha256": "25382cfe8b7d59629a946b3c46e2c19e377b587466f5608c7e6c7fa86061b536"
+        },
+        {
+          "key": "prefetch-touch-fallback",
+          "path": "skills/rules/prefetch-touch-fallback.md",
+          "sha256": "a63397a638eb5f79fc4162e0a3373524cb1e1066f7346547f6e7c0099e069479"
+        },
+        {
+          "key": "prefetch-trajectory-over-hover",
+          "path": "skills/rules/prefetch-trajectory-over-hover.md",
+          "sha256": "9ba0873fd6f564bb827908d1b92d781a39f7711cc8a328e5d65b47eb2672576f"
+        },
+        {
+          "key": "prefetch-use-selectively",
+          "path": "skills/rules/prefetch-use-selectively.md",
+          "sha256": "e9b0a4be26c5d8ffc59fc8041336cc267294e386d5ac4be9e3b0d8e92c5d59b1"
+        },
+        {
+          "key": "presence-disable-interactions",
+          "path": "skills/rules/presence-disable-interactions.md",
+          "sha256": "e3128077cc1a1103d203218afb65cafb88e9cc0680085e4ad533967fe8846cb1"
+        },
+        {
+          "key": "presence-hook-in-child",
+          "path": "skills/rules/presence-hook-in-child.md",
+          "sha256": "6bde698046811ee127d0f30294badadab6a7b3a8b086cc321321f2ca174ee382"
+        },
+        {
+          "key": "presence-safe-to-remove",
+          "path": "skills/rules/presence-safe-to-remove.md",
+          "sha256": "c9bdbb3c74d30eb7921b6ed90f9155bfb6b62f661311c33b374ca92e89a7b3a9"
+        },
+        {
+          "key": "pseudo-content-required",
+          "path": "skills/rules/pseudo-content-required.md",
+          "sha256": "2c9a17bb06f2243640e9a4988c76a88c2520aba9b66b2c0db5cf8008c3db7d25"
+        },
+        {
+          "key": "pseudo-first-line-styling",
+          "path": "skills/rules/pseudo-first-line-styling.md",
+          "sha256": "1b27c8998e2053b796c41a0e7f5e1453c99ee9df908a94b60a2b1bb73e43acbc"
+        },
+        {
+          "key": "pseudo-hit-target-expansion",
+          "path": "skills/rules/pseudo-hit-target-expansion.md",
+          "sha256": "74b883d0e81fe019e6cbf8b79ad6b6e5c445e7961a6d5a7b7d34d5687e95ae1c"
+        },
+        {
+          "key": "pseudo-marker-styling",
+          "path": "skills/rules/pseudo-marker-styling.md",
+          "sha256": "27f3892425fcad04202d7ae8c61834159dbee1bb4b76a2323c576203f4ca4305"
+        },
+        {
+          "key": "pseudo-over-dom-node",
+          "path": "skills/rules/pseudo-over-dom-node.md",
+          "sha256": "a3e4d3157e83342aeb050eb83d9a0e394e32c6c0631e8df9e1f6ae528dfa5810"
+        },
+        {
+          "key": "pseudo-position-relative-parent",
+          "path": "skills/rules/pseudo-position-relative-parent.md",
+          "sha256": "69485f77ed30273e510aa96a4fee3b7f3cbbb38c8b9268932df64d97289eddb5"
+        },
+        {
+          "key": "pseudo-z-index-layering",
+          "path": "skills/rules/pseudo-z-index-layering.md",
+          "sha256": "ca61e34775ab12c8840e7740d5564acf1c60e2d8728537bb6ab70917f11326d8"
+        },
+        {
+          "key": "spring-for-gestures",
+          "path": "skills/rules/spring-for-gestures.md",
+          "sha256": "a39b20a7043b2b532d65d69deccab1d4732d3e6740d79da2fa29e9c305e6bbc2"
+        },
+        {
+          "key": "spring-for-interruptible",
+          "path": "skills/rules/spring-for-interruptible.md",
+          "sha256": "ad1e45a09bb2a7a9e86241422ea09be845fb9e8f81fdcbb9f109937bfd9c4717"
+        },
+        {
+          "key": "spring-params-balanced",
+          "path": "skills/rules/spring-params-balanced.md",
+          "sha256": "0dd5552f19ef030e83d6e64932ddab5152f1c513ccb1b4c74ebeafdea2311360"
+        },
+        {
+          "key": "spring-preserves-velocity",
+          "path": "skills/rules/spring-preserves-velocity.md",
+          "sha256": "a89cdf84f4e8e29b2213d99b83f886b2be02528c470adc524039cfc5cde78fab"
+        },
+        {
+          "key": "staging-dim-background",
+          "path": "skills/rules/staging-dim-background.md",
+          "sha256": "cd0b1a7d7c79d86afecfe08f41a1d0b5b21b6aeefa579be34537c8c7db38e1a5"
+        },
+        {
+          "key": "staging-one-focal-point",
+          "path": "skills/rules/staging-one-focal-point.md",
+          "sha256": "18c6f87ff21ffb20d4c3261d7a7e03e7182495deb37bdbd5fd0a909ca1f24b7f"
+        },
+        {
+          "key": "staging-z-index-hierarchy",
+          "path": "skills/rules/staging-z-index-hierarchy.md",
+          "sha256": "2786d0944cd9e358fe7d5aa51c3c1831b829f426198a4338bc5a9f9f891e92bb"
+        },
+        {
+          "key": "timing-consistent",
+          "path": "skills/rules/timing-consistent.md",
+          "sha256": "0ca68dee214986b39d2e3582655667fad7e6a9421814d871339d3f82f1f125fc"
+        },
+        {
+          "key": "timing-no-entrance-context-menu",
+          "path": "skills/rules/timing-no-entrance-context-menu.md",
+          "sha256": "f88127cc3e2d03e4374fd375e3122df05049541d1cd43b6a1f7a284f08a75b4e"
+        },
+        {
+          "key": "timing-under-300ms",
+          "path": "skills/rules/timing-under-300ms.md",
+          "sha256": "98f38b710cd690cd382fa181d25a31c2c3387c6b1b93fc47d79e8a6e9aef2276"
+        },
+        {
+          "key": "transition-name-cleanup",
+          "path": "skills/rules/transition-name-cleanup.md",
+          "sha256": "c3117e0b005f87ba68d990c170fe382b7e1f7b08cfd7ab360039708003932f01"
+        },
+        {
+          "key": "transition-name-required",
+          "path": "skills/rules/transition-name-required.md",
+          "sha256": "d674e7e4d3c322afc5d73aee10005db1b3df752e4f2a1078eeb20a0a9e1d1205"
+        },
+        {
+          "key": "transition-name-unique",
+          "path": "skills/rules/transition-name-unique.md",
+          "sha256": "339cf8ffc001272caeba38c79a783854b8a86cc73d535adb1fcdb2d3744c9b76"
+        },
+        {
+          "key": "transition-over-js-library",
+          "path": "skills/rules/transition-over-js-library.md",
+          "sha256": "0b563351d2d92a9aa2fc9bee65434cfb6212d445c4056972428edd5b88fc83cc"
+        },
+        {
+          "key": "transition-style-pseudo-elements",
+          "path": "skills/rules/transition-style-pseudo-elements.md",
+          "sha256": "cb5a3ad49c53d0ba551b8baf0c58adb4abc2ca7f83365ab198fa57a1d9c85946"
+        },
+        {
+          "key": "type-antialiased-on-retina",
+          "path": "skills/rules/type-antialiased-on-retina.md",
+          "sha256": "4fc3c38923fe6b3214186063eef7f54979f8f2bd8e0b306ab3c08c14029c1fa7"
+        },
+        {
+          "key": "type-disambiguation-stylistic-set",
+          "path": "skills/rules/type-disambiguation-stylistic-set.md",
+          "sha256": "890c7a39a2d62e5d4017b1558dc0e47e33efeff49734126a8fb03fde1570d773"
+        },
+        {
+          "key": "type-font-display-swap",
+          "path": "skills/rules/type-font-display-swap.md",
+          "sha256": "a3c76a7fe772d424867edce4a7886e222ff5655fd102c03281a159371d82bfdb"
+        },
+        {
+          "key": "type-justify-with-hyphens",
+          "path": "skills/rules/type-justify-with-hyphens.md",
+          "sha256": "5189d0086724b24b5395349dc7bcf41d1d0c9083ddbd5ae150d8b47936f24793"
+        },
+        {
+          "key": "type-letter-spacing-uppercase",
+          "path": "skills/rules/type-letter-spacing-uppercase.md",
+          "sha256": "9020b5f416563b796de98ec018befd6842d818ba4a7731bf95ef18dd84d7cd66"
+        },
+        {
+          "key": "type-no-font-synthesis",
+          "path": "skills/rules/type-no-font-synthesis.md",
+          "sha256": "c4f4d29565b7973960bae7090c78136c170ba8edcf7ca709574fa364a34565c6"
+        },
+        {
+          "key": "type-oldstyle-nums-for-prose",
+          "path": "skills/rules/type-oldstyle-nums-for-prose.md",
+          "sha256": "1b7885eb21d0f185b9f673153268a214f52bd4d96aa0f02d2ddc2e24479ded97"
+        },
+        {
+          "key": "type-opentype-contextual-alternates",
+          "path": "skills/rules/type-opentype-contextual-alternates.md",
+          "sha256": "0e8a59f367f679da48511d74454d6e310b077cafecd2b77848ae02f4fab2b0de"
+        },
+        {
+          "key": "type-optical-sizing-auto",
+          "path": "skills/rules/type-optical-sizing-auto.md",
+          "sha256": "9db741d49f76e4e3dc3ca1849b84248d49bb95ccd5dd3ef23eb00f9dde82cc35"
+        },
+        {
+          "key": "type-proper-fractions",
+          "path": "skills/rules/type-proper-fractions.md",
+          "sha256": "7a14a37ae7e1b420903a68cc15c3dc0415a96cd64f5346307a423ca320925681"
+        },
+        {
+          "key": "type-slashed-zero",
+          "path": "skills/rules/type-slashed-zero.md",
+          "sha256": "e7e7bbf0f83c26e2cd3b2c4a03714fc914d94699523843d88dd8ab12092a197c"
+        },
+        {
+          "key": "type-tabular-nums-for-data",
+          "path": "skills/rules/type-tabular-nums-for-data.md",
+          "sha256": "bbd1970c310b5cf6f3b62664b478208812dfc20ef3da805345354a66a3dcc029"
+        },
+        {
+          "key": "type-text-wrap-balance-headings",
+          "path": "skills/rules/type-text-wrap-balance-headings.md",
+          "sha256": "9ea83be7ca14f5066aa864950aa76aa6f9f26b8d4e3ac0cdee83b12580519ec8"
+        },
+        {
+          "key": "type-text-wrap-pretty",
+          "path": "skills/rules/type-text-wrap-pretty.md",
+          "sha256": "bcc6968db2db05be89315a85c537ed2ccf4b713b7efc45f4becb0c71411a52d5"
+        },
+        {
+          "key": "type-underline-offset",
+          "path": "skills/rules/type-underline-offset.md",
+          "sha256": "3e3d1e7a1527c44fa6bfad58f7ada56a7b3e07a0d236760b4bfcab522e5bcb19"
+        },
+        {
+          "key": "type-variable-weight-continuous",
+          "path": "skills/rules/type-variable-weight-continuous.md",
+          "sha256": "f6a774fd1de7c555269fb127a728ca57033835e61cd648f77048c79c7a7b9c17"
+        },
+        {
+          "key": "ux-aesthetic-usability",
+          "path": "skills/rules/ux-aesthetic-usability.md",
+          "sha256": "618dec3fde3dfcede9bde53b4d56d1ed7b4457f6cbf6967721c3d6754369979d"
+        },
+        {
+          "key": "ux-cognitive-load-reduce",
+          "path": "skills/rules/ux-cognitive-load-reduce.md",
+          "sha256": "bdc2fc4492dc110b8ff3e7076d6ccf4c2dd7fd1810ba5f3d2c6cdfa223d05873"
+        },
+        {
+          "key": "ux-common-region-boundaries",
+          "path": "skills/rules/ux-common-region-boundaries.md",
+          "sha256": "a9d618c291c40d6d72a14b4bcaa1e51ea32e86db3319f654255d3d2889683b1c"
+        },
+        {
+          "key": "ux-doherty-perceived-speed",
+          "path": "skills/rules/ux-doherty-perceived-speed.md",
+          "sha256": "9fc0d4aeedb89dc5fd6846400625917d5c0c17859a51cfd6c385d547b701b43b"
+        },
+        {
+          "key": "ux-doherty-under-400ms",
+          "path": "skills/rules/ux-doherty-under-400ms.md",
+          "sha256": "d928b2691a4beb77522702d9ada4f5742251e3b7e78183b914aca871e5fe9841"
+        },
+        {
+          "key": "ux-fitts-hit-area",
+          "path": "skills/rules/ux-fitts-hit-area.md",
+          "sha256": "fbbbccfdb0fbad0ef6dbda62ba212d9b1e7e0dacd9f43593a235ebace3593694"
+        },
+        {
+          "key": "ux-fitts-target-size",
+          "path": "skills/rules/ux-fitts-target-size.md",
+          "sha256": "5815f864287296d1bf68d786087ceba3c2595c4c6c1678ce263abc2ae37fc34b"
+        },
+        {
+          "key": "ux-goal-gradient-progress",
+          "path": "skills/rules/ux-goal-gradient-progress.md",
+          "sha256": "241e2c6dd193b441f533a9b86cc0e4ef1f5682025dc1f034d59c8a5c01d6ba0f"
+        },
+        {
+          "key": "ux-hicks-minimize-choices",
+          "path": "skills/rules/ux-hicks-minimize-choices.md",
+          "sha256": "e8d12fa5ec096520ba4202f37cf668420998f493e721bf70523ce35a425894b1"
+        },
+        {
+          "key": "ux-jakobs-familiar-patterns",
+          "path": "skills/rules/ux-jakobs-familiar-patterns.md",
+          "sha256": "6d055ae7eecb9e5a0eef22709f231a4aa02a712a55c6263e40aa6d4278363f2e"
+        },
+        {
+          "key": "ux-millers-chunking",
+          "path": "skills/rules/ux-millers-chunking.md",
+          "sha256": "460de5796ec6bd3b6e6ba7cdbf7049a86a4e6f2b188494aab1156751391315a6"
+        },
+        {
+          "key": "ux-pareto-prioritize-features",
+          "path": "skills/rules/ux-pareto-prioritize-features.md",
+          "sha256": "89bae7e9a2c7441cfd0bf979c769745a92763f32fbada8a36d83678c82ee489d"
+        },
+        {
+          "key": "ux-peak-end-finish-strong",
+          "path": "skills/rules/ux-peak-end-finish-strong.md",
+          "sha256": "2ead49857843057d868979e8fa74e1f724f3f6a0366fb944bf58b789e9bbcfbc"
+        },
+        {
+          "key": "ux-postels-accept-messy-input",
+          "path": "skills/rules/ux-postels-accept-messy-input.md",
+          "sha256": "3e77edd5b9ef2e9b31135fba6fd4cec4d29dc4cebf0ce67cc454fc7b51a38cfe"
+        },
+        {
+          "key": "ux-pragnanz-simplify",
+          "path": "skills/rules/ux-pragnanz-simplify.md",
+          "sha256": "7678ef0bdf8e5759407095ced2ad792fbdbca23cc6e4e315d7c76e82699c1c0e"
+        },
+        {
+          "key": "ux-progressive-disclosure",
+          "path": "skills/rules/ux-progressive-disclosure.md",
+          "sha256": "80650d6474b006fd9a9ad8b4e473158ede5fecd4418c611ec56dd3ef5e7610fd"
+        },
+        {
+          "key": "ux-proximity-grouping",
+          "path": "skills/rules/ux-proximity-grouping.md",
+          "sha256": "a9fa6887160e3c9a4fd972ac53cfe8e15121d374328868b88c3605874ae0cc7d"
+        },
+        {
+          "key": "ux-serial-position",
+          "path": "skills/rules/ux-serial-position.md",
+          "sha256": "1660340f44e915ecff26fead547b61fa49f1d566b60be811d4f47368fd068d34"
+        },
+        {
+          "key": "ux-similarity-consistency",
+          "path": "skills/rules/ux-similarity-consistency.md",
+          "sha256": "3130c14e64454f3fc924e72d8fac8cd79d10bf83560cd9e80c6af6f02e00d7e2"
+        },
+        {
+          "key": "ux-teslers-complexity",
+          "path": "skills/rules/ux-teslers-complexity.md",
+          "sha256": "15d33774217848023e3cbf036d9ab6469d2f54fe89df4e464879f126927aa727"
+        },
+        {
+          "key": "ux-uniform-connectedness",
+          "path": "skills/rules/ux-uniform-connectedness.md",
+          "sha256": "eff4e4fc6bec49ddd12feb0228fd0a5cddb3dbd29629e1b8278b63a68aecb5ac"
+        },
+        {
+          "key": "ux-von-restorff-emphasis",
+          "path": "skills/rules/ux-von-restorff-emphasis.md",
+          "sha256": "8a9767699fc637fce2db48d021cbdd469d76fe9def0da11b2945358e8ba97e48"
+        },
+        {
+          "key": "ux-zeigarnik-show-incomplete",
+          "path": "skills/rules/ux-zeigarnik-show-incomplete.md",
+          "sha256": "c8b654cbf7e6866bab83d3f49d718da75a9a946a0a553f9866b5a2a6370036d4"
+        },
+        {
+          "key": "visual-animate-shadow-pseudo",
+          "path": "skills/rules/visual-animate-shadow-pseudo.md",
+          "sha256": "e3f30d7ef24343c82fddac50fc8d05b8fd048973cd4def18b67ececb316a48b9"
+        },
+        {
+          "key": "visual-border-alpha-colors",
+          "path": "skills/rules/visual-border-alpha-colors.md",
+          "sha256": "18c64ced5f7a1a71340e32e0fb2dc7a65a5372e479e4dd6324f0ce15ed11c20b"
+        },
+        {
+          "key": "visual-button-shadow-anatomy",
+          "path": "skills/rules/visual-button-shadow-anatomy.md",
+          "sha256": "7167c655c2476f73631188e2befd35505cef7fbcbacea70dac1703a62d9987de"
+        },
+        {
+          "key": "visual-concentric-radius",
+          "path": "skills/rules/visual-concentric-radius.md",
+          "sha256": "696f57ea04dde4cc006c3203adc615252a66a471831eb56b783d70f21bcd1c19"
+        },
+        {
+          "key": "visual-consistent-spacing-scale",
+          "path": "skills/rules/visual-consistent-spacing-scale.md",
+          "sha256": "c0d517b768c973d920116fdc68780b78b48c76c771b5517f1509b52179f3d55f"
+        },
+        {
+          "key": "visual-layered-shadows",
+          "path": "skills/rules/visual-layered-shadows.md",
+          "sha256": "a5119223422c584004804cef0072cda04621d6cd0e766eb0cf1ea117563a44a8"
+        },
+        {
+          "key": "visual-no-pure-black-shadow",
+          "path": "skills/rules/visual-no-pure-black-shadow.md",
+          "sha256": "5ed5a8aa26622cb275384d6463be30237e030a729a543e72c1250d7dace3639c"
+        },
+        {
+          "key": "visual-shadow-direction",
+          "path": "skills/rules/visual-shadow-direction.md",
+          "sha256": "f8089ac3ca6b573d8511b164e40f80039deb0d5493b25a4202792557f6432aab"
+        },
+        {
+          "key": "visual-shadow-matches-elevation",
+          "path": "skills/rules/visual-shadow-matches-elevation.md",
+          "sha256": "9c51386793ee6c065b8403fc6fd5d1a22e70f298f3c92fc36aa3a5637d042677"
+        },
+        {
+          "key": "weight-duration-matches-action",
+          "path": "skills/rules/weight-duration-matches-action.md",
+          "sha256": "ef666403e913aea354424302c2af300fd5d2028bf1a3e20ce58c7c246b9d5639"
+        },
+        {
+          "key": "weight-match-action",
+          "path": "skills/rules/weight-match-action.md",
+          "sha256": "8842fa14bed61e2b91a80cb7080170356d081548da5355e4a55d344212770f33"
+        }
+      ],
+      "rules": [
+        {
+          "id": "rules/a11y-reduced-motion-check",
+          "line": 118,
+          "text": "`a11y-reduced-motion-check` - Respect prefers-reduced-motion for sound"
+        },
+        {
+          "id": "rules/a11y-toggle-setting",
+          "line": 117,
+          "text": "`a11y-toggle-setting` - Provide toggle to disable sounds"
+        },
+        {
+          "id": "rules/a11y-visual-equivalent",
+          "line": 116,
+          "text": "`a11y-visual-equivalent` - Every sound must have a visual equivalent"
+        },
+        {
+          "id": "rules/a11y-volume-control",
+          "line": 119,
+          "text": "`a11y-volume-control` - Allow independent volume adjustment"
+        },
+        {
+          "id": "rules/appropriate-confirmations-only",
+          "line": 121,
+          "text": "`appropriate-confirmations-only` - Sound for payments, uploads, submissions"
+        },
+        {
+          "id": "rules/appropriate-errors-warnings",
+          "line": 122,
+          "text": "`appropriate-errors-warnings` - Sound for errors that can't be overlooked"
+        },
+        {
+          "id": "rules/appropriate-no-decorative",
+          "line": 123,
+          "text": "`appropriate-no-decorative` - No sound on hover or decorative moments"
+        },
+        {
+          "id": "rules/appropriate-no-high-frequency",
+          "line": 120,
+          "text": "`appropriate-no-high-frequency` - No sound on typing or keyboard nav"
+        },
+        {
+          "id": "rules/appropriate-no-punishing",
+          "line": 124,
+          "text": "`appropriate-no-punishing` - Inform, don't punish with harsh sounds"
+        },
+        {
+          "id": "rules/container-callback-ref",
+          "line": 166,
+          "text": "`container-callback-ref` - Use callback ref (not useRef) for measurement hooks"
+        },
+        {
+          "id": "rules/container-guard-initial-zero",
+          "line": 162,
+          "text": "`container-guard-initial-zero` - Guard bounds === 0 on initial render, fall back to \"auto\""
+        },
+        {
+          "id": "rules/container-no-excessive-use",
+          "line": 165,
+          "text": "`container-no-excessive-use` - Use sparingly: buttons, accordions, interactive elements"
+        },
+        {
+          "id": "rules/container-overflow-hidden",
+          "line": 164,
+          "text": "`container-overflow-hidden` - Set overflow: hidden on animated container during transitions"
+        },
+        {
+          "id": "rules/container-transition-delay",
+          "line": 167,
+          "text": "`container-transition-delay` - Add small delay for natural catching-up feel"
+        },
+        {
+          "id": "rules/container-two-div-pattern",
+          "line": 161,
+          "text": "`container-two-div-pattern` - Outer animated div, inner measured div; never same element"
+        },
+        {
+          "id": "rules/container-use-resize-observer",
+          "line": 163,
+          "text": "`container-use-resize-observer` - Use ResizeObserver for measurement, not getBoundingClientRect"
+        },
+        {
+          "id": "rules/context-cleanup-nodes",
+          "line": 135,
+          "text": "`context-cleanup-nodes` - Disconnect audio nodes after playback"
+        },
+        {
+          "id": "rules/context-resume-suspended",
+          "line": 134,
+          "text": "`context-resume-suspended` - Resume suspended AudioContext before playing"
+        },
+        {
+          "id": "rules/context-reuse-single",
+          "line": 133,
+          "text": "`context-reuse-single` - Reuse single AudioContext, don't create per sound"
+        },
+        {
+          "id": "rules/design-filter-for-character",
+          "line": 141,
+          "text": "`design-filter-for-character` - Bandpass filter to shape percussive sounds"
+        },
+        {
+          "id": "rules/design-noise-for-percussion",
+          "line": 139,
+          "text": "`design-noise-for-percussion` - Filtered noise for clicks/taps"
+        },
+        {
+          "id": "rules/design-oscillator-for-tonal",
+          "line": 140,
+          "text": "`design-oscillator-for-tonal` - Oscillators with pitch sweep for tonal sounds"
+        },
+        {
+          "id": "rules/duration-max-300ms",
+          "line": 75,
+          "text": "`duration-max-300ms` - User-initiated max 300ms"
+        },
+        {
+          "id": "rules/duration-press-hover",
+          "line": 73,
+          "text": "`duration-press-hover` - Press/hover: 120-180ms"
+        },
+        {
+          "id": "rules/duration-shorten-before-curve",
+          "line": 76,
+          "text": "`duration-shorten-before-curve` - Fix slow feel with shorter duration, not curve"
+        },
+        {
+          "id": "rules/duration-small-state",
+          "line": 74,
+          "text": "`duration-small-state` - Small state changes: 180-260ms"
+        },
+        {
+          "id": "rules/easing-entrance-ease-out",
+          "line": 69,
+          "text": "`easing-entrance-ease-out` - Entrances use ease-out"
+        },
+        {
+          "id": "rules/easing-exit-ease-in",
+          "line": 70,
+          "text": "`easing-exit-ease-in` - Exits use ease-in"
+        },
+        {
+          "id": "rules/easing-for-state-change",
+          "line": 68,
+          "text": "`easing-for-state-change` - System state changes use easing curves"
+        },
+        {
+          "id": "rules/easing-linear-only-progress",
+          "line": 72,
+          "text": "`easing-linear-only-progress` - Linear only for progress/time representation"
+        },
+        {
+          "id": "rules/easing-natural-decay",
+          "line": 52,
+          "text": "`easing-natural-decay` - Use exponential ramps for natural decay, not linear"
+        },
+        {
+          "id": "rules/easing-no-linear-motion",
+          "line": 53,
+          "text": "`easing-no-linear-motion` - Linear easing only for progress indicators"
+        },
+        {
+          "id": "rules/easing-transition-ease-in-out",
+          "line": 71,
+          "text": "`easing-transition-ease-in-out` - View transitions use ease-in-out"
+        },
+        {
+          "id": "rules/envelope-exponential-decay",
+          "line": 136,
+          "text": "`envelope-exponential-decay` - Exponential ramps for natural decay"
+        },
+        {
+          "id": "rules/envelope-no-zero-target",
+          "line": 137,
+          "text": "`envelope-no-zero-target` - Exponential ramps target 0.001, not 0"
+        },
+        {
+          "id": "rules/envelope-set-initial-value",
+          "line": 138,
+          "text": "`envelope-set-initial-value` - Set initial value before ramping"
+        },
+        {
+          "id": "rules/exit-key-required",
+          "line": 85,
+          "text": "`exit-key-required` - Dynamic lists need unique keys, not index"
+        },
+        {
+          "id": "rules/exit-matches-initial",
+          "line": 86,
+          "text": "`exit-matches-initial` - Exit mirrors initial for symmetry"
+        },
+        {
+          "id": "rules/exit-prop-required",
+          "line": 84,
+          "text": "`exit-prop-required` - Elements in AnimatePresence need exit prop"
+        },
+        {
+          "id": "rules/exit-requires-wrapper",
+          "line": 83,
+          "text": "`exit-requires-wrapper` - Conditional motion elements need AnimatePresence wrapper"
+        },
+        {
+          "id": "rules/impl-default-subtle",
+          "line": 126,
+          "text": "`impl-default-subtle` - Default volume subtle (0.3), not loud"
+        },
+        {
+          "id": "rules/impl-preload-audio",
+          "line": 125,
+          "text": "`impl-preload-audio` - Preload audio files to avoid delay"
+        },
+        {
+          "id": "rules/impl-reset-current-time",
+          "line": 127,
+          "text": "`impl-reset-current-time` - Reset currentTime before replay"
+        },
+        {
+          "id": "rules/mode-pop-layout-for-lists",
+          "line": 92,
+          "text": "`mode-pop-layout-for-lists` - Use popLayout for list reordering"
+        },
+        {
+          "id": "rules/mode-sync-layout-conflict",
+          "line": 91,
+          "text": "`mode-sync-layout-conflict` - Mode \"sync\" causes layout conflicts"
+        },
+        {
+          "id": "rules/mode-wait-doubles-duration",
+          "line": 90,
+          "text": "`mode-wait-doubles-duration` - Mode \"wait\" doubles duration; halve timing"
+        },
+        {
+          "id": "rules/morphing-aria-hidden",
+          "line": 157,
+          "text": "`morphing-aria-hidden` - Icon SVGs are aria-hidden"
+        },
+        {
+          "id": "rules/morphing-consistent-viewbox",
+          "line": 151,
+          "text": "`morphing-consistent-viewbox` - All icons share same viewBox (14x14)"
+        },
+        {
+          "id": "rules/morphing-group-variants",
+          "line": 152,
+          "text": "`morphing-group-variants` - Rotational variants share group and base lines"
+        },
+        {
+          "id": "rules/morphing-jump-non-grouped",
+          "line": 155,
+          "text": "`morphing-jump-non-grouped` - Instant rotation jump between non-grouped icons"
+        },
+        {
+          "id": "rules/morphing-reduced-motion",
+          "line": 154,
+          "text": "`morphing-reduced-motion` - Respect prefers-reduced-motion"
+        },
+        {
+          "id": "rules/morphing-spring-rotation",
+          "line": 153,
+          "text": "`morphing-spring-rotation` - Spring physics for grouped icon rotation"
+        },
+        {
+          "id": "rules/morphing-strokelinecap-round",
+          "line": 156,
+          "text": "`morphing-strokelinecap-round` - Round stroke line caps"
+        },
+        {
+          "id": "rules/morphing-three-lines",
+          "line": 149,
+          "text": "`morphing-three-lines` - Every icon uses exactly 3 SVG lines"
+        },
+        {
+          "id": "rules/morphing-use-collapsed",
+          "line": 150,
+          "text": "`morphing-use-collapsed` - Unused lines use collapsed constant"
+        },
+        {
+          "id": "rules/native-backdrop-styling",
+          "line": 110,
+          "text": "`native-backdrop-styling` - Use ::backdrop for dialog backgrounds"
+        },
+        {
+          "id": "rules/native-placeholder-styling",
+          "line": 111,
+          "text": "`native-placeholder-styling` - Use ::placeholder for input styling"
+        },
+        {
+          "id": "rules/native-selection-styling",
+          "line": 112,
+          "text": "`native-selection-styling` - Use ::selection for text selection styling"
+        },
+        {
+          "id": "rules/nested-consistent-timing",
+          "line": 94,
+          "text": "`nested-consistent-timing` - Coordinate parent-child exit durations"
+        },
+        {
+          "id": "rules/nested-propagate-required",
+          "line": 93,
+          "text": "`nested-propagate-required` - Nested AnimatePresence needs propagate prop"
+        },
+        {
+          "id": "rules/none-context-menu-entrance",
+          "line": 79,
+          "text": "`none-context-menu-entrance` - Context menus: no entrance, exit only"
+        },
+        {
+          "id": "rules/none-high-frequency",
+          "line": 77,
+          "text": "`none-high-frequency` - No animation for high-frequency interactions"
+        },
+        {
+          "id": "rules/none-keyboard-navigation",
+          "line": 78,
+          "text": "`none-keyboard-navigation` - Keyboard navigation instant, no animation"
+        },
+        {
+          "id": "rules/param-click-duration",
+          "line": 142,
+          "text": "`param-click-duration` - Click sounds: 5-15ms duration"
+        },
+        {
+          "id": "rules/param-filter-frequency-range",
+          "line": 143,
+          "text": "`param-filter-frequency-range` - Click filter: 3000-6000Hz"
+        },
+        {
+          "id": "rules/param-q-value-range",
+          "line": 145,
+          "text": "`param-q-value-range` - Filter Q: 2-5 for focused but natural"
+        },
+        {
+          "id": "rules/param-reasonable-gain",
+          "line": 144,
+          "text": "`param-reasonable-gain` - Gain under 1.0 to prevent clipping"
+        },
+        {
+          "id": "rules/physics-active-state",
+          "line": 54,
+          "text": "`physics-active-state` - Interactive elements need :active scale transform"
+        },
+        {
+          "id": "rules/physics-no-excessive-stagger",
+          "line": 57,
+          "text": "`physics-no-excessive-stagger` - Stagger delays under 50ms per item"
+        },
+        {
+          "id": "rules/physics-spring-for-overshoot",
+          "line": 56,
+          "text": "`physics-spring-for-overshoot` - Springs for overshoot-and-settle, not easing"
+        },
+        {
+          "id": "rules/physics-subtle-deformation",
+          "line": 55,
+          "text": "`physics-subtle-deformation` - Squash/stretch in 0.95-1.05 range"
+        },
+        {
+          "id": "rules/prefetch-hit-slop",
+          "line": 199,
+          "text": "`prefetch-hit-slop` - Use hitSlop to trigger predictions earlier"
+        },
+        {
+          "id": "rules/prefetch-keyboard-tab",
+          "line": 201,
+          "text": "`prefetch-keyboard-tab` - Prefetch on keyboard navigation when focus approaches"
+        },
+        {
+          "id": "rules/prefetch-not-everything",
+          "line": 198,
+          "text": "`prefetch-not-everything` - Prefetch by intent, not viewport; avoid wasted bandwidth"
+        },
+        {
+          "id": "rules/prefetch-touch-fallback",
+          "line": 200,
+          "text": "`prefetch-touch-fallback` - Fall back gracefully on touch devices (no cursor)"
+        },
+        {
+          "id": "rules/prefetch-trajectory-over-hover",
+          "line": 197,
+          "text": "`prefetch-trajectory-over-hover` - Trajectory prediction over hover; reclaims 100-200ms"
+        },
+        {
+          "id": "rules/prefetch-use-selectively",
+          "line": 202,
+          "text": "`prefetch-use-selectively` - Use predictive prefetching where latency is noticeable"
+        },
+        {
+          "id": "rules/presence-disable-interactions",
+          "line": 89,
+          "text": "`presence-disable-interactions` - Disable interactions on exiting elements"
+        },
+        {
+          "id": "rules/presence-hook-in-child",
+          "line": 87,
+          "text": "`presence-hook-in-child` - useIsPresent in child, not parent"
+        },
+        {
+          "id": "rules/presence-safe-to-remove",
+          "line": 88,
+          "text": "`presence-safe-to-remove` - Call safeToRemove after async cleanup"
+        },
+        {
+          "id": "rules/pseudo-content-required",
+          "line": 98,
+          "text": "`pseudo-content-required` - ::before/::after need content property"
+        },
+        {
+          "id": "rules/pseudo-first-line-styling",
+          "line": 104,
+          "text": "`pseudo-first-line-styling` - Use ::first-line for typographic treatments"
+        },
+        {
+          "id": "rules/pseudo-hit-target-expansion",
+          "line": 102,
+          "text": "`pseudo-hit-target-expansion` - Negative inset for larger hit targets"
+        },
+        {
+          "id": "rules/pseudo-marker-styling",
+          "line": 103,
+          "text": "`pseudo-marker-styling` - Use ::marker for custom list bullet styles"
+        },
+        {
+          "id": "rules/pseudo-over-dom-node",
+          "line": 99,
+          "text": "`pseudo-over-dom-node` - Pseudo-elements over extra DOM nodes for decoration"
+        },
+        {
+          "id": "rules/pseudo-position-relative-parent",
+          "line": 100,
+          "text": "`pseudo-position-relative-parent` - Parent needs position: relative"
+        },
+        {
+          "id": "rules/pseudo-z-index-layering",
+          "line": 101,
+          "text": "`pseudo-z-index-layering` - Z-index for correct pseudo-element layering"
+        },
+        {
+          "id": "rules/spring-for-gestures",
+          "line": 64,
+          "text": "`spring-for-gestures` - Gesture-driven motion (drag, flick) must use springs"
+        },
+        {
+          "id": "rules/spring-for-interruptible",
+          "line": 65,
+          "text": "`spring-for-interruptible` - Interruptible motion must use springs"
+        },
+        {
+          "id": "rules/spring-params-balanced",
+          "line": 67,
+          "text": "`spring-params-balanced` - Avoid excessive oscillation in spring params"
+        },
+        {
+          "id": "rules/spring-preserves-velocity",
+          "line": 66,
+          "text": "`spring-preserves-velocity` - Springs preserve input energy on release"
+        },
+        {
+          "id": "rules/staging-dim-background",
+          "line": 59,
+          "text": "`staging-dim-background` - Dim modal/dialog backgrounds"
+        },
+        {
+          "id": "rules/staging-one-focal-point",
+          "line": 58,
+          "text": "`staging-one-focal-point` - One prominent animation at a time"
+        },
+        {
+          "id": "rules/staging-z-index-hierarchy",
+          "line": 60,
+          "text": "`staging-z-index-hierarchy` - Animated elements respect z-index layers"
+        },
+        {
+          "id": "rules/timing-consistent",
+          "line": 50,
+          "text": "`timing-consistent` - Similar elements use identical timing values"
+        },
+        {
+          "id": "rules/timing-no-entrance-context-menu",
+          "line": 51,
+          "text": "`timing-no-entrance-context-menu` - Context menus: no entrance animation, exit only"
+        },
+        {
+          "id": "rules/timing-under-300ms",
+          "line": 49,
+          "text": "`timing-under-300ms` - User animations must complete within 300ms"
+        },
+        {
+          "id": "rules/transition-name-cleanup",
+          "line": 107,
+          "text": "`transition-name-cleanup` - Remove transition name after completion"
+        },
+        {
+          "id": "rules/transition-name-required",
+          "line": 105,
+          "text": "`transition-name-required` - View transitions need view-transition-name"
+        },
+        {
+          "id": "rules/transition-name-unique",
+          "line": 106,
+          "text": "`transition-name-unique` - Each transition name unique during transition"
+        },
+        {
+          "id": "rules/transition-over-js-library",
+          "line": 108,
+          "text": "`transition-over-js-library` - Prefer View Transitions API over JS libraries"
+        },
+        {
+          "id": "rules/transition-style-pseudo-elements",
+          "line": 109,
+          "text": "`transition-style-pseudo-elements` - Style ::view-transition-group for custom animations"
+        },
+        {
+          "id": "rules/type-antialiased-on-retina",
+          "line": 212,
+          "text": "`type-antialiased-on-retina` - Antialiased font smoothing on retina displays"
+        },
+        {
+          "id": "rules/type-disambiguation-stylistic-set",
+          "line": 210,
+          "text": "`type-disambiguation-stylistic-set` - Enable ss02 to distinguish I/l/1 and 0/O"
+        },
+        {
+          "id": "rules/type-font-display-swap",
+          "line": 216,
+          "text": "`type-font-display-swap` - Use font-display: swap to avoid invisible text during load"
+        },
+        {
+          "id": "rules/type-justify-with-hyphens",
+          "line": 219,
+          "text": "`type-justify-with-hyphens` - Pair text-align: justify with hyphens: auto"
+        },
+        {
+          "id": "rules/type-letter-spacing-uppercase",
+          "line": 220,
+          "text": "`type-letter-spacing-uppercase` - Add letter-spacing to uppercase and small-caps text"
+        },
+        {
+          "id": "rules/type-no-font-synthesis",
+          "line": 215,
+          "text": "`type-no-font-synthesis` - Disable font-synthesis to prevent faux bold/italic"
+        },
+        {
+          "id": "rules/type-oldstyle-nums-for-prose",
+          "line": 207,
+          "text": "`type-oldstyle-nums-for-prose` - Oldstyle numbers blend into body text"
+        },
+        {
+          "id": "rules/type-opentype-contextual-alternates",
+          "line": 209,
+          "text": "`type-opentype-contextual-alternates` - Keep calt enabled for contextual glyph adjustment"
+        },
+        {
+          "id": "rules/type-optical-sizing-auto",
+          "line": 211,
+          "text": "`type-optical-sizing-auto` - Leave font-optical-sizing auto for size-adaptive glyphs"
+        },
+        {
+          "id": "rules/type-proper-fractions",
+          "line": 221,
+          "text": "`type-proper-fractions` - Use diagonal-fractions for proper typographic fractions"
+        },
+        {
+          "id": "rules/type-slashed-zero",
+          "line": 208,
+          "text": "`type-slashed-zero` - Slashed zero in code-adjacent UIs"
+        },
+        {
+          "id": "rules/type-tabular-nums-for-data",
+          "line": 206,
+          "text": "`type-tabular-nums-for-data` - Tabular numbers for columns, dashboards, pricing"
+        },
+        {
+          "id": "rules/type-text-wrap-balance-headings",
+          "line": 213,
+          "text": "`type-text-wrap-balance-headings` - text-wrap: balance on headings for even lines"
+        },
+        {
+          "id": "rules/type-text-wrap-pretty",
+          "line": 218,
+          "text": "`type-text-wrap-pretty` - text-wrap: pretty for body text to reduce orphans"
+        },
+        {
+          "id": "rules/type-underline-offset",
+          "line": 214,
+          "text": "`type-underline-offset` - Offset underlines below descenders"
+        },
+        {
+          "id": "rules/type-variable-weight-continuous",
+          "line": 217,
+          "text": "`type-variable-weight-continuous` - Use continuous weight values (100-900) with variable fonts"
+        },
+        {
+          "id": "rules/ux-aesthetic-usability",
+          "line": 180,
+          "text": "`ux-aesthetic-usability` - Visual polish increases perceived usability"
+        },
+        {
+          "id": "rules/ux-cognitive-load-reduce",
+          "line": 192,
+          "text": "`ux-cognitive-load-reduce` - Minimize extraneous cognitive load"
+        },
+        {
+          "id": "rules/ux-common-region-boundaries",
+          "line": 183,
+          "text": "`ux-common-region-boundaries` - Use boundaries to group related content"
+        },
+        {
+          "id": "rules/ux-doherty-perceived-speed",
+          "line": 176,
+          "text": "`ux-doherty-perceived-speed` - Fake speed with skeletons, optimistic UI, progress indicators"
+        },
+        {
+          "id": "rules/ux-doherty-under-400ms",
+          "line": 175,
+          "text": "`ux-doherty-under-400ms` - Respond within 400ms to feel instant"
+        },
+        {
+          "id": "rules/ux-fitts-hit-area",
+          "line": 172,
+          "text": "`ux-fitts-hit-area` - Expand hit areas with invisible padding or pseudo-elements"
+        },
+        {
+          "id": "rules/ux-fitts-target-size",
+          "line": 171,
+          "text": "`ux-fitts-target-size` - Size interactive targets for easy clicking (min 32px)"
+        },
+        {
+          "id": "rules/ux-goal-gradient-progress",
+          "line": 188,
+          "text": "`ux-goal-gradient-progress` - Show progress toward completion"
+        },
+        {
+          "id": "rules/ux-hicks-minimize-choices",
+          "line": 173,
+          "text": "`ux-hicks-minimize-choices` - Minimize choices to reduce decision time"
+        },
+        {
+          "id": "rules/ux-jakobs-familiar-patterns",
+          "line": 179,
+          "text": "`ux-jakobs-familiar-patterns` - Use familiar UI patterns users know from other sites"
+        },
+        {
+          "id": "rules/ux-millers-chunking",
+          "line": 174,
+          "text": "`ux-millers-chunking` - Chunk data into groups of 5-9 for scannability"
+        },
+        {
+          "id": "rules/ux-pareto-prioritize-features",
+          "line": 191,
+          "text": "`ux-pareto-prioritize-features` - Prioritize the critical 20% of features"
+        },
+        {
+          "id": "rules/ux-peak-end-finish-strong",
+          "line": 186,
+          "text": "`ux-peak-end-finish-strong` - End experiences with clear success states"
+        },
+        {
+          "id": "rules/ux-postels-accept-messy-input",
+          "line": 177,
+          "text": "`ux-postels-accept-messy-input` - Accept messy input, output clean data"
+        },
+        {
+          "id": "rules/ux-pragnanz-simplify",
+          "line": 190,
+          "text": "`ux-pragnanz-simplify` - Simplify complex visuals into clear forms"
+        },
+        {
+          "id": "rules/ux-progressive-disclosure",
+          "line": 178,
+          "text": "`ux-progressive-disclosure` - Show what matters now, reveal complexity later"
+        },
+        {
+          "id": "rules/ux-proximity-grouping",
+          "line": 181,
+          "text": "`ux-proximity-grouping` - Group related elements spatially with tighter spacing"
+        },
+        {
+          "id": "rules/ux-serial-position",
+          "line": 185,
+          "text": "`ux-serial-position` - Place key items first or last in sequences"
+        },
+        {
+          "id": "rules/ux-similarity-consistency",
+          "line": 182,
+          "text": "`ux-similarity-consistency` - Similar elements should look alike"
+        },
+        {
+          "id": "rules/ux-teslers-complexity",
+          "line": 187,
+          "text": "`ux-teslers-complexity` - Move complexity to the system, not the user"
+        },
+        {
+          "id": "rules/ux-uniform-connectedness",
+          "line": 193,
+          "text": "`ux-uniform-connectedness` - Visually connect related elements with lines or frames"
+        },
+        {
+          "id": "rules/ux-von-restorff-emphasis",
+          "line": 184,
+          "text": "`ux-von-restorff-emphasis` - Make important elements visually distinct"
+        },
+        {
+          "id": "rules/ux-zeigarnik-show-incomplete",
+          "line": 189,
+          "text": "`ux-zeigarnik-show-incomplete` - Show incomplete state to drive completion"
+        },
+        {
+          "id": "rules/visual-animate-shadow-pseudo",
+          "line": 230,
+          "text": "`visual-animate-shadow-pseudo` - Animate shadow via pseudo-element opacity for performance"
+        },
+        {
+          "id": "rules/visual-border-alpha-colors",
+          "line": 232,
+          "text": "`visual-border-alpha-colors` - Semi-transparent borders adapt to any background"
+        },
+        {
+          "id": "rules/visual-button-shadow-anatomy",
+          "line": 233,
+          "text": "`visual-button-shadow-anatomy` - Six-layer shadow anatomy for polished buttons"
+        },
+        {
+          "id": "rules/visual-concentric-radius",
+          "line": 225,
+          "text": "`visual-concentric-radius` - Inner radius = outer radius minus padding for nested elements"
+        },
+        {
+          "id": "rules/visual-consistent-spacing-scale",
+          "line": 231,
+          "text": "`visual-consistent-spacing-scale` - Use a consistent spacing scale, not arbitrary values"
+        },
+        {
+          "id": "rules/visual-layered-shadows",
+          "line": 226,
+          "text": "`visual-layered-shadows` - Layer multiple shadows for realistic depth"
+        },
+        {
+          "id": "rules/visual-no-pure-black-shadow",
+          "line": 228,
+          "text": "`visual-no-pure-black-shadow` - Use neutral colors, not pure black, for shadows"
+        },
+        {
+          "id": "rules/visual-shadow-direction",
+          "line": 227,
+          "text": "`visual-shadow-direction` - All shadows share same offset direction (single light source)"
+        },
+        {
+          "id": "rules/visual-shadow-matches-elevation",
+          "line": 229,
+          "text": "`visual-shadow-matches-elevation` - Shadow size indicates elevation in consistent scale"
+        },
+        {
+          "id": "rules/weight-duration-matches-action",
+          "line": 129,
+          "text": "`weight-duration-matches-action` - Sound duration matches action duration"
+        },
+        {
+          "id": "rules/weight-match-action",
+          "line": 128,
+          "text": "`weight-match-action` - Sound weight matches action importance"
+        }
+      ]
+    },
+    {
       "id": "web-interface-guidelines",
       "repo": "https://github.com/vercel-labs/web-interface-guidelines",
       "revision": "434b7f91364665f2f733b310ec54809bf8f37937",

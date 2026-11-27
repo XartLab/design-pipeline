@@ -741,7 +741,9 @@ after a fresh load, the fonts and two frames, against the codes in
 `prefers-reduced-motion: reduce`; both loads are read a second after load and compared
 (`audit.reduced-motion`). The same reading judges what the page animates
 (`audit.motion-properties`): `transition: all`, a transition or animation of a layout property, a
-blur animated without end, and an infinite animation running off screen. After the resting audit it
+blur animated without end, and an infinite animation running off screen, and it reads the computed
+`view-transition-name` of every visible element (`audit.view-transition-names`): two visible
+elements may not share one name. After the resting audit it
 forces `:hover` and `:focus-visible` on every control (`audit.state-contrast`). It needs the bindable local page: `url` names the project's
 local `index.html`, and every asset the page loads (stylesheets, scripts, fonts, images, data) is a
 file inside the project. An `http(s)` page or a page outside the project is a contract error before
@@ -841,7 +843,9 @@ Final acceptance of the whole checked page, after each section was reviewed in t
 record it only with `--by owner`, and never route it to an art director.
 
 Before showing the page, walk the `UC-` items of `ui-craft-sources.md#review-checklist` that apply
-to what changed (motion feel and timing, focus, semantics, forms, copy, states). Record each result
+to what changed (motion feel and timing, focus, semantics, forms, copy, states, View Transitions,
+presence and exit, pseudo-elements, container-size motion, the Laws of UX, typography features,
+morphing icons, predictive prefetching and visual depth). Record each result
 by its id in `qa.md` as Component Conformance evidence, never as Visual Acceptance; record a rule
 that conflicts with the project's precedence as not applicable. The measured audit already covered
 the codes in `ui-craft-sources.md#measured-audit`. Name in `qa.md` the surfaces left unmeasured by

@@ -4,6 +4,11 @@ All notable changes to Design Pipeline are documented here.
 
 ## [Unreleased]
 
+### Added
+
+- The userinterface-wiki UI rules are held by the project (change `userinterface-wiki-rules`, #359). `raphaelsalaja/userinterface-wiki` (MIT, revision `256a954`) ships 152 rules across 12 categories; none of them was held as text, the View Transitions rules appeared only as an optional companion route, and the presence, container-animation, Laws of UX, icon-morph and predictive-prefetching rules were missing. New `references/userinterface-wiki-rules.md` restates the non-audio rules in this project's words (animation principles and timing, exit and presence behavior, pseudo-elements and View Transitions, container-size motion, Laws of UX, predictive prefetching, morphing icons, typography and visual treatment), the source is an `adapted-reference` in `sources.lock.json` with its MIT notice, and `references/ui-rule-coverage.json` maps all 152 rule files one to one, with the 27 audio and sound-synthesis rules `pending` on #360 and five deliberate differences (ease-in exits, exits mirroring entrances, a 32px target minimum, a fixed 50ms stagger cap, and 120-180ms press/hover timing) `not-adopted` with their governing local rule. The review checklist gains `UC-45` to `UC-57`, the QA checklist names each of them, and `interface-defaults.md` gains the pseudo-element, View Transition and typographic feature rules plus the expanded container-animation and presence rules.
+- The measured audit measures duplicate View Transition names (change `userinterface-wiki-rules`, #359). `verify interaction` gains the required code `audit.view-transition-names`: two visible elements sharing a computed `view-transition-name` fail with one finding per duplicated name, a unique name passes, and a page that names no element reports `not-applicable`. `none` and `match-element` never count as a collision, and the names are read from computed style, so a stylesheet rule counts as well as an inline attribute.
+
 ## [0.15.0-beta.1] - 2026-11-14
 
 ### Added

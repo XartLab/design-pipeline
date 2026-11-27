@@ -76,6 +76,8 @@ button { min-height: 32px; padding: 0 12px; border: 0; background: #1d4ed8; colo
 .glow { animation: glow 3s infinite; }
 @keyframes glow { 50% { filter: blur(4px); } }
 .far { margin-top: 2400px; }
+/* audit.view-transition-names: two visible elements share one transition name. */
+.card { view-transition-name: card; }
 </style>
 </head>
 <body>
@@ -105,6 +107,8 @@ button { min-height: 32px; padding: 0 12px; border: 0; background: #1d4ed8; colo
   <p class="every">Transitions every property</p>
   <p class="grow">Transitions its height</p>
   <p class="glow">Blurs without end</p>
+  <div class="card">First named card</div>
+  <div class="card">Second named card</div>
   <p class="far"><span class="spin">Turning below the fold</span></p>
 </main>
 </body>

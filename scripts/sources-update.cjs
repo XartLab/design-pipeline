@@ -215,7 +215,16 @@ function adaptedHash(dir, revision, text) {
   if (scope === "ordered UTF-8 sourceFiles with path-and-newline separators") {
     const files = (frontmatterField(text, "sourceFiles") || "").split(",").map((file) => file.trim()).filter(Boolean);
     if (!files.length) fail("sourceFiles is empty");
-    const parts = files.map((file) => {
+    // Only an explicit trailing slash means a directory. Extensionless source files such as
+    // LICENSE remain single blobs rather than being expanded as tree paths.
+    const paths = files.flatMap((file) => {
+      if (!file.endsWith("/")) return [file];
+      const directory = file.slice(0, -1);
+      const listed = safeGit(dir, ["ls-tree", "-r", "--name-only", revision, "--", directory]).split("\n").filter(Boolean);
+      if (!listed.length) fail(`upstream no longer provides ${directory}`);
+      return listed.sort();
+    });
+    const parts = paths.map((file) => {
       const content = blobText(dir, revision, file);
       if (content === null) fail(`upstream no longer provides ${file}`);
       return `${file}\n${content}\n`;

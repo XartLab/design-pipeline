@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Audit fixture: unique View Transition name</title>
+<link rel="icon" href="data:,">
+<style>
+/* One visible element carries the name; a second element carries a different one. */
+.card { view-transition-name: card; }
+.other { view-transition-name: other; }
+.auto { view-transition-name: match-element; }
+</style>
+</head>
+<body>
+<main>
+  <div class="card" id="first">First named card</div>
+  <div class="other" id="second">Second named card</div>
+  <div class="auto" id="auto-one">Automatically named first element</div>
+  <div class="auto" id="auto-two">Automatically named second element</div>
+</main>
+</body>
+</html>

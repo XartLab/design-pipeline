@@ -68,6 +68,28 @@ function extractSelected(text, spec, rows) {
     return { id: row.id, line: index + 1, text: row.rule };
   });
 }
+function extractRuleFiles(skillText, spec, paths) {
+  const lines = skillText.split(/\r?\n/);
+  const ruleFiles = paths.filter((file) => file.startsWith(`${spec.path}/`) && file.endsWith(".md") && !file.endsWith("/_sections.md") && !file.endsWith("/_template.md")).sort();
+  const ids = new Map();
+  for (let index = 0; index < lines.length; index += 1) {
+    const match = /^- `([a-z0-9-]+)` - (.+)$/.exec(lines[index]);
+    if (!match) continue;
+    if (ids.has(match[1])) fail(`${spec.skillPath}:${index + 1} repeats rule id ${match[1]}`);
+    ids.set(match[1], { line: index + 1, text: lines[index].slice(2).trim() });
+  }
+  const fileIds = ruleFiles.map((file) => path.basename(file, ".md"));
+  if (new Set(fileIds).size !== fileIds.length) fail(`${spec.path} repeats a rule filename`);
+  const rules = fileIds.map((id) => {
+    const item = ids.get(id);
+    if (!item) fail(`${spec.skillPath} has no Quick Reference row for ${id}`);
+    return { id: `${spec.key}/${id}`, line: item.line, text: item.text };
+  });
+  const extraIds = [...ids.keys()].filter((id) => !fileIds.includes(id));
+  if (extraIds.length) fail(`${spec.skillPath} has Quick Reference ids without rule files: ${extraIds.join(", ")}`);
+  return { files: ruleFiles, rules };
+}
+
 
 function parseArgs(argv) {
   const sources = new Map();
@@ -101,13 +123,23 @@ function refresh(root, checkouts) {
     const files = [];
     const rules = [];
     for (const spec of source.files) {
+      if (spec.extract === "rule-files") {
+        const paths = git(dir, ["ls-tree", "-r", "--name-only", head, spec.path]).split("\n").filter(Boolean);
+        const extracted = extractRuleFiles(git(dir, ["show", `${head}:${spec.skillPath}`]), spec, paths);
+        for (const file of extracted.files) {
+          const bytes = git(dir, ["cat-file", "blob", `${head}:${file}`], { buffer: true });
+          files.push({ key: path.basename(file, ".md"), path: file, sha256: crypto.createHash("sha256").update(bytes).digest("hex") });
+        }
+        rules.push(...extracted.rules);
+        continue;
+      }
       const bytes = git(dir, ["cat-file", "blob", `${head}:${spec.path}`], { buffer: true, allowFailure: true });
       if (bytes === null) fail(`${id} no longer provides ${spec.path}`);
       const text = bytes.toString("utf8");
       files.push({ key: spec.key, path: spec.path, sha256: crypto.createHash("sha256").update(bytes).digest("hex") });
       if (spec.extract === "bullets") rules.push(...extractBullets(text, spec));
       else if (spec.extract === "selected") rules.push(...extractSelected(text, spec, source.rules.filter((row) => row.id.startsWith(`${spec.key}/`))));
-      else fail(`${id} ${spec.path}: extract must be "bullets" or "selected"`);
+      else fail(`${id} ${spec.path}: extract must be "bullets", "selected" or "rule-files"`);
     }
     const entry = { id, repo: source.repo, revision: head, license: source.license, contentHash: adaptedHash(dir, head, record), files, rules };
     const at = fixture.sources.findIndex((item) => item.id === id);
@@ -132,4 +164,4 @@ if (require.main === module) {
   }
 }
 
-module.exports = { COVERAGE, FIXTURE, FIXTURE_SCHEMA, extractBullets, extractSelected, refresh, sectionSlug };
+module.exports = { COVERAGE, FIXTURE, FIXTURE_SCHEMA, extractBullets, extractRuleFiles, extractSelected, refresh, sectionSlug };

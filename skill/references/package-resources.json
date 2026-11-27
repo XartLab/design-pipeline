@@ -1534,6 +1534,7 @@
     "tools/art-motion/composite.cjs",
     "tools/template-bank/layers.cjs",
     "tools/template-bank/templates/kv.tape-hero/manifest.json",
-    "tools/template-bank/templates/kv.tape-hero/template.svg"
+    "tools/template-bank/templates/kv.tape-hero/template.svg",
+    "references/userinterface-wiki-rules.md"
   ]
 }

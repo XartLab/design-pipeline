@@ -58,7 +58,11 @@ the same page instance must carry state across open, selection and close. Journe
 contain motion frames. Keep selected values in the final assertions so a transient success cannot
 hide a later reset. Motion samples alone do not prove business state, and DOM readouts alone do
 not prove persistence or backend side effects. The complete menu example is in
-`stages.md#complete-menu-task-example`.
+`stages.md#complete-menu-example`.
+
+The UI craft checklist in `references/ui-craft-sources.md` is the review record for the rules a
+rendered page cannot measure. Record each applicable row as passed, a finding or not applicable
+with a reason: `UC-45` (View Transitions), `UC-46` (presence and exit), `UC-47` (container-size motion), `UC-48` (Laws of UX), `UC-49` (oldstyle numerals), `UC-50` (`calt`), `UC-51` (diagonal fractions), `UC-52` (`::marker`), `UC-53` (pseudo-element layers), `UC-54` (pseudo-elements over extra nodes), `UC-55` (morphing icons), `UC-56` (predictive prefetching) and `UC-57` (visual depth). Record each result by its id in `qa.md` as Component Conformance evidence, never as Visual Acceptance; record a rule that conflicts with the project's precedence as not applicable. The measured audit already covered the codes in `ui-craft-sources.md#measured-audit`. Name in `qa.md` the surfaces left unmeasured by `not-declared` checks.
 
 ### Cleanup and recovery
 

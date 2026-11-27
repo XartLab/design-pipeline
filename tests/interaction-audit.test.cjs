@@ -102,11 +102,12 @@ function webProject(t) {
   return dir;
 }
 
-test("the audit contract has 23 codes, eight optional checks and the documented defaults", () => {
-  assert.equal(audit.AUDIT_CODES.length, 23);
+test("the audit contract has 24 codes, eight optional checks and the documented defaults", () => {
+  assert.equal(audit.AUDIT_CODES.length, 24);
   assert.deepEqual([audit.AUDIT_CODES[0], audit.AUDIT_CODES[5], audit.AUDIT_CODES[11], audit.AUDIT_CODES[16]], ["audit.font-family", "audit.text-contrast", "audit.target-size", "audit.nested-radius"]);
-  assert.deepEqual(audit.AUDIT_CODES.slice(17), ["audit.line-length", "audit.line-height", "audit.heading-levels", "audit.reduced-motion", "audit.state-contrast", "audit.motion-properties"]);
+  assert.deepEqual(audit.AUDIT_CODES.slice(17), ["audit.line-length", "audit.line-height", "audit.heading-levels", "audit.reduced-motion", "audit.state-contrast", "audit.motion-properties", "audit.view-transition-names"]);
   assert.equal(audit.OPTIONAL_CODES.includes("audit.motion-properties"), false, "the motion check always runs");
+  assert.equal(audit.OPTIONAL_CODES.includes("audit.view-transition-names"), false, "the View Transition name check always runs");
   const { essential, layout, blur } = audit.MOTION_PROPERTIES;
   assert.equal(essential, audit.STILL_MOVING.essential, "loading indicators are exempt by the reduced-motion definition");
   for (const property of ["width", "height", "top", "left", "margin", "padding", "inset", "margin-top", "padding-inline-start", "inline-size"]) assert.ok(layout.includes(property), property);
@@ -281,7 +282,7 @@ test("summaries fail on failed and indeterminate results, report not-declared wi
   // A result from a page function that lacks a check is rejected, never passed without it.
   const short = passing();
   delete short["audit.motion-properties"];
-  assert.throws(() => audit.summarizeAudit("page-audit", [entry(short)], project), /did not report exactly the 23 audit checks/);
+  assert.throws(() => audit.summarizeAudit("page-audit", [entry(short)], project), /did not report exactly the 24 audit checks/);
   const rejected = audit.summarizeAudit("page-audit", [{ viewport, result: { viewport, contractErrors: ['declare.stacks[0] "[" is not a selector this page accepts'] } }], project);
   assert.equal(rejected.status, "failed");
   assert.equal(rejected.contractErrors.length, 1);
@@ -339,7 +340,10 @@ test("the clean page passes every check at both viewports and native completion 
   const row = result.probes[0];
   assert.equal(result.status, "passed", JSON.stringify(result.findings, null, 2));
   assert.deepEqual(row.findings, []);
-  for (const viewport of VIEWPORTS) for (const [code, status] of Object.entries(statuses(row, viewport))) assert.equal(status, "passed", `${code} at ${viewport}`);
+  for (const viewport of VIEWPORTS) for (const [code, status] of Object.entries(statuses(row, viewport))) {
+    // The clean page names no View Transition element, so that check has nothing to measure.
+    assert.equal(status, code === "audit.view-transition-names" ? "not-applicable" : "passed", `${code} at ${viewport}`);
+  }
   const probe = validateProbeFile(probeDoc("clean", PROBES.clean)).probes[0];
   assert.equal(auditResultFailure(probe, row), null);
   const failedCheck = clone(row);
@@ -694,6 +698,32 @@ html { transition: all 250ms; }
   const coverage = motionCoverage(clean);
   assert.ok(coverage.checked >= 10, `transitions and animations are counted (${coverage.checked})`);
   assert.deepEqual(coverage.notMeasured, unread, "what cannot be measured is still listed on a passing page");
+});
+
+test("view transition names: two visible elements sharing a name fail, a unique name passes and a page without one is not applicable", { skip: tools.skip }, async (t) => {
+  const probe = { id: "transition-names", kind: "audit", thresholds: { fonts: ["sans-serif"] } };
+  // The names come from a stylesheet, not from inline attributes, and a hidden element with the
+  // same name does not take part in the transition.
+  const result = await measure(t, "view-transition-duplicate", [probe]);
+  const found = findingsOf(result, "audit.view-transition-names");
+  assert.deepEqual(found.map((finding) => [finding.selector, finding.actual]), [
+    ["#first, #second", "2 visible elements use view-transition-name card"],
+  ]);
+  assert.match(found[0].fix, /view-transition-name/);
+  assert.equal(statusAt(result, "audit.view-transition-names"), "failed");
+
+  const unique = await measure(t, "view-transition-unique", [probe]);
+  assert.deepEqual(findingsOf(unique, "audit.view-transition-names"), []);
+  assert.equal(statusAt(unique, "audit.view-transition-names"), "passed");
+  const rootCollision = await measure(t, "transition-name-root", [probe], { html: page("html { view-transition-name: page; } #root-collision { view-transition-name: page; }", '<div id="root-collision">Root collision</div>') });
+  assert.deepEqual(findingsOf(rootCollision, "audit.view-transition-names").map((finding) => finding.selector), ["html, #root-collision"]);
+  assert.equal(statusAt(rootCollision, "audit.view-transition-names"), "failed");
+
+  const none = await measure(t, "view-transition-none", [{ id: "transition-names-none", kind: "audit", thresholds: { fonts: ["sans-serif"] } }]);
+  assert.deepEqual(findingsOf(none, "audit.view-transition-names"), []);
+  assert.equal(statusAt(none, "audit.view-transition-names"), "not-applicable");
+  const coverage = none.probes[0].coverage[0].checks.find((check) => check.code === "audit.view-transition-names");
+  assert.equal(coverage.checked, 0);
 });
 
 test("an inline link is exempt from target size only beside text in its own inline formatting context", { skip: tools.skip }, async (t) => {
