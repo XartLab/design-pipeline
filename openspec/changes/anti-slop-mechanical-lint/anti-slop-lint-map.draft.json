@@ -66,6 +66,14 @@
       "class": "preference",
       "rule": "fashion-tell-advisory"
     },
+    "38ii": {
+      "class": "preference",
+      "rule": "fashion-tell-advisory"
+    },
+    "38iii": {
+      "class": "preference",
+      "rule": "fashion-tell-advisory"
+    },
     "55a": {
       "class": "hard",
       "rule": "contrast-and-legibility",
@@ -386,6 +394,11 @@
     "48": {
       "class": "excluded",
       "reason": "token literals are checked by check-design-tokens against the project's own DESIGN.md"
+    },
+    "49": {
+      "class": "contextual",
+      "rule": "component-defaults-are-art-directed",
+      "reason": "the long-label nowrap check is heuristic and does not measure rendered wrapping"
     },
     "49a": {
       "class": "contextual",

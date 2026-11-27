@@ -55,7 +55,24 @@ The `<all-not-verified.json>` evidence marks every rubric rule `not-verified` so
 | 41 | contrast-and-legibility | `menu-switch.html:46` | `#menu-panel button[aria-pressed=true]` dark bg, no text colour | **false positive** — inherits light from `:root` |
 | 41 | contrast-and-legibility | `reward-arrival.html:28` | `.card` dark bg sets no text colour | **false positive** — `:root { color: #eef5f7 }` (light) |
 
-## Unresolved
+## Gate-map completion
 
-- The committed gate map (`skill/references/anti-slop-lint-map.json`) has no `38ii`, `38iii` or `49`, so the evaluator fails closed (`LINT_GATE_UNMAPPED`) on any page that triggers them — including the motion-recipe specimens (`38iii`, `49`). This is the designed fail-closed behavior; the lint cannot run to completion on those specimens until the map is completed. The map is not changed here: the change fixes it as reviewed.
-- KATANAview was linted as source (`KATANAview/src`), not a built page: the checkout has no `dist/` and building the pnpm monorepo was not attempted. sloplint's static tier reads `.css`/`.tsx`, which covers the CSS and component source.
+The reviewed map now contains upstream gate IDs `38ii`, `38iii`, and base `49`. The evaluator was exercised against `skill/tools/motion-recipes`; it produced a report with `38iii` mapped to `preference` / `fashion-tell-advisory` and `49` mapped to `contextual` / `component-defaults-are-art-directed`. The regression also removes gate `70` from a temporary map and confirms the evaluator still fails closed with `LINT_GATE_UNMAPPED`.
+
+```text
+node ./tests/anti-slop-lint.test.cjs
+```
+
+Result: 7 tests passed, 0 failed.
+
+KATANAview was linted as source (`KATANAview/src`), not a built page: the checkout has no `dist/` and building the pnpm monorepo was not attempted. sloplint's static tier reads `.css`/`.tsx`, which covers the CSS and component source.
+
+## Current verification (2026-11-27)
+
+- `node ./tests/anti-slop-lint.test.cjs`: 7 passed, 0 failed; includes the actual motion-recipe directory and the unmapped-gate rejection.
+- `npm run specs:check`: 118 passed, 0 failed.
+- `git diff --check`: passed.
+- `npm ci`: installed 139 packages; npm blocked esbuild's install script under its install-script policy.
+- The first full `npm test` timed out at 360 seconds. A subsequent run was contaminated because commits changed repository status during QA and an earlier Chromium profile was still active; those results are not a clean baseline.
+- A later full `npm test` ran for 1,069 seconds from a clean, committed worktree without edits during execution, then failed repository QA (`202 files`). Unrelated failures included text occlusion in `atomic-age-kit` and `template-style-pack`, the existing `vector80.cjs:203` fixed-wait finding, Windows `tar --force-local` failures in archive/package tests, measured-spec-drift expectations, template-distill ablation, and `browser-locate`'s Chromium profile collision. The gate-map-specific test and OpenSpec validation passed; the full-repository gate remains red.
+- Do not widen this issue to fix unrelated repository/browser/package failures. PR #400 remains draft and stacked on PR #398; retarget to `main` after #398 merges.
