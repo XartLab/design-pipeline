@@ -55,7 +55,14 @@ The `<all-not-verified.json>` evidence marks every rubric rule `not-verified` so
 | 41 | contrast-and-legibility | `menu-switch.html:46` | `#menu-panel button[aria-pressed=true]` dark bg, no text colour | **false positive** — inherits light from `:root` |
 | 41 | contrast-and-legibility | `reward-arrival.html:28` | `.card` dark bg sets no text colour | **false positive** — `:root { color: #eef5f7 }` (light) |
 
-## Unresolved
+## Gate-map completion
 
-- The committed gate map (`skill/references/anti-slop-lint-map.json`) has no `38ii`, `38iii` or `49`, so the evaluator fails closed (`LINT_GATE_UNMAPPED`) on any page that triggers them — including the motion-recipe specimens (`38iii`, `49`). This is the designed fail-closed behavior; the lint cannot run to completion on those specimens until the map is completed. The map is not changed here: the change fixes it as reviewed.
-- KATANAview was linted as source (`KATANAview/src`), not a built page: the checkout has no `dist/` and building the pnpm monorepo was not attempted. sloplint's static tier reads `.css`/`.tsx`, which covers the CSS and component source.
+The reviewed map now contains upstream gate IDs `38ii`, `38iii`, and base `49`. The evaluator was exercised against `skill/tools/motion-recipes`; it produced a report with `38iii` mapped to `preference` / `fashion-tell-advisory` and `49` mapped to `contextual` / `component-defaults-are-art-directed`. The regression also removes gate `70` from a temporary map and confirms the evaluator still fails closed with `LINT_GATE_UNMAPPED`.
+
+```text
+node ./tests/anti-slop-lint.test.cjs
+```
+
+Result: 7 tests passed, 0 failed.
+
+KATANAview was linted as source (`KATANAview/src`), not a built page: the checkout has no `dist/` and building the pnpm monorepo was not attempted. sloplint's static tier reads `.css`/`.tsx`, which covers the CSS and component source.

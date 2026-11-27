@@ -40,6 +40,18 @@ function parse(result) {
 // A complete evidence file: hard rules pass, contextual rules accepted with a per-rule reason.
 // `overrides` replaces single observations, e.g. to mark a hard rule fail so a lint finding is not a
 // contradiction, or to record accepted context for one contextual rule.
+function unverifiedEvidence(root) {
+  const rubricData = JSON.parse(fs.readFileSync(rubric, "utf8"));
+  const observations = rubricData.rules.map((rule) => ({
+    ruleId: rule.id,
+    outcome: "not-verified",
+    evidence: [`Not verified for ${rule.id}.`],
+  }));
+  const file = path.join(root, "unverified-evidence.json");
+  fs.writeFileSync(file, `${JSON.stringify({ schema: "design-pipeline.anti-slop-evidence.v1", target: { id: "lint-target", surface: "marketing" }, observations })}\n`);
+  return file;
+}
+
 function fullEvidence(root, overrides = {}) {
   const rubricData = JSON.parse(fs.readFileSync(rubric, "utf8"));
   const observations = rubricData.rules.map((rule) => {
@@ -129,9 +141,35 @@ test("a linted file that changes after the lint block was written is rejected as
   assert.match(result.stderr, /LINT_STALE/);
 });
 
-test("the vendored linter is invoked unmodified and the lint map covers every gate it reports", () => {
+test("the reviewed lint map assigns the missing gates to their intended rubric rules", () => {
   const map = JSON.parse(fs.readFileSync(lintMap, "utf8"));
+  const rubricData = JSON.parse(fs.readFileSync(rubric, "utf8"));
   assert.equal(map.schema, "design-pipeline.anti-slop-lint-map.v1");
-  const classes = new Set(Object.values(map.gates).map((entry) => entry.class));
-  assert.deepEqual([...classes].sort(), ["contextual", "excluded", "hard", "preference"]);
+  const rules = new Map(rubricData.rules.map((rule) => [rule.id, rule]));
+  for (const gate of ["38ii", "38iii"]) {
+    assert.deepEqual(map.gates[gate], { class: "preference", rule: "fashion-tell-advisory" });
+    assert.equal(rules.get(map.gates[gate].rule)?.severity, "preference");
+  }
+  assert.deepEqual(map.gates["49"], {
+    class: "contextual",
+    rule: "component-defaults-are-art-directed",
+    reason: "the long-label nowrap check is heuristic and does not measure rendered wrapping",
+  });
+  assert.equal(rules.get(map.gates["49"].rule)?.severity, "contextual");
+});
+
+test("motion-recipe specimens map their previously missing gates and produce a report", () => {
+  const root = makeRoot();
+  const target = path.join(repoRoot, "skill", "tools", "motion-recipes");
+  const evidence = unverifiedEvidence(root);
+  const report = parse(run(root, evidence, "--lint", target)).report;
+  const findings = new Map(report.lint.findings.map((finding) => [finding.gate, finding]));
+  assert.deepEqual(
+    { class: findings.get("38iii")?.class, rule: findings.get("38iii")?.rule },
+    { class: "preference", rule: "fashion-tell-advisory" },
+  );
+  assert.deepEqual(
+    { class: findings.get("49")?.class, rule: findings.get("49")?.rule },
+    { class: "contextual", rule: "component-defaults-are-art-directed" },
+  );
 });
