@@ -27,11 +27,10 @@ file, and a repeated rule file SHALL each fail the maintenance refresh.
 
 ### Requirement: Duplicate View Transition names are measured on the rendered page
 
-The measured audit SHALL report the code `audit.view-transition-names`. It SHALL read the computed
-`view-transition-name` of every visible element, SHALL fail when two visible elements share one
-name, and SHALL report one finding per duplicated name naming the affected selectors. A name used
-by one visible element SHALL pass. A page with no named element SHALL report `not-applicable`. The
-value `none` and the value `match-element` SHALL NOT count as a collision.
+The audit SHALL expose `audit.view-transition-names` and examine computed values on every visible
+element. Duplicate authored names SHALL fail with one finding per name and the affected selectors.
+A unique name SHALL pass; no authored names SHALL report `not-applicable`. The audit SHALL ignore
+`none`, the browser-assigned `root` name on the root element, and per-element `match-element`.
 
 #### Scenario: Two visible elements share a name
 

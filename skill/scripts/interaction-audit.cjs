@@ -1586,13 +1586,16 @@ function auditPage(options, pass) {
   // elements may not share one. `none` does not take part; `match-element` is per element by
   // definition, so neither is a collision.
   const transitionNames = new Map();
-  for (const el of elements) {
+  const collectTransitionName = (el) => {
     const name = styleOf(el).viewTransitionName;
-    if (!name || name === "none" || name === "match-element") continue;
+    // Chromium exposes the root's built-in auto name as `root`; it is not an authored participant.
+    if (!name || name === "none" || name === "match-element" || (el === root && name === "root")) return;
     const named = transitionNames.get(name) || [];
     named.push(el);
     transitionNames.set(name, named);
-  }
+  };
+  if (visible(root)) collectTransitionName(root);
+  for (const el of elements) collectTransitionName(el);
   const transitionNameCheck = checks["audit.view-transition-names"];
   for (const [name, named] of transitionNames) {
     transitionNameCheck.checked += named.length;

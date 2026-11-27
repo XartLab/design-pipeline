@@ -81,7 +81,7 @@ See [mobile-web.md](mobile-web.md): tap feedback, `touch-action`, zoom, 16px inp
 ## View Transitions
 
 - **Use the browser's View Transitions for a navigation-level change.** The element that moves carries a `view-transition-name`; the name is set when the transition starts and cleared when it ends, and `::view-transition-*` pseudo-elements carry any custom styling.
-- **One name, one element.** Two visible elements may not share a name; `audit.view-transition-names` measures that on the rendered page. `none` does not take part in a transition, and `match-element` is unique per element by definition.
+- **One name, one element.** Two visible elements may not share a name; `audit.view-transition-names` measures that on the rendered page. `none` does not take part, Chromium's implicit `root` name on `<html>` is not authored, and `match-element` is unique per element.
 - **Do not use it where the change must be interruptible or cancellable**, and do not swap an interaction-heavy animation system for it. A size change inside a transition is still layout work; a measured FLIP transform plays it as a transform instead.
 
 ## Typographic features

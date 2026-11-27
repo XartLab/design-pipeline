@@ -715,6 +715,9 @@ test("view transition names: two visible elements sharing a name fail, a unique 
   const unique = await measure(t, "view-transition-unique", [probe]);
   assert.deepEqual(findingsOf(unique, "audit.view-transition-names"), []);
   assert.equal(statusAt(unique, "audit.view-transition-names"), "passed");
+  const rootCollision = await measure(t, "transition-name-root", [probe], { html: page("html { view-transition-name: page; } #root-collision { view-transition-name: page; }", '<div id="root-collision">Root collision</div>') });
+  assert.deepEqual(findingsOf(rootCollision, "audit.view-transition-names").map((finding) => finding.selector), ["html, #root-collision"]);
+  assert.equal(statusAt(rootCollision, "audit.view-transition-names"), "failed");
 
   const none = await measure(t, "view-transition-none", [{ id: "transition-names-none", kind: "audit", thresholds: { fonts: ["sans-serif"] } }]);
   assert.deepEqual(findingsOf(none, "audit.view-transition-names"), []);

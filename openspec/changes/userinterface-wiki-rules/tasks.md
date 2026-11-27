@@ -3,7 +3,7 @@
 ## 1. Change records
 
 - [x] 1.1 proposal.md, design.md and the `design-pipeline` spec delta; Closes #359.
-- [ ] 1.2 `npm exec -- openspec validate userinterface-wiki-rules --strict` and `npm run specs:check`.
+- [x] 1.2 `npm exec -- openspec validate userinterface-wiki-rules --strict` and `npm run specs:check` (119 passed).
 
 ## 2. Sources
 
@@ -30,4 +30,6 @@
 
 - [x] 5.1 `tests/ui-rule-coverage.test.cjs`: the rule-directory inventory, the 152 rows and the new source shape.
 - [x] 5.2 `tests/ui-craft-sources.test.cjs`: gap-free ids, every row cites its source, every new row named in the QA checklist.
-- [ ] 5.3 `npm run specs:check`, `npm test`, CHANGELOG.
+- [x] 5.3 `npm run sources:check` (123 passed) and `npm run test:browser` (2 self-tests passed).
+- [x] 5.4 `CHANGELOG.md` updated.
+- [ ] 5.5 `npm test` (2,218 passed, 7 failed, 94 skipped; failures in atomic-age-kit, browser-locate, browser-practice-lint, component-eval, measured-spec-drift twice, and template-style-pack).
