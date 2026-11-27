@@ -66,3 +66,10 @@ node ./tests/anti-slop-lint.test.cjs
 Result: 7 tests passed, 0 failed.
 
 KATANAview was linted as source (`KATANAview/src`), not a built page: the checkout has no `dist/` and building the pnpm monorepo was not attempted. sloplint's static tier reads `.css`/`.tsx`, which covers the CSS and component source.
+
+## Current verification (2026-11-27)
+
+- `node ./tests/anti-slop-lint.test.cjs`: 7 passed, 0 failed; includes the actual motion-recipe directory and the unmapped-gate rejection.
+- `npm run specs:check`: 118 passed, 0 failed.
+- `npm test`: timed out at 360 seconds while repository QA was still running; the command did not complete QA or browser tests.
+- `npm ci` installed 139 packages; npm blocked the esbuild install script under its install-script policy. The earlier mistaken `npm test -- --test-name-pattern="anti-slop lint"` invocation entered repository QA and reported missing `puppeteer-core` and `pngjs` before this installation.

@@ -22,4 +22,4 @@
 ## 4. Verification
 
 - [x] 4.1 Run on KATANAview pages and motion-recipe specimens; review hard findings by hand. Initial results: 13 hard findings on KATANAview (1 real reduced-motion, 4 real-but-minor disabled-opacity, 8 false positives), 7 on specimens (1 real contrast, 6 false positives); detailed manual review is in `verification.md`.
-- [x] 4.2 `npm test` green for original implementation; focused map-completion and specimen regression passed (7 tests, 0 failed).
+- [ ] 4.2 Full `npm test` on the follow-up contribution must finish green; the focused map-completion test passed (7 tests, 0 failed), while the full run timed out at 360 seconds. See `verification.md`.
