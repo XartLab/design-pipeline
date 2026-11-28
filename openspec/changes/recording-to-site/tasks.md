@@ -18,4 +18,4 @@
 
 ## 4. Verification
 
-- [ ] 4.1 One generated interface recording end to end: table, matrix, delivered page with working controls on phone and desktop.
+- [ ] 4.1 One generated interface recording end to end: table, matrix, delivered page with working controls on phone and desktop. This is not verified in this run.
