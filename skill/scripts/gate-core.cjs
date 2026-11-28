@@ -39,14 +39,19 @@ function hasEvidence(value) {
   return nonEmpty(value);
 }
 
-function checkInteractionStateCoverage(matrix) {
+function checkInteractionStateCoverage(matrix, { recordedBehaviours } = {}) {
   assertObject(matrix, "matrix", "state coverage");
   if (!Array.isArray(matrix.entries) || matrix.entries.length === 0) fail("state coverage", "entries must not be empty");
+  if (recordedBehaviours !== undefined && (!Array.isArray(recordedBehaviours) || !recordedBehaviours.every(nonEmpty))) fail("state coverage", "recordedBehaviours must be an array of non-empty ids");
+  if (recordedBehaviours !== undefined && new Set(recordedBehaviours).size !== recordedBehaviours.length) fail("state coverage", "recordedBehaviours ids must be unique");
   const blockers = [];
   const checked = [];
+  const coveredRecordedIds = new Set();
+  const knownRecordedIds = recordedBehaviours === undefined ? null : new Set(recordedBehaviours);
   matrix.entries.forEach((entry, index) => {
     assertObject(entry, `entries[${index}]`, "state coverage");
     const label = entry.id || entry.interaction || entry.component || `entries[${index}]`;
+    const start = blockers.length;
     const declarations = stateDeclarations(entry);
     const defaultState = declarations.default;
     if (!defaultState || defaultState.applicable === false || defaultState.covered !== true || !hasEvidence(defaultState.evidence)) {
@@ -58,9 +63,8 @@ function checkInteractionStateCoverage(matrix) {
     }
     for (const state of APPLICABLE_STATES) {
       const declaration = declarations[state];
-      if (!declaration) {
-        blockers.push({ code: "STATE_APPLICABILITY_MISSING", entry: label, state, message: `${label} must explicitly declare whether ${state} applies` });
-      } else if (declaration.applicable === false) {
+      if (!declaration) blockers.push({ code: "STATE_APPLICABILITY_MISSING", entry: label, state, message: `${label} must explicitly declare whether ${state} applies` });
+      else if (declaration.applicable === false) {
         if (!nonEmpty(declaration.reason)) blockers.push({ code: "INAPPLICABLE_REASON_MISSING", entry: label, state, message: `${label} must explain why ${state} does not apply` });
       } else if (declaration.covered !== true || !hasEvidence(declaration.evidence)) {
         blockers.push({ code: "STATE_EVIDENCE_MISSING", entry: label, state, message: `${label} is missing ${state} evidence` });
@@ -76,8 +80,17 @@ function checkInteractionStateCoverage(matrix) {
     }
     const reducedMotion = entry.reducedMotion ?? entry.reduced_motion;
     if (interactive && (!nonEmpty(reducedMotion) || /^(?:none|missing|unknown)$/i.test(reducedMotion))) blockers.push({ code: "REDUCED_MOTION_MISSING", entry: label, message: `${label} must declare reduced-motion behavior` });
+    if (knownRecordedIds && Object.hasOwn(entry, "recordedBehaviour")) {
+      const rowId = entry.recordedBehaviour;
+      if (!nonEmpty(rowId)) fail("state coverage", `entries[${index}].recordedBehaviour must be a non-empty id`);
+      if (!knownRecordedIds.has(rowId)) blockers.push({ code: "RECORDED_BEHAVIOUR_UNKNOWN", entry: rowId, message: `${rowId} is not declared in the recorded behaviour table` });
+      else if (blockers.length === start) coveredRecordedIds.add(rowId);
+    }
     checked.push({ entry: label, applicableStates: applicableNonDefault });
   });
+  if (recordedBehaviours !== undefined) {
+    for (const id of recordedBehaviours) if (!coveredRecordedIds.has(id)) blockers.push({ code: "RECORDED_BEHAVIOUR_UNCOVERED", entry: id, message: `${id} has no passing interaction-state coverage entry` });
+  }
   return blockers.length ? { status: "blocked", blockers, checked } : { status: "passed", checked };
 }
 

@@ -416,6 +416,11 @@ source text.
 
 ## Motion taxonomy and public-behavior references
 
+The clean-room recorded-interface workflow adapts the high-level separation of simulated playback
+from real controls described by `lovisdotio/motion2code`, reviewed at commit `0f00328`, MIT. No
+upstream implementation code, text, assets or runtime is bundled; `skill/references/recording-to-site.md`
+is written in this project's own words.
+
 The clean-room motion primitive registry credits public references used during taxonomy and
 behavior research:
 

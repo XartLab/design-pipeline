@@ -183,7 +183,7 @@ Watch 1-3 moving web references at full speed and write `reference.md`: observed
 easing, structure, and what to transfer. In `replicate` mode the reference is the thing being
 reproduced and cannot be skipped. Otherwise the user may decline references
 (`decide --stage reference --answer none`).
-
+For a recorded video interface in replicate mode, follow [Recorded interface references](recording-to-site.md): preserve observed behavior as real controls, record every behavior in `reference.md`, and cover each id in the existing `component-state-matrix.json` before delivery.
 Use `reference-spec.md` for observed regions, invariants and unknowns; for reconstruction read
 `reconstruction-spec.md` and applicable `3d-spec.md`. Record animation observations against timed
 frames when supplied, and mark missing timestamps or uncertain motion. `reference.md` records

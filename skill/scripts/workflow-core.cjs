@@ -377,6 +377,11 @@ function decide(root, options = {}) {
   // Only these records can hold the owner's "no"; refuse a scope elsewhere before any file is written.
   if (scope && (["reference", "deliver"].includes(stage) || (stage === "intake" && state.deliverable !== "web"))) fail("workflow", `--scope goes with a record that holds the owner's "no", and a ${stage} record holds none. Fix: drop --scope`);
   const promoted = rules.checkPromote(state, options.promote, stage, role.by);
+  const recordedBehaviourDecision = state.mode === "replicate" && ((stage === "deliver" && ["web", "ui"].includes(state.deliverable)) || (stage === "review" && state.deliverable === "web" && state.tier === "quick" && options.verdict === "accept"));
+  if (recordedBehaviourDecision) {
+    const result = replicate.checkRecordedBehaviourDelivery(state, root);
+    if (result) fail("workflow", `recorded behaviour check failed: ${result.error} Fix: ${result.fix}`, { code: result.code });
+  }
   const rulesBefore = (state.rules || []).length;
   // A "no" is the owner's words; only an art director's pick may reject on the agent's side.
   if (role.by === "agent" && options.verdict === "reject" && !(state.director && roles.DIRECTED.has(stage))) {

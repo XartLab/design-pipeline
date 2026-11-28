@@ -15,6 +15,7 @@ by the visual problem; using a helper does not create a film project or select a
 | Fit short labels, keep a readable minimum, place/crop images, choose sprite frames | [Canvas craft](visual-craft/README.md) | Measured layout and explicit overflow; keep product text in semantic DOM |
 | Choose and obtain a font, compare real copy, handle CJK/Latin and font variants | [Font sources and selection](fonts.md) | FontLab and primary sources, project-local acquisition, actual-family and rendering checks |
 | Compare a reference and render, locate changed regions | [Visual diagnostics](visual-diagnostics/README.md) | `composition compare`, original pair, difference image and hashes |
+| Turn a recorded video interface into real web or UI controls | [Recorded interface references](../references/recording-to-site.md) | Table observations, interaction-state coverage, phone and desktop behavior |
 | Find where a sampled reference video changes | [Visual diagnostics](visual-diagnostics/README.md) | `reference analyze-video`, timed frames and spatial motion maps |
 | Watercolor, impasto, flow fields, lighting, print and post effects | [Art Motion](art-motion/README.md) | Isolated, caller-sized Canvas runtime |
 | Charts, diagrams, collage, type treatments, cameras, character construction | [Art Motion](art-motion/README.md) | Callable namespaces, optional style/grammar studies and transitions |

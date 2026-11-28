@@ -50,8 +50,15 @@ function designText(withTokens) {
 }
 
 // reference.md (what the reference step records) and the registered reference evidence.
-function writeReference(root) {
-  fs.writeFileSync(path.join(root, "reference.md"), "# Observed reference\nStructure, rhythm, type scale and timing.\n");
+function writeReference(root, { video = false, table = false } = {}) {
+  const observations = table ? "\n## Recorded behaviours\n\n| id | time | change | control | keyboard |\n| --- | --- | --- | --- | --- |\n| rb-1 | 00:04 | Details panel opens | button Details | Tab, Enter |\n" : "";
+  fs.writeFileSync(path.join(root, "reference.md"), `# Observed reference\nStructure, rhythm, type scale and timing.${observations}`);
+  if (video) {
+    const file = path.join(root, "reference-evidence.json");
+    const evidence = JSON.parse(fs.readFileSync(file, "utf8"));
+    evidence.source = { ...evidence.source, kind: "video", path: "reference.mp4", sha256: "b".repeat(64) };
+    fs.writeFileSync(file, JSON.stringify(evidence));
+  }
 }
 function writeEvidence(root) {
   fixtures.writeRaster(root, "reference.png");
