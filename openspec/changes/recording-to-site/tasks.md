@@ -7,16 +7,15 @@
 
 ## 2. Behaviour
 
-- [ ] 2.1 `workflows/replicate.cjs`: parse the table (design.md 2); `recorded-behaviours-missing` and per-row findings at the extract step for web and ui with a `video` reference.
-- [ ] 2.2 `gate-core.cjs`: optional `recordedBehaviours` input (design.md 3); `recordedBehaviours(root)` helper; pass the ids at every web and ui delivery call site and block on its `error`.
+- [x] 2.1 `workflows/replicate.cjs`: parse exact recorded-behavior table, report extract findings and current delivery errors for web/ui video references.
+- [x] 2.2 `gate-core.cjs`: optional `recordedBehaviours` input preserves old behavior when absent; web/ui delivery decisions check current ids against root `component-state-matrix.json`.
 
 ## 3. Tests and docs
 
-- [ ] 3.1 Tests for each scenario; register in `scripts/test-manifest.json`.
-- [ ] 3.2 `references/recording-to-site.md` in our words; register in `package-resources.json`, `skill/tools/README.md`; link from `workflow-web.md`.
-- [ ] 3.3 CHANGELOG; `THIRD_PARTY_NOTICES.md` concept credit to motion2code at `0f00328`.
+- [x] 3.1 Tests for parser, option compatibility, invalid table and extract/delivery enforcement live in existing manifest-owned suites (`tests/workflow-replicate.test.cjs`, `tests/design-control-runtime.test.cjs`).
+- [x] 3.2 `references/recording-to-site.md` in our words; registered in `package-resources.json`, `skill/tools/README.md`, and linked from `workflow-web.md`.
+- [x] 3.3 CHANGELOG; `THIRD_PARTY_NOTICES.md` concept credit to motion2code at `0f00328`.
 
 ## 4. Verification
 
 - [ ] 4.1 One generated interface recording end to end: table, matrix, delivered page with working controls on phone and desktop.
-- [ ] 4.2 `npm test` green.

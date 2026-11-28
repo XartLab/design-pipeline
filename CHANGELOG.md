@@ -3,6 +3,9 @@
 All notable changes to Design Pipeline are documented here.
 
 ## [Unreleased]
+### Added
+
+- Recorded web/ui video references now require an owner-confirmed `Recorded behaviours` table and passing interaction-state coverage for each listed real control at delivery. The workflow checks the current `reference.md` and existing `component-state-matrix.json` immediately before recording delivery; projects without a video source remain unchanged. `references/recording-to-site.md` documents the control, keyboard, reduced-motion, phone and desktop requirements. The clean-room behavior mapping is informed by lovisdotio/motion2code (MIT, reviewed commit `0f00328`); no upstream code is bundled.
 
 ## [0.15.0-beta.1] - 2026-11-14
 

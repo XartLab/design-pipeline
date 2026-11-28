@@ -27,7 +27,106 @@ function project(options) {
   return dir;
 }
 const codes = action => (action.findings || []).map(finding => finding.code);
+
+const { checkInteractionStateCoverage, STATE_COVERAGE_SCHEMA, APPLICABLE_STATES } = require("../skill/scripts/gate-core.cjs");
+const { checkRecordedBehaviourDelivery, recordedBehaviours } = require("../skill/scripts/workflows/replicate.cjs");
 const append = (dir, rel, text) => fs.appendFileSync(path.join(dir, rel), text);
+
+function stateMatrix(id = "rb-1", { schema = STATE_COVERAGE_SCHEMA, blocked = false } = {}) {
+  const states = Object.fromEntries(APPLICABLE_STATES.map(state => [state, { applicable: false, reason: "not exercised by this behavior" }]));
+  states.loading = { applicable: true, covered: true, evidence: ["loading"] };
+  return {
+    schema,
+    id: "video-reference",
+    entries: [{
+      id: "details-button",
+      recordedBehaviour: id,
+      interactive: false,
+      inputs: blocked ? [] : ["pointer"],
+      viewports: ["mobile", "desktop"],
+      states: { default: { covered: true, evidence: ["capture"] }, ...states },
+    }],
+  };
+}
+
+function writeRecordedVideo(root, { table = true, matrix = stateMatrix(), sourceKind = "video", fullVideo = true } = {}) {
+  writeEvidence(root);
+  const evidencePath = path.join(root, "reference-evidence.json");
+  const evidence = JSON.parse(fs.readFileSync(evidencePath, "utf8"));
+  evidence.source = sourceKind === "video" ? { ...evidence.source, kind: "video", path: "reference.mp4", sha256: "b".repeat(64) } : { ...evidence.source, kind: sourceKind };
+  evidence.videoAnalysis = { path: "video/report.json", sha256: "c".repeat(64) };
+  fs.writeFileSync(evidencePath, JSON.stringify(evidence));
+  writeReference(root, { table });
+  if (fullVideo) {
+    fs.mkdirSync(path.join(root, "video"), { recursive: true });
+    fs.writeFileSync(path.join(root, "video", "report.json"), "{}");
+  }
+  fs.writeFileSync(path.join(root, "component-state-matrix.json"), JSON.stringify(matrix));
+}
+
+test("recorded behaviour table parsing is strict and video-source scoped", () => {
+  const dir = project({ deliverable: "ui", tier: "quick" });
+  writeRecordedVideo(dir);
+  assert.deepEqual(recordedBehaviours(dir), { ids: ["rb-1"] });
+  fs.writeFileSync(path.join(dir, "reference.md"), "# Ref\n## recorded behaviours\n| id | time | change | control | keyboard |\n| --- | --- | --- | --- | --- |\n| rb-1 | 1s | open | button | Enter |\n");
+  assert.match(recordedBehaviours(dir).error, /non-empty ## Recorded behaviours table/);
+  fs.writeFileSync(path.join(dir, "reference.md"), "# Ref\n## Recorded behaviours\n| id | time | change | control | keyboard |\n| --- | --- | --- | --- | --- |\n| rb-1 | 1s | open | button | none: |\n");
+  assert.match(recordedBehaviours(dir).error, /keyboard path|reason/);
+  fs.writeFileSync(path.join(dir, "reference.md"), "# Ref\n## Recorded behaviours\n| id | time | change | control | keyboard |\n| --- | --- | --- | --- | --- |\n| rb-1 | 1s | open | button | Enter |\n");
+  const evidencePath = path.join(dir, "reference-evidence.json");
+  const evidence = JSON.parse(fs.readFileSync(evidencePath, "utf8"));
+  evidence.source.kind = "image";
+  fs.writeFileSync(evidencePath, JSON.stringify(evidence));
+  assert.equal(recordedBehaviours(dir), null, "selected video frames in an image reference are not eligible");
+});
+
+test("video recording delivery distinguishes a missing table from matrix findings", () => {
+  const dir = project({ deliverable: "ui", tier: "quick" });
+  writeRecordedVideo(dir, { table: false });
+  assert.equal(checkRecordedBehaviourDelivery(readState(dir), dir).code, "recorded-behaviours-missing");
+  writeRecordedVideo(dir, { matrix: stateMatrix("rb-1", { blocked: true }) });
+  assert.equal(checkRecordedBehaviourDelivery(readState(dir), dir).code, "RECORDED_BEHAVIOUR_UNCOVERED");
+  writeRecordedVideo(dir, { matrix: stateMatrix("unknown") });
+  assert.equal(checkRecordedBehaviourDelivery(readState(dir), dir).code, "RECORDED_BEHAVIOUR_UNKNOWN");
+  writeRecordedVideo(dir, { sourceKind: "image", table: false });
+  assert.equal(checkRecordedBehaviourDelivery(readState(dir), dir), null, "image references remain outside the recorded-video requirement");
+});
+
+test("video table and passing matrix guard UI delivery before state mutation", () => {
+  const dir = project({ deliverable: "ui", tier: "quick" });
+  statedSkip(dir);
+  writeReference(dir);
+  writeEvidence(dir);
+  writeFoundations(dir);
+  confirmExtraction(dir);
+  nextAction(dir);
+  writeRecordedVideo(dir, { fullVideo: false });
+  assert.equal(nextAction(dir).stage, "reference", "incomplete video evidence remains owned by the reference check");
+  writeRecordedVideo(dir, { table: false });
+  assert.throws(() => decide(dir, { by: "owner", stage: "deliver", answer: "page + evidence" }), error => error.code === "recorded-behaviours-missing");
+  assert.equal(readState(dir).decisions.delivered, undefined, "failed delivery writes no state");
+  writeRecordedVideo(dir);
+  assert.equal(checkRecordedBehaviourDelivery(readState(dir), dir), null, "the current well-formed table and matrix pass the recorded-behaviour check");
+  assert.throws(() => decide(dir, { by: "owner", stage: "deliver", answer: "page + evidence" }), error => error.code === "WORKFLOW_NOT_READY");
+});
+
+test("quick web video replicate checks coverage before final acceptance", () => {
+  const dir = project({ deliverable: "web", tier: "quick" });
+  statedSkip(dir);
+  writeReference(dir);
+  writeEvidence(dir);
+  writeFoundations(dir);
+  confirmExtraction(dir);
+  nextAction(dir);
+  decide(dir, { by: "owner", stage: "components", choice: "scratch", answer: "Write from scratch" });
+  fs.writeFileSync(path.join(dir, "component-manifest.json"), JSON.stringify({ fromScratch: true, entries: [] }));
+  fs.writeFileSync(path.join(dir, "index.html"), "<!doctype html><html><body><main>page</main></body></html>");
+  fs.writeFileSync(path.join(dir, "interaction.json"), JSON.stringify({ probes: [{ kind: "audit" }] }));
+  recordGate(dir, "interaction", "passed", ["interaction.json", "index.html"], {}, { files: ["index.html"], tokens: ["DESIGN.md", "MOTION.md"], absent: [], remote: [] });
+  writeRecordedVideo(dir, { matrix: stateMatrix("rb-1", { blocked: true }) });
+  assert.throws(() => decide(dir, { by: "owner", stage: "review", verdict: "accept", answer: "Accepted" }), error => error.code === "RECORDED_BEHAVIOUR_UNCOVERED");
+  assert.equal((readState(dir).decisions.drafts || []).length, 0, "failed acceptance writes no state");
+});
 
 test("ui replicate holds at extract until the reference is registered and the foundations pass their checks", () => {
   const dir = project({ deliverable: "ui", tier: "quick" });
@@ -62,6 +161,28 @@ test("ui replicate holds at extract until the reference is registered and the fo
   assert.deepEqual(codes(nextAction(dir)), ["motion-missing"]);
   fs.writeFileSync(path.join(dir, "MOTION.md"), "not a motion foundation\n");
   assert.deepEqual(codes(nextAction(dir)), ["motion-invalid"]);
+});
+
+test("video replicate extraction lists missing-table and malformed-row findings", () => {
+  const dir = project({ deliverable: "ui", tier: "quick" });
+  writeReference(dir);
+  writeEvidence(dir);
+  writeFoundations(dir);
+  const evidencePath = path.join(dir, "reference-evidence.json");
+  const evidence = JSON.parse(fs.readFileSync(evidencePath, "utf8"));
+  evidence.source = { ...evidence.source, kind: "video", path: "reference.mp4", sha256: "b".repeat(64) };
+  evidence.videoAnalysis = { path: "video/report.json", sha256: "c".repeat(64) };
+  fs.writeFileSync(evidencePath, JSON.stringify(evidence));
+  assert.equal(recordedBehaviours(dir).error.includes("non-empty ## Recorded behaviours table"), true);
+  writeReference(dir, { table: true });
+  fs.writeFileSync(path.join(dir, "reference.md"), fs.readFileSync(path.join(dir, "reference.md"), "utf8").replace("button Details", ""));
+  const rowIssue = recordedBehaviours(dir);
+  assert.match(rowIssue.error, /rb-1.*real control/);
+  const findings = require("../skill/scripts/workflows/replicate.cjs").EXTRACT.action(readState(dir), dir).findings;
+  const finding = findings.find(item => item.code === "recorded-behaviours-missing");
+  assert.ok(finding);
+  assert.match(finding.message, /rb-1/);
+  assert.match(finding.fix, /control role and element plus keyboard path/);
 });
 
 test("a reference whose approval is pending blocks extract; a pending graybox does not", () => {

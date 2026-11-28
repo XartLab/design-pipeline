@@ -7,10 +7,10 @@
 // approval, the web probe and delivery, and the ui delivery and review bind to them, so a later edit
 // reopens the confirmation instead of drifting past it. No new gate or receipt: this reuses
 // `foundation check`, `reference check`, the decision history and the evaluate-website-clone verdict.
-
 const fs = require("node:fs");
 const path = require("node:path");
 const { fail, readJson, sha256 } = require("../contract-utils.cjs");
+const { checkInteractionStateCoverage, STATE_COVERAGE_SCHEMA } = require("../gate-core.cjs");
 const { checkDesignFoundation } = require("../design-synthesis-core.cjs");
 const { checkMotionFoundation } = require("../motion-foundation-core.cjs");
 const { DEFAULT_DIR: DESIGN_SYSTEM_DIR, checkDesignSystemPackage } = require("../design-system-package-core.cjs");
@@ -122,9 +122,86 @@ function findings(state, root) {
     if (system.error) add("design-system-invalid", `The design-system package is invalid: ${system.error}`, "Repair the package (references/design-system-package.md), then run next again.");
     else if (system.result.status !== "ready") add(system.result.status === "synthesis-required" ? "design-system-missing" : "design-system-invalid", `The design-system package is ${system.result.status}: ${(system.result.findings || []).map(item => `${item.file}: ${item.message}`).join("; ")}`, `Write or repair the package from the reference (references/design-system-package.md), then run ${cliCommand()} design-system check --project-root ${shellPath(project)}.`);
   }
+  if (["web", "ui"].includes(state.deliverable)) {
+    const recorded = recordedBehaviours(root);
+    if (recorded?.rowErrors?.length) {
+      for (const item of recorded.rowErrors) {
+        const message = item.id ? `Recorded behaviour ${item.id}: ${item.message}` : item.message;
+        add("recorded-behaviours-missing", message, item.fix);
+      }
+    } else if (recorded?.error) {
+      add("recorded-behaviours-missing", recorded.error, "Repair reference.md under the exact ## Recorded behaviours heading with the required columns and valid rows.");
+    }
+  }
   return out;
 }
 
+
+// The table is parsed whenever a recorded behaviour is consumed; ids never live in workflow state.
+function recordedBehaviours(root) {
+  let reference;
+  try { reference = readJson(path.join(root, EVIDENCE), "reference evidence"); } catch { return null; }
+  if (reference.source?.kind !== "video") return null;
+  try {
+    const documentLines = fs.readFileSync(path.join(root, "reference.md"), "utf8").split(/\r?\n/);
+    const heading = documentLines.findIndex(line => line === "## Recorded behaviours");
+    if (heading < 0) return { error: "reference.md must contain a non-empty ## Recorded behaviours table with id, time, change, control and keyboard columns." };
+    let end = heading + 1;
+    while (end < documentLines.length && !documentLines[end].startsWith("## ")) end++;
+    const lines = documentLines.slice(heading + 1, end).filter(line => line.trim().startsWith("|"));
+    const cells = line => line.trim().replace(/^\|\s*|\s*\|$/g, "").split("|").map(value => value.trim());
+    if (lines.length < 3) return { error: "## Recorded behaviours must contain a header, Markdown separator and at least one data row." };
+    const columns = ["id", "time", "change", "control", "keyboard"];
+    const header = cells(lines[0]);
+    if (header.length !== columns.length || columns.some((column, index) => header[index] !== column)) return { error: "## Recorded behaviours columns must be id, time, change, control and keyboard, in that order." };
+    const separator = cells(lines[1]);
+    if (separator.length !== columns.length || separator.some(cell => !/^:?-{3,}:?$/.test(cell))) return { error: "## Recorded behaviours must contain a valid Markdown separator row." };
+    const ids = [], rowErrors = [];
+    for (const line of lines.slice(2)) {
+      const row = cells(line), rawId = row[0] || "";
+      const id = /^rb-[0-9]+$/.test(rawId) ? rawId : null;
+      if (row.length !== columns.length) {
+        rowErrors.push({ id, message: `row has ${row.length} cells; expected five`, fix: "Give this row exactly five cells: id, time, change, control, keyboard." });
+        continue;
+      }
+      const [candidate, time, change, control, keyboard] = row;
+      if (!/^rb-[0-9]+$/.test(candidate)) rowErrors.push({ id: null, message: `id ${candidate || "(empty)"} must match rb-[0-9]+`, fix: "Use a unique id such as rb-1." });
+      else if (ids.includes(candidate)) rowErrors.push({ id: candidate, message: "id is duplicated", fix: "Give each observed behavior a unique rb-<number> id." });
+      else ids.push(candidate);
+      if (!time || !change) rowErrors.push({ id, message: "time and change must be non-empty", fix: "Record when the behavior occurs and what changes on screen." });
+      if (!control || !keyboard || /^none\s*$/i.test(keyboard) || /^none\s*:\s*$/i.test(keyboard)) rowErrors.push({ id, message: "requires a real control and keyboard path; keyboard: none: <reason> is allowed only with a non-empty reason", fix: "Name the control role and element plus keyboard path; use none: <reason> only for owner-confirmed no-input behavior." });
+    }
+    if (rowErrors.length) return { ids, rowErrors, error: rowErrors.map(item => `${item.id ? `Recorded behaviour ${item.id}: ` : ""}${item.message}`).join("; ") };
+    return { ids };
+  } catch (error) {
+    return { error: String(error?.message ?? error) };
+  }
+}
+
+
+
+function checkRecordedBehaviourDelivery(state, root) {
+  if (state.mode !== "replicate" || !["web", "ui"].includes(state.deliverable)) return null;
+  let reference;
+  try { reference = readJson(path.join(root, EVIDENCE), "reference evidence"); } catch { return null; }
+  if (reference.source?.kind !== "video") return null;
+  const recorded = recordedBehaviours(root);
+  if (recorded?.error) return { code: "recorded-behaviours-missing", error: recorded.error, fix: "Add the exact ## Recorded behaviours heading and a Markdown table with id, time, change, control and keyboard columns; fix every row, then retry delivery." };
+  if (recorded?.rowErrors?.length) {
+    const first = recorded.rowErrors[0];
+    return { code: "recorded-behaviours-missing", error: recorded.rowErrors.map(item => `${item.id ? `${item.id}: ` : ""}${item.message}`).join("; "), fix: first.fix };
+  }
+  try {
+    const matrix = readJson(path.join(root, "component-state-matrix.json"), "component state matrix");
+    if (matrix.schema !== STATE_COVERAGE_SCHEMA) return { code: "RECORDED_BEHAVIOUR_UNCOVERED", error: "component-state-matrix.json does not use the interaction-state coverage schema.", fix: "Use the existing interaction-state coverage schema in component-state-matrix.json and retry delivery." };
+    const result = checkInteractionStateCoverage(matrix, { recordedBehaviours: recorded.ids });
+    if (result.status === "passed") return null;
+    const blocker = result.blockers.find(item => item.code === "RECORDED_BEHAVIOUR_UNKNOWN") || result.blockers.find(item => item.code === "RECORDED_BEHAVIOUR_UNCOVERED") || result.blockers[0];
+    return { code: blocker.code, error: result.blockers.map(item => item.message).join("; "), fix: "Map each listed behaviour id to a passing entry in component-state-matrix.json; remove unknown ids, then retry delivery." };
+  } catch (error) {
+    return { code: "RECORDED_BEHAVIOUR_UNCOVERED", error: String(error?.message ?? error), fix: "Repair component-state-matrix.json using the existing interaction-state matrix contract, then retry delivery." };
+  }
+}
 // --- the confirmation ------------------------------------------------------------------------------
 
 const extractions = state => (Array.isArray(state.decisions?.extractions) ? state.decisions.extractions : []);
@@ -268,4 +345,4 @@ function cloneAction(state, root) {
   };
 }
 
-module.exports = { EXTRACT, REFERENCE, boundReferenceFiles, cloneAction, cloneComplete, recordExtraction, sourceDecisions, tokenSummary };
+module.exports = { EXTRACT, REFERENCE, boundReferenceFiles, checkRecordedBehaviourDelivery, cloneAction, cloneComplete, recordedBehaviours, recordExtraction, sourceDecisions, tokenSummary };

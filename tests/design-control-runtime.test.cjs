@@ -194,6 +194,37 @@ test("state coverage rejects missing evidence and accepts explicit applicability
   assert.equal(covered.status, "passed");
 });
 
+test("recorded behaviour coverage requires each id to have a passing singular matrix entry", () => {
+  const matrixEntry = recordedBehaviour => {
+    const states = allCoverageStates();
+    states.loading = { applicable: true, covered: true, evidence: ["loading"] };
+    return {
+      id: recordedBehaviour,
+      recordedBehaviour,
+      interactive: false,
+      inputs: ["pointer"],
+      viewports: ["mobile", "desktop"],
+      states: { default: { covered: true, evidence: ["default"] }, ...states },
+    };
+  };
+  const passing = matrixEntry("rb-1");
+  const unrelatedFailure = { ...matrixEntry("other"), inputs: [] };
+  assert.equal(checkInteractionStateCoverage({ entries: [passing, unrelatedFailure] }, { recordedBehaviours: ["rb-1"] }).status, "blocked", "unrelated entry failure still blocks the matrix overall");
+  assert.ok(!checkInteractionStateCoverage({ entries: [passing, unrelatedFailure] }, { recordedBehaviours: ["rb-1"] }).blockers.some(item => item.code === "RECORDED_BEHAVIOUR_UNCOVERED"), "unrelated entry failure does not invalidate the passing recorded id");
+  const onlyRecorded = checkInteractionStateCoverage({ entries: [passing] }, { recordedBehaviours: ["rb-1"] });
+  assert.equal(onlyRecorded.status, "passed");
+  const unknown = checkInteractionStateCoverage({ entries: [matrixEntry("unknown")] }, { recordedBehaviours: ["rb-1"] });
+  assert.ok(unknown.blockers.some(item => item.code === "RECORDED_BEHAVIOUR_UNKNOWN"));
+  assert.ok(unknown.blockers.some(item => item.code === "RECORDED_BEHAVIOUR_UNCOVERED"));
+  const blockedRecorded = matrixEntry("rb-1");
+  blockedRecorded.inputs = [];
+  assert.ok(checkInteractionStateCoverage({ entries: [blockedRecorded] }, { recordedBehaviours: ["rb-1"] }).blockers.some(item => item.code === "RECORDED_BEHAVIOUR_UNCOVERED"));
+  const invalidShape = { entries: [matrixEntry("rb-1")] };
+  invalidShape.entries[0].recordedBehaviour = ["rb-1"];
+  assert.throws(() => checkInteractionStateCoverage(invalidShape, { recordedBehaviours: ["rb-1"] }), /recordedBehaviour must be a non-empty id/);
+  assert.deepEqual(checkInteractionStateCoverage({ entries: [matrixEntry("rb-1")] }), { status: "passed", checked: [{ entry: "rb-1", applicableStates: ["loading"] }] });
+});
+
 test("CLI plan uses the common JSON envelope and does not emit blocked plans", () => {
   const changeRoot = root();
   fs.writeFileSync(path.join(changeRoot, "manifest.json"), JSON.stringify(manifest()));
